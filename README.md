@@ -292,12 +292,12 @@ Components:
 app:
     DONE: about/page.tsx
     DONE: blog/[...slug]/page.tsx
-    blog/page.tsx
-    portfolio/page.tsx
-    tags/[tag]/page.tsx
-    tags/page.tsx
-    layout.tsx
-    Main.tsx
+    DONE: blog/page.tsx
+    DONE: portfolio/page.tsx
+    DONE: tags/[tag]/page.tsx
+    DONE: tags/page.tsx
+    DONE: layout.tsx
+    Main.tsx - Homepage
     not-found.tsx
     page.tsx
     robots.ts
@@ -310,7 +310,7 @@ Layouts:
     DONE: ListLayout.tsx
     DONE: ListLayoutWithTags.tsx
     DONE: PostLayout.tsx
-    PostSimple.tsx
+    DONE: PostSimple.tsx
     DONE: Layout.tsx
 
 

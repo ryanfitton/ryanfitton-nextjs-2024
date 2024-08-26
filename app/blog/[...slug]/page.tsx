@@ -7,7 +7,6 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
 import type { Authors, Blog } from 'contentlayer/generated'
-import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
@@ -15,7 +14,6 @@ import siteMetadata from '@/data/siteMetadata'
 const isProduction = process.env.NODE_ENV === 'production'
 const defaultLayout = 'PostLayout'
 const layouts = {
-  PostSimple,
   PostLayout,
 }
 

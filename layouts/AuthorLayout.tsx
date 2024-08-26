@@ -39,6 +39,9 @@ export default function AuthorLayout({ children, content }: Props) {
               />
             )}
 
+            {{name}}
+            {{occupation}}
+
             {children}
 
             <div className="component-navbar component-navbar--icons">

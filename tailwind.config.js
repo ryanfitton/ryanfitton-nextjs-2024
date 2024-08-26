@@ -103,8 +103,8 @@ module.exports = {
     },
 
     fontFamily: {
-      sans: ['Red Hat Text', ...fontFamily.sans],
-      serif: ['Brygada 1918', ...fontFamily.serif],
+      sans: ['var(--font-redHatText)', ...fontFamily.sans],
+      serif: ['var(--font-brygada1918)', ...fontFamily.serif],
     },
 
     extend: {

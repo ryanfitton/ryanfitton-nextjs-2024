@@ -2,7 +2,6 @@ import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 import 'remark-github-blockquote-alert/alert.css'
 
-import { Roboto_Flex } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -12,10 +11,18 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 
-const roboto_flex = Roboto_Flex({
+import { Red_Hat_Text, Brygada_1918 } from 'next/font/google'
+
+const redHatText = Red_Hat_Text({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-roboto_flex',
+  variable: '--font-redHatText',
+})
+
+const brygada1918 = Brygada_1918({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-brygada1918',
 })
 
 export const metadata: Metadata = {
@@ -63,16 +70,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html
       lang={siteMetadata.language}
       suppressHydrationWarning
+      className={`${redHatText.variable} ${brygada1918.variable}`}
     >
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="./output.css" rel="stylesheet">{/* TODO */}
-
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Brygada+1918:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="//fonts.googleapis.com" />
+        <link rel="preconnect" href="//fonts.gstatic.com" crossorigin />
 
         <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
@@ -83,21 +87,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-    </head>
+      </head>
 
       <body>
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
+
           <SectionContainer>
-            <div className="flex h-screen flex-col justify-between TODO">
-              <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                <Header />
-                <main className="site-main">
-                  {children}
-                </main>
-              </SearchProvider>
-              <Footer />
-            </div>
+            <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
+              <Header />
+              <main className="site-main">{children}</main>
+            </SearchProvider>
+
+            <Footer />
           </SectionContainer>
         </ThemeProviders>
       </body>
