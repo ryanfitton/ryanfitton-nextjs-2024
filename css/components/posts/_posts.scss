@@ -1,0 +1,160 @@
+@layer components {
+    /* 
+        Posts Generic items
+    */
+    .component-posts-sidebar {
+        @apply hidden md:block;
+
+        &__title {
+            &, a {
+                @apply uppercase !text-stone dark:!text-typography-heading-dark;
+            }
+        }
+
+        &__content {
+            @apply !mt-0 h-full max-h-screen flex-wrap overflow-auto text-pretty;
+        }
+    }
+
+    .component-posts-pagination {
+        @apply space-y-2 pb-8 pt-6 md:space-y-5 text-stone dark:text-typography-default-dark/50 text-sm;
+
+        &__navigation {
+            @apply flex justify-between items-center;
+        }
+
+        &__paginate {
+            @apply !no-underline disabled:hover:!no-underline disabled:!text-stone dark:disabled:!text-typography-default-dark/50 hover:!underline break-words uppercase p-3;
+
+            &:first-child {
+                @apply pl-0;
+            }
+
+            &:last-child {
+                @apply pr-0;
+            }
+        }
+    }
+
+    .component-posts-tag-list {
+        @apply list-none m-0 p-0 text-stone/70 dark:text-typography-default-dark/50 uppercase;
+
+        > li {
+            @apply mb-1;
+
+            &:last-child {
+                @apply mb-0;
+            }
+        }
+
+        a {
+            @apply no-underline hover:underline;
+        }
+
+        &--sidebar {
+            @apply text-sm;
+        }
+
+        &--article {
+            @apply text-sm inline-flex flex-wrap;
+
+            > li {
+                @apply mr-3;
+
+                &:last-child {
+                    @apply mr-0;
+                }
+            }
+        }
+    }
+
+
+    /* 
+        Posts Article items
+    */
+    .component-posts-article-list {
+        @apply list-none m-0 p-0;
+
+        > li {
+            @apply mb-10 md:mb-14;
+
+            &:last-child {
+                @apply mb-0;
+            }
+        }
+    }
+
+    .component-posts-article {
+        &__date {
+            &--time {
+                @apply text-xs uppercase leading-6 text-stone dark:text-typography-default-dark/50;
+            }
+        }
+
+        &__featured-image {
+            @apply rounded mb-6;
+        }
+
+        &__title {
+            @apply my-2 text-pretty;
+        }
+
+        &__excerpt {
+            @apply prose max-w-none text-pretty;
+        }
+
+        &__body {
+            @apply py-4 prose max-w-none text-pretty;
+        }
+
+        &__comments {
+            
+        }
+
+        &__divider {
+            @apply my-4;
+        }
+    }
+
+
+    /* 
+        Posts Portfolio specific items
+    */
+    .component-posts-portfolio-list {
+        @apply list-none m-0 p-0;
+
+        > li {
+            > a {
+                @apply cursor-pointer block !no-underline !text-typography-heading dark:!text-typography-heading-dark hover:bg-neutral/35 dark:hover:bg-neutral-dark/35;
+
+                .component-posts-article__excerpt {
+                    @apply !text-typography-default dark:!text-typography-default-dark/50;
+                }
+            }
+        }
+    }
+
+    .component-posts-portfolio-details {
+        @apply pb-4 max-w-none;
+
+        &__list {
+            @apply list-none;
+
+            > li {
+                @apply mb-1;
+
+                &:last-child {
+                    @apply mb-0;
+                }
+            }
+
+            a {
+                @apply no-underline hover:underline;
+            }
+        }
+
+        &__intro {
+            @apply prose text-pretty;
+        }
+    }
+}

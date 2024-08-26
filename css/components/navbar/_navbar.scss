@@ -1,0 +1,84 @@
+@layer components {
+    .component-navbar {
+        @apply flex space-x-4 leading-5 sm:space-x-6;
+
+        &__links {
+            @apply space-x-4 overflow-x-auto md:flex sm:space-x-6 mx-2 grow;
+
+            a {
+                @apply block !m-0 !no-underline px-5 content-center;
+            }
+        }
+    
+
+        &--header {
+            @apply flex items-stretch;
+
+            .component-navbar__links {
+                @apply hidden md:flex items-stretch;
+
+                a {
+                    @apply !text-white;
+                }
+            }
+
+            .component-navbar__search-btn svg,
+            .component-navbar__theme-btn svg {
+                @apply size-6;
+            }
+
+            .component-navbar__theme-btn {
+                @apply mr-5 flex items-center;
+
+                & > dev {
+                    @apply relative inline-block text-left;
+
+                    & > div {
+                        @applyflex items-center justify-center;
+                    }
+                }
+            }
+
+            .component-navbar__menu-btn {
+                @apply md:hidden;
+
+                svg {
+                    @apply size-8;
+                }
+            }
+                    
+            .component-navbar__links a,
+            .component-navbar__search-btn,
+            .component-navbar__theme-btn,
+            .component-navbar__menu-btn {
+                @apply px-3 py-7 lg:px-5 content-center hover:bg-primary dark:hover:bg-primary-dark hover:brightness-[110%] active:brightness-[80%] dark:hover:brightness-[110%] dark:active:brightness-[80%];
+            }
+        }
+
+
+        &--icons {
+            .component-navbar__links {
+                @apply flex space-x-4 overflow-x-auto sm:space-x-6 md:flex-row mx-2 justify-center;
+
+                a {
+                    @apply block !m-0 p-2 content-center;
+                }
+
+                svg {
+                    @apply fill-current size-6;
+                }
+            }
+        }
+
+
+        &--footer {
+            .component-navbar__links {
+                @apply flex space-x-4 overflow-x-auto sm:space-x-6 flex-col md:flex-row mx-2 justify-center;
+
+                a {
+                    @apply block !m-0 p-2 content-center;
+                }
+            }
+        }
+    }
+}

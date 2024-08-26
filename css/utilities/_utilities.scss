@@ -1,0 +1,16 @@
+@tailwind utilities;
+
+@layer utilities {
+    .site-container {
+        @apply container mx-auto py-8 px-4 md:px-12;
+
+        &--narrow {
+            @apply max-w-screen-md;
+        }
+        /*
+        &--wide {
+            @apply max-w-screen-lg;
+        }
+        */
+    }
+}

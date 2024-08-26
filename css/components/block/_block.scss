@@ -1,0 +1,33 @@
+@layer components {
+    .component-block {
+        @apply my-12;
+
+        &:first-child {
+            @apply mt-0;
+        }
+
+        &:last-child {
+            @apply mb-0;
+        }
+
+        &--padding {
+            @apply p-6;
+
+            &-small {
+                @apply p-4;
+            }
+        }
+        
+        &--bg-neutral {
+            @apply bg-neutral dark:bg-neutral-dark;
+        }
+
+        &--outline-neutral {
+            @apply border-2 border-neutral dark:border-neutral-dark;
+        }
+
+        &--rounded {
+            @apply rounded;
+        }
+    }
+}

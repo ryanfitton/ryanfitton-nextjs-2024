@@ -1,51 +1,82 @@
 import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
-import Logo from '@/data/logo.svg'
+import PageTitle from '@/components/PageTitle'
+import navLinks from '@/data/navLinks'
 import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 const Header = () => {
-  let headerClass = 'flex items-center w-full bg-white dark:bg-gray-950 justify-between py-10'
-  if (siteMetadata.stickyNav) {
-    headerClass += ' sticky top-0 z-50'
-  }
-
   return (
-    <header className={headerClass}>
-      <Link href="/" aria-label={siteMetadata.headerTitle}>
-        <div className="flex items-center justify-between">
-          <div className="mr-3">
-            <Logo />
+    <header className="site-header">
+      <div className="xl:site-container flex justify-between">
+        {/* Logo */}
+        <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
+          <Image
+            src="images/logo@1x.png"
+            alt={siteMetadata.author}
+            srcset="images/logo@1x.png @1x, images/logo@2x.png @2x"
+          />
+        </Link>
+
+        {/* Nav */}
+        <div className="component-navbar component-navbar--header">
+          <div className="component-navbar__links">
+            {navLinks
+              .filter((link) => link.href !== '/')
+              .map((link) => (
+                <Link key={link.title} href={link.href}>
+                  {link.title}
+                </Link>
+              ))}
           </div>
-          {typeof siteMetadata.headerTitle === 'string' ? (
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {siteMetadata.headerTitle}
-            </div>
-          ) : (
-            siteMetadata.headerTitle
-          )}
+
+          <SearchButton />
+
+          <ThemeSwitch />
+
+          <MobileNav />
+
+          <div
+            hidden=""
+            style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"
+          ></div>
         </div>
-      </Link>
-      <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-        <div className="no-scrollbar hidden max-w-40 items-center space-x-4 overflow-x-auto sm:flex sm:space-x-6 md:max-w-72 lg:max-w-96">
-          {headerNavLinks
-            .filter((link) => link.href !== '/')
-            .map((link) => (
-              <Link
-                key={link.title}
-                href={link.href}
-                className="block font-medium text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-              >
-                {link.title}
-              </Link>
-            ))}
-        </div>
-        <SearchButton />
-        <ThemeSwitch />
-        <MobileNav />
       </div>
+
+      {/* Video hero Start */}
+      <div className="hero hero--video">
+        <div className="hero__container site-container">
+          <div className="hero__content">
+            <PageTitle>{title}{siteMetadata.headerTitle}</PageTitle>
+            <span>{siteMetadata.description}</span>
+          </div>
+        </div>
+
+        <video
+          autoPlay
+          loop
+          muted
+          className="hero__video-object"
+          poster="images/home-header-bg-2000px@1x.jpg"
+        >
+          <source src="videos/home-header-video-15fps.webm" type="video/webm" />
+          Your browser does not support the HTML5 video tag.
+        </video>
+      </div>
+      {/* Video hero End */}
+
+
+      {/* Page hero Start */}
+      <div class="hero hero--page">
+        <div class="hero__container site-container">
+          <div class="hero__content">
+            <PageTitle>{title}</PageTitle>
+            <PageTitle className="component-title--sub">{subtitle}</PageTitle>
+          </div>
+        </div>
+      </div>
+      {/* Page hero End */}
     </header>
   )
 }

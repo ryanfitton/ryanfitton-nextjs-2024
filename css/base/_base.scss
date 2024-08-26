@@ -1,0 +1,86 @@
+@tailwind base;
+
+@layer base {
+    body {
+        @apply bg-white dark:bg-stone-dark;
+        @apply text-base text-typography-default dark:text-typography-default-dark;
+    }
+
+    /* 
+        Anchor 
+    */
+    a {
+        @apply underline underline-offset-4 text-typography-link dark:text-typography-link-dark hover:no-underline hover:text-typography-link-hover dark:hover:text-typography-link-hover-dark visited:text-typography-link-visited dark:visited:text-typography-link-visited-dark focus:text-typography-link-focus dark:focus:text-typography-link-focus-dark;     
+    }
+
+    /* 
+        Paragraphs 
+    */
+    p {
+        @apply text-base my-4;
+
+        &:first-child {
+            @apply mt-0;
+        }
+
+        &:last-child {
+            @apply mb-0;
+        }
+
+        &.lead {
+            @apply text-lg;
+        }
+    }
+
+    /* 
+        Headings 
+    */
+    h1, h2, h3, h4, h5, h6 {
+        
+        &, a { 
+            @apply !text-typography-heading dark:!text-typography-heading-dark;
+        }
+
+        a {
+            @apply no-underline hover:!text-typography-link-hover dark:hover:!text-typography-link-hover-dark focus:!text-typography-link-focus dark:focus:!text-typography-link-focus-dark;     
+        }
+    }
+
+    h1 {
+        @apply text-4xl my-6;
+    }
+
+    h2 {
+        @apply text-3xl my-5;
+    }
+
+    h3 {
+        @apply text-2xl my-4;
+    }
+
+    h4 {
+        @apply text-xl my-3;
+    }
+
+    h5 {
+        @apply text-lg my-2;
+    }
+
+    h6 {
+        @apply text-base my-1;
+    }
+    
+    /* 
+        Horizontal rule 
+    */
+    hr, .prowse-hr {
+        @apply border-2 border-t-0 border-l-0 border-r-0 !border-neutral dark:!border-neutral-dark;
+    }
+
+    /* 
+        Grid
+    */
+    .grid {
+        @apply gap-6 grid-cols-12; /* Default gap and columns in grids */
+    }
+}

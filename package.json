@@ -1,6 +1,6 @@
 {
-  "name": "tailwind-nextjs-starter-blog",
-  "version": "2.2.0",
+  "name": "test-npx",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "start": "next dev",
@@ -8,16 +8,14 @@
     "build": "cross-env INIT_CWD=$PWD next build && cross-env NODE_OPTIONS='--experimental-json-modules' node ./scripts/postbuild.mjs",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
-    "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky"
+    "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts"
   },
   "dependencies": {
     "@headlessui/react": "1.7.19",
     "@next/bundle-analyzer": "14.2.3",
     "@tailwindcss/forms": "^0.5.7",
     "@tailwindcss/typography": "^0.5.12",
-    "autoprefixer": "^10.4.13",
-    "body-scroll-lock": "^4.0.0-beta.0",
+    "autoprefixer": "^10.4.19",
     "contentlayer2": "0.4.6",
     "esbuild": "0.20.2",
     "github-slugger": "^2.0.0",
@@ -27,8 +25,13 @@
     "next": "14.2.3",
     "next-contentlayer2": "0.4.6",
     "next-themes": "^0.3.0",
-    "pliny": "0.2.1",
-    "postcss": "^8.4.24",
+    "pliny": "0.2.2",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-nesting": "^13.0.0",
+    "postcss-preset-env": "^9.6.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "reading-time": "1.5.0",
@@ -42,7 +45,7 @@
     "remark-gfm": "^4.0.0",
     "remark-github-blockquote-alert": "^1.2.1",
     "remark-math": "^6.0.0",
-    "tailwindcss": "^3.4.3",
+    "tailwindcss": "^3.4.10",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
@@ -54,12 +57,11 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.45.0",
     "eslint-config-next": "14.2.3",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "husky": "^9.0.0",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "^15.0.0",
     "prettier": "^3.0.0",
-    "prettier-plugin-tailwindcss": "^0.5.11",
+    "prettier-plugin-tailwindcss": "^0.6.2",
     "typescript": "^5.1.3"
   },
   "lint-staged": {
@@ -70,5 +72,5 @@
       "prettier --write"
     ]
   },
-  "packageManager": "yarn@3.6.1"
+  "packageManager": "yarn@3.6.3"
 }
