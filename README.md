@@ -291,7 +291,7 @@ Components:
     DONE: ThemeSwitch.tsx
 app:
     DONE: about/page.tsx
-    blog/[...slug]/page.tsx
+    DONE: blog/[...slug]/page.tsx
     blog/page.tsx
     portfolio/page.tsx
     tags/[tag]/page.tsx
@@ -307,10 +307,9 @@ app:
     theme-providers.tsx
 Layouts:
     DONE: AuthorLayout.tsx
-    ListLayout.tsx
-    ListLayoutWithTags.tsx
-    PostBanner.tsx
-    PostLayout.tsx
+    DONE: ListLayout.tsx
+    DONE: ListLayoutWithTags.tsx
+    DONE: PostLayout.tsx
     PostSimple.tsx
     DONE: Layout.tsx
 
