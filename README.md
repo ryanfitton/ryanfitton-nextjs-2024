@@ -297,14 +297,14 @@ app:
     DONE: tags/[tag]/page.tsx
     DONE: tags/page.tsx
     DONE: layout.tsx
-    Main.tsx - Homepage
-    not-found.tsx
-    page.tsx
-    robots.ts
-    seo.tsx
-    sitemap.ts
-    tag-data.json
-    theme-providers.tsx
+    DONE: Main.tsx - Homepage
+    DONE: not-found.tsx
+    page.tsx ??? Not sure ????????????????
+    DONE: robots.ts
+    DONE: seo.tsx
+    DONE: sitemap.ts
+    DONE: tag-data.json
+    DONE: theme-providers.tsx
 Layouts:
     DONE: AuthorLayout.tsx
     DONE: ListLayout.tsx

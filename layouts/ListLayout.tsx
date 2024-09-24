@@ -95,8 +95,8 @@ export default function ListLayout({
 
   return (
     <>
-      <section class="site-container">
-        <div class="grid">
+      <section className="site-container">
+        <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside">
               <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">

@@ -1,97 +1,120 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import tagData from 'app/tag-data.json'
 import { formatDate } from 'pliny/utils/formatDate'
 
 const MAX_DISPLAY = 5
 
-export default function Home({ posts }) {
+export default function Home({ posts }: ListLayoutProps) {
+  const tagCounts = tagData as Record<string, number>
+  const tagKeys = Object.keys(tagCounts)
+  const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
+
   return (
     <>
-      <div className="my-6 flex flex-col items-center gap-x-12 xl:mb-12 xl:flex-row">
-        <div className="mr-8 pt-6">
-          <h1 className="pb-6 text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Hi, Lorem Ipsum
-          </h1>
-          <h2 className="prose text-lg text-gray-600 dark:text-gray-400">
-            {`Welcome to my blog - ${siteMetadata.description}. I am the co-founder of Cylynx, a data
-            scientist by profession and economist by training. In my free time, I like developing `}
-            <Link href="/portfolio">portfolio</Link>
-            {' and '}
-            <Link href="/blog">blogging</Link>
-            {' about them. Have a good read!'}
-          </h2>
+      <section className="component-block component-block--padding component-block--bg-neutral">
+        <div className="site-container">
+          <div className="grid place-items-center">
+            <div className="col-span-full md:col-span-4 lg:col-span-3 lg:col-start-2">
+              <Image
+                src="images/bio/ryan-fitton-2014-august@1x.jpg"
+                alt={siteMetadata.author}
+                srcset="images/bio/ryan-fitton-2014-august@1x.jpg @1x, images/bio/ryan-fitton-2014-august@2x.jpg @2x"
+                className="rounded-full"
+              />
+            </div>
+
+            <div className="col-span-full md:col-span-8 lg:col-span-6">
+              <h1 className="component-title component-title--main">About</h1>
+              <p>
+                Nulla lobortis iaculis mi, ut vestibulum mauris vehicula facilisis. Suspendisse nec
+                erat id nunc viverra eleifend. Nulla quis arcu sem. Phasellus eget velit est. Donec
+                luctus purus eu pretium luctus. Class aptent taciti sociosqu ad litora torquent per
+                conubia nostra, per inceptos himenaeos. Morbi congue sem vel aliquet efficitur. Duis
+                sed accumsan felis. Ut mattis bibendum nunc eget molestie. Nulla pretium tellus
+                vitae dapibus tempor. Fusce euismod nisl non accumsan egestas. Praesent tincidunt
+                commodo magna eget pretium.
+              </p>
+              <p>
+                <Link href="/about">Read more</Link>
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            Latest
-          </h1>
-        </div>
-        <ul className="divide-y divide-gray-200 dark:divide-gray-700">
-          {!posts.length && 'No posts found.'}
-          {posts.slice(0, MAX_DISPLAY).map((post) => {
-            const { slug, date, title, summary, tags } = post
-            return (
-              <li key={slug} className="py-12">
-                <article>
-                  <div className="space-y-2 xl:grid xl:grid-cols-4 xl:items-baseline xl:space-y-0">
-                    <dl>
-                      <dt className="sr-only">Published on</dt>
-                      <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
-                      </dd>
-                    </dl>
-                    <div className="space-y-5 xl:col-span-3">
-                      <div className="space-y-6">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link
-                              href={`/blog/${slug}`}
-                              className="text-gray-900 dark:text-gray-100"
-                            >
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags.map((tag) => (
-                              <Tag key={tag} text={tag} />
-                            ))}
-                          </div>
-                        </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                      <div className="text-base font-medium leading-6">
-                        <Link
-                          href={`/blog/${slug}`}
-                          className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-                          aria-label={`Read "${title}"`}
-                        >
-                          Read more &rarr;
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      {posts.length > MAX_DISPLAY && (
-        <div className="flex justify-end text-base font-medium leading-6">
-          <Link
-            href="/blog"
-            className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
-            aria-label="All posts"
-          >
-            All Posts &rarr;
-          </Link>
-        </div>
-      )}
+      </section>
+
+      <section className="site-container">
+        <div className="grid">
+          <div className="col-span-full md:col-span-4 xl:col-span-3">
+            <aside className="site-aside">
+              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+                <h5 className="component-posts-sidebar__title component-title">
+                  <Link href={`/blog`}>All Posts</Link>
+                </h5>
+
+                <div className="component-posts-sidebar__content component-block component-block--padding-small">
+                  <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
+                    {sortedTags.map((t) => {
+                      return (
+                        <li key={t}>
+                          <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
+                            {`${t} (${tagCounts[t]})`}
+                          </Link>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
+            <ul className="component-posts-article-list">
+                {!posts.length && 'No posts found.'}
+                {posts.slice(0, MAX_DISPLAY).map((post) => {
+                const { slug, date, title, summary, tags } = post
+                return (
+                    <li key={slug} className="py-12">
+                    <article className="component-posts-article">
+                      <dl clas="component-posts-article__date">
+                        <dt className="sr-only">Published on</dt>
+                        <dd>
+                          <time className="component-posts-article__date--time" dateTime={date}>
+                            {formatDate(date, siteMetadata.locale)}
+                          </time>
+                        </dd>
+                      </dl>
+
+                      <h2 className="component-posts-article__title">
+                        <Link href={`/${path}`}>{title}</Link>
+                      </h2>
+
+                      <ul className="component-posts-tag-list component-posts-tag-list--article">
+                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                      </ul>
+
+                      <div className="component-posts-article__excerpt">{summary}</div>
+                    </article>
+                    </li>
+                )
+                })}
+
+
+            </ul>
+          </div>
+
+        {posts.length > MAX_DISPLAY && (
+          <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
+            <div className="component-posts-pagination component-block">
+              <nav className="component-posts-pagination__navigation">
+                <Link href="/about" className="component-posts-pagination__paginate">Read more</Link>
+              </nav>
+            </div>
+          </div>
+        )}
+      </section>
     </>
   )
 }
