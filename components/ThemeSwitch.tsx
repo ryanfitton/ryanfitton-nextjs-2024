@@ -32,9 +32,9 @@ const Monitor = () => (
     viewBox="0 0 20 20"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <rect x="3" y="3" width="14" height="10" rx="2" ry="2"></rect>
     <line x1="7" y1="17" x2="13" y2="17"></line>
@@ -67,7 +67,7 @@ const ThemeSwitch = () => {
         <RadioGroup value={theme} onChange={setTheme}>
             <RadioGroup.Option value="light">
                 <Menu.Item>
-                <button class="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
                     <Sun />
                     Light
                 </button>
@@ -75,7 +75,7 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="dark">
                 <Menu.Item>
-                <button class="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
                     <Moon />
                     Dark
                 </button>
@@ -83,7 +83,7 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="system">
                 <Menu.Item>
-                <button class="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
                     <Monitor />
                     System
                 </button>

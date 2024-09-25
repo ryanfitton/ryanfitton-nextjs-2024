@@ -10,7 +10,7 @@
         Anchor 
     */
     a {
-        @apply underline underline-offset-4 text-typography-link dark:text-typography-link-dark hover:no-underline hover:text-typography-link-hover dark:hover:text-typography-link-hover-dark visited:text-typography-link-visited dark:visited:text-typography-link-visited-dark focus:text-typography-link-focus dark:focus:text-typography-link-focus-dark;     
+        @apply underline underline-offset-4 text-typography-link dark:text-typography-link-dark hover:no-underline hover:text-typography-link-hover dark:hover:text-typography-link-hover-dark visited:text-typography-link-visited dark:visited:text-typography-link-visited-dark focus:text-typography-link-focus dark:focus:text-typography-link-focus-dark;
     }
 
     /* 
@@ -35,14 +35,25 @@
     /* 
         Headings 
     */
-    h1, h2, h3, h4, h5, h6 {
-        
-        &, a { 
-            @apply !text-typography-heading dark:!text-typography-heading-dark;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+
+        &,
+        a {
+            @apply text-typography-heading #{!important};
+            @apply dark:text-typography-heading-dark #{!important};
         }
 
         a {
-            @apply no-underline hover:!text-typography-link-hover dark:hover:!text-typography-link-hover-dark focus:!text-typography-link-focus dark:focus:!text-typography-link-focus-dark;     
+            @apply no-underline;
+            @apply hover:text-typography-link-hover #{!important};
+            @apply dark:hover:text-typography-link-hover-dark #{!important};
+            @apply focus:text-typography-link-focus #{!important};
+            @apply dark:focus:text-typography-link-focus-dark #{!important};
         }
     }
 
@@ -69,18 +80,22 @@
     h6 {
         @apply text-base my-1;
     }
-    
+
     /* 
         Horizontal rule 
     */
-    hr, .prowse-hr {
-        @apply border-2 border-t-0 border-l-0 border-r-0 !border-neutral dark:!border-neutral-dark;
+    hr,
+    .prowse-hr {
+        @apply border-2 border-t-0 border-l-0 border-r-0;
+        @apply border-neutral #{!important};
+        @apply dark:border-neutral-dark #{!important};
     }
 
     /* 
         Grid
     */
     .grid {
-        @apply gap-6 grid-cols-12; /* Default gap and columns in grids */
+        @apply gap-6 grid-cols-12;
+        /* Default gap and columns in grids */
     }
 }

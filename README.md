@@ -1,4 +1,4 @@
-![tailwind-nextjs-banner](/public/static/images/twitter-card.png)
+![tailwind-nextjs-banner](/public/static//static/img/twitter-card.png)
 
 # Tailwind Nextjs Starter Blog
 
@@ -209,7 +209,7 @@ lastmod: '2021-01-18'
 tags: ['next-js', 'tailwind', 'guide']
 draft: false
 summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static/images/canada/mountains.jpg', '/static/images/canada/toronto.jpg']
+images: ['/static//static/img/canada/mountains.jpg', '/static//static/img/canada/toronto.jpg']
 authors: ['default', 'sparrowhawk']
 layout: PostLayout
 canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
@@ -248,11 +248,11 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 nvm install lts/iron
 
-npm install
+npm install             -- Install packages
 
-npm run start
+npm run start           -- Starts the dev server
 
-npm run build
+npm run build           -- Create a static build
 
 npm run analyze
 
@@ -260,7 +260,7 @@ npm run analyze
 tailwind.config.js
 
 
-php -S localhost:8080 -t build/
+php -S localhost:8080 -t build/         -- Access the static build in a dev server
 
 
 giscusConfig = Comment system powered by Github Discussions: https://github.com/giscus/giscus
@@ -316,6 +316,51 @@ Layouts:
 
 
 
+For Card.tsx
+
+```
+<>
+    {href  (
+        <Link
+            href={href}
+            className="component-block component-block--outline-neutral component-block--rounded component-block--padding-small"
+            aria-label={`Link to ${title}`}
+          >
+      ) : (
+        <div className="component-block component-block--outline-neutral component-block--rounded component-block--padding-small">
+      )}
+
+        <article className="component-posts-article">
+            {imgSrc ? (
+                <Image
+                    alt={title}
+                    src={imgSrc}
+                    className="component-posts-article__featured-image"
+                    width={600}
+                    height={400}
+                />
+            )}
+            
+            <h2 className="component-posts-article__title">{title}</h2>
+
+            {description ? (
+                <div className="component-posts-article__excerpt">
+                    {description}
+                </div>
+            )}
+        </article>
+
+    {href ? (
+        </link>
+      ) : (
+        </div>
+      )}
+    </>
+```
+
+
+
+
 To make images for:
 ```
 /static/img/twitter-card.png
@@ -329,8 +374,9 @@ Base `siteMetadata.js`
 const siteMetadata = {
   title: 'Lorem Ipsum',
   author: 'Lorem Ipsum',
-  headerTitle: 'Lorem Ipsum',
   description: 'Lorem Ipsum',
+  headerTitle: 'Lorem Ipsum',
+  headerDescription: 'Lorem Ipsum',
   language: 'en-gb',
   siteUrl: 'https://example.co.uk',
   siteRepo: 'https://github.com/example/example.co.uk',

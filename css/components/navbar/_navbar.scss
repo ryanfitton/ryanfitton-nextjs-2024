@@ -6,11 +6,12 @@
             @apply space-x-4 overflow-x-auto md:flex sm:space-x-6 mx-2 grow;
 
             a {
-                @apply block !m-0 !no-underline px-5 content-center;
+                @apply px-5 content-center block;
+                @apply m-0 #{!important};
+                @apply no-underline #{!important};
             }
         }
     
-
         &--header {
             @apply flex items-stretch;
 
@@ -18,7 +19,7 @@
                 @apply hidden md:flex items-stretch;
 
                 a {
-                    @apply !text-white;
+                    @apply text-white #{!important};
                 }
             }
 
@@ -61,7 +62,8 @@
                 @apply flex space-x-4 overflow-x-auto sm:space-x-6 md:flex-row mx-2 justify-center;
 
                 a {
-                    @apply block !m-0 p-2 content-center;
+                    @apply block p-2 content-center;
+                    @apply m-0 #{!important} 
                 }
 
                 svg {
@@ -76,7 +78,8 @@
                 @apply flex space-x-4 overflow-x-auto sm:space-x-6 flex-col md:flex-row mx-2 justify-center;
 
                 a {
-                    @apply block !m-0 p-2 content-center;
+                    @apply block p-2 content-center;
+                    @apply m-0 #{!important};
                 }
             }
         }

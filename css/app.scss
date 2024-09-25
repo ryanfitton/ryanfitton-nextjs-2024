@@ -56,11 +56,13 @@
         @apply text-sm bg-secondary dark:bg-secondary-dark text-center;
 
         a {
-            @apply !no-underline hover:!underline;
+            @apply no-underline #{!important};
+            @apply hover:underline #{!important};
         }
 
         &, a {
-            @apply !text-[#8e8e8e] dark:!text-[#8e8e8e];
+            @apply text-[#8e8e8e] #{!important};
+            @apply dark:text-[#8e8e8e] #{!important};
         }
     }
 }
@@ -70,5 +72,5 @@
 
 
 .todo {
-    border:1px solid red!important;
+    border:1px solid red #{!important};
 }

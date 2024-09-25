@@ -2,6 +2,7 @@ import siteMetadata from '@/data/siteMetadata'
 import PageTitle from '@/components/PageTitle'
 import navLinks from '@/data/navLinks'
 import Link from './Link'
+import Image from './Image'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
@@ -13,9 +14,11 @@ const Header = () => {
         {/* Logo */}
         <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
           <Image
-            src="images/logo@1x.png"
+            src="/static/img/logo@1x.png"
             alt={siteMetadata.author}
-            srcset="images/logo@1x.png @1x, images/logo@2x.png @2x"
+            srcSet="/static/img/logo@1x.png @1x, /static/img/logo@2x.png @2x"
+            width="150"
+            height="34"
           />
         </Link>
 
@@ -36,11 +39,6 @@ const Header = () => {
           <ThemeSwitch />
 
           <MobileNav />
-
-          <div
-            hidden=""
-            style="position:fixed;top:1px;left:1px;width:1px;height:0;padding:0;margin:-1px;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border-width:0;display:none"
-          ></div>
         </div>
       </div>
 
@@ -48,8 +46,8 @@ const Header = () => {
       <div className="hero hero--video">
         <div className="hero__container site-container">
           <div className="hero__content">
-            <PageTitle>{title}{siteMetadata.headerTitle}</PageTitle>
-            <span>{siteMetadata.description}</span>
+            <PageTitle>{siteMetadata.headerTitle}</PageTitle>
+            <span>{siteMetadata.headerDescription}</span>
           </div>
         </div>
 
@@ -58,7 +56,7 @@ const Header = () => {
           loop
           muted
           className="hero__video-object"
-          poster="images/home-header-bg-2000px@1x.jpg"
+          poster="/static/img/home-header-bg-2000px@1x.jpg"
         >
           <source src="videos/home-header-video-15fps.webm" type="video/webm" />
           Your browser does not support the HTML5 video tag.
@@ -68,11 +66,11 @@ const Header = () => {
 
 
       {/* Page hero Start */}
-      <div class="hero hero--page">
-        <div class="hero__container site-container">
-          <div class="hero__content">
-            <PageTitle>{title}</PageTitle>
-            <PageTitle className="component-title--sub">{subtitle}</PageTitle>
+      <div className="hero hero--page">
+        <div className="hero__container site-container">
+          <div className="hero__content">
+            <PageTitle>TITLE GOES HERE</PageTitle>
+            <PageTitle className="component-title--sub">TITLE SUBTITLE</PageTitle>
           </div>
         </div>
       </div>

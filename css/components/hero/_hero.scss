@@ -8,17 +8,17 @@
 
         &__content,
         &__title {
-            @apply !text-white;
+            @apply text-white #{!important};
         }
 
         &__content {
-            @apply py-5 content-center text-center md:text-left dark:!text-typography-default-dark;
+            @apply py-5 content-center text-center md:text-left;
+            @apply dark:text-typography-default-dark #{!important};
         }
 
         &__title {
-            @apply dark:!text-typography-heading-dark;
-            @apply mt-0;
-            @apply mb-5;
+            @apply mt-0 mb-5;
+            @apply dark:text-typography-heading-dark #{!important};
 
             &:last-child {
                 @apply mb-0;
@@ -30,10 +30,10 @@
         */
         &--page {
             @apply min-h-[280px] before:bg-primary/50 dark:before:bg-secondary-dark/35;
-            background-image: url(images/default-blog-page-header-bg-2000px@1x.jpg);
+            background-image: url(/static/img/default-blog-page-header-bg-2000px@1x.jpg);
             background-image: image-set(
-                url("images/default-blog-page-header-bg-2000px@1x.jpg") 1x,
-                url("images/default-blog-page-header-bg-3600px@1.8x.jpg") 1.8x
+                url("/static/img/default-blog-page-header-bg-2000px@1x.jpg") 1x,
+                url("/static/img/default-blog-page-header-bg-3600px@1.8x.jpg") 1.8x
             );
         }
 

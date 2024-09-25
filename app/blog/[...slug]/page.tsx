@@ -1,6 +1,3 @@
-import 'css/prism.css'
-import 'katex/dist/katex.css'
-
 import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
@@ -103,7 +100,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     <>
       {isProduction && post && 'draft' in post && post.draft === true ? (
         <div className="mt-24 text-center">
-          <PageTitle>
+          <PageTitle key={'404Title'}>
             Under Construction{' '}
             <span role="img" aria-label="roadwork sign">
               🚧
