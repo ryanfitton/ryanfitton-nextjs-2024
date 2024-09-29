@@ -27,7 +27,7 @@ const MobileNav = () => {
         </svg>
       </button>
       <div
-        className={`fixed left-0 top-0 z-10 h-full w-full transform bg-white opacity-95 duration-300 ease-in-out dark:bg-gray-950 dark:opacity-[0.98] TODO ${
+        className={`component-navbar__menu-mobile ${
           navShow ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -38,18 +38,19 @@ const MobileNav = () => {
             </svg>
           </button>
         </div>
-        <nav className="fixed mt-8 h-full">
-          {navLinks.map((link) => (
-            <div key={link.title} className="px-12 py-4">
+        <nav className="fixed mt-8 h-full w-full">
+
+        <div className="component-navbar__links component-navbar__links--menu-mobile">
+            {navLinks.map((link) => (
               <Link
+                key={link.title} 
                 href={link.href}
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100 TODO"
                 onClick={onToggleNav}
               >
                 {link.title}
               </Link>
-            </div>
           ))}
+        </div>
         </nav>
       </div>
     </>

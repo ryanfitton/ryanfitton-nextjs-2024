@@ -38,21 +38,21 @@ export default function Header() {
 
             {/* Nav */}
             <div className="component-navbar component-navbar--header">
-            <div className="component-navbar__links">
-                {navLinks
-                .filter((link) => link.href !== '/')
-                .map((link) => (
-                    <Link key={link.title} href={link.href}>
-                    {link.title}
-                    </Link>
-                ))}
-            </div>
+                <div className="component-navbar__links">
+                    {navLinks
+                    .filter((link) => link.href !== '/')
+                    .map((link) => (
+                        <Link key={link.title} href={link.href}>
+                        {link.title}
+                        </Link>
+                    ))}
+                </div>
 
-            <SearchButton />
+                <SearchButton />
 
-            <ThemeSwitch />
+                <ThemeSwitch />
 
-            <MobileNav />
+                <MobileNav />
             </div>
         </div>
 
