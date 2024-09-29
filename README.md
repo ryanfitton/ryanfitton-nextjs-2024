@@ -251,6 +251,7 @@ nvm install lts/iron
 npm install             -- Install packages
 
 npm run start           -- Starts the dev server
+http://localhost:3000   -- Dev server lock address
 
 npm run build           -- Create a static build
 
@@ -267,6 +268,34 @@ giscusConfig = Comment system powered by Github Discussions: https://github.com/
 
 
 Search for TODO
+
+
+
+
+
+Sitemap:
+http://localhost:3000 - Requires homepage content
+Fix header homepage/standard page
+http://localhost:3000/sitemap.xml
+http://localhost:3000/blog/
+http://localhost:3000/portfolio/
+http://localhost:3000/blog/portfolio-test-1/
+http://localhost:3000/tags/
+http://localhost:3000/about/
+http://localhost:3000/blog/blog-test-1/
+http://localhost:3000/tags/personal/
+
+
+
+Still do 
+https://ryanfitton.github.io/ryanfitton-tailwind-2024/
+Homepage content does not exist
+Check all `/img` assets exist
+Move Portfolio items out of Blog into their own section
+Search styles
+Header styles
+Mobile nav styles
+
 
 
 

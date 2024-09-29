@@ -58,7 +58,7 @@ const Header = () => {
           className="hero__video-object"
           poster="/static/img/home-header-bg-2000px@1x.jpg"
         >
-          <source src="videos/home-header-video-15fps.webm" type="video/webm" />
+          <source src="/static/vid/home-header-video-15fps.webm" type="video/webm" />
           Your browser does not support the HTML5 video tag.
         </video>
       </div>

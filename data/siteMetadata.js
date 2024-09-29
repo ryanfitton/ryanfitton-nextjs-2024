@@ -8,7 +8,7 @@ const siteMetadata = {
   language: 'en-gb',
   siteUrl: 'https://ryanfitton.co.uk',
   siteRepo: 'https://github.com/ryanfitton/ryanfitton.co.uk',
-  image: '/static/img/avatar.png',
+  image: '/static/img/favicon.png',
   socialBanner: '/static/img/twitter-card.png',
   email: 'ryan@ryanfitton.co.uk',
   github: 'https://github.com/ryanfitton',

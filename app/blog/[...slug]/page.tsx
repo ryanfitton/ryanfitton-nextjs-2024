@@ -5,6 +5,7 @@ import { sortPosts, coreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
 import type { Authors, Blog } from 'contentlayer/generated'
 import PostLayout from '@/layouts/PostLayout'
+import PortfolioPostLayout from '@/layouts/PortfolioPostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 
@@ -12,6 +13,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 const defaultLayout = 'PostLayout'
 const layouts = {
   PostLayout,
+  PortfolioPostLayout,
 }
 
 export async function generateMetadata({

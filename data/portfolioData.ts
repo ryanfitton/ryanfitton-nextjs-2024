@@ -1,21 +1,35 @@
-const portfolioData = [
+interface Portfolio {
+  title: string
+  description: string
+  imgSrcSet: string
+  href?: string
+  imgSrc?: string
+}
+
+const portfolioData: Portfolio[] = [
   {
     title: 'Lorem Ipsum',
     description: `Lorem ipsum.`,
-    imgSrc: '/static/img/cylynx-logo.png',
-    href: 'https://github.com/ryanfitton/test-1'
+    imgSrc: '/static/img/bio/ryan-fitton-2014-august@1x.jpg',
+    imgSrcSet:
+      '/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x',
+    href: '/blog/portfolio-test-1/',
   },
   {
     title: 'Lorem Ipsum',
     description: `Lorem ipsum.`,
-    imgSrc: '/static/img/demo-twitter-card.png',
-    href: 'https://github.com/ryanfitton/test-2',
+    imgSrc: '/static/img/bio/ryan-fitton-2014-august@1x.jpg',
+    imgSrcSet:
+      '/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x',
+    href: '/blog/portfolio-test-1/',
   },
   {
     title: 'Lorem Ipsum',
     description: `Lorem ipsum.`,
-    imgSrc: '/static/img/sg-dashboard-pic.png',
-    href: 'https://github.com/ryanfitton/test-3'
+    imgSrc: '/static/img/bio/ryan-fitton-2014-august@1x.jpg',
+    imgSrcSet:
+      '/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x',
+    href: '/blog/portfolio-test-1/',
   },
 ]
 

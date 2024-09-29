@@ -60,15 +60,16 @@ export default function Home({ posts }: ListLayoutProps) {
 
                   <div className="component-posts-sidebar__content component-block component-block--padding-small">
                     <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
-                      {sortedTags.map((t) => {
-                        return (
-                          <li key={t}>
-                            <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                              {`${t} (${tagCounts[t]})`}
-                            </Link>
-                          </li>
-                        )
-                      })}
+                        {sortedTags.map((t) => {
+                            return (
+                                <li key={t}>
+                                <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
+                                    {`${t}`}
+                                </Link>
+                                {` (${tagCounts[t]})`}
+                                </li>
+                            )
+                        })}
                     </ul>
                   </div>
                 </div>
@@ -81,7 +82,7 @@ export default function Home({ posts }: ListLayoutProps) {
                 {posts.slice(0, MAX_DISPLAY).map((post) => {
                   const { path, date, title, summary, tags } = post
                   return (
-                    <li key={path} className="py-12">
+                    <li key={path}>
                       <article className="component-posts-article">
                         <dl clas="component-posts-article__date">
                           <dt className="sr-only">Published on</dt>

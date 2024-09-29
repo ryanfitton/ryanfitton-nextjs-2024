@@ -45,40 +45,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     <div className="col-span-full md:col-span-4 xl:col-span-3">
                         <aside className="site-aside">
 
-                             <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
-                                <h5 className="component-posts-sidebar__title component-title">Author</h5>
-                    
-                                <div className="component-posts-sidebar__content component-block component-block--padding-small">
-                                    {authorDetails.map((author) => (
-                                        <li className="flex items-center space-x-2" key={author.name}>
-                                            {author.avatar && (
-                                                <Image
-                                                    src={author.avatar}
-                                                    width={38}
-                                                    height={38}
-                                                    alt="avatar"
-                                                    className="h-10 w-10 rounded-full"
-                                                />
-                                            )}
-                                            <dl className="whitespace-nowrap">
-                                                <dt className="sr-only">Name</dt>
-                                                <dd>{author.name}</dd>
-                                                <dt className="sr-only">Twitter</dt>
-                                                <dd>
-                                                    {author.twitter && (
-                                                    <Link
-                                                        href={author.twitter}
-                                                    >
-                                                        {author.twitter.replace('https://twitter.com/', '@')}
-                                                    </Link>
-                                                    )}
-                                                </dd>
-                                            </dl>
-                                        </li>
-                                    ))}
-                                </div>
-                            </div>
-
                             <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
                                 <h5 className="component-posts-sidebar__title component-title"><Link href={`/blog`}>All Posts</Link></h5>
                     
@@ -88,8 +54,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                                             return (
                                                 <li key={t}>
                                                 <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                                                    {`${t} (${tagCounts[t]})`}
+                                                    {`${t}`}
                                                 </Link>
+                                                {` (${tagCounts[t]})`}
                                                 </li>
                                             )
                                         })}
