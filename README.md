@@ -295,7 +295,7 @@ Move Portfolio items out of Blog into their own section
 Search styles
 Header styles
 Mobile nav styles
-
+Theme switcher
 
 
 
