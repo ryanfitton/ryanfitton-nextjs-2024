@@ -19,9 +19,9 @@ export default function Home({ posts }: ListLayoutProps) {
           <div className="grid place-items-center">
             <div className="col-span-full md:col-span-4 lg:col-span-3 lg:col-start-2">
               <Image
-                src="/static/img/bio/ryan-fitton-2014-august@1x.jpg"
+                src="/static/img/bio/ryan-fitton@1x.jpg"
                 alt={siteMetadata.author}
-                srcSet="/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x"
+                srcSet="/static/img/bio/ryan-fitton@1x.jpg @1x, /static/img/bio/ryan-fitton@2x.jpg @2x"
                 className="rounded-full"
                 width={192}
                 height={192}

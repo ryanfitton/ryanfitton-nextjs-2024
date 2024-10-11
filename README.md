@@ -292,6 +292,7 @@ https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 Check all `/img` assets exist
 Move Portfolio items out of Blog into their own section
 Search styles
+Cookie pages setup
 Theme switcher
 
 
