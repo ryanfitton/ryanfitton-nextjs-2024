@@ -29,7 +29,7 @@
 */
 .site {
     &-header {
-        @apply bg-primary dark:bg-secondary-dark text-white dark:text-white;
+        @apply bg-primary dark:bg-secondary-dark text-white mb-24 dark:text-white;
 
         > div {
             @apply flex items-stretch py-0;
@@ -38,14 +38,14 @@
         &__logo {
             @apply p-3 lg:p-5 content-center block hover:bg-primary dark:hover:bg-primary-dark hover:brightness-[110%] active:brightness-[80%] dark:hover:brightness-[110%] dark:active:brightness-[80%];
         }
+
+        &--homepage {
+            @apply mb-0;
+        }
     }
 
     &-main {
-        @apply my-24;
 
-        &--homepage {
-            @apply mt-0;
-        }
     }
 
     &-aside {
@@ -53,7 +53,7 @@
     }
 
     &-footer {
-        @apply text-sm bg-secondary dark:bg-secondary-dark text-center;
+        @apply text-sm bg-secondary dark:bg-secondary-dark text-center mt-24;
 
         a {
             @apply no-underline #{!important};

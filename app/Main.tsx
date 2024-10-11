@@ -13,116 +13,113 @@ export default function Home({ posts }: ListLayoutProps) {
   const tagKeys = Object.keys(tagCounts)
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   return (
-    (
-      <>
-        <section className="component-block component-block--padding component-block--bg-neutral">
-          <div className="site-container">
-            <div className="grid place-items-center">
-              <div className="col-span-full md:col-span-4 lg:col-span-3 lg:col-start-2">
-                <Image
-                  src="/static/img/bio/ryan-fitton-2014-august@1x.jpg"
-                  alt={siteMetadata.author}
-                  srcSet="/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x"
-                  className="rounded-full"
-                />
-              </div>
+    <>
+      <section className="component-block component-block--padding component-block--bg-neutral">
+        <div className="site-container">
+          <div className="grid place-items-center">
+            <div className="col-span-full md:col-span-4 lg:col-span-3 lg:col-start-2">
+              <Image
+                src="/static/img/bio/ryan-fitton-2014-august@1x.jpg"
+                alt={siteMetadata.author}
+                srcSet="/static/img/bio/ryan-fitton-2014-august@1x.jpg @1x, /static/img/bio/ryan-fitton-2014-august@2x.jpg @2x"
+                className="rounded-full"
+                width={192}
+                height={192}
+              />
+            </div>
 
-              <div className="col-span-full md:col-span-8 lg:col-span-6">
-                <h1 className="component-title component-title--main">About</h1>
-                <p>
-                  Nulla lobortis iaculis mi, ut vestibulum mauris vehicula facilisis. Suspendisse
-                  nec erat id nunc viverra eleifend. Nulla quis arcu sem. Phasellus eget velit est.
-                  Donec luctus purus eu pretium luctus. Class aptent taciti sociosqu ad litora
-                  torquent per conubia nostra, per inceptos himenaeos. Morbi congue sem vel aliquet
-                  efficitur. Duis sed accumsan felis. Ut mattis bibendum nunc eget molestie. Nulla
-                  pretium tellus vitae dapibus tempor. Fusce euismod nisl non accumsan egestas.
-                  Praesent tincidunt commodo magna eget pretium.
-                </p>
-                <p>
-                  <Link href="/about">Read more</Link>
-                </p>
-              </div>
+            <div className="col-span-full md:col-span-8 lg:col-span-6">
+              <h1 className="component-title component-title--main">About</h1>
+              <p>
+                Nulla lobortis iaculis mi, ut vestibulum mauris vehicula facilisis. Suspendisse nec
+                erat id nunc viverra eleifend. Nulla quis arcu sem. Phasellus eget velit est. Donec
+                luctus purus eu pretium luctus. Class aptent taciti sociosqu ad litora torquent per
+                conubia nostra, per inceptos himenaeos. Morbi congue sem vel aliquet efficitur. Duis
+                sed accumsan felis. Ut mattis bibendum nunc eget molestie. Nulla pretium tellus
+                vitae dapibus tempor. Fusce euismod nisl non accumsan egestas. Praesent tincidunt
+                commodo magna eget pretium.
+              </p>
+              <p>
+                <Link href="/about">Read more</Link>
+              </p>
             </div>
           </div>
-        </section>
-      </>
-    ),
-    (
-      <>
-        <section className="site-container">
-          <div className="grid">
-            <div className="col-span-full md:col-span-4 xl:col-span-3">
-              <aside className="site-aside">
-                <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
-                  <h5 className="component-posts-sidebar__title component-title">
-                    <Link href={`/blog`}>All Posts</Link>
-                  </h5>
+        </div>
+      </section>
 
-                  <div className="component-posts-sidebar__content component-block component-block--padding-small">
-                    <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
-                        {sortedTags.map((t) => {
-                            return (
-                                <li key={t}>
-                                <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                                    {`${t}`}
-                                </Link>
-                                {` (${tagCounts[t]})`}
-                                </li>
-                            )
-                        })}
-                    </ul>
-                  </div>
-                </div>
-              </aside>
-            </div>
+      <section className="site-container">
+        <div className="grid">
+          <div className="col-span-full md:col-span-4 xl:col-span-3">
+            <aside className="site-aside">
+              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+                <h5 className="component-posts-sidebar__title component-title">
+                  <Link href={`/blog`}>All Posts</Link>
+                </h5>
 
-            <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
-              <ul className="component-posts-article-list">
-                {!posts.length && 'No posts found.'}
-                {posts.slice(0, MAX_DISPLAY).map((post) => {
-                  const { path, date, title, summary, tags } = post
-                  return (
-                    <li key={path}>
-                      <article className="component-posts-article">
-                        <dl clas="component-posts-article__date">
-                          <dt className="sr-only">Published on</dt>
-                          <dd>
-                            <time className="component-posts-article__date--time" dateTime={date}>
-                              {formatDate(date, siteMetadata.locale)}
-                            </time>
-                          </dd>
-                        </dl>
-
-                        <h2 className="component-posts-article__title">
-                          <Link href={`/${path}`}>{title}</Link>
-                        </h2>
-
-                        <ul className="component-posts-tag-list component-posts-tag-list--article">
-                          {tags?.map((tag) => <Tag key={tag} text={tag} />)}
-                        </ul>
-
-                        <div className="component-posts-article__excerpt">{summary}</div>
-                      </article>
-                    </li>
-                  )
-                })}
-              </ul>
-            </div>
-
-            {posts.length > MAX_DISPLAY && (
-              <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
-                <div className="component-posts-pagination component-block">
-                  <nav className="component-posts-pagination__navigation">
-                    <Link href="/about" className="component-posts-pagination__paginate">
-                      Read more
-                    </Link>
-                  </nav>
+                <div className="component-posts-sidebar__content component-block component-block--padding-small">
+                  <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
+                    {sortedTags.map((t) => {
+                      return (
+                        <li key={t}>
+                          <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
+                            {`${t}`}
+                          </Link>
+                          {` (${tagCounts[t]})`}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
               </div>
-            )}
+            </aside>
           </div>
-        </section>
-      </>
-    )
+
+          <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
+            <ul className="component-posts-article-list">
+              {!posts.length && 'No posts found.'}
+              {posts.slice(0, MAX_DISPLAY).map((post) => {
+                const { path, date, title, summary, tags } = post
+                return (
+                  <li key={path}>
+                    <article className="component-posts-article">
+                      <dl clas="component-posts-article__date">
+                        <dt className="sr-only">Published on</dt>
+                        <dd>
+                          <time className="component-posts-article__date--time" dateTime={date}>
+                            {formatDate(date, siteMetadata.locale)}
+                          </time>
+                        </dd>
+                      </dl>
+
+                      <h2 className="component-posts-article__title">
+                        <Link href={`/${path}`}>{title}</Link>
+                      </h2>
+
+                      <ul className="component-posts-tag-list component-posts-tag-list--article">
+                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                      </ul>
+
+                      <div className="component-posts-article__excerpt">{summary}</div>
+                    </article>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+
+          {posts.length > MAX_DISPLAY && (
+            <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
+              <div className="component-posts-pagination component-block">
+                <nav className="component-posts-pagination__navigation">
+                  <Link href="/about" className="component-posts-pagination__paginate">
+                    Read more
+                  </Link>
+                </nav>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+    </>
   )
 }
