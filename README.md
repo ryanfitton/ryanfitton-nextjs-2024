@@ -289,7 +289,7 @@ http://localhost:3000/tags/personal/
 
 Still do 
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
-Check all `/img` assets exist
+Do /static/img/twitter-card.png
 Move Portfolio items out of Blog into their own section
 Search styles
 Cookie pages setup
