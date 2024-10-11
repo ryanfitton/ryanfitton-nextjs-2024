@@ -28,20 +28,20 @@ module.exports = {
       black: '#000000',
 
       gray: {
-        100: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        200: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        300: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        400: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        500: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        700: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        800: 'red', /** Fallback colours used by other parts on the site e.g plugins */
-        900: 'red', /** Fallback colours used by other parts on the site e.g plugins */
+        100: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        200: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        300: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        400: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        500: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        700: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        800: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        900: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
       },
 
       primary: {
         DEFAULT: '#af4c41',
         dark: '#6d2018',
-        600: 'red', /** Fallback colours used by other parts on the site e.g plugins */
+        600: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
       },
       secondary: {
         DEFAULT: '#2f3339',

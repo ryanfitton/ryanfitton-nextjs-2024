@@ -16,29 +16,23 @@ export default function Home({ posts }: ListLayoutProps) {
     <>
       <section className="component-block component-block--padding component-block--bg-neutral">
         <div className="site-container">
-          <div className="grid place-items-center">
-            <div className="col-span-full md:col-span-4 lg:col-span-3 lg:col-start-2">
+          <div className="grid">
+            <div className="col-span-full md:col-span-4 xl:col-span-3 justify-self-center xl:col-start-2">
               <Image
                 src="/static/img/bio/ryan-fitton@1x.jpg"
                 alt={siteMetadata.author}
                 srcSet="/static/img/bio/ryan-fitton@1x.jpg @1x, /static/img/bio/ryan-fitton@2x.jpg @2x"
-                className="rounded-full"
+                className="rounded-full md:mt-8"
                 width={192}
                 height={192}
               />
             </div>
 
-            <div className="col-span-full md:col-span-8 lg:col-span-6">
+            <div className="col-span-full md:col-span-8 xl:col-span-6">
               <h1 className="component-title component-title--main">About</h1>
-              <p>
-                Nulla lobortis iaculis mi, ut vestibulum mauris vehicula facilisis. Suspendisse nec
-                erat id nunc viverra eleifend. Nulla quis arcu sem. Phasellus eget velit est. Donec
-                luctus purus eu pretium luctus. Class aptent taciti sociosqu ad litora torquent per
-                conubia nostra, per inceptos himenaeos. Morbi congue sem vel aliquet efficitur. Duis
-                sed accumsan felis. Ut mattis bibendum nunc eget molestie. Nulla pretium tellus
-                vitae dapibus tempor. Fusce euismod nisl non accumsan egestas. Praesent tincidunt
-                commodo magna eget pretium.
-              </p>
+                <p>I'm Ryan, a front-end developer based in Leeds, UK. I been professionally creating websites for around 10 years (along with design and print work within this time).</p>
+
+                <p>You can email me at <strong>ryan＠<a href="https://ryanfitton.co.uk" className="!text-typography-default dark:!text-typography-default-dark no-underline">ryanfitton.co.uk</a></strong> (don’t copy/paste it this email address, due to spam prevention methods implemented)</p>
               <p>
                 <Link href="/about">Read more</Link>
               </p>

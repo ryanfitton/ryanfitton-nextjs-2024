@@ -31,28 +31,27 @@ export default function AuthorLayout({ children, content }: Props) {
       <SectionContainer>
         <section className="site-container">
           <div className="grid">
-            <div className="col-span-full grid place-items-center md:col-span-10 lg:col-span-10 lg:col-start-2">
-              <div className="col-span-full md:col-span-4">
-                {avatar && (
-                  <Image
-                    src={avatar}
-                    srcSet={avatarSrcSet}
-                    alt={name}
-                    className="rounded-full"
-                    width={192}
-                    height={192}
-                  />
-                )}
-              </div>
+            <div className="col-span-full md:col-span-4 justify-self-center">
+            {avatar && (
+                <Image
+                src={avatar}
+                srcSet={avatarSrcSet}
+                alt={name}
+                className="rounded-full md:mt-8"
+                width={192}
+                height={192}
+                />
+            )}
+            </div>
 
-              <div className="col-span-full md:col-span-7">
+            <div className="col-span-full md:col-span-8">
                 <h1 className="component-title component-title--main">{name}</h1>
                 <p className="lead">{occupation}</p>
 
                 {children}
 
                 <div className="component-navbar component-navbar--icons">
-                  <div className="component-navbar__links">
+                    <div className="component-navbar__links">
                     <SocialIcon kind="mail" href={`mailto:${email}`} />
                     <SocialIcon kind="github" href={github} />
                     <SocialIcon kind="linkedin" href={linkedin} />
@@ -62,9 +61,8 @@ export default function AuthorLayout({ children, content }: Props) {
                     <SocialIcon kind="mastodon" href={mastodon} />
                     <SocialIcon kind="threads" href={threads} />
                     <SocialIcon kind="instagram" href={instagram} />
-                  </div>
+                    </div>
                 </div>
-              </div>
             </div>
           </div>
         </section>
