@@ -290,6 +290,7 @@ http://localhost:3000/tags/personal/
 Still do 
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 Do /static/img/twitter-card.png
+Type error: Cannot find name 'ListLayoutProps'.
 Move Portfolio items out of Blog into their own section
 Search styles
 Cookie pages setup
