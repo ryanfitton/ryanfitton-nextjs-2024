@@ -1,14 +1,14 @@
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Colophon' })
+export const metadata = genPageMetadata({ title: 'Cookies' })
 
-export default function Colophon() {
+export default function Cookies() {
   return (
     <>
       <section className="site-container">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
-            Colophon page
+            Cookies page
           </div>
         </div>
       </section>
