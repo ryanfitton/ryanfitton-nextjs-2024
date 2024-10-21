@@ -56,3 +56,6 @@ jobs:
           port: ${{ secrets.FTP_PORT }}
           local-dir: './build/'
           server-dir: './'
+          exclude: |
+            **/blog/index*
+            **/portfolio/index*
