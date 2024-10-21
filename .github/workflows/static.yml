@@ -55,5 +55,5 @@ jobs:
             port: ${{ secrets.FTP_PORT }}
             local_path: './build'
             remote_path: '/'
-            sftp_only: true
+            sftp_only: false
             password: ${{ secrets.FTP_PASSWORD }}
