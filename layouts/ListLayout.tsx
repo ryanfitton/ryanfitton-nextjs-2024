@@ -145,7 +145,7 @@ export default function ListLayout({
                 return (
                   <li key={path}>
                     <article className="component-posts-article">
-                      <dl clas="component-posts-article__date">
+                      <dl className="component-posts-article__date">
                         <dt className="sr-only">Published on</dt>
                         <dd>
                           <time className="component-posts-article__date--time" dateTime={date}>

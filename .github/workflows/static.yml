@@ -1,10 +1,10 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy `./build` static content to Github Pages
+name: Deploy `./build` static content to SFTP site
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["master"]
+    branches: ["simple-site"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -53,15 +53,13 @@ jobs:
       - name: Run Build
         run: npm run build
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy file
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
-          # Upload entire repository
-          path: './build'
-
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+            username: ${{ secrets.FTP_USERNAME }}
+            server: ${{ secrets.FTP_SERVER }}
+            port: ${{ secrets.FTP_PORT }}
+            local_path: './build'
+            remote_path: '/'
+            sftp_only: true
+            password: ${{ secrets.FTP_PASSWORD }}

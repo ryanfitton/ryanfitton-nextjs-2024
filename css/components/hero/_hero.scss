@@ -1,58 +1,60 @@
 @layer components {
-    .hero {
-        @apply relative flex items-center justify-center overflow-hidden relative bg-cover bg-no-repeat bg-center before:absolute before:h-full before:w-full before:z-20;
+  .hero {
+    @apply relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat before:absolute before:z-20 before:h-full before:w-full;
 
-        &__container {
-            @apply flex justify-center md:justify-start relative z-30;
-        }
+    &__container {
+      @apply relative z-30 flex justify-center md:justify-start;
+    }
 
-        &__content,
-        &__title {
-            @apply text-white #{!important};
-        }
+    &__content,
+    &__title {
+      @apply text-white #{!important};
+    }
 
-        &__content {
-            @apply dark:text-typography-default-dark #{!important};
-            @apply py-5 content-center text-center md:text-left;
-        }
+    &__content {
+      @apply dark:text-typography-default-dark #{!important};
+      @apply content-center py-5 text-center md:text-left;
+    }
 
-        &__title {
-            @apply dark:text-typography-heading-dark #{!important};
-            @apply mt-0;
-            @apply mb-5;
+    &__title {
+      @apply dark:text-typography-heading-dark #{!important};
+      @apply mt-0;
+      @apply mb-5;
 
-            &:last-child {
-                @apply mb-0;
-            }
-        }
+      &:last-child {
+        @apply mb-0;
+      }
+    }
 
-        /*
+    /*
             Page
         */
-        &--page {
-            @apply min-h-[280px] before:bg-primary/50 dark:before:bg-secondary-dark/35;
-            background-image: url("/static/img/default-blog-page-header-bg-2000px@1x.jpg");
-            background-image: image-set(url("/static/img/default-blog-page-header-bg-2000px@1x.jpg") 1x,
-                    url("/static/img/default-blog-page-header-bg-3600px@1.8x.jpg") 1.8x);
-        }
+    &--page {
+      @apply min-h-[280px] before:bg-primary/50 dark:before:bg-secondary-dark/35;
+      background-image: url('/static/img/default-blog-page-header-bg-2000px@1x.jpg');
+      background-image: image-set(
+        url('/static/img/default-blog-page-header-bg-2000px@1x.jpg') 1x,
+        url('/static/img/default-blog-page-header-bg-3600px@1.8x.jpg') 1.8x
+      );
+    }
 
-        /*
+    /*
             Video
         */
-        &--video {
-            @apply min-h-[350px] h-screen md:h-[65vh] before:bg-stone/15 dark:before:bg-secondary-dark/35;
+    &--video {
+      @apply h-screen min-h-[350px] before:bg-stone/15 dark:before:bg-secondary-dark/35 md:h-[65vh];
 
-            .hero__content {
-                @apply px-5 text-3xl;
-            }
+      .hero__content {
+        @apply px-5 text-3xl;
+      }
 
-            .hero__title {
-                @apply text-6xl;
-            }
+      .hero__title {
+        @apply text-6xl;
+      }
 
-            .hero__video-object {
-                @apply absolute z-10 w-auto min-w-full h-full max-w-none object-cover z-10;
-            }
-        }
+      .hero__video-object {
+        @apply absolute z-10 h-full w-auto min-w-full max-w-none object-cover;
+      }
     }
+  }
 }

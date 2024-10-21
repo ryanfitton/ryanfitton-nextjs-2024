@@ -241,37 +241,24 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
-
-
-
-
-
 nvm install lts/iron
 
-npm install             -- Install packages
+npm install -- Install packages
 
-npm run start           -- Starts the dev server
-http://localhost:3000   -- Dev server lock address
+npm run start -- Starts the dev server
+http://localhost:3000 -- Dev server lock address
 
-npm run build           -- Create a static build
+npm run build -- Create a static build
 
 npm run analyze
 
-
 tailwind.config.js
 
-
-php -S localhost:8080 -t build/         -- Access the static build in a dev server
-
+php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
 giscusConfig = Comment system powered by Github Discussions: https://github.com/giscus/giscus
 
-
 Search for TODO
-
-
-
-
 
 Sitemap:
 http://localhost:3000 - Requires homepage content
@@ -285,9 +272,7 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
-
-
-Still do 
+Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 Do /static/img/twitter-card.png
 Move Portfolio items out of Blog into their own section
@@ -295,53 +280,48 @@ Search styles
 Cookie pages setup
 Theme switcher
 
-
-
 To do:
 Components:
-    DONE: social-icons > icons.tsx
-    DONE: social-icons > index.tsx
-    DONE: Card.tsx
-    DONE: Comments.tsx
-    DONE: Footer.tsx
-    DONE: Header.tsx
-    DONE: Image.tsx
-    DONE TO TEST: LayoutWrapper.tsx
-    DONE: Link.tsx
-    DONE: MDXComponents.tsx
-    DONE: MobileNav.tsx
-    DONE: PageTitle.tsx
-    DONE: SearchButton.tsx
-    DONE: SectionContainer.tsx
-    DONE: TableWrapper.tsx
-    DONE: Tag.tsx
-    DONE: ThemeSwitch.tsx
+DONE: social-icons > icons.tsx
+DONE: social-icons > index.tsx
+DONE: Card.tsx
+DONE: Comments.tsx
+DONE: Footer.tsx
+DONE: Header.tsx
+DONE: Image.tsx
+DONE TO TEST: LayoutWrapper.tsx
+DONE: Link.tsx
+DONE: MDXComponents.tsx
+DONE: MobileNav.tsx
+DONE: PageTitle.tsx
+DONE: SearchButton.tsx
+DONE: SectionContainer.tsx
+DONE: TableWrapper.tsx
+DONE: Tag.tsx
+DONE: ThemeSwitch.tsx
 app:
-    DONE: about/page.tsx
-    DONE: blog/[...slug]/page.tsx
-    DONE: blog/page.tsx
-    DONE: portfolio/page.tsx
-    DONE: tags/[tag]/page.tsx
-    DONE: tags/page.tsx
-    DONE: layout.tsx
-    DONE: Main.tsx - Homepage
-    DONE: not-found.tsx
-    page.tsx ??? Not sure ????????????????
-    DONE: robots.ts
-    DONE: seo.tsx
-    DONE: sitemap.ts
-    DONE: tag-data.json
-    DONE: theme-providers.tsx
+DONE: about/page.tsx
+DONE: blog/[...slug]/page.tsx
+DONE: blog/page.tsx
+DONE: portfolio/page.tsx
+DONE: tags/[tag]/page.tsx
+DONE: tags/page.tsx
+DONE: layout.tsx
+DONE: Main.tsx - Homepage
+DONE: not-found.tsx
+page.tsx ??? Not sure ????????????????
+DONE: robots.ts
+DONE: seo.tsx
+DONE: sitemap.ts
+DONE: tag-data.json
+DONE: theme-providers.tsx
 Layouts:
-    DONE: AuthorLayout.tsx
-    DONE: ListLayout.tsx
-    DONE: ListLayoutWithTags.tsx
-    DONE: PostLayout.tsx
-    DONE: PostSimple.tsx
-    DONE: Layout.tsx
-
-
-
+DONE: AuthorLayout.tsx
+DONE: ListLayout.tsx
+DONE: ListLayoutWithTags.tsx
+DONE: PostLayout.tsx
+DONE: PostSimple.tsx
+DONE: Layout.tsx
 
 For Card.tsx
 
@@ -367,7 +347,7 @@ For Card.tsx
                     height={400}
                 />
             )}
-            
+
             <h2 className="component-posts-article__title">{title}</h2>
 
             {description ? (
@@ -385,17 +365,15 @@ For Card.tsx
     </>
 ```
 
-
-
-
 To make images for:
+
 ```
 /static/img/twitter-card.png
 /static/img/avatar.png
 ```
 
-
 Base `siteMetadata.js`
+
 ```
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {

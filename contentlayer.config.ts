@@ -149,7 +149,6 @@ export const Authors = defineDocumentType(() => ({
   fields: {
     name: { type: 'string', required: true },
     avatar: { type: 'string' },
-    avatarSrcSet: { type: 'string' },
     occupation: { type: 'string' },
     email: { type: 'string' },
     facebook: { type: 'string' },

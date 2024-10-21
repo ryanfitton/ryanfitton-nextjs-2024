@@ -1,98 +1,97 @@
 @layer components {
-    .component-navbar {
-        @apply flex space-x-4 leading-5 sm:space-x-6 z-50;
+  .component-navbar {
+    @apply z-50 flex space-x-4 leading-5 sm:space-x-6;
 
-        &__links {
-            @apply space-x-4 overflow-x-auto md:flex sm:space-x-6 mx-2 grow;
+    &__links {
+      @apply mx-2 grow space-x-4 overflow-x-auto sm:space-x-6 md:flex;
 
-            a {
-                @apply px-5 content-center block;
-                @apply m-0 #{!important};
-                @apply no-underline #{!important};
-            }
-        }
-    
-        &--header {
-            @apply flex items-stretch;
-
-            .component-navbar__links {
-                @apply hidden md:flex items-stretch;
-
-                a {
-                    @apply text-white #{!important};
-                }
-
-                &--menu-mobile {
-                    @apply flex flex-col mx-0;
-                    
-                    a {
-                        @apply px-6 #{!important};
-                    }
-                }
-            }
-
-            .component-navbar__search-btn svg,
-            .component-navbar__theme-btn svg {
-                @apply size-6;
-            }
-
-            .component-navbar__theme-btn {
-                @apply mr-5 flex items-center;
-
-                & > dev {
-                    @apply relative inline-block text-left;
-
-                    & > div {
-                        @applyflex items-center justify-center;
-                    }
-                }
-            }
-
-            .component-navbar__menu-btn {
-                @apply md:hidden;
-
-                svg {
-                    @apply size-8;
-                }
-            }
-
-            .component-navbar__menu-mobile {
-                @apply fixed left-0 top-0 z-10 h-full w-full transform bg-primary duration-300 ease-in-out dark:bg-secondary-dark dark:opacity-[0.98];
-            }
-                    
-            .component-navbar__links a,
-            .component-navbar__search-btn,
-            .component-navbar__theme-btn,
-            .component-navbar__menu-btn {
-                @apply px-3 py-7 lg:px-5 content-center hover:bg-primary dark:hover:bg-primary-dark hover:brightness-[110%] active:brightness-[80%] dark:hover:brightness-[110%] dark:active:brightness-[80%];
-            }
-        }
-
-        &--icons {
-            .component-navbar__links {
-                @apply flex space-x-4 overflow-x-auto sm:space-x-6 md:flex-row mx-2 justify-center;
-
-                a {
-                    @apply block p-2 content-center;
-                    @apply m-0 #{!important} 
-                }
-
-                svg {
-                    @apply fill-current size-6;
-                }
-            }
-        }
-
-
-        &--footer {
-            .component-navbar__links {
-                @apply flex space-x-4 overflow-x-auto sm:space-x-6 flex-col md:flex-row mx-2 justify-center;
-
-                a {
-                    @apply block p-2 content-center;
-                    @apply m-0 #{!important};
-                }
-            }
-        }
+      a {
+        @apply block content-center px-5;
+        @apply m-0 #{!important};
+        @apply no-underline #{!important};
+      }
     }
+
+    &--header {
+      @apply flex items-stretch;
+
+      .component-navbar__links {
+        @apply hidden items-stretch md:flex;
+
+        a {
+          @apply text-white #{!important};
+        }
+
+        &--menu-mobile {
+          @apply mx-0 flex flex-col;
+
+          a {
+            @apply px-6 #{!important};
+          }
+        }
+      }
+
+      .component-navbar__search-btn svg,
+      .component-navbar__theme-btn svg {
+        @apply size-6;
+      }
+
+      .component-navbar__theme-btn {
+        @apply mr-5 flex items-center;
+
+        & > dev {
+          @apply relative inline-block text-left;
+
+          & > div {
+            @applyflex items-center justify-center;
+          }
+        }
+      }
+
+      .component-navbar__menu-btn {
+        @apply md:hidden;
+
+        svg {
+          @apply size-8;
+        }
+      }
+
+      .component-navbar__menu-mobile {
+        @apply fixed left-0 top-0 z-10 h-full w-full transform bg-primary duration-300 ease-in-out dark:bg-secondary-dark dark:opacity-[0.98];
+      }
+
+      .component-navbar__links a,
+      .component-navbar__search-btn,
+      .component-navbar__theme-btn,
+      .component-navbar__menu-btn {
+        @apply content-center px-3 py-7 hover:bg-primary hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-dark dark:hover:brightness-[110%] dark:active:brightness-[80%] lg:px-5;
+      }
+    }
+
+    &--icons {
+      .component-navbar__links {
+        @apply mx-2 flex justify-center space-x-4 overflow-x-auto sm:space-x-6 md:flex-row;
+
+        a {
+          @apply block content-center p-2;
+          @apply m-0 #{!important};
+        }
+
+        svg {
+          @apply size-6 fill-current;
+        }
+      }
+    }
+
+    &--footer {
+      .component-navbar__links {
+        @apply mx-2 flex flex-col justify-center space-x-4 overflow-x-auto sm:space-x-6 md:flex-row;
+
+        a {
+          @apply block content-center p-2;
+          @apply m-0 #{!important};
+        }
+      }
+    }
+  }
 }

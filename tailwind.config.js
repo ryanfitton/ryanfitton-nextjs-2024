@@ -135,13 +135,13 @@ module.exports = {
             h3: {
               color: theme('colors.typography-heading'),
             },
-            h3: {
+            h4: {
               color: theme('colors.typography-heading'),
             },
-            h3: {
+            h5: {
               color: theme('colors.typography-heading'),
             },
-            h3: {
+            h6: {
               color: theme('colors.typography-heading'),
             },
 
@@ -172,13 +172,13 @@ module.exports = {
             h3: {
               color: theme('colors.typography-heading.dark'),
             },
-            h3: {
+            h4: {
               color: theme('colors.typography-heading.dark'),
             },
-            h3: {
+            h5: {
               color: theme('colors.typography-heading.dark'),
             },
-            h3: {
+            h6: {
               color: theme('colors.typography-heading.dark'),
             },
 

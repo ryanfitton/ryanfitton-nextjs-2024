@@ -1,101 +1,100 @@
 @tailwind base;
 
 @layer base {
-    body {
-        @apply bg-white dark:bg-stone-dark;
-        @apply text-base text-typography-default dark:text-typography-default-dark;
-    }
+  body {
+    @apply bg-white dark:bg-stone-dark;
+    @apply text-base text-typography-default dark:text-typography-default-dark;
+  }
 
-    /* 
+  /* 
         Anchor 
     */
-    a {
-        @apply underline underline-offset-4 text-typography-link dark:text-typography-link-dark hover:no-underline hover:text-typography-link-hover dark:hover:text-typography-link-hover-dark visited:text-typography-link-visited dark:visited:text-typography-link-visited-dark focus:text-typography-link-focus dark:focus:text-typography-link-focus-dark;
-    }
+  a {
+    @apply text-typography-link underline underline-offset-4 visited:text-typography-link-visited hover:text-typography-link-hover hover:no-underline focus:text-typography-link-focus dark:text-typography-link-dark dark:visited:text-typography-link-visited-dark dark:hover:text-typography-link-hover-dark dark:focus:text-typography-link-focus-dark;
+  }
 
-    /* 
+  /* 
         Paragraphs 
     */
-    p {
-        @apply text-base my-4;
+  p {
+    @apply my-4 text-base;
 
-        &:first-child {
-            @apply mt-0;
-        }
-
-        &:last-child {
-            @apply mb-0;
-        }
-
-        &.lead {
-            @apply text-lg;
-        }
+    &:first-child {
+      @apply mt-0;
     }
 
-    /* 
+    &:last-child {
+      @apply mb-0;
+    }
+
+    &.lead {
+      @apply text-lg;
+    }
+  }
+
+  /* 
         Headings 
     */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-
-        &,
-        a {
-            @apply text-typography-heading #{!important};
-            @apply dark:text-typography-heading-dark #{!important};
-        }
-
-        a {
-            @apply no-underline;
-            @apply hover:text-typography-link-hover #{!important};
-            @apply dark:hover:text-typography-link-hover-dark #{!important};
-            @apply focus:text-typography-link-focus #{!important};
-            @apply dark:focus:text-typography-link-focus-dark #{!important};
-        }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &,
+    a {
+      @apply text-typography-heading #{!important};
+      @apply dark:text-typography-heading-dark #{!important};
     }
 
-    h1 {
-        @apply text-4xl my-6;
+    a {
+      @apply no-underline;
+      @apply hover:text-typography-link-hover #{!important};
+      @apply dark:hover:text-typography-link-hover-dark #{!important};
+      @apply focus:text-typography-link-focus #{!important};
+      @apply dark:focus:text-typography-link-focus-dark #{!important};
     }
+  }
 
-    h2 {
-        @apply text-3xl my-5;
-    }
+  h1 {
+    @apply my-6 text-4xl;
+  }
 
-    h3 {
-        @apply text-2xl my-4;
-    }
+  h2 {
+    @apply my-5 text-3xl;
+  }
 
-    h4 {
-        @apply text-xl my-3;
-    }
+  h3 {
+    @apply my-4 text-2xl;
+  }
 
-    h5 {
-        @apply text-lg my-2;
-    }
+  h4 {
+    @apply my-3 text-xl;
+  }
 
-    h6 {
-        @apply text-base my-1;
-    }
+  h5 {
+    @apply my-2 text-lg;
+  }
 
-    /* 
+  h6 {
+    @apply my-1 text-base;
+  }
+
+  /* 
         Horizontal rule 
     */
-    hr,
-    .prowse-hr {
-        @apply border-2 border-t-0 border-l-0 border-r-0;
-        @apply border-neutral #{!important};
-        @apply dark:border-neutral-dark #{!important};
-    }
+  hr,
+  .prowse-hr {
+    @apply border-2 border-l-0 border-r-0 border-t-0;
+    @apply border-neutral #{!important};
+    @apply dark:border-neutral-dark #{!important};
+  }
 
-    /* 
+  /* 
         Grid
     */
-    .grid {
-        @apply gap-6 grid-cols-12;
-        /* Default gap and columns in grids */
-    }
+  .grid {
+    @apply grid-cols-12 gap-6;
+    /* Default gap and columns in grids */
+  }
 }

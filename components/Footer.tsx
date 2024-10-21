@@ -21,11 +21,7 @@ export default function Footer() {
         </div>
 
         <div className="component-navbar component-navbar--footer">
-          <div className="component-navbar__links">
-            <Link href="/about/">About</Link>
-            <Link href="/colophon/">Colophon</Link>
-            <Link href="/cookies/">Cookies</Link>
-          </div>
+          <div className="component-navbar__links"></div>
         </div>
 
         <div className="mt-2">

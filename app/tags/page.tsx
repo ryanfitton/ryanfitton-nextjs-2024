@@ -19,12 +19,12 @@ export default async function Page() {
               {tagKeys.length === 0 && 'No tags found.'}
               {sortedTags.map((t) => {
                 return (
-                    <li key={t}>
+                  <li key={t}>
                     <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                        {`${t}`}
+                      {`${t}`}
                     </Link>
                     {` (${tagCounts[t]})`}
-                    </li>
+                  </li>
                 )
               })}
             </ul>

@@ -1,4 +1,3 @@
-import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent } from 'pliny/utils/contentlayer'
@@ -101,14 +100,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
   return (
     <>
       {isProduction && post && 'draft' in post && post.draft === true ? (
-        <div className="mt-24 text-center">
-          <PageTitle key={'404Title'}>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
-        </div>
+        <div className="mt-24 text-center"></div>
       ) : (
         <>
           <script

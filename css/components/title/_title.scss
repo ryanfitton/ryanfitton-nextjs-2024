@@ -1,13 +1,13 @@
 @layer components {
-    .component-title {
-        @apply tracking-tight font-medium;
+  .component-title {
+    @apply font-medium tracking-tight;
 
-        &--homepage {
-            @apply text-4xl sm:text-5xl font-semibold;
-        }
-
-        &--sub {
-            @apply font-medium;
-        }
+    &--homepage {
+      @apply text-4xl font-semibold sm:text-5xl;
     }
+
+    &--sub {
+      @apply font-medium;
+    }
+  }
 }
