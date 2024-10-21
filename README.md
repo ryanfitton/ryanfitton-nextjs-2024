@@ -242,9 +242,6 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
 
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk
-
-
 nvm install lts/iron
 
 npm install -- Install packages
@@ -266,6 +263,7 @@ giscusConfig = Comment system powered by Github Discussions: https://github.com/
 
 Search for TODO
 
+
 Sitemap:
 http://localhost:3000 - Requires homepage content
 Fix header homepage/standard page
@@ -278,14 +276,20 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
+
 Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk
 Search styles
 Cookie pages setup
 Theme switcher
 Move Portfolio items out of Blog into their own section
+Commenting working
+SEO working?
+Sitemap.xml working?
 
 To do:
+
 Components:
 DONE: social-icons > icons.tsx
 DONE: social-icons > index.tsx
