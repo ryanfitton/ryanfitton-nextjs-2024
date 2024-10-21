@@ -32,7 +32,6 @@ export default function Header() {
             <Image
               src="/static/img/logo@1x.png"
               alt={siteMetadata.author}
-              srcSet="/static/img/logo@1x.png @1x, /static/img/logo@2x.png @2x"
               width="150"
               height="34"
             />
@@ -63,7 +62,7 @@ export default function Header() {
           <div className="hero hero--video">
             <div className="hero__container site-container">
               <div className="hero__content">
-                <PageTitle>{siteMetadata.headerTitle}</PageTitle>
+                <PageTitle heading={siteMetadata.headerTitle} />
                 <span>{siteMetadata.headerDescription}</span>
               </div>
             </div>
@@ -85,18 +84,15 @@ export default function Header() {
               <div className="hero__content">
                 {title && subTitle ? (
                   <>
-                    <PageTitle className={pathname === '/' ? 'component-title--homepage' : ''}>
-                      {subTitle}
-                    </PageTitle>
-                    <PageTitle headingSize="h3" className="component-title--sub">
-                      {title}
-                    </PageTitle>
+                    <PageTitle
+                      heading={subTitle}
+                      className={pathname === '/' ? 'component-title--homepage' : ''}
+                    />
+                    <PageTitle heading={title} headingSize="h3" className="component-title--sub" />
                   </>
                 ) : (
                   <>
-                    <PageTitle className={pathname === '/' ? 'component-title--homepage' : ''}>
-                      {title}
-                    </PageTitle>
+                    <PageTitle heading={title} className="component-title--homepage" />
                   </>
                 )}
               </div>

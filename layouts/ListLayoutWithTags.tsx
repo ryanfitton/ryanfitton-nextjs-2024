@@ -2,7 +2,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { slug } from 'github-slugger'
+import { slug as slugger } from 'github-slugger'
 import { formatDate } from 'pliny/utils/formatDate'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog } from 'contentlayer/generated'
@@ -97,25 +97,27 @@ export default function ListLayoutWithTags({
       <section className="site-container">
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
-            <aside className="site-aside">              
-                <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
-                    <h5 className="component-posts-sidebar__title component-title"><Link href={`/blog`}>All Posts</Link></h5>
+            <aside className="site-aside">
+              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+                <h5 className="component-posts-sidebar__title component-title">
+                  <Link href={`/blog`}>All Posts</Link>
+                </h5>
 
-                    <div className="component-posts-sidebar__content component-block component-block--padding-small">
-                        <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
-                            {sortedTags.map((t) => {
-                                return (
-                                    <li key={t}>
-                                    <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                                        {`${t}`}
-                                    </Link>
-                                    {` (${tagCounts[t]})`}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+                <div className="component-posts-sidebar__content component-block component-block--padding-small">
+                  <ul className="component-posts-tag-list component-posts-tag-list--sidebar">
+                    {sortedTags.map((t) => {
+                      return (
+                        <li key={t}>
+                          <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
+                            {`${t}`}
+                          </Link>
+                          {` (${tagCounts[t]})`}
+                        </li>
+                      )
+                    })}
+                  </ul>
                 </div>
+              </div>
             </aside>
           </div>
 
@@ -126,7 +128,7 @@ export default function ListLayoutWithTags({
                 return (
                   <li key={path}>
                     <article className="component-posts-article">
-                      <dl clas="component-posts-article__date">
+                      <dl className="component-posts-article__date">
                         <dt className="sr-only">Published on</dt>
                         <dd>
                           <time className="component-posts-article__date--time" dateTime={date}>

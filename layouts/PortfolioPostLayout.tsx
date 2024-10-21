@@ -30,9 +30,15 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                         <span className="font-medium">Type:</span> {portfolioType}
                       </li>
                       <li className="mt-4">
-                        <Link href={portfolioHref} target="_blank">
-                          <span className="font-medium">Visit website</span>
-                        </Link>
+                        {portfolioHref ? (
+                          <>
+                            <Link href={portfolioHref} target="_blank">
+                              <span className="font-medium">Visit website</span>
+                            </Link>
+                          </>
+                        ) : (
+                          <></>
+                        )}
                       </li>
                     </ul>
                   </div>

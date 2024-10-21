@@ -1,7 +1,7 @@
 import Image from './Image'
 import Link from './Link'
 
-const Card = ({ title, description, imgSrc, imgSrcSet, href }) => {
+const Card = ({ title, description, imgSrc, href }) => {
   return (
     <Link
       href={href}
@@ -12,7 +12,6 @@ const Card = ({ title, description, imgSrc, imgSrcSet, href }) => {
         <Image
           src={imgSrc}
           alt={title}
-          srcSet={imgSrcSet}
           width="400"
           height="265"
           className="component-posts-article__featured-image"

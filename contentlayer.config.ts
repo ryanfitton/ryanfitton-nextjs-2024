@@ -1,7 +1,7 @@
 import { defineDocumentType, ComputedFields, makeSource } from 'contentlayer2/source-files'
 import { writeFileSync } from 'fs'
 import readingTime from 'reading-time'
-import { slug } from 'github-slugger'
+import { slug as slugger } from 'github-slugger'
 import path from 'path'
 import { fromHtmlIsomorphic } from 'hast-util-from-html-isomorphic'
 
@@ -76,7 +76,7 @@ function createTagCount(allBlogs) {
   allBlogs.forEach((file) => {
     if (file.tags && file.draft !== true) {
       file.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
+        const formattedTag = slugger(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
         } else {
@@ -149,7 +149,6 @@ export const Authors = defineDocumentType(() => ({
   fields: {
     name: { type: 'string', required: true },
     avatar: { type: 'string' },
-    avatarSrcSet: { type: 'string' },
     occupation: { type: 'string' },
     email: { type: 'string' },
     facebook: { type: 'string' },

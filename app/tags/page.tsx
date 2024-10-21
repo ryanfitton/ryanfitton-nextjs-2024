@@ -1,6 +1,6 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
-import { slug } from 'github-slugger'
+import { slug as slugger } from 'github-slugger'
 import tagData from 'app/tag-data.json'
 import { genPageMetadata } from 'app/seo'
 
@@ -19,12 +19,12 @@ export default async function Page() {
               {tagKeys.length === 0 && 'No tags found.'}
               {sortedTags.map((t) => {
                 return (
-                    <li key={t}>
-                    <Link href={`/tags/${slug(t)}`} aria-label={`View posts tagged ${t}`}>
-                        {`${t}`}
+                  <li key={t}>
+                    <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
+                      {`${t}`}
                     </Link>
                     {` (${tagCounts[t]})`}
-                    </li>
+                  </li>
                 )
               })}
             </ul>

@@ -10,10 +10,10 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   //If internal link E.g. `/about/`
   if (isInternalLink) {
     return <Link href={href} {...rest} />
-  //If an anchor link E.g. `#about`  
+    //If an anchor link E.g. `#about`
   } else if (isAnchorLink) {
     return <a href={href} {...rest} />
-  //Anything else consider as an external link, so open in new window/tab
+    //Anything else consider as an external link, so open in new window/tab
   } else {
     return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
   }

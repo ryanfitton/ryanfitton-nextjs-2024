@@ -1,4 +1,14 @@
-import { Mail, Github, Facebook, Youtube, Linkedin, Twitter, Instagram, Threads, Mastodon } from './icons'
+import {
+  Mail,
+  Github,
+  Facebook,
+  Youtube,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Threads,
+  Mastodon,
+} from './icons'
 
 const components = {
   mail: Mail,
@@ -25,11 +35,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   const SocialSvg = components[kind]
 
   return (
-    <a
-      target="_blank"
-      rel="noopener noreferrer"
-      href={href}
-    >
+    <a target="_blank" rel="noopener noreferrer" href={href}>
       <span className="sr-only">{kind}</span>
       <SocialSvg />
     </a>

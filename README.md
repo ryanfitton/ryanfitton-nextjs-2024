@@ -241,37 +241,26 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
-
-
-
-
-
 nvm install lts/iron
 
-npm install             -- Install packages
+npm install -- Install packages
 
-npm run start           -- Starts the dev server
-http://localhost:3000   -- Dev server lock address
+npm run start -- Starts the dev server
+http://localhost:3000 -- Dev server lock address
 
-npm run build           -- Create a static build
+npm run format -- Prettifies code
+
+npm run build -- Create a static build
 
 npm run analyze
 
-
 tailwind.config.js
 
-
-php -S localhost:8080 -t build/         -- Access the static build in a dev server
-
+php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
 giscusConfig = Comment system powered by Github Discussions: https://github.com/giscus/giscus
 
-
 Search for TODO
-
-
-
-
 
 Sitemap:
 http://localhost:3000 - Requires homepage content
@@ -285,64 +274,55 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
-
-
-Still do 
+Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
-Do /static/img/twitter-card.png
-Type error: Cannot find name 'ListLayoutProps'.
-Move Portfolio items out of Blog into their own section
 Search styles
 Cookie pages setup
 Theme switcher
-
-
+Move Portfolio items out of Blog into their own section
 
 To do:
 Components:
-    DONE: social-icons > icons.tsx
-    DONE: social-icons > index.tsx
-    DONE: Card.tsx
-    DONE: Comments.tsx
-    DONE: Footer.tsx
-    DONE: Header.tsx
-    DONE: Image.tsx
-    DONE TO TEST: LayoutWrapper.tsx
-    DONE: Link.tsx
-    DONE: MDXComponents.tsx
-    DONE: MobileNav.tsx
-    DONE: PageTitle.tsx
-    DONE: SearchButton.tsx
-    DONE: SectionContainer.tsx
-    DONE: TableWrapper.tsx
-    DONE: Tag.tsx
-    DONE: ThemeSwitch.tsx
+DONE: social-icons > icons.tsx
+DONE: social-icons > index.tsx
+DONE: Card.tsx
+DONE: Comments.tsx
+DONE: Footer.tsx
+DONE: Header.tsx
+DONE: Image.tsx
+DONE TO TEST: LayoutWrapper.tsx
+DONE: Link.tsx
+DONE: MDXComponents.tsx
+DONE: MobileNav.tsx
+DONE: PageTitle.tsx
+DONE: SearchButton.tsx
+DONE: SectionContainer.tsx
+DONE: TableWrapper.tsx
+DONE: Tag.tsx
+DONE: ThemeSwitch.tsx
 app:
-    DONE: about/page.tsx
-    DONE: blog/[...slug]/page.tsx
-    DONE: blog/page.tsx
-    DONE: portfolio/page.tsx
-    DONE: tags/[tag]/page.tsx
-    DONE: tags/page.tsx
-    DONE: layout.tsx
-    DONE: Main.tsx - Homepage
-    DONE: not-found.tsx
-    page.tsx ??? Not sure ????????????????
-    DONE: robots.ts
-    DONE: seo.tsx
-    DONE: sitemap.ts
-    DONE: tag-data.json
-    DONE: theme-providers.tsx
+DONE: about/page.tsx
+DONE: blog/[...slug]/page.tsx
+DONE: blog/page.tsx
+DONE: portfolio/page.tsx
+DONE: tags/[tag]/page.tsx
+DONE: tags/page.tsx
+DONE: layout.tsx
+DONE: Main.tsx - Homepage
+DONE: not-found.tsx
+page.tsx ??? Not sure ????????????????
+DONE: robots.ts
+DONE: seo.tsx
+DONE: sitemap.ts
+DONE: tag-data.json
+DONE: theme-providers.tsx
 Layouts:
-    DONE: AuthorLayout.tsx
-    DONE: ListLayout.tsx
-    DONE: ListLayoutWithTags.tsx
-    DONE: PostLayout.tsx
-    DONE: PostSimple.tsx
-    DONE: Layout.tsx
-
-
-
+DONE: AuthorLayout.tsx
+DONE: ListLayout.tsx
+DONE: ListLayoutWithTags.tsx
+DONE: PostLayout.tsx
+DONE: PostSimple.tsx
+DONE: Layout.tsx
 
 For Card.tsx
 
@@ -368,7 +348,7 @@ For Card.tsx
                     height={400}
                 />
             )}
-            
+
             <h2 className="component-posts-article__title">{title}</h2>
 
             {description ? (
@@ -386,17 +366,15 @@ For Card.tsx
     </>
 ```
 
-
-
-
 To make images for:
+
 ```
 /static/img/twitter-card.png
 /static/img/avatar.png
 ```
 
-
 Base `siteMetadata.js`
+
 ```
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
@@ -469,4 +447,138 @@ const siteMetadata = {
 
 module.exports = siteMetadata
 
+```
+
+```
+const { withContentlayer } = require('next-contentlayer2')
+const withPlugins = require('next-compose-plugins')
+const optimizedImages = require('next-optimized-images')
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
+// You might need to insert additional domains in script-src if you are using external services
+const ContentSecurityPolicy = `
+  default-src 'self';
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.googletagmanager.com *.google-analytics.com;
+  style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net;
+  frame-src youtube.com www.youtube.com;
+  img-src * blob: data:;
+  media-src *.s3.amazonaws.com;
+  connect-src *;
+  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net
+`
+
+const securityHeaders = [
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+  {
+    key: 'Referrer-Policy',
+    value: 'strict-origin-when-cross-origin',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=()',
+  },
+]
+
+// next.js configuration
+const nextConfig = {
+  output: 'export',
+  trailingSlash: true,
+  skipTrailingSlashRedirect: false,
+  distDir: 'build',
+  reactStrictMode: true,
+  pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
+  eslint: {
+    dirs: ['app', 'components', 'layouts', 'scripts'],
+  },
+  images: {
+    unoptimized: true,
+    loader: 'default',
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [32, 64, 96, 128, 256],
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ]
+  },
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+
+    return config
+  },
+}
+
+/**
+ * @type {import('next/dist/next-server/server/config').NextConfig}
+ **/
+module.exports = withPlugins(
+  [
+    optimizedImages,
+    {
+      // these are the default values so you don't have to provide them if they are good enough for your use-case.
+      // but you can overwrite them here with any valid value you want.
+      inlineImageLimit: 8192,
+      imagesFolder: 'img',
+      imagesName: '[name]-[hash].[ext]',
+      handleImages: ['jpeg', 'png', 'svg', 'webp', 'gif'],
+      removeOriginalExtension: false,
+      optimizeImages: true,
+      optimizeImagesInDev: false,
+      mozjpeg: {
+        quality: 80,
+      },
+      optipng: {
+        optimizationLevel: 3,
+      },
+      pngquant: false,
+      gifsicle: {
+        interlaced: true,
+        optimizationLevel: 3,
+      },
+      svgo: {
+        // enable/disable svgo plugins here
+      },
+      webp: {
+        preset: 'default',
+        quality: 75,
+      },
+    },
+  ],
+  nextConfig
+)
 ```

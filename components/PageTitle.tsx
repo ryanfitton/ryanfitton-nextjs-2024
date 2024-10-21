@@ -1,15 +1,18 @@
+'use client'
 import { ReactNode } from 'react'
 
 interface Props {
-  className: ReactNode,
-  headingSize: string,
-  children: ReactNode
+  className?: ReactNode
+  headingSize?: string
+  heading?: string
 }
-
-export default function PageTitle({ id, className, children, headingSize }: Props) {
-  const CustomTag = `${(headingSize ? headingSize : 'h1' )}`;
+//https://stackoverflow.com/questions/33471880/dynamic-tag-name-in-react-jsx
+export default function PageTitle({ className, headingSize, heading }: Props) {
+  const CustomTag = `${headingSize ? headingSize : 'h1'}` as keyof JSX.IntrinsicElements
 
   return (
-    <CustomTag className={`hero__title component-title ` + (className ? (className) : '')}>{children}</CustomTag>
+    <CustomTag className={`hero__title component-title ` + (className ? className : '')}>
+      {heading}
+    </CustomTag>
   )
 }

@@ -102,12 +102,7 @@ export default async function Page({ params }: { params: { slug: string[] } }) {
     <>
       {isProduction && post && 'draft' in post && post.draft === true ? (
         <div className="mt-24 text-center">
-          <PageTitle key={'404Title'}>
-            Under Construction{' '}
-            <span role="img" aria-label="roadwork sign">
-              🚧
-            </span>
-          </PageTitle>
+          <PageTitle heading="404 Page not found" />
         </div>
       ) : (
         <>

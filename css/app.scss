@@ -1,8 +1,7 @@
-@import "base/_base.scss";
-@import "utilities/_utilities.scss";
-@import "components/_components.scss";
-@import "plugins/_plugins.scss";
-
+@import 'base/_base.scss';
+@import 'utilities/_utilities.scss';
+@import 'components/_components.scss';
+@import 'plugins/_plugins.scss';
 
 /*
     Fonts
@@ -23,54 +22,48 @@
 }
 */
 
-
 /*
     Core site layouts    
 */
 .site {
-    &-header {
-        @apply bg-primary dark:bg-secondary-dark text-white mb-24 dark:text-white;
+  &-header {
+    @apply mb-24 bg-primary text-white dark:bg-secondary-dark dark:text-white;
 
-        > div {
-            @apply flex items-stretch py-0;
-        }
-
-        &__logo {
-            @apply p-3 lg:p-5 content-center block hover:bg-primary dark:hover:bg-primary-dark hover:brightness-[110%] active:brightness-[80%] dark:hover:brightness-[110%] dark:active:brightness-[80%];
-        }
-
-        &--homepage {
-            @apply mb-0;
-        }
+    > div {
+      @apply flex items-stretch py-0;
     }
 
-    &-main {
-
+    &__logo {
+      @apply block content-center p-3 hover:bg-primary hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-dark dark:hover:brightness-[110%] dark:active:brightness-[80%] lg:p-5;
     }
 
-    &-aside {
+    &--homepage {
+      @apply mb-0;
+    }
+  }
 
+  &-main {
+  }
+
+  &-aside {
+  }
+
+  &-footer {
+    @apply mt-24 bg-secondary text-center text-sm dark:bg-secondary-dark;
+
+    a {
+      @apply no-underline #{!important};
+      @apply hover:underline #{!important};
     }
 
-    &-footer {
-        @apply text-sm bg-secondary dark:bg-secondary-dark text-center mt-24;
-
-        a {
-            @apply no-underline #{!important};
-            @apply hover:underline #{!important};
-        }
-
-        &, a {
-            @apply text-[#8e8e8e] #{!important};
-            @apply dark:text-[#8e8e8e] #{!important};
-        }
+    &,
+    a {
+      @apply text-[#8e8e8e] #{!important};
+      @apply dark:text-[#8e8e8e] #{!important};
     }
+  }
 }
 
-
-
-
-
 .todo {
-    border:1px solid red #{!important};
+  border: 1px solid red #{!important};
 }
