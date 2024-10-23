@@ -288,6 +288,8 @@ http://localhost:3000/tags/personal/
 Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk
+Update all /img/ to use the largest available, remove @2x check all images have correct width and height
+Use Next-video to load the video
 Search styles
 Cookie pages setup
 Theme switcher
