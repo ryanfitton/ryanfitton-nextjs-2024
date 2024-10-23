@@ -262,6 +262,17 @@ giscusConfig = Comment system powered by Github Discussions: https://github.com/
 
 Search for TODO
 
+
+Using cloud flare Image Tranformations
+Must have DNS proxied by cloudflare e.g.
+
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
+
+
+
+
 Sitemap:
 http://localhost:3000 - Requires homepage content
 Fix header homepage/standard page

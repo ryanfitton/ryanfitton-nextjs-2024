@@ -70,9 +70,9 @@ module.exports = () => {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
     images: {
-      unoptimized: true,//True: Disabled / False: Enabled
-      loader: 'cloudinary',
-      path: 'https://res.cloudinary.com/<cloud_name>/image/upload',
+      unoptimized: false,//True: Disabled / False: Enabled
+      loader: 'custom',
+      loaderFile: './cloudflare-image-loader.ts',
       deviceSizes: [640, 750, 828, 1080, 1200],
       imageSizes: [32, 64, 96, 128, 256],
       domains: ['localhost', 'ryanfitton.co.uk'],
