@@ -18,8 +18,9 @@ export default function Home({ posts }) {
         <div className="site-container">
           <div className="grid">
             <div className="col-span-full justify-self-center md:col-span-4 xl:col-span-3 xl:col-start-2">
+              {/* Image dimensions should be 3x the size of the width/height */}
               <Image
-                src="/static/img/bio/ryan-fitton@1x.jpg"
+                src={'/static/img/bio/' + siteMetadata.author.toLowerCase().replace(/\s+/g, '') + '.jpg'}
                 alt={siteMetadata.author}
                 className="rounded-full md:mt-8"
                 width={192}
