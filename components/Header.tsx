@@ -6,6 +6,7 @@ import PageTitle from '@/components/PageTitle'
 import navLinks from '@/data/navLinks'
 import Link from './Link'
 import Image from './Image'
+import VideoBackgroundPlayer from 'next-video/background-player';
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
@@ -30,12 +31,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
             {/* Image dimensions should be 3x the size of the width/height */}
-            <Image
-              src="/static/img/logo.png"
-              alt={siteMetadata.author}
-              width="150"
-              height="34"
-            />
+            <Image src="/static/img/logo.png" alt={siteMetadata.author} width="150" height="34" />
           </Link>
 
           {/* Nav */}
@@ -68,16 +64,16 @@ export default function Header() {
               </div>
             </div>
 
-            <video
+            <VideoBackgroundPlayer
+              src="/static/vid/home-header-video-15fps.webm"
+              type="video/webm"
               autoPlay
               loop
               muted
-              className="hero__video-object"
-              poster="/static/img/home-header-bg@1.8x.jpg"
-            >
-              <source src="/static/vid/home-header-video-15fps.webm" type="video/webm" />
-              Your browser does not support the HTML5 video tag.
-            </video>
+              className="hero__video-wrapper"
+                poster="/static/img/home-header-bg@1.8x.jpg"
+                blurDataURL="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
+            />
           </div>
         ) : (
           <div className="hero hero--page">

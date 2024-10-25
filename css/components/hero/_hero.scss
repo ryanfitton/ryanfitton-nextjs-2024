@@ -52,8 +52,12 @@
         @apply text-6xl;
       }
 
-      .hero__video-object {
+      .hero__video-wrapper {
         @apply absolute z-10 h-full w-auto min-w-full max-w-none object-cover;
+
+        video {
+            @apply h-full w-full;
+        }
       }
     }
   }
