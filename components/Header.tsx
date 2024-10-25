@@ -29,8 +29,9 @@ export default function Header() {
         <div className="xl:site-container flex justify-between">
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
+            {/* Image dimensions should be 3x the size of the width/height */}
             <Image
-              src="/static/img/logo@1x.png"
+              src="/static/img/logo.png"
               alt={siteMetadata.author}
               width="150"
               height="34"
