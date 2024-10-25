@@ -73,7 +73,7 @@ export default function Header() {
               loop
               muted
               className="hero__video-object"
-              poster="/static/img/home-header-bg-2000px@1x.jpg"
+              poster="/static/img/home-header-bg@1.8x.jpg"
             >
               <source src="/static/vid/home-header-video-15fps.webm" type="video/webm" />
               Your browser does not support the HTML5 video tag.

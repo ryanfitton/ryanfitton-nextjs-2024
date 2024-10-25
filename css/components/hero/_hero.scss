@@ -31,10 +31,10 @@
         */
     &--page {
       @apply min-h-[280px] before:bg-primary/50 dark:before:bg-secondary-dark/35;
-      background-image: url('/static/img/default-blog-page-header-bg-2000px@1x.jpg');
+      background-image: url('/static/img/page-header-bg@1x.jpg');
       background-image: image-set(
-        url('/static/img/default-blog-page-header-bg-2000px@1x.jpg') 1x,
-        url('/static/img/default-blog-page-header-bg-3600px@1.8x.jpg') 1.8x
+        url('/static/img/page-header-bg@1x.jpg') 1x,
+        url('/static/img/page-header-bg@1.8x.jpg') 1.8x
       );
     }
 
