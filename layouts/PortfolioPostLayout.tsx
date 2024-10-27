@@ -49,7 +49,7 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                 </div>
               </section>
 
-              <hr className="prowse-hr component-posts-article__divider" />
+              <hr className="prose-hr component-posts-article__divider" />
 
               <h1 className="sr-only">{title}</h1>
 

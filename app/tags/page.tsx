@@ -14,7 +14,7 @@ export default async function Page() {
     <>
       <section className="site-container">
         <div className="grid">
-          <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
+          <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             <ul className="component-posts-tag-list component-posts-tag-list--article">
               {tagKeys.length === 0 && 'No tags found.'}
               {sortedTags.map((t) => {

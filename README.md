@@ -288,11 +288,11 @@ http://localhost:3000/tags/personal/
 Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk
-Cookie pages setup
 Theme switcher
 Move Portfolio items out of Blog into their own section
-Commenting working
+Disqus Commenting working
 SEO working?
+Analytics working?
 Sitemap.xml working?
 
 To do:

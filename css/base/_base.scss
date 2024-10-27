@@ -84,7 +84,7 @@
         Horizontal rule 
     */
   hr,
-  .prowse-hr {
+  .prose-hr {
     @apply border-2 border-l-0 border-r-0 border-t-0;
     @apply border-gray-200 #{!important};
     @apply dark:border-gray-900 #{!important};

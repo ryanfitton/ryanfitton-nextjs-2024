@@ -81,7 +81,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <div className="component-posts-article__body">{children}</div>
 
-              <hr className="prowse-hr component-posts-article__divider" />
+              <hr className="prose-hr component-posts-article__divider" />
 
               <p className="text-sm text-stone-500 dark:text-typography-default-dark/50">
                 <Link href={discussUrl(path)} rel="nofollow">
@@ -91,7 +91,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link href={editUrl(filePath)}>Link to external resource</Link>
               </p>
 
-              <hr className="prowse-hr component-posts-article__divider" />
+              <hr className="prose-hr component-posts-article__divider" />
 
               {tags && (
                 <ul className="component-posts-tag-list component-posts-tag-list--article">
@@ -102,7 +102,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 </ul>
               )}
 
-              <hr className="prowse-hr component-posts-article__divider" />
+              <hr className="prose-hr component-posts-article__divider" />
 
               {siteMetadata.comments && (
                 <div className="component-posts-article__comments">

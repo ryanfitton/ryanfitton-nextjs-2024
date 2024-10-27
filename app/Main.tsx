@@ -28,25 +28,24 @@ export default function Home({ posts }) {
               />
             </div>
 
-            <div className="col-span-full md:col-span-8 xl:col-span-6">
-              <h1 className="component-title component-title--main">About</h1>
+            <div className="col-span-full md:col-span-8 xl:col-span-6 prose">
+              <h2 className="component-title component-title--main">About</h2>
               <p>
-                I'm Ryan, a front-end developer based in Leeds, UK. I been professionally creating
+                I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally creating
                 websites for around 10 years (along with design and print work within this time).
               </p>
 
               <p>
                 You can email me at{' '}
                 <strong>
-                  ryan＠
+                  <span className="!text-typography-default !no-underline dark:!text-typography-default-dark">ryan＠</span>
                   <a
                     href="https://ryanfitton.co.uk"
-                    className="!text-typography-default no-underline dark:!text-typography-default-dark"
+                    className="!text-typography-default !no-underline dark:!text-typography-default-dark"
                   >
                     ryanfitton.co.uk
                   </a>
                 </strong>{' '}
-                (don’t copy/paste it this email address, due to spam prevention methods implemented)
               </p>
               <p>
                 <Link href="/about">Read more</Link>

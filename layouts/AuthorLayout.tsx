@@ -43,7 +43,7 @@ export default function AuthorLayout({ children, content }: Props) {
             </div>
 
             <div className="col-span-full md:col-span-8">
-              <h1 className="component-title component-title--main">{name}</h1>
+              <h2 className="component-title component-title--main">{name}</h2>
               <p className="lead">{occupation}</p>
 
               {children}

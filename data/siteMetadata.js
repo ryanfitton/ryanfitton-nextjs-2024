@@ -22,7 +22,7 @@ const siteMetadata = {
   locale: 'en-GB',
   analytics: {
     googleAnalytics: {
-      googleAnalyticsId: 'G-YLMTDYMQCC', 
+      googleAnalyticsId: 'G-YLMTDYMQCC',
     },
   },
   comment: {
