@@ -1,6 +1,6 @@
 @layer components {
   .component-navbar {
-    @apply z-50 flex space-x-4 leading-5 sm:space-x-6;
+    @apply flex space-x-4 leading-5 sm:space-x-6;
 
     &__links {
       @apply mx-2 grow space-x-4 overflow-x-auto sm:space-x-6 md:flex;

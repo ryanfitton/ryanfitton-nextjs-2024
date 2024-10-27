@@ -85,7 +85,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <p className="text-sm text-stone dark:text-typography-default-dark/50">
                 <Link href={discussUrl(path)} rel="nofollow">
-                  Discuss on Twitter
+                  Discuss on X (Twitter)
                 </Link>
                 {` • `}
                 <Link href={editUrl(filePath)}>Link to external resource</Link>
