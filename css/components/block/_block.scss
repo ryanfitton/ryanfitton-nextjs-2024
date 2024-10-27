@@ -18,12 +18,12 @@
       }
     }
 
-    &--bg-neutral {
-      @apply bg-neutral dark:bg-neutral-dark;
+    &--bg-secondary {
+      @apply bg-secondary-100 dark:bg-secondary-950;
     }
 
-    &--outline-neutral {
-      @apply border-2 border-neutral dark:border-neutral-dark;
+    &--outline-secondary {
+      @apply border-2 border-secondary-100 dark:border-secondary-800;
     }
 
     &--rounded {

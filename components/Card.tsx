@@ -6,7 +6,7 @@ const Card = ({ title, description, imgSrc, href }) => {
     <Link
       href={href}
       aria-label={`Link to ${title}`}
-      className="component-block component-block--outline-neutral component-block--rounded component-block--padding-small"
+      className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small"
     >
       <article className="component-posts-article">
         <Image

@@ -2,7 +2,7 @@
 
 @layer base {
   body {
-    @apply bg-white dark:bg-stone-dark;
+    @apply bg-white dark:bg-stone-950;
     @apply text-base text-typography-default dark:text-typography-default-dark;
   }
 
@@ -86,8 +86,8 @@
   hr,
   .prowse-hr {
     @apply border-2 border-l-0 border-r-0 border-t-0;
-    @apply border-neutral #{!important};
-    @apply dark:border-neutral-dark #{!important};
+    @apply border-gray-200 #{!important};
+    @apply dark:border-gray-900 #{!important};
   }
 
   /* 

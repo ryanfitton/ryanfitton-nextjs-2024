@@ -27,36 +27,67 @@ module.exports = {
       white: '#ffffff',
       black: '#000000',
 
+      //Default TailWind `Gray` colours - https://tailwindcss.com/docs/customizing-colors
       gray: {
-        100: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        200: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        300: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        400: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        500: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        700: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        800: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-        900: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
+        50: '#f9fafb',
+        100: '#f3f4f6',
+        200: '#e5e7eb',
+        300: '#d1d5db',
+        400: '#9ca3af',
+        500: '#6b7280',
+        600: '#4b5563',
+        700: '#374151',
+        800: '#1f2937',
+        900: '#111827',
+        950: '#030712',
       },
 
-      primary: {
-        DEFAULT: '#af4c41',
-        dark: '#6d2018',
-        600: 'red', /** TODO Fallback colours used by other parts on the site e.g plugins */
-      },
-      secondary: {
-        DEFAULT: '#2f3339',
-        dark: '#1c222b',
-      },
-
-      neutral: {
-        DEFAULT: '#eeeeee',
-        dark: '#1c2026',
-      },
+      //Default TailWind `Stone` colours - https://tailwindcss.com/docs/customizing-colors
       stone: {
-        DEFAULT: '#5f5f5f',
-        dark: '#0D1118',
+        50: '#fafaf9',
+        100: '#f5f5f4',
+        200: '#e7e5e4',
+        300: '#d6d3d1',
+        400: '#a8a29e',
+        500: '#78716c',
+        600: '#57534e',
+        700: '#44403c',
+        800: '#292524',
+        900: '#1c1917',
+        950: '#0c0a09',
       },
 
+      //Custom brand `primary` colours
+      primary: {
+        50: '#fcf5f4',
+        100: '#f9e9e7',
+        200: '#f4d6d3',
+        300: '#ecbbb5',
+        400: '#df938a',
+        500: '#d06e63',
+        600: '#af4c41',
+        700: '#9c4339',
+        800: '#823a32',
+        900: '#6d352f',
+        950: '#3a1915',
+      },
+
+      //Custom brand `secondary` colours
+      secondary: {
+        50: '#f4f6f7',
+        100: '#e3e7ea',
+        200: '#cad2d7',
+        300: '#a5b1bb',
+        400: '#798997',
+        500: '#5d6e7d',
+        600: '#505c6a',
+        700: '#454e59',
+        800: '#3e444c',
+        900: '#2f3339',
+        950: '#21252b',
+      },
+
+      //Custom brand `typography` colours
       'typography-heading': {
         DEFAULT: '#141c3a',
         dark: '#e3e8ed',
@@ -65,7 +96,6 @@ module.exports = {
         DEFAULT: '#313a59',
         dark: '#f0f8ff',
       },
-
       'typography-link': {
         DEFAULT: '#7b281e',
         dark: '#cb574a',

@@ -30,7 +30,7 @@
             Page
         */
     &--page {
-      @apply min-h-[280px] before:bg-primary/50 dark:before:bg-secondary-dark/35;
+      @apply min-h-[280px] before:bg-primary-600/50 dark:before:bg-secondary-950/35;
       background-image: url('/static/img/page-header-bg@1x.jpg');
       background-image: image-set(
         url('/static/img/page-header-bg@1x.jpg') 1x,
@@ -42,7 +42,7 @@
             Video
         */
     &--video {
-      @apply h-screen min-h-[350px] before:bg-stone/15 dark:before:bg-secondary-dark/35 md:h-[65vh];
+      @apply h-screen min-h-[350px] before:bg-stone-500/15 dark:before:bg-secondary-950/35 md:h-[65vh];
 
       .hero__content {
         @apply px-5 text-3xl;

@@ -4,7 +4,7 @@ const siteMetadata = {
   author: 'Ryan Fitton',
   description: 'Ryan Fitton personal website',
   headerTitle: 'Ryan Fitton',
-  headerDescription: 'Ryan Fitton',
+  headerDescription: 'I build things for the web',
   language: 'en-gb',
   siteUrl: 'https://ryanfitton.co.uk',
   siteRepo: 'https://github.com/ryanfitton/ryanfitton.co.uk',

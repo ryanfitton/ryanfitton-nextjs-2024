@@ -28,14 +28,14 @@
 */
 .site {
   &-header {
-    @apply mb-24 bg-primary text-white dark:bg-secondary-dark dark:text-white;
+    @apply mb-24 bg-primary-600 text-white dark:bg-secondary-950 dark:text-white;
 
     > div {
       @apply flex items-stretch py-0;
     }
 
     &__logo {
-      @apply block content-center p-3 hover:bg-primary hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-dark dark:hover:brightness-[110%] dark:active:brightness-[80%] lg:p-5;
+      @apply block content-center p-3 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:p-5;
     }
 
     &--homepage {
@@ -50,7 +50,7 @@
   }
 
   &-footer {
-    @apply mt-24 bg-secondary text-center text-sm dark:bg-secondary-dark;
+    @apply mt-24 bg-secondary-900 text-center text-sm dark:bg-secondary-950;
 
     a {
       @apply no-underline #{!important};

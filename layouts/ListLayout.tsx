@@ -99,7 +99,7 @@ export default function ListLayout({
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside">
-              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+              <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
                 <h5 className="component-posts-sidebar__title component-title">
                   <Link href={`/blog`}>Search</Link>
                 </h5>

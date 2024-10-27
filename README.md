@@ -288,8 +288,6 @@ http://localhost:3000/tags/personal/
 Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk
-Use Next-video to load the video
-Search styles
 Cookie pages setup
 Theme switcher
 Move Portfolio items out of Blog into their own section
@@ -348,11 +346,11 @@ For Card.tsx
     {href  (
         <Link
             href={href}
-            className="component-block component-block--outline-neutral component-block--rounded component-block--padding-small"
+            className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small"
             aria-label={`Link to ${title}`}
           >
       ) : (
-        <div className="component-block component-block--outline-neutral component-block--rounded component-block--padding-small">
+        <div className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small">
       )}
 
         <article className="component-posts-article">

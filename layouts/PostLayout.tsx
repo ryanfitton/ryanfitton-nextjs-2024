@@ -43,7 +43,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside">
-              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+              <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
                 <h5 className="component-posts-sidebar__title component-title">
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>
@@ -83,7 +83,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prowse-hr component-posts-article__divider" />
 
-              <p className="text-sm text-stone dark:text-typography-default-dark/50">
+              <p className="text-sm text-stone-500 dark:text-typography-default-dark/50">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on X (Twitter)
                 </Link>

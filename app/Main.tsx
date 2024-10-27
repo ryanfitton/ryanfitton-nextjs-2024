@@ -14,7 +14,7 @@ export default function Home({ posts }) {
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   return (
     <>
-      <section className="component-block component-block--padding component-block--bg-neutral">
+      <section className="component-block component-block--padding component-block--bg-secondary">
         <div className="site-container">
           <div className="grid">
             <div className="col-span-full justify-self-center md:col-span-4 xl:col-span-3 xl:col-start-2">
@@ -60,7 +60,7 @@ export default function Home({ posts }) {
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside">
-              <div className="component-posts-sidebar component-block component-block--outline-neutral component-block--rounded component-block--padding">
+              <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
                 <h5 className="component-posts-sidebar__title component-title">
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>

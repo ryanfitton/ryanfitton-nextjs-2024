@@ -71,8 +71,8 @@ export default function Header() {
               loop
               muted
               className="hero__video-wrapper"
-                poster="/static/img/home-header-bg@1.8x.jpg"
-                blurDataURL="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
+              poster="/static/img/home-header-bg@1.8x.jpg"
+              blurDataURL="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
             />
           </div>
         ) : (
