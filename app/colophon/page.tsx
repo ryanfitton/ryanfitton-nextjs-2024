@@ -18,6 +18,8 @@ export default function Colophon() {
                 <li><p>Typefaces; Main: <Link href={`https://fonts.google.com/specimen/Red+Hat+Text`}>Red Hat Text</Link> any Serifs use <Link href={`https://fonts.google.com/specimen/Brygada+1918`}>Brygada 1918</Link></p></li>
               </ul>
 
+              <p>Visit the Status Page here: <Link href={`https://status.ryanfitton.co.uk/`}>status.ryanfitton.co.uk</Link></p>
+
               <p>In August 2024, I decided to switch from my old WordPress powered site, to one built on Next.JS, mainly due to:</p>
 
               <ul>
