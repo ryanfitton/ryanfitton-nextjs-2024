@@ -6,7 +6,7 @@ import PageTitle from '@/components/PageTitle'
 import navLinks from '@/data/navLinks'
 import Link from './Link'
 import Image from './Image'
-import VideoBackgroundPlayer from 'next-video/background-player';
+import VideoBackgroundPlayer from 'next-video/background-player'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
