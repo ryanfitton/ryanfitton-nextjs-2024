@@ -20,7 +20,11 @@ export default function Home({ posts }) {
             <div className="col-span-full justify-self-center md:col-span-4 xl:col-span-3 xl:col-start-2">
               {/* Image dimensions should be 3x the size of the width/height */}
               <Image
-                src={'/static/img/bio/' + siteMetadata.author.toLowerCase().replace(/\s+/g, '') + '.jpg'}
+                src={
+                  '/static/img/bio/' +
+                  siteMetadata.author.toLowerCase().replace(/\s+/g, '') +
+                  '.jpg'
+                }
                 alt={siteMetadata.author}
                 className="rounded-full md:mt-8"
                 width={192}
@@ -28,17 +32,20 @@ export default function Home({ posts }) {
               />
             </div>
 
-            <div className="col-span-full md:col-span-8 xl:col-span-6 prose">
+            <div className="prose col-span-full md:col-span-8 xl:col-span-6">
               <h2 className="component-title component-title--main">About</h2>
               <p>
-                I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally creating
-                websites for around 10 years (along with design and print work within this time).
+                I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally
+                creating websites for around 10 years (along with design and print work within this
+                time).
               </p>
 
               <p>
                 You can email me at{' '}
                 <strong>
-                  <span className="!text-typography-default !no-underline dark:!text-typography-default-dark">ryan＠</span>
+                  <span className="!text-typography-default !no-underline dark:!text-typography-default-dark">
+                    ryan＠
+                  </span>
                   <a
                     href="https://ryanfitton.co.uk"
                     className="!text-typography-default !no-underline dark:!text-typography-default-dark"

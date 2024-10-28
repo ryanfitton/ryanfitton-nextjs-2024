@@ -6,5 +6,6 @@ Misc fixes
 //https://github.com/timlrx/pliny/blob/main/packages/pliny/src/search/KBarModal.tsx
 //Limited CSS support so need to target the div somehow to fix the z-index
 div[class*='backdrop-blur backdrop-filter'] {
-    @apply z-[3] //Above the Homepage Video header
+  //Above the Homepage Video header
+  @apply z-[3];
 }

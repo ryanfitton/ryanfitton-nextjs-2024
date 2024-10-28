@@ -51,27 +51,28 @@ export default function Policies() {
               <Link href={`http://www.aboutcookies.org/default.aspx`}>
                 changing your web browser’s privacy options
               </Link>{' '}
-              or by installing a <Link href={`http://tools.google.com/dlpage/gaoptout`}>plugin</Link> to
-              manage cookies set by Google Analytics.
+              or by installing a{' '}
+              <Link href={`http://tools.google.com/dlpage/gaoptout`}>plugin</Link> to manage cookies
+              set by Google Analytics.
             </p>
 
             <table className="border-slate-500 not-prose mt-8 w-full table-auto border-collapse border text-left">
               <thead>
                 <tr>
-                  <th className="border-secondary-100 dark:border-secondary-800 border p-5">
+                  <th className="border border-secondary-100 p-5 dark:border-secondary-800">
                     Cookies
                   </th>
-                  <th className="border-secondary-100 dark:border-secondary-800 border p-5">
+                  <th className="border border-secondary-100 p-5 dark:border-secondary-800">
                     Function
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                  <td className="border border-secondary-100 p-5 dark:border-secondary-800">
                     _ga, _ga_YLMTDYMQCC
                   </td>
-                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                  <td className="border border-secondary-100 p-5 dark:border-secondary-800">
                     These are Google Analytics cookies. They are used to determine how you arrived
                     to this site, your visit length and how often you visit this website.
                   </td>

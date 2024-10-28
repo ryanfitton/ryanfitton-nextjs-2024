@@ -52,11 +52,17 @@
         @apply text-6xl;
       }
 
-      .hero__video-wrapper {
-        @apply absolute h-full w-auto min-w-full max-w-none object-cover;
+      .hero__video {
+        &-wrapper {
+          @apply absolute h-full w-auto min-w-full max-w-none;
+        }
 
-        video {
-            @apply h-full w-full;
+        &-object {
+          @apply h-full w-full object-cover;
+        }
+
+        &-poster {
+          @apply h-full w-full object-cover;
         }
       }
     }

@@ -6,7 +6,7 @@ import PageTitle from '@/components/PageTitle'
 import navLinks from '@/data/navLinks'
 import Link from './Link'
 import Image from './Image'
-import VideoBackgroundPlayer from 'next-video/background-player'
+import { MediaController, MediaPosterImage } from 'media-chrome/react'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
@@ -64,16 +64,24 @@ export default function Header() {
               </div>
             </div>
 
-            <VideoBackgroundPlayer
-              src="/static/vid/home-header-video-15fps.webm"
-              type="video/webm"
-              autoPlay
-              loop
-              muted
-              className="hero__video-wrapper"
-              poster="/static/img/home-header-bg@1.8x.jpg"
-              blurDataURL="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
-            />
+            <MediaController className="hero__video-wrapper">
+              <video
+                slot="media"
+                src="/static/vid/home-header-video-15fps.webm"
+                preload="auto"
+                autoPlay
+                loop
+                muted
+                crossOrigin=""
+                className="hero__video-object"
+              ></video>
+              <MediaPosterImage
+                slot="poster"
+                src="/static/img/home-header-bg@1.8x.jpg"
+                placeholdersrc="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
+                className="hero__video-poster"
+              ></MediaPosterImage>
+            </MediaController>
           </div>
         ) : (
           <div className="hero hero--page">
