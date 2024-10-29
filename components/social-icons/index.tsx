@@ -1,6 +1,7 @@
 import {
   Mail,
   Github,
+  Keybase,
   Facebook,
   Youtube,
   Linkedin,
@@ -13,6 +14,7 @@ import {
 const components = {
   mail: Mail,
   github: Github,
+  keybase: Keybase,
   facebook: Facebook,
   youtube: Youtube,
   linkedin: Linkedin,
