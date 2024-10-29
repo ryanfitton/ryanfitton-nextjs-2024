@@ -136,7 +136,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="manifest" href="/static/favicons/site.webmanifest" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
 
-        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social"><!-- Mastodon author attribution verification -->
+        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social">{/* Mastodon author attribution verification */}
       </head>
 
       <body>
