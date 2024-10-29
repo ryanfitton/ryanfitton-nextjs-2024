@@ -135,6 +135,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="manifest" href="/static/favicons/site.webmanifest" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+
+        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social"><!-- Mastodon author attribution verification -->
       </head>
 
       <body>
