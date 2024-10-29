@@ -13,12 +13,13 @@ const siteMetadata = {
   email: 'ryan@ryanfitton.co.uk',
   facebook: 'https://www.facebook.com/rfitton',
   youtube: 'https://www.youtube.com/channel/UCVXmGnJsInwJicCeqaZiZmQ',
-  github: 'https://github.com/ryanfitton',
+  github: 'https://github.com/ryanfitton/',
   twitter: 'https://x.com/ryanfitton',
   instagram: 'https://www.instagram.com/ryanfittonuk/',
-  threads: 'https://www.threads.net',
-  mastodon: 'https://mastodon.social/',
+  threads: 'https://www.threads.net/@ryanfittonuk',
+  mastodon: 'https://mastodon.social/@ryanfitton',
   linkedin: 'https://uk.linkedin.com/in/rfitton',
+  keybase: 'https://keybase.io/ryanfitton',
   locale: 'en-GB',
   analytics: {
     googleAnalytics: {
