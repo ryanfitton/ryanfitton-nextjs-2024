@@ -12,7 +12,7 @@ const siteMetadata = {
   socialBanner: '/static/img/twitter-card.png',
   email: 'ryan@ryanfitton.co.uk',
   facebook: 'https://www.facebook.com/rfitton',
-  youtube: 'https://www.youtube.com/channel/UCVXmGnJsInwJicCeqaZiZmQ',
+  youtube: 'http://www.youtube.com/@Ryan.Fitton',
   github: 'https://github.com/ryanfitton/',
   twitter: 'https://x.com/ryanfitton',
   instagram: 'https://www.instagram.com/ryanfittonuk/',
