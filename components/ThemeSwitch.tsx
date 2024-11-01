@@ -43,7 +43,9 @@ const ThemeSwitch = () => {
 
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="component-navbar__theme-btn">{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</Menu.Button>
+      <Menu.Button className="component-navbar__theme-btn">
+        {resolvedTheme === 'dark' ? <Moon /> : <Sun />}
+      </Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -57,7 +59,10 @@ const ThemeSwitch = () => {
           <RadioGroup value={theme} onChange={setTheme}>
             <RadioGroup.Option value="light">
               <Menu.Item>
-                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
+                <button
+                  className="component-navbar__theme-btn--list-option"
+                  aria-label="Theme switcher"
+                >
                   <Sun />
                   Light
                 </button>
@@ -65,7 +70,10 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="dark">
               <Menu.Item>
-                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
+                <button
+                  className="component-navbar__theme-btn--list-option"
+                  aria-label="Theme switcher"
+                >
                   <Moon />
                   Dark
                 </button>
@@ -73,7 +81,10 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="system">
               <Menu.Item>
-                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
+                <button
+                  className="component-navbar__theme-btn--list-option"
+                  aria-label="Theme switcher"
+                >
                   <Monitor />
                   System
                 </button>

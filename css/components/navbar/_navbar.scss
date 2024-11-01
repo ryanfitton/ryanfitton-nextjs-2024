@@ -40,19 +40,19 @@
       .component-navbar__search-btn,
       .component-navbar__theme-btn,
       .component-navbar__menu-btn {
-        @apply h-full content-center px-3 lg:px-5 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+        @apply h-full content-center px-3 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-5;
       }
-      
+
       .component-navbar__theme-btn {
         @apply mr-5 flex items-center;
 
         &--list-option {
-            @extend .component-navbar__theme-btn;
-            @apply text-sm m-0 w-full py-3 lg:px-3 hover:bg-primary-700 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-700 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+          @extend .component-navbar__theme-btn;
+          @apply m-0 w-full py-3 text-sm hover:bg-primary-700 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-700 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-3;
 
-            svg {
-                @apply size-5 mr-3;
-            }   
+          svg {
+            @apply mr-3 size-5;
+          }
         }
       }
 
@@ -69,7 +69,7 @@
       }
 
       .component-navbar__menu-theme {
-        @apply absolute top-full right-0 z-50 bg-primary-800 dark:bg-secondary-800;
+        @apply absolute right-0 top-full z-50 bg-primary-800 dark:bg-secondary-800;
       }
     }
 
