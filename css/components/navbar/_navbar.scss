@@ -36,15 +36,23 @@
         @apply size-6;
       }
 
+      .component-navbar__links a,
+      .component-navbar__search-btn,
+      .component-navbar__theme-btn,
+      .component-navbar__menu-btn {
+        @apply h-full content-center px-3 lg:px-5 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+      }
+      
       .component-navbar__theme-btn {
         @apply mr-5 flex items-center;
 
-        & > dev {
-          @apply relative inline-block text-left;
+        &--list-option {
+            @extend .component-navbar__theme-btn;
+            @apply text-sm m-0 w-full py-3 lg:px-3 hover:bg-primary-700 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-700 dark:hover:brightness-[80%] dark:active:brightness-[85%];
 
-          & > div {
-            @applyflex items-center justify-center;
-          }
+            svg {
+                @apply size-5 mr-3;
+            }   
         }
       }
 
@@ -60,11 +68,8 @@
         @apply fixed left-0 top-0 z-10 h-full w-full transform bg-primary-600 duration-300 ease-in-out dark:bg-secondary-950 dark:opacity-[0.98];
       }
 
-      .component-navbar__links a,
-      .component-navbar__search-btn,
-      .component-navbar__theme-btn,
-      .component-navbar__menu-btn {
-        @apply content-center px-3 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-5;
+      .component-navbar__menu-theme {
+        @apply absolute top-full right-0 z-50 bg-primary-800 dark:bg-secondary-800;
       }
     }
 

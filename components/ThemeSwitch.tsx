@@ -42,10 +42,8 @@ const ThemeSwitch = () => {
   useEffect(() => setMounted(true), [])
 
   return (
-    <Menu as="div" className="relative inline-block text-left">
-      <div>
-        <Menu.Button>{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</Menu.Button>
-      </div>
+    <Menu as="div" className="relative">
+      <Menu.Button className="component-navbar__theme-btn">{resolvedTheme === 'dark' ? <Moon /> : <Sun />}</Menu.Button>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -55,11 +53,11 @@ const ThemeSwitch = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-50 mt-2 w-32 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-gray-800">
+        <Menu.Items className="component-navbar__menu-theme">
           <RadioGroup value={theme} onChange={setTheme}>
             <RadioGroup.Option value="light">
               <Menu.Item>
-                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
                   <Sun />
                   Light
                 </button>
@@ -67,7 +65,7 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="dark">
               <Menu.Item>
-                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
                   <Moon />
                   Dark
                 </button>
@@ -75,7 +73,7 @@ const ThemeSwitch = () => {
             </RadioGroup.Option>
             <RadioGroup.Option value="system">
               <Menu.Item>
-                <button className="component-navbar__theme-btn" aria-label="Theme switcher">
+                <button className="component-navbar__theme-btn--list-option" aria-label="Theme switcher">
                   <Monitor />
                   System
                 </button>
