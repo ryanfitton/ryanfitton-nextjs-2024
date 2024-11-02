@@ -18,6 +18,7 @@ const siteMetadata = {
   instagram: 'https://www.instagram.com/ryanfittonuk/',
   threads: 'https://www.threads.net/@ryanfittonuk',
   mastodon: 'https://mastodon.social/@ryanfitton',
+  bluesky: 'https://bsky.app/profile/ryanfitton.bsky.social',
   linkedin: 'https://uk.linkedin.com/in/rfitton',
   keybase: 'https://keybase.io/ryanfitton',
   locale: 'en-GB',

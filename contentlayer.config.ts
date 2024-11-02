@@ -157,6 +157,7 @@ export const Authors = defineDocumentType(() => ({
     instagram: { type: 'string' },
     threads: { type: 'string' },
     mastodon: { type: 'string' },
+    bluesky: { type: 'string' },
     keybase: { type: 'string' },
     github: { type: 'string' },
     linkedin: { type: 'string' },

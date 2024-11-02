@@ -16,6 +16,7 @@ export default function Footer() {
             <SocialIcon kind="facebook" href={siteMetadata.facebook} />
             <SocialIcon kind="youtube" href={siteMetadata.youtube} />
             <SocialIcon kind="mastodon" href={siteMetadata.mastodon} />
+            <SocialIcon kind="bluesky" href={siteMetadata.bluesky} />
             <SocialIcon kind="threads" href={siteMetadata.threads} />
             <SocialIcon kind="instagram" href={siteMetadata.instagram} />
           </div>

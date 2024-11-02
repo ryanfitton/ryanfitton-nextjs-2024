@@ -22,6 +22,7 @@ export default function AuthorLayout({ children, content }: Props) {
     facebook,
     youtube,
     mastodon,
+    bluesky,
     threads,
     instagram,
   } = content
@@ -59,6 +60,7 @@ export default function AuthorLayout({ children, content }: Props) {
                   <SocialIcon kind="facebook" href={facebook} />
                   <SocialIcon kind="youtube" href={youtube} />
                   <SocialIcon kind="mastodon" href={mastodon} />
+                  <SocialIcon kind="bluesky" href={bluesky} />
                   <SocialIcon kind="threads" href={threads} />
                   <SocialIcon kind="instagram" href={instagram} />
                 </div>
