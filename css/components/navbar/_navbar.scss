@@ -75,10 +75,10 @@
 
     &--icons {
       .component-navbar__links {
-        @apply mx-2 flex justify-center space-x-4 overflow-x-auto sm:space-x-6 md:flex-row;
+        @apply mx-2 mb-4 sm:mb-2 flex flex-wrap justify-center space-x-4 overflow-x-auto sm:space-x-6 md:flex-row;
 
         a {
-          @apply block content-center p-2;
+          @apply block content-center p-2 flex justify-center basis-1/4 sm:basis-1/6 md:basis-0;
           @apply m-0 #{!important};
         }
 
