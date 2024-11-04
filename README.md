@@ -290,6 +290,8 @@ Still do
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk
 Move Portfolio items out of Blog into their own section
+If blog, use title from page in header instead of url
+Link to blog external resource error
 Disqus Commenting working
 SEO working?
 Analytics working?

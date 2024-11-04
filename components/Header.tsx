@@ -16,11 +16,20 @@ export default function Header() {
   const pathnameSplit = pathname.split('/')
   const basePath = pathnameSplit[1]
 
+  //Default: Get the title and sub title from the URL
   const title = basePath.replace(/-/g, ' ').replace(/(?:^|\s)\S/g, (a) => a.toUpperCase())
   const subTitle = pathnameSplit[2]
     ? pathnameSplit[2].replace(/-/g, ' ').replace(/(?:^|\s)\S/g, (a) => a.toUpperCase())
     : ''
 
+  //If this is a Blog page, use the title from the Blog content
+  if (pathname.startsWith('/blog/')) {
+    //TODO use post title here instead of from the URL
+    console.log(pathname)
+  }
+
+
+  //Convert headings to uppercase
   const titleUpercase = basePath.toUpperCase()
   const subTitleUpperCase = subTitle.toUpperCase()
 
