@@ -1,0 +1,18 @@
+---
+layout: PostLayout
+title: Creating an always on Status Board
+authors: ['Ryan Fitton']
+date: '2014-04-12'
+tags: ['Uncategorized']
+draft: false
+summary: 'I have wanted my own always-on Status Board, ever since I installed Panic&amp;#8217;s Status Board app on my iPad I decided it would be better to have a dedicated device to display the information. Buying a new iPad just as a Status Board would be overkill, however I did have a spare cheap 7&amp;#8243; Android [&amp;hellip;]'
+---
+
+<p>I have wanted my own always-on Status Board, ever since I installed Panic&#8217;s <a href="https://panic.com/statusboard/">Status Board app</a> on my iPad I decided it would be better to have a dedicated device to display the information.</p>
+<p>Buying a new iPad just as a Status Board would be overkill, however I did have a spare cheap 7&#8243; Android tablet which I bought a couple of years ago.</p>
+<p>I set out to find a frame for the tablet. I gutted the tablet out from it&#8217;s original casing and removed the touch screen, with only the internal circuitry and screen left I placed the components into an unused digital photo frame case, though the plastic frame had to sanded down with a <a href="http://www.amazon.co.uk/gp/product/B0078LENZC/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B0078LENZC&amp;linkCode=as2&amp;tag=ryanfittoncou-21">Dremel</a> so the screen would fit.</p>
+<p>Once the components were installed into the photo frame casing I attached a <a href="http://www.amazon.co.uk/gp/product/B0064GZAIQ/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B0064GZAIQ&amp;linkCode=as2&amp;tag=ryanfittoncou-21">USB OTG</a> cable to the Micro USB port so I could use keyboards and mice. These would only be needed when setting up the device because the touch screen has been removed.</p>
+<p>The Status Board itself is running a PHP web app built using Twitter Bootstrap and LESS. I wrote custom PHP functions to retrieve information such as time, RSS feeds and weather data. The software runs an AJAX call every 9 seconds to refresh the screen with up-to-date data.</p>
+<p>Because I was using a cheap Android Tablet, it meant the screen was a low resolution. It doesn&#8217;t look great but still functions well.</p>
+<p>I&#8217;m using an Android app called <a href="https://play.google.com/store/apps/details?id=com.painless.pc">Power Toggles</a> which allows me to lock the screen rotation and set the display to always-on.</p>
+<p><img loading="lazy" class="alignnone size-large wp-image-767" src="https://ryanfitton.co.uk/wp-content/uploads/2014/04/IMG_20140412_150648-1024x768.jpg" alt="Status Board Android Tablet" width="1024" height="768" /></p>
