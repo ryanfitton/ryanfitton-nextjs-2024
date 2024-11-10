@@ -8,16 +8,64 @@ draft: false
 summary: 'For quite some time I have found the need to have a small dedicated computer to act as a file and print server for the multiple computers I have running at home. I did research of the best possible hardware for the tasks which I needed the server to perform. Since the server will be [&amp;hellip;]'
 ---
 
-<p>For quite some time I have found the need to have a small dedicated computer to act as a file and print server for the multiple computers I have running at home.</p>
-<p>I did research of the best possible hardware for the tasks which I needed the server to perform. Since the server will be running 24/7 I needed it be reliable, quite, small on power and not to produce too much heat.</p>
-<p>After careful consideration I purchased these components which I though would be best suited for my setup:</p>
+<p>
+  For quite some time I have found the need to have a small dedicated computer to act as a file and
+  print server for the multiple computers I have running at home.
+</p>
+<p>
+  I did research of the best possible hardware for the tasks which I needed the server to perform.
+  Since the server will be running 24/7 I needed it be reliable, quite, small on power and not to
+  produce too much heat.
+</p>
+<p>
+  After careful consideration I purchased these components which I though would be best suited for
+  my setup:
+</p>
 <ul>
-<li><a href="http://www.amazon.co.uk/gp/product/B0036CSMSG/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B0036CSMSG&amp;linkCode=as2&amp;tag=ryanfittoncou-21">Antec ISK 300-150 Mini-ITX Case</a></li>
-<li><a href="http://www.amazon.co.uk/gp/product/B00336YCCU/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B00336YCCU&amp;linkCode=as2&amp;tag=ryanfittoncou-21">Intel D410PT Desktop Motherboard with Intel Atom (D410 1.66GHz)</a></li>
-<li><a href="http://www.amazon.co.uk/gp/product/B000Y8QNMW/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B000Y8QNMW&amp;linkCode=as2&amp;tag=ryanfittoncou-21">120GB WD 2.5 SATA Scorpio Blue HDD</a></li>
-<li><a href="http://www.amazon.co.uk/gp/product/B00160P77Y/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B00160P77Y&amp;linkCode=as2&amp;tag=ryanfittoncou-21">Corsair Memory XMS2 2GB DDR2 PC2-6400 (800) Dual Channel</a></li>
+  <li>
+    <a href="http://www.amazon.co.uk/gp/product/B0036CSMSG/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B0036CSMSG&amp;linkCode=as2&amp;tag=ryanfittoncou-21">
+      Antec ISK 300-150 Mini-ITX Case
+    </a>
+  </li>
+  <li>
+    <a href="http://www.amazon.co.uk/gp/product/B00336YCCU/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B00336YCCU&amp;linkCode=as2&amp;tag=ryanfittoncou-21">
+      Intel D410PT Desktop Motherboard with Intel Atom (D410 1.66GHz)
+    </a>
+  </li>
+  <li>
+    <a href="http://www.amazon.co.uk/gp/product/B000Y8QNMW/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B000Y8QNMW&amp;linkCode=as2&amp;tag=ryanfittoncou-21">
+      120GB WD 2.5 SATA Scorpio Blue HDD
+    </a>
+  </li>
+  <li>
+    <a href="http://www.amazon.co.uk/gp/product/B00160P77Y/ref=as_li_ss_tl?ie=UTF8&amp;camp=1634&amp;creative=19450&amp;creativeASIN=B00160P77Y&amp;linkCode=as2&amp;tag=ryanfittoncou-21">
+      Corsair Memory XMS2 2GB DDR2 PC2-6400 (800) Dual Channel
+    </a>
+  </li>
 </ul>
-<p>Once I managed to get everything built I decided to install <a href="http://releases.ubuntu.com/12.04/">Ubuntu Server 12.04 LTS</a> since it was free and ran with a small footprint which would allow me to get more performance from the Atom processor and the limited amount of RAM. I didn&#8217;t bother installing the GUI (Graphical User Interface) since I would be running the server as a headless device, although if I did need to get access to the terminal I would SSH into it from another computer using a free program called <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>.</p>
-<p>I then installed the required software. Samba and Cups were installed to handle file and print serving. I also decided to install <a href="http://mediatomb.cc/">Mediatomb</a> for media streaming to my UPnP devices, <a href="https://security.appspot.com/vsftpd.html">vsftpd</a> (Very Secure FTP) was installed for FTP file transfer and Apache was also installed so I could host an internal website it required.</p>
-<p>Everything went extremely smoothly to get the server up and running. I now have a network server which I can use to easily share files and printers around the house. The 120GB Hard Drive may need upgrading in the future, although I find the Atom processor and 2GB RAM handle all my requirements without any issues.</p>
-<p>If anyone is thinking of setting up a server for then home, then I would highly encourage you to take the step and get involved.</p>
+<p>
+  Once I managed to get everything built I decided to install{' '}
+  <a href="http://releases.ubuntu.com/12.04/">Ubuntu Server 12.04 LTS</a> since it was free and ran
+  with a small footprint which would allow me to get more performance from the Atom processor and
+  the limited amount of RAM. I didn&#8217;t bother installing the GUI (Graphical User Interface)
+  since I would be running the server as a headless device, although if I did need to get access to
+  the terminal I would SSH into it from another computer using a free program called{' '}
+  <a href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">PuTTY</a>.
+</p>
+<p>
+  I then installed the required software. Samba and Cups were installed to handle file and print
+  serving. I also decided to install <a href="http://mediatomb.cc/">Mediatomb</a> for media
+  streaming to my UPnP devices, <a href="https://security.appspot.com/vsftpd.html">vsftpd</a> (Very
+  Secure FTP) was installed for FTP file transfer and Apache was also installed so I could host an
+  internal website it required.
+</p>
+<p>
+  Everything went extremely smoothly to get the server up and running. I now have a network server
+  which I can use to easily share files and printers around the house. The 120GB Hard Drive may need
+  upgrading in the future, although I find the Atom processor and 2GB RAM handle all my requirements
+  without any issues.
+</p>
+<p>
+  If anyone is thinking of setting up a server for then home, then I would highly encourage you to
+  take the step and get involved.
+</p>
