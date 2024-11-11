@@ -160,7 +160,7 @@ export default function ListLayout({
 
                       <ul className="component-posts-tag-list component-posts-tag-list--article">
                         {tags.map((tag) => (
-                          <li>
+                          <li key={tag}>
                             <Tag key={tag} text={tag} />
                           </li>
                         ))}
