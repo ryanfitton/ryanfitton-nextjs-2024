@@ -191,7 +191,6 @@ export default makeSource({
           content: rehypeAutolinkHeadingsIcon,
         },
       ],
-      rehypeKatex,
       [rehypeCitation, { path: path.join(root, 'data'), linkCitations: true }],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
       rehypePresetMinify,
