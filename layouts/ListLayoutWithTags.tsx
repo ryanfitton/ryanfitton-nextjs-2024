@@ -142,7 +142,11 @@ export default function ListLayoutWithTags({
                       </h2>
 
                       <ul className="component-posts-tag-list component-posts-tag-list--article">
-                        {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                        {tags.map((tag) => (
+                          <li>
+                            <Tag key={tag} text={tag} />
+                          </li>
+                        ))}
                       </ul>
 
                       <div className="component-posts-article__excerpt">{summary}</div>

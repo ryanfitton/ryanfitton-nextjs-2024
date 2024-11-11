@@ -97,7 +97,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <ul className="component-posts-tag-list component-posts-tag-list--article">
                   <li>Tagged as:</li>
                   {tags.map((tag) => (
-                    <Tag key={tag} text={tag} />
+                    <li>
+                      <Tag key={tag} text={tag} />
+                    </li>
                   ))}
                 </ul>
               )}
