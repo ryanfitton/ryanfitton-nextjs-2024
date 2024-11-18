@@ -1,0 +1,65 @@
+---
+layout: PostLayout
+title: Using Speedtest-CLI to record speed tests to CSV via CRON
+authors: ['Ryan Fitton']
+date: '2019-02-04'
+tags: ['Code Snippets']
+draft: false
+summary: 'One of the most common speed testing services for Internet connections is Ookla&amp;#8217;s Speedtest, and more often than not your ISP will either throttle your connection, or their network will slow down at peak times. Because of this, I wanted to make sure I am receiving the full connection speed which I am paying for. [&amp;hellip;]'
+---
+
+<p>One of the most common speed testing services for Internet connections is <a href="https://www.speedtest.net/">Ookla&#8217;s Speedtest</a>, and more often than not your ISP will either throttle your connection, or their network will slow down at peak times.</p>
+<p>Because of this, I wanted to make sure I am receiving the full connection speed which I am paying for.</p>
+<p>I went looking for a solution and immediatly came across <a href="https://github.com/sivel/speedtest-cli">Speedtest-CLI</a> by Matt Martz. This repo allows you to perform Speedtests through a command line interface.</p>
+<p>But I was still looking for some sort of tool which could convert these results to a CSV file, so a new row can be appended to the file each time a test was run. Again, I went searching and came accross the fantastic <a href="https://github.com/HenrikBengtsson/speedtest-cli-extras">Speedtest-CLI-Extras</a> project by Henrik Bengtsson. This repo allows you to run the Speedtest CLI command but export the results to a CSV file. This will become useful to build graphs and check results over time.<br />&nbsp;</p>
+<h4>Notes</h4>
+<p>So let&#8217;s start. The installation process is painless, you will require Python install (python-pip). These installation notes were tested on Ubuntu 18.04.</p>
+<p>These instructions can be found in my Github repo <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron">here</a>.<br />&nbsp;</p>
+<h4>Installation</h4>
+<ol>
+<li>
+        Switch to the <code class="language-markup">root</code> user:</p>
+<pre class="language-markup"><code class="language-markup">sudo su</code></pre>
+</li>
+<li>
+        Install <code class="language-markup">speedtest-cli</code>, run each line separately:</p>
+<pre class="language-markup"><code class="language-markup">sudo apt-get install python-pip
+sudo pip install speedtest-cli</code></pre>
+</li>
+<li>
+        Download the <code class="language-markup">speedtest-csv</code> script. You will also find a <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv">copy</a> of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.</p>
+<pre class="language-markup"><code class="language-markup">sudo wget -O speedtest-csv https://raw.githubusercontent.com/HenrikBengtsson/speedtest-cli-extras/master/bin/speedtest-csv</code></pre>
+</li>
+<li>
+        Now give the file execute permissions:</p>
+<pre class="language-markup"><code class="language-markup">sudo chmod +x speedtest-csv</code></pre>
+</li>
+<li>
+        You will need to edit a line in the file to so that it can be run from CRON:</p>
+<pre class="language-markup"><code class="language-markup">sudo nano speedtest-csv</code></pre>
+<p>        Find the line <code class="language-markup">cmd=&quot;speedtest-cli $opts&quot;</code> and add <code class="language-markup">/usr/local/bin/</code> before it so it reads:</p>
+<pre class="language-markup"><code class="language-markup">cmd=&quot;/usr/local/bin/speedtest-cli $opts&quot;</code></pre>
+<p>        save the file and exit.
+    </li>
+<li>
+        Next move <code class="language-markup">speedtest-csv</code> to <code class="language-markup">/usr/bin/</code>:</p>
+<pre class="language-markup"><code class="language-markup">sudo mv speedtest-csv /usr/bin/</code></pre>
+</li>
+<li>
+        Create a folder for where your .csv file will be saved, I am saving mine within <code class="language-markup">/cron/speedtest/</code>, but change this for whatever you&#8217;d like:</p>
+<pre class="language-markup"><code class="language-markup">sudo mkdir -p /cron/speedtest</code></pre>
+</li>
+<li>
+        Generate the CSV header:</p>
+<pre class="language-markup"><code class="language-markup">sudo speedtest-csv --header &gt;&gt; /cron/speedtest/speedtest.csv</code></pre>
+</li>
+<li>
+        Add to the CRON:</p>
+<pre class="language-markup"><code class="language-markup">sudo crontab -e</code></pre>
+</li>
+<li>
+        Add the following line to the end of the file, this example is daily, ever four hours:</p>
+<pre class="language-markup"><code class="language-markup">0 */4 * * * speedtest-csv &gt;&gt; /cron/speedtest/speedtest.csv</code></pre>
+<p>        save the file and exit.
+    </li>
+</ol>

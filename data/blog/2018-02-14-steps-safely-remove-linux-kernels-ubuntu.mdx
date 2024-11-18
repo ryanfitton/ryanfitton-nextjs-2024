@@ -1,0 +1,27 @@
+---
+layout: PostLayout
+title: Steps to safely remove Linux kernels (Ubuntu)
+authors: ['Ryan Fitton']
+date: '2018-02-14'
+tags: ['Code Snippets']
+draft: false
+summary: 'Note: Please understand, these instructions can make your system non-bootable. If you&amp;#8217;re unsure, do not continue. If you&amp;#8217;re trying to update the kernel and low/empty disk space errors are shown, it&amp;#8217;s probably because the /boot/ directory is full. Use this command to see the available space of /boot/: sudo df -h Now check the kernel [&amp;hellip;]'
+---
+
+<p><strong>Note:</strong> Please understand, these instructions can make your system non-bootable. If you&#8217;re unsure, do not continue.</p>
+<p>If you&#8217;re trying to update the kernel and low/empty disk space errors are shown, it&#8217;s probably because the /boot/ directory is full.</p>
+<p>Use this command to see the available space of /boot/:</p>
+<pre class="language-bash"><code class="language-bash">sudo df -h</code></pre>
+<p>Now check the kernel version you&#8217;re using. Make a note so you don&#8217;t delete your current kernel files:</p>
+<pre class="language-bash"><code class="language-bash">sudo uname -r</code></pre>
+<p>View all of the available kernels on your system:</p>
+<pre class="language-bash"><code class="language-bash">dpkg --list | grep linux-image</code></pre>
+<p>With this list, make commands to delete each kernel. Remember not to include the kernel you&#8217;re using, run each line separately, replacing the version numbers with your kernel versions, e.g. x.x.x-xx to 4.4.0-31:</p>
+<pre class="language-bash"><code class="language-bash">sudo update-initramfs -d -k x.x.x-xx-generic
+
+sudo apt-get purge linux-image-x.x.x-xx-generic
+
+sudo apt-get purge linux-image-extra-x.x.x-xx-generic</code></pre>
+<p>Now update the grub2 boot loader:</p>
+<pre class="language-bash"><code class="language-bash">sudo update-grub2</code></pre>
+<p>These commands have been tested on Ubuntu 16.04. More information can be found here: <a href="https://help.ubuntu.com/community/RemoveOldKernels">https://help.ubuntu.com/community/RemoveOldKernels</a></p>

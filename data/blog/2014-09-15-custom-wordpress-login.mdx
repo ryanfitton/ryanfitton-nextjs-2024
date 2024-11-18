@@ -1,0 +1,15 @@
+---
+layout: PostLayout
+title: Custom WordPress login
+authors: ['Ryan Fitton']
+date: '2014-09-15'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'WordPress has a wide range of options to change the look and feel of your WordPress setup. One that most people overlook is the login box, accessible at http://yourdomain.com/wp-admin/. Using the code below, you will be able to apply a custom CSS stylesheet to the login page. Firstly create your stylesheet. You could name&nbsp;the file [&amp;hellip;]'
+---
+
+<p>WordPress has a wide range of options to change the look and feel of your WordPress setup. One that most people overlook is the login box, accessible at http://yourdomain.com/wp-admin/.</p>
+<p>Using the code below, you will be able to apply a custom CSS stylesheet to the login page.</p>
+<p>Firstly create your stylesheet. You could name the file &#8216;custom-login.css&#8217; and save it within your theme folder with your standard theme stylesheet.</p>
+<p><script src="https://gist.github.com/ryanfitton/5adec5ad5bf1a753cde8.js"></script>You will need to add code into your functions.php so WordPress will know to load your custom-login.css document.<script src="https://gist.github.com/ryanfitton/67ac374a35c6450cb84a.js"></script></p>
+<p>Once done, you should now see your CSS stylesheet applied when accessing the login page. If you need any more help, there is a great article on the WordPress Codex <a href="http://codex.wordpress.org/Customizing_the_Login_Form">here</a>.</p>

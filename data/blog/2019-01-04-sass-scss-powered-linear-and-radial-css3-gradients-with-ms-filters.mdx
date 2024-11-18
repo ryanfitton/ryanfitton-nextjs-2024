@@ -1,0 +1,367 @@
+---
+layout: PostLayout
+title: Sass (SCSS) powered Linear and Radial CSS3 gradients with MS Filters
+authors: ['Ryan Fitton']
+date: '2019-01-04'
+tags: ['Code Snippets']
+draft: false
+summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wants to have some sort of backward compatibility when using CSS3 gradients with Internet Explorer 7+. &amp;nbsp; How does this work? Sass mixins and functions helps a lot with the &amp;#8216;heavy-lifting&amp;#8217; and colour calculations. Let me explain the setup for Linear and Radial [&amp;hellip;]'
+---
+
+<p>I thought i&#8217;d share this code, it may be help anyone who wants to have some sort of backward compatibility when using CSS3 gradients with Internet Explorer 7+.<br />
+<br />&nbsp;</p>
+<h4>How does this work?</h4>
+<p>Sass mixins and functions helps a lot with the &#8216;heavy-lifting&#8217; and colour calculations. Let me explain the setup for Linear and Radial gradients below.</p>
+<p><strong>Linear Graidents</strong> &#8211; For Linear gradients there are five parameters:</p>
+<ul>
+<li>Fallback colour &#8211; <em>Value to be supplied in RGBa.</em></li>
+<li>Direction &#8211; <em>Default is &#8216;false&#8217; but can be supplied as &#8216;to right&#8217;, &#8216;to left&#8217;, etc.</em></li>
+<li>IE Filter Start Colour &#8211; <em>The IE filter can only use a start and end colour, this is the start colour and can be supplied in RGBa.</em></li>
+<li>IE Filter End Colour &#8211; <em>This is the end colour, an can also be supplied in RGBa.</em></li>
+<li>Colour Stops (Comma separated list of colours) &#8211; <em>These can be supplied in RGBa.</em></li>
+</ul>
+<p><strong>Radial Graidents</strong> &#8211; For Radial gradients there are just two parameters:</p>
+<ul>
+<li>Fallback colour &#8211; <em>Value to be supplied in HEX only, as the MS filter does not accept colour codes. This fallback colour is only used as a background colour.</em></li>
+<li>Colour Stops (Comma separated list of colours) &#8211; <em>These can be supplied in RGBa.</em></li>
+</ul>
+<p>The mixins then take care of creating the gradients by using the Sass functions and other complimentary mixins.<br />
+<br />&nbsp;</p>
+<h4>Demo</h4>
+<p>I have uploaded the demo to CodePen, you can visit it <a href="https://codepen.io/ryanfitton/pen/ebVaJK">here</a>. An embed is below:</p>
+<p data-height="750" data-theme-id="536" data-slug-hash="ebVaJK" data-default-tab="result" data-user="ryanfitton" data-pen-title="Sass (SCSS) powered Linear and Radial CSS3 gradients with MS Filters" class="codepen">See the Pen <a href="https://codepen.io/ryanfitton/pen/ebVaJK/">Sass (SCSS) powered Linear and Radial CSS3 gradients with MS Filters</a> by Ryan Fitton (<a href="https://codepen.io/ryanfitton">@ryanfitton</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p><script async src="https://static.codepen.io/assets/embed/ei.js"></script><br />
+<br />&nbsp;</p>
+<h4>Mixin Examples</h4>
+<h5>Linear gradient</h5>
+<p>Once you have the Mixin and Functions code ready, you can specify a Linear Gradient like this:</p>
+<pre class="language-scss"><code class="language-scss">//Green linear gradient
+&amp;.green-linear {
+    /*
+        Notes:
+
+        Fallback color:         rgba(#78BA00, 1)
+        Direction:              to right
+        IE Filter Start Color:  rgba(#78BA00, 1)
+        IE Filter End Color:    rgba(#ffffff, 1)
+        Colour Stops:           rgba(#78BA00, 1), rgba(#ffffff, 1)
+    */
+    @include custom_linear-gradient(
+        rgba(#78BA00, 1),       //Fallback color
+        to right,               //Direction
+        rgba(#78BA00, 1),       //IE Filter Start Color
+        rgba(#ffffff, 1),       //IE Filter End Color
+
+        //Colour Stops
+        rgba(#78BA00, 1), rgba(#ffffff, 1)
+    );
+}</code></pre>
+<h5>Radial gradient</h5>
+<p>Once you have the Mixin and Functions code ready, you can specify a Radial Gradient like this:</p>
+<pre class="language-scss"><code class="language-scss">//Orange radial gradient
+&amp;.orange-radial {
+    /*
+        Notes:
+
+        Fallback color:         #FF8010 - This fallback colour must be a Hex value.
+        Colour Stops:           rgba(#FF8010, 0.7), rgba(#FF8010, 0.72), rgba(#FF8010, 0.74), rgba(#FF8010, 0.85), rgba(#FF8010, 1)
+    */
+    @include custom_radial-gradient(
+        $orange,                //Fallback color - Must be Hex value for IE filter
+
+        //Colour Stops
+        rgba(#FF8010, 1), rgba(#FF8010, 0.6), rgba(#FF8010, 0.2), rgba(#FF8010, 0), rgba(#FF8010, 0)
+    );
+}</code></pre>
+<p>&nbsp;</p>
+<h4>The full code</h4>
+<h5>Sass Functions:</h5>
+<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+    Functions for Gradients
+---------------------------------------------------------------------*/
+
+    /*
+        Convert to IE Hex String (ie-hex-str)
+    */
+    @function custom_ieHexStr($value) {
+        
+        //Default variables
+        $result: null;
+        
+        //Convert $value to IE Hex String
+        $result: ie-hex-str($value);
+        
+        //Return the result
+        @return $result;
+        
+    }
+    
+    
+    
+    /*
+        Convert angle
+        @param {Number} $value - Value to convert
+        @param {String} $unit - Unit to convert to
+        @return {Number} Converted angle
+    */
+    @function custom_convert-angle($value, $unit) {
+        $convertable-units:deg grad turn rad;
+        $conversion-factors:1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+
+        @if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+            @return $value
+            / nth($conversion-factors, index($convertable-units, unit($value)))
+            * nth($conversion-factors, index($convertable-units, $unit));
+        }
+
+        @warn &quot;Cannot convert `#{unit($value)}` to `#{$unit}`.&quot;;
+    }
+
+
+
+    /*
+        Test if `$value` is an angle
+        @param {*} $value - Value to test
+        @return {Bool}
+    */
+    @function custom_is-direction($value) {
+        $is-direction:index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+        $is-angle:type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+        @return $is-direction or $is-angle;
+    }
+
+
+
+    /*
+        Convert a direction to legacy syntax
+        @param {Keyword | Angle} $value - Value to convert
+        @require {function} custom_is-direction
+        @require {function} custom_convert-angle
+    */
+    @function custom_legacy-direction($value) {
+        @if custom_is-direction($value) == false {
+            @warn &quot;Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction&quot;;
+        }
+
+        $conversion-map: ( 
+            to top          : bottom,
+            to top right    : bottom left,
+            to right top    : left bottom,
+            to right        : left,
+            to bottom right : top left,
+            to right bottom : left top,
+            to bottom       : top,
+            to bottom left  : top right,
+            to left bottom  : right top,
+            to left         : right,
+            to left top     : right bottom,
+            to top left     : bottom right
+        );
+
+        @if map-has-key($conversion-map, $value) {
+            @return map-get($conversion-map, $value);
+        }
+
+        @return 90deg - custom_convert-angle($value, 'deg');
+    }</code></pre>
+<h5>Sass Mixins:</h5>
+<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+    Mixins for Gradients 
+---------------------------------------------------------------------*/
+
+    /*
+        Linear Gradient
+
+        Mixin printing a linear-gradient as well as a plain color fallback and the `-webkit-` prefixed declaration
+        @param {String} $color-fallback - Fallback color
+        @param {String | List | Angle} $direction - Linear gradient direction
+        @param {Color} $ie-gradient-color-start - The IE gradient filter start color.
+        @param {Color} $ie-gradient-color-end - The IE gradient filter end color.
+        @param {Arglist} $color-stops - List of color-stops composing the gradient. Should be in an RGBa format.
+    */
+    @mixin custom_linear-gradient($color-fallback, $direction, $ie-gradient-color-start, $ie-gradient-color-end, $color-stops...) {
+        
+        @if custom_is-direction($direction) == false {
+            //$color-stops:($direction, $color-stops); - Not required, this causes errors with the IE gradient filters
+            $direction:180deg; //Default direction is vertical
+        }
+
+        /***** Background colours *****/
+            //Fallback colour
+            /*
+                Disabled as all modern browsers should use 'Vendor Prefixes', or the standard version. IE 8 to IE9 will use the filters. Note: IE9 will used this as it does not support CSS3 'linear-gradients, this is the reason why this has been disabled.
+                
+                By not enabling this, IE9 will flicker on dropdown tabs with no dropdown menus
+            */
+            background:$color-fallback;
+
+            //Vendor prefixes
+            background:-moz-linear-gradient(custom_legacy-direction($direction), $color-stops);        //FireFox 3.5
+            background:-webkit-linear-gradient(custom_legacy-direction($direction), $color-stops);     //Chrome, Safari, newer versions of Opera, almost all iOS browsers (including Firefox for iOS)
+            background:-ms-linear-gradient(custom_legacy-direction($direction), $color-stops);         //Internet Explorer 10 to 11
+
+            //All modern browsers
+            background: linear-gradient($direction, $color-stops);
+
+        /***** Filters for IE8 and IE9 *****/
+            //Colours for the IE filter gradients - Convert to Internet Explorer Hex String
+            $ieGradientStartColor: custom_ieHexStr( $ie-gradient-color-start );
+            $ieGradientLastColor: custom_ieHexStr( $ie-gradient-color-end );
+        
+            //No longer used:
+                //Find the first colour in the '$color-stops' ArgList
+                //$ieGradientStartColor: custom_ieHexStr( nth($color-stops,1) );
+
+                //Find the last colour in the '$color-stops' ArgList
+                //$ieGradientLastColor: custom_ieHexStr( nth($color-stops,length($color-stops)) );
+
+            //Filters for IE8 and IE9 - These will be overlayed over 'background'. They will also prevent 'border-radius' corners from appearing
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ieGradientStartColor}, endColorstr=#{$ieGradientLastColor},GradientType=0);
+            -ms-filter: &quot;progid:DXImageTransform.Microsoft.gradient(startColorstr=#{$ieGradientStartColor}, endColorstr=#{$ieGradientLastColor},GradientType=0)&quot;;
+    }
+
+
+
+    /*
+        Radial Gradient
+
+        Mixin printing a radial-gradient as well as a plain color fallback
+        This will work in most modern browsers and IE11+
+        There is some filters setup for IE8 and IE9, they dont produce the best result, but its better than nothing!
+        @param {String} $color-fallback - Fallback color
+        @param {Arglist} $color-stops - List of color-stops composing the gradient
+    */
+    @mixin custom_radial-gradient($color-fallback, $color-stops...) {
+        background:$color-fallback;                           //Default background, this is used by the IE filter
+        //background:nth($color-stops,length($color-stops));  //Not used: Use the last 'color-stop' for the IE filter instead
+        
+        background:radial-gradient(circle, $color-stops);
+        
+        //Filters for IE8 and IE9
+        filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65, finishopacity=100, style=2);
+        -ms-filter: &quot;progid:DXImageTransform.Microsoft.Alpha(opacity=65, finishopacity=100, style=2)&quot;;
+    }</code></pre>
+<h5>Sass:</h5>
+<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+    Sass (SCSS) code
+---------------------------------------------------------------------*/
+
+    /* Colours */
+    $green:       #78BA00;
+    $lightGreen:  lighten($green, 75%);
+    
+    $blue:        #29B1FE;
+    $lightBlue:   lighten($blue, 25%);
+    
+    $red:         #ea4848;
+    $orange:      #FF8010;
+
+
+
+    /* Graidents */
+    .gradient {
+        //On-screen styling
+        width: 400px;
+        height: 400px;
+        margin: 20px;
+        float:left;
+
+
+        //Blue linear gradient
+        &amp;.blue-linear {
+            /*
+                Notes:
+                
+                Fallback color:         rgba($blue, 1)
+                Direction:              false
+                IE Filter Start Color:  rgba($blue, 1)
+                IE Filter End Color:    rgba($lightBlue, 1)
+                Colour Stops:           rgba($blue, 1), rgba($lightBlue, 1)
+            */
+            @include custom_linear-gradient(
+                rgba($blue, 1),         //Fallback color
+                false,                  //Direction
+                rgba($blue, 1),         //IE Filter Start Color
+                rgba($lightBlue, 1),    //IE Filter End Color
+                
+                //Colour Stops
+                rgba($blue, 1), rgba($lightBlue, 1)
+            );
+        }
+        
+        
+        //Green linear gradient
+        &amp;.green-linear {
+            /*
+                Notes:
+                
+                Fallback color:         rgba($green, 1)
+                Direction:              to right
+                IE Filter Start Color:  rgba($green, 1)
+                IE Filter End Color:    rgba($lightGreen, 1)
+                Colour Stops:           rgba($green, 1), rgba($lightGreen, 1)
+            */
+            @include custom_linear-gradient(
+                rgba($green, 1),        //Fallback color
+                to right,               //Direction
+                rgba($green, 1),        //IE Filter Start Color
+                rgba($lightGreen, 1),   //IE Filter End Color
+                
+                //Colour Stops
+                rgba($green, 1), rgba($lightGreen, 1)
+            );
+        }
+
+
+        //Red radial gradient
+        &amp;.red-radial {
+            /*
+                Notes:
+                
+                Fallback color:         $red - This fallback colour must be a Hex value.
+                Colour Stops:           rgba($red, 0.7), rgba($red, 0.72), rgba($red, 0.74), rgba($red, 0.85), rgba($red, 1)
+            */
+            @include custom_radial-gradient(
+                $red,                   //Fallback color - Must be Hex value for IE filter
+                
+                //Colour Stops
+                rgba($red, 0.2), rgba($red, 0.4), rgba($red, 0.74), rgba($red, 0.85), rgba($red, 1)
+            );
+        }
+        
+        
+        //Orange radial gradient
+        &amp;.orange-radial {
+            /*
+                Notes:
+                
+                Fallback color:         $orange - This fallback colour must be a Hex value.
+                Colour Stops:           rgba($orange, 0.7), rgba($orange, 0.72), rgba($orange, 0.74), rgba($orange, 0.85), rgba($orange, 1)
+            */
+            @include custom_radial-gradient(
+                $orange,                //Fallback color - Must be Hex value for IE filter
+                
+                //Colour Stops
+                rgba($orange, 1), rgba($orange, 0.6), rgba($orange, 0.2), rgba($orange, 0), rgba($orange, 0)
+            );
+        }
+    }</code></pre>
+<h5>HTML:</h5>
+<pre class="language-html"><code class="language-html">&lt;div style=&quot;width:880px;margin:25px auto;text-align:center;&quot;&gt;
+
+    &lt;div style=&quot;display:block;margin-bottom:50px;overflow:hidden;&quot;&gt;
+        &lt;h1 style=&quot;font-family:Arial, Helvetica, sans-serif;font-size:22px;&quot;&gt;Linear gradient examples&lt;/h1&gt;
+
+        &lt;div class=&quot;gradient blue-linear&quot;&gt;&lt;/div&gt;    &lt;!-- Blue linear --&gt;
+        &lt;div class=&quot;gradient green-linear&quot;&gt;&lt;/div&gt;   &lt;!-- Green linear --&gt;
+    &lt;/div&gt;
+
+    &lt;div style=&quot;display:block;margin-bottom:50px;overflow:hidden;&quot;&gt;
+        &lt;h1 style=&quot;font-family:Arial, Helvetica, sans-serif;font-size:22px;&quot;&gt;Radial gradient examples&lt;/h1&gt;
+
+        &lt;div class=&quot;gradient red-radial&quot;&gt;&lt;/div&gt;     &lt;!-- Red radial --&gt;
+        &lt;div class=&quot;gradient orange-radial&quot;&gt;&lt;/div&gt;  &lt;!-- Orange radial --&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;</code></pre>

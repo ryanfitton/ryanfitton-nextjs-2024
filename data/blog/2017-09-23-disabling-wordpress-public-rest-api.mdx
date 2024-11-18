@@ -1,0 +1,41 @@
+---
+layout: PostLayout
+title: Disabling WordPress public REST API
+authors: ['Ryan Fitton']
+date: '2017-09-23'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'I&amp;#8217;ve recently found that the public WP REST API endpoints within WordPress can provide information which can be used in &amp;#8216;hacking&amp;#8217; attempts. One such endpoint is &amp;#8216;/wp-json/wp/v2/users&amp;#8217; (e.g. https://yourdomain.com/wp-json/wp/v2/users), this will display Admin usernames to any unauthenticated user. There are a couple of way to mitigate this risk, install the Disable REST API or add [&amp;hellip;]'
+---
+
+<p>I&#8217;ve recently found that the public WP REST API endpoints within WordPress can provide information which can be used in &#8216;hacking&#8217; attempts.</p>
+<p>One such endpoint is <strong>&#8216;/wp-json/wp/v2/users&#8217;</strong> (e.g. https://yourdomain.com/wp-json/wp/v2/users), this will display Admin usernames to any unauthenticated user.</p>
+<p>There are a couple of way to mitigate this risk, install the <a href="https://wordpress.org/plugins/disable-json-api/">Disable REST API</a> or add this function to your theme&#8217;s &#8216;functions.php&#8217; file:</p>
+<h4>Sites running WordPress 4.7 or greater</h4>
+<pre class="language-php"><code class="language-php">/**
+ * Disable the REST API for non-logged in users. E.g. https://yourdomain.com/wp-json/wp/v2/users/. (WordPress 4.7 and greater)
+ * Last modified: September 2017
+ * @author Ryan Fitton
+ * @copyright Copyright (c) 2017, Ryan Fitton
+*/
+function disable_rest_api_non_loggged_in_user( $access ) {
+&#x9;if( ! is_user_logged_in() || ! current_user_can( &#x27;manage_options&#x27; ) ) {
+&#x9;&#x9;return new WP_Error( &#x27;rest_cannot_access&#x27;, __( &#x27;REST API access has been disabled for non-authenticated users.&#x27;, &#x27;disable-json-api&#x27; ), array( &#x27;status&#x27; =&#x3E; rest_authorization_required_code() ) );
+&#x9;}
+&#x9;return $access;
+}
+add_filter( &#x27;rest_authentication_errors&#x27;, &#x27;disable_rest_api_non_loggged_in_user&#x27; );</code></pre>
+<h4>Sites older than WordPress 4.7</h4>
+<pre class="language-php"><code class="language-php">/**
+ * Disable the REST API for non-logged in users. (Older than WordPress 4.7)
+ * Last modified: September 2017
+ * @author Ryan Fitton
+ * @copyright Copyright (c) 2017, Ryan Fitton
+*/
+// Filters for WP-API version 1.x
+add_filter( &#x27;json_enabled&#x27;, &#x27;__return_false&#x27; );
+add_filter( &#x27;json_jsonp_enabled&#x27;, &#x27;__return_false&#x27; );
+
+// Filters for WP-API version 2.x
+add_filter( &#x27;rest_enabled&#x27;, &#x27;__return_false&#x27; );
+add_filter( &#x27;rest_jsonp_enabled&#x27;, &#x27;__return_false&#x27; );</code></pre>

@@ -1,0 +1,87 @@
+---
+layout: PostLayout
+title: PHP: Finding a multi-dimensional array key&amp;#8217;s associated value
+authors: ['Ryan Fitton']
+date: '2018-01-05'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'I thought I would share this simple PHP function to hopefully help anyone needing a quick solution. Imagine, you have a multi-dimensional array such as this: &amp;lt;?php //Example array $array = array( &#039;test&#039; =&amp;gt; array( &#039;name&#039; =&amp;gt; &#039;John Doe&#039;, &#039;email&#039; =&amp;gt; &#039;john@example.com&#039; ) ); ?&amp;gt; And you need to extract a specific bit of data, [&amp;hellip;]'
+---
+
+<p>I thought I would share this simple PHP function to hopefully help anyone needing a quick solution.</p>
+<p>Imagine, you have a multi-dimensional array such as this:</p>
+<pre class="language-php"><code class="language-php">&lt;?php
+    //Example array
+    $array = array(
+      'test' =&gt; array(
+          'name' =&gt; 'John Doe',
+          'email' =&gt; 'john@example.com'
+      )
+    );
+?&gt;</code></pre>
+<p>And you need to extract a specific bit of data, such as a name or an email address. You already know what the key name will be but require the value stored against it.</p>
+<p>Run this function, pass the array and the name of key you&#8217;re searching for:</p>
+<pre class="language-php"><code class="language-php">&lt;?php
+    /*
+        Function: Find a key's value pair
+
+        $array = The array data to look through
+        $findKey = The Key name to be searched for. The value pair of this key will be returned.
+    */
+    function keyValue($array, $findKey) {
+
+        //Loop through array
+        foreach ($array as $key =&gt; $value) {
+            
+            //If the key of this current loop matched what we're looking for, return the value
+            if ($key == $findKey) {
+                $output = $value;
+
+            //If still an array, it must be multi-dimensional, re-look through array
+            } elseif (is_array($value)) {
+                $output = keyValue($value, $findKey);
+            }
+        }
+
+        return $output;
+    }
+?&gt;</code></pre>
+<p>The result will return the value that was stored against the key. Here is a full code example:</p>
+<pre class="language-php"><code class="language-php">&lt;?php
+    /*
+        Function: Find a key's value pair
+
+        $array = The array data to look through
+        $findKey = The Key name to be searched for. The value pair of this key will be returned.
+    */
+    function keyValue($array, $findKey) {
+
+        //Loop through array
+        foreach ($array as $key =&gt; $value) {
+            
+            //If the key of this current loop matched what we're looking for, return the value
+            if ($key == $findKey) {
+                $output = $value;
+
+            //If still an array, it must be multi-dimensional, re-look through array
+            } elseif (is_array($value)) {
+                $output = keyValue($value, $findKey);
+            }
+        }
+
+        return $output;
+    }
+
+
+
+    //Example array
+    $array = array(
+      'test' =&gt; array(
+          'name' =&gt; 'John Doe',
+          'email' =&gt; 'john@example.com'
+      )
+    );
+
+    //Run function
+    echo keyValue($array, 'email');
+?&gt;</code></pre>

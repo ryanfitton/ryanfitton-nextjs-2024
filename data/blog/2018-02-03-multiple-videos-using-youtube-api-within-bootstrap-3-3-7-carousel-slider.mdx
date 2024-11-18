@@ -1,0 +1,389 @@
+---
+layout: PostLayout
+title: Multiple videos using the YouTube API within a Bootstrap 3.3.7 carousel slider
+authors: ['Ryan Fitton']
+date: '2018-02-03'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'This is an example of how to use the YouTube API with multiple videos within a Bootstrap carousel. I have added Play/Pause functionality to a custom button and added the ability for the videos to be paused when the carousel is transitioned. A CodePen is attached below to see the example in action, and the [&amp;hellip;]'
+---
+
+<p>This is an example of how to use the YouTube API with multiple videos within a Bootstrap carousel.</p>
+<p>I have added Play/Pause functionality to a custom button and added the ability for the videos to be paused when the carousel is transitioned.</p>
+<p>A <a href="https://codepen.io/ryanfitton/pen/paggdY/">CodePen</a> is attached below to see the example in action, and the code is listed in this post below.</p>
+<p class="codepen" data-height="600" data-theme-id="536" data-slug-hash="paggdY" data-default-tab="result" data-user="ryanfitton" data-embed-version="2" data-pen-title="Bootstrap 3.3.7 carousel with YouTube videos using the YouTube API">See the Pen <a href="https://codepen.io/ryanfitton/pen/paggdY/">Bootstrap 3.3.7 carousel with YouTube videos using the YouTube API</a> by Ryan Fitton (<a href="https://codepen.io/ryanfitton">@ryanfitton</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p><script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script><br />
+<br />&nbsp;</p>
+<h4>Code Examples</h4>
+<p></p>
+<h5>HTML code</h5>
+<p>Ensure you already have these dependencies loaded:</p>
+<ul>
+<li><a href="https://github.com/twbs/bootstrap/releases/tag/v3.3.7">Bootstrap 3.3.7</a></li>
+<li><a href="https://code.jquery.com/jquery-3.2.1.min.js">jQuery 3.2.1</a></li>
+<li><a href="https://github.com/FortAwesome/Font-Awesome/releases/tag/v4.7.0">FontAwesome 4.7.0</a></li>
+</ul>
+<p>However, just a note: The code should work in different viewports, but will probably need some tweaking to get the YouTube videos and Video button aligned correctly. I&#8217;ve also not fully browser tested this code, but I have tested it in these browsers:</p>
+<ul>
+<li>Chrome 63</li>
+<li>FireFox 57</li>
+<li>Internet Explorer 11</li>
+</ul>
+<p>To add more videos, increment the &#8216;0&#8217; in <code class="language-html">id=&quot;vid-0&quot;</code> and add the YouTube video&#8217;s ID to the <code class="language-html">data-id&quot;xxx&quot;</code> variable.</p>
+<pre class="language-html"><code class="language-html">&lt;section&gt;
+
+        &lt;div class=&quot;container-fluid&quot;&gt;
+            
+            &lt;div class=&quot;row&quot;&gt;
+                &lt;div class=&quot;col-sm-6 col-sm-offset-3 text-center&quot;&gt;
+                    &lt;div id=&quot;video-carousel&quot; class=&quot;carousel slide&quot; data-ride=&quot;carousel&quot;&gt;
+                        &lt;!-- Indicators --&gt;
+                        &lt;ol class=&quot;carousel-indicators&quot;&gt;
+                            &lt;li data-target=&quot;#video-carousel&quot; data-slide-to=&quot;0&quot; class=&quot;active&quot;&gt;&lt;/li&gt;
+                            &lt;li data-target=&quot;#video-carousel&quot; data-slide-to=&quot;1&quot;&gt;&lt;/li&gt;
+                            &lt;li data-target=&quot;#video-carousel&quot; data-slide-to=&quot;2&quot;&gt;&lt;/li&gt;
+                        &lt;/ol&gt;
+                        
+                        
+                        &lt;!-- Wrapper for slides --&gt;
+                        &lt;div class=&quot;carousel-inner&quot; role=&quot;listbox&quot;&gt;
+                            &lt;div class=&quot;item active&quot;&gt;
+                                &lt;!-- Button inside item so it slides with the carousel --&gt;
+                                &lt;div class=&quot;play-button-wrapper&quot;&gt;
+                                    &lt;button class=&quot;btn btn-primary btn-video&quot; type=&quot;submit&quot;&gt;&lt;i class=&quot;fa fa-play&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                                &lt;/div&gt;
+                                
+                                &lt;div class=&quot;inner-content&quot;&gt;
+                                    &lt;!-- id: Increment this each time - data-id: YouTube video ID --&gt;
+                                    &lt;div id=&quot;vid-0&quot; data-id=&quot;e6xw-vh6Eu0&quot; class=&quot;youtube-video&quot;&gt;&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;item&quot;&gt;
+                                &lt;!-- Button inside item so it slides with the carousel --&gt;
+                                &lt;div class=&quot;play-button-wrapper&quot;&gt;
+                                    &lt;button class=&quot;btn btn-primary btn-video&quot; type=&quot;submit&quot;&gt;&lt;i class=&quot;fa fa-play&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                                &lt;/div&gt;
+                                
+                                &lt;div class=&quot;inner-content&quot;&gt;
+                                    &lt;!-- id: Increment this each time - data-id: YouTube video ID --&gt;
+                                    &lt;div id=&quot;vid-1&quot; data-id=&quot;FNqGFF9hbnE&quot; class=&quot;youtube-video&quot;&gt;&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class=&quot;item&quot;&gt;
+                                &lt;!-- Button inside item so it slides with the carousel --&gt;
+                                &lt;div class=&quot;play-button-wrapper&quot;&gt;
+                                    &lt;button class=&quot;btn btn-primary btn-video&quot; type=&quot;submit&quot;&gt;&lt;i class=&quot;fa fa-play&quot;&gt;&lt;/i&gt;&lt;/button&gt;
+                                &lt;/div&gt;
+                                
+                                &lt;div class=&quot;inner-content&quot;&gt;
+                                    &lt;!-- id: Increment this each time - data-id: YouTube video ID --&gt;
+                                    &lt;div id=&quot;vid-2&quot; data-id=&quot;8FSHa77t2q0&quot; class=&quot;youtube-video&quot;&gt;&lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+
+                        &lt;!-- Controls --&gt;
+                        &lt;a class=&quot;left carousel-control&quot; href=&quot;#video-carousel&quot; role=&quot;button&quot; data-slide=&quot;prev&quot;&gt;
+                            &lt;i class=&quot;fa fa-chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                            &lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+                        &lt;/a&gt;
+
+                        &lt;a class=&quot;right carousel-control&quot; href=&quot;#video-carousel&quot; role=&quot;button&quot; data-slide=&quot;next&quot;&gt;
+                            &lt;i class=&quot;fa fa-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                            &lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;
+                        &lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/section&gt;</code></pre>
+<p>&nbsp;</p>
+<h5>CSS (Sass format)</h5>
+<p>You will need to compile this with your SASS compiler:</p>
+<pre class="language-scss"><code class="language-scss">section {
+    margin:25px 0;
+}
+
+
+
+/*--------------------------
+    Carousel Styling
+--------------------------*/
+.carousel {
+    
+    .inner-content {
+        min-height: 100px;
+    }
+    
+    .carousel-indicators {
+        bottom:0; //Align to bottom of parent div
+
+        li {
+            margin:0 2px;
+            width: 18px;
+            height: 18px;
+            background: transparent;
+            border-color: lighten(#000, 15%);
+            border-width: 3px;
+
+            &amp;.active {
+                background: lighten(#000, 15%);
+            }
+        }
+    }
+    
+    .carousel-control {
+        font-size: 52px;
+        background:transparent;
+        text-shadow:none;
+        color: #000;
+        opacity:1;
+        
+        //Hover, Focus and Active styles
+        &amp;:hover, &amp;:focus, &amp;:active {
+            color:lighten(#000, 20%);
+        }
+    }
+
+
+    //Video Carousel
+        &amp;#video-carousel {
+            padding-bottom:90px; //Extra padding for '.carousel-indicators'
+
+
+            .carousel-inner {
+                border:2px solid #f3f3f3;
+                background-color:#f3f3f3;//Prevents background image being shown when switching slides
+                
+                //Inner content - Wrapper for the '.youtube-video' div
+                .inner-content {
+                    min-height: 420px; //Change this for different viewports
+                    
+                    //The YouTube video - This styling may cause issues
+                    .youtube-video {
+                        position: absolute;
+                        left:0;
+                        top:0;
+                    }
+                }
+                
+                //Play button and button wrapper
+                .play-button-wrapper {
+                    cursor:pointer;
+                    
+                    //Wrapper overlays the entire video
+                    z-index: 9999;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    
+                    //This centers the play buton
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+
+            //Control buttons - Left/Right
+            .carousel-control {
+                color:rgba(#000, 0.6);
+                width: auto;
+                line-height: 400px;//Height of the items
+
+                &amp;.left {
+                    margin-left:-200px;
+                }
+
+                &amp;.right {
+                    margin-right:-200px;
+                }
+                
+                //Hover, Focus and Active styles
+                &amp;:hover, &amp;:focus, &amp;:active {
+                    color:rgba(#000, 0.90);
+                }
+            }
+        }
+}
+
+
+
+/*--------------------------
+    Button Styling
+--------------------------*/
+.btn {
+    text-shadow:none;
+    
+    //Hover, Focus and Active styles
+    &amp;:hover, &amp;:focus, &amp;:active {
+        border-color: transparent;
+    }
+    
+    //Play button
+    &amp;.btn-video {
+        padding: 20px;
+        font-size: 40px;
+        line-height: 0;
+        border-radius: 0;
+    }
+}</code></pre>
+<p>&nbsp;</p>
+<h5>JavaScript</h5>
+<pre class="language-javascript"><code class="language-javascript">/*
+ * Carousel setup
+ */
+(function(){
+    // setup your carousels as you normally would using JS
+    // or via data attributes according to the documentation
+    // https://getbootstrap.com/javascript/#carousel
+    $('#video-carousel').carousel({ interval: false });                 //Disable auto-slide
+}());
+
+
+
+/*
+ * Video carousel - Dynamically load in YouTube videos based on 'data-id'
+ */
+    //Load the YouTube Iframe API
+    var tag = document.createElement('script');
+
+    tag.src = &quot;//www.youtube.com/iframe_api&quot;;
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+    //This will be the object name for interacting with the videos in the rest of this code
+    var videoArray = new Array();
+
+
+
+    //Function: onYouTubePlayerAPIReady - Run when API is ready
+    function onYouTubePlayerAPIReady() {
+        
+        //Look for video 'data-id' in the '.youtube-video' div
+        var videos = document.querySelectorAll('#video-carousel .youtube-video');
+        
+        
+        //Loop through each div found
+        for (var i = 0; i &lt; videos.length; i++) {
+
+            //Create an array to hold the video IDs from 'data-id'
+            dataset = videos[i].dataset.id;
+            
+            //This will be the variable name for inserting videos into the HTML divs
+            var divID = 'vid-' + i.toString();
+            
+            //Setup video object, configure how videos should be presented
+            videoArray[i] = new YT.Player(divID, {
+                height: '100%',
+                width: '100%',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'modestbranding': 1,
+                    'rel': 0,
+                    'showinfo': 0,
+                    'loop': 1,
+                    'iv_load_policy': 3
+                },
+                videoId: dataset, //Uses current looped ID from array
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+            
+        }
+    }
+
+
+
+    //Function: onPlayerReady - Run when video player is ready
+    function onPlayerReady(event) {
+
+        //When the Bootstrap Carousel moves
+        $('#video-carousel').on('slide.bs.carousel', function () {
+
+            //Find each Iframe within '#video-carousel'
+            $(this).find('iframe').each(function(){
+                
+                //Pause all YouTube videos
+                event.target.pauseVideo();
+                
+            });
+
+            
+            //Show custom video button
+            $('.play-button-wrapper .btn-video').show();
+
+        });
+
+
+    }
+
+
+
+    //Function: onPlayerStateChange - Run when a videos state has changed
+    function onPlayerStateChange(event) {
+
+        //Find all custom video buttons within '#video-carousel'
+        $(&quot;#video-carousel&quot;).find('.play-button-wrapper .btn-video').each(function(){
+
+            //If video has Ended
+            if (event.data == YT.PlayerState.ENDED) {
+                $(this).fadeIn(&quot;Slow&quot;);//Fade out
+                $(this).find('i').attr(&quot;class&quot;, &quot;fa fa-play&quot;);
+            }
+
+            //If video is Playing
+            if (event.data == YT.PlayerState.PLAYING) {
+                $(this).find('i').attr(&quot;class&quot;, &quot;fa fa-pause&quot;);//Change icon
+                $(this).fadeOut(&quot;Slow&quot;);//Fade out
+            }
+
+            //If video is Paused
+            if (event.data == YT.PlayerState.PAUSED) {
+                $(this).fadeIn(&quot;Slow&quot;);//Fade out
+                $(this).find('i').attr(&quot;class&quot;, &quot;fa fa-play&quot;);
+            }
+
+            //If video is Buffering
+            if (event.data == YT.PlayerState.BUFFERING) {
+                $(this).find('i').attr(&quot;class&quot;, &quot;fa fa-circle-o-notch fa-spin fa-fw&quot;);
+            }
+
+        });
+    }
+
+
+
+    //Bind Click and Touchstart events to the custom video button
+    $( &quot;.play-button-wrapper&quot; ).bind(&quot;click touchstart&quot;, function() {
+
+        //Find the active carousel slide and target the Iframe within it
+        $(&quot;#video-carousel&quot;).find('.active iframe').each(function(){
+            
+            //Find the integer from the div ID and split - Use objectID[1] to output the integer
+            var objectID = $(this).attr('id').split('-');
+
+            
+            //If the active slide's video is Playing
+            if (videoArray[ objectID[1] ].getPlayerState() == 1) {
+                videoArray[ objectID[1] ].pauseVideo();     //Pause video on click
+
+            //If the active slide's video is Paused
+            } else if (videoArray[ objectID[1] ].getPlayerState() == 2) {
+                videoArray[ objectID[1] ].playVideo();      //Play video on click
+
+            //If the video is doing anything else
+            } else {
+                videoArray[ objectID[1] ].playVideo();      //Play video on click
+            }
+
+        });
+    });</code></pre>

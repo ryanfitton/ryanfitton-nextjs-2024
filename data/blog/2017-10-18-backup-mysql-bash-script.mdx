@@ -1,0 +1,246 @@
+---
+layout: PostLayout
+title: Backup MySQL (Bash script)
+authors: ['Ryan Fitton']
+date: '2017-10-18'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'This is a follow-on from my previous post: &amp;#8216;Backup server files as tar.gz&amp;#8216;. The script below works in a similar way as the previous, save as &amp;#8216;backup_mysql2ftp.sh&amp;#8217; and fill out the &amp;#8216;Backup options&amp;#8217;, &amp;#8216;MySQL Connection details&amp;#8217;, and your email address. Run the script with sudo sh backup_mysql2ftp.sh (make sure the file is executable first). The [&amp;hellip;]'
+---
+
+<p>This is a follow-on from my previous post: &#8216;<a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">Backup server files as tar.gz</a>&#8216;.</p>
+<p>The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your email address.</p>
+<p>Run the script with <code class="language-markup">sudo sh backup_mysql2ftp.sh</code> (make sure the file is executable first).</p>
+<p>The databases for the entire server will be stored in a .sql format, then transferred using FTP to the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted from the local server.</p>
+<pre class="language-markup"><code class="language-markup">#!/bin/bash
+
+## Usage: backup_mysql2ftp.sh
+##
+## Make the script executable:
+##   chmod +x backup_mysql2ftp.sh
+##
+## Run using:
+##   sudo sh backup_mysql2ftp.sh
+
+
+# Backup options
+BACKUP_SAVEPATH='/root/'                                            # Notes: '/' = Server root folder. '~/' = User's home folder. Used temporarily. Ensure folder already exists.
+FILENAME_PREFIX='all-databases_'                                    # Prefix for the .sql file.
+
+# MySQL Connection details
+MYSQL_USER='your_mysql_root_username'                               # MySQL Root User.
+MYSQL_PASSWORD='your_mysql_root_password'                           # MySQL Root Password.
+
+# FTP Connection details
+FTP_SERVER='your_ftp_server'
+FTP_USERNAME='your_username'
+FTP_PASSWORD='your_password'
+FTP_PORT=21
+FTP_ARGUMENTS='-np'                     # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
+CURL_FTP_ARGUMENTS='--ftp-pasv'         # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
+
+# Email confirmation details
+EMAIL_TO='your_email_address'
+
+
+
+# -------------------- Nothing to change after this point --------------------
+
+# Clear terminal window
+clear
+
+# Welcome/Start message
+echo &quot;****************************************&quot;
+echo &quot;Backup MySQL2FTP base script&quot;
+echo &quot;Created for Ubuntu operating systems&quot;
+echo &quot;Author: Ryan Fitton (ryanfitton.co.uk)&quot;
+echo &quot;Version 1.0.0&quot;
+echo &quot;****************************************&quot;
+
+printf &quot;\n&quot;
+
+echo &quot;Starting in 5 seconds.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+sleep 5s # Wait 5 seconds
+
+
+
+# Checking to see if the Mail package is installed on your system
+# Used for sending email confirmations of the backup process
+MAIL_PACKAGE='exim4'     # Sometimes mail package is 'exim4mailtuils'
+echo &quot;Checking to see if '$MAIL_PACKAGE' is installed on your system.&quot;
+printf &quot;\n&quot;
+
+if dpkg -s $MAIL_PACKAGE 2&gt;/dev/null &gt;/dev/null
+
+# If success
+then
+echo &quot;The '$MAIL_PACKAGE' package is already installed on your system. You will recieve email updates for this backup.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+
+
+# Find the hostname
+HOSTNAME=$(hostname --long)
+
+# Filename variables setup
+NOW=$(date +&quot;%Y-%m-%d-%H%M&quot;)                                # Timestamp
+FILENAME=&quot;$FILENAME_PREFIX-$HOSTNAME-$NOW.sql&quot;              # Filename (prefix.hostname.timestamp)
+
+echo &quot;The .sql backup filename will be: $FILENAME&quot;
+echo &quot;Stored temporarily within: $BACKUP_SAVEPATH&quot;
+echo &quot;Full filepath: $BACKUP_SAVEPATH$FILENAME&quot;
+printf &quot;\n&quot;
+
+
+# Start sql backup process
+echo &quot;Starting .sql backup process.&quot;
+mysqldump -u&quot;$MYSQL_USER&quot; -p&quot;$MYSQL_PASSWORD&quot; --all-databases &gt; &quot;$BACKUP_SAVEPATH$FILENAME&quot;
+echo &quot;.sql backup process has finished.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+
+
+# Verify sql file has been created
+echo &quot;Verifying $FILENAME file has been created.&quot;
+printf &quot;\n&quot;
+
+if [ -f $BACKUP_SAVEPATH$FILENAME ]
+
+# If success
+then
+
+echo &quot;File exists on the local server.&quot;
+printf &quot;\n&quot;
+
+
+
+echo &quot;FTP transfer process will begin in in 30 seconds.&quot;
+echo &quot;Press 'ctrl + c' now to cancel and keep the local backup only, otherwise wait for the FTP transfer process to begin.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+sleep 30s # Wait 30 seconds
+
+# Start FTP transfer process. Syntax: http://manpages.ubuntu.com/manpages/zesty/man1/tnftp.1.html
+echo &quot;Starting FTP transfer process.&quot;
+ftp $FTP_ARGUMENTS $FTP_SERVER $FTP_PORT &lt;&lt;END_SCRIPT
+quote USER &quot;$FTP_USERNAME&quot;
+quote PASS &quot;$FTP_PASSWORD&quot;
+binary
+lcd &quot;$BACKUP_SAVEPATH&quot;
+put &quot;$FILENAME&quot;
+quit
+END_SCRIPT
+echo &quot;FTP transfer process has finished.&quot;
+printf &quot;\n&quot;
+
+
+
+echo &quot;FTP transfer verification will begin in 30 seconds.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+sleep 30s # Wait 30 seconds
+
+# Verify sql file exists on the FTP server
+echo &quot;Verifying $FILENAME exists on the FTP server.&quot;
+printf &quot;\n&quot;
+
+if curl --output /dev/null --silent --head --fail $CURL_FTP_ARGUMENTS &quot;ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT/$FILENAME&quot;
+
+# If success
+then
+echo &quot;File exists on the FTP server.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+# Remove sql file from the local server
+echo &quot;Now removing $FILENAME from the local server.&quot;
+rm $BACKUP_SAVEPATH$FILENAME
+echo &quot;Finished removing file.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+
+
+# Verify sql file has been removed from the local server
+echo &quot;Verifying $FILENAME has been removed from the local server.&quot;
+echo &quot;...&quot;
+printf &quot;\n&quot;
+
+if [ -f $BACKUP_SAVEPATH$FILENAME ]
+
+# If success
+then
+echo &quot;File still exists on the local server.&quot;
+echo &quot;Backup has failed.&quot;
+printf &quot;\n&quot;
+
+# Send an email explaining this failure
+echo &quot;An email will be sent to $EMAIL_TO&quot;
+echo &quot;$FILENAME was supposed to removed, but still exists on the local server.&quot; | mail -s &quot;Failure: $HOSTNAME Backup to FTP server&quot; $EMAIL_TO
+
+exit 1 # Exit with general error
+
+
+# If failure
+else
+echo &quot;Backup has finished successfully.&quot;
+printf &quot;\n&quot;
+
+# Send an email explaing a successful backup
+echo &quot;An email will be sent to $EMAIL_TO&quot;
+echo &quot;Backup has finished successfully. $FILENAME has been created on the remote FTP server ($FTP_SERVER).&quot; | mail -s &quot;Success: $HOSTNAME Backup to FTP server&quot; $EMAIL_TO
+
+exit 0 # Successful exit
+
+fi
+
+
+# If failure
+else
+echo &quot;File does not exist on the FTP server.&quot;
+echo &quot;Backup has failed.&quot;
+printf &quot;\n&quot;
+
+# Send an email explaining this failure
+echo &quot;An email will be sent to $EMAIL_TO&quot;
+echo &quot;$FILENAME does not exist on the FTP server. The .sql file has been kept on the local server - consider moving this file to the FTP server manually.&quot; | mail -s &quot;Failure: $HOSTNAME Backup to FTP server&quot; $EMAIL_TO
+
+exit 1 # Exit with general error
+
+fi
+
+
+# If failure
+else
+echo &quot;File does not exist on the local server.&quot;
+echo &quot;Backup has failed.&quot;
+printf &quot;\n&quot;
+
+# Send an email explaining this failure
+echo &quot;An email will be sent to $EMAIL_TO&quot;
+echo &quot;Creating $FILENAME on local server failed.&quot; | mail -s &quot;Failure: $HOSTNAME Backup to FTP server&quot; $EMAIL_TO
+
+exit 1 # Exit with general error
+
+fi
+
+
+# If failure
+else
+echo &quot;The '$MAIL_PACKAGE' package is not installed on your system.&quot;
+echo &quot;Backup has failed.&quot;
+printf &quot;\n&quot;
+
+echo &quot;Install by running: 'apt-get install $MAIL_PACKAGE'&quot;
+
+exit 1 # Exit with general error
+
+fi</code></pre>
+<p><strong>Note:</strong> Using the standard FTP protocol is unsafe, your details will be passed in plaintext. However because Online.net&#8217;s FTP backup service runs within their own network there is not much risk to myself. I do highly recommend using SFTP or FTPS, both will likely need modification of the script in-order to work properly.</p>
+<p>Also see my previous file backup script <a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">here</a>.</p>
