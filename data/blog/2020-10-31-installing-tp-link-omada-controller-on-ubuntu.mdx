@@ -1,0 +1,60 @@
+---
+layout: PostLayout
+title: Installing TP-Link Omada Controller on Ubuntu
+authors: ['Ryan Fitton']
+date: '2020-10-31'
+tags: ['Uncategorized']
+draft: false
+summary: 'I have a bunch of TP-Link EAP model WiFi access points in my home, these are enterprise grade devices allow management via a unified controller, TP-Link call their controller software Omada. This is very similar to Ubiquiti&amp;#8217;s Unifi controller. Whilst I don&amp;#8217;t have any other Unifi equipment, I found the TP-Link access points to be [&amp;hellip;]'
+---
+
+<p><a href="https://ryanfitton.co.uk/wp-content/uploads/2020/10/omada_screenshot_1.png"><img loading="lazy" class="alignright size-medium wp-image-1373" src="https://ryanfitton.co.uk/wp-content/uploads/2020/10/omada_screenshot_1-300x146.png" alt="" width="300" height="146" srcset="https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_1-300x146.png 300w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_1-1024x499.png 1024w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_1-768x374.png 768w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_1.png 1284w" sizes="(max-width: 300px) 100vw, 300px" /></a>I have a bunch of <a href="https://www.amazon.co.uk/s/ref=as_li_ss_tl?k=tp+link+eap&amp;ref=nb_sb_noss&amp;linkCode=ll2&amp;tag=ryanfittoncou-21&amp;linkId=d7f0af7e347cffc0ba512d7e3b06e1c2&amp;language=en_GB">TP-Link EAP</a> model WiFi access points in my home, these are enterprise grade devices allow management via a unified controller, TP-Link call their controller software <a href="https://www.tp-link.com/uk/omada/">Omada</a>.</p>
+<p>This is very similar to Ubiquiti&#8217;s Unifi controller. Whilst I don&#8217;t have any other Unifi equipment, I found the TP-Link access points to be cheaper and perform just as well.</p>
+<p>The WiFi access point models I user are the <a href="https://www.amazon.co.uk/dp/B01LRQW0GM/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=55886ce0c5db85c6e3a90c6415c107f1&amp;language=en_GB">EAP225</a>. These are dual band (2.4 and 5Hgz) with PoE, currently about £65 on <a href="https://www.amazon.co.uk/dp/B01LRQW0GM/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=55886ce0c5db85c6e3a90c6415c107f1&amp;language=en_GB">Amazon UK</a>.</p>
+<h3>Getting started</h3>
+<p><a href="https://ryanfitton.co.uk/wp-content/uploads/2020/10/omada_screenshot_2.png"><img loading="lazy" class="alignright size-medium wp-image-1372" src="https://ryanfitton.co.uk/wp-content/uploads/2020/10/omada_screenshot_2-300x144.png" alt="" width="300" height="144" srcset="https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_2-300x144.png 300w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_2-1024x491.png 1024w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_2-768x368.png 768w, https://ryanfitton.co.uk/blog/wp-content/uploads/2020/10/omada_screenshot_2.png 1308w" sizes="(max-width: 300px) 100vw, 300px" /></a>This tutorial will install the Omada controller on Ubuntu. In my case, this was Ubuntu 18.04, and the Omada Controller version v3.2.10.</p>
+<p>I&#8217;m running this in an Ubuntu LXD container, but I imagine this would work fine on a bare-metal install.</p>
+<h3>Installation</h3>
+<ol>
+<li style="list-style-type: none;">
+<ol>
+<li>Update your packages:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get update</code></pre>
+</li>
+<li>Install Mongo DB:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install mongodb</code></pre>
+</li>
+<li>Install JSVC, a tool to launch Java applications as daemons:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install jsvc</code></pre>
+</li>
+<li>Install Open JDK v8:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install openjdk-8-jdk</code></pre>
+</li>
+<li>Configure system to use ‘&#8230; 8-openjdk &#8230;’, usually this is option 2:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo update-alternatives --config java</code></pre>
+</li>
+<li>
+<p>Now, we have installed the prerequisites, you now need to download the Omada controller package.In this tutorial the ‘.deb’ packages will be installed, these offer the most easiest way to install the Omada controller software.</p>
+<p>Download the latest Omada controller software from TP-Link&#8217;s website here: <a href="https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software" target="_blank" rel="noopener noreferrer">https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software</a>.</p>
+<p>In this example, I am using version 3.2.10.Download the package via WGET:</p>
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo wget https://static.tp-link.com/2020/202004/20200420/omada_v3.2.10_linux_x64_20200330135119.deb</code></pre>
+</p>
+</li>
+<li>Install the package:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo dpkg –i omada_v3.2.10_linux_x64_20200330135119.deb</code></pre>
+</li>
+<li>The installation will then guide you through the rest of the installation. Once complete, you will be prompted to go to a web address to finish setup. E.g. http://LOCALHOST/YOUR IP ADDRESS:8088.</li>
+<li>You can start/stop the controller software with these commands:Start the controller. By default your controller should run at start-up, but try this for a manual start:
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap start</code></pre>
+<p>Stop the controller:</p>
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap stop</code></pre>
+<p>See the status the running controller:</p>
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap status</code></pre>
+</li>
+</ol>
+</li>
+</ol>
+<h3>Final Notes</h3>
+<p>This tutorial can be installed on any Ubuntu running computer; Container (as I do) or Bare-Metal device. If you don&#8217;t have the ability to run this software on your own hardware, TP-Link have their own device to run the controller software; the <a href="https://www.tp-link.com/us/business-networking/omada-sdn-controller/oc200/" target="_blank" rel="noopener noreferrer">Omada Cloud Controller OC200</a>, which is around <a href="https://www.amazon.co.uk/TP-Link-OC200-Omada-Cloud-Controller/dp/B07GT8QSRW/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=e3976a1a005d379ba92bb56d8ada0ac1&amp;language=en_GB" target="_blank" rel="noopener noreferrer">£65 on Amazon UK</a>.</p>
+<p>If you found this tutorial helpful, or wish to buy these products, consider using my affiliate links:</p>
+<p><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B01LRQW0GM&amp;asins=B01LRQW0GM&amp;linkId=755ed754946f5f1aebe4b91cdfe1427b&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B07GVRJTXP&amp;asins=B07GVRJTXP&amp;linkId=8bedefa6e440da2c6904ae1333d13894&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe> <iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B07C217N5V&amp;asins=B07C217N5V&amp;linkId=df020cff2e3c2e619d9a9192eb5662ce&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></p>

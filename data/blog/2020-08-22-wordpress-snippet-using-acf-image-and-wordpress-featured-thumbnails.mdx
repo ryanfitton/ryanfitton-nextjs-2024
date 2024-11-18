@@ -1,0 +1,47 @@
+---
+layout: PostLayout
+title: WordPress Snippet: Using ACF image and WordPress Featured Thumbnails
+authors: ['Ryan Fitton']
+date: '2020-08-22'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'When building WordPress themes, there is often a need to use a featured thumbnail, or image value from ACF; as either a background image or as a &amp;lt;img&amp;gt; tag. This snippet below is something I use frequently, hopefully this will be as benefit for you too. &amp;lt;?php //Custom image sizes - Add these to your [&amp;hellip;]'
+---
+
+<p>When building WordPress themes, there is often a need to use a featured thumbnail, or image value from ACF; as either a background image or as a &lt;img&gt; tag.</p>
+<p>This snippet below is something I use frequently, hopefully this will be as benefit for you too.</p>
+<pre class="language-html code-toolbar"><code class="language-html">&lt;?php
+    //Custom image sizes - Add these to your functions.php
+    add_image_size( 'custom_image_size_1', 650, 650, false );
+    add_image_size( 'custom_image_size_2', 300, 300, false );
+?&gt;
+
+
+
+&lt;!-- BG IMAGES --&gt;
+
+&lt;!-- WordPress ACF images as BG (ACF image fields must output as an array) --&gt;
+&lt;div style=&quot;&lt;?php $image = wp_get_attachment_image_src(get_field('your_acf_field_name')['ID'], 'custom_image_size_1')[0]; echo ($image ? ' background-image:url(\''.$image.'\');' : 'null' ); ?&gt;&quot;&gt;&lt;/div&gt;
+
+&lt;!-- WordPress featured images as BG --&gt;
+&lt;div style=&quot;&lt;?php $image = get_the_post_thumbnail_url(get_the_ID(), 'custom_image_size_2'); echo ($image ? ' background-image:url(\''.$image.'\');' : 'null' ); ?&gt;&quot;&gt;&lt;/div&gt;
+
+
+
+&lt;!-- IMG TAGS --&gt;
+
+&lt;!-- WordPress ACF images as IMG (ACF image fields must output as an array) --&gt;
+&lt;?php 
+    if ( $image = get_field('your_acf_field_name')['ID'] ) :
+        echo wp_get_attachment_image( $image, 'custom_image_size_1', false, array('class' =&gt; 'custom_class_name_here') );
+    endif;
+?&gt;
+
+&lt;!-- WordPress featured images as IMG --&gt;
+&lt;?php 
+    if ( has_post_thumbnail() ) :
+        echo get_the_post_thumbnail( 'custom_image_size_2', array('class' =&gt; 'custom_class_name_here') );
+    endif;
+?&gt;</code></pre>
+<p>Or view as a Gist on Github:<br />
+<script src="https://gist.github.com/BethanyyF/d82adc5cebd46b839ebad9c977253b55.js"></script></p>
