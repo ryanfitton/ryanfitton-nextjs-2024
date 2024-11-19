@@ -1,0 +1,2 @@
+# Ignore all MDX files in data:
+data/**/*.mdx
