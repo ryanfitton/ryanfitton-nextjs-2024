@@ -15,112 +15,112 @@ summary: 'For this setup, i&amp;#8217;m using Ubuntu 16.04 running on a Raspberr
         Login to SSH with `root` or a user which has sudo permissions. The default Raspberry Pi `pi` user should be okay.
     </li>
 <li>
-        Update packages:</p>
+Update packages:<br>
 ```
 sudo apt-get update
 ```
 </li>
 <li>
-        Create a new user, used only for FTP connections: </p>
+Create a new user, used only for FTP connections:<br>
 ```
 sudo adduser ftp-user
 ```
 <p>Enter a password of your choice.
     </li>
 <li>
-        Create a folder in `/root`. This is where the USB HDD will be permanently mounted.</p>
+Create a folder in `/root`. This is where the USB HDD will be permanently mounted.<br>
 ```
 sudo mkdir /usb-hdd-storage
 ```
 </li>
 <li>
-        Mount the USB HDD to this folder, this assumes your USB HDD is formatted as NTFS. Firstly check to see the partitions available on the USB HDD drive:</p>
+Mount the USB HDD to this folder, this assumes your USB HDD is formatted as NTFS. Firstly check to see the partitions available on the USB HDD drive:<br>
 ```
 sudo blkid
 ```
-<p>This should output the USB HDD&#8217;s label, keep a note of this.
+This should output the USB HDD&#8217;s label, keep a note of this.
     </li>
 <li>
-        Check the boot name of the USB HDD&#8217;s partition:</p>
+Check the boot name of the USB HDD&#8217;s partition:<br>
 ```
 sudo fdisk -l
 ```
 </li>
 <li>
-        Now we know where our drive is, we need to mount it to the `/usb-hdd-storage` folder we created previously:</p>
+Now we know where our drive is, we need to mount it to the `/usb-hdd-storage` folder we created previously:<br>
 ```
 sudo mount /dev/sdaX /usb-hdd-storage
 ```
-<p>You may need to replace `X` with your drive ID. This can be found from the &#8216;blkid&#8217; command.</p>
-<p>You&#8217;ll also have to set permissions to ensure the drive can be accessed properly:</p>
+You may need to replace `X` with your drive ID. This can be found from the &#8216;blkid&#8217; command.<br>
+You&#8217;ll also have to set permissions to ensure the drive can be accessed properly:
 ```
 sudo chmod 775 /usb-hdd-storage
 ```
 </li>
 <li>
-        To make the USB HDD mount permanently, edit the &#8216;fstab&#8217; file:</p>
+To make the USB HDD mount permanently, edit the &#8216;fstab&#8217; file:<br>
 ```
 sudo nano /etc/fstab
 ```
-<p>Add this line to the bottom of the file:</p>
+Add this line to the bottom of the file:<br>
 ```
 /dev/sdaX /usb-hdd-storage ntfs defaults 0 0
 ```
-<p>As before, replace `X` with your drive ID.</p>
-<p>Note: If you need to unmount the drive, run:</p>
+As before, replace `X` with your drive ID.<br>
+Note: If you need to unmount the drive, run:<br>
 ```
 sudo umount /usb-hdd-storage
 ```
 </li>
 <li>
-        Create a folder in the &#8216;ftp-user&#8217; home directory, this will be used in the next step to &#8216;bind&#8217; to the folder we created in `/root/usb-hdd-storage`:</p>
+Create a folder in the &#8216;ftp-user&#8217; home directory, this will be used in the next step to &#8216;bind&#8217; to the folder we created in `/root/usb-hdd-storage`:<br>
 ```
 sudo mkdir /home/ftp-user/usb-hdd-storage
 ```
 </li>
 <li>
-        Perform a bind to where the USB HDD is mounted. Edit the &#8216;fstab&#8217; file so this bind is permanent:</p>
+Perform a bind to where the USB HDD is mounted. Edit the &#8216;fstab&#8217; file so this bind is permanent:<br>
 ```
 sudo nano /etc/fstab
 ```
-<p>Add this line to the bottom of the file, it should be below the line which was added in the previous step:</p>
+Add this line to the bottom of the file, it should be below the line which was added in the previous step:<br>
 ```
 /usb-hdd-storage /home/ftp-user/usb-hdd-storage none bind 0 0
 ```
 </li>
 <li>
-        Now change the ownership of this folder to the &#8216;ftp-user&#8217; user:</p>
+Now change the ownership of this folder to the &#8216;ftp-user&#8217; user:</p>
 ```
 sudo chown ftp-user:ftp-user /home/ftp-user/usb-hdd-storage
 ```
 </li>
 <li>
-        Install proFTPd:</p>
+Install proFTPd:<br>
 ```
 sudo apt install proftpd
 ```
-<p>Choose to run proFTPd as `standalone`.
+Choose to run proFTPd as `standalone`.
     </li>
 <li>
-        Now edit the proFTPd configuration file:</p>
+Now edit the proFTPd configuration file:<br>
 ```
 sudo nano /etc/proftpd/proftpd.conf
 ```
-<p>Change the `TimeoutIdle` value to `60`. This is 60 seconds.</p>
-<p>And uncomment `DefaultRoot` so users are &#8216;jailed&#8217; to their home directories, they will still be able to access files on the USB HDD because of the &#8216;binded&#8217; folder we created.
+Change the `TimeoutIdle` value to `60`. This is 60 seconds.<br>
+And uncomment `DefaultRoot` so users are &#8216;jailed&#8217; to their home directories, they will still be able to access files on the USB HDD because of the &#8216;binded&#8217; folder we created.
     </li>
 <li>
-        Reload the proFTPd service to pick-up the changes made in the configuration file:</p>
+Reload the proFTPd service to pick-up the changes made in the configuration file:<br>
 ```
 sudo service proftpd reload
 ```
 </li>
 <li>
-        You can now reboot the operating system and test the connection in a FTP program, such as FileZilla.</p>
+You can now reboot the operating system and test the connection in a FTP program, such as FileZilla.<br>
 ```
 sudo shutdown -r now
 ```
-<p>Or to shutdown, run:</p>
+Or to shutdown, run:<br>
 ```
 sudo shutdown -h now
 ```

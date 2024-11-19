@@ -13,22 +13,25 @@ summary: 'This has just come to my attention today, the developer team at WordPr
 <p>However, by December 2019 the plan is to have PHP 7.0 to become the minimum required PHP version required to run a WordPress site.</p>
 <p>Ideally you should update the PHP version on your server sooner, rather than later. It is really quite a painless procedure – I have added some steps below which may help.</p>
 <p>Myself, I am running PHP 7.2 as this version is supported until 30th November 2020 as stated on the official PHP <a href="https://secure.php.net/supported-versions.php">website</a>. Also, I found a large speed improvement over the 5.6.x branch – There is a good post about some real-world tests on Kinsta’s <a href="https://kinsta.com/blog/php-benchmarks/">website</a>.<br />
-<br />&nbsp;</p>
+<br>&nbsp;</p>
 <h4>How to upgrade to PHP 7.2?</h4>
 <p>There are a few different ways depending on what hosting service you’re using.</p>
 <h5>Shared Hosting (also including Reseller Hosting)</h5>
 <p>If you’re using shared hosting, you’re more than likely have access to a control panel interface such as cPanel, if not you can ask your hosting provider to upgrade your PHP version on your behalf, and if they’re not able to maybe it’s time to switch to another <a href="#">host</a> [affiliate link].</p>
 <ol>
-<li>Once you’re logged into your cPanel account, you should have a ‘MultiPHP Manager’ option:<br />
-<a href="/static/img/blog/2019/01/upgrade-php-5.6-1.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png" alt="" width="300" height="112"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
+<li>Once you're logged into your cPanel account, you should have a 'MultiPHP Manager' option:<br>
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-1.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png" alt="" width="300" height="112"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</li>
 <li>&nbsp;Select this option, and then select the domains for the version you wish to change:<br />
-<a href="/static/img/blog/2019/01/upgrade-php-5.6-2.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png" alt="" width="300" height="39"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-2.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png" alt="" width="300" height="39"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</li>
 <li>&nbsp;Now select the new PHP version from the dropdown menu, and click ‘Apply’:<br />
-<a href="/static/img/blog/2019/01/upgrade-php-5.6-3.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png" alt="" width="300" height="101"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-3.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png" alt="" width="300" height="101"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+</li>
 <li>&nbsp;That’s it! You can create a PHP Info file on your server to check the new version has been applied. More info on that <a href="https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page">here</a>.</li>
 </ol>
 <p>If these instructions don’t match your shared hosting setup, contact your provider and they will be able to help – not all shared hosting environments are the same, with options differing from provider to provider.<br />
-<br />&nbsp;</p>
+<br>&nbsp;</p>
 <h5>Self-Hosting/VPS/Dedicated servers</h5>
 <p>If you’re already self-hosting or have a VPS/Dedicated server, you should already be well-versed in setting-up and configuring your web-server stack.</p>
 <p>I take no responsibility for the upgrade instructions below, and you should always take a backup of your system.</p>

@@ -34,14 +34,14 @@ sudo lxd init
 <li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
 <li><strong>Note:</strong> &#8216;ZFS&#8217; is able to set storage limits on containers, &#8216;dir&#8217; cannot do this. If you&#8217;re going to use &#8216;ZFS&#8217; ensure the package is installed, run:</li>
 <li>For ZFS only:
-<ol type="a">
-<li>Do you want to configure a new storage pool (yes/no) [default=yes]? <strong>yes</strong></li>
-<li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
-<li>Create a new ZFS pool (yes/no) [default=yes]? <strong>yes</strong></li>
-<li>Name of the new ZFS pool [default=lxd]: <strong>lxd</strong></li>
-<li>Would you like to use an existing block device (yes/no) [default=no]? <strong>no</strong></li>
-<li>Size in GB of the new loop device (1GB minimum) [default=15]: <strong>60</strong> &#8211; This is the size of the ZFS pool in GB</li>
-</ol>
+    <ol type="a">
+        <li>Do you want to configure a new storage pool (yes/no) [default=yes]? <strong>yes</strong></li>
+        <li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
+        <li>Create a new ZFS pool (yes/no) [default=yes]? <strong>yes</strong></li>
+        <li>Name of the new ZFS pool [default=lxd]: <strong>lxd</strong></li>
+        <li>Would you like to use an existing block device (yes/no) [default=no]? <strong>no</strong></li>
+        <li>Size in GB of the new loop device (1GB minimum) [default=15]: <strong>60</strong> &#8211; This is the size of the ZFS pool in GB</li>
+    </ol>
 </li>
 <li>Would you like LXD to be available over the network (yes/no) [default=no]? <strong>no</strong></li>
 <li>Do you want to configure the LXD bridge (yes/no) [default=yes]? <strong>yes</strong></li>

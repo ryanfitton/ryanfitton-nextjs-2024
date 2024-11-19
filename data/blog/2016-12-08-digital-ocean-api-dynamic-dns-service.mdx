@@ -19,7 +19,7 @@ summary: 'A brief tutorial of how to use Digital Ocean&#039;s V2 API as a free D
 <li>Generate a new API token within the &#8216;API&#8217; section of the control panel: click <strong>&#8216;API&#8217;</strong> then click the <strong>&#8216;Generate New Token&#8217;</strong> button. Give your token a name (this can be anything) and ensure Read and Write scopes are selected. Make a note of your token key, this will be used next.</li>
 <li>You will now need to find the record ID of the sub-domain which you have just created. You can do this by running this code in your terminal, replace <strong>EXAMPLEDOMAIN.CO.UK</strong> with your domain, not the sub-domain:
 `curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer YOURAPIKEYHERE" "https://api.digitalocean.com/v2/domains/EXAMPLEDOMAIN.CO.UK/records"`
-<p>If you&#8217;d like the output to be easier to read use this command:</p>
+<br>If you&#8217;d like the output to be easier to read use this command:
 `curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer YOURAPIKEYHERE" "https://api.digitalocean.com/v2/domains/EXAMPLEDOMAIN.CO.UK/records" | python -m json.tool`
 </li>
 <li>Find the sub-domain and it&#8217;s ID, the result should look similar to this:

@@ -11,77 +11,77 @@ summary: 'One of the most common speed testing services for Internet connections
 <p>One of the most common speed testing services for Internet connections is <a href="https://www.speedtest.net/">Ookla&#8217;s Speedtest</a>, and more often than not your ISP will either throttle your connection, or their network will slow down at peak times.</p>
 <p>Because of this, I wanted to make sure I am receiving the full connection speed which I am paying for.</p>
 <p>I went looking for a solution and immediatly came across <a href="https://github.com/sivel/speedtest-cli">Speedtest-CLI</a> by Matt Martz. This repo allows you to perform Speedtests through a command line interface.</p>
-<p>But I was still looking for some sort of tool which could convert these results to a CSV file, so a new row can be appended to the file each time a test was run. Again, I went searching and came accross the fantastic <a href="https://github.com/HenrikBengtsson/speedtest-cli-extras">Speedtest-CLI-Extras</a> project by Henrik Bengtsson. This repo allows you to run the Speedtest CLI command but export the results to a CSV file. This will become useful to build graphs and check results over time.<br />&nbsp;</p>
+<p>But I was still looking for some sort of tool which could convert these results to a CSV file, so a new row can be appended to the file each time a test was run. Again, I went searching and came accross the fantastic <a href="https://github.com/HenrikBengtsson/speedtest-cli-extras">Speedtest-CLI-Extras</a> project by Henrik Bengtsson. This repo allows you to run the Speedtest CLI command but export the results to a CSV file. This will become useful to build graphs and check results over time.<br>&nbsp;</p>
 <h4>Notes</h4>
 <p>So let&#8217;s start. The installation process is painless, you will require Python install (python-pip). These installation notes were tested on Ubuntu 18.04.</p>
-<p>These instructions can be found in my Github repo <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron">here</a>.<br />&nbsp;</p>
+<p>These instructions can be found in my Github repo <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron">here</a>.<br>&nbsp;</p>
 <h4>Installation</h4>
 <ol>
 <li>
-        Switch to the `root` user:</p>
+Switch to the `root` user:<br>
 ```
 sudo su
 ```
 </li>
 <li>
-        Install `speedtest-cli`, run each line separately:</p>
+Install `speedtest-cli`, run each line separately:<br>
 ```
 sudo apt-get install python-pip
 sudo pip install speedtest-cli
 ```
 </li>
 <li>
-        Download the `speedtest-csv` script. You will also find a <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv">copy</a> of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.</p>
+Download the `speedtest-csv` script. You will also find a <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv">copy</a> of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.<br>
 ```
 sudo wget -O speedtest-csv https://raw.githubusercontent.com/HenrikBengtsson/speedtest-cli-extras/master/bin/speedtest-csv
 ```
 </li>
 <li>
-        Now give the file execute permissions:</p>
+Now give the file execute permissions:<br>
 ```
 sudo chmod +x speedtest-csv
 ```
 </li>
 <li>
-        You will need to edit a line in the file to so that it can be run from CRON:</p>
+You will need to edit a line in the file to so that it can be run from CRON:<br>
 ```
 sudo nano speedtest-csv
 ```
-<p>        Find the line `cmd=&quot;speedtest-cli $opts&quot;` and add `/usr/local/bin/` before it so it reads:</p>
+Find the line `cmd=&quot;speedtest-cli $opts&quot;` and add `/usr/local/bin/` before it so it reads:<br>
 ```
 cmd=&quot;/usr/local/bin/speedtest-cli $opts&quot;
 ```
-<p>        save the file and exit.
+save the file and exit.
     </li>
 <li>
-        Next move `speedtest-csv` to `/usr/bin/`:</p>
+Next move `speedtest-csv` to `/usr/bin/`:<br>
 ```
 sudo mv speedtest-csv /usr/bin/
 ```
 </li>
 <li>
-        Create a folder for where your .csv file will be saved, I am saving mine within `/cron/speedtest/`, but change this for whatever you&#8217;d like:</p>
+Create a folder for where your .csv file will be saved, I am saving mine within `/cron/speedtest/`, but change this for whatever you&#8217;d like:<br>
 ```
 sudo mkdir -p /cron/speedtest
 ```
 </li>
 <li>
-        Generate the CSV header:</p>
+Generate the CSV header:<br>
 ```
 sudo speedtest-csv --header &gt;&gt; /cron/speedtest/speedtest.csv
 ```
 </li>
 <li>
-        Add to the CRON:</p>
+Add to the CRON:<br>
 ```
 sudo crontab -e
 ```
 </li>
 <li>
-        Add the following line to the end of the file, this example is daily, ever four hours:</p>
+Add the following line to the end of the file, this example is daily, ever four hours:<br>
 ```
 0 */4 * * * speedtest-csv &gt;&gt; /cron/speedtest/speedtest.csv
 ```
-<p>        save the file and exit.
+save the file and exit.
     </li>
 </ol>
