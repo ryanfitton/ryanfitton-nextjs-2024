@@ -35,10 +35,11 @@ $badges: (
 //Loop
 @each $name, $colors in $badges {
     #badge-#{$name} {
-        background:map-get($colors,background);
+background:map-get($colors,background);
         color:map-get($colors,color);
-    }
+}
 }</code></pre>
+
 <p>The compiled CSS will be returned as:</p>
 <pre class="language-css"><code class="language-css">#badge-1 {
   background: #54677b;
@@ -46,12 +47,13 @@ $badges: (
 }
 
 #badge-2 {
-  background: #ecebeb;
-  color: #ffffff;
+background: #ecebeb;
+color: #ffffff;
 }
 
 #badge-3 {
-  background: #30b59f;
-  color: #2f343e;
+background: #30b59f;
+color: #2f343e;
 }
+
 </code></pre>

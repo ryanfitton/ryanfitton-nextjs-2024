@@ -32,7 +32,7 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
 
         //Loop through array
         foreach ($array as $key =&gt; $value) {
-            
+
             //If the key of this current loop matched what we're looking for, return the value
             if ($key == $findKey) {
                 $output = $value;
@@ -45,7 +45,9 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
 
         return $output;
     }
+
 ?&gt;</code></pre>
+
 <p>The result will return the value that was stored against the key. Here is a full code example:</p>
 <pre class="language-php"><code class="language-php">&lt;?php
     /*
@@ -58,7 +60,7 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
 
         //Loop through array
         foreach ($array as $key =&gt; $value) {
-            
+
             //If the key of this current loop matched what we're looking for, return the value
             if ($key == $findKey) {
                 $output = $value;
@@ -84,4 +86,5 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
 
     //Run function
     echo keyValue($array, 'email');
+
 ?&gt;</code></pre>

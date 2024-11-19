@@ -8,37 +8,83 @@ draft: false
 summary: 'Following the outbreak of three processor vulnerabilities, known as Spectre and Meltdown; I have already patched my systems and whilst doing so, came across this useful script written by Speed47. This script checks your system for the three vulnerabilities. I found it useful to check my systems were secure after applying kernel updates. To run [&amp;hellip;]'
 ---
 
-<p>Following the outbreak of three processor vulnerabilities, known as Spectre and Meltdown; I have already patched my systems and whilst doing so, came across this useful script written by <a href="https://github.com/speed47/spectre-meltdown-checker">Speed47</a>.</p>
-<p>This script checks your system for the three vulnerabilities. I found it useful to check my systems were secure after applying kernel updates.</p>
+<p>
+  Following the outbreak of three processor vulnerabilities, known as Spectre and Meltdown; I have
+  already patched my systems and whilst doing so, came across this useful script written by{' '}
+  <a href="https://github.com/speed47/spectre-meltdown-checker">Speed47</a>.
+</p>
+<p>
+  This script checks your system for the three vulnerabilities. I found it useful to check my
+  systems were secure after applying kernel updates.
+</p>
 <p>To run the script, use these commands below:</p>
 <ol>
-<li>Firstly download:
-<pre class="language-bash"><code class="language-bash">wget https://raw.githubusercontent.com/speed47/spectre-meltdown-checker/master/spectre-meltdown-checker.sh</code></pre>
-</li>
-<li>Then run the script as sudo:
-<pre class="language-bash"><code class="language-bash">sudo sh spectre-meltdown-checker.sh</code></pre>
-</li>
+  <li>
+    Firstly download:
+    <pre class="language-bash">
+      <code class="language-bash">
+        wget
+        https://raw.githubusercontent.com/speed47/spectre-meltdown-checker/master/spectre-meltdown-checker.sh
+      </code>
+    </pre>
+  </li>
+  <li>
+    Then run the script as sudo:
+    <pre class="language-bash">
+      <code class="language-bash">sudo sh spectre-meltdown-checker.sh</code>
+    </pre>
+  </li>
 </ol>
 <p>&nbsp;</p>
 <p>This is a quick summary of the vulnerabilities and their CVE numbers:</p>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5753#">CVE-2017-5753</a></strong> bounds check bypass (Spectre Variant 1)</p>
+<p>
+  <strong>
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5753#">CVE-2017-5753</a>
+  </strong>{' '}
+  bounds check bypass (Spectre Variant 1)
+</p>
 <ul>
-<li>Impact: Kernel &amp; all software</li>
-<li>Mitigation: recompile software <em>and</em> kernel with a modified compiler that introduces the LFENCE opcode at the proper positions in the resulting code</li>
-<li>Performance impact of the mitigation: negligible</li>
+  <li>Impact: Kernel &amp; all software</li>
+  <li>
+    Mitigation: recompile software <em>and</em> kernel with a modified compiler that introduces the
+    LFENCE opcode at the proper positions in the resulting code
+  </li>
+  <li>Performance impact of the mitigation: negligible</li>
 </ul>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5715">CVE-2017-5715</a></strong> branch target injection (Spectre Variant 2)</p>
+<p>
+  <strong>
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5715">CVE-2017-5715</a>
+  </strong>{' '}
+  branch target injection (Spectre Variant 2)
+</p>
 <ul>
-<li>Impact: Kernel</li>
-<li>Mitigation 1: new opcode via microcode update that should be used by up to date compilers to protect the BTB (by flushing indirect branch predictors)</li>
-<li>Mitigation 2: introducing &#8220;retpoline&#8221; into compilers, and recompile software/OS with it</li>
-<li>Performance impact of the mitigation: high for mitigation 1, medium for mitigation 2, depending on your CPU</li>
+  <li>Impact: Kernel</li>
+  <li>
+    Mitigation 1: new opcode via microcode update that should be used by up to date compilers to
+    protect the BTB (by flushing indirect branch predictors)
+  </li>
+  <li>
+    Mitigation 2: introducing &#8220;retpoline&#8221; into compilers, and recompile software/OS with
+    it
+  </li>
+  <li>
+    Performance impact of the mitigation: high for mitigation 1, medium for mitigation 2, depending
+    on your CPU
+  </li>
 </ul>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5754">CVE-2017-5754</a></strong> rogue data cache load (Meltdown)</p>
+<p>
+  <strong>
+    <a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5754">CVE-2017-5754</a>
+  </strong>{' '}
+  rogue data cache load (Meltdown)
+</p>
 <ul>
-<li>Impact: Kernel</li>
-<li>Mitigation: updated kernel (with PTI/KPTI patches), updating the kernel is enough</li>
-<li>Performance impact of the mitigation: low to medium</li>
+  <li>Impact: Kernel</li>
+  <li>Mitigation: updated kernel (with PTI/KPTI patches), updating the kernel is enough</li>
+  <li>Performance impact of the mitigation: low to medium</li>
 </ul>
 <p>&nbsp;</p>
-<p><strong>Disclaimer:</strong> Be careful when running script like these. Please check the script&#8217;s source code before running.</p>
+<p>
+  <strong>Disclaimer:</strong> Be careful when running script like these. Please check the
+  script&#8217;s source code before running.
+</p>

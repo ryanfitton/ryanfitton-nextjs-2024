@@ -35,62 +35,84 @@ summary: 'As mentioned in my previous post, I would post code for a script which
 <pre class="language-markup"><code class="language-markup">#!/bin/bash
 
 ## Usage: backup-container-snapshot.sh
-##
-## Make the script executable:
-##   chmod +x backup-container-snapshot.sh
-##
-## Pass arguments to the script:
-##   1: Container Name - Used to target the correct container and create a folder with this name
-##
-## Run using:
-##   sudo ./backup-container-snapshot.sh 'container-name-here'
-##
-## Notes: '/' = Server root folder. '~/' = User's home folder.
-##
-## Required software libaries:
-##   'netcat'           Used for checking if a connection can be made to the FTP server
-##   'exim4'            Used for sending email using the 'mail' command
-##   'lftp'             Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
-##   'curl'             Used for check if the file exists on the FTP server via the 'curl' command
 
+##
+
+## Make the script executable:
+
+## chmod +x backup-container-snapshot.sh
+
+##
+
+## Pass arguments to the script:
+
+## 1: Container Name - Used to target the correct container and create a folder with this name
+
+##
+
+## Run using:
+
+## sudo ./backup-container-snapshot.sh 'container-name-here'
+
+##
+
+## Notes: '/' = Server root folder. '~/' = User's home folder.
+
+##
+
+## Required software libaries:
+
+## 'netcat' Used for checking if a connection can be made to the FTP server
+
+## 'exim4' Used for sending email using the 'mail' command
+
+## 'lftp' Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
+
+## 'curl' Used for check if the file exists on the FTP server via the 'curl' command
 
 # Temporary backup location on the server. File will be kept here until FTP transfer is completed.
+
 GLOBAL_BACKUP_TEMP_SAVEPATH='/tmp'
 
 # The backup location on the remote FTP server which the script will use. Each script will create it's own folder within this location.
+
 GLOBAL_REMOTE_FTP_LOCATION='/backup'
 
 # Email address for notification of backups status
+
 GLOBAL_EMAIL_TO='example@example.co.uk'
 
 # FTP remote server connection details
+
 FTP_SERVER=''
 FTP_USERNAME=''
 FTP_PASSWORD=''
 FTP_PORT=21
-FTP_ARGUMENTS='-np'                     # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
-CURL_FTP_ARGUMENTS='--ftp-pasv'         # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
+FTP_ARGUMENTS='-np' # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
+CURL_FTP_ARGUMENTS='--ftp-pasv' # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
 
 # Backup options
-NAME="$1"                   # The Container Name - Used to categorize backups on the FTP server
+
+NAME="$1" # The Container Name - Used to categorize backups on the FTP server
 
 # Create the save path
-FTP_SAVEPATH="$GLOBAL_REMOTE_FTP_LOCATION/$NAME/snapshots"     # The path for where the snapshot file should be uploaded on the FTP server.
 
-
+FTP_SAVEPATH="$GLOBAL_REMOTE_FTP_LOCATION/$NAME/snapshots" # The path for where the snapshot file should be uploaded on the FTP server.
 
 # -------------------- Nothing to change after this point --------------------
 
 # Clear terminal window
+
 clear
 
 # Welcome/Start message
-echo "****************************************"
+
+echo "******************\*\*\*\*******************"
 echo "LXD Container Backup script"
 echo "Created for Ubuntu operating systems"
 echo "Author: Ryan Fitton (ryanfitton.co.uk)"
 echo "Version 3.0.0"
-echo "****************************************"
+echo "******************\*\*\*\*******************"
 
 printf "\n"
 
@@ -99,11 +121,12 @@ echo "..."
 printf "\n"
 sleep 5s # Wait 5 seconds
 
-
 # Check if the required arguments are not empty
+
 if [ "$1" != '' ];
 
 # If none of these arguments are empty, the script can proceed
+
 then
 
     # Check to see if the 'netcat' program is installed
@@ -216,10 +239,15 @@ then
                         echo "Starting FTP transfer process."
 
 # Indents are removed as they cause issues with the 'END_SCRIPT' tag
+
 # 1. Change directory on the local server
+
 # 2. Create directory on the FTP server
+
 # 3. Change to the newly created directory
+
 # 4. Upload file from local server to FTP server
+
 lftp ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT &lt;&lt;END_SCRIPT
 lcd "$GLOBAL_BACKUP_TEMP_SAVEPATH"
 mkdir -p "$FTP_SAVEPATH"
@@ -373,11 +401,12 @@ END_SCRIPT
 
         exit 1 # Exit with general error
     fi
-  
-  
+
 # If one or more arguments are empty, produce an error
+
 else
-    echo "One or more arguments are empty."
+echo "One or more arguments are empty."
 
     exit 1 # Exit with general error
+
 fi</code></pre>

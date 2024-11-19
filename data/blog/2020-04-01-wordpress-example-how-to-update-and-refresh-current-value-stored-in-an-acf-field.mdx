@@ -41,30 +41,30 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 
 &lt;?php get_header(); ?&gt;
 
-	&lt;!-- Message --&gt;
-	&lt;div id="message_notice"&gt;&lt;/div&gt;
-
-	
-	&lt;!-- Ajax content --&gt;
-	&lt;div id="ajax_content_wrapper"&gt;
-
-		&lt;!-- Display value --&gt;
-		&lt;div id="counter"&gt;
-			Current count: &lt;span&gt;&lt;?php echo esc_html( get_field('counter_val', 'options_counter') ); ?&gt;&lt;/span&gt;
-		&lt;/div&gt;
+    &lt;!-- Message --&gt;
+    &lt;div id="message_notice"&gt;&lt;/div&gt;
 
 
-		&lt;!-- /*---------------------------------------------------------*/ --&gt;
+    &lt;!-- Ajax content --&gt;
+    &lt;div id="ajax_content_wrapper"&gt;
+
+    	&lt;!-- Display value --&gt;
+    	&lt;div id="counter"&gt;
+    		Current count: &lt;span&gt;&lt;?php echo esc_html( get_field('counter_val', 'options_counter') ); ?&gt;&lt;/span&gt;
+    	&lt;/div&gt;
 
 
-		&lt;form method="POST"&gt;
-			&lt;input type="submit" name="submit" id="submit" value="Submit"&gt;
-		&lt;/form&gt;
+    	&lt;!-- /*---------------------------------------------------------*/ --&gt;
 
-	&lt;/div&gt;
 
+    	&lt;form method="POST"&gt;
+    		&lt;input type="submit" name="submit" id="submit" value="Submit"&gt;
+    	&lt;/form&gt;
+
+    &lt;/div&gt;
 
 &lt;?php get_footer(); ?&gt;</code></pre>
+
 <p>&nbsp;</p>
 <h3>Step 2 &#8211; Add code to your functions.php file</h3>
 <p>You may already have a <code>functions.php</code> file in your theme, if so; do NOT overwrite this file.</p>
@@ -74,458 +74,458 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 	 	This code goes the theme's functions.php file
 	 *************************/
 
-	 
-
-	/***********************
-		ACF Option Pages
-	***********************/
-	if( function_exists('acf_add_options_page') ) {
-		//AJAX Counter options ACF Page
-		acf_add_options_sub_page(array(
-			'page_title'    =&gt; 'Ajax counter options',
-			'menu_title'    =&gt; 'Ajax counter options',
-			'parent_slug'   =&gt; 'options-general.php',
-			'post_id'       =&gt; 'options_counter'          //Required to have fields for each page seperate
-		));
-	}
+    /***********************
+    	ACF Option Pages
+    ***********************/
+    if( function_exists('acf_add_options_page') ) {
+    	//AJAX Counter options ACF Page
+    	acf_add_options_sub_page(array(
+    		'page_title'    =&gt; 'Ajax counter options',
+    		'menu_title'    =&gt; 'Ajax counter options',
+    		'parent_slug'   =&gt; 'options-general.php',
+    		'post_id'       =&gt; 'options_counter'          //Required to have fields for each page seperate
+    	));
+    }
 
 
 
-	/***********************
-		Ajax Counter - Enqueue files
-	***********************/
-	function enqueue_ajax_form_script() {
-		/*Load the script*/
-		wp_enqueue_script(
-			'rsvp',																	//Handle: rsvp
-			get_template_directory_uri() . '/rsvp.min.js',							//Load 'rsvp.min.js'
-			array( 'jquery' )														//Depends on jQuery
-		);
+    /***********************
+    	Ajax Counter - Enqueue files
+    ***********************/
+    function enqueue_ajax_form_script() {
+    	/*Load the script*/
+    	wp_enqueue_script(
+    		'rsvp',																	//Handle: rsvp
+    		get_template_directory_uri() . '/rsvp.min.js',							//Load 'rsvp.min.js'
+    		array( 'jquery' )														//Depends on jQuery
+    	);
 
-		wp_enqueue_script(
-			'ajax_counter',															//Handle: ajax_counter
-			get_stylesheet_directory_uri() . '/ajax.js',							//Load 'ajax.js'
-			array( 'rsvp' )															//Depends on rsvp
-		);
+    	wp_enqueue_script(
+    		'ajax_counter',															//Handle: ajax_counter
+    		get_stylesheet_directory_uri() . '/ajax.js',							//Load 'ajax.js'
+    		array( 'rsvp' )															//Depends on rsvp
+    	);
 
-		wp_enqueue_script(
-			'jquery_cookie',														//Handle: jquery_cookie
-			//'https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js',	//Load 'js.cookie.min.js'
-			get_template_directory_uri() . '/js.cookie.min.js',
-			array( 'jquery' )														//Depends on jQuery
-		);
-		
-		/*Localise the scripts*/
-			//For default options set in ACF Options page
-			wp_localize_script('ajax_counter', 'script_localise', array(	//Name in JS: 'script_localise'
-				//Setup variables
-				'cookie_name' 		=&gt; 'test_cookie_ajax',
-				'cookie_duration' 	=&gt; '60',
-				'content_wrapper' 	=&gt; 'ajax_content_wrapper',
-				'content_messages' 	=&gt; 'message_notice',
+    	wp_enqueue_script(
+    		'jquery_cookie',														//Handle: jquery_cookie
+    		//'https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js',	//Load 'js.cookie.min.js'
+    		get_template_directory_uri() . '/js.cookie.min.js',
+    		array( 'jquery' )														//Depends on jQuery
+    	);
 
-				//Default
-				'ajaxurl' =&gt; admin_url('admin-ajax.php'),
-				'nonce' =&gt; wp_create_nonce("nonce"),
+    	/*Localise the scripts*/
+    		//For default options set in ACF Options page
+    		wp_localize_script('ajax_counter', 'script_localise', array(	//Name in JS: 'script_localise'
+    			//Setup variables
+    			'cookie_name' 		=&gt; 'test_cookie_ajax',
+    			'cookie_duration' 	=&gt; '60',
+    			'content_wrapper' 	=&gt; 'ajax_content_wrapper',
+    			'content_messages' 	=&gt; 'message_notice',
 
-				//For Counter Increase
-				'action_counter_increase' =&gt; 'counter_increase',			//Action in JS: 'wp_ajax_counter_increase', Function: 'ajax_counter_increase'
+    			//Default
+    			'ajaxurl' =&gt; admin_url('admin-ajax.php'),
+    			'nonce' =&gt; wp_create_nonce("nonce"),
 
-				//For Counter Current Value
-				'action_counter_current' =&gt; 'counter_current',				//Action in JS: 'wp_ajax_counter_current', Function: 'ajax_counter_current'
-			));
+    			//For Counter Increase
+    			'action_counter_increase' =&gt; 'counter_increase',			//Action in JS: 'wp_ajax_counter_increase', Function: 'ajax_counter_increase'
 
-	}
-	add_action( 'wp_enqueue_scripts', 'enqueue_ajax_form_script' );
+    			//For Counter Current Value
+    			'action_counter_current' =&gt; 'counter_current',				//Action in JS: 'wp_ajax_counter_current', Function: 'ajax_counter_current'
+    		));
 
-
-
-	/***********************
-		Ajax Counter Increase - Update counter
-	***********************/
-	function ajax_counter_increase() {
-		
-		/*
-			Nonce Security check
-		*/
-		if ( ! wp_verify_nonce( $_POST['nonce'], 'nonce' ) ) {
-			wp_send_json_error();
-		}
-
-
-		//Get current field value
-		$get_field_value = get_field('counter_val', 'options_counter');
-
-
-		//If current field is found
-		if ( $get_field_value != '' ) {
-
-			//Increase the value by 1
-			$increase_value = 1;
-
-
-			//New value
-			$new_value = $get_field_value + $increase_value;
-
-			//Update post meta value with new value
-			if ( update_field( 'counter_val', $new_value, 'options_counter') ) {
-
-				//Data to return via JSON
-				$success = array(
-					'value' =&gt;  esc_html( $new_value ),
-				);
-
-			} else {
-				$error = array( 'value' =&gt; "Value could not be updated" );	
-			}
-
-		} else {
-			$error = array( 'value' =&gt; "Cannot retrieve value" );	
-		}
-
-
-		/*
-			Return Data
-		*/
-		//If Error
-		if ( !empty($error) ) {
-			wp_send_json_error($error);
-		
-		//If success
-		} elseif ( !empty($success) ) {
-			wp_send_json_success( $success );
-		
-		//Catch all
-		} else {
-			wp_send_json_error();
-		}
-
-
-		die();
-	}
-	//Action: 'counter_increase' posted in AJAX, runs this function: 'ajax_counter_increase'
-	add_action('wp_ajax_counter_increase', 'ajax_counter_increase');		//Run for Admin users
-	add_action('wp_ajax_nopriv_counter_increase', 'ajax_counter_increase');	//Run for Non-Admin users
+    }
+    add_action( 'wp_enqueue_scripts', 'enqueue_ajax_form_script' );
 
 
 
-	/***********************
-		Ajax Counter Current Value - get current counter value
-	***********************/
-	function ajax_counter_current() {
-		
-		/*
-			Nonce Security check
-		*/
-		if ( ! wp_verify_nonce( $_POST['nonce'], 'nonce' ) ) {
-			wp_send_json_error();
-		}
+    /***********************
+    	Ajax Counter Increase - Update counter
+    ***********************/
+    function ajax_counter_increase() {
+
+    	/*
+    		Nonce Security check
+    	*/
+    	if ( ! wp_verify_nonce( $_POST['nonce'], 'nonce' ) ) {
+    		wp_send_json_error();
+    	}
 
 
-		//Get current field value
-		$get_field_value = get_field('counter_val', 'options_counter');
+    	//Get current field value
+    	$get_field_value = get_field('counter_val', 'options_counter');
 
 
-		//If current field is found
-		if ( $get_field_value != '' ) {
+    	//If current field is found
+    	if ( $get_field_value != '' ) {
 
-			//Data to return via JSON
-			$success = array(
-				'value' =&gt; esc_html( $get_field_value ),
-			);
-
-		} else {
-			$error = array( 'value' =&gt; "Cannot retrieve value" );
-		}
+    		//Increase the value by 1
+    		$increase_value = 1;
 
 
-		/*
-			Return Data
-		*/
-		//If Error
-		if ( !empty($error) ) {
-			wp_send_json_error($error);
+    		//New value
+    		$new_value = $get_field_value + $increase_value;
 
-		//If success
-		} elseif ( !empty($success) ) {
-			wp_send_json_success( $success );
+    		//Update post meta value with new value
+    		if ( update_field( 'counter_val', $new_value, 'options_counter') ) {
 
-		//Catch all
-		} else {
-			wp_send_json_error();
-		}
+    			//Data to return via JSON
+    			$success = array(
+    				'value' =&gt;  esc_html( $new_value ),
+    			);
+
+    		} else {
+    			$error = array( 'value' =&gt; "Value could not be updated" );
+    		}
+
+    	} else {
+    		$error = array( 'value' =&gt; "Cannot retrieve value" );
+    	}
 
 
-		die();
-	}
-	//Action: 'counter_current' posted in AJAX, runs this function: 'ajax_counter_current'
-	add_action('wp_ajax_counter_current', 'ajax_counter_current');			//Run for Admin users
-	add_action('wp_ajax_nopriv_counter_current', 'ajax_counter_current');	//Run for Non-Admin users
+    	/*
+    		Return Data
+    	*/
+    	//If Error
+    	if ( !empty($error) ) {
+    		wp_send_json_error($error);
+
+    	//If success
+    	} elseif ( !empty($success) ) {
+    		wp_send_json_success( $success );
+
+    	//Catch all
+    	} else {
+    		wp_send_json_error();
+    	}
+
+
+    	die();
+    }
+    //Action: 'counter_increase' posted in AJAX, runs this function: 'ajax_counter_increase'
+    add_action('wp_ajax_counter_increase', 'ajax_counter_increase');		//Run for Admin users
+    add_action('wp_ajax_nopriv_counter_increase', 'ajax_counter_increase');	//Run for Non-Admin users
+
+
+
+    /***********************
+    	Ajax Counter Current Value - get current counter value
+    ***********************/
+    function ajax_counter_current() {
+
+    	/*
+    		Nonce Security check
+    	*/
+    	if ( ! wp_verify_nonce( $_POST['nonce'], 'nonce' ) ) {
+    		wp_send_json_error();
+    	}
+
+
+    	//Get current field value
+    	$get_field_value = get_field('counter_val', 'options_counter');
+
+
+    	//If current field is found
+    	if ( $get_field_value != '' ) {
+
+    		//Data to return via JSON
+    		$success = array(
+    			'value' =&gt; esc_html( $get_field_value ),
+    		);
+
+    	} else {
+    		$error = array( 'value' =&gt; "Cannot retrieve value" );
+    	}
+
+
+    	/*
+    		Return Data
+    	*/
+    	//If Error
+    	if ( !empty($error) ) {
+    		wp_send_json_error($error);
+
+    	//If success
+    	} elseif ( !empty($success) ) {
+    		wp_send_json_success( $success );
+
+    	//Catch all
+    	} else {
+    		wp_send_json_error();
+    	}
+
+
+    	die();
+    }
+    //Action: 'counter_current' posted in AJAX, runs this function: 'ajax_counter_current'
+    add_action('wp_ajax_counter_current', 'ajax_counter_current');			//Run for Admin users
+    add_action('wp_ajax_nopriv_counter_current', 'ajax_counter_current');	//Run for Non-Admin users
+
 ?&gt;</code></pre>
+
 <p>&nbsp;</p>
 <h3>Step 3 &#8211; Create JS file to hold AJAX calls</h3>
 <p>This file will hold all Ajax function calls. These function calls will communicate with the PHP functions within functions.php</p>
 <p>Create a new file named <code>ajax.js</code></p>
 <pre class="language-php code-toolbar"><code class=" language-php">jQuery(function ($) {
 
-	//Promise polyfill
-	//var RSVP = require('rsvp');	//Using the RSVP library for Promise functions in IE11: https://github.com/tildeio/rsvp.js/ and https://developers.google.com/web/fundamentals/primers/promises
+    //Promise polyfill
+    //var RSVP = require('rsvp');	//Using the RSVP library for Promise functions in IE11: https://github.com/tildeio/rsvp.js/ and https://developers.google.com/web/fundamentals/primers/promises
 
-	//Globals
-	var increase_amount = false;
+    //Globals
+    var increase_amount = false;
 
 
-	// JS
-	window.Counter = {
+    // JS
+    window.Counter = {
 
         /**
          * init - Runs first
          *
          */
-		init: function () {
+    	init: function () {
 
-			this.cookie = script_localise.cookie_name;							//The name of the cookie to be set/checked
-			this.cookie_duration = parseInt(script_localise.cookie_duration);	//The duration of the cookie
+    		this.cookie = script_localise.cookie_name;							//The name of the cookie to be set/checked
+    		this.cookie_duration = parseInt(script_localise.cookie_duration);	//The duration of the cookie
 
-			this.content_wrapper = jQuery("#" + script_localise.content_wrapper);
-			this.content_messages = jQuery("#" + script_localise.content_messages);
-
-
-			/* Disable standard form submissions on form submit button */
-			this.content_wrapper.find('form').submit(function (event) {
-				event.preventDefault();
-			});
+    		this.content_wrapper = jQuery("#" + script_localise.content_wrapper);
+    		this.content_messages = jQuery("#" + script_localise.content_messages);
 
 
-			/* Debugging */
-			Cookies.remove(this.cookie);
+    		/* Disable standard form submissions on form submit button */
+    		this.content_wrapper.find('form').submit(function (event) {
+    			event.preventDefault();
+    		});
 
 
-			/* Run functions dependant on Cookie */
-			cookie = Cookies.get(this.cookie);
-
-			//If no cookie is set, continue displaying the interactive elements
-			if (typeof cookie === 'undefined') {
-
-				//Every 5 seconds, execute 'ajax_counter_current' function
-				window.setInterval(function () {
-					Counter.ajax_counter_current();
-				}, 5000);
-
-				//Run once
-				Counter.form_submission();
+    		/* Debugging */
+    		Cookies.remove(this.cookie);
 
 
-			//Else, cookie is set. Display message stating no form submissions can be made
-			} else {
+    		/* Run functions dependant on Cookie */
+    		cookie = Cookies.get(this.cookie);
 
-				//Set error message
-				Counter.status_message('alert-error', 'You have already submitted the form.', this.content_messages);
+    		//If no cookie is set, continue displaying the interactive elements
+    		if (typeof cookie === 'undefined') {
 
-				//Hide the content wrapper
-				this.content_wrapper.hide();
+    			//Every 5 seconds, execute 'ajax_counter_current' function
+    			window.setInterval(function () {
+    				Counter.ajax_counter_current();
+    			}, 5000);
 
-			}
-
-		},
-
+    			//Run once
+    			Counter.form_submission();
 
 
-		/* AJAX functions ---------------------------------------------------- */
+    		//Else, cookie is set. Display message stating no form submissions can be made
+    		} else {
 
-		/**
+    			//Set error message
+    			Counter.status_message('alert-error', 'You have already submitted the form.', this.content_messages);
+
+    			//Hide the content wrapper
+    			this.content_wrapper.hide();
+
+    		}
+
+    	},
+
+
+
+    	/* AJAX functions ---------------------------------------------------- */
+
+    	/**
          * ajax_counter_increase
-		 * Increase the counter via AJAX
+    	 * Increase the counter via AJAX
          * =====================================================================
          */
-		ajax_counter_increase: function (increase_value) {
+    	ajax_counter_increase: function (increase_value) {
 
-			/* Create Variables */
-			var increase_value = increase_value;
+    		/* Create Variables */
+    		var increase_value = increase_value;
 
-			if (increase_value &lt; 1) {
-				increase_value = false;
-			}
+    		if (increase_value &lt; 1) {
+    			increase_value = false;
+    		}
 
-			/* Run AJAX via Promise - https://www.taniarascia.com/how-to-promisify-an-ajax-call/ */
-			return new RSVP.Promise(function (resolve, reject) {
-				jQuery.ajax({
-					type: "POST",
-					async: true,
-					url: script_localise.ajaxurl,			//URL from functions.php
-					data: {
-						action: script_localise.action_counter_increase,		//Action name
-						increase_value: increase_value,
-						nonce: script_localise.nonce
-					},
+    		/* Run AJAX via Promise - https://www.taniarascia.com/how-to-promisify-an-ajax-call/ */
+    		return new RSVP.Promise(function (resolve, reject) {
+    			jQuery.ajax({
+    				type: "POST",
+    				async: true,
+    				url: script_localise.ajaxurl,			//URL from functions.php
+    				data: {
+    					action: script_localise.action_counter_increase,		//Action name
+    					increase_value: increase_value,
+    					nonce: script_localise.nonce
+    				},
 
-					//On success
-					success: function (data) {
+    				//On success
+    				success: function (data) {
 
-						//Set data to repsonse variable
-						response = data;
+    					//Set data to repsonse variable
+    					response = data;
 
-						resolve(data)
-						//resolve(data.data['value'])
+    					resolve(data)
+    					//resolve(data.data['value'])
 
-						//console.log(data.data['value']);
-						//return data.data['value'];
-						console.log("done");
-					},
+    					//console.log(data.data['value']);
+    					//return data.data['value'];
+    					console.log("done");
+    				},
 
-					//On error
-					error: function (xhr, status) {
-						//console.log("'ajax_counter_increase' error.");
-						reject("'ajax_counter_increase' error.")
-					},
+    				//On error
+    				error: function (xhr, status) {
+    					//console.log("'ajax_counter_increase' error.");
+    					reject("'ajax_counter_increase' error.")
+    				},
 
-					//On completion of AJAX call
-					complete: function (xhr, status) {
-						//console.log("'ajax_counter_increase' complete.");
-					}
-				});
-			});
+    				//On completion of AJAX call
+    				complete: function (xhr, status) {
+    					//console.log("'ajax_counter_increase' complete.");
+    				}
+    			});
+    		});
 
-		},
+    	},
 
 
 
-		/**
+    	/**
          * ajax_counter_current
-		 * Retrieve the current value of the counter via AJAX
+    	 * Retrieve the current value of the counter via AJAX
          * =====================================================================
          */
-		ajax_counter_current: function () {
+    	ajax_counter_current: function () {
 
-			/* Run AJAX */
-			jQuery.ajax({
-				type: "POST",
-				url: script_localise.ajaxurl,						//URL from functions.php
-				data: {
-					action: script_localise.action_counter_current,					//Action name
-					nonce: script_localise.nonce
-				},
+    		/* Run AJAX */
+    		jQuery.ajax({
+    			type: "POST",
+    			url: script_localise.ajaxurl,						//URL from functions.php
+    			data: {
+    				action: script_localise.action_counter_current,					//Action name
+    				nonce: script_localise.nonce
+    			},
 
-				//On success
-				success: function (data) {
-					Counter.callback_refresh_counter_current_value(data);			//Run the update function to display current up-to-date value in HTML
-				},
+    			//On success
+    			success: function (data) {
+    				Counter.callback_refresh_counter_current_value(data);			//Run the update function to display current up-to-date value in HTML
+    			},
 
-				//On error
-				error: function (xhr, status) {
-					console.log("'ajax_counter_current' error.");
-				},
+    			//On error
+    			error: function (xhr, status) {
+    				console.log("'ajax_counter_current' error.");
+    			},
 
-				//On completion of AJAX call
-				complete: function (xhr, status) {
-					//console.log("'ajax_counter_current' completed.");
-				}
-			});
+    			//On completion of AJAX call
+    			complete: function (xhr, status) {
+    				//console.log("'ajax_counter_current' completed.");
+    			}
+    		});
 
-		},
+    	},
 
 
 
-		/* Callbacks ---------------------------------------------------- */
+    	/* Callbacks ---------------------------------------------------- */
 
-		/**
+    	/**
          * callback_refresh_counter_current_value
-		 * Retrieve the current counter value and update HTML
+    	 * Retrieve the current counter value and update HTML
          * =====================================================================
          */
-		callback_refresh_counter_current_value: function (response) {
+    	callback_refresh_counter_current_value: function (response) {
 
-			//If success
-			if (response.success === true) {
-				//Update the HTML content of Div ID '#counter'
-				$('#counter span').html(response.data['value']);
+    		//If success
+    		if (response.success === true) {
+    			//Update the HTML content of Div ID '#counter'
+    			$('#counter span').html(response.data['value']);
 
-			//Else, failure
-			} else if (response.success === false) {
-				//console.log("failure");
-			}
+    		//Else, failure
+    		} else if (response.success === false) {
+    			//console.log("failure");
+    		}
 
-		},
-
-
-
-		/* Page functions ---------------------------------------------------- */
-
-		/**
-		 * statusMessages
-		 * The status messages to be displayed, either success or error
-		 * 		type = either 'success' or 'error'
-		 * 		text = the text to display
-		 * 		element = in which element to display
-		 * =====================================================================
-		 */
-		status_message: function (type, text, element) {
-			var element = jQuery(element);
-
-			element.html('&lt;div class="alert ' + type + '"&gt;' + text + '&lt;/div&gt;');
-		},
+    	},
 
 
 
-		/**
+    	/* Page functions ---------------------------------------------------- */
+
+    	/**
+    	 * statusMessages
+    	 * The status messages to be displayed, either success or error
+    	 * 		type = either 'success' or 'error'
+    	 * 		text = the text to display
+    	 * 		element = in which element to display
+    	 * =====================================================================
+    	 */
+    	status_message: function (type, text, element) {
+    		var element = jQuery(element);
+
+    		element.html('&lt;div class="alert ' + type + '"&gt;' + text + '&lt;/div&gt;');
+    	},
+
+
+
+    	/**
          * form_submission
-		 * Submission of the form
+    	 * Submission of the form
          * =====================================================================
          */
-		form_submission: function () {
+    	form_submission: function () {
 
-			/* Create Variables */
-			var cookie = this.cookie;	//Cookie to be set
-			var cookie_duration = this.cookie_duration		//Cookie duration
-			var content_wrapper = this.content_wrapper;		//The content wrapper
-			var content_messages = this.content_messages;	//The content message
-
-
-			/* On submission of form */
-			content_wrapper.find('form').submit(function (event) {
-
-				/* Reset the amount to increase */
-				increase_amount = 0;
+    		/* Create Variables */
+    		var cookie = this.cookie;	//Cookie to be set
+    		var cookie_duration = this.cookie_duration		//Cookie duration
+    		var content_wrapper = this.content_wrapper;		//The content wrapper
+    		var content_messages = this.content_messages;	//The content message
 
 
-				/* Run AJAX call to increase the counter */
-				Counter.ajax_counter_increase(increase_amount).then(function (value) {
+    		/* On submission of form */
+    		content_wrapper.find('form').submit(function (event) {
 
-					//If success
-					if (response.success === true) {
-						//console.log("'ajax_counter_increase' complete.");
-
-						/* Get the lastest counter value - refresh */
-						Counter.ajax_counter_current();
-
-						/* Set cookie for completion of form */
-						Cookies.set(cookie, cookie, { expires: cookie_duration });
-
-						/* Set success message */
-						Counter.status_message('alert-success', 'Thankyou for submitting.' + answer_feedback, content_messages);
-
-						content_wrapper.find('form').trigger("reset");
+    			/* Reset the amount to increase */
+    			increase_amount = 0;
 
 
-					//Else, failure
-					} else if (response.success === false) {
-						//console.log("'ajax_counter_increase' error.");
+    			/* Run AJAX call to increase the counter */
+    			Counter.ajax_counter_increase(increase_amount).then(function (value) {
 
-						/* Set error message */
-						Counter.status_message('alert-error', 'Unable to submit.', content_messages);
-					}
+    				//If success
+    				if (response.success === true) {
+    					//console.log("'ajax_counter_increase' complete.");
 
-				});
+    					/* Get the lastest counter value - refresh */
+    					Counter.ajax_counter_current();
 
-			});
+    					/* Set cookie for completion of form */
+    					Cookies.set(cookie, cookie, { expires: cookie_duration });
 
-		},
+    					/* Set success message */
+    					Counter.status_message('alert-success', 'Thankyou for submitting.' + answer_feedback, content_messages);
 
-	}
+    					content_wrapper.find('form').trigger("reset");
 
 
-	$(function () {
-		Counter.init();	//Run init
-	});
+    				//Else, failure
+    				} else if (response.success === false) {
+    					//console.log("'ajax_counter_increase' error.");
+
+    					/* Set error message */
+    					Counter.status_message('alert-error', 'Unable to submit.', content_messages);
+    				}
+
+    			});
+
+    		});
+
+    	},
+
+    }
+
+
+    $(function () {
+    	Counter.init();	//Run init
+    });
 
 });</code></pre>

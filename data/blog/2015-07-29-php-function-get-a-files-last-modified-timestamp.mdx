@@ -8,14 +8,37 @@ draft: false
 summary: 'I&amp;#8217;ve recently found the need to show a file&amp;#8217;s last modified timestamp. This function is useful when including CSS or JavaScript files. By including a query string will ensure web browsers re-download a fresh copy of the file rather than using a cached file. Simply run this function as you&amp;#8217;re including a file, such as: [&amp;hellip;]'
 ---
 
-<p>I&#8217;ve recently found the need to show a file&#8217;s last modified timestamp. This function is useful when including CSS or JavaScript files. By including a query string will ensure web browsers re-download a fresh copy of the file rather than using a cached file.</p>
+<p>
+  I&#8217;ve recently found the need to show a file&#8217;s last modified timestamp. This function
+  is useful when including CSS or JavaScript files. By including a query string will ensure web
+  browsers re-download a fresh copy of the file rather than using a cached file.
+</p>
 <p>Simply run this function as you&#8217;re including a file, such as:</p>
-<p><script src="https://gist.github.com/ryanfitton/0e78dc9bad39212f0d78.js"></script>The example above will add style.css&#8217; last modified timestamp as a query string, therefore each time the style.css is updated; the timestamp will be updated forcing the web browser to download a new copy. You will need to include this function code for the above code to work properly:<script src="https://gist.github.com/ryanfitton/9b23fbf0a4d0bd65f401.js"></script></p>
+<p>
+  <script src="https://gist.github.com/ryanfitton/0e78dc9bad39212f0d78.js"></script>The example
+  above will add style.css&#8217; last modified timestamp as a query string, therefore each time the
+  style.css is updated; the timestamp will be updated forcing the web browser to download a new
+  copy. You will need to include this function code for the above code to work properly:
+  <script src="https://gist.github.com/ryanfitton/9b23fbf0a4d0bd65f401.js"></script>
+</p>
 <p>You will have three options when using this function:</p>
 <ul>
-<li><code>$filename</code> = This is the filename of the item you wish to check. E.g. &#8220;style.css&#8221;.</li>
-<li><code>$filepath</code> = You can use this variable to set the filepath of the above filename. Such as &#8220;css/&#8221;.</li>
-<li><code>$displayV</code> = This option has a default value of &#8220;false&#8221;. You can change this variable to &#8220;true&#8221;, doing so will prepend &#8220;?v=&#8221; before the timestamp, so your final timestamp will look like: &#8220;?v=1438124400&#8221;.</li>
+  <li>
+    <code>$filename</code> = This is the filename of the item you wish to check. E.g.
+    &#8220;style.css&#8221;.
+  </li>
+  <li>
+    <code>$filepath</code> = You can use this variable to set the filepath of the above filename.
+    Such as &#8220;css/&#8221;.
+  </li>
+  <li>
+    <code>$displayV</code> = This option has a default value of &#8220;false&#8221;. You can change
+    this variable to &#8220;true&#8221;, doing so will prepend &#8220;?v=&#8221; before the
+    timestamp, so your final timestamp will look like: &#8220;?v=1438124400&#8221;.
+  </li>
 </ul>
-<p>The final result of code with look very similar to:<br />
-<script src="https://gist.github.com/ryanfitton/413e2324c5566a71f6a4.js"></script></p>
+<p>
+  The final result of code with look very similar to:
+  <br />
+  <script src="https://gist.github.com/ryanfitton/413e2324c5566a71f6a4.js"></script>
+</p>

@@ -21,36 +21,52 @@ summary: 'I&amp;#8217;ve recently installed LXD 2.x on my Ubuntu server but forg
 sudo zpool set autoexpand=on POOL-NAME
 
 # Create a new XXGB file and store temporarily
+
 sudo truncate -s SIZE /var/lib/lxd/zfs.tmp
 sudo zpool attach POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.tmp
 
 # View the re-silver progress, only proceed once this has been successful
+
 sudo zpool status -v POOL-NAME
 
 # Continue ...
+
 sudo zpool detach POOL-NAME /var/lib/lxd/zfs.img
 sudo rm /var/lib/lxd/zfs.img
 
 # Now replace the current file with the newly created temporary version
+
 sudo truncate -s SIZE /var/lib/lxd/zfs.img
 sudo zpool attach POOL-NAME /var/lib/lxd/zfs.tmp /var/lib/lxd/zfs.img
 
 # View the re-silver progress, only proceed once this has been successful
+
 sudo zpool status -v POOL-NAME
 
 # Continue ...
+
 sudo zpool detach POOL-NAME /var/lib/lxd/zfs.tmp
 sudo rm /var/lib/lxd/zfs.tmp
 
 # Force ZFS to pickup the new changes, use the new partition which is the same
+
 sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img</code></pre>
-<p>You can also, check if the settings have been applied by running the <code class="language-markup">sudo zfs list</code> command, you will see a result similar to below; make note of the values in the &#8216;AVAIL&#8217; column as this should show your new pool size.</p>
-<pre class="language-markup"><code class="language-markup">root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list
-NAME                                                                          USED  AVAIL  REFER  MOUNTPOINT
-lxd                                                                           646M   125G    19K  none
-lxd/containers                                                               12.7M   125G    19K  none
-lxd/containers/container1                                                    6.28M   125G   307M  /var/lib/lxd/containers/container1.zfs
-lxd/containers/container2                                                    6.38M   125G   326M  /var/lib/lxd/containers/container2.zfs
-lxd/images                                                                    633M   125G    19K  none
-lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a   326M   125G   326M  /var/lib/lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a.zfs
-lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b   307M   125G   307M  /var/lib/lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b.zfs</code></pre>
+
+<p>
+  You can also, check if the settings have been applied by running the{' '}
+  <code class="language-markup">sudo zfs list</code> command, you will see a result similar to
+  below; make note of the values in the &#8216;AVAIL&#8217; column as this should show your new pool
+  size.
+</p>
+<pre class="language-markup">
+  <code class="language-markup">
+    root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list NAME USED AVAIL REFER MOUNTPOINT lxd 646M 125G
+    19K none lxd/containers 12.7M 125G 19K none lxd/containers/container1 6.28M 125G 307M
+    /var/lib/lxd/containers/container1.zfs lxd/containers/container2 6.38M 125G 326M
+    /var/lib/lxd/containers/container2.zfs lxd/images 633M 125G 19K none
+    lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a 326M 125G 326M
+    /var/lib/lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a.zfs
+    lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b 307M 125G 307M
+    /var/lib/lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b.zfs
+  </code>
+</pre>

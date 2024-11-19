@@ -19,53 +19,69 @@ summary: 'This is a follow-up post with an update to the &amp;#8216;Backup Files
 <pre class="language-markup"><code class="language-markup">#!/bin/bash
 
 ## Usage: backup_files2ftp.sh
-##
-## Make the script executable:
-##   chmod +x backup_files2ftp.sh
-##
-## Run using:
-##   sudo ./backup_files2ftp.sh
-##
-## Notes: '/' = Backup entire server.
-##
-## Required software libaries:
-##   'netcat'           Used for checking if a connection can be made to the camera
-##   'exim4'            Used for sending email using the 'mail' command
-##   'lftp'             Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
-##   'curl'             Used for check if the file exists on the FTP server via the 'curl' command
 
+##
+
+## Make the script executable:
+
+## chmod +x backup_files2ftp.sh
+
+##
+
+## Run using:
+
+## sudo ./backup_files2ftp.sh
+
+##
+
+## Notes: '/' = Backup entire server.
+
+##
+
+## Required software libaries:
+
+## 'netcat' Used for checking if a connection can be made to the camera
+
+## 'exim4' Used for sending email using the 'mail' command
+
+## 'lftp' Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
+
+## 'curl' Used for check if the file exists on the FTP server via the 'curl' command
 
 # Backup options
-BACKUP_FILES='/'                                                    # Files to include within the backup.
-FILENAME_PREFIX='full-backup_'                                      # Prefix for the .tar.gz filename. The script will automatically append the server hostname and today's datetime.
-BACKUP_TEMP_SAVEPATH='/root'                                        # The root path for temporary storage to save the .tar.gz before uploaded to the FTP server, once uploaded the file will be removed from this location.
-FTP_SAVEPATH='/backups/your-server-name/tar.gz'                     # The root path for where the .tar.gz file should be uploaded on the FTP server.
+
+BACKUP*FILES='/' # Files to include within the backup.
+FILENAME_PREFIX='full-backup*' # Prefix for the .tar.gz filename. The script will automatically append the server hostname and today's datetime.
+BACKUP_TEMP_SAVEPATH='/root' # The root path for temporary storage to save the .tar.gz before uploaded to the FTP server, once uploaded the file will be removed from this location.
+FTP_SAVEPATH='/backups/your-server-name/tar.gz' # The root path for where the .tar.gz file should be uploaded on the FTP server.
 
 # FTP Connection details
+
 FTP_SERVER=''
 FTP_USERNAME=''
 FTP_PASSWORD=''
 FTP_PORT=21
-FTP_ARGUMENTS='-np'                     # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
-CURL_FTP_ARGUMENTS='--ftp-pasv'         # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
+FTP_ARGUMENTS='-np' # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
+CURL_FTP_ARGUMENTS='--ftp-pasv' # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
 
 # Email confirmation details
+
 EMAIL_TO='youremail@example.co.uk'
-
-
 
 # -------------------- Nothing to change after this point --------------------
 
 # Clear terminal window
+
 clear
 
 # Welcome/Start message
-echo "****************************************"
+
+echo "******************\*\*\*\*******************"
 echo "Backup Files2FTP base script"
 echo "Created for Ubuntu operating systems"
 echo "Author: Ryan Fitton (ryanfitton.co.uk)"
 echo "Version 2.0.0"
-echo "****************************************"
+echo "******************\*\*\*\*******************"
 
 printf "\n"
 
@@ -74,13 +90,15 @@ echo "..."
 printf "\n"
 sleep 5s # Wait 5 seconds
 
-
 # Check to see if the 'netcat' program is installed
+
 # Used for checking if a connection can be made to the camera
+
 PACKAGE='netcat'
 if dpkg -s $PACKAGE 2&gt;/dev/null &gt;/dev/null;
 
 # If 'netcat' is installed
+
 then
 
     # Checking to see if the Mail package is installed on your system
@@ -161,10 +179,15 @@ then
                     echo "Starting FTP transfer process."
 
 # Indents are removed as they cause issues with the 'END_SCRIPT' tag
+
 # 1. Change directory on the local server
+
 # 2. Create directory on the FTP server
+
 # 3. Change to the newly created directory
+
 # 4. Upload file from local server to FTP server
+
 lftp ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT &lt;&lt;END_SCRIPT
 lcd "$BACKUP_TEMP_SAVEPATH"
 mkdir -p "$FTP_SAVEPATH"
@@ -309,12 +332,13 @@ END_SCRIPT
         exit 1 # Exit with general error
 
     fi
-    
-    
+
 # If failure
+
 else
-    echo "The '$PACKAGE' package is not installed on your system."
-    echo "Install by running: 'sudo apt-get install $PACKAGE'"
+echo "The '$PACKAGE' package is not installed on your system."
+echo "Install by running: 'sudo apt-get install $PACKAGE'"
 
     exit 1 # Exit with general error
+
 fi</code></pre>

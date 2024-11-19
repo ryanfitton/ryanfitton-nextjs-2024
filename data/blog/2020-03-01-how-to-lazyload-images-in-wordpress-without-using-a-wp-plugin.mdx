@@ -41,37 +41,38 @@ if (!is_admin()) {
 	//Remove WordPress default jQuery
 	wp_deregister_script( 'jquery' );
 
-
-	//Register custom jQuery library
-	//wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/libs/jquery.3.4.1.min.js', false, null, false ); 
-	wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', false, null, false ); 
-
-
-	//Enqueue custom jQuery library
-	wp_enqueue_script('jquery');
+    //Register custom jQuery library
+    //wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/libs/jquery.3.4.1.min.js', false, null, false );
+    wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', false, null, false );
 
 
-	//Enqueue LazyLoad
-	wp_enqueue_script( 'lazyload', get_template_directory_uri() . '/assets/js/plugins/jquery.lazy.min.js', 'jquery', null, true ); //Depends on jQuery
+    //Enqueue custom jQuery library
+    wp_enqueue_script('jquery');
 
 
-	//Inline LazyLoad script
-	/*
-		New LazyLoad instance 
-		More info: http://jquery.eisbehr.de/lazy/
+    //Enqueue LazyLoad
+    wp_enqueue_script( 'lazyload', get_template_directory_uri() . '/assets/js/plugins/jquery.lazy.min.js', 'jquery', null, true ); //Depends on jQuery
 
-		Config:
-			scrollDirection: 'vertical',
-			effect: 'fadeIn',
-			effectTime: 200,
-			threshold: 0,
-			visibleOnly: true,
-			onError: function(element) {
-				console.log('jQuery LazyLoad error. Cannnot load: ' + element.data('src'));
-			}
-	*/
-	wp_add_inline_script( 'lazyload', &quot;jQuery(function($) {  $('.lazy').Lazy({  scrollDirection: 'vertical', effect: 'fadeIn', effectTime: 200, threshold: 0, visibleOnly: true, onError: function(element) { console.log('jQuery LazyLoad error. Cannnot load: ' + element.data('src')); }  }); });&quot;, 'after' );
+
+    //Inline LazyLoad script
+    /*
+    	New LazyLoad instance
+    	More info: http://jquery.eisbehr.de/lazy/
+
+    	Config:
+    		scrollDirection: 'vertical',
+    		effect: 'fadeIn',
+    		effectTime: 200,
+    		threshold: 0,
+    		visibleOnly: true,
+    		onError: function(element) {
+    			console.log('jQuery LazyLoad error. Cannnot load: ' + element.data('src'));
+    		}
+    */
+    wp_add_inline_script( 'lazyload', &quot;jQuery(function($) {  $('.lazy').Lazy({  scrollDirection: 'vertical', effect: 'fadeIn', effectTime: 200, threshold: 0, visibleOnly: true, onError: function(element) { console.log('jQuery LazyLoad error. Cannnot load: ' + element.data('src')); }  }); });&quot;, 'after' );
+
 }
+
 </code></pre>
 <h4>Step 3: Add functions for Image and Background images</h4>
 <p>Also, within your <code class="language-html">functions.php</code> add these functions which are used to add the required tags for the Image and Background image tags.</p>
@@ -91,13 +92,15 @@ function preg_lazyload_img($img_match) {
 	//Replace the image source with lazy placeholder and add a custom attribute
 	$img_replace = $img_match[1] . 'src=&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=&quot; data-src' . substr($img_match[2], 3) . $img_match[3];
 
-	//Add 'lazy' to the class
-	$img_replace = preg_replace('/class\s*=\s*&quot;/i', 'class=&quot;lazy ', $img_replace);
+    //Add 'lazy' to the class
+    $img_replace = preg_replace('/class\s*=\s*&quot;/i', 'class=&quot;lazy ', $img_replace);
 
-	//Add a no-script tag of the original element
-	$img_replace .= '&lt;noscript&gt;' . $img_match[0] . '&lt;/noscript&gt;';
-	return $img_replace;
+    //Add a no-script tag of the original element
+    $img_replace .= '&lt;noscript&gt;' . $img_match[0] . '&lt;/noscript&gt;';
+    return $img_replace;
+
 }
+
 </code></pre>
 <p>And background images, add: </p>
 <pre class="language-php"><code class="language-php">
@@ -112,16 +115,18 @@ function filter_lazyload_bg($content) {
 add_filter('the_content', 'filter_lazyload_bg');
 
 function preg_lazyload_bg($div_match) {
-	//Replace the div bg image source with lazy placeholder and add a custom attribute
-	//Remove white space from style tag, remove &quot;'&quot;, remove 28 characters (style=&quot;background-image: url() and remove ');&quot;'
-	$div_replace = $div_match[1] . 'data-src=&quot;' . str_replace(');&quot;', '',  substr(  str_replace(&quot;'&quot;, '',  str_replace(' ', '', $div_match[2])  ),  28)  ) . '&quot;' . $div_match[3];
+//Replace the div bg image source with lazy placeholder and add a custom attribute
+//Remove white space from style tag, remove &quot;'&quot;, remove 28 characters (style=&quot;background-image: url() and remove ');&quot;'
+$div_replace = $div_match[1] . 'data-src=&quot;' . str_replace(');&quot;', '', substr( str_replace(&quot;'&quot;, '', str_replace(' ', '', $div_match[2]) ), 28) ) . '&quot;' . $div_match[3];
 
-	//Add 'lazy' to the class
-	$div_replace = preg_replace('/class\s*=\s*&quot;/i', 'class=&quot;lazy ', $div_replace);
+    //Add 'lazy' to the class
+    $div_replace = preg_replace('/class\s*=\s*&quot;/i', 'class=&quot;lazy ', $div_replace);
 
-	//Add a no-script tag of the original element
-	//$div_replace .= '&lt;/div&gt;&lt;noscript&gt;' . $div_match[0] . '&lt;/noscript&gt;';
+    //Add a no-script tag of the original element
+    //$div_replace .= '&lt;/div&gt;&lt;noscript&gt;' . $div_match[0] . '&lt;/noscript&gt;';
 
-	return $div_replace;
+    return $div_replace;
+
 }
+
 </code></pre>

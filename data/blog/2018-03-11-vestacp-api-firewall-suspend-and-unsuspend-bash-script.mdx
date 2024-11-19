@@ -25,76 +25,92 @@ summary: 'VestaCP offers an API which allows the firewall rules to be changed, b
 <pre class="language-bash"><code class="language-bash">#!/bin/bash
 
 ## VestaCP firewall change script
+
 ## Author: Ryan Fitton (ryanfitton.co.uk)
+
 ## Version 1.0.0
+
 ##
+
 ## Tested on VestaCP up to version '0.9.8-18'
+
 ##
+
 ## Usage: run 'sudo sh ./firewall-change.sh' to change the firewall rules
+
 ## Ensure the script is set to be executable by running 'chmod +x firewall-change.sh'
+
 ##
+
 ## API return messages
-##   Success: `OK`
-##   Already suspended: `Error: rules X is suspended`
-##   Already unsuspended: `Error: rules X is not suspended`
+
+## Success: `OK`
+
+## Already suspended: `Error: rules X is suspended`
+
+## Already unsuspended: `Error: rules X is not suspended`
+
 ##
+
 ## Required software libaries:
-##   'curl'             Used for check if the file exists on the FTP server via the 'curl' command
+
+## 'curl' Used for check if the file exists on the FTP server via the 'curl' command
 
 #VestaCP connection details
-VESTACP_SERVER=&quot;https://youripaddresshere:8083/api/&quot;    #Host URL
-VESTACP_USER=&quot;admin&quot;                                    #Admin username
-VESTACP_PASSWORD=&quot;youradminpasswordhere&quot;                #Admin password
+VESTACP_SERVER=&quot;https://youripaddresshere:8083/api/&quot; #Host URL
+VESTACP_USER=&quot;admin&quot; #Admin username
+VESTACP_PASSWORD=&quot;youradminpasswordhere&quot; #Admin password
 
 #VestaCP command
 #Possible commands:
-#   v-unsuspend-firewall-rule
-#   v-suspend-firewall-rule
+
+# v-unsuspend-firewall-rule
+
+# v-suspend-firewall-rule
+
 VESTACP_CMD=&quot;v-suspend-firewall-rule&quot;
 
 #VestaCP firewall rule rule setup within the VestaCP firewall table
-VESTACP_FIREWALL_RULE=&quot;1&quot;                           #Replace 1 with the Firewall rule ID
-
+VESTACP_FIREWALL_RULE=&quot;1&quot; #Replace 1 with the Firewall rule ID
 
 # -------------------- Nothing to change after this point --------------------
 
-
 #Should not need to change these
 VESTACP_OUTPUT_FORMAT=&quot;json&quot;
-VESTACP_API_SUCCESS_OUTPUT=&quot;OK&quot;                     #Text which is checked for a successul outcome
-
+VESTACP_API_SUCCESS_OUTPUT=&quot;OK&quot; #Text which is checked for a successul outcome
 
 # Clear terminal window
+
 clear
 
 # Welcome/Start message
-echo &quot;****************************************&quot;
+
+echo &quot;******************\*\*\*\*******************&quot;
 echo &quot;VestaCP firewall change script&quot;
 echo &quot;Author: Ryan Fitton (ryanfitton.co.uk)&quot;
 echo &quot;Version 1.0.0&quot;
-echo &quot;****************************************&quot;
+echo &quot;******************\*\*\*\*******************&quot;
 printf &quot;\n&quot;
 
 #Un-suspending the Firewall rule
 echo &quot;Changing the Firewall rule.&quot;
 echo &quot;...&quot;
 
-
 #Run Curl command
 if curl -s --insecure -d 'user='$VESTACP_USER --data-urlencode 'password='$VESTACP_PASSWORD -d 'cmd='$VESTACP_CMD -d 'arg1='$VESTACP_FIREWALL_RULE -d 'arg2='$VESTACP_OUTPUT_FORMAT -X POST $VESTACP_SERVER | grep &quot;$VESTACP_API_SUCCESS_OUTPUT&quot;
 
 #If the output matches, this is a success
 then
-    echo &quot;Success: rule has been changed.&quot;
-    
+echo &quot;Success: rule has been changed.&quot;
+
     echo &quot;Process finished successfully.&quot;
     exit 0 # Successful exit
 
-
 #Else, failure as the output does not match
 else
-    echo &quot;Failure: cannot change rule.&quot;
-    
+echo &quot;Failure: cannot change rule.&quot;
+
     echo &quot;Process finished with errors.&quot;
     exit 1 # Exit with general error
+
 fi</code></pre>

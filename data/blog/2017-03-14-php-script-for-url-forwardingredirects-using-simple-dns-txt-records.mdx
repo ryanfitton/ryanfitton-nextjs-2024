@@ -48,31 +48,31 @@ www.example.com. 1800 IN TXT "redirect_https://www.google.com"</code></pre>
  */
 
 //The redirect prefix
-$prefix = 'redirect_';
+$prefix = 'redirect\_';
 
 //Find the TXT DNS records for this host
-$txts = dns_get_record($_SERVER['HTTP_HOST'], DNS_TXT);
+$txts = dns_get_record($\_SERVER['HTTP_HOST'], DNS_TXT);
 
 //Loop through each TXT record
 foreach($txts as $txt) {
     //Loop through each record entry
 	foreach($txt['entries'] as $txtValue) {
-        
+
         //If the text record includes 'redirect_'
         if (strpos($txtValue, $prefix) !== false) {
-            
+
             //Explode the TXT value
             $explode_txtValue = explode($prefix, $txtValue);
-            
+
             //Set the 1st key as the URL addrress and Sanitize data
             $url = filter_var($explode_txtValue[1], FILTER_SANITIZE_URL);
-            
+
             //Check if URL is valid
             if (filter_var($url, FILTER_VALIDATE_URL)) {
                 //Perform a temporary redirect (302)
                 header('Location: ' . $url, true, 302);
                 exit;
-                
+
             //If the URL is not valid
             } else {
                 //Display message on screen
@@ -81,5 +81,6 @@ foreach($txts as $txt) {
             }
         }
     }
+
 }
 ?&gt;</code></pre>

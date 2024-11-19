@@ -25,7 +25,7 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
     if ($_SERVER[&quot;REMOTE_ADDR&quot;] == 'Your IP Here') {
 
         //View the site admin email
-        echo get_bloginfo( 'admin_email' ); 
+        echo get_bloginfo( 'admin_email' );
 
 
         //Find the first User - this is generally the Admin user which was created when WordPress was installed
@@ -42,7 +42,7 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
         /*Update user email address*/
         /*
             //Update user ID 1. Replace 'youremailhere@domain.com' with your email address
-            $user_id = wp_update_user( array( 'ID' =&gt; 1, 'user_email' =&gt; 'youremailhere@domain.com' ) );    
+            $user_id = wp_update_user( array( 'ID' =&gt; 1, 'user_email' =&gt; 'youremailhere@domain.com' ) );
 
             if ( is_wp_error( $user_id ) ) {
                 echo &quot;User update error&quot;;
@@ -51,7 +51,9 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
             }
         */
     }
+
 ?&gt;
+
 </code></pre>
 <h3>Add a new Administrator user</h3>
 <pre class="language-php"><code class="language-php">
@@ -86,5 +88,7 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
             }
 
     }
+
 ?&gt;
+
 </code></pre>
