@@ -28,9 +28,7 @@ summary: 'These instructions offer assistance with enabling/disabling Hyper V in
   <li>Disable HyperV in Windows Add/Remove Features</li>
   <li>
     And run this in PowerShell with Admin privellages:
-    <pre class="language-markup">
-      <code class="language-markup">bcdedit /set hypervisorlaunchtype off</code>
-    </pre>
+    `bcdedit /set hypervisorlaunchtype off`
   </li>
   <li>Restart PC</li>
 </ol>
@@ -42,16 +40,10 @@ summary: 'These instructions offer assistance with enabling/disabling Hyper V in
     And in Power Shell, with Admin privellages:
     <ol>
       <li>
-        <pre class="language-markup">
-          <code class="language-markup">bcdedit /set hypervisorlaunchtype auto</code>
-        </pre>
+        `bcdedit /set hypervisorlaunchtype auto`
       </li>
       <li>
-        <pre class="language-markup">
-          <code class="language-markup">
-            Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-          </code>
-        </pre>
+        `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All`
       </li>
     </ol>
   </li>

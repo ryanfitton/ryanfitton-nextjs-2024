@@ -15,12 +15,16 @@ summary: 'I have recently purchased a Hikvision DS-KV6113-WPE1(B) doorbell. The 
 <p>I setup the device on my network based on the <a href="https://www.use-ip.co.uk/datasheets/DS-KV6113-WPE1_User_Manual.pdf" target="_blank" rel="noopener">user manual</a>. I also set a static IP address based on the device’s MAC Address via my router. Then changed the admin user’s password to something secure and ensured the device was on the latest firmware.</p>
 <h3>ISAPI CURL Examples</h3>
 <p>Run these in a terminal on your computer, either MacOS or Linux. It may be possible to run these on Windows as long as you have CURL CLI installed, but I don’t really have any experience Windows systems.</p>
-<p>Replace <code class=" language-markup">YOUR_PASSWORD</code> with your doorbell’s admin user’s password. And replace <code class=" language-markup">YOUR_IP</code> with your Doorbell’s IP address.</p>
+<p>Replace `YOUR_PASSWORD` with your doorbell’s admin user’s password. And replace `YOUR_IP` with your Doorbell’s IP address.</p>
 <h4>Get status:</h4>
-<pre class="language-markup code-toolbar"><code class=" language-markup">curl -i --digest -u admin:YOUR_PASSWORD http://YOUR_IP/ISAPI/VideoIntercom/callStatus?format=json</code></pre>
-<p>Shows either <code class=" language-markup">idle</code>, <code class=" language-markup">ring</code> or <code class=" language-markup">onCall</code></p>
+```
+curl -i --digest -u admin:YOUR_PASSWORD http://YOUR_IP/ISAPI/VideoIntercom/callStatus?format=json
+```
+<p>Shows either `idle`, `ring` or `onCall`</p>
 <h4>Hangup a call</h4>
-<pre class="language-markup code-toolbar"><code class=" language-markup">curl -i --digest -u admin:YOUR_PASSWORD  -d '{"CallSignal":{"cmdType":"hangUp"}}' -H "Content-Type: application/json" -X PUT http://YOUR_IP/ISAPI/VideoIntercom/callSignal?format=json</code></pre>
+```
+curl -i --digest -u admin:YOUR_PASSWORD  -d '{"CallSignal":{"cmdType":"hangUp"}}' -H "Content-Type: application/json" -X PUT http://YOUR_IP/ISAPI/VideoIntercom/callSignal?format=json_enabled
+```
 <h3>Next steps with the Raspberry Pi Pico</h3>
 <p>I now knew ISAPI would provide the necessary status checks for this project. I started to research the best method to create a ‘chime’ device. I was originally planning to use a standard Raspberry Pi device, likely a RPI 2b as I would not require the extra compute power of the newer devices.</p>
 <p>Around this time, the Raspberry Pi Foundation had just <a href="https://www.raspberrypi.com/news/raspberry-pi-pico-w-your-6-iot-platform/" target="_blank" rel="noopener">released</a> a WiFi enabled version of their <a href="https://www.raspberrypi.com/products/raspberry-pi-pico/" target="_blank" rel="noopener">Pico microcontroller</a>.</p>
@@ -45,8 +49,8 @@ this project:</p>
 </ul>
 <p>Once Micropython was installed I started creating the Python script which would be run on the device.</p>
 <p>I have a full demo of the code available on Github here: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime" target="_blank" rel="noopener">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime</a></p>
-<p>You will find the Python code in <code class=" language-markup">src/main.py</code>. There were also a few additional libraries required, these are stored in <code class=" language-markup">src/libs/</code>, more info about these libraries below:</p>
-<p>Additional libraries required. These are found in <code class=" language-markup">src/libs/</code>:</p>
+<p>You will find the Python code in `src/main.py`. There were also a few additional libraries required, these are stored in `src/libs/`, more info about these libraries below:</p>
+<p>Additional libraries required. These are found in `src/libs/`:</p>
 <ul>
 <li>Md5: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime/blob/master/src/lib/md5.py" target="_blank" rel="noopener">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime/blob/master/src/lib/md5.py</a> &#8211; Required to produce MD5 hashes for Digest Authentication.</li>
 <li>uhashlib: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime/blob/master/src/lib/uhashlib.py">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime/blob/master/src/lib/uhashlib.py</a> – In the code, but currently not used. The MD5 library is being used instead.</li>
@@ -68,14 +72,14 @@ this project:</p>
 <li>machine</li>
 <li>gc</li>
 </ul>
-<p>Finally the ‘chime’ sound had to be made. I used the same sound which Amazon’s Ring Doorbell cameras used, but converted this into the WAV file format and adjusted the sample rate to 8000Hz and saved the file in 16-Bit PCM. There are a few versions of the WAV file saved in <code class=" language-markup">src</code> with differing audio volumes. I found the <code class=" language-markup">doorbell-new-loud.wav</code> performed the best.</p>
+<p>Finally the ‘chime’ sound had to be made. I used the same sound which Amazon’s Ring Doorbell cameras used, but converted this into the WAV file format and adjusted the sample rate to 8000Hz and saved the file in 16-Bit PCM. There are a few versions of the WAV file saved in `src` with differing audio volumes. I found the `doorbell-new-loud.wav` performed the best.</p>
 <p>I copied the code to the Pico via <a href="https://thonny.org/" target="_blank" rel="noopener">Thonny</a>. The Raspberry Pi Foundation site has a good tutorial on using this software, getting Micropython installed and Python scripts copied to the Pico: <a href="https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/2" target="_blank" rel="noopener">https://projects.raspberrypi.org/en/projects/getting-started-with-the-pico/2</a></p>
-<p>If you want to run the code from this project on your Pico. Download the files from Github: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime" target="_blank" rel="noopener">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime</a> and copy all files within <code class=" language-markup">src</code> into the root of your Pico Pi. But ensure you add your WiFi and Doorbell details in <code class=" language-markup">main.py</code> first.</p>
-<p>I learnt Micropython will always first check for a file named <code class=" language-markup">main.py</code> on boot. If it exists it will be run first.</p>
+<p>If you want to run the code from this project on your Pico. Download the files from Github: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime" target="_blank" rel="noopener">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime</a> and copy all files within `src` into the root of your Pico Pi. But ensure you add your WiFi and Doorbell details in `main.py` first.</p>
+<p>I learnt Micropython will always first check for a file named `main.py` on boot. If it exists it will be run first.</p>
 <h3>How the Python script works</h3>
 <p>The script works connecting to your WiFi network. The doorbell must be on the same network and accessible by the Pico. Then a looping function starts which acts as a ‘doorbell status check’.</p>
 <ol>
-<li>If the status is ‘ring’ this means the doorbell button has been pressed. The script will play the chime (<code class=" language-markup">doorbell-new-loud.wav</code>), after 3 seconds the same chime will be played again.</li>
+<li>If the status is ‘ring’ this means the doorbell button has been pressed. The script will play the chime (`doorbell-new-loud.wav`), after 3 seconds the same chime will be played again.</li>
 <li>Wait 5 seconds</li>
 <li>Check the status. If status is still ‘ring’, then wait an additional 3 seconds then hang-up the call. Else, do nothing.</li>
 </ol>
@@ -163,7 +167,7 @@ this project:</p>
 <p>I left it a few days, pressing the doorbell button every few hours to make sure it was stable, sure enough it was! I packaged everything into the case and attached to the wall in my hallway.</p>
 <h3>Final project code</h3>
 <p>All of the code created in this project is stored on Github here: <a href="https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime" target="_blank" rel="noopener">https://github.com/ryanfitton/rpi-pico-hikvision-isapi-doorbell-chime</a></p>
-<p>To install on the Pico, ensure you have Micropython installed on the device and then copy all files from <code class=" language-markup">src</code> to the Root of the Pico.</p>
+<p>To install on the Pico, ensure you have Micropython installed on the device and then copy all files from `src` to the Root of the Pico.</p>
 <p>&nbsp;</p>
 <h3>Images</h3>
 <p><a href="/static/img/blog/2023/03/IMG_20230311_113236-scaled.jpg"><img loading="lazy"  src="/static/img/blog/2023/03/IMG_20230311_113236-225x300.jpg" alt="" width="225" height="300" srcset="/static/img/blog/2023/03/IMG_20230311_113236-225x300.jpg 225w, /static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg 768w, /static/img/blog/2023/03/IMG_20230311_113236-1152x1536.jpg 1152w, /static/img/blog/2023/03/IMG_20230311_113236-1536x2048.jpg 1536w, /static/img/blog/2023/03/IMG_20230311_113236-scaled.jpg 1920w" sizes="(max-width: 225px) 100vw, 225px" /></a> <a href="/static/img/blog/2023/03/IMG_20230311_113211-scaled.jpg"><img loading="lazy"  src="/static/img/blog/2023/03/IMG_20230311_113211-225x300.jpg" alt="" width="225" height="300" srcset="/static/img/blog/2023/03/IMG_20230311_113211-225x300.jpg 225w, /static/img/blog/2023/03/IMG_20230311_113211-768x1024.jpg 768w, /static/img/blog/2023/03/IMG_20230311_113211-1152x1536.jpg 1152w, /static/img/blog/2023/03/IMG_20230311_113211-1536x2048.jpg 1536w, /static/img/blog/2023/03/IMG_20230311_113211-scaled.jpg 1920w" sizes="(max-width: 225px) 100vw, 225px" /></a> <a href="/static/img/blog/2023/03/IMG_20230311_113159-scaled.jpg"><img loading="lazy"  src="/static/img/blog/2023/03/IMG_20230311_113159-225x300.jpg" alt="" width="225" height="300" srcset="/static/img/blog/2023/03/IMG_20230311_113159-225x300.jpg 225w, /static/img/blog/2023/03/IMG_20230311_113159-768x1024.jpg 768w, /static/img/blog/2023/03/IMG_20230311_113159-1152x1536.jpg 1152w, /static/img/blog/2023/03/IMG_20230311_113159-1536x2048.jpg 1536w, /static/img/blog/2023/03/IMG_20230311_113159-scaled.jpg 1920w" sizes="(max-width: 225px) 100vw, 225px" /></a> <a href="/static/img/blog/2023/03/IMG_20230311_113123-scaled.jpg"><img loading="lazy"  src="/static/img/blog/2023/03/IMG_20230311_113123-225x300.jpg" alt="" width="225" height="300" srcset="/static/img/blog/2023/03/IMG_20230311_113123-225x300.jpg 225w, /static/img/blog/2023/03/IMG_20230311_113123-768x1024.jpg 768w, /static/img/blog/2023/03/IMG_20230311_113123-1152x1536.jpg 1152w, /static/img/blog/2023/03/IMG_20230311_113123-1536x2048.jpg 1536w, /static/img/blog/2023/03/IMG_20230311_113123-scaled.jpg 1920w" sizes="(max-width: 225px) 100vw, 225px" /></a> <a href="/static/img/blog/2023/03/IMG_20230311_112852-scaled.jpg"><img loading="lazy"  src="/static/img/blog/2023/03/IMG_20230311_112852-300x225.jpg" alt="" width="300" height="225" srcset="/static/img/blog/2023/03/IMG_20230311_112852-300x225.jpg 300w, /static/img/blog/2023/03/IMG_20230311_112852-1024x768.jpg 1024w, /static/img/blog/2023/03/IMG_20230311_112852-768x576.jpg 768w, /static/img/blog/2023/03/IMG_20230311_112852-1536x1152.jpg 1536w, /static/img/blog/2023/03/IMG_20230311_112852-2048x1536.jpg 2048w" sizes="(max-width: 300px) 100vw, 300px" /></a></p>

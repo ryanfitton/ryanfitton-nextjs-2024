@@ -12,7 +12,8 @@ summary: 'I&amp;#8217;ve recently found that the public WP REST API endpoints wi
 <p>One such endpoint is <strong>&#8216;/wp-json/wp/v2/users&#8217;</strong> (e.g. https://yourdomain.com/wp-json/wp/v2/users), this will display Admin usernames to any unauthenticated user.</p>
 <p>There are a couple of way to mitigate this risk, install the <a href="https://wordpress.org/plugins/disable-json-api/">Disable REST API</a> or add this function to your theme&#8217;s &#8216;functions.php&#8217; file:</p>
 <h4>Sites running WordPress 4.7 or greater</h4>
-<pre class="language-php"><code class="language-php">/**
+```
+/**
  * Disable the REST API for non-logged in users. E.g. https://yourdomain.com/wp-json/wp/v2/users/. (WordPress 4.7 and greater)
  * Last modified: September 2017
  * @author Ryan Fitton
@@ -24,9 +25,11 @@ function disable_rest_api_non_loggged_in_user( $access ) {
 &#x9;}
 &#x9;return $access;
 }
-add_filter( &#x27;rest_authentication_errors&#x27;, &#x27;disable_rest_api_non_loggged_in_user&#x27; );</code></pre>
+add_filter( &#x27;rest_authentication_errors&#x27;, &#x27;disable_rest_api_non_loggged_in_user&#x27; );
+```
 <h4>Sites older than WordPress 4.7</h4>
-<pre class="language-php"><code class="language-php">/**
+```
+/**
  * Disable the REST API for non-logged in users. (Older than WordPress 4.7)
  * Last modified: September 2017
  * @author Ryan Fitton
@@ -38,4 +41,5 @@ add_filter( &#x27;json_jsonp_enabled&#x27;, &#x27;__return_false&#x27; );
 
 // Filters for WP-API version 2.x
 add_filter( &#x27;rest_enabled&#x27;, &#x27;**return_false&#x27; );
-add_filter( &#x27;rest_jsonp_enabled&#x27;, &#x27;**return_false&#x27; );</code></pre>
+add_filter( &#x27;rest_jsonp_enabled&#x27;, &#x27;**return_false&#x27; );
+```

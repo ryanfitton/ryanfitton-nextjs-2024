@@ -10,9 +10,10 @@ summary: 'This is a follow-on from my previous post: &amp;#8216;Backup server fi
 
 <p>This is a follow-on from my previous post: &#8216;<a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">Backup server files as tar.gz</a>&#8216;.</p>
 <p>The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your email address.</p>
-<p>Run the script with <code class="language-markup">sudo sh backup_mysql2ftp.sh</code> (make sure the file is executable first).</p>
+<p>Run the script with `sudo sh backup_mysql2ftp.sh` (make sure the file is executable first).</p>
 <p>The databases for the entire server will be stored in a .sql format, then transferred using FTP to the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted from the local server.</p>
-<pre class="language-markup"><code class="language-markup">#!/bin/bash
+```
+#!/bin/bash
 
 ## Usage: backup_mysql2ftp.sh
 
@@ -255,7 +256,8 @@ echo &quot;Install by running: 'apt-get install $MAIL_PACKAGE'&quot;
 
 exit 1 # Exit with general error
 
-fi</code></pre>
+fi
+```
 
 <p>
   <strong>Note:</strong> Using the standard FTP protocol is unsafe, your details will be passed in

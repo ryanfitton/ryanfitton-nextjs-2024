@@ -12,27 +12,33 @@ summary: 'As mentioned in my previous post, I would post code for a script which
 <p>The steps listed below can be found in my LXC Container backup script collection on GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
 <p>Ensure you have these packages installed:</p>
 <ul>
-<li><code class="language-markup">netcat</code></li>
-<li><code class="language-markup">exim4</code></li>
-<li><code class="language-markup">lftp</code></li>
-<li><code class="language-markup">curl</code></li>
+<li>`netcat`</li>
+<li>`exim4`</li>
+<li>`lftp`</li>
+<li>`curl`</li>
 </ul>
 <p>Save this to a file on your LXD host such as <strong>&#8216;backup-container-snapshot.sh&#8217;</strong>, now change permissions so this file is executable:</p>
-<pre class="language-markup"><code class="language-markup">sudo chmod +x backup-container-snapshot.sh</code></pre>
+```
+sudo chmod +x backup-container-snapshot.sh
+```
 <p>Now edit the file, and ensure these variables match your specs:</p>
 <ul>
-<li><code class="language-markup">GLOBAL_BACKUP_TEMP_SAVEPATH</code></li>
-<li><code class="language-markup">GLOBAL_REMOTE_FTP_LOCATION</code></li>
-<li><code class="language-markup">GLOBAL_EMAIL_TO</code></li>
-<li><code class="language-markup">FTP_SERVER</code></li>
-<li><code class="language-markup">FTP_USERNAME</code></li>
-<li><code class="language-markup">FTP_PASSWORD</code></li>
-<li><code class="language-markup">FTP_PORT</code></li>
-<li>You may also need to configure passive mode in <code class="language-markup">FTP_ARGUMENTS</code> and <code class="language-markup">CURL_FTP_ARGUMENTS</code></li>
+<li>`GLOBAL_BACKUP_TEMP_SAVEPATH`</li>
+<li>`GLOBAL_REMOTE_FTP_LOCATION`</li>
+<li>`GLOBAL_EMAIL_TO`</li>
+<li>`FTP_SERVER`</li>
+<li>`FTP_USERNAME`</li>
+<li>`FTP_PASSWORD`</li>
+<li>`FTP_PORT`</li>
+<li>You may also need to configure passive mode in `FTP_ARGUMENTS` and `CURL_FTP_ARGUMENTS`</li>
 </ul>
 <p>To run this script, you must pass your LXD container name as an argument, for example:</p>
-<pre class="language-markup"><code class="language-markup">sudo ./backup-container-snapshot.sh 'container-name-here'</code></pre>
-<pre class="language-markup"><code class="language-markup">#!/bin/bash
+```
+sudo ./backup-container-snapshot.sh 'container-name-here'
+```
+
+```
+#!/bin/bash
 
 ## Usage: backup-container-snapshot.sh
 
@@ -409,4 +415,5 @@ echo "One or more arguments are empty."
 
     exit 1 # Exit with general error
 
-fi</code></pre>
+fi
+```

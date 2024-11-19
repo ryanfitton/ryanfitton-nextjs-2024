@@ -11,9 +11,10 @@ summary: 'This is a quick and simple backup script, specifically created for use
 <p>This is a quick and simple backup script, specifically created for use with Online.net&#8217;s 100GB FTP Storage, which is given for free when buying one of their dedicated servers.</p>
 <p>The steps listed below can be found in my Backup script collection on GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
 <p>The script below is simple, saves as &#8216;sudo sh backup_files2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;FTP Connection details&#8217;, and your email address.</p>
-<p>Run the script with <code class="language-markup">sudo sh backup_files2ftp.sh</code> (make sure the file is executable first).</p>
+<p>Run the script with `sudo sh backup_files2ftp.sh` (make sure the file is executable first).</p>
 <p>All files within the specified directory will be archived as a .tar.gz file, then transferred using FTP to the remote server. Once the file has been confirmed it the file exists on the FTP server, it is deleted from the local server.</p>
-<pre class="language-markup"><code class="language-markup">#!/bin/bash
+```
+#!/bin/bash
 
 ## Usage: backup_files2ftp.sh
 
@@ -252,7 +253,8 @@ echo "Install by running: 'apt-get install $MAIL_PACKAGE'"
 
 exit 1 # Exit with general error
 
-fi</code></pre>
+fi
+```
 
 <p>
   <strong>Note:</strong> Using the standard FTP protocol is unsafe, your details will be passed in

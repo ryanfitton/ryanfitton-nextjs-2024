@@ -10,7 +10,8 @@ summary: 'When building WordPress themes, there is often a need to use a feature
 
 <p>When building WordPress themes, there is often a need to use a featured thumbnail, or image value from ACF; as either a background image or as a &lt;img&gt; tag.</p>
 <p>This snippet below is something I use frequently, hopefully this will be as benefit for you too.</p>
-<pre class="language-html code-toolbar"><code class="language-html">&lt;?php
+```
+&lt;?php
     //Custom image sizes - Add these to your functions.php
     add_image_size( 'custom_image_size_1', 650, 650, false );
     add_image_size( 'custom_image_size_2', 300, 300, false );
@@ -38,7 +39,8 @@ endif;
 if ( has_post_thumbnail() ) :
 echo get_the_post_thumbnail( 'custom_image_size_2', array('class' =&gt; 'custom_class_name_here') );
 endif;
-?&gt;</code></pre>
+?&gt;
+```
 
 <p>
   Or view as a Gist on Github:

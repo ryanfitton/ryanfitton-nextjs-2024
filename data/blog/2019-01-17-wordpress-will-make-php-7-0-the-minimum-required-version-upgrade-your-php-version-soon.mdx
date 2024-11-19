@@ -35,52 +35,78 @@ summary: 'This has just come to my attention today, the developer team at WordPr
 <p>These instructions were test on an Ubuntu 18.04 system. To upgrade from PHP 5.6 running with Apache2 to PHP 7.2 follow these steps:</p>
 <ol>
 <li>Check for updates:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get update</code></pre>
+```
+sudo apt-get update
+```
 </li>
 <li>Find all current PHP 5.6 modules. Make a note of these as you will need to re-enable/install these modules later:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-cache pkgnames | grep php5.6</code></pre>
+```
+sudo apt-cache pkgnames | grep php5.6
+```
 </li>
 <li>Disable PHP 5.6:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2dismod php5.6</code></pre>
+```
+sudo a2dismod php5.6
+```
 </li>
 <li>Install PHP 7.2:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install php7.2</code></pre>
+```
+sudo apt-get install php7.2
+```
 </li>
 <li>Now enable PHP 7.2:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2enmod php7.2</code></pre>
+```
+sudo a2enmod php7.2
+```
 </li>
 <li>Now restart Apache2:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo service apache2 restart</code></pre>
+```
+sudo service apache2 restart
+```
 </li>
 <li>Based on the list of modules from PHP 5.6, install these for version 7.2. Your list may be different to mine, but these are my recommended modules:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install php7.2-xmlrpc php7.2-bz2 php7.2-cgi php7.2-cli php7.2-dba php7.2-dev php7.2-fpm php7.2-gd php7.2-gmp php7.2-opcache php7.2 php7.2-pspell php7.2-recode php7.2-common php7.2-bcmath php7.2-sqlite3 php7.2-tidy php7.2-json php7.2-mbstring php7.2-readline php7.2-xml php7.2-xsl php7.2-curl php7.2-zip php7.2-ldap php7.2-pgsql php7.2-imap libphp7.2-embed php7.2-intl php7.2-enchant php7.2-odbc php7.2-snmp php7.2-soap php7.2-sybase php7.2-phpdbg libapache2-mod-php7.2 php7.2-mysql php7.2-interbase</code></pre>
+```
+sudo apt-get install php7.2-xmlrpc php7.2-bz2 php7.2-cgi php7.2-cli php7.2-dba php7.2-dev php7.2-fpm php7.2-gd php7.2-gmp php7.2-opcache php7.2 php7.2-pspell php7.2-recode php7.2-common php7.2-bcmath php7.2-sqlite3 php7.2-tidy php7.2-json php7.2-mbstring php7.2-readline php7.2-xml php7.2-xsl php7.2-curl php7.2-zip php7.2-ldap php7.2-pgsql php7.2-imap libphp7.2-embed php7.2-intl php7.2-enchant php7.2-odbc php7.2-snmp php7.2-soap php7.2-sybase php7.2-phpdbg libapache2-mod-php7.2 php7.2-mysql php7.2-interbase
+```
 </li>
 <li>Enable these modules (If not already enabled):
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2enmod rewrite
-sudo a2enmod ssl</code></pre>
+```
+sudo a2enmod rewrite
+sudo a2enmod ssl
+```
 </li>
 <li>Install Mcrypt:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install mcrypt</code></pre>
+```
+sudo apt-get install mcrypt
+```
 </li>
-<li>Now edit your PHP.ini file, I do this to adjust the ‘<code class=" language-markup">post_max_size</code>’ and ‘<code class=" language-markup">upload_max_filesize</code>’ values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
-<pre class="language-markup code-toolbar"><code class=" language-markup">post_max_size = 40M
-upload_max_filesize = 40M</code></pre>
+<li>Now edit your PHP.ini file, I do this to adjust the ‘post_max_size’ and ‘upload_max_filesize’ values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
+```
+post_max_size = 40M
+upload_max_filesize = 40M
+```
 </li>
 <li>Now restart Apache2:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo service apache2 restart</code></pre>
+```
+sudo service apache2 restart
+```
 </li>
 <li>One last step, option if you’re not using phpMyAdmin 4.6.6. There is currently a compatibility between phpMyAdmin 4.6.6 and PHP 7.2. As described in <a href="https://stackoverflow.com/questions/48001569/phpmyadmin-count-parameter-must-be-an-array-or-an-object-that-implements-co">this StackOverflow post</a>.<br />
 <br />
 Run this one-line code command to fix the issue with viewing tables:</p>
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo sed -i &quot;s/|\s*\((count(\$analyzed_sql_results\['select_expr'\]\)/| (\1)/g&quot; /usr/share/phpmyadmin/libraries/sql.lib.php</code></pre>
+```
+sudo sed -i &quot;s/|\s*\((count(\$analyzed_sql_results\['select_expr'\]\)/| (\1)/g&quot; /usr/share/phpmyadmin/libraries/sql.lib.php
+```
 <p>
 Now fix the issue that happens when exporting databases.<br />
 </p>
-<pre class="language-markup code-toolbar"><code class="language-markup">sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php</code></pre>
+```
+sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php
+```
 <p>
-And replace: <code class="language-markup">if ($options != null && count($options) > 0) {</code><br />
+And replace: `if ($options != null && count($options) > 0) {`<br />
 <br />
-With: <code class="language-markup">if ($options != null && count((array)$options) > 0) {</code><br />
+With: `if ($options != null && count((array)$options) > 0) {`<br />
 <br />
 Now save and exit the file.</li>
 </ol>

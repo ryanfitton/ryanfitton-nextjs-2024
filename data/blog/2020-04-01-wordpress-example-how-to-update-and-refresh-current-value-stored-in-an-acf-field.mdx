@@ -16,22 +16,23 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 <ul>
 <li>Ensure you have WordPress installed. Tested from WordPress 5.3.2</li>
 <li>Install ACF Pro (Pro required for custom options page)</li>
-<li>Upload the ACF export file <code>acf-export-2020-03-31.json</code> into your ACF settings</li>
+<li>Upload the ACF export file `acf-export-2020-03-31.json` into your ACF settings</li>
 <li>Download these jQuery libaries: <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/rsvp.min.js">RSVP.min.js</a> and <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/js.cookie.min.js">js.cookie.min.js</a>.</li>
 <li>jQuery is also required, however this should already be included from WordPress.</li>
 </ul>
 <p>&nbsp;</p>
 <h3>Explanation of files</h3>
 <ul>
-<li><code>tmpl_page_ajax.php</code> &#8211; Page template</li>
-<li><code>functions.php</code> &#8211; Functions for Ajax calls</li>
-<li><code>ajax.js</code> &#8211; JS Ajax calls</li>
+<li>`tmpl_page_ajax.php` &#8211; Page template</li>
+<li>`functions.php` &#8211; Functions for Ajax calls</li>
+<li>`ajax.js` &#8211; JS Ajax calls</li>
 </ul>
 <p>&nbsp;</p>
 <h3>Step 1 &#8211; Create a new page template</h3>
 <p>Create a page template in your theme folder with the code below. Then setup a page within WP Admin using this new page template: &#8216;<span class="pl-c">Ajax counter update</span>&#8216;.</p>
-<p>Create a new file named <code>tmpl_page_ajax.php</code></p>
-<pre class="language-php code-toolbar"><code class=" language-php">&lt;?php 
+<p>Create a new file named `tmpl_page_ajax.php`</p>
+```
+&lt;?php 
 	/**
 	 * Template Name: Ajax counter update
 	 *
@@ -63,13 +64,15 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 
     &lt;/div&gt;
 
-&lt;?php get_footer(); ?&gt;</code></pre>
+&lt;?php get_footer(); ?&gt;
+```
 
 <p>&nbsp;</p>
 <h3>Step 2 &#8211; Add code to your functions.php file</h3>
-<p>You may already have a <code>functions.php</code> file in your theme, if so; do NOT overwrite this file.</p>
+<p>You may already have a `functions.php` file in your theme, if so; do NOT overwrite this file.</p>
 <p>Instead, copy and paste the code below, and paste to the bottom of your existing theme file.</p>
-<pre class="language-php code-toolbar"><code class=" language-php">&lt;?php 
+```
+&lt;?php 
 	/*************************
 	 	This code goes the theme's functions.php file
 	 *************************/
@@ -260,13 +263,15 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
     add_action('wp_ajax_counter_current', 'ajax_counter_current');			//Run for Admin users
     add_action('wp_ajax_nopriv_counter_current', 'ajax_counter_current');	//Run for Non-Admin users
 
-?&gt;</code></pre>
+?&gt;
+```
 
 <p>&nbsp;</p>
 <h3>Step 3 &#8211; Create JS file to hold AJAX calls</h3>
 <p>This file will hold all Ajax function calls. These function calls will communicate with the PHP functions within functions.php</p>
-<p>Create a new file named <code>ajax.js</code></p>
-<pre class="language-php code-toolbar"><code class=" language-php">jQuery(function ($) {
+<p>Create a new file named `ajax.js`</p>
+```
+jQuery(function ($) {
 
     //Promise polyfill
     //var RSVP = require('rsvp');	//Using the RSVP library for Promise functions in IE11: https://github.com/tildeio/rsvp.js/ and https://developers.google.com/web/fundamentals/primers/promises
@@ -528,4 +533,5 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
     	Counter.init();	//Run init
     });
 
-});</code></pre>
+});
+```

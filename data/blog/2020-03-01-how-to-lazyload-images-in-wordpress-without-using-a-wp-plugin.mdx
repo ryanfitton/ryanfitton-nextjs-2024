@@ -17,26 +17,26 @@ summary: 'This post explains how to use the jQuery Lazy library in a WordPress t
 </ul>
 <h4>Step 1: Converting your image tags</h4>
 <p>Go through your theme and you should have image tags similar to:</p>
-<pre class="language-html"><code class="language-html">
+```
 &lt;img src=&quot;/assets/img/example-image.png&quot; alt=&quot;Example image alt&quot; class=&quot;example_img_class&quot;&gt;
-</code></pre>
+```
 <p>Wrap this tag in a custom function, which will add the required Lazy load tags:</p>
-<pre class="language-php"><code class="language-php">
+```
 &lt;?php echo filter_lazyload_img('&lt;img src=&quot;/assets/img/example-image.png&quot; alt=&quot;Example image alt&quot; class=&quot;example_img_class&quot;&gt;'); ?&gt;
-</code></pre>
+```
 <p>If you&#8217;re using inline background images such as:</p>
-<pre class="language-html"><code class="language-html">
+```
 &lt;div class=&quot;bg_image&quot; style=&quot;background-image: url(/assets/img/example-image.png)&quot;&gt;
 	&lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
-</code></pre>
+```
 <p>Also, wrap these in a custom function:</p>
-<pre class="language-php"><code class="language-php">
+```
 &lt;?php echo filter_lazyload_bg('&lt;div class=&quot;bg_image&quot; style=&quot;background-image: url(/assets/img/example-image.png);&quot;&gt;&lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;&lt;/div&gt;'); ?&gt;
-</code></pre>
+```
 <h4>Step 2: Load the jQuery scripts and setup LazyLoad instance</h4>
-<p>In your <code class="language-html">functions.php</code> file, add the code shown below. This will load the required jQuery files, the Lazy library and setup a new instance of LazyLoad:</p>
-<pre class="language-php"><code class="language-php">
+<p>In your `functions.php` file, add the code shown below. This will load the required jQuery files, the Lazy library and setup a new instance of LazyLoad:</p>
+```
 if (!is_admin()) {
 	//Remove WordPress default jQuery
 	wp_deregister_script( 'jquery' );
@@ -73,11 +73,11 @@ if (!is_admin()) {
 
 }
 
-</code></pre>
+```
 <h4>Step 3: Add functions for Image and Background images</h4>
 <p>Also, within your <code class="language-html">functions.php</code> add these functions which are used to add the required tags for the Image and Background image tags.</p>
 <p>For Images add:</p>
-<pre class="language-php"><code class="language-php">
+```
 /*
 	Image lazyload
 	More info: More info: http://jquery.eisbehr.de/lazy/
@@ -101,9 +101,9 @@ function preg_lazyload_img($img_match) {
 
 }
 
-</code></pre>
+```
 <p>And background images, add: </p>
-<pre class="language-php"><code class="language-php">
+```
 /*
 	Background image lazyload
 */
@@ -129,4 +129,4 @@ $div_replace = $div_match[1] . 'data-src=&quot;' . str_replace(');&quot;', '', s
 
 }
 
-</code></pre>
+```

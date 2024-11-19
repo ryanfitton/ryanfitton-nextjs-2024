@@ -10,7 +10,8 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
 
 <p>I thought I would share this simple PHP function to hopefully help anyone needing a quick solution.</p>
 <p>Imagine, you have a multi-dimensional array such as this:</p>
-<pre class="language-php"><code class="language-php">&lt;?php
+```
+&lt;?php
     //Example array
     $array = array(
       'test' =&gt; array(
@@ -18,10 +19,12 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
           'email' =&gt; 'john@example.com'
       )
     );
-?&gt;</code></pre>
+?&gt;
+```
 <p>And you need to extract a specific bit of data, such as a name or an email address. You already know what the key name will be but require the value stored against it.</p>
 <p>Run this function, pass the array and the name of key you&#8217;re searching for:</p>
-<pre class="language-php"><code class="language-php">&lt;?php
+```
+&lt;?php
     /*
         Function: Find a key's value pair
 
@@ -46,10 +49,12 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
         return $output;
     }
 
-?&gt;</code></pre>
+?&gt;
+```
 
 <p>The result will return the value that was stored against the key. Here is a full code example:</p>
-<pre class="language-php"><code class="language-php">&lt;?php
+```
+&lt;?php
     /*
         Function: Find a key's value pair
 
@@ -87,4 +92,5 @@ summary: 'I thought I would share this simple PHP function to hopefully help any
     //Run function
     echo keyValue($array, 'email');
 
-?&gt;</code></pre>
+?&gt;
+```

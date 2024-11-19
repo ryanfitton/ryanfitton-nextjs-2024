@@ -18,48 +18,70 @@ summary: 'One of the most common speed testing services for Internet connections
 <h4>Installation</h4>
 <ol>
 <li>
-        Switch to the <code class="language-markup">root</code> user:</p>
-<pre class="language-markup"><code class="language-markup">sudo su</code></pre>
+        Switch to the `root` user:</p>
+```
+sudo su
+```
 </li>
 <li>
-        Install <code class="language-markup">speedtest-cli</code>, run each line separately:</p>
-<pre class="language-markup"><code class="language-markup">sudo apt-get install python-pip
-sudo pip install speedtest-cli</code></pre>
+        Install `speedtest-cli`, run each line separately:</p>
+```
+sudo apt-get install python-pip
+sudo pip install speedtest-cli
+```
 </li>
 <li>
-        Download the <code class="language-markup">speedtest-csv</code> script. You will also find a <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv">copy</a> of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.</p>
-<pre class="language-markup"><code class="language-markup">sudo wget -O speedtest-csv https://raw.githubusercontent.com/HenrikBengtsson/speedtest-cli-extras/master/bin/speedtest-csv</code></pre>
+        Download the `speedtest-csv` script. You will also find a <a href="https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv">copy</a> of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.</p>
+```
+sudo wget -O speedtest-csv https://raw.githubusercontent.com/HenrikBengtsson/speedtest-cli-extras/master/bin/speedtest-csv
+```
 </li>
 <li>
         Now give the file execute permissions:</p>
-<pre class="language-markup"><code class="language-markup">sudo chmod +x speedtest-csv</code></pre>
+```
+sudo chmod +x speedtest-csv
+```
 </li>
 <li>
         You will need to edit a line in the file to so that it can be run from CRON:</p>
-<pre class="language-markup"><code class="language-markup">sudo nano speedtest-csv</code></pre>
-<p>        Find the line <code class="language-markup">cmd=&quot;speedtest-cli $opts&quot;</code> and add <code class="language-markup">/usr/local/bin/</code> before it so it reads:</p>
-<pre class="language-markup"><code class="language-markup">cmd=&quot;/usr/local/bin/speedtest-cli $opts&quot;</code></pre>
+```
+sudo nano speedtest-csv
+```
+<p>        Find the line `cmd=&quot;speedtest-cli $opts&quot;` and add `/usr/local/bin/` before it so it reads:</p>
+```
+cmd=&quot;/usr/local/bin/speedtest-cli $opts&quot;
+```
 <p>        save the file and exit.
     </li>
 <li>
-        Next move <code class="language-markup">speedtest-csv</code> to <code class="language-markup">/usr/bin/</code>:</p>
-<pre class="language-markup"><code class="language-markup">sudo mv speedtest-csv /usr/bin/</code></pre>
+        Next move `speedtest-csv` to `/usr/bin/`:</p>
+```
+sudo mv speedtest-csv /usr/bin/
+```
 </li>
 <li>
-        Create a folder for where your .csv file will be saved, I am saving mine within <code class="language-markup">/cron/speedtest/</code>, but change this for whatever you&#8217;d like:</p>
-<pre class="language-markup"><code class="language-markup">sudo mkdir -p /cron/speedtest</code></pre>
+        Create a folder for where your .csv file will be saved, I am saving mine within `/cron/speedtest/`, but change this for whatever you&#8217;d like:</p>
+```
+sudo mkdir -p /cron/speedtest
+```
 </li>
 <li>
         Generate the CSV header:</p>
-<pre class="language-markup"><code class="language-markup">sudo speedtest-csv --header &gt;&gt; /cron/speedtest/speedtest.csv</code></pre>
+```
+sudo speedtest-csv --header &gt;&gt; /cron/speedtest/speedtest.csv
+```
 </li>
 <li>
         Add to the CRON:</p>
-<pre class="language-markup"><code class="language-markup">sudo crontab -e</code></pre>
+```
+sudo crontab -e
+```
 </li>
 <li>
         Add the following line to the end of the file, this example is daily, ever four hours:</p>
-<pre class="language-markup"><code class="language-markup">0 */4 * * * speedtest-csv &gt;&gt; /cron/speedtest/speedtest.csv</code></pre>
+```
+0 */4 * * * speedtest-csv &gt;&gt; /cron/speedtest/speedtest.csv
+```
 <p>        save the file and exit.
     </li>
 </ol>

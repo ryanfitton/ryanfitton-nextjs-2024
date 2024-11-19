@@ -35,7 +35,8 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
 <h4>Mixin Examples</h4>
 <h5>Linear gradient</h5>
 <p>Once you have the Mixin and Functions code ready, you can specify a Linear Gradient like this:</p>
-<pre class="language-scss"><code class="language-scss">//Green linear gradient
+```
+//Green linear gradient
 &amp;.green-linear {
     /*
         Notes:
@@ -56,11 +57,13 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
         rgba(#78BA00, 1), rgba(#ffffff, 1)
     );
 
-}</code></pre>
+}
+```
 
 <h5>Radial gradient</h5>
 <p>Once you have the Mixin and Functions code ready, you can specify a Radial Gradient like this:</p>
-<pre class="language-scss"><code class="language-scss">//Orange radial gradient
+```
+//Orange radial gradient
 &amp;.orange-radial {
     /*
         Notes:
@@ -75,12 +78,14 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
         rgba(#FF8010, 1), rgba(#FF8010, 0.6), rgba(#FF8010, 0.2), rgba(#FF8010, 0), rgba(#FF8010, 0)
     );
 
-}</code></pre>
+}
+```
 
 <p>&nbsp;</p>
 <h4>The full code</h4>
 <h5>Sass Functions:</h5>
-<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+```
+/*---------------------------------------------------------------------
     Functions for Gradients
 ---------------------------------------------------------------------*/
 
@@ -168,10 +173,12 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
         }
 
         @return 90deg - custom_convert-angle($value, 'deg');
-    }</code></pre>
+    }
+    ```
 
 <h5>Sass Mixins:</h5>
-<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+```
+/*---------------------------------------------------------------------
     Mixins for Gradients 
 ---------------------------------------------------------------------*/
 
@@ -246,10 +253,12 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
         //Filters for IE8 and IE9
         filter: progid:DXImageTransform.Microsoft.Alpha(opacity=65, finishopacity=100, style=2);
         -ms-filter: &quot;progid:DXImageTransform.Microsoft.Alpha(opacity=65, finishopacity=100, style=2)&quot;;
-    }</code></pre>
+    }
+    ```
 
 <h5>Sass:</h5>
-<pre class="language-scss"><code class="language-scss">/*---------------------------------------------------------------------
+```
+/*---------------------------------------------------------------------
     Sass (SCSS) code
 ---------------------------------------------------------------------*/
 
@@ -352,10 +361,12 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
                 rgba($orange, 1), rgba($orange, 0.6), rgba($orange, 0.2), rgba($orange, 0), rgba($orange, 0)
             );
         }
-    }</code></pre>
+    }
+    ```
 
 <h5>HTML:</h5>
-<pre class="language-html"><code class="language-html">&lt;div style=&quot;width:880px;margin:25px auto;text-align:center;&quot;&gt;
+```
+&lt;div style=&quot;width:880px;margin:25px auto;text-align:center;&quot;&gt;
 
     &lt;div style=&quot;display:block;margin-bottom:50px;overflow:hidden;&quot;&gt;
         &lt;h1 style=&quot;font-family:Arial, Helvetica, sans-serif;font-size:22px;&quot;&gt;Linear gradient examples&lt;/h1&gt;
@@ -371,4 +382,5 @@ summary: 'I thought i&amp;#8217;d share this code, it may be help anyone who wan
         &lt;div class=&quot;gradient orange-radial&quot;&gt;&lt;/div&gt;  &lt;!-- Orange radial --&gt;
     &lt;/div&gt;
 
-&lt;/div&gt;</code></pre>
+&lt;/div&gt;
+```

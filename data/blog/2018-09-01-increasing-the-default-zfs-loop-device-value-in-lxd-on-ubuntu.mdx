@@ -13,11 +13,12 @@ summary: 'I&amp;#8217;ve recently installed LXD 2.x on my Ubuntu server but forg
 <p>These commands were tested with LXD version 2.0.11 running on Ubuntu 16.04.5 LTS 64-Bit, read the docs for your current LXD and ZFS versions before you run any of these, and make sure you have a backup incase anything goes wrong!</p>
 <p>Change these values to match your setup:</p>
 <ul>
-<li><code class="language-markup">POOL-NAME</code>Your ZFS pool name, the default supplied by LXD is &#8216;lxd&#8217;</li>
-<li><code class="language-markup">SIZE</code>The size of the new pool, e.g. &#8217;50G&#8217;</li>
+<li>`POOL-NAME` Your ZFS pool name, the default supplied by LXD is &#8216;lxd&#8217;</li>
+<li>`SIZE` The size of the new pool, e.g. &#8217;50G&#8217;</li>
 </ul>
 <p>Now run this code; each line separately minus the commented lines:</p>
-<pre class="language-markup"><code class="language-markup"># Ensure 'autoexpand' is enabled (only needed once)
+```
+# Ensure 'autoexpand' is enabled (only needed once)
 sudo zpool set autoexpand=on POOL-NAME
 
 # Create a new XXGB file and store temporarily
@@ -50,16 +51,16 @@ sudo rm /var/lib/lxd/zfs.tmp
 
 # Force ZFS to pickup the new changes, use the new partition which is the same
 
-sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img</code></pre>
+sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img
+```
 
 <p>
   You can also, check if the settings have been applied by running the{' '}
-  <code class="language-markup">sudo zfs list</code> command, you will see a result similar to
+  `sudo zfs list`  command, you will see a result similar to
   below; make note of the values in the &#8216;AVAIL&#8217; column as this should show your new pool
   size.
 </p>
-<pre class="language-markup">
-  <code class="language-markup">
+```
     root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list NAME USED AVAIL REFER MOUNTPOINT lxd 646M 125G
     19K none lxd/containers 12.7M 125G 19K none lxd/containers/container1 6.28M 125G 307M
     /var/lib/lxd/containers/container1.zfs lxd/containers/container2 6.38M 125G 326M
@@ -68,5 +69,4 @@ sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img</code><
     /var/lib/lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a.zfs
     lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b 307M 125G 307M
     /var/lib/lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b.zfs
-  </code>
-</pre>
+```

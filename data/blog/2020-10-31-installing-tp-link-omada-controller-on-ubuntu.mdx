@@ -19,37 +19,37 @@ summary: 'I have a bunch of TP-Link EAP model WiFi access points in my home, the
 <li style="list-style-type: none;">
 <ol>
 <li>Update your packages:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get update</code></pre>
+`sudo apt-get update`
 </li>
 <li>Install Mongo DB:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install mongodb</code></pre>
+`sudo apt-get install mongodb`
 </li>
 <li>Install JSVC, a tool to launch Java applications as daemons:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install jsvc</code></pre>
+`sudo apt-get install jsvc`
 </li>
 <li>Install Open JDK v8:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install openjdk-8-jdk</code></pre>
+`sudo apt-get install openjdk-8-jdk`
 </li>
 <li>Configure system to use ‘&#8230; 8-openjdk &#8230;’, usually this is option 2:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo update-alternatives --config java</code></pre>
+`sudo update-alternatives --config java`
 </li>
 <li>
 <p>Now, we have installed the prerequisites, you now need to download the Omada controller package.In this tutorial the ‘.deb’ packages will be installed, these offer the most easiest way to install the Omada controller software.</p>
 <p>Download the latest Omada controller software from TP-Link&#8217;s website here: <a href="https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software" target="_blank" rel="noopener noreferrer">https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software</a>.</p>
 <p>In this example, I am using version 3.2.10.Download the package via WGET:</p>
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo wget https://static.tp-link.com/2020/202004/20200420/omada_v3.2.10_linux_x64_20200330135119.deb</code></pre>
+`sudo wget https://static.tp-link.com/2020/202004/20200420/omada_v3.2.10_linux_x64_20200330135119.deb`
 </p>
 </li>
 <li>Install the package:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo dpkg –i omada_v3.2.10_linux_x64_20200330135119.deb</code></pre>
+`sudo dpkg –i omada_v3.2.10_linux_x64_20200330135119.deb`
 </li>
 <li>The installation will then guide you through the rest of the installation. Once complete, you will be prompted to go to a web address to finish setup. E.g. http://LOCALHOST/YOUR IP ADDRESS:8088.</li>
 <li>You can start/stop the controller software with these commands:Start the controller. By default your controller should run at start-up, but try this for a manual start:
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap start</code></pre>
+`sudo tpeap start`
 <p>Stop the controller:</p>
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap stop</code></pre>
+`sudo tpeap stop`
 <p>See the status the running controller:</p>
-<pre class="language-markup code-toolbar"><code class=" language-markup">sudo tpeap status</code></pre>
+`sudo tpeap status`
 </li>
 </ol>
 </li>

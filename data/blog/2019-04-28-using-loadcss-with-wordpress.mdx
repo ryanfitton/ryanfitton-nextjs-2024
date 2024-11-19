@@ -13,7 +13,8 @@ summary: 'I have been using loadCSS from the Filament Group recently, it&amp;#82
 <p>To combat this issue, I have created a function which will alter these &#8216;link&#8217; attributes so they can be used with loadCSS. There is also the support to load Critical CSS (This can be done with this <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/">tool</a>, or the &#8216;<a href="https://github.com/filamentgroup/grunt-criticalcss">grunt-criticalcss</a>&#8216; wrapper), and Async or Defer on JavaScript files is supported too.</p>
 <p>To start, download the loadCSS library from <a href="https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0">Github</a>. This guide is using the files from the <a href="https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0">v2 branch</a>, you will be using the &#8216;cssrelpreload.js&#8217; file located in the &#8216;src&#8217; folder.</p>
 <p>Then add this code into your theme&#8217;s &#8216;functions.php&#8217; file:</p>
-<pre class="language-php"><code class="language-php">&lt;?php
+```
+&lt;?php
 	//Enqueue CSS and Javascript
 	function enqueue_scripts() {
 		//LoadCSS - Use the 'loadCSS_parser()' function to implement loadCSS to CSS scripts below
@@ -96,7 +97,8 @@ summary: 'I have been using loadCSS from the Filament Group recently, it&amp;#82
     	add_filter( 'clean_url', 'async_defer_js', 11, 1 );
     }
 
-?&gt;</code></pre>
+?&gt;
+```
 
 <p>
   Note: If you&#8217;re not using Critical CSS, disable the lines on #6, #7 and #8. And if
