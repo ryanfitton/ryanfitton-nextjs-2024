@@ -8,51 +8,58 @@ draft: false
 summary: 'This simple PHP script can be used to perform HTTP and HTTPS redirects for your domains. I created this script as my DNS provider does not provide a URL redirection service of their own, and I didn&amp;#8217;t want to setup webspace or a virtualhost on my server just for a redirect. To use this script, [&amp;hellip;]'
 ---
 
-<p>This simple PHP script can be used to perform HTTP and HTTPS redirects for your domains. I created this script as my DNS provider does not provide a URL redirection service of their own, and I didn&#8217;t want to setup webspace or a virtualhost on my server just for a redirect.</p>
-<p>To use this script, you should already have a free IPv4 address and domain. Setup these as a host on a server or VPS &#8211; I recommend <a href="https://m.do.co/c/fbe5f1c0c98d" target="_blank">Digital Ocean (referral link)</a>.</p>
+<p>
+  This simple PHP script can be used to perform HTTP and HTTPS redirects for your domains. I created
+  this script as my DNS provider does not provide a URL redirection service of their own, and I
+  didn&#8217;t want to setup webspace or a virtualhost on my server just for a redirect.
+</p>
+<p>
+  To use this script, you should already have a free IPv4 address and domain. Setup these as a host
+  on a server or VPS &#8211; I recommend{' '}
+  <a href="https://m.do.co/c/fbe5f1c0c98d" target="_blank">
+    Digital Ocean (referral link)
+  </a>
+  .
+</p>
 <h4>Redirection DNS Settings</h4>
 <p>Within your DNS settings point your domain or subdomain to the server you have setup.</p>
-<p>For subdomains, this is done by setting up a CNAME record. For apex/naked domains, it is recommended that you use an ALIAS or ANAME record type if your DNS provider supports it. Otherwise, use an A record:</p>
+<p>
+  For subdomains, this is done by setting up a CNAME record. For apex/naked domains, it is
+  recommended that you use an ALIAS or ANAME record type if your DNS provider supports it.
+  Otherwise, use an A record:
+</p>
 <ul>
-<li>CNAME and ALIAS/ANAME records should point to `yourdomain.com`</li>
-<li>A records should point to `123.45.67.89`</li>
+  <li>CNAME and ALIAS/ANAME records should point to `yourdomain.com`</li>
+  <li>A records should point to `123.45.67.89`</li>
 </ul>
 <p>To configure the redirection destination, add a TXT record for your domain:</p>
 <ul>
-<li>TXT value: `"redirect_https://www.google.com"`</li>
+  <li>TXT value: `"redirect_https://www.google.com"`</li>
 </ul>
-<p><strong>Note:</strong> Remember to replace these values with your own.</p>
+<p>
+  <strong>Note:</strong> Remember to replace these values with your own.
+</p>
 <h4>Example DNS zone file</h4>
 <p>This is an example zone file for www. and non-www. addresses:</p>
-<p><strong>CNAME:</strong></p>
-```
-example.com. 1800 IN CNAME 123.45.67.89
-www.example.com. 1800 IN CNAME 123.45.67.89
-```
-<p><strong>A Records:</strong></p>
-```
-www.example.com. 1800 IN A 123.45.67.89
-www.example.com. 1800 IN A 123.45.67.89
-```
-<p><strong>TXT Values:</strong></p>
-```
-example.com. 1800 IN TXT "redirect_https://www.google.com"
-www.example.com. 1800 IN TXT "redirect_https://www.google.com"
-```
+<p>
+  <strong>CNAME:</strong>
+</p>
+``` example.com. 1800 IN CNAME 123.45.67.89 www.example.com. 1800 IN CNAME 123.45.67.89 ```
+<p>
+  <strong>A Records:</strong>
+</p>
+``` www.example.com. 1800 IN A 123.45.67.89 www.example.com. 1800 IN A 123.45.67.89 ```
+<p>
+  <strong>TXT Values:</strong>
+</p>
+``` example.com. 1800 IN TXT "redirect_https://www.google.com" www.example.com. 1800 IN TXT
+"redirect_https://www.google.com" ```
 <h4>PHP Script</h4>
-```
-&lt;?php
-/**
- * Redirect URL based on DNS TXT record value. Requires A records to be pointed to the server's IP Address and a TXT record with redirection value.
- * Author: Ryan Fitton (https://ryanfitton.co.uk)
- * Version: 1.0.0
- *
- * Examples:
- * example.com.         1800	IN	A	123.45.67.89
- * www.example.com.     1800	IN	A	123.45.67.89
- * example.com.         1800    IN	TXT	"redirect_https://www.google.com"
- * www.example.com.		1800	IN	TXT	"redirect_https://www.google.com"
- */
+``` &lt;?php /** * Redirect URL based on DNS TXT record value. Requires A records to be pointed to
+the server's IP Address and a TXT record with redirection value. * Author: Ryan Fitton
+(https://ryanfitton.co.uk) * Version: 1.0.0 * * Examples: * example.com. 1800 IN A 123.45.67.89 *
+www.example.com. 1800 IN A 123.45.67.89 * example.com. 1800 IN TXT "redirect_https://www.google.com"
+* www.example.com. 1800 IN TXT "redirect_https://www.google.com" */
 
 //The redirect prefix
 $prefix = 'redirect\_';
@@ -91,4 +98,7 @@ foreach($txts as $txt) {
 
 }
 ?&gt;
+
+```
+
 ```

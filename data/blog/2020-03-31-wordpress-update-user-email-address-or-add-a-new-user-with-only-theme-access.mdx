@@ -8,18 +8,19 @@ draft: false
 summary: 'If you&amp;#8217;re editing a website but only have theme access, and no access to the database, you can temporarily add the code below into your theme &amp;#8216;front-page.php&amp;#8217; or other theme file to update either: The existing first user&amp;#8217;s email address Add a new Administrator user Remember to remove this code when your have finished your [&amp;hellip;]'
 ---
 
-<p>If you&#8217;re editing a website but only have theme access, and no access to the database, you can temporarily add the code below into your theme &#8216;front-page.php&#8217; or other theme file to update either:</p>
+<p>
+  If you&#8217;re editing a website but only have theme access, and no access to the database, you
+  can temporarily add the code below into your theme &#8216;front-page.php&#8217; or other theme
+  file to update either:
+</p>
 <ul>
-<li>The existing first user&#8217;s email address</li>
-<li>Add a new Administrator user</li>
+  <li>The existing first user&#8217;s email address</li>
+  <li>Add a new Administrator user</li>
 </ul>
 <p>Remember to remove this code when your have finished your operations.</p>
 <h3>Update the existing user&#8217;s email address</h3>
-```
-&lt;?php  
-    /************************
-     * Change an existing WordPress user email address
-     ***********************/
+``` &lt;?php /************************ * Change an existing WordPress user email address
+***********************/
 
     # If specific IP address, find from: https://whatismyipaddress.com/
     if ($_SERVER[&quot;REMOTE_ADDR&quot;] == 'Your IP Here') {
@@ -53,13 +54,14 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
     }
 
 ?&gt;
+
 ```
 <h3>Add a new Administrator user</h3>
 ```
+
 &lt;?php  
-    /************************
-     * Add a new WordPress admin user
-     ***********************/
+ /**********\*\*\*\*********** \* Add a new WordPress admin user
+**********\*\*\***********/
 
     # If specific IP address, find from: https://whatismyipaddress.com/
     if ($_SERVER[&quot;REMOTE_ADDR&quot;] == 'Your IP Here') {
@@ -89,4 +91,7 @@ summary: 'If you&amp;#8217;re editing a website but only have theme access, and 
     }
 
 ?&gt;
+
+```
+
 ```

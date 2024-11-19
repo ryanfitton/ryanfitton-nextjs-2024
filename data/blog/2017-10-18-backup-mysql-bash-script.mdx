@@ -8,12 +8,25 @@ draft: false
 summary: 'This is a follow-on from my previous post: &amp;#8216;Backup server files as tar.gz&amp;#8216;. The script below works in a similar way as the previous, save as &amp;#8216;backup_mysql2ftp.sh&amp;#8217; and fill out the &amp;#8216;Backup options&amp;#8217;, &amp;#8216;MySQL Connection details&amp;#8217;, and your email address. Run the script with sudo sh backup_mysql2ftp.sh (make sure the file is executable first). The [&amp;hellip;]'
 ---
 
-<p>This is a follow-on from my previous post: &#8216;<a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">Backup server files as tar.gz</a>&#8216;.</p>
-<p>The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your email address.</p>
+<p>
+  This is a follow-on from my previous post: &#8216;
+  <a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">
+    Backup server files as tar.gz
+  </a>
+  &#8216;.
+</p>
+<p>
+  The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217;
+  and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your
+  email address.
+</p>
 <p>Run the script with `sudo sh backup_mysql2ftp.sh` (make sure the file is executable first).</p>
-<p>The databases for the entire server will be stored in a .sql format, then transferred using FTP to the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted from the local server.</p>
-```
-#!/bin/bash
+<p>
+  The databases for the entire server will be stored in a .sql format, then transferred using FTP to
+  the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted
+  from the local server.
+</p>
+``` #!/bin/bash
 
 ## Usage: backup_mysql2ftp.sh
 
@@ -60,12 +73,12 @@ clear
 
 # Welcome/Start message
 
-echo &quot;********\*\*********\*\*\*\*********\*\*********&quot;
+echo &quot;**\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***&quot;
 echo &quot;Backup MySQL2FTP base script&quot;
 echo &quot;Created for Ubuntu operating systems&quot;
 echo &quot;Author: Ryan Fitton (ryanfitton.co.uk)&quot;
 echo &quot;Version 1.0.0&quot;
-echo &quot;********\*\*********\*\*\*\*********\*\*********&quot;
+echo &quot;**\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***&quot;
 
 printf &quot;\n&quot;
 
@@ -257,6 +270,7 @@ echo &quot;Install by running: 'apt-get install $MAIL_PACKAGE'&quot;
 exit 1 # Exit with general error
 
 fi
+
 ```
 
 <p>
@@ -269,3 +283,4 @@ fi
   Also see my previous file backup script{' '}
   <a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">here</a>.
 </p>
+```

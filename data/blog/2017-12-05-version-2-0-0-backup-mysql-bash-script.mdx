@@ -8,16 +8,33 @@ draft: false
 summary: 'This is similar post to be read together with this. And a follow-up update to &amp;#8216;Backup SQL files to FTP server&amp;#8216; script. Some of my similar Backup scripts reside in a a GitHub here: https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection Version 2.0.0, now adds additional features and bug fixes: Now searches to ensure the required packages are installed. Uses &amp;#8216;lftp&amp;#8216; [&amp;hellip;]'
 ---
 
-<p>This is similar post to be read together with <a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script-version-2/">this</a>. And a follow-up update to &#8216;<a href="https://ryanfitton.co.uk/blog/backup-mysql-bash-script/">Backup SQL files to FTP server</a>&#8216; script.</p>
-<p>Some of my similar Backup scripts reside in a a GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
+<p>
+  This is similar post to be read together with{' '}
+  <a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script-version-2/">
+    this
+  </a>
+  . And a follow-up update to &#8216;
+  <a href="https://ryanfitton.co.uk/blog/backup-mysql-bash-script/">
+    Backup SQL files to FTP server
+  </a>
+  &#8216; script.
+</p>
+<p>
+  Some of my similar Backup scripts reside in a a GitHub here:{' '}
+  <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">
+    https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection
+  </a>
+</p>
 <p>Version 2.0.0, now adds additional features and bug fixes:</p>
 <ul>
-<li>Now searches to ensure the required packages are installed.</li>
-<li>Uses &#8216;<a href="https://linux.die.net/man/1/lftp">lftp</a>&#8216; to upload files via FTP. Lftp allows multi-level directories to be created on the server.</li>
-<li>Renamed configuration variables to make them easier to understand.</li>
+  <li>Now searches to ensure the required packages are installed.</li>
+  <li>
+    Uses &#8216;<a href="https://linux.die.net/man/1/lftp">lftp</a>&#8216; to upload files via FTP.
+    Lftp allows multi-level directories to be created on the server.
+  </li>
+  <li>Renamed configuration variables to make them easier to understand.</li>
 </ul>
-```
-#!/bin/bash
+``` #!/bin/bash
 
 ## Usage: backup_mysql2ftp.sh
 
@@ -81,12 +98,12 @@ clear
 
 # Welcome/Start message
 
-echo "********\*\*********\*\*\*\*********\*\*********"
+echo "**\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***"
 echo "Backup MySQL2FTP base script"
 echo "Created for Ubuntu operating systems"
 echo "Author: Ryan Fitton (ryanfitton.co.uk)"
 echo "Version 2.0.0"
-echo "********\*\*********\*\*\*\*********\*\*********"
+echo "**\*\*\*\***\*\***\*\*\*\***\*\*\*\***\*\*\*\***\*\***\*\*\*\***"
 
 printf "\n"
 
@@ -347,4 +364,7 @@ echo "Install by running: 'sudo apt-get install $PACKAGE'"
     exit 1 # Exit with general error
 
 fi
+
+```
+
 ```

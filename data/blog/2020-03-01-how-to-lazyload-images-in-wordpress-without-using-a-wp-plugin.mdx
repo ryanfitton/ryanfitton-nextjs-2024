@@ -78,13 +78,14 @@ if (!is_admin()) {
 <p>Also, within your `functions.php` add these functions which are used to add the required tags for the Image and Background image tags.</p>
 <p>For Images add:</p>
 ```
-/*
-	Image lazyload
-	More info: More info: http://jquery.eisbehr.de/lazy/
-	==============================================================================
-*/
+
+/_
+Image lazyload
+More info: More info: http://jquery.eisbehr.de/lazy/
+==============================================================================
+_/
 function filter_lazyload_img($content) {
-	return preg_replace_callback('/(&lt;\s*img[^&gt;]+)(src\s*=\s*&quot;[^&quot;]+&quot;)([^&gt;]+&gt;)/i', 'preg_lazyload_img', $content);
+return preg_replace_callback('/(&lt;\s*img[^&gt;]+)(src\s*=\s\*&quot;[^&quot;]+&quot;)([^&gt;]+&gt;)/i', 'preg_lazyload_img', $content);
 }
 add_filter('the_content', 'filter_lazyload_img');
 
@@ -104,13 +105,14 @@ function preg_lazyload_img($img_match) {
 ```
 <p>And background images, add: </p>
 ```
-/*
-	Background image lazyload
-*/
+
+/_
+Background image lazyload
+_/
 function filter_lazyload_bg($content) {
-	//Find the first '&lt;div style=&quot;&quot;&gt;' element
-	//return preg_replace_callback('/(&lt;\s*div[^&gt;]+)(style\s*=\s*&quot;[^&quot;]+&quot;)(&gt;)/i', 'preg_lazyload_bg', $content);
-	return preg_replace_callback('/(&lt;\s*[^&gt;]+)(style\s*=\s*&quot;[^&quot;]+&quot;)(&gt;)/i', 'preg_lazyload_bg', $content);
+//Find the first '&lt;div style=&quot;&quot;&gt;' element
+//return preg_replace_callback('/(&lt;\s*div[^&gt;]+)(style\s*=\s*&quot;[^&quot;]+&quot;)(&gt;)/i', 'preg_lazyload_bg', $content);
+return preg_replace_callback('/(&lt;\s*[^&gt;]+)(style\s*=\s*&quot;[^&quot;]+&quot;)(&gt;)/i', 'preg_lazyload_bg', $content);
 }
 add_filter('the_content', 'filter_lazyload_bg');
 
@@ -128,5 +130,7 @@ $div_replace = $div_match[1] . 'data-src=&quot;' . str_replace(');&quot;', '', s
     return $div_replace;
 
 }
+
+```
 
 ```

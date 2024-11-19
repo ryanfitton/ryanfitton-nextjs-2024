@@ -8,34 +8,46 @@ draft: false
 summary: 'As mentioned in my previous post, I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS. The steps listed below can be found in my LXC Container backup [&amp;hellip;]'
 ---
 
-<p>As mentioned in my <a href="https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/">previous post</a>, I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.</p>
-<p>The steps listed below can be found in my LXC Container backup script collection on GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
+<p>
+  As mentioned in my{' '}
+  <a href="https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/">
+    previous post
+  </a>
+  , I would post code for a script which will backup an LXD container as a snapshot, then transfer
+  to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.
+</p>
+<p>
+  The steps listed below can be found in my LXC Container backup script collection on GitHub here:{' '}
+  <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">
+    https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection
+  </a>
+</p>
 <p>Ensure you have these packages installed:</p>
 <ul>
-<li>`netcat`</li>
-<li>`exim4`</li>
-<li>`lftp`</li>
-<li>`curl`</li>
+  <li>`netcat`</li>
+  <li>`exim4`</li>
+  <li>`lftp`</li>
+  <li>`curl`</li>
 </ul>
-<p>Save this to a file on your LXD host such as <strong>&#8216;backup-container-snapshot.sh&#8217;</strong>, now change permissions so this file is executable:</p>
-```
-sudo chmod +x backup-container-snapshot.sh
-```
+<p>
+  Save this to a file on your LXD host such as{' '}
+  <strong>&#8216;backup-container-snapshot.sh&#8217;</strong>, now change permissions so this file
+  is executable:
+</p>
+``` sudo chmod +x backup-container-snapshot.sh ```
 <p>Now edit the file, and ensure these variables match your specs:</p>
 <ul>
-<li>`GLOBAL_BACKUP_TEMP_SAVEPATH`</li>
-<li>`GLOBAL_REMOTE_FTP_LOCATION`</li>
-<li>`GLOBAL_EMAIL_TO`</li>
-<li>`FTP_SERVER`</li>
-<li>`FTP_USERNAME`</li>
-<li>`FTP_PASSWORD`</li>
-<li>`FTP_PORT`</li>
-<li>You may also need to configure passive mode in `FTP_ARGUMENTS` and `CURL_FTP_ARGUMENTS`</li>
+  <li>`GLOBAL_BACKUP_TEMP_SAVEPATH`</li>
+  <li>`GLOBAL_REMOTE_FTP_LOCATION`</li>
+  <li>`GLOBAL_EMAIL_TO`</li>
+  <li>`FTP_SERVER`</li>
+  <li>`FTP_USERNAME`</li>
+  <li>`FTP_PASSWORD`</li>
+  <li>`FTP_PORT`</li>
+  <li>You may also need to configure passive mode in `FTP_ARGUMENTS` and `CURL_FTP_ARGUMENTS`</li>
 </ul>
 <p>To run this script, you must pass your LXD container name as an argument, for example:</p>
-```
-sudo ./backup-container-snapshot.sh 'container-name-here'
-```
+``` sudo ./backup-container-snapshot.sh 'container-name-here' ```
 
 ```
 #!/bin/bash

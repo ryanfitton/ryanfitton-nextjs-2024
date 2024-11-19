@@ -8,13 +8,15 @@ draft: false
 summary: 'When building WordPress themes, there is often a need to use a featured thumbnail, or image value from ACF; as either a background image or as a &amp;lt;img&amp;gt; tag. This snippet below is something I use frequently, hopefully this will be as benefit for you too. &amp;lt;?php //Custom image sizes - Add these to your [&amp;hellip;]'
 ---
 
-<p>When building WordPress themes, there is often a need to use a featured thumbnail, or image value from ACF; as either a background image or as a &lt;img&gt; tag.</p>
-<p>This snippet below is something I use frequently, hopefully this will be as benefit for you too.</p>
-```
-&lt;?php
-    //Custom image sizes - Add these to your functions.php
-    add_image_size( 'custom_image_size_1', 650, 650, false );
-    add_image_size( 'custom_image_size_2', 300, 300, false );
+<p>
+  When building WordPress themes, there is often a need to use a featured thumbnail, or image value
+  from ACF; as either a background image or as a &lt;img&gt; tag.
+</p>
+<p>
+  This snippet below is something I use frequently, hopefully this will be as benefit for you too.
+</p>
+``` &lt;?php //Custom image sizes - Add these to your functions.php add_image_size(
+'custom_image_size_1', 650, 650, false ); add_image_size( 'custom_image_size_2', 300, 300, false );
 ?&gt;
 
 &lt;!-- BG IMAGES --&gt;
@@ -40,6 +42,7 @@ if ( has_post_thumbnail() ) :
 echo get_the_post_thumbnail( 'custom_image_size_2', array('class' =&gt; 'custom_class_name_here') );
 endif;
 ?&gt;
+
 ```
 
 <p>
@@ -47,3 +50,4 @@ endif;
   <br />
   <script src="https://gist.github.com/BethanyyF/d82adc5cebd46b839ebad9c977253b55.js"></script>
 </p>
+```

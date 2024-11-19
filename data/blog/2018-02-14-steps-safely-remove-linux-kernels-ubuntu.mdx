@@ -8,32 +8,41 @@ draft: false
 summary: 'Note: Please understand, these instructions can make your system non-bootable. If you&amp;#8217;re unsure, do not continue. If you&amp;#8217;re trying to update the kernel and low/empty disk space errors are shown, it&amp;#8217;s probably because the /boot/ directory is full. Use this command to see the available space of /boot/: sudo df -h Now check the kernel [&amp;hellip;]'
 ---
 
-<p><strong>Note:</strong> Please understand, these instructions can make your system non-bootable. If you&#8217;re unsure, do not continue.</p>
-<p>If you&#8217;re trying to update the kernel and low/empty disk space errors are shown, it&#8217;s probably because the /boot/ directory is full.</p>
+<p>
+  <strong>Note:</strong> Please understand, these instructions can make your system non-bootable. If
+  you&#8217;re unsure, do not continue.
+</p>
+<p>
+  If you&#8217;re trying to update the kernel and low/empty disk space errors are shown, it&#8217;s
+  probably because the /boot/ directory is full.
+</p>
 <p>Use this command to see the available space of /boot/:</p>
-```
-sudo df -h
-```
-<p>Now check the kernel version you&#8217;re using. Make a note so you don&#8217;t delete your current kernel files:</p>
-```
-sudo uname -r
-```
+``` sudo df -h ```
+<p>
+  Now check the kernel version you&#8217;re using. Make a note so you don&#8217;t delete your
+  current kernel files:
+</p>
+``` sudo uname -r ```
 <p>View all of the available kernels on your system:</p>
-```
-dpkg --list | grep linux-image
-```
-<p>With this list, make commands to delete each kernel. Remember not to include the kernel you&#8217;re using, run each line separately, replacing the version numbers with your kernel versions, e.g. x.x.x-xx to 4.4.0-31:</p>
-```
-sudo update-initramfs -d -k x.x.x-xx-generic
+``` dpkg --list | grep linux-image ```
+<p>
+  With this list, make commands to delete each kernel. Remember not to include the kernel
+  you&#8217;re using, run each line separately, replacing the version numbers with your kernel
+  versions, e.g. x.x.x-xx to 4.4.0-31:
+</p>
+``` sudo update-initramfs -d -k x.x.x-xx-generic
 
 sudo apt-get purge linux-image-x.x.x-xx-generic
 
 sudo apt-get purge linux-image-extra-x.x.x-xx-generic
+
 ```
 
 <p>Now update the grub2 boot loader:</p>
 ```
+
 sudo update-grub2
+
 ```
 <p>
   These commands have been tested on Ubuntu 16.04. More information can be found here:{' '}
@@ -41,3 +50,4 @@ sudo update-grub2
     https://help.ubuntu.com/community/RemoveOldKernels
   </a>
 </p>
+```

@@ -8,37 +8,56 @@ draft: false
 summary: 'The post displays hows to use WordPress Ajax functions to display a field&amp;#8217;s value; and automatically refresh the field every 5 seconds. This example also includes examples of how to send an Ajax post to update the field. In this example, each click oft the &amp;#8216;submit&amp;#8217; button will increase the numerical value stored in the [&amp;hellip;]'
 ---
 
-<p>The post displays hows to use WordPress Ajax functions to display a field&#8217;s value; and automatically refresh the field every 5 seconds. This example also includes examples of how to send an Ajax post to update the field.</p>
-<p>In this example, each click oft the &#8216;submit&#8217; button will increase the numerical value stored in the ACF field by 1.</p>
-<p><strong>Note:</strong> All code for this example can be found in my GitHub repo: <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example">https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example</a>.</p>
+<p>
+  The post displays hows to use WordPress Ajax functions to display a field&#8217;s value; and
+  automatically refresh the field every 5 seconds. This example also includes examples of how to
+  send an Ajax post to update the field.
+</p>
+<p>
+  In this example, each click oft the &#8216;submit&#8217; button will increase the numerical value
+  stored in the ACF field by 1.
+</p>
+<p>
+  <strong>Note:</strong> All code for this example can be found in my GitHub repo:{' '}
+  <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example">
+    https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example
+  </a>
+  .
+</p>
 <p>&nbsp;</p>
 <h3>Prerequisites</h3>
 <ul>
-<li>Ensure you have WordPress installed. Tested from WordPress 5.3.2</li>
-<li>Install ACF Pro (Pro required for custom options page)</li>
-<li>Upload the ACF export file `acf-export-2020-03-31.json` into your ACF settings</li>
-<li>Download these jQuery libaries: <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/rsvp.min.js">RSVP.min.js</a> and <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/js.cookie.min.js">js.cookie.min.js</a>.</li>
-<li>jQuery is also required, however this should already be included from WordPress.</li>
+  <li>Ensure you have WordPress installed. Tested from WordPress 5.3.2</li>
+  <li>Install ACF Pro (Pro required for custom options page)</li>
+  <li>Upload the ACF export file `acf-export-2020-03-31.json` into your ACF settings</li>
+  <li>
+    Download these jQuery libaries:{' '}
+    <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/rsvp.min.js">
+      RSVP.min.js
+    </a>{' '}
+    and{' '}
+    <a href="https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/js.cookie.min.js">
+      js.cookie.min.js
+    </a>
+    .
+  </li>
+  <li>jQuery is also required, however this should already be included from WordPress.</li>
 </ul>
 <p>&nbsp;</p>
 <h3>Explanation of files</h3>
 <ul>
-<li>`tmpl_page_ajax.php` &#8211; Page template</li>
-<li>`functions.php` &#8211; Functions for Ajax calls</li>
-<li>`ajax.js` &#8211; JS Ajax calls</li>
+  <li>`tmpl_page_ajax.php` &#8211; Page template</li>
+  <li>`functions.php` &#8211; Functions for Ajax calls</li>
+  <li>`ajax.js` &#8211; JS Ajax calls</li>
 </ul>
 <p>&nbsp;</p>
 <h3>Step 1 &#8211; Create a new page template</h3>
-<p>Create a page template in your theme folder with the code below. Then setup a page within WP Admin using this new page template: &#8216;<span class="pl-c">Ajax counter update</span>&#8216;.</p>
+<p>
+  Create a page template in your theme folder with the code below. Then setup a page within WP Admin
+  using this new page template: &#8216;<span class="pl-c">Ajax counter update</span>&#8216;.
+</p>
 <p>Create a new file named `tmpl_page_ajax.php`</p>
-```
-&lt;?php 
-	/**
-	 * Template Name: Ajax counter update
-	 *
-	 * This is a generic page template
-	 */
-?&gt;
+``` &lt;?php /** * Template Name: Ajax counter update * * This is a generic page template */ ?&gt;
 
 &lt;?php get_header(); ?&gt;
 
@@ -65,6 +84,7 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
     &lt;/div&gt;
 
 &lt;?php get_footer(); ?&gt;
+
 ```
 
 <p>&nbsp;</p>
@@ -72,10 +92,11 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 <p>You may already have a `functions.php` file in your theme, if so; do NOT overwrite this file.</p>
 <p>Instead, copy and paste the code below, and paste to the bottom of your existing theme file.</p>
 ```
-&lt;?php 
-	/*************************
-	 	This code goes the theme's functions.php file
-	 *************************/
+
+&lt;?php
+/************\*************
+This code goes the theme's functions.php file
+************\*************/
 
     /***********************
     	ACF Option Pages
@@ -264,6 +285,7 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
     add_action('wp_ajax_nopriv_counter_current', 'ajax_counter_current');	//Run for Non-Admin users
 
 ?&gt;
+
 ```
 
 <p>&nbsp;</p>
@@ -271,6 +293,7 @@ summary: 'The post displays hows to use WordPress Ajax functions to display a fi
 <p>This file will hold all Ajax function calls. These function calls will communicate with the PHP functions within functions.php</p>
 <p>Create a new file named `ajax.js`</p>
 ```
+
 jQuery(function ($) {
 
     //Promise polyfill
@@ -534,4 +557,7 @@ jQuery(function ($) {
     });
 
 });
+
+```
+
 ```

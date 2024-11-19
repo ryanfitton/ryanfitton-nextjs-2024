@@ -68,6 +68,7 @@ curl -X PUT -H "Content-Type: application/json" -H "Authorization: Bearer ${API_
 
 #Page 2
 #curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer ${API_TOKEN}" "https://api.digitalocean.com/v2/domains/${DOMAIN_NAME}/records?page=2"
+
 ```
 
 </li>
@@ -90,3 +91,4 @@ And use this code to run the public-ip-update.sh every hour:</p>
 </ol>
 <p>You should now be able to view any IP address changes in the &#8216;Networking&#8217; area within the Digital Ocean control panel. Once you have confirmed the API is working, you&#8217;ll now be able to to connect to your home network using the sub-domain you have assigned, although remember to open any ports on your router in order to access certain parts of your network.</p>
 <p>The code snipptets and Bash script within this tutorial are free for you to use in your own projects. If you come up with any suggestions or improvements, please <a href="/contact/">contact me</a> or post a comment below.</p>
+```
