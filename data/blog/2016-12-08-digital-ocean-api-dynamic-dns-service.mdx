@@ -23,7 +23,9 @@ summary: 'A brief tutorial of how to use Digital Ocean&#039;s V2 API as a free D
 <pre class="language-markup"><code class="language-markup">curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer YOURAPIKEYHERE" "https://api.digitalocean.com/v2/domains/EXAMPLEDOMAIN.CO.UK/records" | python -m json.tool</code></pre>
 </li>
 <li>Find the sub-domain and it&#8217;s ID, the result should look similar to this:
-<pre class="language-json"><code class="language-json">'{
+<pre class="language-json"><code class="language-json">
+```
+'{
 "data": "123.456.0.789",
 "id": 19247136,
 "name": "homenetwork",
@@ -31,7 +33,9 @@ summary: 'A brief tutorial of how to use Digital Ocean&#039;s V2 API as a free D
 "priority": null,
 "type": "A",
 "weight": null
-},'</code></pre>
+},'
+```
+</code></pre>
 <p>Make a note of the ID as it will be used later.</li>
 <li>Now create a file named <strong>&#8216;public-ip-update.sh&#8217;</strong> somewhere on your server to hold the bash script.Enter this code into the file:
 <pre class="language-markup"><code class="language-markup">#!/bin/bash
