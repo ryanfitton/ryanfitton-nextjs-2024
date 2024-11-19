@@ -209,7 +209,7 @@ lastmod: '2021-01-18'
 tags: ['next-js', 'tailwind', 'guide']
 draft: false
 summary: 'Looking for a performant, out of the box template, with all the best in web technology to support your blogging needs? Checkout the Tailwind Nextjs Starter Blog template.'
-images: ['/static//static/img/canada/mountains.jpg', '/static//static/img/canada/toronto.jpg']
+images: ['/static//static/img/canada/mountains.jpg', '/static//static/img/canada/toronto.jpg']"
 authors: ['default', 'sparrowhawk']
 layout: PostLayout
 canonicalUrl: https://tailwind-nextjs-starter-blog.vercel.app/blog/introducing-tailwind-nextjs-starter-blog
