@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'WordPress will make PHP 7.0 the minimum required version, upgrade your PHP version soon'
+title: "WordPress will make PHP 7.0 the minimum required version, upgrade your PHP version soon"
 authors: ['Ryan Fitton']
 date: '2019-01-17'
 tags: ['Development']
@@ -13,103 +13,74 @@ summary: 'This has just come to my attention today, the developer team at WordPr
 <p>However, by December 2019 the plan is to have PHP 7.0 to become the minimum required PHP version required to run a WordPress site.</p>
 <p>Ideally you should update the PHP version on your server sooner, rather than later. It is really quite a painless procedure – I have added some steps below which may help.</p>
 <p>Myself, I am running PHP 7.2 as this version is supported until 30th November 2020 as stated on the official PHP <a href="https://secure.php.net/supported-versions.php">website</a>. Also, I found a large speed improvement over the 5.6.x branch – There is a good post about some real-world tests on Kinsta’s <a href="https://kinsta.com/blog/php-benchmarks/">website</a>.<br />
-<br>&nbsp;</p>
+<br />&nbsp;</p>
 <h4>How to upgrade to PHP 7.2?</h4>
 <p>There are a few different ways depending on what hosting service you’re using.</p>
 <h5>Shared Hosting (also including Reseller Hosting)</h5>
 <p>If you’re using shared hosting, you’re more than likely have access to a control panel interface such as cPanel, if not you can ask your hosting provider to upgrade your PHP version on your behalf, and if they’re not able to maybe it’s time to switch to another <a href="#">host</a> [affiliate link].</p>
 <ol>
-<li>Once you're logged into your cPanel account, you should have a 'MultiPHP Manager' option:<br>
-    <a href="/static/img/blog/2019/01/upgrade-php-5.6-1.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png" alt="" width="300" height="112"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px" /></a>
-</li>
+<li>Once you’re logged into your cPanel account, you should have a ‘MultiPHP Manager’ option:<br />
+<a href="/static/img/blog/2019/01/upgrade-php-5.6-1.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png" alt="" width="300" height="112"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
 <li>&nbsp;Select this option, and then select the domains for the version you wish to change:<br />
-    <a href="/static/img/blog/2019/01/upgrade-php-5.6-2.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png" alt="" width="300" height="39"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px" /></a>
-</li>
+<a href="/static/img/blog/2019/01/upgrade-php-5.6-2.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png" alt="" width="300" height="39"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
 <li>&nbsp;Now select the new PHP version from the dropdown menu, and click ‘Apply’:<br />
-    <a href="/static/img/blog/2019/01/upgrade-php-5.6-3.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png" alt="" width="300" height="101"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px" /></a>
-</li>
+<a href="/static/img/blog/2019/01/upgrade-php-5.6-3.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png" alt="" width="300" height="101"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px" /></a></li>
 <li>&nbsp;That’s it! You can create a PHP Info file on your server to check the new version has been applied. More info on that <a href="https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page">here</a>.</li>
 </ol>
 <p>If these instructions don’t match your shared hosting setup, contact your provider and they will be able to help – not all shared hosting environments are the same, with options differing from provider to provider.<br />
-<br>&nbsp;</p>
+<br />&nbsp;</p>
 <h5>Self-Hosting/VPS/Dedicated servers</h5>
 <p>If you’re already self-hosting or have a VPS/Dedicated server, you should already be well-versed in setting-up and configuring your web-server stack.</p>
 <p>I take no responsibility for the upgrade instructions below, and you should always take a backup of your system.</p>
 <p>These instructions were test on an Ubuntu 18.04 system. To upgrade from PHP 5.6 running with Apache2 to PHP 7.2 follow these steps:</p>
 <ol>
 <li>Check for updates:
-```
-sudo apt-get update
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get update</code></pre>
 </li>
 <li>Find all current PHP 5.6 modules. Make a note of these as you will need to re-enable/install these modules later:
-```
-sudo apt-cache pkgnames | grep php5.6
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-cache pkgnames | grep php5.6</code></pre>
 </li>
 <li>Disable PHP 5.6:
-```
-sudo a2dismod php5.6
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2dismod php5.6</code></pre>
 </li>
 <li>Install PHP 7.2:
-```
-sudo apt-get install php7.2
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install php7.2</code></pre>
 </li>
 <li>Now enable PHP 7.2:
-```
-sudo a2enmod php7.2
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2enmod php7.2</code></pre>
 </li>
 <li>Now restart Apache2:
-```
-sudo service apache2 restart
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo service apache2 restart</code></pre>
 </li>
 <li>Based on the list of modules from PHP 5.6, install these for version 7.2. Your list may be different to mine, but these are my recommended modules:
-```
-sudo apt-get install php7.2-xmlrpc php7.2-bz2 php7.2-cgi php7.2-cli php7.2-dba php7.2-dev php7.2-fpm php7.2-gd php7.2-gmp php7.2-opcache php7.2 php7.2-pspell php7.2-recode php7.2-common php7.2-bcmath php7.2-sqlite3 php7.2-tidy php7.2-json php7.2-mbstring php7.2-readline php7.2-xml php7.2-xsl php7.2-curl php7.2-zip php7.2-ldap php7.2-pgsql php7.2-imap libphp7.2-embed php7.2-intl php7.2-enchant php7.2-odbc php7.2-snmp php7.2-soap php7.2-sybase php7.2-phpdbg libapache2-mod-php7.2 php7.2-mysql php7.2-interbase
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install php7.2-xmlrpc php7.2-bz2 php7.2-cgi php7.2-cli php7.2-dba php7.2-dev php7.2-fpm php7.2-gd php7.2-gmp php7.2-opcache php7.2 php7.2-pspell php7.2-recode php7.2-common php7.2-bcmath php7.2-sqlite3 php7.2-tidy php7.2-json php7.2-mbstring php7.2-readline php7.2-xml php7.2-xsl php7.2-curl php7.2-zip php7.2-ldap php7.2-pgsql php7.2-imap libphp7.2-embed php7.2-intl php7.2-enchant php7.2-odbc php7.2-snmp php7.2-soap php7.2-sybase php7.2-phpdbg libapache2-mod-php7.2 php7.2-mysql php7.2-interbase</code></pre>
 </li>
 <li>Enable these modules (If not already enabled):
-```
-sudo a2enmod rewrite
-sudo a2enmod ssl
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo a2enmod rewrite
+sudo a2enmod ssl</code></pre>
 </li>
 <li>Install Mcrypt:
-```
-sudo apt-get install mcrypt
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo apt-get install mcrypt</code></pre>
 </li>
-<li>Now edit your PHP.ini file, I do this to adjust the ‘post_max_size’ and ‘upload_max_filesize’ values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
-```
-post_max_size = 40M
-upload_max_filesize = 40M
-```
+<li>Now edit your PHP.ini file, I do this to adjust the ‘<code class=" language-markup">post_max_size</code>’ and ‘<code class=" language-markup">upload_max_filesize</code>’ values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
+<pre class="language-markup code-toolbar"><code class=" language-markup">post_max_size = 40M
+upload_max_filesize = 40M</code></pre>
 </li>
 <li>Now restart Apache2:
-```
-sudo service apache2 restart
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo service apache2 restart</code></pre>
 </li>
 <li>One last step, option if you’re not using phpMyAdmin 4.6.6. There is currently a compatibility between phpMyAdmin 4.6.6 and PHP 7.2. As described in <a href="https://stackoverflow.com/questions/48001569/phpmyadmin-count-parameter-must-be-an-array-or-an-object-that-implements-co">this StackOverflow post</a>.<br />
 <br />
 Run this one-line code command to fix the issue with viewing tables:</p>
-```
-sudo sed -i &quot;s/|\s*\((count(\$analyzed_sql_results\['select_expr'\]\)/| (\1)/g&quot; /usr/share/phpmyadmin/libraries/sql.lib.php
-```
+<pre class="language-markup code-toolbar"><code class=" language-markup">sudo sed -i &quot;s/|\s*\((count(\$analyzed_sql_results\['select_expr'\]\)/| (\1)/g&quot; /usr/share/phpmyadmin/libraries/sql.lib.php</code></pre>
 <p>
 Now fix the issue that happens when exporting databases.<br />
 </p>
-```
-sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php
-```
+<pre class="language-markup code-toolbar"><code class="language-markup">sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php</code></pre>
 <p>
-And replace: `if ($options != null && count($options) > 0) {`<br />
+And replace: <code class="language-markup">if ($options != null && count($options) > 0) {</code><br />
 <br />
-With: `if ($options != null && count((array)$options) > 0) {`<br />
+With: <code class="language-markup">if ($options != null && count((array)$options) > 0) {</code><br />
 <br />
 Now save and exit the file.</li>
 </ol>

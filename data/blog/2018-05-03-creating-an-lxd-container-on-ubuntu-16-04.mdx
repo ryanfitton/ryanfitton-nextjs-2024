@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'Creating an LXD container on Ubuntu 16.04'
+title: "Creating an LXD container on Ubuntu 16.04"
 authors: ['Ryan Fitton']
 date: '2018-05-03'
 tags: ['Development', 'Code Snippets']
@@ -25,23 +25,21 @@ summary: 'I have started getting-to-grips with LXD on Ubuntu &amp;#8211; It&amp;
 <h5>Setting up the Host</h5>
 <p>I&#8217;m running Ubuntu Server 16.04, each of these commands has worked for me. By default LXD should already be installed.</p>
 <p>To start the LXD configuration run:</p>
-```
-sudo lxd init
-```
+<pre class="language-markup"><code class="language-markup">sudo lxd init</code></pre>
 <p>You will be asked some questions. Answer them with these answers:</p>
 <ol>
 <li>Do you want to configure a new storage pool (yes/no) [default=yes]? <strong>yes</strong></li>
 <li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
 <li><strong>Note:</strong> &#8216;ZFS&#8217; is able to set storage limits on containers, &#8216;dir&#8217; cannot do this. If you&#8217;re going to use &#8216;ZFS&#8217; ensure the package is installed, run:</li>
 <li>For ZFS only:
-    <ol type="a">
-        <li>Do you want to configure a new storage pool (yes/no) [default=yes]? <strong>yes</strong></li>
-        <li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
-        <li>Create a new ZFS pool (yes/no) [default=yes]? <strong>yes</strong></li>
-        <li>Name of the new ZFS pool [default=lxd]: <strong>lxd</strong></li>
-        <li>Would you like to use an existing block device (yes/no) [default=no]? <strong>no</strong></li>
-        <li>Size in GB of the new loop device (1GB minimum) [default=15]: <strong>60</strong> &#8211; This is the size of the ZFS pool in GB</li>
-    </ol>
+<ol type="a">
+<li>Do you want to configure a new storage pool (yes/no) [default=yes]? <strong>yes</strong></li>
+<li>Name of the storage backend to use (dir or zfs) [default=zfs]: <strong>zfs</strong></li>
+<li>Create a new ZFS pool (yes/no) [default=yes]? <strong>yes</strong></li>
+<li>Name of the new ZFS pool [default=lxd]: <strong>lxd</strong></li>
+<li>Would you like to use an existing block device (yes/no) [default=no]? <strong>no</strong></li>
+<li>Size in GB of the new loop device (1GB minimum) [default=15]: <strong>60</strong> &#8211; This is the size of the ZFS pool in GB</li>
+</ol>
 </li>
 <li>Would you like LXD to be available over the network (yes/no) [default=no]? <strong>no</strong></li>
 <li>Do you want to configure the LXD bridge (yes/no) [default=yes]? <strong>yes</strong></li>
@@ -55,99 +53,65 @@ sudo lxd init
 <p>Once setup, you can run these commands to list the installed containers and the current list of available templates:</p>
 <ul>
 <li>Use LXC list to view the available installed containers:
-```
-sudo lxc list
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc list</code></pre>
 </li>
 <li>List all available Ubuntu images by running:
-```
-sudo lxc image list ubuntu:
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc image list ubuntu:</code></pre>
 </li>
 <li>and see all other images by running:
-```
-sudo lxc image list images:
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc image list images:</code></pre>
 </li>
 </ul>
 <p>&nbsp;</p>
 <h5>Creating a container</h5>
-<p>Now create a container named `example-webserver` running `Ubuntu 16.04`:</p>
-```
-sudo lxc launch ubuntu:16.04 example-webserver
-```
+<p>Now create a container named <code class="language-markup">example-webserver</code> running <code class="language-markup">Ubuntu 16.04</code>:</p>
+<pre class="language-markup"><code class="language-markup">sudo lxc launch ubuntu:16.04 example-webserver</code></pre>
 <p>You can set CPU and Memory limits using the following commands:</p>
 <ul>
 <li><strong>For CPU:</strong>
-```
-sudo lxc config set example-webserver limits.cpu 2F
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc config set example-webserver limits.cpu 2F</code></pre>
 <p>&nbsp;</li>
 <li><strong>For Memory:</strong>
-```
-sudo lxc config set example-webserver limits.memory 1024MB
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc config set example-webserver limits.memory 1024MB</code></pre>
 <p>&nbsp;</li>
 <li>You can also set Hard Drive size limits with ZFS. To limit the hard drive space of a container to <strong>10GB</strong>, run the command below:
-<p><strong>Note:</strong> &#8216;lxd&#8217; is the ZFS pool name, the path can be found using: `sudo zfs list`</p>
-```
-sudo zfs set quota=10G lxd/containers/example-webserver
-```
+<p><strong>Note:</strong> &#8216;lxd&#8217; is the ZFS pool name, the path can be found using: <code class="language-markup">sudo zfs list</code></p>
+<pre class="language-markup"><code class="language-markup">sudo zfs set quota=10G lxd/containers/example-webserver</code></pre>
 <p>Once done, you can access the Root File System for for the container here:</p>
-```
-/var/lib/lxd/containers/example-webserver/rootfs/
-```
+<pre class="language-markup"><code class="language-markup">/var/lib/lxd/containers/example-webserver/rootfs/</code></pre>
 <p>The above is a symlink to the ZFS path below:</p>
-```
-/var/lib/lxd/containers/example-webserver.zfs/rootfs/
-```
+<pre class="language-markup"><code class="language-markup">/var/lib/lxd/containers/example-webserver.zfs/rootfs/</code></pre>
 </li>
 </ul>
 <p>&nbsp;</p>
 <h5>List and View ZFS Pools</h5>
 <p>To list ZFS pools, run:</p>
-```
-sudo zfs list
-```
+<pre class="language-markup"><code class="language-markup">sudo zfs list</code></pre>
 <p>To see the ZFS pool status, run:</p>
-```
-zpool status -v
-```
+<pre class="language-markup"><code class="language-markup">zpool status -v</code></pre>
 <p>&nbsp;</p>
 <h5>Listing all available containers</h5>
 <p>To list all created containers, run:</p>
-```
-sudo lxc list
-```
-<p>Or to see the configured specs of a specific container (Replace `example-webserver` with your container name), run:</p>
-```
-sudo lxc config show example-webserver
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc list</code></pre>
+<p>Or to see the configured specs of a specific container (Replace <code class="language-markup">example-webserver</code> with your container name), run:</p>
+<pre class="language-markup"><code class="language-markup">sudo lxc config show example-webserver</code></pre>
 <p>&nbsp;</p>
 <h5>Stop, Start and Delete containers</h5>
-<p><strong>Note:</strong> Replace `example-webserver` with your container name.</p>
+<p><strong>Note:</strong> Replace <code class="language-markup">example-webserver</code> with your container name.</p>
 <ul>
 <li><strong>To stop:</strong>
-```
-lxc stop example-webserver
-```
+<pre class="language-markup"><code class="language-markup">lxc stop example-webserver</code></pre>
 <p>&nbsp;</li>
 <li><strong>To restart:</strong>
-```
-lxc start example-webserver
-```
+<pre class="language-markup"><code class="language-markup">lxc start example-webserver</code></pre>
 <p>&nbsp;</li>
 <li><strong>To delete:</strong>
-```
-lxc delete example-webserver
-```
+<pre class="language-markup"><code class="language-markup">lxc delete example-webserver</code></pre>
 </li>
 </ul>
 <p>&nbsp;</p>
 <h5>Logging into Containers</h5>
-<p><strong>Note:</strong> Replace `example-webserver` with your container name.</p>
+<p><strong>Note:</strong> Replace <code class="language-markup">example-webserver</code> with your container name.</p>
 <p>To access the shell of a container, run:</p>
-```
-sudo lxc exec example-webserver -- sudo --login --user ubuntu
-```
+<pre class="language-markup"><code class="language-markup">sudo lxc exec example-webserver -- sudo --login --user ubuntu</code></pre>
 <p>Now run any commands on this container, such as installing Apache2, etc.</p>

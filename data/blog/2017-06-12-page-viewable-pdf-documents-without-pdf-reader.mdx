@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'In-page embedded viewable PDF documents without a PDF reader'
+title: "In-page embedded viewable PDF documents without a PDF reader"
 authors: ['Ryan Fitton']
 date: '2017-06-12'
 tags: ['Development', 'Code Snippets']
@@ -8,23 +8,9 @@ draft: false
 summary: 'Here is a neat trick which I&amp;#8217;ve found: using a tool by Google named Docs Viewer you can embed PDF (Or office and Postscript) files into a webpage to be viewed on screen, even without a PDF reader plugin installed in the user&amp;#8217;s browser. Simply use the snippet below and change where&nbsp;your_document_here is mentioned twice [&amp;hellip;]'
 ---
 
-<p>
-  Here is a neat trick which I&#8217;ve found: using a tool by Google named Docs Viewer you can
-  embed PDF (Or office and Postscript) files into a webpage to be viewed on screen, even without a
-  PDF reader plugin installed in the user&#8217;s browser.
-</p>
-<p>
-  Simply use the snippet below and change where `your_document_here` is mentioned twice with a full
-  URL, e.g. https://example.com/doc.pdf.
-</p>
-``` &lt;object data="your_document_here" type="application/pdf" style="width:100%; height:700px"&gt;
-&lt;iframe
-src="https://docs.google.com/viewer?url=your_document_here&amp;embedded=true"&gt;&lt;/iframe&gt;
-&lt;/object&gt; ```
-<p>
-  Here is an article on Google&#8217;s System blog for more info:{' '}
-  <a href="https://googlesystem.blogspot.co.uk/2015/02/google-docs-viewer-page-no-longer.html">
-    https://googlesystem.blogspot.co.uk/2015/02/google-docs-viewer-page-no-longer.html
-  </a>
-  .
-</p>
+<p>Here is a neat trick which I&#8217;ve found: using a tool by Google named Docs Viewer you can embed PDF (Or office and Postscript) files into a webpage to be viewed on screen, even without a PDF reader plugin installed in the user&#8217;s browser.</p>
+<p>Simply use the snippet below and change where <code class="language-html">your_document_here</code> is mentioned twice with a full URL, e.g. https://example.com/doc.pdf.</p>
+<pre class="language-html"><code class="language-html">&lt;object data="your_document_here" type="application/pdf" style="width:100%; height:700px"&gt;
+&lt;iframe src="https://docs.google.com/viewer?url=your_document_here&amp;embedded=true"&gt;&lt;/iframe&gt;
+&lt;/object&gt;</code></pre>
+<p>Here is an article on Google&#8217;s System blog for more info: <a href="https://googlesystem.blogspot.co.uk/2015/02/google-docs-viewer-page-no-longer.html">https://googlesystem.blogspot.co.uk/2015/02/google-docs-viewer-page-no-longer.html</a>.</p>

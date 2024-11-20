@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'Using statuscake.com to monitor your website and database uptime'
+title: "Using statuscake.com to monitor your website and database uptime"
 authors: ['Ryan Fitton']
 date: '2016-03-16'
 tags: ['Development', 'Code Snippets']
@@ -8,144 +8,30 @@ draft: false
 summary: 'Note: Updates have been added since this article was originally written. These updates are listed at the bottom of this page, click here to view them. This guide will show you how you can monitor your website and database uptime using a free service from&nbsp;Status Cake (https://www.statuscake.com). Once you have setup an account, you will [&amp;hellip;]'
 ---
 
-<p>
-  <strong>Note:</strong> Updates have been added since this article was originally written. These
-  updates are listed at the bottom of this page, <a href="#article-updates">click here</a> to view
-  them.
-</p>
-<p>
-  This guide will show you how you can monitor your website and database uptime using a free service
-  from <a href="https://www.statuscake.com">Status Cake</a> (
-  <a href="https://www.statuscake.com">https://www.statuscake.com</a>).
-</p>
-<p>
-  Once you have setup an account, you will be able to start adding monitoring checks. By using the
-  code within this <a href="https://github.com/ryanfitton/website-check-monitor">repository</a>, you
-  will also be able to setup your check to monitor your website&#8217;s database.
-</p>
-<p>
-  Monitoring a database is extremely important. It is vital to ensure connections can be established
-  without any issues &#8211; otherwise your website can not be used by a visitor.
-</p>
-<p>
-  Firstly, you will need to download a copy of the repository from Github here:{' '}
-  <a href="https://github.com/ryanfitton/website-check-monitor">
-    https://github.com/ryanfitton/website-check-monitor
-  </a>
-  .
-</p>
-<p>
-  Open the file named &#8216;website-check-monitor.php&#8217;, ensure you change the database
-  connection values to match the same values as your website, you can then upload this file to a
-  publicly accessible place on your website &#8211; preferably to a password protected folder using
-  .htaccess and .htpasswd.
-</p>
-<p>
-  The code works by sending a 404 (Not Found) error response if the page cannot establish a database
-  connection, this tricks Status Cake into thinking the website is down. Otherwise if the connection
-  is successful; a 200 (OK) response code is sent.
-</p>
-<p>
-  Once the file and password protected folder has been setup on your web server, you can then setup
-  the monitoring check within Status Cake.
-</p>
+<p><strong>Note:</strong> Updates have been added since this article was originally written. These updates are listed at the bottom of this page, <a href="#article-updates">click here</a> to view them.</p>
+<p>This guide will show you how you can monitor your website and database uptime using a free service from <a href="https://www.statuscake.com">Status Cake</a> (<a href="https://www.statuscake.com">https://www.statuscake.com</a>).</p>
+<p>Once you have setup an account, you will be able to start adding monitoring checks. By using the code within this <a href="https://github.com/ryanfitton/website-check-monitor">repository</a>, you will also be able to setup your check to monitor your website&#8217;s database.</p>
+<p>Monitoring a database is extremely important. It is vital to ensure connections can be established without any issues &#8211; otherwise your website can not be used by a visitor.</p>
+<p>Firstly, you will need to download a copy of the repository from Github here: <a href="https://github.com/ryanfitton/website-check-monitor">https://github.com/ryanfitton/website-check-monitor</a>.</p>
+<p>Open the file named &#8216;website-check-monitor.php&#8217;, ensure you change the database connection values to match the same values as your website, you can then upload this file to a publicly accessible place on your website &#8211; preferably to a password protected folder using .htaccess and .htpasswd.</p>
+<p>The code works by sending a 404 (Not Found) error response if the page cannot establish a database connection, this tricks Status Cake into thinking the website is down. Otherwise if the connection is successful; a 200 (OK) response code is sent.</p>
+<p>Once the file and password protected folder has been setup on your web server, you can then setup the monitoring check within Status Cake.</p>
 <p>By using the example screenshot below, you will want to ensure you have similar settings.</p>
-<p>
-  <strong>Note:</strong> Ensure your Basic Auth username and password match the details which you
-  have setup with .htaccess and .htpasswd.
-  <br />
-  <a
-    href="/static/img/blog/2016/02/status-cake-db-check-screenshot-example.png"
-    rel="attachment wp-att-376"
-  >
-    <img
-      loading="lazy"
-      src="/static/img/blog/2016/02/status-cake-db-check-screenshot-example-1024x704.png"
-      alt="status-cake-db-check-screenshot-example"
-      width="1024"
-      height="704"
-      srcset="/static/img/blog/2016/02/status-cake-db-check-screenshot-example-1024x704.png 1024w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example-300x206.png 300w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example-768x528.png 768w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example.png 1304w"
-      sizes="(max-width: 1024px) 100vw, 1024px"
-    />
-  </a>
-</p>
-<p>
-  Save your Status Cake check, your check should now notify you when your website or database is
-  unavailable.
-</p>
-<p>
-  <strong>
-    Download from Github <a href="https://github.com/ryanfitton/website-check-monitor">here</a>.
-  </strong>
-</p>
+<p><strong>Note:</strong> Ensure your Basic Auth username and password match the details which you have setup with .htaccess and .htpasswd.<br />
+<a href="/static/img/blog/2016/02/status-cake-db-check-screenshot-example.png" rel="attachment wp-att-376"><img loading="lazy"  src="/static/img/blog/2016/02/status-cake-db-check-screenshot-example-1024x704.png" alt="status-cake-db-check-screenshot-example" width="1024" height="704" srcset="/static/img/blog/2016/02/status-cake-db-check-screenshot-example-1024x704.png 1024w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example-300x206.png 300w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example-768x528.png 768w, /static/img/blog/2016/02/status-cake-db-check-screenshot-example.png 1304w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
+<p>Save your Status Cake check, your check should now notify you when your website or database is unavailable.</p>
+<p><strong>Download from Github <a href="https://github.com/ryanfitton/website-check-monitor">here</a>.</strong></p>
 <p>&nbsp;</p>
-<p>
-  <span id="article-updates">
-    <strong>Updates (Version 1.1 &#8211; 18/10/2016):</strong>
-  </span>
-</p>
+<p><span id="article-updates"><strong>Updates (Version 1.1 &#8211; 18/10/2016):</strong></span></p>
 <ul>
-  <li>
-    The &#8216;website-check-monitor.php&#8217; code has been updated to check if the built-in PHP
-    function &#8216;
-    <a href="http://php.net/manual/en/function.http-response-code.php">http_response_code</a>&#8216;
-    exists. If it does not, it&#8217;s likely the server is running a PHP version older than 5.4.0.
-    In this instance, a custom function will be used which does the same job.
-  </li>
-  <li>
-    This code has also been tested to work with{' '}
-    <a href="http://www.phpservermonitor.org/" target="_blank" rel="noopener">
-      PHP Server Monitor
-    </a>
-    , an open-source self hosted solution.
-  </li>
-  <li>
-    If the website&#8217;website-check-monitor.php&#8217; file is protected with
-    .htaccess/.htpasswd, some monitoring services may not allow you to enter a Username and Password
-    to authenticate. In this case, you should change the URL which points to
-    &#8216;website-check-monitor.php&#8217; in your monitoring service to:
-    &#8216;https://yourusername:yourpassword@yourdomain.co.uk/website-check-monitor/website-check-monitor.php&#8217;
-    &#8211; (Replacing the relevant details).
-  </li>
+<li>The &#8216;website-check-monitor.php&#8217; code has been updated to check if the built-in PHP function &#8216;<a href="http://php.net/manual/en/function.http-response-code.php">http_response_code</a>&#8216; exists. If it does not, it&#8217;s likely the server is running a PHP version older than 5.4.0. In this instance, a custom function will be used which does the same job.</li>
+<li>This code has also been tested to work with <a href="http://www.phpservermonitor.org/" target="_blank" rel="noopener">PHP Server Monitor</a>, an open-source self hosted solution.</li>
+<li>If the website&#8217;website-check-monitor.php&#8217; file is protected with .htaccess/.htpasswd, some monitoring services may not allow you to enter a Username and Password to authenticate. In this case, you should change the URL which points to &#8216;website-check-monitor.php&#8217; in your monitoring service to: &#8216;https://yourusername:yourpassword@yourdomain.co.uk/website-check-monitor/website-check-monitor.php&#8217; &#8211; (Replacing the relevant details).</li>
 </ul>
 <p>&nbsp;</p>
 <h3>License</h3>
-<p>
-  The license for this software is{' '}
-  <a href="https://creativecommons.org/licenses/by/4.0/">
-    Creative Commons: Attribution 4.0 International
-  </a>
-  .
-</p>
-<p>
-  This means you can Share and Redistribute in any medium or form. You can Adapt the code to suit
-  your needs, and build in new code. The software can be used personally or commercially.
-</p>
-<p>
-  You must give attribution to the original author (
-  <a href="https://ryanfitton.co.uk">Ryan Fitton</a>). You can give attribution by including my name
-  and linking to my website: <a href="https://ryanfitton.co.uk">https://ryanfitton.co.uk</a> within
-  the top of the monitoring PHP code.
-</p>
-<p>
-  <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">
-    <img
-      style="border-width: 0;"
-      src="https://i.creativecommons.org/l/by/4.0/88x31.png"
-      alt="Creative Commons Licence"
-    />
-  </a>
-  <br />
-  Website Check Monitor script Plugin by{' '}
-  <a
-    href="https://ryanfitton.co.uk/blog/using-statuscake-com-to-monitor-your-website-and-database-uptime/"
-    rel="cc:attributionURL"
-  >
-    Ryan Fitton
-  </a>{' '}
-  is licensed under a{' '}
-  <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">
-    Creative Commons Attribution 4.0 International License
-  </a>
-  .
-</p>
+<p>The license for this software is <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons: Attribution 4.0 International</a>.</p>
+<p>This means you can Share and Redistribute in any medium or form. You can Adapt the code to suit your needs, and build in new code. The software can be used personally or commercially.</p>
+<p>You must give attribution to the original author (<a href="https://ryanfitton.co.uk">Ryan Fitton</a>). You can give attribution by including my name and linking to my website: <a href="https://ryanfitton.co.uk">https://ryanfitton.co.uk</a> within the top of the monitoring PHP code.</p>
+<p><a href="http://creativecommons.org/licenses/by/4.0/" rel="license"><img style="border-width: 0;" src="https://i.creativecommons.org/l/by/4.0/88x31.png" alt="Creative Commons Licence" /></a><br />
+Website Check Monitor script Plugin by <a href="https://ryanfitton.co.uk/blog/using-statuscake-com-to-monitor-your-website-and-database-uptime/" rel="cc:attributionURL">Ryan Fitton</a> is licensed under a <a href="http://creativecommons.org/licenses/by/4.0/" rel="license">Creative Commons Attribution 4.0 International License</a>.</p>

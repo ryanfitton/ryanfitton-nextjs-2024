@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'LXD Container backup to FTP server script'
+title: "LXD Container backup to FTP server script"
 authors: ['Ryan Fitton']
 date: '2018-06-09'
 tags: ['Development', 'Code Snippets']
@@ -8,129 +8,89 @@ draft: false
 summary: 'As mentioned in my previous post, I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS. The steps listed below can be found in my LXC Container backup [&amp;hellip;]'
 ---
 
-<p>
-  As mentioned in my{' '}
-  <a href="https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/">
-    previous post
-  </a>
-  , I would post code for a script which will backup an LXD container as a snapshot, then transfer
-  to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.
-</p>
-<p>
-  The steps listed below can be found in my LXC Container backup script collection on GitHub here:{' '}
-  <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">
-    https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection
-  </a>
-</p>
+<p>As mentioned in my <a href="https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/">previous post</a>, I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.</p>
+<p>The steps listed below can be found in my LXC Container backup script collection on GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
 <p>Ensure you have these packages installed:</p>
 <ul>
-  <li>`netcat`</li>
-  <li>`exim4`</li>
-  <li>`lftp`</li>
-  <li>`curl`</li>
+<li><code class="language-markup">netcat</code></li>
+<li><code class="language-markup">exim4</code></li>
+<li><code class="language-markup">lftp</code></li>
+<li><code class="language-markup">curl</code></li>
 </ul>
-<p>
-  Save this to a file on your LXD host such as{' '}
-  <strong>&#8216;backup-container-snapshot.sh&#8217;</strong>, now change permissions so this file
-  is executable:
-</p>
-``` sudo chmod +x backup-container-snapshot.sh ```
+<p>Save this to a file on your LXD host such as <strong>&#8216;backup-container-snapshot.sh&#8217;</strong>, now change permissions so this file is executable:</p>
+<pre class="language-markup"><code class="language-markup">sudo chmod +x backup-container-snapshot.sh</code></pre>
 <p>Now edit the file, and ensure these variables match your specs:</p>
 <ul>
-  <li>`GLOBAL_BACKUP_TEMP_SAVEPATH`</li>
-  <li>`GLOBAL_REMOTE_FTP_LOCATION`</li>
-  <li>`GLOBAL_EMAIL_TO`</li>
-  <li>`FTP_SERVER`</li>
-  <li>`FTP_USERNAME`</li>
-  <li>`FTP_PASSWORD`</li>
-  <li>`FTP_PORT`</li>
-  <li>You may also need to configure passive mode in `FTP_ARGUMENTS` and `CURL_FTP_ARGUMENTS`</li>
+<li><code class="language-markup">GLOBAL_BACKUP_TEMP_SAVEPATH</code></li>
+<li><code class="language-markup">GLOBAL_REMOTE_FTP_LOCATION</code></li>
+<li><code class="language-markup">GLOBAL_EMAIL_TO</code></li>
+<li><code class="language-markup">FTP_SERVER</code></li>
+<li><code class="language-markup">FTP_USERNAME</code></li>
+<li><code class="language-markup">FTP_PASSWORD</code></li>
+<li><code class="language-markup">FTP_PORT</code></li>
+<li>You may also need to configure passive mode in <code class="language-markup">FTP_ARGUMENTS</code> and <code class="language-markup">CURL_FTP_ARGUMENTS</code></li>
 </ul>
 <p>To run this script, you must pass your LXD container name as an argument, for example:</p>
-``` sudo ./backup-container-snapshot.sh 'container-name-here' ```
-
-```
-#!/bin/bash
+<pre class="language-markup"><code class="language-markup">sudo ./backup-container-snapshot.sh 'container-name-here'</code></pre>
+<pre class="language-markup"><code class="language-markup">#!/bin/bash
 
 ## Usage: backup-container-snapshot.sh
-
 ##
-
 ## Make the script executable:
-
-## chmod +x backup-container-snapshot.sh
-
+##   chmod +x backup-container-snapshot.sh
 ##
-
 ## Pass arguments to the script:
-
-## 1: Container Name - Used to target the correct container and create a folder with this name
-
+##   1: Container Name - Used to target the correct container and create a folder with this name
 ##
-
 ## Run using:
-
-## sudo ./backup-container-snapshot.sh 'container-name-here'
-
+##   sudo ./backup-container-snapshot.sh 'container-name-here'
 ##
-
 ## Notes: '/' = Server root folder. '~/' = User's home folder.
-
 ##
-
 ## Required software libaries:
+##   'netcat'           Used for checking if a connection can be made to the FTP server
+##   'exim4'            Used for sending email using the 'mail' command
+##   'lftp'             Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
+##   'curl'             Used for check if the file exists on the FTP server via the 'curl' command
 
-## 'netcat' Used for checking if a connection can be made to the FTP server
-
-## 'exim4' Used for sending email using the 'mail' command
-
-## 'lftp' Used for sending files using via the 'lftp' command. Allows paths to be created at multi-levels
-
-## 'curl' Used for check if the file exists on the FTP server via the 'curl' command
 
 # Temporary backup location on the server. File will be kept here until FTP transfer is completed.
-
 GLOBAL_BACKUP_TEMP_SAVEPATH='/tmp'
 
 # The backup location on the remote FTP server which the script will use. Each script will create it's own folder within this location.
-
 GLOBAL_REMOTE_FTP_LOCATION='/backup'
 
 # Email address for notification of backups status
-
 GLOBAL_EMAIL_TO='example@example.co.uk'
 
 # FTP remote server connection details
-
 FTP_SERVER=''
 FTP_USERNAME=''
 FTP_PASSWORD=''
 FTP_PORT=21
-FTP_ARGUMENTS='-np' # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
-CURL_FTP_ARGUMENTS='--ftp-pasv' # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
+FTP_ARGUMENTS='-np'                     # Notes: '-n' = Do not attempt to autologin. '-p' = Enable passive mode.
+CURL_FTP_ARGUMENTS='--ftp-pasv'         # Curl is used to verify the FTP upload. Notes: '' = Enable passive mode.
 
 # Backup options
-
-NAME="$1" # The Container Name - Used to categorize backups on the FTP server
+NAME="$1"                   # The Container Name - Used to categorize backups on the FTP server
 
 # Create the save path
+FTP_SAVEPATH="$GLOBAL_REMOTE_FTP_LOCATION/$NAME/snapshots"     # The path for where the snapshot file should be uploaded on the FTP server.
 
-FTP_SAVEPATH="$GLOBAL_REMOTE_FTP_LOCATION/$NAME/snapshots" # The path for where the snapshot file should be uploaded on the FTP server.
+
 
 # -------------------- Nothing to change after this point --------------------
 
 # Clear terminal window
-
 clear
 
 # Welcome/Start message
-
-echo "********\*\*********\*\*\*\*********\*\*********"
+echo "****************************************"
 echo "LXD Container Backup script"
 echo "Created for Ubuntu operating systems"
 echo "Author: Ryan Fitton (ryanfitton.co.uk)"
 echo "Version 3.0.0"
-echo "********\*\*********\*\*\*\*********\*\*********"
+echo "****************************************"
 
 printf "\n"
 
@@ -139,12 +99,11 @@ echo "..."
 printf "\n"
 sleep 5s # Wait 5 seconds
 
-# Check if the required arguments are not empty
 
+# Check if the required arguments are not empty
 if [ "$1" != '' ];
 
 # If none of these arguments are empty, the script can proceed
-
 then
 
     # Check to see if the 'netcat' program is installed
@@ -257,15 +216,10 @@ then
                         echo "Starting FTP transfer process."
 
 # Indents are removed as they cause issues with the 'END_SCRIPT' tag
-
 # 1. Change directory on the local server
-
 # 2. Create directory on the FTP server
-
 # 3. Change to the newly created directory
-
 # 4. Upload file from local server to FTP server
-
 lftp ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT &lt;&lt;END_SCRIPT
 lcd "$GLOBAL_BACKUP_TEMP_SAVEPATH"
 mkdir -p "$FTP_SAVEPATH"
@@ -419,13 +373,11 @@ END_SCRIPT
 
         exit 1 # Exit with general error
     fi
-
+  
+  
 # If one or more arguments are empty, produce an error
-
 else
-echo "One or more arguments are empty."
+    echo "One or more arguments are empty."
 
     exit 1 # Exit with general error
-
-fi
-```
+fi</code></pre>

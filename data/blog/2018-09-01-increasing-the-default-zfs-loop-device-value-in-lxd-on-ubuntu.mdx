@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'Increasing the default ZFS Loop Device value in LXD on Ubuntu'
+title: "Increasing the default ZFS Loop Device value in LXD on Ubuntu"
 authors: ['Ryan Fitton']
 date: '2018-09-01'
 tags: ['Code Snippets']
@@ -8,80 +8,49 @@ draft: false
 summary: 'I&amp;#8217;ve recently installed LXD 2.x on my Ubuntu server but forgot to set a custom value for the loop device. The default value was 20GB, but I wanted this to be 1.4TB. It took a while of searching accross the web to find an easy solution to increase this size, as I found it tricky [&amp;hellip;]'
 ---
 
-<p>
-  I&#8217;ve recently installed LXD 2.x on my Ubuntu server but forgot to set a custom value for the
-  loop device. The default value was 20GB, but I wanted this to be 1.4TB.
-</p>
-<p>
-  It took a while of searching accross the web to find an easy solution to increase this size, as I
-  found it tricky I have posted the solution I have used below, with some help from these posts:{' '}
-  <a href="https://github.com/lxc/lxc/issues/1412">here</a> and{' '}
-  <a href="https://gist.github.com/pfaffman/af2cc1588b47560cac6d8973e29755f1">here</a>.
-</p>
-<p>
-  These commands were tested with LXD version 2.0.11 running on Ubuntu 16.04.5 LTS 64-Bit, read the
-  docs for your current LXD and ZFS versions before you run any of these, and make sure you have a
-  backup incase anything goes wrong!
-</p>
+<p>I&#8217;ve recently installed LXD 2.x on my Ubuntu server but forgot to set a custom value for the loop device. The default value was 20GB, but I wanted this to be 1.4TB.</p>
+<p>It took a while of searching accross the web to find an easy solution to increase this size, as I found it tricky I have posted the solution I have used below, with some help from these posts: <a href="https://github.com/lxc/lxc/issues/1412">here</a> and <a href="https://gist.github.com/pfaffman/af2cc1588b47560cac6d8973e29755f1">here</a>.</p>
+<p>These commands were tested with LXD version 2.0.11 running on Ubuntu 16.04.5 LTS 64-Bit, read the docs for your current LXD and ZFS versions before you run any of these, and make sure you have a backup incase anything goes wrong!</p>
 <p>Change these values to match your setup:</p>
 <ul>
-  <li>`POOL-NAME` Your ZFS pool name, the default supplied by LXD is &#8216;lxd&#8217;</li>
-  <li>`SIZE` The size of the new pool, e.g. &#8217;50G&#8217;</li>
+<li><code class="language-markup">POOL-NAME</code>Your ZFS pool name, the default supplied by LXD is &#8216;lxd&#8217;</li>
+<li><code class="language-markup">SIZE</code>The size of the new pool, e.g. &#8217;50G&#8217;</li>
 </ul>
 <p>Now run this code; each line separately minus the commented lines:</p>
-``` # Ensure 'autoexpand' is enabled (only needed once) sudo zpool set autoexpand=on POOL-NAME
+<pre class="language-markup"><code class="language-markup"># Ensure 'autoexpand' is enabled (only needed once)
+sudo zpool set autoexpand=on POOL-NAME
 
 # Create a new XXGB file and store temporarily
-
 sudo truncate -s SIZE /var/lib/lxd/zfs.tmp
 sudo zpool attach POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.tmp
 
 # View the re-silver progress, only proceed once this has been successful
-
 sudo zpool status -v POOL-NAME
 
 # Continue ...
-
 sudo zpool detach POOL-NAME /var/lib/lxd/zfs.img
 sudo rm /var/lib/lxd/zfs.img
 
 # Now replace the current file with the newly created temporary version
-
 sudo truncate -s SIZE /var/lib/lxd/zfs.img
 sudo zpool attach POOL-NAME /var/lib/lxd/zfs.tmp /var/lib/lxd/zfs.img
 
 # View the re-silver progress, only proceed once this has been successful
-
 sudo zpool status -v POOL-NAME
 
 # Continue ...
-
 sudo zpool detach POOL-NAME /var/lib/lxd/zfs.tmp
 sudo rm /var/lib/lxd/zfs.tmp
 
 # Force ZFS to pickup the new changes, use the new partition which is the same
-
-sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img
-
-```
-
-<p>
-  You can also, check if the settings have been applied by running the{' '}
-  `sudo zfs list`  command, you will see a result similar to
-  below; make note of the values in the &#8216;AVAIL&#8217; column as this should show your new pool
-  size.
-</p>
-```
-
-    root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list NAME USED AVAIL REFER MOUNTPOINT lxd 646M 125G
-    19K none lxd/containers 12.7M 125G 19K none lxd/containers/container1 6.28M 125G 307M
-    /var/lib/lxd/containers/container1.zfs lxd/containers/container2 6.38M 125G 326M
-    /var/lib/lxd/containers/container2.zfs lxd/images 633M 125G 19K none
-    lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a 326M 125G 326M
-    /var/lib/lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a.zfs
-    lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b 307M 125G 307M
-    /var/lib/lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b.zfs
-
-```
-
-```
+sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img</code></pre>
+<p>You can also, check if the settings have been applied by running the <code class="language-markup">sudo zfs list</code> command, you will see a result similar to below; make note of the values in the &#8216;AVAIL&#8217; column as this should show your new pool size.</p>
+<pre class="language-markup"><code class="language-markup">root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list
+NAME                                                                          USED  AVAIL  REFER  MOUNTPOINT
+lxd                                                                           646M   125G    19K  none
+lxd/containers                                                               12.7M   125G    19K  none
+lxd/containers/container1                                                    6.28M   125G   307M  /var/lib/lxd/containers/container1.zfs
+lxd/containers/container2                                                    6.38M   125G   326M  /var/lib/lxd/containers/container2.zfs
+lxd/images                                                                    633M   125G    19K  none
+lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a   326M   125G   326M  /var/lib/lxd/images/2d53824fdf89b011d6b3178dc2d70bc7932ad93d81b42aa2eae5ac78c5d59e3a.zfs
+lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b   307M   125G   307M  /var/lib/lxd/images/9023b2feede581884cf45be29f60207ccc5553d762ea8088e849858a58762f6b.zfs</code></pre>

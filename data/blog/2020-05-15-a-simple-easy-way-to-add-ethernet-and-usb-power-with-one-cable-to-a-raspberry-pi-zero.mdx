@@ -1,6 +1,6 @@
 ---
 layout: PostLayout
-title: 'A simple, easy way to add Ethernet and USB power with one cable to a Raspberry Pi Zero'
+title: "A simple, easy way to add Ethernet and USB power with one cable to a Raspberry Pi Zero"
 authors: ['Ryan Fitton']
 date: '2020-05-15'
 tags: ['Uncategorized']
@@ -8,74 +8,10 @@ draft: false
 summary: 'I&amp;#8217;ve been using a few Raspberry Pi Zeros for a while, and whilst they&amp;#8217;re great, small, cheap boards they have always lacked a dedicated Ethernet port. I could always attach a USB to Ethernet dongle, which I have done in the past but then it adds more bulk and cost &amp;#8211; so I may as [&amp;hellip;]'
 ---
 
-<p>
-  I&#8217;ve been using a few Raspberry Pi Zeros for a while, and whilst they&#8217;re great, small,
-  cheap boards they have always lacked a dedicated Ethernet port.
-</p>
-<p>
-  I could always attach a USB to Ethernet dongle, which I have done in the past but then it adds
-  more bulk and cost &#8211; so I may as well just buy a standard Pi.
-</p>
-<p>
-  Fast forward to this week:{' '}
-  <a href="https://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/">I&#8217;ve seen</a> the
-  RPI Zero has an &#8216;OTG&#8217; mode, where the data micro-usb port can receive data and power
-  via a single port. With this in mind, I dug out my old Google Chrome Cast Ethernet power adaptor,
-  and attached the micro-usb cable into the data port of the Pi Zero. The Pi Zero booted-up without
-  any issues and was able to receive a network connection!
-</p>
-<p>
-  Whilst this isn&#8217;t technically a PoE solution, it&#8217;s just as good for me. I&#8217;m able
-  to use just one cable and minimise the amount of adaptors. Best of all this solution costs a total
-  of £20 (this includes the Pi!).
-</p>
-<p>
-  <strong>Disclaimer:</strong> I&#8217;m using the original{' '}
-  <a href="https://thepihut.com/products/raspberry-pi-zero">Pi Zero</a> (v1.3, no-wifi) with the
-  latest <a href="https://www.raspberrypi.org/downloads/">Raspbian</a> image (released on
-  2020/02/13) with a{' '}
-  <a href="https://store.google.com/gb/product/ethernet_adapter_for_chromecast">
-    Google Chrome Cast Ethernet
-  </a>{' '}
-  adaptor (model: EA4CC-1U)
-</p>
-<p>
-  I&#8217;ve also seen other people have discovered this trick too:{' '}
-  <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=131379">Here</a>,{' '}
-  <a href="http://www.makerspace-uk.co.uk/raspberry-pi-zero-networking-solutions/">here</a> and{' '}
-  <a href="https://www.reddit.com/r/raspberry_pi/comments/3zha14/pizero_works_out_of_the_box_with_a_chromecast/">
-    here
-  </a>
-  . This technique also seems to be very similar with how the{' '}
-  <a href="https://github.com/marcone/teslausb">Tesla USB project</a> is using the data micro-usb
-  port.
-</p>
-<p>
-  <a href="/static/img/blog/2020/05/rpi-zero-3.jpg">
-    <img
-      loading="lazy"
-      src="/static/img/blog/2020/05/rpi-zero-3-150x150.jpg"
-      alt=""
-      width="150"
-      height="150"
-    />
-  </a>{' '}
-  <a href="/static/img/blog/2020/05/rpi-zero-2.jpg">
-    <img
-      loading="lazy"
-      src="/static/img/blog/2020/05/rpi-zero-2-150x150.jpg"
-      alt=""
-      width="150"
-      height="150"
-    />
-  </a>{' '}
-  <a href="/static/img/blog/2020/05/rpi-zero-1.jpg">
-    <img
-      loading="lazy"
-      src="/static/img/blog/2020/05/rpi-zero-1-150x150.jpg"
-      alt=""
-      width="150"
-      height="150"
-    />
-  </a>
-</p>
+<p>I&#8217;ve been using a few Raspberry Pi Zeros for a while, and whilst they&#8217;re great, small, cheap boards they have always lacked a dedicated Ethernet port.</p>
+<p>I could always attach a USB to Ethernet dongle, which I have done in the past but then it adds more bulk and cost &#8211; so I may as well just buy a standard Pi.</p>
+<p>Fast forward to this week: <a href="https://www.circuitbasics.com/raspberry-pi-zero-ethernet-gadget/">I&#8217;ve seen</a> the RPI Zero has an &#8216;OTG&#8217; mode, where the data micro-usb port can receive data and power via a single port. With this in mind, I dug out my old Google Chrome Cast Ethernet power adaptor, and attached the micro-usb cable into the data port of the Pi Zero. The Pi Zero booted-up without any issues and was able to receive a network connection!</p>
+<p>Whilst this isn&#8217;t technically a PoE solution, it&#8217;s just as good for me. I&#8217;m able to use just one cable and minimise the amount of adaptors. Best of all this solution costs a total of £20 (this includes the Pi!).</p>
+<p><strong>Disclaimer:</strong> I&#8217;m using the original <a href="https://thepihut.com/products/raspberry-pi-zero">Pi Zero</a> (v1.3, no-wifi) with the latest <a href="https://www.raspberrypi.org/downloads/">Raspbian</a> image (released on 2020/02/13) with a <a href="https://store.google.com/gb/product/ethernet_adapter_for_chromecast">Google Chrome Cast Ethernet</a> adaptor (model: EA4CC-1U)</p>
+<p>I&#8217;ve also seen other people have discovered this trick too: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=131379">Here</a>, <a href="http://www.makerspace-uk.co.uk/raspberry-pi-zero-networking-solutions/">here</a> and <a href="https://www.reddit.com/r/raspberry_pi/comments/3zha14/pizero_works_out_of_the_box_with_a_chromecast/">here</a>. This technique also seems to be very similar with how the <a href="https://github.com/marcone/teslausb">Tesla USB project</a> is using the data micro-usb port.</p>
+<p><a href="/static/img/blog/2020/05/rpi-zero-3.jpg"><img loading="lazy"  src="/static/img/blog/2020/05/rpi-zero-3-150x150.jpg" alt="" width="150" height="150" /></a>  <a href="/static/img/blog/2020/05/rpi-zero-2.jpg"><img loading="lazy"  src="/static/img/blog/2020/05/rpi-zero-2-150x150.jpg" alt="" width="150" height="150" /></a>  <a href="/static/img/blog/2020/05/rpi-zero-1.jpg"><img loading="lazy"  src="/static/img/blog/2020/05/rpi-zero-1-150x150.jpg" alt="" width="150" height="150" /></a></p>
