@@ -1,0 +1,53 @@
+---
+layout: PostLayout
+title: "Making sure Outlook.com receives PHP Mail() emails"
+authors: ['Ryan Fitton']
+date: '2013-12-31'
+tags: ['Design', 'Code Snippets']
+draft: false
+summary: 'During the recent development of bethanyjackson.co.uk I had found my current setup of Postfix which is used by PHP Mail() was not sending email correctly to Microsoft email services such as Outlook.com. Emails were being sent by my web server but never received by Outlook.com or placed in the Junk folder, even though emails were [&amp;hellip;]'
+---
+
+<p>
+  During the recent development of <a href="http://bethanyjackson.co.uk">bethanyjackson.co.uk</a> I
+  had found my current setup of <a href="http://www.postfix.org/">Postfix</a> which is used by{' '}
+  <a href="http://php.net/manual/en/function.mail.php">PHP Mail()</a> was not sending email
+  correctly to Microsoft email services such as Outlook.com.
+</p>
+<p>
+  Emails were being sent by my web server but never received by Outlook.com or placed in the Junk
+  folder, even though emails were received fine by Gmail with the same server settings.
+</p>
+<p>
+  I found some help on various websites regarding this issue which I have now implemented on my
+  server, I have posted the configuration below which I now working for me.
+</p>
+<p>
+  These steps below have been tested on a{' '}
+  <a href="https://www.digitalocean.com/?refcode=fbe5f1c0c98d">Digital Ocean VPS</a> running{' '}
+  <a href="http://www.zpanelcp.com/">ZPanel 10.1.0</a>.
+</p>
+<p>
+  <strong>1.</strong> The first step is to check your domain and/or IP address is not listed on a
+  spam block list. Use <a href="http://www.spamhaus.org/lookup/">http://www.spamhaus.org/lookup/</a>{' '}
+  to check for blocked domains and IP addresses. If the domain and/or IP address is listed on a spam
+  block list, then it should be removed.
+</p>
+<p>
+  <strong>2.</strong> Add a Windows Sender ID SPF record to your domain&#8217;s DNS settings. This
+  helps Microsoft services to understand your domain and/or web server IP address is not used for
+  sending spam emails. This can be setup at this web address:{' '}
+  <del>http://www.microsoft.com/mscorp/safety/content/technologies/senderid/wizard/</del> [Link no
+  longer available: 23/07/2016].
+</p>
+<p>
+  <strong>3.</strong> Always make sure there is a valid &#8216;From:&lt;email@domain.com&gt;&#8217;
+  address in the headers of your PHP Mail() code. It must be a full email address and not just a
+  domain, an example of the correct script setup is below:
+  <br />
+  <script src="https://gist.github.com/ryanfitton/8196163.js"></script>
+  <strong>4.</strong> Then edit your &#8216;main.cf&#8217; Postfix file, usually stored in
+  &#8216;/etc/postfix/&#8217; on your web server. Starting on line 23, your network settings must be
+  the same as below. Replace &#8216;yourdomain.co.uk&#8217; with your domain name.
+  <script src="https://gist.github.com/ryanfitton/8196278.js"></script>
+</p>

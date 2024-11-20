@@ -1,68 +1,111 @@
 ---
 layout: PostLayout
-title: "Home Network Setup: What&amp;#8217;s in my rack 2019"
+title: "Home Network Setup: What&#8217;s in my rack 2019"
 authors: ['Ryan Fitton']
 date: '2019-06-08'
 tags: ['Uncategorized']
 draft: false
-summary: 'This is a follow on from my first post which described how I installed multiple CAT6 network cable runs in my house, view here. In this post, I will talk through the equipment which is currently in my network rack for 2019. Firstly, I have upgraded to a larger rack; now a 9U 600x600mm rack. [&amp;hellip;]'
+summary: 'This is a follow on from
+my first post which described how I installed multiple CAT6 network
+cable runs in my house, view here. In this post, I will talk through the
+equipment which is currently in my network rack for 2019. Firstly, I
+have upgraded to a larger rack; now a 9U 600x600mm rack....'
 ---
 
-<p>This is a follow on from my first post which described how I installed multiple CAT6 network cable runs in my house, view <a href="https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/">here</a>.</p>
-<p>In this post, I will talk through the equipment which is currently in my network rack for 2019.</p>
-<p>Firstly, I have upgraded to a larger rack; now a 9U 600x600mm rack.</p>
-<p><a href="/static/img/blog/2019/06/IMG_20190608_110024.jpg"><img loading="lazy"  src="/static/img/blog/2019/06/IMG_20190608_110024-1024x768.jpg" alt="" width="1024" height="768" srcset="/static/img/blog/2019/06/IMG_20190608_110024-1024x768.jpg 1024w, /static/img/blog/2019/06/IMG_20190608_110024-300x225.jpg 300w, /static/img/blog/2019/06/IMG_20190608_110024-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a></p>
-<p>Here is a list of the hardware from top to bottom:</p>
-<ol>
-<li>Top row (Left): <a href="https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF">Qotom Q150P-S08</a> Mini PC running <a href="https://www.pfsense.org/">pfSense</a> &#8211; Runs my network&#8217;s routing functions and VPN, and has support AES-NI encryption which will in come useful for later versions of pfSense. The processor is a Quad Core Celeron N3160 with 2x 1GB Ethernet ports, small 16GB SSD and 2GB DDR3 memory.</li>
-<li>Top row (Right): Virgin Media &#8211; Running in modem mode. Provided by Virgin Media, an ISP in the UK.</li>
-<li>HP ProCurve 24 Port Gigabit Switch (<a href="https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm">1800-24G J9028B</a>) &#8211; The main switch, all devices connect into this.</li>
-<li>TP-Link 8 port Gigabit POE switch (<a href="https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=38ca8c0cb2bd050b6cc6e0f02e28d441&amp;language=en_GB">TL-SG1008PE</a>) &#8211; POE switch, mainly for WiFi access points and IP Cams.</li>
-<li>Custom built server in a short depth <a href="https://www.logic-case.com/products/rackmount-chassis/3u/3u-short-depth-chassis-w-3-x-525-drive-bays-sc-34390/">3U Logic Case chassis</a>, the case was not designed to be rack mounted but I was able to mount is with these rails <a href="https://www.scan.co.uk/products/logic-sc-03a-server-case-500mm-rail-kit-for-2u-3u-and-4u-max-load-35kg">here</a>, just needed some small bolts and extra holes to be drilled. The server is running an Intel i3-4170 with a Crucial (CT2KIT102472BD160B) 16GB DDR3 ECC memory kit, Supermicro X10SLL-F motherboard, 2x 3TB WD RED drives (mirrored raid) and Intel (EXPI9404PT) Pro/1000 PT Quad Port Ethernet Adaptor. I am running Ubuntu Server with LXD containers for my software: <a href="https://gitlab.com/Shinobi-Systems/Shinobi">Shinobi DVR</a>, Cups print server, <a href="https://www.freepbx.org/">FreePBX</a>, <a href="https://emby.media/">Emby</a> and Samba storage.</li>
-<li>Also; not in the image, there is an <a href="https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&amp;qid=1559998754&amp;s=computers&amp;sr=1-4&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=4b82a7af15071bab059cfbeeb8f3d427&amp;language=en_GB">APC Back-UPS</a> (BX700UI) which can last around 10 minutes powering everything but the laser printer.</li>
-</ol>
-<p>&nbsp;</p>
-<h3>Links to items</h3>
-<p>If you’re interested in purchasing the same products and tools I have used, help me out by purchasing one from Amazon UK with my affiliate codes:</p>
-<ol>
-<li><a href="https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF">Qotom Q150P-S08 Mini PC</a></li>
-<li><a href="https://www.amazon.co.uk/HP-J9776A-2530-24G-Gigabit-Switch/dp/B00AN6DJYA/ref=as_li_ss_tl?keywords=HP+ProCurve+24+Port+Gigabit+Switch&amp;qid=1559998307&amp;s=gateway&amp;sr=8-3&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=8a8902a6a2952748618322a465e6d015&amp;language=en_GB">HP ProCurve 24 Port Gigabit Switch</a> (<a href="https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm">1800-24G J9028B</a>) &#8211; No longer in production, but you can find great deals for managed switches like this on eBay.</li>
-<li><a href="https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=7939234d93a00a5856f6c407147fb44e&amp;language=en_GB">TP-Link 8 port Gigabit POE switch (TL-SG1008PE)</a></li>
-<li><a href="https://www.amazon.co.uk/Short-Depth-Server-Chassis-drive/dp/B01IR97CQA/ref=as_li_ss_tl?keywords=logic+case+3u&amp;qid=1559998411&amp;s=computers&amp;sr=1-1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=e41fc675509d7ae0e4eccbdffd59848e&amp;language=en_GB">3U Short Depth Server Chassis</a> (SC-34390) and <a href="https://www.amazon.co.uk/Logic-Case-SC-03A-PRO-550mm-Servers/dp/B00H3EUN1C/ref=as_li_ss_tl?keywords=SC-03A+500mm&amp;qid=1559998565&amp;s=computers&amp;sr=1-3&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=02cc8818c7195ed71e33a26c6afdd72d&amp;language=en_GB">rail kit</a> (SC-03A 500mm) &#8211; requires extra holes to be drilled into case</li>
-<li>Server parts:
-<ol>
-<li><a href="https://www.amazon.co.uk/Intel-BX80646I34170-3-7GHz-Processor-Cache/dp/B00VHKZ6I8/ref=as_li_ss_tl?keywords=Intel+i3-4170&amp;qid=1559998807&amp;s=computers&amp;sr=1-3&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=03f259f4dcaa0d8bdc61c526061c1eb3&amp;language=en_GB">Intel i3-4170</a></li>
-<li><a href="https://www.amazon.co.uk/Crucial-CT102472BD160B-PC3-12800-Unbuffered-1024Meg/dp/B008EMA5VU/ref=as_li_ss_tl?keywords=CT2KIT102472BD160B&amp;qid=1559998959&amp;s=computers&amp;sr=1-1&amp;th=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=f6aabbc2eed072e5d7257a2f9e6d38e2&amp;language=en_GB">Crucial (CT2KIT102472BD160B) 16GB DDR3 ECC memory</a></li>
-<li><a href="https://www.amazon.co.uk/Supermicro-Motherboard-Micro-Motherboards-X10SLL-F/dp/B00D65V9WO/ref=as_li_ss_tl?keywords=Supermicro+X10SLL-F+motherboard&amp;qid=1559999023&amp;s=computers&amp;sr=1-1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=713ff46cebf3f989f954500624e61c8f&amp;language=en_GB">Supermicro X10SLL-F motherboard</a></li>
-<li><a href="https://www.amazon.co.uk/WD-RED-NAS-Hard-Drive/dp/B008JJLW4M/ref=as_li_ss_tl?keywords=3tb+red&amp;qid=1559999128&amp;s=computers&amp;sr=1-1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=31ba9d12efe16ae91a1d063201fefae4&amp;language=en_GB">3TB WD RED</a></li>
-<li><a href="https://www.amazon.co.uk/StarTech-com-Aluminum-Trayless-Mobile-Backplane/dp/B00OUSU8MI/ref=as_li_ss_tl?keywords=startech+4+bay&amp;qid=1559999158&amp;s=computers&amp;sr=1-9&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=46dad6ad07bcfaff620b3df28919e972&amp;language=en_GB">Startech Drive Cage</a></li>
-<li><a href="https://www.amazon.co.uk/Intel-1000-Quad-Server-Adapter/dp/B000J34V1C/ref=as_li_ss_tl?keywords=EXPI9404PT&amp;qid=1559999190&amp;s=computers&amp;sr=1-3&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=55161c8aa412b7b879ddbc3d824c354b&amp;language=en_GB">Intel (EXPI9404PT) Pro/1000 PT Quad Port Ethernet Adaptor</a></li>
-</ol>
-</li>
-<li><a href="https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&amp;qid=1559998754&amp;s=computers&amp;sr=1-4&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=4b82a7af15071bab059cfbeeb8f3d427&amp;language=en_GB">APC Back-UPS (BX700UI)</a></li>
-</ol>
-<table class="table">
-<tbody>
-<tr>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00AN6DJYA&amp;asins=B00AN6DJYA&amp;linkId=e80fe8b917015566b2fd2880d2eab609&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00CGY449G&amp;asins=B00CGY449G&amp;linkId=9a74ccf41b5d2437f5bf2c6d3d46bb7b&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B01IR97CQA&amp;asins=B01IR97CQA&amp;linkId=61896ac86f5109aa34e07838b54144d3&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-</tr>
-<tr>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00H3EUN1C&amp;asins=B00H3EUN1C&amp;linkId=ebf1b179425ac63ba0e937561f7ce219&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00VHKZ6I8&amp;asins=B00VHKZ6I8&amp;linkId=a720053647ab714cd87f7a57d29b0015&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B008EMA5VU&amp;asins=B008EMA5VU&amp;linkId=fa1abe52e428228d1e3d6d4d6f4e4a7f&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-</tr>
-<tr>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00D65V9WO&amp;asins=B00D65V9WO&amp;linkId=2e3834ebedee8b0d9db59132c831be5f&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B008JJLW4M&amp;asins=B008JJLW4M&amp;linkId=cfcf0fc8f90dad3fdc33ba9e6ed7d8b2&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00OUSU8MI&amp;asins=B00OUSU8MI&amp;linkId=97ab516aeeea8528603ff3b81b219a4f&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-</tr>
-<tr>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B000J34V1C&amp;asins=B000J34V1C&amp;linkId=947aba85585ee0e982c2394ece99cc13&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B00T7BYV6W&amp;asins=B00T7BYV6W&amp;linkId=35f29daf2a89621c97addeb4f3963119&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
+This is a follow on from my first post which described how I installed
+multiple CAT6 network cable runs in my house, view
+[here](https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/).
+
+In this post, I will talk through the equipment which is currently in my
+network rack for 2019.
+
+Firstly, I have upgraded to a larger rack; now a 9U 600x600mm rack.
+
+[![](/static/img/blog/2019/06/IMG_20190608_110024-1024x768.jpg){loading="lazy"
+width="1024" height="768"
+srcset="/static/img/blog/2019/06/IMG_20190608_110024-1024x768.jpg 1024w, /static/img/blog/2019/06/IMG_20190608_110024-300x225.jpg 300w, /static/img/blog/2019/06/IMG_20190608_110024-768x576.jpg 768w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2019/06/IMG_20190608_110024.jpg)
+
+Here is a list of the hardware from top to bottom:
+
+1.  Top row (Left): [Qotom
+    Q150P-S08](https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF)
+    Mini PC running [pfSense](https://www.pfsense.org/) -- Runs my
+    network's routing functions and VPN, and has support AES-NI
+    encryption which will in come useful for later versions of pfSense.
+    The processor is a Quad Core Celeron N3160 with 2x 1GB Ethernet
+    ports, small 16GB SSD and 2GB DDR3 memory.
+2.  Top row (Right): Virgin Media -- Running in modem mode. Provided by
+    Virgin Media, an ISP in the UK.
+3.  HP ProCurve 24 Port Gigabit Switch ([1800-24G
+    J9028B](https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm))
+    -- The main switch, all devices connect into this.
+4.  TP-Link 8 port Gigabit POE switch
+    ([TL-SG1008PE](https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=38ca8c0cb2bd050b6cc6e0f02e28d441&language=en_GB))
+    -- POE switch, mainly for WiFi access points and IP Cams.
+5.  Custom built server in a short depth [3U Logic Case
+    chassis](https://www.logic-case.com/products/rackmount-chassis/3u/3u-short-depth-chassis-w-3-x-525-drive-bays-sc-34390/),
+    the case was not designed to be rack mounted but I was able to mount
+    is with these rails
+    [here](https://www.scan.co.uk/products/logic-sc-03a-server-case-500mm-rail-kit-for-2u-3u-and-4u-max-load-35kg),
+    just needed some small bolts and extra holes to be drilled. The
+    server is running an Intel i3-4170 with a Crucial
+    (CT2KIT102472BD160B) 16GB DDR3 ECC memory kit, Supermicro X10SLL-F
+    motherboard, 2x 3TB WD RED drives (mirrored raid) and Intel
+    (EXPI9404PT) Pro/1000 PT Quad Port Ethernet Adaptor. I am running
+    Ubuntu Server with LXD containers for my software: [Shinobi
+    DVR](https://gitlab.com/Shinobi-Systems/Shinobi), Cups print server,
+    [FreePBX](https://www.freepbx.org/), [Emby](https://emby.media/) and
+    Samba storage.
+6.  Also; not in the image, there is an [APC
+    Back-UPS](https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&qid=1559998754&s=computers&sr=1-4&linkCode=ll1&tag=ryanfittoncou-21&linkId=4b82a7af15071bab059cfbeeb8f3d427&language=en_GB)
+    (BX700UI) which can last around 10 minutes powering everything but
+    the laser printer.
+
+ 
+
+### Links to items
+
+If you're interested in purchasing the same products and tools I have
+used, help me out by purchasing one from Amazon UK with my affiliate
+codes:
+
+1.  [Qotom Q150P-S08 Mini
+    PC](https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF)
+2.  [HP ProCurve 24 Port Gigabit
+    Switch](https://www.amazon.co.uk/HP-J9776A-2530-24G-Gigabit-Switch/dp/B00AN6DJYA/ref=as_li_ss_tl?keywords=HP+ProCurve+24+Port+Gigabit+Switch&qid=1559998307&s=gateway&sr=8-3&linkCode=ll1&tag=ryanfittoncou-21&linkId=8a8902a6a2952748618322a465e6d015&language=en_GB)
+    ([1800-24G
+    J9028B](https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm))
+    -- No longer in production, but you can find great deals for managed
+    switches like this on eBay.
+3.  [TP-Link 8 port Gigabit POE switch
+    (TL-SG1008PE)](https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=7939234d93a00a5856f6c407147fb44e&language=en_GB)
+4.  [3U Short Depth Server
+    Chassis](https://www.amazon.co.uk/Short-Depth-Server-Chassis-drive/dp/B01IR97CQA/ref=as_li_ss_tl?keywords=logic+case+3u&qid=1559998411&s=computers&sr=1-1&linkCode=ll1&tag=ryanfittoncou-21&linkId=e41fc675509d7ae0e4eccbdffd59848e&language=en_GB)
+    (SC-34390) and [rail
+    kit](https://www.amazon.co.uk/Logic-Case-SC-03A-PRO-550mm-Servers/dp/B00H3EUN1C/ref=as_li_ss_tl?keywords=SC-03A+500mm&qid=1559998565&s=computers&sr=1-3&linkCode=ll1&tag=ryanfittoncou-21&linkId=02cc8818c7195ed71e33a26c6afdd72d&language=en_GB)
+    (SC-03A 500mm) -- requires extra holes to be drilled into case
+5.  Server parts:
+    1.  [Intel
+        i3-4170](https://www.amazon.co.uk/Intel-BX80646I34170-3-7GHz-Processor-Cache/dp/B00VHKZ6I8/ref=as_li_ss_tl?keywords=Intel+i3-4170&qid=1559998807&s=computers&sr=1-3&linkCode=ll1&tag=ryanfittoncou-21&linkId=03f259f4dcaa0d8bdc61c526061c1eb3&language=en_GB)
+    2.  [Crucial (CT2KIT102472BD160B) 16GB DDR3 ECC
+        memory](https://www.amazon.co.uk/Crucial-CT102472BD160B-PC3-12800-Unbuffered-1024Meg/dp/B008EMA5VU/ref=as_li_ss_tl?keywords=CT2KIT102472BD160B&qid=1559998959&s=computers&sr=1-1&th=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=f6aabbc2eed072e5d7257a2f9e6d38e2&language=en_GB)
+    3.  [Supermicro X10SLL-F
+        motherboard](https://www.amazon.co.uk/Supermicro-Motherboard-Micro-Motherboards-X10SLL-F/dp/B00D65V9WO/ref=as_li_ss_tl?keywords=Supermicro+X10SLL-F+motherboard&qid=1559999023&s=computers&sr=1-1&linkCode=ll1&tag=ryanfittoncou-21&linkId=713ff46cebf3f989f954500624e61c8f&language=en_GB)
+    4.  [3TB WD
+        RED](https://www.amazon.co.uk/WD-RED-NAS-Hard-Drive/dp/B008JJLW4M/ref=as_li_ss_tl?keywords=3tb+red&qid=1559999128&s=computers&sr=1-1&linkCode=ll1&tag=ryanfittoncou-21&linkId=31ba9d12efe16ae91a1d063201fefae4&language=en_GB)
+    5.  [Startech Drive
+        Cage](https://www.amazon.co.uk/StarTech-com-Aluminum-Trayless-Mobile-Backplane/dp/B00OUSU8MI/ref=as_li_ss_tl?keywords=startech+4+bay&qid=1559999158&s=computers&sr=1-9&linkCode=ll1&tag=ryanfittoncou-21&linkId=46dad6ad07bcfaff620b3df28919e972&language=en_GB)
+    6.  [Intel (EXPI9404PT) Pro/1000 PT Quad Port Ethernet
+        Adaptor](https://www.amazon.co.uk/Intel-1000-Quad-Server-Adapter/dp/B000J34V1C/ref=as_li_ss_tl?keywords=EXPI9404PT&qid=1559999190&s=computers&sr=1-3&linkCode=ll1&tag=ryanfittoncou-21&linkId=55161c8aa412b7b879ddbc3d824c354b&language=en_GB)
+6.  [APC Back-UPS
+    (BX700UI)](https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&qid=1559998754&s=computers&sr=1-4&linkCode=ll1&tag=ryanfittoncou-21&linkId=4b82a7af15071bab059cfbeeb8f3d427&language=en_GB)
+
+  -- -- --
+        
+        
+        
+        
+  -- -- --
+
+ 

@@ -1,0 +1,37 @@
+---
+layout: PostLayout
+title: "Enabling/Disabling Hyper V in Windows 10 for Virtual Box and Docker development"
+authors: ['Ryan Fitton']
+date: '2022-06-04'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'These instructions offer assistance with enabling/disabling Hyper V in Windows 10. I have found it necessary to disable this service for use with Virtaul Box, then re-enabling it for Docker. To disable Hyper V in Windows 10 (e.g. for use with Virtual Box): Ensure virtualisation is supported by your CPU and enabled in the BIOS [&amp;hellip;]'
+---
+
+<p>These instructions offer assistance with enabling/disabling Hyper V in Windows 10. I have found it necessary to disable this service for use with Virtaul Box, then re-enabling it for Docker.</p>
+<p>To disable Hyper V in Windows 10 (e.g. for use with Virtual Box): </p>
+<ol>
+<li>Ensure virtualisation is supported by your CPU and enabled in the BIOS</li>
+<li>Disable Hyper V for Virtual Box: <a href="https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v" target="_blank" rel="noopener">https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v</a></li>
+<li>Disable HyperV in Windows Add/Remove Features</li>
+<li>And run this in PowerShell with Admin privellages:
+<pre class="language-markup"><code class="language-markup">bcdedit /set hypervisorlaunchtype off</code></pre>
+</li>
+<li>Restart PC</li>
+</ol>
+<p>To re-enable Hyper V in Windows 10 (e.g. for use with Docker): </p>
+<ol>
+<li>Ensure virtualisation is supported by your CPU and enabled in the BIOS</li>
+<li>Enable HyperV in Windows Add/Remove Features</li>
+<li>And in Power Shell, with Admin privellages:
+<ol>
+<li>
+<pre class="language-markup"><code class="language-markup">bcdedit /set hypervisorlaunchtype auto</code></pre>
+</li>
+<li>
+<pre class="language-markup"><code class="language-markup">Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All</code></pre>
+</li>
+</ol>
+</li>
+<li>Restart PC</li>
+</ol>

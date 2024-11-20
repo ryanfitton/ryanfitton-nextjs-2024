@@ -5,40 +5,70 @@ authors: ['Ryan Fitton']
 date: '2018-01-12'
 tags: ['Code Snippets']
 draft: false
-summary: 'Following the outbreak of three processor vulnerabilities, known as Spectre and Meltdown; I have already patched my systems and whilst doing so, came across this useful script written by Speed47. This script checks your system for the three vulnerabilities. I found it useful to check my systems were secure after applying kernel updates. To run [&amp;hellip;]'
+summary: 'Following the outbreak of three processor vulnerabilities, known as
+Spectre and Meltdown; I have already patched my systems and whilst doing
+so, came across this useful script written by Speed47. This script
+checks your system for the three vulnerabilities. I found it useful to
+check my systems were secure after applying kernel updates. To run
+...'
 ---
 
-<p>Following the outbreak of three processor vulnerabilities, known as Spectre and Meltdown; I have already patched my systems and whilst doing so, came across this useful script written by <a href="https://github.com/speed47/spectre-meltdown-checker">Speed47</a>.</p>
-<p>This script checks your system for the three vulnerabilities. I found it useful to check my systems were secure after applying kernel updates.</p>
-<p>To run the script, use these commands below:</p>
-<ol>
-<li>Firstly download:
-<pre class="language-bash"><code class="language-bash">wget https://raw.githubusercontent.com/speed47/spectre-meltdown-checker/master/spectre-meltdown-checker.sh</code></pre>
-</li>
-<li>Then run the script as sudo:
-<pre class="language-bash"><code class="language-bash">sudo sh spectre-meltdown-checker.sh</code></pre>
-</li>
-</ol>
-<p>&nbsp;</p>
-<p>This is a quick summary of the vulnerabilities and their CVE numbers:</p>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5753#">CVE-2017-5753</a></strong> bounds check bypass (Spectre Variant 1)</p>
-<ul>
-<li>Impact: Kernel &amp; all software</li>
-<li>Mitigation: recompile software <em>and</em> kernel with a modified compiler that introduces the LFENCE opcode at the proper positions in the resulting code</li>
-<li>Performance impact of the mitigation: negligible</li>
-</ul>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5715">CVE-2017-5715</a></strong> branch target injection (Spectre Variant 2)</p>
-<ul>
-<li>Impact: Kernel</li>
-<li>Mitigation 1: new opcode via microcode update that should be used by up to date compilers to protect the BTB (by flushing indirect branch predictors)</li>
-<li>Mitigation 2: introducing &#8220;retpoline&#8221; into compilers, and recompile software/OS with it</li>
-<li>Performance impact of the mitigation: high for mitigation 1, medium for mitigation 2, depending on your CPU</li>
-</ul>
-<p><strong><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-5754">CVE-2017-5754</a></strong> rogue data cache load (Meltdown)</p>
-<ul>
-<li>Impact: Kernel</li>
-<li>Mitigation: updated kernel (with PTI/KPTI patches), updating the kernel is enough</li>
-<li>Performance impact of the mitigation: low to medium</li>
-</ul>
-<p>&nbsp;</p>
-<p><strong>Disclaimer:</strong> Be careful when running script like these. Please check the script&#8217;s source code before running.</p>
+Following the outbreak of three processor vulnerabilities, known as
+Spectre and Meltdown; I have already patched my systems and whilst doing
+so, came across this useful script written by
+[Speed47](https://github.com/speed47/spectre-meltdown-checker).
+
+This script checks your system for the three vulnerabilities. I found it
+useful to check my systems were secure after applying kernel updates.
+
+To run the script, use these commands below:
+
+1.  Firstly download:
+
+    ``` language-bash
+    wget https://raw.githubusercontent.com/speed47/spectre-meltdown-checker/master/spectre-meltdown-checker.sh
+    ```
+
+2.  Then run the script as sudo:
+
+    ``` language-bash
+    sudo sh spectre-meltdown-checker.sh
+    ```
+
+ 
+
+This is a quick summary of the vulnerabilities and their CVE numbers:
+
+**[CVE-2017-5753](https://nvd.nist.gov/vuln/detail/CVE-2017-5753#)**
+bounds check bypass (Spectre Variant 1)
+
+-   Impact: Kernel & all software
+-   Mitigation: recompile software *and* kernel with a modified compiler
+    that introduces the LFENCE opcode at the proper positions in the
+    resulting code
+-   Performance impact of the mitigation: negligible
+
+**[CVE-2017-5715](https://nvd.nist.gov/vuln/detail/CVE-2017-5715)**
+branch target injection (Spectre Variant 2)
+
+-   Impact: Kernel
+-   Mitigation 1: new opcode via microcode update that should be used by
+    up to date compilers to protect the BTB (by flushing indirect branch
+    predictors)
+-   Mitigation 2: introducing "retpoline" into compilers, and recompile
+    software/OS with it
+-   Performance impact of the mitigation: high for mitigation 1, medium
+    for mitigation 2, depending on your CPU
+
+**[CVE-2017-5754](https://nvd.nist.gov/vuln/detail/CVE-2017-5754)**
+rogue data cache load (Meltdown)
+
+-   Impact: Kernel
+-   Mitigation: updated kernel (with PTI/KPTI patches), updating the
+    kernel is enough
+-   Performance impact of the mitigation: low to medium
+
+ 
+
+**Disclaimer:** Be careful when running script like these. Please check
+the script's source code before running.

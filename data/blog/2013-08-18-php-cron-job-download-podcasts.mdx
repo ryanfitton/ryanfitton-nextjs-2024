@@ -5,60 +5,51 @@ authors: ['Ryan Fitton']
 date: '2013-08-18'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'I have built this script a while ago to keep track of podcasts I wanted to watch. My ISP gives me free internet usage after 11pm which doesn&amp;#8217;t contribute to my monthly download limit so I needed some way to automate the download of the podcast. I decided to build this script in PHP as [&amp;hellip;]'
+summary: 'I have
+built this script a while ago to keep track of podcasts I wanted to
+watch. My ISP gives me free internet usage after 11pm which
+doesn&#8217;t contribute to my monthly download limit so I needed some
+way to automate the download of the podcast. I decided to build this
+script in PHP as ...'
 ---
 
-<p>
-  I have built this script a while ago to keep track of podcasts I wanted to watch. My ISP gives me
-  free internet usage after 11pm which doesn&#8217;t contribute to my monthly download limit so I
-  needed some way to automate the download of the podcast.
-</p>
-<p>
-  I decided to build this script in PHP as it was the language in which I had the most experience
-  with. The script itself is powered by a cronjob, I set mine to run at 05:05am each morning,
-  although this can be changed.
-</p>
-<p>
-  The script stores a cached URL of the most recent podcast downloaded in a .txt file, so when the
-  cronjob is started the script looks at the current URL in the RSS feed and checks to see if it is
-  equal to the URL in the cached file; if it is then it won&#8217;t download, if it is different
-  then the script will start to download the new podcast.
-</p>
-<p>
-  Because I was running this on my home server which was not accessible outside my LAN I
-  wasn&#8217;t bothered about file permissions. All the files in the &#8216;www&#8217; web root
-  folder were set to CHMOD 777. I have listed the scripts below, feel free to edit or fork them on{' '}
-  <a
-    title="A PHP cronjob to download podcasts via a PHP script"
-    href="https://gist.github.com/ryanfitton/6260286"
-  >
-    Github
-  </a>
-  .
-</p>
-<h3>Configuration Options</h3>
-<ul>
-  <li>
-    $url &#8211; The RSS feed which you want to download. In this example I am using Twit&#8217;s HD
-    video feed (<a href="http://feeds.twit.tv/twit_video_hd">http://feeds.twit.tv/twit_video_hd</a>)
-  </li>
-  <li>$cache &#8211; The location to the .txt cache file.</li>
-  <li>
-    $path &#8211; The location and filename which you want to apply to the downloaded podcast. For
-    example mine would be stored in &#8220;/var/www/&#8221; and be called
-    &#8220;twit-18-8-2013.mp4&#8221;
-  </li>
-</ul>
-<h3>Notes</h3>
-<p>
-  This script has been used for over 2 years without issues. Although if you plan on running
-  multiple versions of this script in your cronjobs then I would place each one with a 2 hour
-  interval at least.
-</p>
-<p>
-  I have been running this script on Ubuntu 11.04 and Ubuntu 12.04 LTS. This should work on other
-  Linux distributions although I cannot guarantee this.
-</p>
-<p>
-  <script src="https://gist.github.com/ryanfitton/6260286.js"></script>
-</p>
+I have built this script a while ago to keep track of podcasts I wanted
+to watch. My ISP gives me free internet usage after 11pm which doesn't
+contribute to my monthly download limit so I needed some way to automate
+the download of the podcast.
+
+I decided to build this script in PHP as it was the language in which I
+had the most experience with. The script itself is powered by a cronjob,
+I set mine to run at 05:05am each morning, although this can be changed.
+
+The script stores a cached URL of the most recent podcast downloaded in
+a .txt file, so when the cronjob is started the script looks at the
+current URL in the RSS feed and checks to see if it is equal to the URL
+in the cached file; if it is then it won't download, if it is different
+then the script will start to download the new podcast.
+
+Because I was running this on my home server which was not accessible
+outside my LAN I wasn't bothered about file permissions. All the files
+in the 'www' web root folder were set to CHMOD 777. I have listed the
+scripts below, feel free to edit or fork them on 
+[Github](https://gist.github.com/ryanfitton/6260286 "A PHP cronjob to download podcasts via a PHP script")
+.
+
+### Configuration Options
+
+-   \$url -- The RSS feed which you want to download. In this example I
+    am using Twit's HD video feed (<http://feeds.twit.tv/twit_video_hd>)
+-   \$cache -- The location to the .txt cache file.
+-   \$path -- The location and filename which you want to apply to the
+    downloaded podcast. For example mine would be stored in "/var/www/"
+    and be called "twit-18-8-2013.mp4"
+
+### Notes
+
+This script has been used for over 2 years without issues. Although if
+you plan on running multiple versions of this script in your cronjobs
+then I would place each one with a 2 hour interval at least.
+
+I have been running this script on Ubuntu 11.04 and Ubuntu 12.04 LTS.
+This should work on other Linux distributions although I cannot
+guarantee this.

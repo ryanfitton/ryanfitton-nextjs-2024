@@ -5,15 +5,38 @@ authors: ['Ryan Fitton']
 date: '2017-10-12'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'This is a quick and simple backup script, specifically created for use with Online.net&amp;#8217;s 100GB FTP Storage, which is given for free when buying one of their dedicated servers. The steps listed below can be found in my Backup script collection on GitHub here: https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection The script below is simple, saves as &amp;#8216;sudo sh backup_files2ftp.sh&amp;#8217; [&amp;hellip;]'
+summary: 'This is a
+quick and simple backup script, specifically created for use with
+Online.net&#8217;s 100GB FTP Storage, which is given for free when
+buying one of their dedicated servers. The steps listed below can be
+found in my Backup script collection on GitHub here:
+https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection The
+script below is simple, saves as &#8216;sudo sh
+backup_files2ftp.sh&#8217; ...'
 ---
 
-<p>This is a quick and simple backup script, specifically created for use with Online.net&#8217;s 100GB FTP Storage, which is given for free when buying one of their dedicated servers.</p>
-<p>The steps listed below can be found in my Backup script collection on GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
-<p>The script below is simple, saves as &#8216;sudo sh backup_files2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;FTP Connection details&#8217;, and your email address.</p>
-<p>Run the script with <code class="language-markup">sudo sh backup_files2ftp.sh</code> (make sure the file is executable first).</p>
-<p>All files within the specified directory will be archived as a .tar.gz file, then transferred using FTP to the remote server. Once the file has been confirmed it the file exists on the FTP server, it is deleted from the local server.</p>
-<pre class="language-markup"><code class="language-markup">#!/bin/bash
+This is a quick and simple backup script, specifically created for use
+with Online.net's 100GB FTP Storage, which is given for free when buying
+one of their dedicated servers.
+
+The steps listed below can be found in my Backup script collection on
+GitHub here:
+<https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection>
+
+The script below is simple, saves as 'sudo sh backup_files2ftp.sh' and
+fill out the 'Backup options', 'FTP Connection details', and your email
+address.
+
+Run the script with `sudo sh backup_files2ftp.sh`{.language-markup}
+(make sure the file is executable first).
+
+All files within the specified directory will be archived as a .tar.gz
+file, then transferred using FTP to the remote server. Once the file has
+been confirmed it the file exists on the FTP server, it is deleted from
+the local server.
+
+``` language-markup
+#!/bin/bash
 
 ## Usage: backup_files2ftp.sh
 ##
@@ -70,7 +93,7 @@ MAIL_PACKAGE='exim4'     # Sometimes mail package is 'mailtuils'
 echo "Checking to see if '$MAIL_PACKAGE' is installed on your system."
 printf "\n"
 
-if dpkg -s $MAIL_PACKAGE 2&gt;/dev/null &gt;/dev/null
+if dpkg -s $MAIL_PACKAGE 2>/dev/null >/dev/null
 
 # If success
 then
@@ -125,7 +148,7 @@ sleep 30s # Wait 30 seconds
 
 # Start FTP transfer process. Syntax: http://manpages.ubuntu.com/manpages/zesty/man1/tnftp.1.html
 echo "Starting FTP transfer process."
-ftp $FTP_ARGUMENTS $FTP_SERVER $FTP_PORT &lt;&lt;END_SCRIPT
+ftp $FTP_ARGUMENTS $FTP_SERVER $FTP_PORT <<END_SCRIPT
 quote USER "$FTP_USERNAME"
 quote PASS "$FTP_PASSWORD"
 binary
@@ -239,6 +262,14 @@ echo "Install by running: 'apt-get install $MAIL_PACKAGE'"
 
 exit 1 # Exit with general error
 
-fi</code></pre>
-<p><strong>Note:</strong> Using the standard FTP protocol is unsafe, your details will be passed in plaintext. However because Online.net&#8217;s FTP backup service runs within their own network there is not much risk to myself. I do highly recommend using SFTP or FTPS, both will likely need modification of the script in-order to work properly.</p>
-<p>Also see my similar script to backup MySQL databases <a href="https://ryanfitton.co.uk/blog/backup-mysql-bash-script/">here</a>.</p>
+fi
+```
+
+**Note:** Using the standard FTP protocol is unsafe, your details will
+be passed in plaintext. However because Online.net's FTP backup service
+runs within their own network there is not much risk to myself. I do
+highly recommend using SFTP or FTPS, both will likely need modification
+of the script in-order to work properly.
+
+Also see my similar script to backup MySQL databases
+[here](https://ryanfitton.co.uk/blog/backup-mysql-bash-script/).

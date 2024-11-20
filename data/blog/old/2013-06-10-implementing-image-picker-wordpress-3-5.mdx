@@ -1,0 +1,63 @@
+---
+layout: PostLayout
+title: "Implementing an image picker for WordPress 3.5"
+authors: ['Ryan Fitton']
+date: '2013-06-10'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'Since re-developing my portfolio for this website, I found that the media picker script which I was using to select portfolio images should be updated. Originally the first version of the script was using the old WordPress Thickbox modal. Since WordPress 3.5 it has been possible to use the new WordPress modal. Although I found [&amp;hellip;]'
+---
+
+<p>
+  Since re-developing my{' '} <a title="Portfolio" href="https://ryanfitton.co.uk/portfolio/">portfolio</a>{' '}for this website, I found that the media picker script which I was using to select portfolio images should be updated.
+</p>
+<p>
+  Originally the first version of the script was using the old WordPress{' '}
+  <a href="http://codex.wordpress.org/ThickBox">Thickbox modal</a>. Since WordPress 3.5 it has been
+  possible to use the{' '}
+  <a href="http://codex.wordpress.org/Version_3.5#Highlights">new WordPress modal</a>.
+</p>
+<p>
+  Although I found it difficult to find any documentation, eventually I was able to implement the
+  new modal into my image picker script which I was using for Portfolio images.
+</p>
+<p>
+  The script I use is run as a custom META Box in a Custom type post. The JavaScript code below is
+  used to allow the WordPress 3.5 modal to open up when a button with a class of
+  &#8216;upload_image_button&#8217; is clicked.
+</p>
+<p>
+  <script src="https://gist.github.com/ryanfitton/5744858.js"></script>This actual code was adapted
+  slightly from a{' '}<a href="http://mikejolley.com/2012/12/using-the-new-wordpress-3-5-media-uploader-in-plugins/">blog post by Mike Jolley</a>. I had to make the modifications to the code because I had areas for three images to be selected
+  and did not want to have a mass amount of code for each upload button. Instead this code which I
+  amended from Mike Jolley will cleverly work out where the image URL should be placed dependant on
+  which upload button you have clicked upon. Below is the HTML code which is used to display the
+  form elements in the Custom META box.
+  <script src="https://gist.github.com/ryanfitton/5744862.js"></script>
+</p>
+<p>Alternatively you can view all the mark-up together.</p>
+<p>
+  <script src="https://gist.github.com/ryanfitton/5744867.js"></script>
+</p>
+<p>
+  I cannot thank Mike Jolley enough. If you found his code useful then I highly recommend you visit
+  his <a href="http://mikejolley.com/">website</a> and thank him yourself.
+</p>
+<p>Cannot see my code snippets? Some devices may not load them properly. View them here:</p>
+<ul>
+  <li>
+    <a href="http://gist.github.com/ryanfitton/5744858">
+      http://gist.github.com/ryanfitton/5744858
+    </a>
+  </li>
+  <li>
+    <a href="http://gist.github.com/ryanfitton/5744862">
+      http://gist.github.com/ryanfitton/5744862
+    </a>
+  </li>
+  <li>
+    <a href="http://gist.github.com/ryanfitton/5744867">
+      http://gist.github.com/ryanfitton/5744867
+    </a>
+  </li>
+</ul>

@@ -5,18 +5,32 @@ authors: ['Ryan Fitton']
 date: '2017-11-25'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'This is a follow-up post with an update to the &amp;#8216;Backup Files as Tar.GZ&amp;#8216; script. Some of my similar Backup scripts reside in a a GitHub here: https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection Version 2.0.0, now adds additional features and bug fixes: Now searches to ensure the required packages are installed. Uses &amp;#8216;lftp&amp;#8216; to upload files via FTP. Lftp allows [&amp;hellip;]'
+summary: 'This is a follow-up post with an update to the &#8216;Backup Files as
+Tar.GZ&#8216; script. Some of my similar Backup scripts reside in a a
+GitHub here:
+https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection
+Version 2.0.0, now adds additional features and bug fixes: Now searches
+to ensure the required packages are installed. Uses &#8216;lftp&#8216;
+to upload files via FTP. Lftp allows ...'
 ---
 
-<p>This is a follow-up post with an update to the &#8216;<a href="https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/">Backup Files as Tar.GZ</a>&#8216; script.</p>
-<p>Some of my similar Backup scripts reside in a a GitHub here: <a href="https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection">https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection</a></p>
-<p>Version 2.0.0, now adds additional features and bug fixes:</p>
-<ul>
-<li>Now searches to ensure the required packages are installed.</li>
-<li>Uses &#8216;<a href="https://linux.die.net/man/1/lftp">lftp</a>&#8216; to upload files via FTP. Lftp allows multi-level directories to be created on the server.</li>
-<li>Renamed configuration variables to make them easier to understand.</li>
-</ul>
-<pre class="language-markup"><code class="language-markup">#!/bin/bash
+This is a follow-up post with an update to the '[Backup Files as
+Tar.GZ](https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/)'
+script.
+
+Some of my similar Backup scripts reside in a a GitHub here:
+<https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection>
+
+Version 2.0.0, now adds additional features and bug fixes:
+
+-   Now searches to ensure the required packages are installed.
+-   Uses '[lftp](https://linux.die.net/man/1/lftp)' to upload files via
+    FTP. Lftp allows multi-level directories to be created on the
+    server.
+-   Renamed configuration variables to make them easier to understand.
+
+``` language-markup
+#!/bin/bash
 
 ## Usage: backup_files2ftp.sh
 ##
@@ -78,7 +92,7 @@ sleep 5s # Wait 5 seconds
 # Check to see if the 'netcat' program is installed
 # Used for checking if a connection can be made to the camera
 PACKAGE='netcat'
-if dpkg -s $PACKAGE 2&gt;/dev/null &gt;/dev/null;
+if dpkg -s $PACKAGE 2>/dev/null >/dev/null;
 
 # If 'netcat' is installed
 then
@@ -89,7 +103,7 @@ then
     echo "Checking to see if '$PACKAGE' is installed on your system."
     printf "\n"
 
-    if dpkg -s $PACKAGE 2&gt;/dev/null &gt;/dev/null
+    if dpkg -s $PACKAGE 2>/dev/null >/dev/null
 
     # If success
     then
@@ -138,7 +152,7 @@ then
             # Check to see if the 'lftp' program is installed
             # Used for sending files using via the 'ftp' command
             PACKAGE='lftp'
-            if dpkg -s $PACKAGE 2&gt;/dev/null &gt;/dev/null;
+            if dpkg -s $PACKAGE 2>/dev/null >/dev/null;
 
             # If success
             then
@@ -165,7 +179,7 @@ then
 # 2. Create directory on the FTP server
 # 3. Change to the newly created directory
 # 4. Upload file from local server to FTP server
-lftp ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT &lt;&lt;END_SCRIPT
+lftp ftp://$FTP_USERNAME:$FTP_PASSWORD@$FTP_SERVER:$FTP_PORT <<END_SCRIPT
 lcd "$BACKUP_TEMP_SAVEPATH"
 mkdir -p "$FTP_SAVEPATH"
 cd "$FTP_SAVEPATH"
@@ -179,7 +193,7 @@ END_SCRIPT
                     # Check to see if the 'curl' program is installed
                     # Used for check if the file exists on the FTP server via the 'curl' command
                     PACKAGE='curl'
-                    if dpkg -s $PACKAGE 2&gt;/dev/null &gt;/dev/null;
+                    if dpkg -s $PACKAGE 2>/dev/null >/dev/null;
 
                     # If success
                     then
@@ -317,4 +331,5 @@ else
     echo "Install by running: 'sudo apt-get install $PACKAGE'"
 
     exit 1 # Exit with general error
-fi</code></pre>
+fi
+```

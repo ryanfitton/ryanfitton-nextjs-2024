@@ -5,86 +5,165 @@ authors: ['Ryan Fitton']
 date: '2018-05-01'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'For this setup, i&amp;#8217;m using Ubuntu 16.04 running on a Raspberry Pi 3. The instructions should work correctly in Debian and Raspbian too &amp;#8211; in fact, you will probably have luck using these instructions on any Linux operating system, Raspberry Pi or not. Note: FTP is not a secure protocol, I would recommend using SFTP [&amp;hellip;]'
+summary: 'For this
+setup, i&#8217;m using Ubuntu 16.04 running on a Raspberry Pi 3. The
+instructions should work correctly in Debian and Raspbian too &#8211; in
+fact, you will probably have luck using these instructions on any Linux
+operating system, Raspberry Pi or not. Note: FTP is not a secure
+protocol, I would recommend using SFTP ...'
 ---
 
-<p>For this setup, i&#8217;m using Ubuntu 16.04 running on a Raspberry Pi 3. The instructions should work correctly in Debian and Raspbian too &#8211; in fact, you will probably have luck using these instructions on any Linux operating system, Raspberry Pi or not.</p>
-<p><strong>Note:</strong> FTP is not a secure protocol, I would recommend using SFTP for production environments.</p>
-<ol>
-<li>
-        Login to SSH with <code class="language-bash">root</code> or a user which has sudo permissions. The default Raspberry Pi <code class="language-bash">pi</code> user should be okay.
-    </li>
-<li>
-        Update packages:</p>
-<pre class="language-bash"><code class="language-bash">sudo apt-get update</code></pre>
-</li>
-<li>
-        Create a new user, used only for FTP connections: </p>
-<pre class="language-bash"><code class="language-bash">sudo adduser ftp-user</code></pre>
-<p>Enter a password of your choice.
-    </li>
-<li>
-        Create a folder in <code class="language-bash">/root</code>. This is where the USB HDD will be permanently mounted.</p>
-<pre class="language-bash"><code class="language-bash">sudo mkdir /usb-hdd-storage</code></pre>
-</li>
-<li>
-        Mount the USB HDD to this folder, this assumes your USB HDD is formatted as NTFS. Firstly check to see the partitions available on the USB HDD drive:</p>
-<pre class="language-bash"><code class="language-bash">sudo blkid</code></pre>
-<p>This should output the USB HDD&#8217;s label, keep a note of this.
-    </li>
-<li>
-        Check the boot name of the USB HDD&#8217;s partition:</p>
-<pre class="language-bash"><code class="language-bash">sudo fdisk -l</code></pre>
-</li>
-<li>
-        Now we know where our drive is, we need to mount it to the <code class="language-bash">/usb-hdd-storage</code> folder we created previously:</p>
-<pre class="language-bash"><code class="language-bash">sudo mount /dev/sdaX /usb-hdd-storage</code></pre>
-<p>You may need to replace <code class="language-bash">X</code> with your drive ID. This can be found from the &#8216;blkid&#8217; command.</p>
-<p>You&#8217;ll also have to set permissions to ensure the drive can be accessed properly:</p>
-<pre class="language-bash"><code class="language-bash">sudo chmod 775 /usb-hdd-storage</code></pre>
-</li>
-<li>
-        To make the USB HDD mount permanently, edit the &#8216;fstab&#8217; file:</p>
-<pre class="language-bash"><code class="language-bash">sudo nano /etc/fstab</code></pre>
-<p>Add this line to the bottom of the file:</p>
-<pre class="language-bash"><code class="language-bash">/dev/sdaX /usb-hdd-storage ntfs defaults 0 0</code></pre>
-<p>As before, replace <code class="language-bash">X</code> with your drive ID.</p>
-<p>Note: If you need to unmount the drive, run:</p>
-<pre class="language-bash"><code class="language-bash">sudo umount /usb-hdd-storage</code></pre>
-</li>
-<li>
-        Create a folder in the &#8216;ftp-user&#8217; home directory, this will be used in the next step to &#8216;bind&#8217; to the folder we created in <code class="language-bash">/root/usb-hdd-storage</code>:</p>
-<pre class="language-bash"><code class="language-bash">sudo mkdir /home/ftp-user/usb-hdd-storage</code></pre>
-</li>
-<li>
-        Perform a bind to where the USB HDD is mounted. Edit the &#8216;fstab&#8217; file so this bind is permanent:</p>
-<pre class="language-bash"><code class="language-bash">sudo nano /etc/fstab</code></pre>
-<p>Add this line to the bottom of the file, it should be below the line which was added in the previous step:</p>
-<pre class="language-bash"><code class="language-bash">/usb-hdd-storage /home/ftp-user/usb-hdd-storage none bind 0 0</code></pre>
-</li>
-<li>
-        Now change the ownership of this folder to the &#8216;ftp-user&#8217; user:</p>
-<pre class="language-bash"><code class="language-bash">sudo chown ftp-user:ftp-user /home/ftp-user/usb-hdd-storage</code></pre>
-</li>
-<li>
-        Install proFTPd:</p>
-<pre class="language-bash"><code class="language-bash">sudo apt install proftpd</code></pre>
-<p>Choose to run proFTPd as <code class="language-bash">standalone</code>.
-    </li>
-<li>
-        Now edit the proFTPd configuration file:</p>
-<pre class="language-bash"><code class="language-bash">sudo nano /etc/proftpd/proftpd.conf</code></pre>
-<p>Change the <code class="language-bash">TimeoutIdle</code> value to <code class="language-bash">60</code>. This is 60 seconds.</p>
-<p>And uncomment <code class="language-bash">DefaultRoot</code> so users are &#8216;jailed&#8217; to their home directories, they will still be able to access files on the USB HDD because of the &#8216;binded&#8217; folder we created.
-    </li>
-<li>
-        Reload the proFTPd service to pick-up the changes made in the configuration file:</p>
-<pre class="language-bash"><code class="language-bash">sudo service proftpd reload</code></pre>
-</li>
-<li>
-        You can now reboot the operating system and test the connection in a FTP program, such as FileZilla.</p>
-<pre class="language-bash"><code class="language-bash">sudo shutdown -r now</code></pre>
-<p>Or to shutdown, run:</p>
-<pre class="language-bash"><code class="language-bash">sudo shutdown -h now</code></pre>
-</li>
-</ol>
+For this setup, i'm using Ubuntu 16.04 running on a Raspberry Pi 3. The
+instructions should work correctly in Debian and Raspbian too -- in
+fact, you will probably have luck using these instructions on any Linux
+operating system, Raspberry Pi or not.
+
+**Note:** FTP is not a secure protocol, I would recommend using SFTP for
+production environments.
+
+1.  Login to SSH with `root`{.language-bash} or a user which has sudo
+    permissions. The default Raspberry Pi `pi`{.language-bash} user
+    should be okay.
+
+2.  Update packages:
+
+    ``` language-bash
+    sudo apt-get update
+    ```
+
+3.  Create a new user, used only for FTP connections:
+
+    ``` language-bash
+    sudo adduser ftp-user
+    ```
+
+    Enter a password of your choice.
+
+4.  Create a folder in `/root`{.language-bash}. This is where the USB
+    HDD will be permanently mounted.
+
+    ``` language-bash
+    sudo mkdir /usb-hdd-storage
+    ```
+
+5.  Mount the USB HDD to this folder, this assumes your USB HDD is
+    formatted as NTFS. Firstly check to see the partitions available on
+    the USB HDD drive:
+
+    ``` language-bash
+    sudo blkid
+    ```
+
+    This should output the USB HDD's label, keep a note of this.
+
+6.  Check the boot name of the USB HDD's partition:
+
+    ``` language-bash
+    sudo fdisk -l
+    ```
+
+7.  Now we know where our drive is, we need to mount it to the
+    `/usb-hdd-storage`{.language-bash} folder we created previously:
+
+    ``` language-bash
+    sudo mount /dev/sdaX /usb-hdd-storage
+    ```
+
+    You may need to replace `X`{.language-bash} with your drive ID. This
+    can be found from the 'blkid' command.
+
+    You'll also have to set permissions to ensure the drive can be
+    accessed properly:
+
+    ``` language-bash
+    sudo chmod 775 /usb-hdd-storage
+    ```
+
+8.  To make the USB HDD mount permanently, edit the 'fstab' file:
+
+    ``` language-bash
+    sudo nano /etc/fstab
+    ```
+
+    Add this line to the bottom of the file:
+
+    ``` language-bash
+    /dev/sdaX /usb-hdd-storage ntfs defaults 0 0
+    ```
+
+    As before, replace `X`{.language-bash} with your drive ID.
+
+    Note: If you need to unmount the drive, run:
+
+    ``` language-bash
+    sudo umount /usb-hdd-storage
+    ```
+
+9.  Create a folder in the 'ftp-user' home directory, this will be used
+    in the next step to 'bind' to the folder we created in
+    `/root/usb-hdd-storage`{.language-bash}:
+
+    ``` language-bash
+    sudo mkdir /home/ftp-user/usb-hdd-storage
+    ```
+
+10. Perform a bind to where the USB HDD is mounted. Edit the 'fstab'
+    file so this bind is permanent:
+
+    ``` language-bash
+    sudo nano /etc/fstab
+    ```
+
+    Add this line to the bottom of the file, it should be below the line
+    which was added in the previous step:
+
+    ``` language-bash
+    /usb-hdd-storage /home/ftp-user/usb-hdd-storage none bind 0 0
+    ```
+
+11. Now change the ownership of this folder to the 'ftp-user' user:
+
+    ``` language-bash
+    sudo chown ftp-user:ftp-user /home/ftp-user/usb-hdd-storage
+    ```
+
+12. Install proFTPd:
+
+    ``` language-bash
+    sudo apt install proftpd
+    ```
+
+    Choose to run proFTPd as `standalone`{.language-bash}.
+
+13. Now edit the proFTPd configuration file:
+
+    ``` language-bash
+    sudo nano /etc/proftpd/proftpd.conf
+    ```
+
+    Change the `TimeoutIdle`{.language-bash} value to
+    `60`{.language-bash}. This is 60 seconds.
+
+    And uncomment `DefaultRoot`{.language-bash} so users are 'jailed' to
+    their home directories, they will still be able to access files on
+    the USB HDD because of the 'binded' folder we created.
+
+14. Reload the proFTPd service to pick-up the changes made in the
+    configuration file:
+
+    ``` language-bash
+    sudo service proftpd reload
+    ```
+
+15. You can now reboot the operating system and test the connection in a
+    FTP program, such as FileZilla.
+
+    ``` language-bash
+    sudo shutdown -r now
+    ```
+
+    Or to shutdown, run:
+
+    ``` language-bash
+    sudo shutdown -h now
+    ```

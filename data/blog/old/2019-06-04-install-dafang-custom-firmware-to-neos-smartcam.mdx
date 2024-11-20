@@ -1,0 +1,78 @@
+---
+layout: PostLayout
+title: "Install Dafang custom firmware to Neos Smartcam"
+authors: ['Ryan Fitton']
+date: '2019-06-04'
+tags: ['Uncategorized']
+draft: false
+summary: 'The Neos Smart cam is a small indoor security camera based on the Xiaomi Xiaofang hardware, this is similar to the Wyze Cam 2 which is also based on the same Xiaomi hardware. I&amp;#8217;ve wanted one of these for a while, and now the Neos smart cam is readily available on Amazon in the UK, [&amp;hellip;]'
+---
+
+<p style="text-align: left;">The <a href="https://www.amazon.co.uk/Neos-SmartCam-Vision-Camera-Warranty/dp/B07JY7K3SZ/ref=as_li_ss_tl?ie=UTF8&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=50da75e73cc1e4cc66bbdffdeae74299&amp;language=en_GB">Neos Smart cam</a> is a small indoor security camera based on the <a href="https://uk.gearbest.com/ip-cameras/pp_487830.html">Xiaomi Xiaofang</a> hardware, this is similar to the <a href="https://www.wyze.com/product/wyze-cam-v2/">Wyze Cam 2</a> which is also based on the same Xiaomi hardware.</p>
+<p><img loading="lazy"  src="/static/img/blog/2019/06/IMG_20190604_190931-300x225.jpg" alt="" width="300" height="225" srcset="/static/img/blog/2019/06/IMG_20190604_190931-300x225.jpg 300w, /static/img/blog/2019/06/IMG_20190604_190931-768x576.jpg 768w, /static/img/blog/2019/06/IMG_20190604_190931-1024x768.jpg 1024w" sizes="(max-width: 300px) 100vw, 300px" /></p>
+<p>I&#8217;ve wanted one of these for a while, and now the <a href="https://www.amazon.co.uk/gp/product/B07JY7K3SZ/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=c94405cba7c64a2c881f432a0522ec92&amp;language=en_GB">Neos smart cam</a> is readily available on Amazon in the UK, I thought now would be a good opportunity to try one out. Currently they&#8217;re retailing for £24.99 and can be delivered through Amazon Prime.</p>
+<p>By default, Neos offer 14 days of cloud storage for free (no monthly subscription) which is pretty great considering the price. But I already have a CCTV solution at home running open-source <a href="https://gitlab.com/Shinobi-Systems/Shinobi">Shinobi DVR software</a> and needed something that could provide an RTSP stream.</p>
+<p>This is where the Xiaomi DaFang Hacks software comes in. Available on GitHub <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/blob/master/README.md">here</a>, the code for the Neos camera only available through this commit for the moment; until it is merged into the master branch: <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/pull/964">https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/pull/964</a>.</p>
+<p>DaFang hacks is custom firmware which you can flash to the camera via a MicroSD card. This give you benefits such as; no relying on the manufacturer&#8217;s cloud services, SSH and FTP services on the camera itself, and the best: RTSP stream support &#8211; this will allow you to integrate the camera into any DVR recording software, such as Shinobi, ZoneMinder or Synology&#8217;s Surveillance Station.</p>
+<h2>How to install</h2>
+<ol>
+<li>Firstly, download the custom firmware .bin file, this is the same firmware for the Wyzecam: <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/hacks/cfw/wyzecam_v2/cfw-1.1.bin">https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/raw/master/hacks/cfw/wyzecam_v2/cfw-1.1.bin</a> or via the repo page here: <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/">https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/</a></li>
+<li>Now have your MicroSD card ready. I used this <a href="https://www.amazon.co.uk/gp/product/B078TPK9JF/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=fe859fa72a792fc1ba680f01786e098b&amp;language=en_GB">Toshiba 16GB card</a>, and setup a single 512mb partition using gParted. This is how I formatted the card using gParted:
+<ol>
+<li>Insert the MicroSD card into your computer and load up gParted. Select your card/drive from the dropdown at the top right, and delete all partitions so it is only showing &#8216;unallocated&#8217;:<br />
+<a href="/static/img/blog/2019/06/dafang-1.png"><img loading="lazy"  src="/static/img/blog/2019/06/dafang-1.png" alt="" width="775" height="537" srcset="/static/img/blog/2019/06/dafang-1.png 775w, /static/img/blog/2019/06/dafang-1-300x208.png 300w, /static/img/blog/2019/06/dafang-1-768x532.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></a></li>
+<li>Now create a FAT32 512mb partition:<br />
+<a href="/static/img/blog/2019/06/dafang2.png"><img loading="lazy"  src="/static/img/blog/2019/06/dafang2.png" alt="" width="774" height="534" srcset="/static/img/blog/2019/06/dafang2.png 774w, /static/img/blog/2019/06/dafang2-300x207.png 300w, /static/img/blog/2019/06/dafang2-768x530.png 768w" sizes="(max-width: 774px) 100vw, 774px" /></a></li>
+<li>Click add, then you should see the new partition ready to be created:<br />
+<a href="/static/img/blog/2019/06/dafang-3.png"><img loading="lazy"  src="/static/img/blog/2019/06/dafang-3.png" alt="" width="775" height="537" srcset="/static/img/blog/2019/06/dafang-3.png 775w, /static/img/blog/2019/06/dafang-3-300x208.png 300w, /static/img/blog/2019/06/dafang-3-768x532.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></a></li>
+<li>Click the &#8216;tick&#8217; icon to apply the operations. You should see a success message:<br />
+<a href="/static/img/blog/2019/06/dafang-4.png"><img loading="lazy"  src="/static/img/blog/2019/06/dafang-4.png" alt="" width="775" height="537" srcset="/static/img/blog/2019/06/dafang-4.png 775w, /static/img/blog/2019/06/dafang-4-300x208.png 300w, /static/img/blog/2019/06/dafang-4-768x532.png 768w" sizes="(max-width: 775px) 100vw, 775px" /></a></li>
+</ol>
+</li>
+<li>Once your partition has been created, copy the &#8216;cfw-1.1.bin&#8217; file to the drive. You must then rename this file to: &#8216;demo.bin&#8217;. It is important that you ensure this is the only file on your MicroSD card.</li>
+<li>Now insert the MicroSD card into the base of your Neos Smartcam, ensure no USB cable is connected.</li>
+<li>Connect the USB cable and ensure you&#8217;re holding down the setup button. Whilst holding the setup button, the LED indicator on the Smart cam should light-up blue, once you see this carry on holding the setup button down for 20 seconds, then let go. The instructions on <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/blob/master/hacks/install_cfw.md">Dafang&#8217;s Github page</a> state this may take up to 3 minutes, but for me this was much less. I knew this process was finished when the LED started to flash yellow rapidly. Looking up this response, means &#8216;Ready to setup&#8217;, <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/issues/651">source</a>. This process alters the bootloader on the Smart cam so it can boot custom firmware. If you&#8217;re having issues, check this video &#8211; it helped me a lot with this process:<br />
+<iframe loading="lazy" src="https://www.youtube.com/embed/F-MnpGf6Iss" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe></li>
+<li>Now re-insert your MicroSD card into your computer and empty all files on this MicroSD card. Then download the &#8216;Xiaomi-Dafang-Hacks&#8217; repository, here: <a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks">https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks</a>. Click the green button named &#8216;Clone or download&#8217;, then select &#8216;Download ZIP&#8217;.<br />
+<a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks"><img loading="lazy"  src="/static/img/blog/2019/06/dafang-5.png" alt="" width="1015" height="478" srcset="/static/img/blog/2019/06/dafang-5.png 1015w, /static/img/blog/2019/06/dafang-5-300x141.png 300w, /static/img/blog/2019/06/dafang-5-768x362.png 768w" sizes="(max-width: 1015px) 100vw, 1015px" /></a></li>
+<li>Once the .zip file has downloaded, extract this and copy the entire contents of &#8216;firmware_mod&#8217; to your MicroSD card.</li>
+<li>You will want to add your Wireless Network settings. On the MicroSD card, find the folder named &#8216;config&#8217;. Enter this directory and find the file named &#8216;wpa_supplicant.conf.dist&#8217;, rename this file to &#8216;wpa_supplicant.conf&#8217;.</li>
+<li>Now edit the &#8216;wpa_supplicant.conf&#8217; file in a code editor. Change the values for &#8216;ssid&#8217; and &#8216;psk&#8217; with your own wireless network name and password, e.g:<br />
+<a href="https://github.com/EliasKotlyar/Xiaomi-Dafang-Hacks/blob/master/firmware_mod/config/wpa_supplicant.conf.dist"><img loading="lazy"  src="/static/img/blog/2019/06/dafang-6.png" alt="" width="431" height="202" srcset="/static/img/blog/2019/06/dafang-6.png 431w, /static/img/blog/2019/06/dafang-6-300x141.png 300w" sizes="(max-width: 431px) 100vw, 431px" /></a></li>
+<li>Now save the file, and insert the MicroSD card back into your Neos Smartcam and power-on.</li>
+<li>If all goes well, you should be able to access the web interface in a web browser at: <a href="https://dafang">https://dafang</a> with the default login details; username: root and password: ismart12</li>
+<li>The default RTSP stream URL is: <a href="rtsp://ip-address:8554/unicast">rtsp://ip-address:8554/unicast</a> (replace the IP address with the one associated with your smart cam).</li>
+</ol>
+<p>&nbsp;</p>
+<h2>Updates</h2>
+<p>[Update: 11/08/2019]: I use Shinobi to record the RTSP stream, but have been having some issues with the stream recordings only being around 30 to 45 seconds long, they should have been 5 minutes.</p>
+<p>I have managed to fix this by altering the settings within the Dafang web interface to:</p>
+<ul>
+<li>Disable audio recording</li>
+<li>Disable motion detection</li>
+<li>After disabling these two options, I saw the CPU usage drop from 80% to around 20%.</li>
+</ul>
+<p>I also set these options for the video feed:</p>
+<ul>
+<li>Video size: 1600&#215;900</li>
+<li>Bitrate: 500kbps</li>
+<li>Video format: VBR</li>
+<li>Frame rate: 24 every 1 second<br />
+<img loading="lazy"  src="/static/img/blog/2019/06/dafang_video_settings.png" alt="" width="1018" height="449" srcset="/static/img/blog/2019/06/dafang_video_settings.png 1018w, /static/img/blog/2019/06/dafang_video_settings-300x132.png 300w, /static/img/blog/2019/06/dafang_video_settings-768x339.png 768w" sizes="(max-width: 1018px) 100vw, 1018px" /></li>
+</ul>
+<p>Finally, I setup the SWAP with a swapfile size of 512MB within the &#8216;run.sh&#8217; file.</p>
+<p><img loading="lazy"  src="/static/img/blog/2019/06/dafang_swap_settings.png" alt="" width="329" height="73" srcset="/static/img/blog/2019/06/dafang_swap_settings.png 329w, /static/img/blog/2019/06/dafang_swap_settings-300x67.png 300w" sizes="(max-width: 329px) 100vw, 329px" /></p>
+<p>[Update: 14/06/2020]: I am no longer using this camera due to constant instability issues with Dafang dropping the RTSP with Shinobi. Where this may be fixed in the future, I am now using a Foscam C1 (<a href="https://www.amazon.co.uk/gp/product/B07WHY74F1/ref=as_li_tl?ie=UTF8&amp;tag=ryanfittoncou-21&amp;camp=1634&amp;creative=6738&amp;linkCode=as2&amp;creativeASIN=B07WHY74F1&amp;linkId=cab92c8366ebb3ef4cc1ffd0a54abe04">Newer Model</a>)</p>
+<p>&nbsp;</p>
+<h2>Help me out</h2>
+<p>If you&#8217;re interested in the Neos smartcam with the Dafang custom firmware, help me out by purchasing one from Amazon UK with my affiliate code:</p>
+<table class="table">
+<tbody>
+<tr>
+<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B07JY7K3SZ&amp;asins=B07JY7K3SZ&amp;linkId=d7547ef8af25e22a23d307057ee05acf&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
+<td><iframe style="width: 120px; height: 240px;" src="//ws-eu.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&amp;OneJS=1&amp;Operation=GetAdHtml&amp;MarketPlace=GB&amp;source=ss&amp;ref=as_ss_li_til&amp;ad_type=product_link&amp;tracking_id=ryanfittoncou-21&amp;language=en_GB&amp;marketplace=amazon&amp;region=GB&amp;placement=B078TPK9JF&amp;asins=B078TPK9JF&amp;linkId=472f9a84ef779815dfcebfd067b857e1&amp;show_border=true&amp;link_opens_in_new_window=true" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Links: <a href="https://www.amazon.co.uk/gp/product/B07JY7K3SZ/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=14500df13fa7afa31a21348d64a5bf21&amp;language=en_GB">Neos Smart cam on Amazon UK</a> and <a href="https://www.amazon.co.uk/gp/product/B078TPK9JF/ref=as_li_ss_tl?ie=UTF8&amp;psc=1&amp;linkCode=ll1&amp;tag=ryanfittoncou-21&amp;linkId=6c196003bb190b1366a31889fb0be4a6&amp;language=en_GB">Toshiba 16GB Micro SD card on Amazon UK</a></p>

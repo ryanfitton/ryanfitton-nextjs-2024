@@ -5,95 +5,127 @@ authors: ['Ryan Fitton']
 date: '2019-04-28'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'I have been using loadCSS from the Filament Group recently, it&amp;#8217;s a great tool to asynchronously load your CSS files in-order to increase your scores for Google&amp;#8217;s PageSpeed tests. The main issue I faced is using loadCSS with WordPress. WordPress has many plugins to install and each of these plugins usually integrate with the hook [&amp;hellip;]'
+summary: 'I have
+been using loadCSS from the Filament Group recently, it&#8217;s a great
+tool to asynchronously load your CSS files in-order to increase your
+scores for Google&#8217;s PageSpeed tests. The main issue I faced is
+using loadCSS with WordPress. WordPress has many plugins to install and
+each of these plugins usually integrate with the hook...'
 ---
 
-<p>I have been using <a href="https://github.com/filamentgroup/loadCSS">loadCSS</a> from the <a href="https://github.com/filamentgroup/loadCSS">Filament Group</a> recently, it&#8217;s a great tool to asynchronously load your CSS files in-order to increase your scores for Google&#8217;s PageSpeed tests.</p>
-<p>The main issue I faced is using loadCSS with WordPress. WordPress has many plugins to install and each of these plugins usually integrate with the hook system to load their own CSS files &#8211; there is generally not much configuration which you can do with how these CSS files are loaded into your site&#8217;s HTML.</p>
-<p>To combat this issue, I have created a function which will alter these &#8216;link&#8217; attributes so they can be used with loadCSS. There is also the support to load Critical CSS (This can be done with this <a href="https://jonassebastianohlsson.com/criticalpathcssgenerator/">tool</a>, or the &#8216;<a href="https://github.com/filamentgroup/grunt-criticalcss">grunt-criticalcss</a>&#8216; wrapper), and Async or Defer on JavaScript files is supported too.</p>
-<p>To start, download the loadCSS library from <a href="https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0">Github</a>. This guide is using the files from the <a href="https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0">v2 branch</a>, you will be using the &#8216;cssrelpreload.js&#8217; file located in the &#8216;src&#8217; folder.</p>
-<p>Then add this code into your theme&#8217;s &#8216;functions.php&#8217; file:</p>
-<pre class="language-php"><code class="language-php">&lt;?php
-	//Enqueue CSS and Javascript
-	function enqueue_scripts() {
-		//LoadCSS - Use the 'loadCSS_parser()' function to implement loadCSS to CSS scripts below
-		//LoadCSS v2.1.0 - See https://github.com/filamentgroup/loadCSS/
-		wp_enqueue_script( 'loadCSS', get_template_directory_uri() . '/libs/loadCSS/cssrelpreload.js', false, null, false );
-		
-		//Google Fonts
-		wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,700', false );   //Disable if you're not using this
-		
-		//Critical CSS Inline styling - To prevent a flashof unstyled HTML when using LoadCSS, disable if you're not using this
-		//Use https://jonassebastianohlsson.com/criticalpathcssgenerator/ or the 'grunt-criticalcss' wrapper with Grunt
-		wp_register_style( 'site-critical', false );
-		wp_enqueue_style( 'site-critical' );
-		wp_add_inline_style( 'site-critical', file_get_contents(get_stylesheet_directory() . '/critical.min.css'), array( 'google-fonts' ) );	//Depends on 'google-fonts'
+I have been using [loadCSS](https://github.com/filamentgroup/loadCSS)
+from the [Filament Group](https://github.com/filamentgroup/loadCSS)
+recently, it's a great tool to asynchronously load your CSS files
+in-order to increase your scores for Google's PageSpeed tests.
 
-		//CSS - Remove any references to this file from your theme. i.e. in header.php, as it will be loaded here instead
-		//E.g. bloginfo('stylesheet_url');
-		wp_enqueue_style( 'site', get_template_directory_uri() . 'style.css', array( 'site-critical' ) );   //Your website's CSS, depends on 'site-critical'
-	}
-	add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 15 );   //Prirority: 1 (High)
+The main issue I faced is using loadCSS with WordPress. WordPress has
+many plugins to install and each of these plugins usually integrate with
+the hook system to load their own CSS files -- there is generally not
+much configuration which you can do with how these CSS files are loaded
+into your site's HTML.
 
+To combat this issue, I have created a function which will alter these
+'link' attributes so they can be used with loadCSS. There is also the
+support to load Critical CSS (This can be done with this
+[tool](https://jonassebastianohlsson.com/criticalpathcssgenerator/), or
+the
+'[grunt-criticalcss](https://github.com/filamentgroup/grunt-criticalcss)'
+wrapper), and Async or Defer on JavaScript files is supported too.
 
+To start, download the loadCSS library from
+[Github](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0).
+This guide is using the files from the [v2
+branch](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0),
+you will be using the 'cssrelpreload.js' file located in the 'src'
+folder.
 
-	//Convert CSS scripts for use with loadCSS library - https://github.com/filamentgroup/loadCSS
-	if (!is_admin()) {
-		function loadCSS_parser( $tag ){
-			//If not a stylesheet, do not edit
-			if ( FALSE === strpos( $tag, "rel='stylesheet'" ) ) return $tag;
+Then add this code into your theme's 'functions.php' file:
 
-			//Of if tag includes any of these file names do not load via LoadCSS:
-			//if ( strpos( $tag, "specificfilename.min.css" ) ) return $tag;
+``` language-php
+<?php
+    //Enqueue CSS and Javascript
+    function enqueue_scripts() {
+        //LoadCSS - Use the 'loadCSS_parser()' function to implement loadCSS to CSS scripts below
+        //LoadCSS v2.1.0 - See https://github.com/filamentgroup/loadCSS/
+        wp_enqueue_script( 'loadCSS', get_template_directory_uri() . '/libs/loadCSS/cssrelpreload.js', false, null, false );
+        
+        //Google Fonts
+        wp_enqueue_style( 'google-fonts', 'https://fonts.googleapis.com/css?family=Poppins:400,700', false );   //Disable if you're not using this
+        
+        //Critical CSS Inline styling - To prevent a flashof unstyled HTML when using LoadCSS, disable if you're not using this
+        //Use https://jonassebastianohlsson.com/criticalpathcssgenerator/ or the 'grunt-criticalcss' wrapper with Grunt
+        wp_register_style( 'site-critical', false );
+        wp_enqueue_style( 'site-critical' );
+        wp_add_inline_style( 'site-critical', file_get_contents(get_stylesheet_directory() . '/critical.min.css'), array( 'google-fonts' ) );   //Depends on 'google-fonts'
 
-
-			//** Excluded files
-					//Some file which cannot be loaded asynchronously 
-					if ( strpos( $tag, "filename.min.css" ) ) return $tag;
-			
-			
-			//Set a variable which will hold the default script for a '&lt;noscript&gt;' tag
-			$noscript = '&lt;noscript&gt;' . $tag . '&lt;/noscript&gt;';
-			
-			//Change 'rel' value from 'stylesheet' to 'preload'
-			$tag = preg_replace("/='stylesheet'/", '="preload"', $tag);
-			
-			//Add 'as' and 'onload' attributes
-			$tag = preg_replace("/type='text\/css'/", 'as="style" onload="this.onload=null;this.rel=\'stylesheet\'"', $tag);
-			
-			//Remove media attribute
-			$tag = preg_replace("/media='.*'/", '', $tag);
-			
-			
-			return $tag . $noscript;    //Return
-		}
-		add_filter( 'style_loader_tag', 'loadCSS_parser' );
-	}
+        //CSS - Remove any references to this file from your theme. i.e. in header.php, as it will be loaded here instead
+        //E.g. bloginfo('stylesheet_url');
+        wp_enqueue_style( 'site', get_template_directory_uri() . 'style.css', array( 'site-critical' ) );   //Your website's CSS, depends on 'site-critical'
+    }
+    add_action( 'wp_enqueue_scripts', 'enqueue_scripts', 15 );   //Prirority: 1 (High)
 
 
 
-	//Pass Defer or Async to JavaScript files
-	if (!is_admin()) {
-		function async_defer_js ( $url ) {
-			//If file is not a .js file, do not alter
-			if ( FALSE === strpos( $url, '.js' ) ) return $url;
-			
-			
-			//** Excluded files
-				//jQuery
-				if ( strpos( $url, 'jquery.js' ) ) return $url;         //Replace this with your jQuery file
-			
-			
-			//** If Async - Files for Async
-				//loadCSS
-				if ( strpos( $url, 'cssrelpreload.js' ) ) return "$url' async='true";
-			
-			
-			//** If Defer
-				//By default add defer tag to all JS files unless specified as async/excluded above
-				return "$url' defer='true";
-		}
-		add_filter( 'clean_url', 'async_defer_js', 11, 1 );
-	}
-?&gt;</code></pre>
-<p>Note: If you&#8217;re not using Critical CSS, disable the lines on #6, #7 and #8. And if you&#8217;re not using Google Fonts, disable line #15.</p>
+    //Convert CSS scripts for use with loadCSS library - https://github.com/filamentgroup/loadCSS
+    if (!is_admin()) {
+        function loadCSS_parser( $tag ){
+            //If not a stylesheet, do not edit
+            if ( FALSE === strpos( $tag, "rel='stylesheet'" ) ) return $tag;
+
+            //Of if tag includes any of these file names do not load via LoadCSS:
+            //if ( strpos( $tag, "specificfilename.min.css" ) ) return $tag;
+
+
+            //** Excluded files
+                    //Some file which cannot be loaded asynchronously 
+                    if ( strpos( $tag, "filename.min.css" ) ) return $tag;
+            
+            
+            //Set a variable which will hold the default script for a '<noscript>' tag
+            $noscript = '<noscript>' . $tag . '</noscript>';
+            
+            //Change 'rel' value from 'stylesheet' to 'preload'
+            $tag = preg_replace("/='stylesheet'/", '="preload"', $tag);
+            
+            //Add 'as' and 'onload' attributes
+            $tag = preg_replace("/type='text\/css'/", 'as="style" onload="this.onload=null;this.rel=\'stylesheet\'"', $tag);
+            
+            //Remove media attribute
+            $tag = preg_replace("/media='.*'/", '', $tag);
+            
+            
+            return $tag . $noscript;    //Return
+        }
+        add_filter( 'style_loader_tag', 'loadCSS_parser' );
+    }
+
+
+
+    //Pass Defer or Async to JavaScript files
+    if (!is_admin()) {
+        function async_defer_js ( $url ) {
+            //If file is not a .js file, do not alter
+            if ( FALSE === strpos( $url, '.js' ) ) return $url;
+            
+            
+            //** Excluded files
+                //jQuery
+                if ( strpos( $url, 'jquery.js' ) ) return $url;         //Replace this with your jQuery file
+            
+            
+            //** If Async - Files for Async
+                //loadCSS
+                if ( strpos( $url, 'cssrelpreload.js' ) ) return "$url' async='true";
+            
+            
+            //** If Defer
+                //By default add defer tag to all JS files unless specified as async/excluded above
+                return "$url' defer='true";
+        }
+        add_filter( 'clean_url', 'async_defer_js', 11, 1 );
+    }
+?>
+```
+
+Note: If you're not using Critical CSS, disable the lines on #6, #7 and
+#8. And if you're not using Google Fonts, disable line #15.

@@ -1,0 +1,90 @@
+---
+layout: PostLayout
+title: "WordPress: Update user email address, or add a new user with only theme access"
+authors: ['Ryan Fitton']
+date: '2020-03-31'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'If you&amp;#8217;re editing a website but only have theme access, and no access to the database, you can temporarily add the code below into your theme &amp;#8216;front-page.php&amp;#8217; or other theme file to update either: The existing first user&amp;#8217;s email address Add a new Administrator user Remember to remove this code when your have finished your [&amp;hellip;]'
+---
+
+<p>If you&#8217;re editing a website but only have theme access, and no access to the database, you can temporarily add the code below into your theme &#8216;front-page.php&#8217; or other theme file to update either:</p>
+<ul>
+<li>The existing first user&#8217;s email address</li>
+<li>Add a new Administrator user</li>
+</ul>
+<p>Remember to remove this code when your have finished your operations.</p>
+<h3>Update the existing user&#8217;s email address</h3>
+<pre class="language-php"><code class="language-php">
+&lt;?php  
+    /************************
+     * Change an existing WordPress user email address
+     ***********************/
+
+    # If specific IP address, find from: https://whatismyipaddress.com/
+    if ($_SERVER[&quot;REMOTE_ADDR&quot;] == 'Your IP Here') {
+
+        //View the site admin email
+        echo get_bloginfo( 'admin_email' ); 
+
+
+        //Find the first User - this is generally the Admin user which was created when WordPress was installed
+        $blogusers = get_users( 'blog_id=1' );      //ID: 1
+
+        // Array of WP_User objects.
+        foreach ( $blogusers as $user ) {
+            echo '&lt;span&gt;' . esc_html( $user-&gt;user_email ) . '&lt;/span&gt;';
+        }
+
+
+        //Once the above code has displayed the first user's email address, you can un-comment ( /* and */) below to update the email address with your own.
+
+        /*Update user email address*/
+        /*
+            //Update user ID 1. Replace 'youremailhere@domain.com' with your email address
+            $user_id = wp_update_user( array( 'ID' =&gt; 1, 'user_email' =&gt; 'youremailhere@domain.com' ) );    
+
+            if ( is_wp_error( $user_id ) ) {
+                echo &quot;User update error&quot;;
+            } else {
+                echo &quot;User updated&quot;;
+            }
+        */
+    }
+?&gt;
+</code></pre>
+<h3>Add a new Administrator user</h3>
+<pre class="language-php"><code class="language-php">
+&lt;?php  
+    /************************
+     * Add a new WordPress admin user
+     ***********************/
+
+    # If specific IP address, find from: https://whatismyipaddress.com/
+    if ($_SERVER[&quot;REMOTE_ADDR&quot;] == 'Your IP Here') {
+
+        /*Add new admin user*/
+            //New user details
+            $username = 'yourusername';                     //Replace 'yourusername' with your username
+            $password = 'secure password here';             //Replace 'secure password here' with your own secure password
+            $email_address = 'youremailhere@domain.com';    //Replace 'youremailhere@domain.com' with your own email address
+
+            //If user does not already exist
+            if ( ! username_exists( $username ) ) {
+                $user_id = wp_create_user( $username, $password, $email_address );      //Create user
+
+                //If user created
+                if ($user_id) {
+                    $user = new WP_User( $user_id );                                    //Find created user's ID
+                    $user-&gt;set_role( 'administrator' );                                 //Set role to 'administrator'
+                    echo &quot;User created&quot;;
+                } else {
+                    echo &quot;User created error&quot;;
+                }
+            } else {
+                echo &quot;User already exists&quot;;
+            }
+
+    }
+?&gt;
+</code></pre>
