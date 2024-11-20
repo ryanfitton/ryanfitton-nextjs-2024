@@ -1,0 +1,318 @@
+---
+layout: PostLayout
+title: "My 10 year Linux journey: Windows to Linux, and not going back"
+authors: ['Ryan Fitton']
+date: '2020-03-31'
+tags: ['Uncategorized']
+draft: false
+summary: 'Over
+the past 10 years, I have been able to use free and open source software
+to benefit my personal and work life, by using Linux I have gained an
+understanding of what it really is, and how it can be used to make a
+perfect server or desktop OS. 2010 Starting in 2010 I...'
+---
+
+Over the past 10 years, I have been able to use free and open source
+software to benefit my personal and work life, by using Linux I have
+gained an understanding of what it really is, and how it can be used to
+make a perfect server or desktop OS.
+
+### 2010
+
+Starting in 2010 I really didn't know much. I heard about Linux on
+various websites,
+[podcasts](https://www.jupiterbroadcasting.com/1871/linuxfest-northwest-2010-the-linux-action-show-s11e09/),
+etc at the time.
+
+I booted up a live CD of [Ubuntu 10.04
+LTS](http://old-releases.ubuntu.com/releases/10.04.0/) on an old
+computer I had. I was amazed, it was quick to boot and easy to use; this
+is when I was became hooked!
+
+I wanted to learn more about Ubuntu, what was it? Were there other
+distributions around? Of course, but I tried a few others too but always
+stuck to a Debian based distro (not sure why, maybe it was the
+familiarity).
+
+### 2012
+
+I built a mini-itx Nas, this was my first major project using a Linux
+OS. I had experience in building PCs already but this was also my first
+time building one based on the mini-itx form factor.
+
+The specs weren't the greatest, but it worked fine as a headless Nas.
+There is more info regarding the build in an old blog post
+[here](https://ryanfitton.co.uk/blog/building-mini-itx-home-server/).
+
+The main specs were:
+
+-   Antec ISK 300-150 Mini-ITX Case
+-   Intel D410PT Desktop Motherboard with Intel Atom (D410 1.66GHz)
+-   120GB WD 2.5 SATA Scorpio Blue HDD
+-   Corsair Memory XMS2 2GB DDR2 PC2-6400 (800) Dual Channel
+
+The OS of choice this time was Ubuntu 12.04 LTS. This was the latest LTS
+release at the time. I was running the server headless so always
+interacted with it over SSH.
+
+The main duties of/software installed on this server were:
+
+-   Samba for file sharing.
+-   Cups to handle print serving.
+-   I also decided to install Mediatomb for media streaming to my UPnP
+    devices
+-   vsftpd (Very Secure FTP) was installed for FTP file transfer
+-   Apache2 was also installed so I could host an internal website it
+    required
+
+I have found a few pictures of this server from my photo library:
+
+[![](/static/img/blog/2020/03/IMG_20160903_162819-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/03/IMG_20160903_162819-300x225.jpg 300w, /static/img/blog/2020/03/IMG_20160903_162819-1024x768.jpg 1024w, /static/img/blog/2020/03/IMG_20160903_162819-768x576.jpg 768w, /static/img/blog/2020/03/IMG_20160903_162819-1536x1152.jpg 1536w, /static/img/blog/2020/03/IMG_20160903_162819-2048x1536.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/03/IMG_20160903_162819-scaled.jpg)
+[![](/static/img/blog/2020/03/IMG_20130810_123107-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/03/IMG_20130810_123107-300x225.jpg 300w, /static/img/blog/2020/03/IMG_20130810_123107-1024x768.jpg 1024w, /static/img/blog/2020/03/IMG_20130810_123107-768x576.jpg 768w, /static/img/blog/2020/03/IMG_20130810_123107-1536x1152.jpg 1536w, /static/img/blog/2020/03/IMG_20130810_123107.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/03/IMG_20130810_123107.jpg)
+
+### 2015
+
+Starting my career as a Front-End web developer, meant I required to
+have somewhere to host websites for my portfolio.
+
+I thought I should put the sills and experience I gained over the past
+few years to good use.
+
+I began searching for web hosts, a lot were shared hosting which would
+have been fine, but these hosts would not give me much access (if any)
+access to the underlying OS.
+
+This was when I can access Digital Ocean. Still a small start-up in
+2015, they were only four years old.
+
+From the [WayBack machine in
+2015](https://web.archive.org/web/20150122043832/https://www.digitalocean.com/):
+
+[![](/static/img/blog/2020/03/Screenshot_20200331-101241-173x300.png){loading="lazy"
+width="173" height="300"
+srcset="/static/img/blog/2020/03/Screenshot_20200331-101241-173x300.png 173w, /static/img/blog/2020/03/Screenshot_20200331-101241-590x1024.png 590w, /static/img/blog/2020/03/Screenshot_20200331-101241-768x1333.png 768w, /static/img/blog/2020/03/Screenshot_20200331-101241-885x1536.png 885w, /static/img/blog/2020/03/Screenshot_20200331-101241-1180x2048.png 1180w, /static/img/blog/2020/03/Screenshot_20200331-101241.png 1440w"
+sizes="(max-width: 173px) 100vw, 173px"}](/static/img/blog/2020/03/Screenshot_20200331-101241.png)
+
+I found their cheapest Droplet (essentially the same as a VPS) was \$5
+per month, and included:
+
+-   20GB SSD
+-   512MB RAM
+-   1 virtual core CPU
+
+More importantly, I could load my own OS and have full access via SSH.
+
+I loaded up Ubuntu 14.04 LTS and setup Apache2 VirtualHosts and MySQL
+DBs, installed PHP and setup SFTP.
+
+Of course, I enabled Snapshots within the Digital Ocean control panel --
+always good to have regular backups.
+
+This server became my main web server until 2018.
+
+### 2016
+
+2016 was a big year, I upgraded my home server to a 'beefy' new server
+motherboard with Raid and ZFS. And bought a 6U rack mount case for some
+network switches.
+
+A have an in-depth paper
+[here](https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/)
+describing some of the equipment, and how I installed Ethernet in my
+first home back in 2017.
+
+I've [long heard about how
+ZFS](https://www.jupiterbroadcasting.com/13052/ultimate-zfs-overview-techsnap-28/)
+was the next big thing in the open source community as far back as 2011,
+mainly from Alan Jude, former co-host on the TechSnap podcast.
+
+At the time, ZFS was mainly available on FreeBSD only, I decided to wait
+until it was available by default in Ubuntu.
+
+It was until Ubuntu 16.04 that I decided to use ZFS.
+
+With the new server I built, I created a Zpool, consisting of two
+mirrored WD Red 3TB drives.
+
+I also decided to use LXC/LXD containers. These containers use the ZFS
+pool for their storage, which meant I could set ZFS quotas on these
+containers to limit their file system size.
+
+This was the first time using ZFS and LXC, I really learnt a lot
+throughout this process, I produced a lot of documentation and created a
+script to easily create container backups. This can be seen
+[here](https://ryanfitton.co.uk/blog/lxd-container-backup-to-ftp-server-script/).
+
+These are the main specs of the new server:
+
+-   [Antec 300 ATX
+    case](https://www.overclockers.co.uk/antec-300-three-hundred-ultimate-gaming-case-black-ca-101-an.html)
+-   Corsair 430 watt CX PSU
+-   16GB Crucial ECC registered DDD3 memory
+-   2x Western Digital Red 3TB SATA HDDs
+-   120GB OCZ SSD
+-   Intel Core i3
+-   Supermicro X10SLL-F Motherboard
+
+The main duties of this server were similar to the build I made in 2012,
+but now 'containerised' to help with security, backup and restoration:
+
+-   Cups print server (with USB pass through)
+-   Storage (main Nas shares with Samba)
+-   Emby (media steamer)
+-   FreePBX
+-   Ubuntu Landscape (central management)
+
+Here is an image of this setup:
+
+[![](/static/img/blog/2020/03/IMG_20170205_170138-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/03/IMG_20170205_170138-300x225.jpg 300w, /static/img/blog/2020/03/IMG_20170205_170138-1024x768.jpg 1024w, /static/img/blog/2020/03/IMG_20170205_170138-768x576.jpg 768w, /static/img/blog/2020/03/IMG_20170205_170138-1536x1152.jpg 1536w, /static/img/blog/2020/03/IMG_20170205_170138-2048x1536.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/03/IMG_20170205_170138-scaled.jpg)
+
+### Beginning of 2018
+
+After learning a lot about ZFS and LXC containers when building a new
+home server in 2016, I found the Digital Ocean web server I setup in
+2015 was getting low on resources, I was outgrowing the small amount of
+Memory and CPU.
+
+Instead of just upgrading the droplet, I thought it would be better to
+take the plunge into running a new web server with ZFS and LXC
+containers; much like my home server.
+
+OVH looked to be the best 'big player' offering a considerable amount of
+Memory for a low cost per month, they also had servers available in
+London, UK.
+
+I purchased a years worth of hosting with their ['VPS SSD 2'
+package](https://www.ovh.co.uk/vps/vps-ssd.xml) which consists of:
+
+-   1 vCore(s) (From 2 GHz)
+-   4 GB RAM
+-   40 GB SSD
+
+I setup Ubuntu 18.04 LTS, setup the ZFS and LXC software and created
+three containers:
+
+-   HAProxy
+-   2x Web hosting containers (these containers include Apache, MySQL
+    and PHP) -- two containers, one for myself, the other for client
+    hosted sites
+
+This was my first time using HAProxy. It took a while to get to setup
+correctly, as I also used LetsEncrypt via the proxy to generate SSL
+certificates.
+
+HAProxy works by checking the domain requested, if it matches one of my
+personal domains, it will be directed towards my personal web container,
+any other domains will be directed to the web container which hosts
+client websites.
+
+I've been running this setup for a few years and has been working great,
+I've not had any issues.
+
+### End of 2018
+
+In the same year, I purchased a new laptop.
+
+It came with Windows 10, but that was quickly removed.
+
+Around this time Pop!\_OS had been making the 'rounds' on new sites and
+[YouTube videos](https://youtu.be/jJ39qWNSQ0E) for a little while.
+
+I played around with a live USB of Pop!\_OS already, and I really liked
+what I experienced, the OS is polished and quick. As a big Ubuntu user
+for many years, I still wanted to use it on my servers, but for a
+desktop OS, Pop offered a slightly better product.
+
+I installed Pop!\_OS on the new laptop, I had two drives (SSD and HDD)
+installed so it took a bit of tweaking to enable LUKs on boot
+encryption, but I finally managed to get it working perfectly.
+
+Now the laptop works perfectly, much better than Windows ever could be.
+And Pop!\_OS just keeps getting better.
+
+[![](/static/img/blog/2020/03/IMG_20181011_170918167-169x300.jpg){loading="lazy"
+width="169" height="300"
+srcset="/static/img/blog/2020/03/IMG_20181011_170918167-169x300.jpg 169w, /static/img/blog/2020/03/IMG_20181011_170918167-575x1024.jpg 575w, /static/img/blog/2020/03/IMG_20181011_170918167-768x1367.jpg 768w, /static/img/blog/2020/03/IMG_20181011_170918167-863x1536.jpg 863w, /static/img/blog/2020/03/IMG_20181011_170918167-1150x2048.jpg 1150w, /static/img/blog/2020/03/IMG_20181011_170918167-scaled.jpg 1438w"
+sizes="(max-width: 169px) 100vw, 169px"}](/static/img/blog/2020/03/IMG_20181011_170918167-scaled.jpg)
+
+### 2019
+
+Continuing the trend of buying new hardware (I love new tech!)
+
+I started watching videos on [YouTube by Lawrence
+Systems](https://www.youtube.com/user/TheTecknowledge), some of my
+favourite videos were about [PFSense](https://www.pfsense.org/), which
+is open source router software.
+
+I built my own router by purchasing a low cost small-form factor Mini PC
+from AliExpress. The model I chose was a [Qotom Mini
+PC](https://www.aliexpress.com/item/32863982193.html). I added my own
+memory (4GB) and hard drive (16GB).
+
+Installing PFSense from USB was seamless, and the network adaptors were
+immediately found. I ran through the installer, once completed I was
+able to login into the web interface straight away.
+
+I do still have to use my ISP's unit, but in Modem Mode only. PFSense
+then acts as the router and firewall, providing DHCP and DNS to my
+network.
+
+I love the regular updates, the open source aspect is great, it gives me
+peace of mind that the software is secure.
+
+You can read a separate blog post about the Qotom Mini-PC
+[here](https://ryanfitton.co.uk/blog/replacing-my-router-with-pfsense-with-a-qotom-q150p-s08-from-aliexpress/).
+
+[![](/static/img/blog/2020/03/DSC01503_2-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/03/DSC01503_2-300x225.jpg 300w, /static/img/blog/2020/03/DSC01503_2-1024x768.jpg 1024w, /static/img/blog/2020/03/DSC01503_2-768x576.jpg 768w, /static/img/blog/2020/03/DSC01503_2-1536x1152.jpg 1536w, /static/img/blog/2020/03/DSC01503_2-2048x1536.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/03/DSC01503_2-scaled.jpg)
+
+### 2020
+
+It has only been a few months into 2020. I have already made a few
+improvements to my PFSense router.
+
+I have enabled OpenVPN setups for:
+
+-   VPN route into the home networking (allows me to access resources
+    when not at home)
+-   Web Server connects into VPN to save backups onto the home servers
+-   Site-to-Site VPN with PFSense and Raspberry Pi Zero (stored at
+    parent house to [measure internet speeds using the Speedtest
+    CLI](https://ryanfitton.co.uk/blog/using-speedtest-cli-to-record-speed-tests-to-csv-via-cron/))
+
+I've also added a few more containers to my Home Server:
+
+-   LibreNMS
+-   [Home
+    Assistant](https://ryanfitton.co.uk/blog/how-to-install-home-assistant-within-an-lxc-container/)
+
+### In the future
+
+Overall these past 10 years have been great. I've learnt a lot,
+experienced what the open source community has to offer (I travelled to
+events such as [OggCamp](https://oggcamp.org/) and
+[WordCamp](https://2018.manchester.wordcamp.org/)).
+
+What will happen in the future, I'm not sure but I know the free and
+open source movement will still be going strong.
+
+[![](/static/img/blog/2020/03/IMG_20200331_115716-150x150.jpg){loading="lazy"
+width="150"
+height="150"}](/static/img/blog/2020/03/IMG_20200331_115716-scaled.jpg)
+[![](/static/img/blog/2020/03/IMG_20191019_112711-150x150.jpg){loading="lazy"
+width="150"
+height="150"}](/static/img/blog/2020/03/IMG_20191019_112711-scaled.jpg)
+[![](/static/img/blog/2020/03/IMG_20181103_133349_304-150x150.jpg){loading="lazy"
+width="150"
+height="150"}](/static/img/blog/2020/03/IMG_20181103_133349_304.jpg)

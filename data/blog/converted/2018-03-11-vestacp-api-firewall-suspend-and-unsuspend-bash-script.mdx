@@ -1,0 +1,127 @@
+---
+layout: PostLayout
+title: "VestaCP API firewall suspend and unsuspend bash script"
+authors: ['Ryan Fitton']
+date: '2018-03-11'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'VestaCP offers an API which allows the firewall rules to be
+changed, but I could only find examples which use PHP and cURL and I
+required a script which would work as a Bash script. I&#8217;ve created
+a script below which you&#8217;re free to use. Ensure your host URL,
+admin username and password are correct ...'
+
+VestaCP offers an API which allows the firewall rules to be changed, but
+I could only find examples which use PHP and cURL and I required a
+script which would work as a Bash script. I've created a script below
+which you're free to use.
+
+1.  Ensure your host URL, admin username and password are correct on
+    line 21 to 23.
+2.  Replace the content within the 'VESTACP_CMD' variable with your
+    firewall API command, either
+    `v-unsuspend-firewall-rule`{.language-bash} or
+    `v-suspend-firewall-rule`{.language-bash}
+3.  You will need to find the ID for the firewall rule you wish to
+    amend. The easiest way I have found these is by using either Chrome
+    or FireFox's Dev tools, look for `v_unit_id="XX"`{.language-bash} on
+    the DIV wrapping your rule. Once you have found the ID, replace the
+    content within the 'VESTACP_FIREWALL_RULE' variable with your ID.
+    Some screenshots:\
+    [![](/static/img/blog/2018/01/vesta-cp-firewall-1.png){loading="lazy"
+    width="757" height="203"
+    srcset="/static/img/blog/2018/01/vesta-cp-firewall-1.png 757w, /static/img/blog/2018/01/vesta-cp-firewall-1-300x80.png 300w"
+    sizes="(max-width: 757px) 100vw, 757px"}\
+    ](/static/img/blog/2018/01/vesta-cp-firewall-1.png)\
+    [![](/static/img/blog/2018/01/vesta-cp-firewall-2-1024x140.png){loading="lazy"
+    width="1024" height="140"
+    srcset="/static/img/blog/2018/01/vesta-cp-firewall-2-1024x140.png 1024w, /static/img/blog/2018/01/vesta-cp-firewall-2-300x41.png 300w, /static/img/blog/2018/01/vesta-cp-firewall-2-768x105.png 768w, /static/img/blog/2018/01/vesta-cp-firewall-2.png 1284w"
+    sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2018/01/vesta-cp-firewall-2.png)
+4.  Save the file as `firewall-change.sh`{.language-bash}
+5.  Make the file executable by running
+    `chmod +x firewall-change.sh`{.language-bash}
+6.  Now you can run the the file with
+    `./firewall-change.sh`{.language-bash}
+
+ 
+
+**The full script:**
+
+``` language-bash
+#!/bin/bash
+
+## VestaCP firewall change script
+## Author: Ryan Fitton (ryanfitton.co.uk)
+## Version 1.0.0
+##
+## Tested on VestaCP up to version '0.9.8-18'
+##
+## Usage: run 'sudo sh ./firewall-change.sh' to change the firewall rules
+## Ensure the script is set to be executable by running 'chmod +x firewall-change.sh'
+##
+## API return messages
+##   Success: `OK`
+##   Already suspended: `Error: rules X is suspended`
+##   Already unsuspended: `Error: rules X is not suspended`
+##
+## Required software libaries:
+##   'curl'             Used for check if the file exists on the FTP server via the 'curl' command
+
+#VestaCP connection details
+VESTACP_SERVER="https://youripaddresshere:8083/api/"    #Host URL
+VESTACP_USER="admin"                                    #Admin username
+VESTACP_PASSWORD="youradminpasswordhere"                #Admin password
+
+#VestaCP command
+#Possible commands:
+#   v-unsuspend-firewall-rule
+#   v-suspend-firewall-rule
+VESTACP_CMD="v-suspend-firewall-rule"
+
+#VestaCP firewall rule rule setup within the VestaCP firewall table
+VESTACP_FIREWALL_RULE="1"                           #Replace 1 with the Firewall rule ID
+
+
+# -------------------- Nothing to change after this point --------------------
+
+
+#Should not need to change these
+VESTACP_OUTPUT_FORMAT="json"
+VESTACP_API_SUCCESS_OUTPUT="OK"                     #Text which is checked for a successul outcome
+
+
+# Clear terminal window
+clear
+
+# Welcome/Start message
+echo "****************************************"
+echo "VestaCP firewall change script"
+echo "Author: Ryan Fitton (ryanfitton.co.uk)"
+echo "Version 1.0.0"
+echo "****************************************"
+printf "\n"
+
+#Un-suspending the Firewall rule
+echo "Changing the Firewall rule."
+echo "..."
+
+
+#Run Curl command
+if curl -s --insecure -d 'user='$VESTACP_USER --data-urlencode 'password='$VESTACP_PASSWORD -d 'cmd='$VESTACP_CMD -d 'arg1='$VESTACP_FIREWALL_RULE -d 'arg2='$VESTACP_OUTPUT_FORMAT -X POST $VESTACP_SERVER | grep "$VESTACP_API_SUCCESS_OUTPUT"
+
+#If the output matches, this is a success
+then
+    echo "Success: rule has been changed."
+    
+    echo "Process finished successfully."
+    exit 0 # Successful exit
+
+
+#Else, failure as the output does not match
+else
+    echo "Failure: cannot change rule."
+    
+    echo "Process finished with errors."
+    exit 1 # Exit with general error
+fi
+```

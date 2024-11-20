@@ -1,0 +1,132 @@
+---
+layout: PostLayout
+title: "Replacing noisy stock fans on a HP 1920-24G-PoE+ Switch (JG925A)"
+authors: ['Ryan Fitton']
+date: '2020-11-15'
+tags: ['Uncategorized']
+draft: false
+summary: 'I
+have recently been researching VLANs for my home network. These will be
+used to split up my network devices into their own logical network, such
+as IP Cams, IoT devices and Guest WiFi. My current PoE switch was
+unmanaged, I had to replace this with a managed version. I already had a
+HP ProCurve ...'
+---
+
+I have recently been researching VLANs for my home network. These will
+be used to split up my network devices into their own logical network,
+such as IP Cams, IoT devices and Guest WiFi.
+
+My current PoE switch was unmanaged, I had to replace this with a
+managed version. I already had a HP ProCurve non-PoE switch, I liked it;
+so I went hunting for a HP branded PoE switch on eBay.
+
+My main requirements were that it was PoE+ capable, Managed, Rack
+Mountable and had a web-ui (I found this to more intuitive than
+console).
+
+I found a used HP 1920-24G-PoE+ (180W) Switch, model ID: JG925A for £90.
+Not bad.
+
+[![](/static/img/blog/2020/11/hp_1920_2-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/11/hp_1920_2-300x225.jpg 300w, /static/img/blog/2020/11/hp_1920_2-1024x767.jpg 1024w, /static/img/blog/2020/11/hp_1920_2-768x576.jpg 768w, /static/img/blog/2020/11/hp_1920_2-1536x1151.jpg 1536w, /static/img/blog/2020/11/hp_1920_2-2048x1535.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/11/hp_1920_2-scaled.jpg)Once
+the switch arrived, I plugged it into the mains and turned it on. Wow,
+the fans were loud. The switch comes with two Delta EFB0142HHD 12v fans,
+these run at 8000 RPM.
+
+This switch was going to be housed in a rack; in a cupboard accessed
+from my lounge room, so I had to replace the fans with some quieter
+versions as the fan noise could be heard even when the cupboard door was
+closed.
+
+[![](/static/img/blog/2020/11/hp_1920_3-225x300.jpg){loading="lazy"
+width="225" height="300"
+srcset="/static/img/blog/2020/11/hp_1920_3-225x300.jpg 225w, /static/img/blog/2020/11/hp_1920_3-768x1024.jpg 768w, /static/img/blog/2020/11/hp_1920_3-1152x1536.jpg 1152w, /static/img/blog/2020/11/hp_1920_3-1536x2048.jpg 1536w, /static/img/blog/2020/11/hp_1920_3-scaled.jpg 1920w"
+sizes="(max-width: 225px) 100vw, 225px"}](/static/img/blog/2020/11/hp_1920_3-scaled.jpg)I
+ordered two [Noctua NF-A4x20
+PWM](https://www.amazon.co.uk/Noctua-NF-A4x20-PWM-Premium-40x20mm/dp/B07125KWG1/ref=as_li_ss_tl?ie=UTF8&psc=1&ref=ppx_pop_mob_b_asin_title&linkCode=ll1&tag=ryanfittoncou-21&linkId=bda93790e47185466fc7099264289da9&language=en_GB){target="_blank"
+rel="noopener noreferrer"} fans from Amazon, these were the quietest
+fans I could find, and I had used Noctuas in other devices with great
+success.
+
+It didn't matter these new fans were PWM variants, as I wouldn't be
+using the PWM wire.
+
+**Note:** before opening the case of the switch, be sure you're
+comfortable with handling electronics. There are PSU capacitors inside
+which could give a deadly shock if touched.
+
+I installed these fans by snipping the cable of the original fans and of
+the new Noctuas. Then used some ['clip-down' style
+connectors](https://www.ebay.co.uk/itm/Wago-type-in-line-Electrical-Connectors-Wire-Block-Clamp-Terminal-Cable-Reusable/264655941031?pageci=191f7a3d-467e-4332-8e99-3dbccf63c998){target="_blank"
+rel="noopener noreferrer"} from eBay. These connectors are great, they
+don't crimp the wires and allow the fans to be removed in more less
+destructive way.
+
+The fans were wired like this:
+
+-   Original fan cable Red wire \> Noctua Yellow wire
+-   Original fan cable White and Black wires \> Noctua Black wire
+-   Blue and Yellow Noctua wires are left unconnected.
+
+[![](/static/img/blog/2020/11/hp_1920_5-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/11/hp_1920_5-300x225.jpg 300w, /static/img/blog/2020/11/hp_1920_5-1024x768.jpg 1024w, /static/img/blog/2020/11/hp_1920_5-768x576.jpg 768w, /static/img/blog/2020/11/hp_1920_5-1536x1152.jpg 1536w, /static/img/blog/2020/11/hp_1920_5-2048x1536.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/11/hp_1920_5-scaled.jpg)
+[![](/static/img/blog/2020/11/hp_1920_6-300x225.jpg){loading="lazy"
+width="300" height="225"
+srcset="/static/img/blog/2020/11/hp_1920_6-300x225.jpg 300w, /static/img/blog/2020/11/hp_1920_6-1024x768.jpg 1024w, /static/img/blog/2020/11/hp_1920_6-768x576.jpg 768w, /static/img/blog/2020/11/hp_1920_6-1536x1152.jpg 1536w, /static/img/blog/2020/11/hp_1920_6-2048x1536.jpg 2048w"
+sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/11/hp_1920_6-scaled.jpg)
+
+The White and Black wires were combined to prevent the switch showing
+errors regarding failed fans. I'm guessing because these Noctuas have a
+lower RPM speed than the original stock fans, the switch's
+self-diagnostics thinks the fans had failed.
+
+I understand the Noctua fans are not as powerful as the stock varient,
+but this should not cause as issue for me as I am only using about 4 PoE
+devices. If you're using more then you may want to monitor the
+temperatures.
+
+Overall this was a good modification; the switch is now much quieter.
+
+ 
+
+::: {#gallery-1 .gallery .galleryid-1385 .gallery-columns-3 .gallery-size-thumbnail}
+[![](/static/img/blog/2020/11/hp_1920_1-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/hp_1920_1/)
+
+[![](/static/img/blog/2020/11/hp_1920_2-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/replacing-noisy-stock-fans-on-a-hp-1920-24g-poe-switch-jg925a/hp_1920_2/)
+
+[![](/static/img/blog/2020/11/hp_1920_5-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/replacing-noisy-stock-fans-on-a-hp-1920-24g-poe-switch-jg925a/hp_1920_5/)
+
+
+[![](/static/img/blog/2020/11/hp_1920_6-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/replacing-noisy-stock-fans-on-a-hp-1920-24g-poe-switch-jg925a/hp_1920_6/)
+
+[![](/static/img/blog/2020/11/hp_1920_4-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/replacing-noisy-stock-fans-on-a-hp-1920-24g-poe-switch-jg925a/hp_1920_4/)
+
+[![](/static/img/blog/2020/11/hp_1920_3-150x150.jpg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/replacing-noisy-stock-fans-on-a-hp-1920-24g-poe-switch-jg925a/hp_1920_3/)
+
+
+[![](/static/img/blog/2020/11/hp_1920_7-150x150.jpeg){.attachment-thumbnail
+.size-thumbnail width="150" height="150"
+loading="lazy"}](https://ryanfitton.co.uk/blog/hp_1920_7/)
+
+:::
+
+ 
+
+ 

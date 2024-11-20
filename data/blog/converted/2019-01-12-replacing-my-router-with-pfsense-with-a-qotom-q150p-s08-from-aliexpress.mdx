@@ -1,0 +1,101 @@
+---
+layout: PostLayout
+title: "Replacing my router with pfSense with a Qotom Q150P-S08 from AliExpress"
+authors: ['Ryan Fitton']
+date: '2019-01-12'
+tags: ['Uncategorized']
+draft: false
+summary: 'Instead of using the TP-Link TL-R470T+ router at home which I&#8217;ve
+showed in a previous post \[link\], I have decided it&#8217;s time to
+take the plunge and start using proper router software, pfSense. pfSense
+is open-source router/firewall software. It comes with many advanced
+features and is often used in the enterprise, it&#8217;s probably
+overkill in ...'
+---
+
+Instead of using the TP-Link TL-R470T+ router at home which I've showed
+in a previous post[[link](https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/)\],
+I have decided it's time to take the plunge and start using proper
+router software, pfSense.
+
+pfSense is open-source router/firewall software. It comes with many
+advanced features and is often used in the enterprise, it's probably
+overkill in the home but I enjoy having enterprise ready features at my
+fingertips!
+
+I was looking to host pfSense in a virtual machine but I felt un-easy
+running this on the same machine as I use for the rest of my network
+(Printer serving, IP camera recording, etc.). Also if the host went
+down, the Internet would too. A dedicated solution with low energy usage
+but with enough 'oomph', support for AES-NI and at least two network
+interfaces.
+
+My first thought was to check the device offerings from
+[Netgate](https://www.netgate.com/) (The creators of
+[pfSense](https://www.pfsense.org/)), however I felt these were too
+expensive for my use case. Then I came across the [Qotom Q150P-S08 on
+AliExpress](https://www.aliexpress.com/item/Qotom-Mini-PC-with-AES-NI-Quad-Core-Celeron-J3060-J3160-Processor-Fanless-Thin-Client-Little/32863982193.html).
+Screenshot below, click for a larger version or
+[here](https://www.aliexpress.com/item/Qotom-Mini-PC-with-AES-NI-Quad-Core-Celeron-J3060-J3160-Processor-Fanless-Thin-Client-Little/32863982193.html)
+for the AliExpress listing.
+
+[![](/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg){loading="lazy"
+width="925" height="683"
+srcset="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg 925w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-300x222.jpg 300w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-768x567.jpg 768w"
+sizes="(max-width: 925px) 100vw, 925px"}](/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg)
+
+The total came to around £120.00 including UPS shipping (tracked and
+insured), delivery took a couple of weeks but the device came intact
+ready for setup.
+
+I added some labels above the ports and a label for the device's IP
+address to make this easier to troubleshoot if required in the future.
+
+[![](/static/img/blog/2018/08/DSC01504-1024x768.jpg){loading="lazy"
+width="1024" height="768"
+srcset="/static/img/blog/2018/08/DSC01504-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01504-300x225.jpg 300w, /static/img/blog/2018/08/DSC01504-768x576.jpg 768w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2018/08/DSC01504.jpg)
+
+The varient I ordered was the 'barebones' unit and I supplied my own RAM
+and mSATA SSD from Amazon:
+
+-   2GB RAM, link:
+    [Amazon](https://www.amazon.co.uk/gp/product/B005LDLP8W/ref=as_li_tl?ie=UTF8&tag=ryanfittoncou-21&camp=1634&creative=6738&linkCode=as2&creativeASIN=B005LDLP8W&linkId=8cbd43a15dc94f657d9d13d000910acb)
+-   mSATA 16GB, link:
+    [Amazon](https://www.amazon.co.uk/gp/product/B01MR18KZC/ref=as_li_tl?ie=UTF8&tag=ryanfittoncou-21&camp=1634&creative=6738&linkCode=as2&creativeASIN=B01MR18KZC&linkId=99bd3bf4d03cc04a0c2d324a55932be9)
+
+The components were extremely easy to fit, just remove the screws from
+the aluminium case and connect the components to the motherboard. You
+have the option of mounting a 2.5 inch Sata hard drive, there is
+mounting holes on the underside of the lid, however I went for a 16GB
+mSATA SSD as pfSense was only going to be installed.
+
+[![](/static/img/blog/2018/08/DSC01505-1024x768.jpg){loading="lazy"
+width="1024" height="768"
+srcset="/static/img/blog/2018/08/DSC01505-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01505-300x225.jpg 300w, /static/img/blog/2018/08/DSC01505-768x576.jpg 768w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2018/08/DSC01505.jpg)
+
+[![](/static/img/blog/2018/08/DSC01507-1024x768.jpg){loading="lazy"
+width="1024" height="768"
+srcset="/static/img/blog/2018/08/DSC01507-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01507-300x225.jpg 300w, /static/img/blog/2018/08/DSC01507-768x576.jpg 768w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2018/08/DSC01507.jpg)
+
+After this was done, it was time to burn the pfSense ISO to a USB stick.
+I used Etcher running on Ubuntu 18.04 to do this.
+
+The machine booted from the USB device and ran through the install --
+although I won't get into how to install pfSense in this article, but it
+is very easy. The official website has some great installation
+instructions:
+<https://www.netgate.com/docs/pfsense/install/installing-pfsense.html>
+
+Once the machine was setup, I set my WAN and LAN network connections. I
+then tested my 100MB Virgin Media connection and was happy to find the
+router maxed out my download speed with ease running over it's two
+gigabit ports, and with the AES-NI support means it is 'future-proofed'
+for version 2.5 of pfSense.
+
+I have currently been running this 24/7 for a couple of months, the
+temperature reported by pfSense is always at 26.9 degrees and I have not
+had any lock-ups or other issues over this period. If you're looking for
+a small mini-pc, the Qotom is definetlydefinitely a good choice.

@@ -1,0 +1,231 @@
+---
+layout: PostLayout
+title: "Home Network Setup: How I installed CAT6 Ethernet"
+authors: ['Ryan Fitton']
+date: '2017-01-01'
+tags: ['Uncategorized']
+draft: false
+summary: 'Update: A related post
+regarding my network rack is available here:
+https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2019/
+When I moved into my new house, I knew that I wanted hard-wired Ethernet
+networking in every home. Ethernet cables provide much faster speeds
+than Wi-Fi and are much more secure. I wanted the cables to future-proof
+my house, so I decided to go ...'
+---
+
+**Update:** A related post regarding my network rack is available here:
+<https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2019/>
+
+When I moved into my new house, I knew that I wanted hard-wired Ethernet
+networking in every home. Ethernet cables provide much faster speeds
+than Wi-Fi and are much more secure.
+
+I wanted the cables to future-proof my house, so I decided to go with
+Cat6 cables throughout. All of the
+[cabling](https://www.blackbox.co.uk/gb-gb/fi/1235/13221/GigaTrue-CAT6-550MHz-UTP-LSZH-Bulk-Cable/),
+wall
+[outlets](https://www.blackbox.co.uk/gb-gb/fi/1250/13210/LJ6C-Adapters,Face-Plates-and-Back-Boxes/)
+and [keystone
+jacks](https://www.blackbox.co.uk/gb-gb/fi/1250/12024/GigaTrue2-CAT6-Jacks/)
+were purchased from [Blackbox](https://www.blackbox.co.uk/gb-gb/) -- I
+decided if I was to do this work, then I should buy quality components,
+I found Blackbox to have some of the best quality components I could
+find.
+
+Here are some images of the cable:
+
+[![](/static/img/blog/2016/12/home-network-cable-1-225x300.jpg){loading="lazy"
+width="179" height="239"
+srcset="/static/img/blog/2016/12/home-network-cable-1-225x300.jpg 225w, /static/img/blog/2016/12/home-network-cable-1-768x1024.jpg 768w"
+sizes="(max-width: 179px) 100vw, 179px"}](/static/img/blog/2016/12/home-network-cable-1.jpg)
+[![](/static/img/blog/2016/12/home-network-cable-2-225x300.jpg){loading="lazy"
+width="179" height="239"
+srcset="/static/img/blog/2016/12/home-network-cable-2-225x300.jpg 225w, /static/img/blog/2016/12/home-network-cable-2-768x1024.jpg 768w"
+sizes="(max-width: 179px) 100vw, 179px"}](/static/img/blog/2016/12/home-network-cable-2.jpg)
+
+In total there are 21 runs of cable with 6 POE ports:
+
+-   Living room: 8 ports (2 ports is POE, for IP phone and exterior IP
+    camera)
+-   Under stairs cupboard: 2 ports
+-   Kitchen: 2 ports (1 port is POE)
+-   Office/Study: 4 ports (1 port is POE, used for IP phone)
+-   Master bedroom: 2 ports
+-   Attic: 2 ports (Both are POE. Connections for WiFi access point and
+    cable to run to the garage)
+-   Garage: 1 port (This port is POE and is connected to one of the
+    ports in the attic. Within the garage, this is fed into a small
+    patch panel and is connected to a switch and IP camera)
+
+### The installation
+
+It was relatively easy to install the cabling, although I had to make
+sure everything was planned, which meant;
+
+-   Knowing the placements of each wall outlet
+-   Where to run each cable
+-   If the walls were hollow to enable the cables to be routed behind
+
+I had to lift some floorboards on the first floor and in the attic as
+this was the route I planned to run the cable. Because the house is
+fairly new (10 years old), the floorboards used long pieces of chipboard
+rather than the standard panel boards we usually use in the UK.
+
+After running the cables in place, I routed them into the understairs
+cupboard. I found using a '[Cable
+Rod](https://www.amazon.co.uk/ACCESS-electricians-Blue-Spot-Tools/dp/B01L4QBEGC/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=d343a2454773a0050593df580fbf4861)'
+was the easiest way to pull wires through the walls.
+
+One important thing to do is to always number each cable run at both
+ends, this will make testing much easier.
+
+Some images of the installed wall outlets (Garage: black external CAT6
+Ethernet cable into small patch panel, attic: POE Ethernet outlets,
+Living room: 6 Ethernet outlets, Satellite and Coaxial outlets. The
+Virgin Media outlet connects to a Satellite cable which goes into the
+understairs cupboard):
+
+[![](/static/img/blog/2016/12/home-network-garage-patch-panel-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-garage-patch-panel-300x225.jpg 300w, /static/img/blog/2016/12/home-network-garage-patch-panel-768x576.jpg 768w, /static/img/blog/2016/12/home-network-garage-patch-panel-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-garage-patch-panel.jpg)
+[![](/static/img/blog/2016/12/home-network-attic-ethernet-225x300.jpg){loading="lazy"
+width="146" height="195"
+srcset="/static/img/blog/2016/12/home-network-attic-ethernet-225x300.jpg 225w, /static/img/blog/2016/12/home-network-attic-ethernet-768x1024.jpg 768w"
+sizes="(max-width: 146px) 100vw, 146px"}](/static/img/blog/2016/12/home-network-attic-ethernet.jpg)
+[![](/static/img/blog/2016/12/home-network-garage-patch-living-room-outlets-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-garage-patch-living-room-outlets-300x225.jpg 300w, /static/img/blog/2016/12/home-network-garage-patch-living-room-outlets-768x576.jpg 768w, /static/img/blog/2016/12/home-network-garage-patch-living-room-outlets-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-garage-patch-living-room-outlets.jpg)
+
+### Testing the installation
+
+Each of the wall outlets had to be tested. Luckily everything worked
+fine and only a couple wires on the patch panel had to be re-done. I
+decided to use the [T-568B wiring
+scheme](https://en.wikipedia.org/wiki/TIA/EIA-568#T568A_and_T568B_termination)
+as this is the industry standard.
+
+I recommend using a [testing
+tool](https://www.amazon.co.uk/dp/B01M0KVLA0/ref=as_li_ss_tl?psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=e4e35c4a360868ac8ad7468be7bce9c5)
+and good quality [KRONE punch-down
+tool](https://www.amazon.co.uk/Draper-40417-Punch-Down-Tool/dp/B000Q5KLN0/ref=as_li_ss_tl?ie=UTF8&qid=1481802785&sr=8-1&keywords=krone&linkCode=ll1&tag=ryanfittoncou-21&linkId=c651e4cf8bba2f4a83b7729e5c3615c4)
+to ensure you don't have any issues.
+
+### What is in the rack?
+
+I purchased a new short depth 6U rack cabinet. It wasn't already
+pre-built so I spent some time building it and marked out where I wanted
+my equipment.
+
+From top to bottom there is:
+
+-   [Surge protected
+    PDU](https://www.amazon.co.uk/Dynamode-Horizontal-Switched-Distribution-Protection/dp/B0080OISQQ/ref=as_li_ss_tl?ie=UTF8&qid=1482611498&sr=8-1&keywords=pdu&linkCode=ll1&tag=ryanfittoncou-21&linkId=75a88d78459127366b93404c74adbd44)
+-   Bristle plate, this is where the cables come in from the understairs
+    patch panel
+-   HP ProCurve 24 Port Gigabit Switch ([1800-24G
+    J9028B](https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm))
+-   TP-Link 8 port Gigabit POE switch
+    ([TL-SG1008PE](https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=467bf8d110d11abde970e26e0ca67e34))
+-   Other non-rack devices:
+    -   TP-Link wired Gigabit VPN router
+        ([TL-R600VPN](https://www.amazon.co.uk/TP-LINK-TL-R600VPN-SafeStream-Gigabit-Broadband/dp/B006TTBYEM//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=e7b3b7fad62d832809580d56d9094a82))
+    -   Virgin Media Super Hub 3.0
+
+As you can see from the photos below, the patch panel which terminates
+all of the wall outlet cables is not included in the rack -- Instead I
+mounted the patch panel using a [Startech 1U wall mount
+bracket](https://www.amazon.co.uk/StarTech-com-19-Inch-Vertical-Equipment-RK119WALLV/dp/B001YHUX2I)
+installed into the access panel I fitted. All of the wires terminate
+here and then fed into the rack using additional [CAT6 patch
+cables](https://www.amazon.co.uk/gp/product/B00VC03GNU/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=8c4ae9d76029b780df74c1da22429243).
+
+Installing the cabling, patch panel and additional patch cables:
+
+[![](/static/img/blog/2016/12/home-network-cabling-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-cabling-300x225.jpg 300w, /static/img/blog/2016/12/home-network-cabling-768x576.jpg 768w, /static/img/blog/2016/12/home-network-cabling-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-cabling.jpg)
+[![](/static/img/blog/2016/12/home-network-patch-panel-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-patch-panel-300x225.jpg 300w, /static/img/blog/2016/12/home-network-patch-panel-768x576.jpg 768w, /static/img/blog/2016/12/home-network-patch-panel-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-patch-panel.jpg)
+[![](/static/img/blog/2016/12/home-network-cat6-patch-cables-225x300.jpg){loading="lazy"
+width="146" height="195"
+srcset="/static/img/blog/2016/12/home-network-cat6-patch-cables-225x300.jpg 225w, /static/img/blog/2016/12/home-network-cat6-patch-cables-768x1024.jpg 768w"
+sizes="(max-width: 146px) 100vw, 146px"}](/static/img/blog/2016/12/home-network-cat6-patch-cables.jpg)
+
+Building the server and finishing the installation:
+
+[![](/static/img/blog/2016/12/home-network-server-build-1-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-server-build-1-300x225.jpg 300w, /static/img/blog/2016/12/home-network-server-build-1-768x576.jpg 768w, /static/img/blog/2016/12/home-network-server-build-1-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-server-build-1.jpg)
+[![](/static/img/blog/2016/12/home-network-server-build-2-225x300.jpg){loading="lazy"
+width="146" height="195"
+srcset="/static/img/blog/2016/12/home-network-server-build-2-225x300.jpg 225w, /static/img/blog/2016/12/home-network-server-build-2-768x1024.jpg 768w"
+sizes="(max-width: 146px) 100vw, 146px"}](/static/img/blog/2016/12/home-network-server-build-2.jpg)
+[![](/static/img/blog/2016/12/home-network-finished-installation-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-finished-installation-300x225.jpg 300w, /static/img/blog/2016/12/home-network-finished-installation-768x576.jpg 768w, /static/img/blog/2016/12/home-network-finished-installation-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-finished-installation.jpg)
+
+Some more detailed images of the server rack, and POE powered switch in
+garage ([NETGEAR
+GS105PE-10000S](https://www.amazon.co.uk/gp/product/B00J8NAWZ8/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=64381d7bf47f1590ef8f821e5ba93e65)):
+
+[![](/static/img/blog/2016/01/home-network-blog-rack-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/01/home-network-blog-rack-300x225.jpg 300w, /static/img/blog/2016/01/home-network-blog-rack-768x576.jpg 768w, /static/img/blog/2016/01/home-network-blog-rack-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/01/home-network-blog-rack.jpg)
+[![](/static/img/blog/2016/12/home-network-garage-poe-switch-300x225.jpg){loading="lazy"
+width="260" height="195"
+srcset="/static/img/blog/2016/12/home-network-garage-poe-switch-300x225.jpg 300w, /static/img/blog/2016/12/home-network-garage-poe-switch-768x576.jpg 768w, /static/img/blog/2016/12/home-network-garage-poe-switch-1024x768.jpg 1024w"
+sizes="(max-width: 260px) 100vw, 260px"}](/static/img/blog/2016/12/home-network-garage-poe-switch.jpg)
+
+### Final notes
+
+The results of this work has been shown in an increase of transfer
+speeds. I can now also take and receive calls in two rooms and the
+garage and transfer data quickly between streaming boxes, computers and
+the server.
+
+The work has been tough to integrate the cables into a newly built home
+like mine, but if you have the opportunity to run cables in new build
+home then you should do so!
+
+### Follow-up posts
+
+Since this post was published, I have made a couple of updates:
+
+-   [Home Network Setup: What's in my rack
+    2019](https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2019/)
+-   [Home Network Setup: What's in my rack
+    2021](https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2021/)
+
+### Links to purchase the products and tools I have used
+
+If you're interested in purchasing the same products and tools I have
+used, help me out by purchasing one from Amazon UK with my affiliate
+codes:
+
+ 
+
+-   [CABLE ACCESS KIT 3.3M electricians wiring rods hook etc by Blue
+    Spot
+    Tools](https://www.amazon.co.uk/ACCESS-electricians-Blue-Spot-Tools/dp/B01L4QBEGC/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=2ca5b35badadb510a5653de93fe2ca07&language=en_GB)
+-   [Draper 40417 Punch-Down
+    Tool](https://www.amazon.co.uk/Draper-40417-Punch-Down-Tool/dp/B000Q5KLN0/ref=as_li_ss_tl?ie=UTF8&qid=1481802785&sr=8-1&keywords=krone&linkCode=ll1&tag=ryanfittoncou-21&linkId=b9c814707c50695f54545b6f750c71d8&language=en_GB)
+-   [Dynamode 6-Way Horizontal 13A Switched 19-Inch Power Distribution
+    Unit with Surge
+    Protection](https://www.amazon.co.uk/Dynamode-Horizontal-Switched-Distribution-Protection/dp/B0080OISQQ/ref=as_li_ss_tl?ie=UTF8&qid=1482611498&sr=8-1&keywords=pdu&linkCode=ll1&tag=ryanfittoncou-21&linkId=27ed2d0653429e883392bcb90edd7526&language=en_GB)
+-   [TP-Link TL-SG1008PE 8-Port Gigabit PoE+ Ethernet
+    Switch](https://www.amazon.co.uk/dp/B00CGY449G/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=0ec2a5465cef212b9b555f0f36155f05&language=en_GB)
+-   [TP-LINK TL-R600VPN SafeStream Business Gigabit Broadband VPN Cable
+    Router](https://www.amazon.co.uk/TP-LINK-TL-R600VPN-SafeStream-Gigabit-Broadband/dp/B006TTBYEM//ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=72765709f554c260f0e98cbc2fbe32f9&language=en_GB)
+-   [StarTech.com (RK119WALLV) 1U Wall Mount Patch Panel
+    Bracket](https://www.amazon.co.uk/StarTech-com-19-Inch-Vertical-Equipment-RK119WALLV/dp/B001YHUX2I/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=7ab19e1aa338a269d99eaf34ffa68d7d&language=en_GB)
+-   [10m -- blue -- 10 pieces -- CAT6 CAT 6 Ethernet -- Lan Network
+    Cable](https://www.amazon.co.uk/gp/product/B00VC03GNU/ref=as_li_ss_tl?ie=UTF8&psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=949cd8ac0a0ac000beec2952dd950b46&language=en_GB)

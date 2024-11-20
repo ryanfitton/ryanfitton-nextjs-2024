@@ -1,0 +1,55 @@
+---
+layout: PostLayout
+title: "Creating an always on Status Board"
+authors: ['Ryan Fitton']
+date: '2014-04-12'
+tags: ['Uncategorized']
+draft: false
+summary: 'I have wanted my own
+always-on Status Board, ever since I installed Panic&#8217;s Status
+Board app on my iPad I decided it would be better to have a dedicated
+device to display the information. Buying a new iPad just as a Status
+Board would be overkill, however I did have a spare cheap 7&#8243;
+Android ...'
+---
+
+I have wanted my own always-on Status Board, ever since I installed
+Panic's  [Status Board app](https://panic.com/statusboard/) on my
+iPad I decided it would be better to have a dedicated device to display
+the information.
+
+Buying a new iPad just as a Status Board would be overkill, however I
+did have a spare cheap 7″ Android tablet which I bought a couple of
+years ago.
+
+I set out to find a frame for the tablet. I gutted the tablet out from
+it's original casing and removed the touch screen, with only the
+internal circuitry and screen left I placed the components into an
+unused digital photo frame case, though the plastic frame had to sanded
+down with a 
+[Dremel](http://www.amazon.co.uk/gp/product/B0078LENZC/ref=as_li_ss_tl?ie=UTF8&camp=1634&creative=19450&creativeASIN=B0078LENZC&linkCode=as2&tag=ryanfittoncou-21)
+  so the screen would fit.
+
+Once the components were installed into the photo frame casing I
+attached a  [USB
+OTG](http://www.amazon.co.uk/gp/product/B0064GZAIQ/ref=as_li_ss_tl?ie=UTF8&camp=1634&creative=19450&creativeASIN=B0064GZAIQ&linkCode=as2&tag=ryanfittoncou-21)
+  cable to the Micro USB port so I could use keyboards and mice.
+These would only be needed when setting up the device because the touch
+screen has been removed.
+
+The Status Board itself is running a PHP web app built using Twitter
+Bootstrap and LESS. I wrote custom PHP functions to retrieve information
+such as time, RSS feeds and weather data. The software runs an AJAX call
+every 9 seconds to refresh the screen with up-to-date data.
+
+Because I was using a cheap Android Tablet, it meant the screen was a
+low resolution. It doesn't look great but still functions well.
+
+I'm using an Android app called  [Power
+Toggles](https://play.google.com/store/apps/details?id=com.painless.pc)
+which allows me to lock the screen rotation and set the display to
+always-on.
+
+![Status Board Android
+Tablet](/static/img/blog/2014/04/IMG_20140412_150648-1024x768.jpg){loading="lazy"
+width="1024" height="768"}

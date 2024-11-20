@@ -1,0 +1,169 @@
+---
+layout: PostLayout
+title: "WordPress Site Settings Plugin"
+authors: ['Ryan Fitton']
+date: '2015-08-19'
+tags: ['Development']
+draft: false
+summary: 'Learn how to create and use
+the WordPress site settings plugin I have created. This plugin will
+allow you or your client to easily edit a WordPress website\'s details
+such as the telephone number, META Keywords, Footer text, etc.'
+---
+
+Download from Github
+[here](https://github.com/ryanfitton/wp-settings-panel-plugin).
+
+This plugin has been created to make it easy to integrate a 'Website
+Settings' page into WordPress, this settings page can include different
+options such as a Telephone Number, Contact Email Address, META Keywords
+and Footer Information.
+
+Let's start, first download the code from this [GIT Repo hosted on
+Github](https://github.com/ryanfitton/wp-settings-panel-plugin). Place
+your downloaded contents into a new folder named
+'wp-settings-panel-plugin'. This folder should be within your WordPress
+plugin folder: '/wp-content/plugins/' folder.
+
+This plugin uses only two files, one for the plugin core and the other
+for minimal styling.
+
+The 'options.php' file is the core code of the plugin.
+
+Firstly, the plugin META information is shown, along with some comments
+of how to display the final values.
+
+[![ws-plugin-1](/static/img/blog/2015/08/ws-plugin-1-1024x621.png){width="1024"
+height="621"
+srcset="/static/img/blog/2015/08/ws-plugin-1-1024x621.png 1024w, /static/img/blog/2015/08/ws-plugin-1-300x182.png 300w, /static/img/blog/2015/08/ws-plugin-1.png 1052w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-1.png)
+
+You will see code to add additional settings and links. You can use
+these additional links for a Support page, this isn't really necessary
+but may help a user if they are having issues.
+
+Remember you will need to replace the support URL with your own on line
+52: 'https://ryanfitton.co.uk/blog/wordpress-site-settings-plugin/'.
+
+[![ws-plugin-2](/static/img/blog/2015/08/ws-plugin-2-1024x613.png){loading="lazy"
+width="1024" height="613"
+srcset="/static/img/blog/2015/08/ws-plugin-2-1024x613.png 1024w, /static/img/blog/2015/08/ws-plugin-2-300x180.png 300w, /static/img/blog/2015/08/ws-plugin-2.png 1034w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-2.png)
+
+Now the 'style.css' document is included by using the
+'wp_enqueue_scripts' command.
+
+[![ws-plugin-3](/static/img/blog/2015/08/ws-plugin-3.png){loading="lazy"
+width="963" height="161"
+srcset="/static/img/blog/2015/08/ws-plugin-3.png 963w, /static/img/blog/2015/08/ws-plugin-3-300x50.png 300w"
+sizes="(max-width: 963px) 100vw, 963px"}](/static/img/blog/2015/08/ws-plugin-3.png)
+
+Next, yiu will see configuration options for the Admin sidebar. You can
+find help on the WordPress Codex area for this function
+[here](https://codex.wordpress.org/Function_Reference/add_menu_page).
+
+[![ws-plugin-4](/static/img/blog/2015/08/ws-plugin-4-1024x258.png){loading="lazy"
+width="1024" height="258"
+srcset="/static/img/blog/2015/08/ws-plugin-4-1024x258.png 1024w, /static/img/blog/2015/08/ws-plugin-4-300x76.png 300w, /static/img/blog/2015/08/ws-plugin-4.png 1328w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-4.png)
+
+Now, let's setup the settings page content. You can think of this
+section as a wrapper for the input fields. This code uses callbacks to
+retrieve the content for this page, these functions are part of the
+[WordPress Settings API](https://codex.wordpress.org/Settings_API),
+introduced in version 2.7.
+
+[![ws-plugin-5](/static/img/blog/2015/08/ws-plugin-5-1024x462.png){loading="lazy"
+width="1024" height="462"
+srcset="/static/img/blog/2015/08/ws-plugin-5-1024x462.png 1024w, /static/img/blog/2015/08/ws-plugin-5-300x135.png 300w, /static/img/blog/2015/08/ws-plugin-5.png 1225w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-5.png)
+
+Next, we configure and register the setting input field names. We also
+set the text which is shown on the page with the
+'display_header_options_content' function.
+
+[![ws-plugin-6](/static/img/blog/2015/08/ws-plugin-6-1024x373.png){loading="lazy"
+width="1024" height="373"
+srcset="/static/img/blog/2015/08/ws-plugin-6-1024x373.png 1024w, /static/img/blog/2015/08/ws-plugin-6-300x109.png 300w, /static/img/blog/2015/08/ws-plugin-6.png 1643w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-6.png)
+
+Now, setup functions to render the input fields are used. These input
+fields are linked by their name tag, this name tag will match the same
+name defined within the 'add_settings_field()' function.
+
+[![ws-plugin-7](/static/img/blog/2015/08/ws-plugin-7-1024x318.png){loading="lazy"
+width="1024" height="318"
+srcset="/static/img/blog/2015/08/ws-plugin-7-1024x318.png 1024w, /static/img/blog/2015/08/ws-plugin-7-300x93.png 300w, /static/img/blog/2015/08/ws-plugin-7.png 2011w"
+sizes="(max-width: 1024px) 100vw, 1024px"}](/static/img/blog/2015/08/ws-plugin-7.png)
+
+Lastly an 'add_action()' function is triggered before any other hook
+when a user access the admin area, this will run the 'display_options()'
+which will add and register the setting fields.
+
+[![ws-plugin-8](/static/img/blog/2015/08/ws-plugin-8.png){loading="lazy"
+width="893" height="96"
+srcset="/static/img/blog/2015/08/ws-plugin-8.png 893w, /static/img/blog/2015/08/ws-plugin-8-300x32.png 300w"
+sizes="(max-width: 893px) 100vw, 893px"}](/static/img/blog/2015/08/ws-plugin-8.png)
+
+Before we finish, the 'style.css' document requires some styling rules.
+These CSS rules are only used to style the input and text area widths
+and heights.
+
+[![ws-plugin-9](/static/img/blog/2015/08/ws-plugin-9.png){loading="lazy"
+width="371" height="367"
+srcset="/static/img/blog/2015/08/ws-plugin-9.png 371w, /static/img/blog/2015/08/ws-plugin-9-300x297.png 300w"
+sizes="(max-width: 371px) 100vw, 371px"}](/static/img/blog/2015/08/ws-plugin-9.png)
+
+Below are some screenshots of how the plugin will appear within the
+WordPress Admin dashboard:
+
+[![dashboard-plugins](/static/img/blog/2015/08/dashboard-plugins.png){loading="lazy"
+width="977" height="575"
+srcset="/static/img/blog/2015/08/dashboard-plugins.png 977w, /static/img/blog/2015/08/dashboard-plugins-300x177.png 300w"
+sizes="(max-width: 977px) 100vw, 977px"}](/static/img/blog/2015/08/dashboard-plugins.png)
+
+[![plugin-admin-page](/static/img/blog/2015/08/plugin-admin-page.png){loading="lazy"
+width="983" height="658"
+srcset="/static/img/blog/2015/08/plugin-admin-page.png 983w, /static/img/blog/2015/08/plugin-admin-page-300x201.png 300w"
+sizes="(max-width: 983px) 100vw, 983px"}](/static/img/blog/2015/08/plugin-admin-page.png)
+
+You will be able to display information within your theme similar
+to:[![frontpage-plugin](/static/img/blog/2015/08/frontpage-plugin.png){loading="lazy"
+width="964" height="626"
+srcset="/static/img/blog/2015/08/frontpage-plugin.png 964w, /static/img/blog/2015/08/frontpage-plugin-300x195.png 300w"
+sizes="(max-width: 964px) 100vw, 964px"}\
+](/static/img/blog/2015/08/frontpage-plugin.png)
+
+**Download from Github
+[here](https://github.com/ryanfitton/wp-settings-panel-plugin).**
+
+ 
+
+### Support
+
+I am unable to provide any support and security updates. However I do
+use this plugin for some of my own projects, therefore I may add new
+features in the future. These updates will be very infrequent. If you're
+a WordPress developer you should be able to update and maintain this
+plugin yourself.
+
+### License
+
+The license for this plugin is [Creative Commons: Attribution 4.0
+International](https://creativecommons.org/licenses/by/4.0/).
+
+This means you can Share and Redistribute in any medium or form. You can
+Adapt the code to suit your needs, and build in new code. The plugin can
+be used personally or commercially.
+
+You must give attribution to the original author ([Ryan
+Fitton](https://ryanfitton.co.uk)). You can give attribution by
+including my name and linking to my website: <https://ryanfitton.co.uk>
+within the plugin description.
+
+[![Creative Commons
+Licence](https://i.creativecommons.org/l/by/4.0/88x31.png){style="border-width: 0;"}](http://creativecommons.org/licenses/by/4.0/){rel="license"}\
+WordPress Site Settings Plugin by [Ryan
+Fitton](https://ryanfitton.co.uk/blog/wordpress-site-settings-plugin/){rel="cc:attributionURL"}
+is licensed under a [Creative Commons Attribution 4.0 International
+License](http://creativecommons.org/licenses/by/4.0/){rel="license"}.

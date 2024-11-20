@@ -1,0 +1,164 @@
+---
+layout: PostLayout
+title: "How to install Home Assistant within an LXC container"
+authors: ['Ryan Fitton']
+date: '2020-04-01'
+tags: ['Development', 'Code Snippets']
+draft: false
+summary: 'I
+have published this blog post to help anyone having issues installing
+Home Assistant (and Docker) in an LXC container running on Ubuntu. When
+I was installing Home Assistant on my own hardware, I could not find any
+straight-forward guides detailing how to do this, and Home
+Assistant&#8217;s own documentation does not help with installing
+...'
+---
+
+I have published this blog post to help anyone having issues installing
+Home Assistant (and Docker) in an LXC container running on Ubuntu.
+
+When I was installing Home Assistant on my own hardware, I could not
+find any straight-forward guides detailing how to do this, and Home
+Assistant's own documentation does not help with installing in an LXC
+container.
+
+**NOTE:** As of 18/06/2020 This install method now uses the '[Supervised
+installer](https://github.com/home-assistant/supervised-installer)'.
+Discussion regarding deprecation on this method is continuing on
+[GitHub](https://github.com/home-assistant/supervised-installer) and
+Home Assistant's
+[website](https://www.home-assistant.io/blog/2020/05/09/deprecating-home-assistant-supervised-on-generic-linux/).
+
+ 
+
+### Step 1 -- Create your LXC container
+
+If you have not already done so, create a LXC container in the same way
+you normally do, if you already have done this, skip to Step 2.
+
+In this example my container storage is run on ZFS. You must ensure you
+have at least 36GB of storage space available.
+
+Following these instructions, replace
+`lxd-homeassistant`{.language-bash} with your own container name if you
+wish.
+
+**Create a new container:**
+
+``` {.language-bash .code-toolbar}
+sudo lxc launch ubuntu:18.04 lxd-homeassistant
+```
+
+You can set CPU and Memory limits using the following commands:
+
+**For CPU:**
+
+``` {.language-bash .code-toolbar}
+sudo lxc config set lxd-homeassistant limits.cpu 1
+```
+
+**For Memory:**
+
+``` {.language-bash .code-toolbar}
+sudo lxc config set lxd-homeassistant limits.memory 1024MB
+```
+
+You can also set Hard Drive size limits with ZFS. To limit the hard
+drive space of a container.
+
+Note: 'zfs' is the ZFS name and 'zpool' and 'containers' are the pool
+names, the path can be found\
+using: `sudo zfs list`{.language-bash}
+
+``` {.language-bash .code-toolbar}
+sudo zfs set quota=36G zfs/zpool/containers/lxd-homeassistant
+```
+
+ 
+
+### Step 2 -- Give your container specific privileges
+
+Setup container privileges:
+
+``` {.language-bash .code-toolbar}
+sudo lxc config set lxd-homeassistant security.nesting true
+```
+
+``` {.language-bash .code-toolbar}
+sudo lxc config set lxd-homeassistant security.privileged true
+```
+
+Now run each of these lines separately:
+
+``` {.language-bash .code-toolbar}
+cat <<EOT | sudo -
+lxc config set lxd-homeassistant raw.lxc
+lxc.cgroup.devices.allow = a
+lxc.cap.drop =
+EOT
+```
+
+Now restart the container:
+
+``` {.language-bash .code-toolbar}
+sudo lxc restart lxd-homeassistant
+```
+
+ 
+
+### Step 3 -- Install required packages for Home Assistant
+
+Within your container, run these commands:
+
+Update your packages:
+
+``` {.language-bash .code-toolbar}
+sudo apt-get update
+```
+
+Install required packages:
+
+``` {.language-bash .code-toolbar}
+sudo apt-get install bash jq curl avahi-daemon dbus software-properties-common apparmor-utils libnss-mdns mdns-scan
+```
+
+ 
+
+### Step 4 -- Update and reboot the LXC container
+
+Still within the container, follow the step below:
+
+There is a known issue which can affect install Home Assistant. An
+upgrade and reboot should fix the issue:
+<https://community.home-assistant.io/t/hassio-installation-issue-preparing-hass-io-this-can-take-up-to-20-minutes/30410/35>:
+
+``` {.language-bash .code-toolbar}
+sudo apt update && sudo apt dist-upgrade
+```
+
+ 
+
+### Step 5 -- Run the Home Assistant script
+
+Still within the container:
+
+Run the install script: (This is the updated method using a 'Supervised'
+install as of 18/06/2020)
+
+``` {.language-bash .code-toolbar}
+curl -sL https://raw.githubusercontent.com/home-assistant/supervised-installer/master/installer.sh | bash -s -- -m qemux86-64
+```
+
+The installation will take up to 20 minutes depending on how fast your
+Internet connection is.
+
+Alternatively, the old method may still work, or may not:
+
+``` {.language-bash .code-toolbar}
+curl -sL "https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh" | sudo bash -s -- -m qemux86-64
+```
+
+Once Home Assistant is installed, you can access the setup via:
+http://YOUR-LXC-CONTAINER-IP:8123/ -- Replace
+`YOUR-LXC-CONTAINER-IP`{.language-bash} with your own LXC container's IP
+Address.
