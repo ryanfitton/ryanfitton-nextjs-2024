@@ -1,49 +1,20 @@
----
-layout: PostLayout
-title: "Fixing AMP-IMG Instrinsic &#8216;small&#8217; images in IE11 and IE10"
-authors: ['Ryan Fitton']
-date: '2019-08-26'
-tags: ['Uncategorized']
-draft: false
-summary: 'During a recent project I found an issue with images being
-shown very small when viewing a web page in IE10/11, this happened when
-the page was built in AMP with images being loaded with the AMP-IMG
-component. E.g. Notice the small image floated right: The project was
-built with WordPress, and uses the official ...'
----
+\-\-- layout: PostLayout title: \"Fixing AMP-IMG Instrinsic &#8216;small&#8217; images in IE11 and IE10\" authors: \[\'Ryan Fitton\'\] date: \'2019-08-26\' tags: \[\'Uncategorized\'\] draft: false summary: \'During a recent project I found an issue with images being shown very small when viewing a web page in IE10/11, this happened when the page was built in AMP with images being loaded with the AMP-IMG component. E.g. Notice the small image floated right: The project was built with WordPress, and uses the official \[&hellip;\]\' \-\--
 
-During a recent project I found an issue with images being shown very
-small when viewing a web page in IE10/11, this happened when the page
-was built in AMP with images being loaded with the
-[AMP-IMG](https://amp.dev/documentation/components/amp-img/) component.
+During a recent project I found an issue with images being shown very small when viewing a web page in IE10/11, this happened when the page was built in AMP with images being loaded with the [AMP-IMG](https://amp.dev/documentation/components/amp-img/) component.
 
 **E.g. Notice the small image floated right:**
 
-![](/static/img/blog/2019/08/IE11-before-1024x489.png){loading="lazy"
-width="1024" height="489"
-srcset="/static/img/blog/2019/08/IE11-before-1024x489.png 1024w, /static/img/blog/2019/08/IE11-before-300x143.png 300w, /static/img/blog/2019/08/IE11-before-768x366.png 768w, /static/img/blog/2019/08/IE11-before.png 1308w"
-sizes="(max-width: 1024px) 100vw, 1024px"}
+![](/static/img/blog/2019/08/IE11-before-1024x489.png){loading="lazy" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-before-1024x489.png 1024w, /static/img/blog/2019/08/IE11-before-300x143.png 300w, /static/img/blog/2019/08/IE11-before-768x366.png 768w, /static/img/blog/2019/08/IE11-before.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px"}
 
-The project was built with WordPress, and uses the official WordPress
-[AMP plugin](https://en-gb.wordpress.org/plugins/amp/). At first I
-though this was an issue coming from the plugin, but it still happened
-when I used the same code examples from the AMP image component docs.
+The project was built with WordPress, and uses the official WordPress [AMP plugin](https://en-gb.wordpress.org/plugins/amp/). At first I though this was an issue coming from the plugin, but it still happened when I used the same code examples from the AMP image component docs.
 
-A couple of other users have experienced this issue on
-[GitHub](https://github.com/ampproject/amphtml/issues/18652), but there
-was no proposed solution.
+A couple of other users have experienced this issue on [GitHub](https://github.com/ampproject/amphtml/issues/18652), but there was no proposed solution.
 
-The solution I have found is quite 'hacky', but is the only way I have
-managed to solve this issue. This solution involves using '!important'
-tags (a necessary evil) to override the AMP-IMG default styles, a media
-query is used to target IE10/11.
+The solution I have found is quite 'hacky', but is the only way I have managed to solve this issue. This solution involves using '!important' tags (a necessary evil) to override the AMP-IMG default styles, a media query is used to target IE10/11.
 
 **Example with the new fix:**
 
-![](/static/img/blog/2019/08/IE11-after-1024x489.png){loading="lazy"
-width="1024" height="489"
-srcset="/static/img/blog/2019/08/IE11-after-1024x489.png 1024w, /static/img/blog/2019/08/IE11-after-300x143.png 300w, /static/img/blog/2019/08/IE11-after-768x366.png 768w, /static/img/blog/2019/08/IE11-after.png 1308w"
-sizes="(max-width: 1024px) 100vw, 1024px"}
+![](/static/img/blog/2019/08/IE11-after-1024x489.png){loading="lazy" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-after-1024x489.png 1024w, /static/img/blog/2019/08/IE11-after-300x143.png 300w, /static/img/blog/2019/08/IE11-after-768x366.png 768w, /static/img/blog/2019/08/IE11-after.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px"}
 
  
 
@@ -62,8 +33,7 @@ sizes="(max-width: 1024px) 100vw, 1024px"}
 
 #### CSS Fix
 
-There are two ways this can be implemented, either with standard CSS
-syntax or with SASS.
+There are two ways this can be implemented, either with standard CSS syntax or with SASS.
 
 ##### Standard CSS
 
@@ -145,8 +115,7 @@ syntax or with SASS.
 
 #### Full code
 
-If you're having trouble, you can view the full code below, or a Pen on
-Codepen: <https://codepen.io/ryanfitton/pen/PoYpeWp>
+If you're having trouble, you can view the full code below, or a Pen on Codepen: <https://codepen.io/ryanfitton/pen/PoYpeWp>
 
 ``` language-html
 <!doctype html>

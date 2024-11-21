@@ -1,36 +1,14 @@
----
-layout: PostLayout
-title: "Increasing the default ZFS Loop Device value in LXD on Ubuntu"
-authors: ['Ryan Fitton']
-date: '2018-09-01'
-tags: ['Code Snippets']
-draft: false
-summary: 'I&#8217;ve recently installed LXD 2.x on my Ubuntu server but forgot
-to set a custom value for the loop device. The default value was 20GB,
-but I wanted this to be 1.4TB. It took a while of searching accross the
-web to find an easy solution to increase this size, as I found it tricky
-...'
----
+\-\-- layout: PostLayout title: \"Increasing the default ZFS Loop Device value in LXD on Ubuntu\" authors: \[\'Ryan Fitton\'\] date: \'2018-09-01\' tags: \[\'Code Snippets\'\] draft: false summary: \'I&#8217;ve recently installed LXD 2.x on my Ubuntu server but forgot to set a custom value for the loop device. The default value was 20GB, but I wanted this to be 1.4TB. It took a while of searching accross the web to find an easy solution to increase this size, as I found it tricky \[&hellip;\]\' \-\--
 
-I've recently installed LXD 2.x on my Ubuntu server but forgot to set a
-custom value for the loop device. The default value was 20GB, but I
-wanted this to be 1.4TB.
+I've recently installed LXD 2.x on my Ubuntu server but forgot to set a custom value for the loop device. The default value was 20GB, but I wanted this to be 1.4TB.
 
-It took a while of searching accross the web to find an easy solution to
-increase this size, as I found it tricky I have posted the solution I
-have used below, with some help from these posts:
-[here](https://github.com/lxc/lxc/issues/1412) and
-[here](https://gist.github.com/pfaffman/af2cc1588b47560cac6d8973e29755f1).
+It took a while of searching accross the web to find an easy solution to increase this size, as I found it tricky I have posted the solution I have used below, with some help from these posts: [here](https://github.com/lxc/lxc/issues/1412) and [here](https://gist.github.com/pfaffman/af2cc1588b47560cac6d8973e29755f1).
 
-These commands were tested with LXD version 2.0.11 running on Ubuntu
-16.04.5 LTS 64-Bit, read the docs for your current LXD and ZFS versions
-before you run any of these, and make sure you have a backup incase
-anything goes wrong!
+These commands were tested with LXD version 2.0.11 running on Ubuntu 16.04.5 LTS 64-Bit, read the docs for your current LXD and ZFS versions before you run any of these, and make sure you have a backup incase anything goes wrong!
 
 Change these values to match your setup:
 
--   `POOL-NAME`{.language-markup}Your ZFS pool name, the default
-    supplied by LXD is 'lxd'
+-   `POOL-NAME`{.language-markup}Your ZFS pool name, the default supplied by LXD is 'lxd'
 -   `SIZE`{.language-markup}The size of the new pool, e.g. '50G'
 
 Now run this code; each line separately minus the commented lines:
@@ -65,10 +43,7 @@ sudo rm /var/lib/lxd/zfs.tmp
 sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img
 ```
 
-You can also, check if the settings have been applied by running the
-`sudo zfs list`{.language-markup} command, you will see a result similar
-to below; make note of the values in the 'AVAIL' column as this should
-show your new pool size.
+You can also, check if the settings have been applied by running the `sudo zfs list`{.language-markup} command, you will see a result similar to below; make note of the values in the 'AVAIL' column as this should show your new pool size.
 
 ``` language-markup
 root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list

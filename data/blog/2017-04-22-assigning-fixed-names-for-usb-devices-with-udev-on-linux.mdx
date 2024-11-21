@@ -1,40 +1,12 @@
----
-layout: PostLayout
-title: "Assigning fixed names for USB devices with udev on Linux"
-authors: ['Ryan Fitton']
-date: '2017-04-22'
-tags: ['Code Snippets']
-draft: false
-summary: 'Whilst you can use
-udev rules with any USB device, I am writing this post to help anyone
-else who is also having issues with their USB printer name. The main
-which I had was is the printer&#8217;s USB name changing when it is
-restarted, plugged into a different USB port or when another USB device
-is connected ...'
----
+\-\-- layout: PostLayout title: \"Assigning fixed names for USB devices with udev on Linux\" authors: \[\'Ryan Fitton\'\] date: \'2017-04-22\' tags: \[\'Code Snippets\'\] draft: false summary: \'Whilst you can use udev rules with any USB device, I am writing this post to help anyone else who is also having issues with their USB printer name. The main which I had was is the printer&#8217;s USB name changing when it is restarted, plugged into a different USB port or when another USB device is connected \[&hellip;\]\' \-\--
 
-Whilst you can use [udev
-rules](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system)
-with any USB device, I am writing this post to help anyone else who is
-also having issues with their USB printer name.
+Whilst you can use [udev rules](https://www.linux.com/news/udev-introduction-device-management-modern-linux-system) with any USB device, I am writing this post to help anyone else who is also having issues with their USB printer name.
 
-The main which I had was is the printer's USB name changing when it is
-restarted, plugged into a different USB port or when another USB device
-is connected before the printer is turned on.
+The main which I had was is the printer's USB name changing when it is restarted, plugged into a different USB port or when another USB device is connected before the printer is turned on.
 
-For example, connected to my computer is an APC USB based UPS, along
-with a Canon LBP6000 series USB printer. I originally installed the
-printer before I bought the UPS which meant the printer was configured
-to be found at '/dev/usb/lp0'.
+For example, connected to my computer is an APC USB based UPS, along with a Canon LBP6000 series USB printer. I originally installed the printer before I bought the UPS which meant the printer was configured to be found at '/dev/usb/lp0'.
 
-However once the UPS was setup with my computer, the printer was no
-longer the primary device and was only accessible at '/dev/usb/lp1'. I
-really didn't want to go through the painful process of re-installing
-the printer (the LBP6000 is notorious under Linux, I had to provide some
-help on
-[AskUbuntu](https://askubuntu.com/questions/778367/cannot-print-from-canon-lbp6020-ubuntu-16-04)),
-so instead I decided to create my own udev rule to assign a symlink from
-'lp1' to 'lp0'.
+However once the UPS was setup with my computer, the printer was no longer the primary device and was only accessible at '/dev/usb/lp1'. I really didn't want to go through the painful process of re-installing the printer (the LBP6000 is notorious under Linux, I had to provide some help on [AskUbuntu](https://askubuntu.com/questions/778367/cannot-print-from-canon-lbp6020-ubuntu-16-04)), so instead I decided to create my own udev rule to assign a symlink from 'lp1' to 'lp0'.
 
 Here is the rule I created:
 
@@ -42,33 +14,23 @@ Here is the rule I created:
 ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="2771", ATTRS{serial}=="0000A1E6M897", SYMLINK+="usb/lp0"
 ```
 
-The rule basically means: on the 'add' action (when inserted) check if
-the device is USB and matches the 'idVendor', 'idProduct' and 'serial'
-values. If all of these are true a symlink which points to this device
-is created as 'usb/lp0'.
+The rule basically means: on the 'add' action (when inserted) check if the device is USB and matches the 'idVendor', 'idProduct' and 'serial' values. If all of these are true a symlink which points to this device is created as 'usb/lp0'.
 
-I stored this file within `/etc/udev/rules.d/`{.language-markup} as
-`99-printer.rules`{.language-markup}
+I stored this file within `/etc/udev/rules.d/`{.language-markup} as `99-printer.rules`{.language-markup}
 
 To find out your devices attributes you can run these commands:
 
--   idVendor:
-    `udevadm info -a -n /dev/usb/lp0 | grep '{idVendor}'`{.language-markup}
--   idProduct:
-    `udevadm info -a -n /dev/usb/lp0 | grep '{idProduct}'`{.language-markup}
--   serial:
-    `udevadm info -a -n /dev/usb/lp0 | grep '{serial}'`{.language-markup}
+-   idVendor: `udevadm info -a -n /dev/usb/lp0 | grep '{idVendor}'`{.language-markup}
+-   idProduct: `udevadm info -a -n /dev/usb/lp0 | grep '{idProduct}'`{.language-markup}
+-   serial: `udevadm info -a -n /dev/usb/lp0 | grep '{serial}'`{.language-markup}
 
-You can then change the udev rule to match your specific USB device, add
-the rule into a file with nano using this command:\
+You can then change the udev rule to match your specific USB device, add the rule into a file with nano using this command:\
 `sudo nano /etc/udev/rules.d/99-printer.rules`{.language-markup}
 
 Then exit and save, I also reload the udev rules with this command:\
 `sudo udevadm control --reload-rules && udevadm trigger`{.language-markup}
 
-Restart the computer, connect your USB printer, turn it on and see if
-your device name and symlink is shown within the USB directory:\
+Restart the computer, connect your USB printer, turn it on and see if your device name and symlink is shown within the USB directory:\
 `sudo ls -l /dev/usb`{.language-markup}
 
-I hope this post has been helpful. If you have issues, please post in
-the comments and I will try to help.
+I hope this post has been helpful. If you have issues, please post in the comments and I will try to help.

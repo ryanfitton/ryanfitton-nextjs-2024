@@ -1,33 +1,12 @@
----
-layout: PostLayout
-title: "Backup MySQL (Bash script)"
-authors: ['Ryan Fitton']
-date: '2017-10-18'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'This is a follow-on from my
-previous post: &#8216;Backup server files as tar.gz&#8216;. The script
-below works in a similar way as the previous, save as
-&#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup
-options&#8217;, &#8216;MySQL Connection details&#8217;, and your email
-address. Run the script with sudo sh backup_mysql2ftp.sh (make sure the
-file is executable first). The ...'
----
+\-\-- layout: PostLayout title: \"Backup MySQL (Bash script)\" authors: \[\'Ryan Fitton\'\] date: \'2017-10-18\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'This is a follow-on from my previous post: &#8216;Backup server files as tar.gz&#8216;. The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your email address. Run the script with sudo sh backup_mysql2ftp.sh (make sure the file is executable first). The \[&hellip;\]\' \-\--
 
-This is a follow-on from my previous post: '[Backup server files as
-tar.gz](https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/)'.
+This is a follow-on from my previous post: '[Backup server files as tar.gz](https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/)'.
 
-The script below works in a similar way as the previous, save as
-'backup_mysql2ftp.sh' and fill out the 'Backup options', 'MySQL
-Connection details', and your email address.
+The script below works in a similar way as the previous, save as 'backup_mysql2ftp.sh' and fill out the 'Backup options', 'MySQL Connection details', and your email address.
 
-Run the script with `sudo sh backup_mysql2ftp.sh`{.language-markup}
-(make sure the file is executable first).
+Run the script with `sudo sh backup_mysql2ftp.sh`{.language-markup} (make sure the file is executable first).
 
-The databases for the entire server will be stored in a .sql format,
-then transferred using FTP to the remote server. Once the file has been
-confirmed it exists on the FTP server, it is deleted from the local
-server.
+The databases for the entire server will be stored in a .sql format, then transferred using FTP to the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted from the local server.
 
 ``` language-markup
 #!/bin/bash
@@ -262,11 +241,6 @@ exit 1 # Exit with general error
 fi
 ```
 
-**Note:** Using the standard FTP protocol is unsafe, your details will
-be passed in plaintext. However because Online.net's FTP backup service
-runs within their own network there is not much risk to myself. I do
-highly recommend using SFTP or FTPS, both will likely need modification
-of the script in-order to work properly.
+**Note:** Using the standard FTP protocol is unsafe, your details will be passed in plaintext. However because Online.net's FTP backup service runs within their own network there is not much risk to myself. I do highly recommend using SFTP or FTPS, both will likely need modification of the script in-order to work properly.
 
-Also see my previous file backup script
-[here](https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/).
+Also see my previous file backup script [here](https://ryanfitton.co.uk/blog/backup-server-files-as-tar-gz-bash-script/).

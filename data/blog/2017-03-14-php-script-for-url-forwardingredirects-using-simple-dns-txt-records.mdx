@@ -1,42 +1,19 @@
----
-layout: PostLayout
-title: "PHP script for URL forwarding/redirects using simple DNS TXT records"
-authors: ['Ryan Fitton']
-date: '2017-03-14'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'This simple PHP script can be used
-to perform HTTP and HTTPS redirects for your domains. I created this
-script as my DNS provider does not provide a URL redirection service of
-their own, and I didn&#8217;t want to setup webspace or a virtualhost on
-my server just for a redirect. To use this script, ...'
----
+\-\-- layout: PostLayout title: \"PHP script for URL forwarding/redirects using simple DNS TXT records\" authors: \[\'Ryan Fitton\'\] date: \'2017-03-14\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'This simple PHP script can be used to perform HTTP and HTTPS redirects for your domains. I created this script as my DNS provider does not provide a URL redirection service of their own, and I didn&#8217;t want to setup webspace or a virtualhost on my server just for a redirect. To use this script, \[&hellip;\]\' \-\--
 
-This simple PHP script can be used to perform HTTP and HTTPS redirects
-for your domains. I created this script as my DNS provider does not
-provide a URL redirection service of their own, and I didn't want to
-setup webspace or a virtualhost on my server just for a redirect.
+This simple PHP script can be used to perform HTTP and HTTPS redirects for your domains. I created this script as my DNS provider does not provide a URL redirection service of their own, and I didn't want to setup webspace or a virtualhost on my server just for a redirect.
 
-To use this script, you should already have a free IPv4 address and
-domain. Setup these as a host on a server or VPS -- I recommend [Digital
-Ocean (referral link)](https://m.do.co/c/fbe5f1c0c98d){target="_blank"}.
+To use this script, you should already have a free IPv4 address and domain. Setup these as a host on a server or VPS -- I recommend [Digital Ocean (referral link)](https://m.do.co/c/fbe5f1c0c98d){target="_blank"}.
 
 #### Redirection DNS Settings
 
-Within your DNS settings point your domain or subdomain to the server
-you have setup.
+Within your DNS settings point your domain or subdomain to the server you have setup.
 
-For subdomains, this is done by setting up a CNAME record. For
-apex/naked domains, it is recommended that you use an ALIAS or ANAME
-record type if your DNS provider supports it. Otherwise, use an A
-record:
+For subdomains, this is done by setting up a CNAME record. For apex/naked domains, it is recommended that you use an ALIAS or ANAME record type if your DNS provider supports it. Otherwise, use an A record:
 
--   CNAME and ALIAS/ANAME records should point to
-    `yourdomain.com`{.language-markup}
+-   CNAME and ALIAS/ANAME records should point to `yourdomain.com`{.language-markup}
 -   A records should point to `123.45.67.89`{.language-markup}
 
-To configure the redirection destination, add a TXT record for your
-domain:
+To configure the redirection destination, add a TXT record for your domain:
 
 -   TXT value: `"redirect_https://www.google.com"`{.language-markup}
 

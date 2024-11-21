@@ -1,30 +1,12 @@
----
-layout: PostLayout
-title: "Enabling/Disabling Hyper V in Windows 10 for Virtual Box and Docker development"
-authors: ['Ryan Fitton']
-date: '2022-06-04'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'These instructions offer assistance with
-enabling/disabling Hyper V in Windows 10. I have found it necessary to
-disable this service for use with Virtaul Box, then re-enabling it for
-Docker. To disable Hyper V in Windows 10 (e.g. for use with Virtual
-Box): Ensure virtualisation is supported by your CPU and enabled in the
-BIOS ...'
----
+\-\-- layout: PostLayout title: \"Enabling/Disabling Hyper V in Windows 10 for Virtual Box and Docker development\" authors: \[\'Ryan Fitton\'\] date: \'2022-06-04\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'These instructions offer assistance with enabling/disabling Hyper V in Windows 10. I have found it necessary to disable this service for use with Virtaul Box, then re-enabling it for Docker. To disable Hyper V in Windows 10 (e.g. for use with Virtual Box): Ensure virtualisation is supported by your CPU and enabled in the BIOS \[&hellip;\]\' \-\--
 
-These instructions offer assistance with enabling/disabling Hyper V in
-Windows 10. I have found it necessary to disable this service for use
-with Virtaul Box, then re-enabling it for Docker.
+These instructions offer assistance with enabling/disabling Hyper V in Windows 10. I have found it necessary to disable this service for use with Virtaul Box, then re-enabling it for Docker.
 
 To disable Hyper V in Windows 10 (e.g. for use with Virtual Box):
 
-1.  Ensure virtualisation is supported by your CPU and enabled in the
-    BIOS
+1.  Ensure virtualisation is supported by your CPU and enabled in the BIOS
 
-2.  Disable Hyper V for Virtual Box:
-    [https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v](https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v){target="_blank"
-    rel="noopener"}
+2.  Disable Hyper V for Virtual Box: [https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v](https://docs.microsoft.com/en-us/troubleshoot/windows-client/application-management/virtualization-apps-not-work-with-hyper-v){target="_blank" rel="noopener"}
 
 3.  Disable HyperV in Windows Add/Remove Features
 
@@ -38,8 +20,7 @@ To disable Hyper V in Windows 10 (e.g. for use with Virtual Box):
 
 To re-enable Hyper V in Windows 10 (e.g. for use with Docker):
 
-1.  Ensure virtualisation is supported by your CPU and enabled in the
-    BIOS
+1.  Ensure virtualisation is supported by your CPU and enabled in the BIOS
 2.  Enable HyperV in Windows Add/Remove Features
 3.  And in Power Shell, with Admin privellages:
     1.  ``` language-markup

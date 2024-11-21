@@ -1,27 +1,8 @@
----
-layout: PostLayout
-title: "LXD Container backup to FTP server script"
-authors: ['Ryan Fitton']
-date: '2018-06-09'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'As
-mentioned in my previous post, I would post code for a script which will
-backup an LXD container as a snapshot, then transfer to an FTP server.
-The script to do this is below, it has been tested on Ubuntu 16.04 LTS.
-The steps listed below can be found in my LXC Container backup
-...'
----
+\-\-- layout: PostLayout title: \"LXD Container backup to FTP server script\" authors: \[\'Ryan Fitton\'\] date: \'2018-06-09\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'As mentioned in my previous post, I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS. The steps listed below can be found in my LXC Container backup \[&hellip;\]\' \-\--
 
-As mentioned in my [previous
-post](https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/),
-I would post code for a script which will backup an LXD container as a
-snapshot, then transfer to an FTP server. The script to do this is
-below, it has been tested on Ubuntu 16.04 LTS.
+As mentioned in my [previous post](https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/), I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.
 
-The steps listed below can be found in my LXC Container backup script
-collection on GitHub here:
-<https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection>
+The steps listed below can be found in my LXC Container backup script collection on GitHub here: <https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection>
 
 Ensure you have these packages installed:
 
@@ -30,9 +11,7 @@ Ensure you have these packages installed:
 -   `lftp`{.language-markup}
 -   `curl`{.language-markup}
 
-Save this to a file on your LXD host such as
-**'backup-container-snapshot.sh'**, now change permissions so this file
-is executable:
+Save this to a file on your LXD host such as **'backup-container-snapshot.sh'**, now change permissions so this file is executable:
 
 ``` language-markup
 sudo chmod +x backup-container-snapshot.sh
@@ -47,12 +26,9 @@ Now edit the file, and ensure these variables match your specs:
 -   `FTP_USERNAME`{.language-markup}
 -   `FTP_PASSWORD`{.language-markup}
 -   `FTP_PORT`{.language-markup}
--   You may also need to configure passive mode in
-    `FTP_ARGUMENTS`{.language-markup} and
-    `CURL_FTP_ARGUMENTS`{.language-markup}
+-   You may also need to configure passive mode in `FTP_ARGUMENTS`{.language-markup} and `CURL_FTP_ARGUMENTS`{.language-markup}
 
-To run this script, you must pass your LXD container name as an
-argument, for example:
+To run this script, you must pass your LXD container name as an argument, for example:
 
 ``` language-markup
 sudo ./backup-container-snapshot.sh 'container-name-here'

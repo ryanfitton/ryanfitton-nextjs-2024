@@ -1,43 +1,12 @@
----
-layout: PostLayout
-title: "Using loadCSS with WordPress"
-authors: ['Ryan Fitton']
-date: '2019-04-28'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'I have
-been using loadCSS from the Filament Group recently, it&#8217;s a great
-tool to asynchronously load your CSS files in-order to increase your
-scores for Google&#8217;s PageSpeed tests. The main issue I faced is
-using loadCSS with WordPress. WordPress has many plugins to install and
-each of these plugins usually integrate with the hook...'
----
+\-\-- layout: PostLayout title: \"Using loadCSS with WordPress\" authors: \[\'Ryan Fitton\'\] date: \'2019-04-28\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'I have been using loadCSS from the Filament Group recently, it&#8217;s a great tool to asynchronously load your CSS files in-order to increase your scores for Google&#8217;s PageSpeed tests. The main issue I faced is using loadCSS with WordPress. WordPress has many plugins to install and each of these plugins usually integrate with the hook \[&hellip;\]\' \-\--
 
-I have been using [loadCSS](https://github.com/filamentgroup/loadCSS)
-from the [Filament Group](https://github.com/filamentgroup/loadCSS)
-recently, it's a great tool to asynchronously load your CSS files
-in-order to increase your scores for Google's PageSpeed tests.
+I have been using [loadCSS](https://github.com/filamentgroup/loadCSS) from the [Filament Group](https://github.com/filamentgroup/loadCSS) recently, it's a great tool to asynchronously load your CSS files in-order to increase your scores for Google's PageSpeed tests.
 
-The main issue I faced is using loadCSS with WordPress. WordPress has
-many plugins to install and each of these plugins usually integrate with
-the hook system to load their own CSS files -- there is generally not
-much configuration which you can do with how these CSS files are loaded
-into your site's HTML.
+The main issue I faced is using loadCSS with WordPress. WordPress has many plugins to install and each of these plugins usually integrate with the hook system to load their own CSS files -- there is generally not much configuration which you can do with how these CSS files are loaded into your site's HTML.
 
-To combat this issue, I have created a function which will alter these
-'link' attributes so they can be used with loadCSS. There is also the
-support to load Critical CSS (This can be done with this
-[tool](https://jonassebastianohlsson.com/criticalpathcssgenerator/), or
-the
-'[grunt-criticalcss](https://github.com/filamentgroup/grunt-criticalcss)'
-wrapper), and Async or Defer on JavaScript files is supported too.
+To combat this issue, I have created a function which will alter these 'link' attributes so they can be used with loadCSS. There is also the support to load Critical CSS (This can be done with this [tool](https://jonassebastianohlsson.com/criticalpathcssgenerator/), or the '[grunt-criticalcss](https://github.com/filamentgroup/grunt-criticalcss)' wrapper), and Async or Defer on JavaScript files is supported too.
 
-To start, download the loadCSS library from
-[Github](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0).
-This guide is using the files from the [v2
-branch](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0),
-you will be using the 'cssrelpreload.js' file located in the 'src'
-folder.
+To start, download the loadCSS library from [Github](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0). This guide is using the files from the [v2 branch](https://github.com/filamentgroup/loadCSS/releases/tag/v2.1.0), you will be using the 'cssrelpreload.js' file located in the 'src' folder.
 
 Then add this code into your theme's 'functions.php' file:
 
@@ -127,5 +96,4 @@ Then add this code into your theme's 'functions.php' file:
 ?>
 ```
 
-Note: If you're not using Critical CSS, disable the lines on #6, #7 and
-#8. And if you're not using Google Fonts, disable line #15.
+Note: If you're not using Critical CSS, disable the lines on #6, #7 and #8. And if you're not using Google Fonts, disable line #15.

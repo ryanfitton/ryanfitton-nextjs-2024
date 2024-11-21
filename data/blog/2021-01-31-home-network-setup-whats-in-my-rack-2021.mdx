@@ -1,106 +1,41 @@
----
-layout: PostLayout
-title: "Home Network Setup: What's in my rack 2021"
-authors: ['Ryan Fitton']
-date: '2021-01-31'
-tags: ['Uncategorized']
-draft: false
-summary: 'Following on from my
-original post in 2017 and a follow up I made in 2019, I am making this
-post to show the changes my to my home network. Some parts have not
-changed. such as; The rack, a 9U with dimensions of 600x600mm. I am
-still running pfSense on a Qotom Q150P-S08 Mini ...'
----
+\-\-- layout: PostLayout title: \"Home Network Setup: What's in my rack 2021\" authors: \[\'Ryan Fitton\'\] date: \'2021-01-31\' tags: \[\'Uncategorized\'\] draft: false summary: \'Following on from my original post in 2017 and a follow up I made in 2019, I am making this post to show the changes my to my home network. Some parts have not changed. such as; The rack, a 9U with dimensions of 600x600mm. I am still running pfSense on a Qotom Q150P-S08 Mini \[&hellip;\]\' \-\--
 
-Following on from my [original
-post](https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/)
-in 2017 and a [follow
-up](https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2019/)
-I made in 2019, I am making this post to show the changes my to my home
-network.
+Following on from my [original post](https://ryanfitton.co.uk/blog/how-i-installed-cat6-ethernet-in-my-home/) in 2017 and a [follow up](https://ryanfitton.co.uk/blog/home-network-setup-whats-in-my-rack-2019/) I made in 2019, I am making this post to show the changes my to my home network.
 
 Some parts have not changed. such as;
 
 -   The rack, a 9U with dimensions of 600x600mm.
--   I am still running pfSense on a [Qotom
-    Q150P-S08](https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF)
-    Mini PC.
--   Still using a HP ProCurve 24 Port Gigabit Switch ([1800-24G
-    J9028B](https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm))
-    as my core network switch.
--   And [APC
-    Back-UPS](https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&qid=1559998754&s=computers&sr=1-4&linkCode=ll1&tag=ryanfittoncou-21&linkId=4b82a7af15071bab059cfbeeb8f3d427&language=en_GB)
-    (BX700UI) UPS.
+-   I am still running pfSense on a [Qotom Q150P-S08](https://www.aliexpress.com/item/32863982193.html?spm=a2g0s.9042311.0.0.27424c4dp3dCSF) Mini PC.
+-   Still using a HP ProCurve 24 Port Gigabit Switch ([1800-24G J9028B](https://h10057.www1.hp.com/ecomcat/hpcatalog/specs/provisioner/05/J9028B.htm)) as my core network switch.
+-   And [APC Back-UPS](https://www.amazon.co.uk/APC-Back-UPS-BX-Uninterruptible-Shutdown/dp/B00T7BYV6W/ref=as_li_ss_tl?keywords=apc+700&qid=1559998754&s=computers&sr=1-4&linkCode=ll1&tag=ryanfittoncou-21&linkId=4b82a7af15071bab059cfbeeb8f3d427&language=en_GB) (BX700UI) UPS.
 
-Although I have made changes to the LXD containers running on my home
-server. I am still running [Shinobi
-DVR](https://gitlab.com/Shinobi-Systems/Shinobi), Cups as a print server
-and Samba shares for network storage access.
-[FreePBX](https://www.freepbx.org/) has been removed and
-[Emby](https://emby.media/) has been replaced with
-[Plex](https://www.plex.tv/en-gb/). These are new containers: [Ubuntu
-Landscape](https://landscape.canonical.com/set-up-on-prem), [Home
-Assistant](https://www.home-assistant.io/),
-[LibreNMS](https://www.librenms.org/) and [TP-Link
-Omada](https://ryanfitton.co.uk/blog/installing-tp-link-omada-controller-on-ubuntu/)
-controller software.
+Although I have made changes to the LXD containers running on my home server. I am still running [Shinobi DVR](https://gitlab.com/Shinobi-Systems/Shinobi), Cups as a print server and Samba shares for network storage access. [FreePBX](https://www.freepbx.org/) has been removed and [Emby](https://emby.media/) has been replaced with [Plex](https://www.plex.tv/en-gb/). These are new containers: [Ubuntu Landscape](https://landscape.canonical.com/set-up-on-prem), [Home Assistant](https://www.home-assistant.io/), [LibreNMS](https://www.librenms.org/) and [TP-Link Omada](https://ryanfitton.co.uk/blog/installing-tp-link-omada-controller-on-ubuntu/) controller software.
 
 I have also purchased new hardware;
 
--   New PoE+ switch: HP 1920-24G-PoE+ (180W) JG925A -- This will be
-    replacing a TP-Link PoE switch.
--   In the garage I have installed a new PoE+ switch: Netgear GS110TP
-    and a TP-Link EAP 225 Outdoor access point [TP-Link EAP 225 Outdoor
-    access
-    point](https://www.amazon.co.uk/TP-Link-MU-MIMO-Wireless-Gigabit-Outdoor/dp/B07C217N5V?&linkCode=ll1&tag=ryanfittoncou-21&linkId=2c37be153584a9d114851b91f523b414&language=en_GB&ref_=as_li_ss_tl){target="_blank"
-    rel="noopener"} (currently indoors, but I hope to mount this outside
-    soon)
--   Switched broadband providers to BT. I am using an basic Openreach
-    branded Huawei VDSL HG612 modem, the pfSense router handles PPPoE
-    connectivity.
--   I've also purchased a [Hauwei B535-232 4G
-    router](https://www.amazon.co.uk/gp/product/B07ZFSX8LB?ie=UTF8&psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=4e46eb6fe19caf5e242adbfe0685cc59&language=en_GB&ref_=as_li_ss_tl)
-    to act as a backup internet connection, pfSense automatically
-    handles failover.
--   A temperature monitor using a [Raspberry Pi
-    Zero](https://www.amazon.co.uk/Raspberry-Pi-Zero-WH/dp/B07BHMRTTY/ref=as_li_ss_tl?dchild=1&keywords=raspberry+pi+zero&qid=1609874665&s=computers&sr=1-6&linkCode=ll1&tag=ryanfittoncou-21&linkId=a7fe57b67a193551368f70f074281266&language=en_GB)
-    with sensor [running a custom web
-    UI](https://ryanfitton.co.uk/blog/building-a-raspberry-pi-zero-temperature-monitor-with-web-interface/)
-    I have developed.
--   Also in the garage I have built a NAS powered by a 4GB Raspberry Pi
-    4, images below.
+-   New PoE+ switch: HP 1920-24G-PoE+ (180W) JG925A -- This will be replacing a TP-Link PoE switch.
+-   In the garage I have installed a new PoE+ switch: Netgear GS110TP and a TP-Link EAP 225 Outdoor access point [TP-Link EAP 225 Outdoor access point](https://www.amazon.co.uk/TP-Link-MU-MIMO-Wireless-Gigabit-Outdoor/dp/B07C217N5V?&linkCode=ll1&tag=ryanfittoncou-21&linkId=2c37be153584a9d114851b91f523b414&language=en_GB&ref_=as_li_ss_tl){target="_blank" rel="noopener"} (currently indoors, but I hope to mount this outside soon)
+-   Switched broadband providers to BT. I am using an basic Openreach branded Huawei VDSL HG612 modem, the pfSense router handles PPPoE connectivity.
+-   I've also purchased a [Hauwei B535-232 4G router](https://www.amazon.co.uk/gp/product/B07ZFSX8LB?ie=UTF8&psc=1&linkCode=ll1&tag=ryanfittoncou-21&linkId=4e46eb6fe19caf5e242adbfe0685cc59&language=en_GB&ref_=as_li_ss_tl) to act as a backup internet connection, pfSense automatically handles failover.
+-   A temperature monitor using a [Raspberry Pi Zero](https://www.amazon.co.uk/Raspberry-Pi-Zero-WH/dp/B07BHMRTTY/ref=as_li_ss_tl?dchild=1&keywords=raspberry+pi+zero&qid=1609874665&s=computers&sr=1-6&linkCode=ll1&tag=ryanfittoncou-21&linkId=a7fe57b67a193551368f70f074281266&language=en_GB) with sensor [running a custom web UI](https://ryanfitton.co.uk/blog/building-a-raspberry-pi-zero-temperature-monitor-with-web-interface/) I have developed.
+-   Also in the garage I have built a NAS powered by a 4GB Raspberry Pi 4, images below.
 
-[![](/static/img/blog/2021/01/foto_no_exif-2-300x225.jpg){loading="lazy"
-width="300" height="225"
-srcset="/static/img/blog/2021/01/foto_no_exif-2-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-2-1024x768.jpg 1024w, /static/img/blog/2021/01/foto_no_exif-2-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif-2-1536x1152.jpg 1536w, /static/img/blog/2021/01/foto_no_exif-2.jpg 1920w"
-sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif-2.jpg)
+[![](/static/img/blog/2021/01/foto_no_exif-2-300x225.jpg){loading="lazy" width="300" height="225" srcset="/static/img/blog/2021/01/foto_no_exif-2-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-2-1024x768.jpg 1024w, /static/img/blog/2021/01/foto_no_exif-2-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif-2-1536x1152.jpg 1536w, /static/img/blog/2021/01/foto_no_exif-2.jpg 1920w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif-2.jpg)
 
-[![](/static/img/blog/2021/01/foto_no_exif-1-300x225.jpg){loading="lazy"
-width="300" height="225"
-srcset="/static/img/blog/2021/01/foto_no_exif-1-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-1-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif-1.jpg 800w"
-sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif-1.jpg)
+[![](/static/img/blog/2021/01/foto_no_exif-1-300x225.jpg){loading="lazy" width="300" height="225" srcset="/static/img/blog/2021/01/foto_no_exif-1-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-1-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif-1.jpg 800w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif-1.jpg)
 
-[![](/static/img/blog/2021/01/foto_no_exif-300x225.jpg){loading="lazy"
-width="300" height="225"
-srcset="/static/img/blog/2021/01/foto_no_exif-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif.jpg 800w"
-sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif.jpg)
+[![](/static/img/blog/2021/01/foto_no_exif-300x225.jpg){loading="lazy" width="300" height="225" srcset="/static/img/blog/2021/01/foto_no_exif-300x225.jpg 300w, /static/img/blog/2021/01/foto_no_exif-768x576.jpg 768w, /static/img/blog/2021/01/foto_no_exif.jpg 800w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2021/01/foto_no_exif.jpg)
 
-Network VLANs have been setup to help improve network security. This is
-one of the reasons why I purchased two new network switches. Details of
-these VLANs are below:
+Network VLANs have been setup to help improve network security. This is one of the reasons why I purchased two new network switches. Details of these VLANs are below:
 
 -   Lan (Default Lan network -- no VLAN, had access to all VLANs)
--   VLAN10 -- Secure network for servers (can access other VLANs, can
-    only be accessed from LAN)
--   VLAN20 -- IP Cam network (No access to other VLANs, Internet access
-    blocked)
+-   VLAN10 -- Secure network for servers (can access other VLANs, can only be accessed from LAN)
+-   VLAN20 -- IP Cam network (No access to other VLANs, Internet access blocked)
 -   VLAN30 -- IoT network (No access to other VLANs)
--   VLAN40 -- Guest network (No access to other VLANs, Internet access
-    has been speed limited)
+-   VLAN40 -- Guest network (No access to other VLANs, Internet access has been speed limited)
 
  
 
 ### Notes
 
-If you would like to check-out the items I have used in this post, check
-them out on Amazon using my affiliate links:
+If you would like to check-out the items I have used in this post, check them out on Amazon using my affiliate links:

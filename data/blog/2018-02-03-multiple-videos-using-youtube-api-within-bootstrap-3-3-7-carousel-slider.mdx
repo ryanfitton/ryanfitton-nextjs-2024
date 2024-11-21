@@ -1,33 +1,13 @@
----
-layout: PostLayout
-title: "Multiple videos using the YouTube API
-within a Bootstrap 3.3.7 carousel slider"
-authors: ['Ryan Fitton']
-date: '2018-02-03'
-tags: ['Development', 'Code Snippets']
-draft: false
-summary: 'This is an example of how to use the YouTube API with
-multiple videos within a Bootstrap carousel. I have added Play/Pause
-functionality to a custom button and added the ability for the videos to
-be paused when the carousel is transitioned. A CodePen is attached below
-to see the example in action, and the ...'
----
+\-\-- layout: PostLayout title: \"Multiple videos using the YouTube API within a Bootstrap 3.3.7 carousel slider\" authors: \[\'Ryan Fitton\'\] date: \'2018-02-03\' tags: \[\'Development\', \'Code Snippets\'\] draft: false summary: \'This is an example of how to use the YouTube API with multiple videos within a Bootstrap carousel. I have added Play/Pause functionality to a custom button and added the ability for the videos to be paused when the carousel is transitioned. A CodePen is attached below to see the example in action, and the \[&hellip;\]\' \-\--
 
-This is an example of how to use the YouTube API with multiple videos
-within a Bootstrap carousel.
+This is an example of how to use the YouTube API with multiple videos within a Bootstrap carousel.
 
-I have added Play/Pause functionality to a custom button and added the
-ability for the videos to be paused when the carousel is transitioned.
+I have added Play/Pause functionality to a custom button and added the ability for the videos to be paused when the carousel is transitioned.
 
-A [CodePen](https://codepen.io/ryanfitton/pen/paggdY/) is attached below
-to see the example in action, and the code is listed in this post below.
+A [CodePen](https://codepen.io/ryanfitton/pen/paggdY/) is attached below to see the example in action, and the code is listed in this post below.
 
-See the Pen [Bootstrap 3.3.7 carousel with YouTube videos using the
-YouTube API](https://codepen.io/ryanfitton/pen/paggdY/) by Ryan Fitton
-([\@ryanfitton](https://codepen.io/ryanfitton)) on
-[CodePen](https://codepen.io).
+See the Pen [Bootstrap 3.3.7 carousel with YouTube videos using the YouTube API](https://codepen.io/ryanfitton/pen/paggdY/) by Ryan Fitton ([\@ryanfitton](https://codepen.io/ryanfitton)) on [CodePen](https://codepen.io).
 
- 
 
 #### Code Examples
 
@@ -35,24 +15,17 @@ YouTube API](https://codepen.io/ryanfitton/pen/paggdY/) by Ryan Fitton
 
 Ensure you already have these dependencies loaded:
 
--   [Bootstrap
-    3.3.7](https://github.com/twbs/bootstrap/releases/tag/v3.3.7)
+-   [Bootstrap 3.3.7](https://github.com/twbs/bootstrap/releases/tag/v3.3.7)
 -   [jQuery 3.2.1](https://code.jquery.com/jquery-3.2.1.min.js)
--   [FontAwesome
-    4.7.0](https://github.com/FortAwesome/Font-Awesome/releases/tag/v4.7.0)
+-   [FontAwesome 4.7.0](https://github.com/FortAwesome/Font-Awesome/releases/tag/v4.7.0)
 
-However, just a note: The code should work in different viewports, but
-will probably need some tweaking to get the YouTube videos and Video
-button aligned correctly. I've also not fully browser tested this code,
-but I have tested it in these browsers:
+However, just a note: The code should work in different viewports, but will probably need some tweaking to get the YouTube videos and Video button aligned correctly. I've also not fully browser tested this code, but I have tested it in these browsers:
 
 -   Chrome 63
 -   FireFox 57
 -   Internet Explorer 11
 
-To add more videos, increment the '0' in `id="vid-0"`{.language-html}
-and add the YouTube video's ID to the `data-id"xxx"`{.language-html}
-variable.
+To add more videos, increment the '0' in `id="vid-0"`{.language-html} and add the YouTube video's ID to the `data-id"xxx"`{.language-html} variable.
 
 ``` language-html
 <section>
