@@ -91,7 +91,9 @@ export default function ListLayoutWithTags({
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 
   //Filter out draft posts
-  const displayPosts = (initialDisplayPosts.length > 0 ? initialDisplayPosts : posts).filter((post) => post.draft !== true)
+  const displayPosts = (initialDisplayPosts.length > 0 ? initialDisplayPosts : posts).filter(
+    (post) => post.draft !== true
+  )
 
   return (
     <>
@@ -150,7 +152,10 @@ export default function ListLayoutWithTags({
                         ))}
                       </ul>
 
-                      <div className="component-posts-article__excerpt" dangerouslySetInnerHTML={{ __html: summary }}></div>
+                      <div
+                        className="component-posts-article__excerpt"
+                        dangerouslySetInnerHTML={{ __html: summary }}
+                      ></div>
                     </article>
                   </li>
                 )

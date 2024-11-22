@@ -28,6 +28,7 @@ import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 
 const root = process.cwd()
+const isProduction = process.env.NODE_ENV === 'production'
 
 //Heroicon mini link (https://heroicons.com/mini)
 const rehypeAutolinkHeadingsIcon = fromHtmlIsomorphic(
@@ -75,7 +76,7 @@ function createTagCount(allBlogs) {
   allBlogs.forEach((file) => {
     if (file.tags && (!isProduction || file.draft !== true)) {
       file.tags.forEach((tag) => {
-        const formattedTag = slug(tag)
+        const formattedTag = slugger(tag)
         if (formattedTag in tagCount) {
           tagCount[formattedTag] += 1
         } else {

@@ -118,7 +118,10 @@ export default function Home({ posts }) {
                         ))}
                       </ul>
 
-                      <div className="component-posts-article__excerpt" dangerouslySetInnerHTML={{ __html: summary }}></div>
+                      <div
+                        className="component-posts-article__excerpt"
+                        dangerouslySetInnerHTML={{ __html: summary }}
+                      ></div>
                     </article>
                   </li>
                 )

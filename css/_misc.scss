@@ -9,3 +9,14 @@ div[class*='backdrop-blur backdrop-filter'] {
   //Above the Homepage Video header
   @apply z-[3];
 }
+
+//For prose on `<code>` and `<pre>` blocks
+code,
+pre {
+  @apply font-mono;
+  @apply font-normal #{!important};
+}
+code {
+  //color: var(--tw-prose-pre-code);
+  @apply dark:bg-[var(--tw-prose-pre-bg)] dark:text-white;
+}

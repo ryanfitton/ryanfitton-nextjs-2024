@@ -1,7 +1,7 @@
 import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
-import { sortPosts, coreContent } from 'pliny/utils/contentlayer'
+import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
 import type { Authors, Blog } from 'contentlayer/generated'
 import PostLayout from '@/layouts/PostLayout'
