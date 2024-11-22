@@ -5,68 +5,44 @@ authors: ['Ryan Fitton']
 date: '2019-01-04'
 tags: ['Code Snippets']
 draft: false
-summary: 'I
-thought i&#8217;d share this code, it may be help anyone who wants to
-have some sort of backward compatibility when using CSS3 gradients with
-Internet Explorer 7+. &nbsp; How does this work? Sass mixins and
-functions helps a lot with the &#8216;heavy-lifting&#8217; and colour
-calculations. Let me explain the setup for Linear and Radial
-...'
+summary: 'I thought i&#8217;d share this code, it may be help anyone who wants to have some sort of backward compatibility when using CSS3 gradients with Internet Explorer 7+. &nbsp; How does this work? Sass mixins and functions helps a lot with the &#8216;heavy-lifting&#8217; and colour calculations. Let me explain the setup for Linear and Radial ...'
 ---
 
-I thought i'd share this code, it may be help anyone who wants to have
-some sort of backward compatibility when using CSS3 gradients with
-Internet Explorer 7+.
+I thought i'd share this code, it may be help anyone who wants to have some sort of backward compatibility when using CSS3 gradients with Internet Explorer 7+.\
+ 
 
 #### How does this work?
 
-Sass mixins and functions helps a lot with the 'heavy-lifting' and
-colour calculations. Let me explain the setup for Linear and Radial
-gradients below.
+Sass mixins and functions helps a lot with the 'heavy-lifting' and colour calculations. Let me explain the setup for Linear and Radial gradients below.
 
 **Linear Graidents** -- For Linear gradients there are five parameters:
 
 -   Fallback colour -- *Value to be supplied in RGBa.*
--   Direction -- *Default is 'false' but can be supplied as 'to right',
-    'to left', etc.*
--   IE Filter Start Colour -- *The IE filter can only use a start and
-    end colour, this is the start colour and can be supplied in RGBa.*
--   IE Filter End Colour -- *This is the end colour, an can also be
-    supplied in RGBa.*
--   Colour Stops (Comma separated list of colours) -- *These can be
-    supplied in RGBa.*
+-   Direction -- *Default is 'false' but can be supplied as 'to right', 'to left', etc.*
+-   IE Filter Start Colour -- *The IE filter can only use a start and end colour, this is the start colour and can be supplied in RGBa.*
+-   IE Filter End Colour -- *This is the end colour, an can also be supplied in RGBa.*
+-   Colour Stops (Comma separated list of colours) -- *These can be supplied in RGBa.*
 
-**Radial Graidents** -- For Radial gradients there are just two
-parameters:
+**Radial Graidents** -- For Radial gradients there are just two parameters:
 
--   Fallback colour -- *Value to be supplied in HEX only, as the MS
-    filter does not accept colour codes. This fallback colour is only
-    used as a background colour.*
--   Colour Stops (Comma separated list of colours) -- *These can be
-    supplied in RGBa.*
+-   Fallback colour -- *Value to be supplied in HEX only, as the MS filter does not accept colour codes. This fallback colour is only used as a background colour.*
+-   Colour Stops (Comma separated list of colours) -- *These can be supplied in RGBa.*
 
-The mixins then take care of creating the gradients by using the Sass
-functions and other complimentary mixins.\
+The mixins then take care of creating the gradients by using the Sass functions and other complimentary mixins.\
  
 
 #### Demo
 
-I have uploaded the demo to CodePen, you can visit it
-[here](https://codepen.io/ryanfitton/pen/ebVaJK). An embed is below:
+I have uploaded the demo to CodePen, you can visit it [here](https://codepen.io/ryanfitton/pen/ebVaJK). An embed is below:
 
-See the Pen [Sass (SCSS) powered Linear and Radial CSS3 gradients with
-MS Filters](https://codepen.io/ryanfitton/pen/ebVaJK/) by Ryan Fitton
-([\@ryanfitton](https://codepen.io/ryanfitton)) on
-[CodePen](https://codepen.io).
-
+See the Pen [Sass (SCSS) powered Linear and Radial CSS3 gradients with MS Filters](https://codepen.io/ryanfitton/pen/ebVaJK/) by Ryan Fitton ([\@ryanfitton](https://codepen.io/ryanfitton)) on [CodePen](https://codepen.io).
  
 
 #### Mixin Examples
 
 ##### Linear gradient
 
-Once you have the Mixin and Functions code ready, you can specify a
-Linear Gradient like this:
+Once you have the Mixin and Functions code ready, you can specify a Linear Gradient like this:
 
 ``` language-scss
 //Green linear gradient
@@ -94,8 +70,7 @@ Linear Gradient like this:
 
 ##### Radial gradient
 
-Once you have the Mixin and Functions code ready, you can specify a
-Radial Gradient like this:
+Once you have the Mixin and Functions code ready, you can specify a Radial Gradient like this:
 
 ``` language-scss
 //Orange radial gradient

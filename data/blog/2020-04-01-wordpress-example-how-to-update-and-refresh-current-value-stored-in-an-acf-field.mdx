@@ -5,24 +5,14 @@ authors: ['Ryan Fitton']
 date: '2020-04-01'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'The post displays hows to use
-WordPress Ajax functions to display a field&#8217;s value; and
-automatically refresh the field every 5 seconds. This example also
-includes examples of how to send an Ajax post to update the field. In
-this example, each click oft the &#8216;submit&#8217; button will
-increase the numerical value stored in the ...'
+summary: 'The post displays hows to use WordPress Ajax functions to display a field&#8217;s value; and automatically refresh the field every 5 seconds. This example also includes examples of how to send an Ajax post to update the field. In this example, each click oft the &#8216;submit&#8217; button will increase the numerical value stored in the ...'
 ---
 
-The post displays hows to use WordPress Ajax functions to display a
-field's value; and automatically refresh the field every 5 seconds. This
-example also includes examples of how to send an Ajax post to update the
-field.
+The post displays hows to use WordPress Ajax functions to display a field's value; and automatically refresh the field every 5 seconds. This example also includes examples of how to send an Ajax post to update the field.
 
-In this example, each click oft the 'submit' button will increase the
-numerical value stored in the ACF field by 1.
+In this example, each click oft the 'submit' button will increase the numerical value stored in the ACF field by 1.
 
-**Note:** All code for this example can be found in my GitHub repo:
-<https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example>.
+**Note:** All code for this example can be found in my GitHub repo: [https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example](https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example).
 
  
 
@@ -30,14 +20,9 @@ numerical value stored in the ACF field by 1.
 
 -   Ensure you have WordPress installed. Tested from WordPress 5.3.2
 -   Install ACF Pro (Pro required for custom options page)
--   Upload the ACF export file `acf-export-2020-03-31.json` into your
-    ACF settings
--   Download these jQuery libaries:
-    [RSVP.min.js](https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/rsvp.min.js)
-    and
-    [js.cookie.min.js](https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/js.cookie.min.js).
--   jQuery is also required, however this should already be included
-    from WordPress.
+-   Upload the ACF export file `acf-export-2020-03-31.json` into your ACF settings
+-   Download these jQuery libaries: [RSVP.min.js](https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/rsvp.min.js) and [js.cookie.min.js](https://github.com/ryanfitton/wordpress-update-acf-field-via-ajax-example/blob/master/js.cookie.min.js).
+-   jQuery is also required, however this should already be included from WordPress.
 
  
 
@@ -51,9 +36,7 @@ numerical value stored in the ACF field by 1.
 
 ### Step 1 -- Create a new page template
 
-Create a page template in your theme folder with the code below. Then
-setup a page within WP Admin using this new page template: '[Ajax
-counter update]{.pl-c}'.
+Create a page template in your theme folder with the code below. Then setup a page within WP Admin using this new page template: 'Ajax counter update'.
 
 Create a new file named `tmpl_page_ajax.php`
 
@@ -98,11 +81,9 @@ Create a new file named `tmpl_page_ajax.php`
 
 ### Step 2 -- Add code to your functions.php file
 
-You may already have a `functions.php` file in your theme, if so; do NOT
-overwrite this file.
+You may already have a `functions.php` file in your theme, if so; do NOT overwrite this file.
 
-Instead, copy and paste the code below, and paste to the bottom of your
-existing theme file.
+Instead, copy and paste the code below, and paste to the bottom of your existing theme file.
 
 ``` {.language-php .code-toolbar}
 <?php 
@@ -304,8 +285,7 @@ existing theme file.
 
 ### Step 3 -- Create JS file to hold AJAX calls
 
-This file will hold all Ajax function calls. These function calls will
-communicate with the PHP functions within functions.php
+This file will hold all Ajax function calls. These function calls will communicate with the PHP functions within functions.php
 
 Create a new file named `ajax.js`
 

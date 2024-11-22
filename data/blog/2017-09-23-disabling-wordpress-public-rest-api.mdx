@@ -5,26 +5,14 @@ authors: ['Ryan Fitton']
 date: '2017-09-23'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary:'I&#8217;ve recently found that the public WP REST API endpoints within
-WordPress can provide information which can be used in
-&#8216;hacking&#8217; attempts. One such endpoint is
-&#8216;/wp-json/wp/v2/users&#8217; (e.g.
-https://yourdomain.com/wp-json/wp/v2/users), this will display Admin
-usernames to any unauthenticated user. There are a couple of way to
-mitigate this risk, install the Disable REST API or add...'
+summary: "I've recently found that the public WP REST API endpoints within WordPress can provide information which can be used in 'hacking' attempts. One such endpoint is '/wp-json/wp/v2/users' (e.g. https://yourdomain.com/wp-json/wp/v2/users), this will display Admin usernames to any unauthenticated user. There are a couple of way to mitigate this risk, install the Disable REST API or add..."
 ---
 
-I've recently found that the public WP REST API endpoints within
-WordPress can provide information which can be used in 'hacking'
-attempts.
+I've recently found that the public WP REST API endpoints within WordPress can provide information which can be used in 'hacking' attempts.
 
-One such endpoint is **'/wp-json/wp/v2/users'** (e.g.
-https://yourdomain.com/wp-json/wp/v2/users), this will display Admin
-usernames to any unauthenticated user.
+One such endpoint is **'/wp-json/wp/v2/users'** (e.g. https://yourdomain.com/wp-json/wp/v2/users), this will display Admin usernames to any unauthenticated user.
 
-There are a couple of way to mitigate this risk, install the [Disable
-REST API](https://wordpress.org/plugins/disable-json-api/) or add this
-function to your theme's 'functions.php' file:
+There are a couple of way to mitigate this risk, install the [Disable REST API](https://wordpress.org/plugins/disable-json-api/) or add this function to your theme's 'functions.php' file:
 
 #### Sites running WordPress 4.7 or greater
 

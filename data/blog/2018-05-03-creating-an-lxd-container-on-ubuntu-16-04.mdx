@@ -5,38 +5,19 @@ authors: ['Ryan Fitton']
 date: '2018-05-03'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'I have
-started getting-to-grips with LXD on Ubuntu &#8211; It&#8217;s pretty
-great! LXD makes it possible to separate your applications into
-containers, and the containers run close to bare metal. I&#8217;m
-running LXD on my webserver (the one hosting what you&#8217;re viewing
-this website on), with four containers: HAProxy: Used for sending port
-80 and ...'
+summary: 'I have started getting-to-grips with LXD on Ubuntu &#8211; It&#8217;s pretty great! LXD makes it possible to separate your applications into containers, and the containers run close to bare metal. I&#8217;m running LXD on my webserver (the one hosting what you&#8217;re viewing this website on), with four containers: HAProxy: Used for sending port 80 and ...'
 ---
 
-I have started getting-to-grips with LXD on Ubuntu -- It's pretty great!
-LXD makes it possible to separate your applications into containers, and
-the containers run close to bare metal.
+I have started getting-to-grips with LXD on Ubuntu -- It's pretty great! LXD makes it possible to separate your applications into containers, and the containers run close to bare metal.
 
-I'm running LXD on my webserver (the one hosting what you're viewing
-this website on), with four containers:
+I'm running LXD on my webserver (the one hosting what you're viewing this website on), with four containers:
 
--   [HAProxy](http://www.haproxy.org/): Used for sending port 80 and 443
-    requests to the correct container.
+-   [HAProxy](http://www.haproxy.org/): Used for sending port 80 and 443 requests to the correct container.
 -   Container for running my websites (Apache2, PHP, MySQL, SFTP).
--   Another container for running client websites, with the same
-    applications as above.
--   [Canonical
-    Landscape](https://landscape.canonical.com/set-up-on-prem): Used to
-    manage my Ubuntu servers and Containers.
+-   Another container for running client websites, with the same applications as above.
+-   [Canonical Landscape](https://landscape.canonical.com/set-up-on-prem): Used to manage my Ubuntu servers and Containers.
 
-Everything has been working well for the past couple of months. I have
-had no issues updating the containers via Canonical Landscape, and have
-managed to get some backup scripts running via Cron. I wont go into how
-the backup scripts work for now, [but will mention this in an upcoming
-post.]{style="text-decoration: line-through;"} This post is now live,
-click
-[here](https://ryanfitton.co.uk/blog/lxd-container-backup-to-ftp-server-script/).
+Everything has been working well for the past couple of months. I have had no issues updating the containers via Canonical Landscape, and have managed to get some backup scripts running via Cron. I wont go into how the backup scripts work for now, [but will mention this in an upcoming post.]{style="text-decoration: line-through;"} This post is now live, click [here](https://ryanfitton.co.uk/blog/lxd-container-backup-to-ftp-server-script/).
 
  
 
@@ -44,16 +25,13 @@ click
 
 ##### Introduction
 
-After looking through multiple tutorials, I have decided to add the
-steps I found the most useful. It's simple but covers the commands to
-create, delete and set CPU, Memory and Disk Storage limits.
+After looking through multiple tutorials, I have decided to add the steps I found the most useful. It's simple but covers the commands to create, delete and set CPU, Memory and Disk Storage limits.
 
  
 
 ##### Setting up the Host
 
-I'm running Ubuntu Server 16.04, each of these commands has worked for
-me. By default LXD should already be installed.
+I'm running Ubuntu Server 16.04, each of these commands has worked for me. By default LXD should already be installed.
 
 To start the LXD configuration run:
 
@@ -63,40 +41,26 @@ sudo lxd init
 
 You will be asked some questions. Answer them with these answers:
 
-1.  Do you want to configure a new storage pool (yes/no)
-    \[default=yes\]? **yes**
-2.  Name of the storage backend to use (dir or zfs) \[default=zfs\]:
-    **zfs**
-3.  **Note:** 'ZFS' is able to set storage limits on containers, 'dir'
-    cannot do this. If you're going to use 'ZFS' ensure the package is
-    installed, run:
+1.  Do you want to configure a new storage pool (yes/no) \[default=yes\]? **yes**
+2.  Name of the storage backend to use (dir or zfs) \[default=zfs\]: **zfs**
+3.  **Note:** 'ZFS' is able to set storage limits on containers, 'dir' cannot do this. If you're going to use 'ZFS' ensure the package is installed, run:
 4.  For ZFS only:
-    a.  Do you want to configure a new storage pool (yes/no)
-        \[default=yes\]? **yes**
-    b.  Name of the storage backend to use (dir or zfs) \[default=zfs\]:
-        **zfs**
+    a.  Do you want to configure a new storage pool (yes/no) \[default=yes\]? **yes**
+    b.  Name of the storage backend to use (dir or zfs) \[default=zfs\]: **zfs**
     c.  Create a new ZFS pool (yes/no) \[default=yes\]? **yes**
     d.  Name of the new ZFS pool \[default=lxd\]: **lxd**
-    e.  Would you like to use an existing block device (yes/no)
-        \[default=no\]? **no**
-    f.  Size in GB of the new loop device (1GB minimum) \[default=15\]:
-        **60** -- This is the size of the ZFS pool in GB
-5.  Would you like LXD to be available over the network (yes/no)
-    \[default=no\]? **no**
-6.  Do you want to configure the LXD bridge (yes/no) \[default=yes\]?
-    **yes**
-7.  Would you like to setup a network bridge for LXD containers now?
-    **yes**
+    e.  Would you like to use an existing block device (yes/no) \[default=no\]? **no**
+    f.  Size in GB of the new loop device (1GB minimum) \[default=15\]: **60** -- This is the size of the ZFS pool in GB
+5.  Would you like LXD to be available over the network (yes/no) \[default=no\]? **no**
+6.  Do you want to configure the LXD bridge (yes/no) \[default=yes\]? **yes**
+7.  Would you like to setup a network bridge for LXD containers now? **yes**
 8.  Bridge name: **lxdbr0**
 9.  Do you want to setup an IPv4 subnet? **yes**
-10. **Accept the default values** for IPv4 address and CIDR mask, also
-    **accept the default values** for DHCP address and maximum DHCP
-    clients
+10. **Accept the default values** for IPv4 address and CIDR mask, also **accept the default values** for DHCP address and maximum DHCP clients
 11. Do you want to NAT the IPv4 traffic? **yes**
 12. Do you want to setup an IPv6 subnet? **no**
 
-Once setup, you can run these commands to list the installed containers
-and the current list of available templates:
+Once setup, you can run these commands to list the installed containers and the current list of available templates:
 
 -   Use LXC list to view the available installed containers:
 
@@ -120,8 +84,7 @@ and the current list of available templates:
 
 ##### Creating a container
 
-Now create a container named `example-webserver`{.language-markup}
-running `Ubuntu 16.04`{.language-markup}:
+Now create a container named `example-webserver` running `Ubuntu 16.04`:
 
 ``` language-markup
 sudo lxc launch ubuntu:16.04 example-webserver
@@ -145,18 +108,15 @@ You can set CPU and Memory limits using the following commands:
 
      
 
--   You can also set Hard Drive size limits with ZFS. To limit the hard
-    drive space of a container to **10GB**, run the command below:
+-   You can also set Hard Drive size limits with ZFS. To limit the hard drive space of a container to **10GB**, run the command below:
 
-    **Note:** 'lxd' is the ZFS pool name, the path can be found using:
-    `sudo zfs list`{.language-markup}
+    **Note:** 'lxd' is the ZFS pool name, the path can be found using: `sudo zfs list`
 
     ``` language-markup
     sudo zfs set quota=10G lxd/containers/example-webserver
     ```
 
-    Once done, you can access the Root File System for for the container
-    here:
+    Once done, you can access the Root File System for for the container here:
 
     ``` language-markup
     /var/lib/lxd/containers/example-webserver/rootfs/
@@ -194,8 +154,7 @@ To list all created containers, run:
 sudo lxc list
 ```
 
-Or to see the configured specs of a specific container (Replace
-`example-webserver`{.language-markup} with your container name), run:
+Or to see the configured specs of a specific container (Replace `example-webserver` with your container name), run:
 
 ``` language-markup
 sudo lxc config show example-webserver
@@ -205,8 +164,7 @@ sudo lxc config show example-webserver
 
 ##### Stop, Start and Delete containers
 
-**Note:** Replace `example-webserver`{.language-markup} with your
-container name.
+**Note:** Replace `example-webserver` with your container name.
 
 -   **To stop:**
 
@@ -234,8 +192,7 @@ container name.
 
 ##### Logging into Containers
 
-**Note:** Replace `example-webserver`{.language-markup} with your
-container name.
+**Note:** Replace `example-webserver` with your container name.
 
 To access the shell of a container, run:
 

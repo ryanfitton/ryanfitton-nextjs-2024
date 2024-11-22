@@ -5,51 +5,25 @@ authors: ['Ryan Fitton']
 date: '2013-08-18'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'I have
-built this script a while ago to keep track of podcasts I wanted to
-watch. My ISP gives me free internet usage after 11pm which
-doesn&#8217;t contribute to my monthly download limit so I needed some
-way to automate the download of the podcast. I decided to build this
-script in PHP as ...'
+summary: 'I have built this script a while ago to keep track of podcasts I wanted to watch. My ISP gives me free internet usage after 11pm which doesn&#8217;t contribute to my monthly download limit so I needed some way to automate the download of the podcast. I decided to build this script in PHP as ...'
 ---
 
-I have built this script a while ago to keep track of podcasts I wanted
-to watch. My ISP gives me free internet usage after 11pm which doesn't
-contribute to my monthly download limit so I needed some way to automate
-the download of the podcast.
+I have built this script a while ago to keep track of podcasts I wanted to watch. My ISP gives me free internet usage after 11pm which doesn't contribute to my monthly download limit so I needed some way to automate the download of the podcast.
 
-I decided to build this script in PHP as it was the language in which I
-had the most experience with. The script itself is powered by a cronjob,
-I set mine to run at 05:05am each morning, although this can be changed.
+I decided to build this script in PHP as it was the language in which I had the most experience with. The script itself is powered by a cronjob, I set mine to run at 05:05am each morning, although this can be changed.
 
-The script stores a cached URL of the most recent podcast downloaded in
-a .txt file, so when the cronjob is started the script looks at the
-current URL in the RSS feed and checks to see if it is equal to the URL
-in the cached file; if it is then it won't download, if it is different
-then the script will start to download the new podcast.
+The script stores a cached URL of the most recent podcast downloaded in a .txt file, so when the cronjob is started the script looks at the current URL in the RSS feed and checks to see if it is equal to the URL in the cached file; if it is then it won't download, if it is different then the script will start to download the new podcast.
 
-Because I was running this on my home server which was not accessible
-outside my LAN I wasn't bothered about file permissions. All the files
-in the 'www' web root folder were set to CHMOD 777. I have listed the
-scripts below, feel free to edit or fork them on 
-[Github](https://gist.github.com/ryanfitton/6260286 "A PHP cronjob to download podcasts via a PHP script")
-.
+Because I was running this on my home server which was not accessible outside my LAN I wasn't bothered about file permissions. All the files in the 'www' web root folder were set to CHMOD 777. I have listed the scripts below, feel free to edit or fork them on [Github](https://gist.github.com/ryanfitton/6260286 "A PHP cronjob to download podcasts via a PHP script") .
 
 ### Configuration Options
 
--   \$url -- The RSS feed which you want to download. In this example I
-    am using Twit's HD video feed (<http://feeds.twit.tv/twit_video_hd>)
+-   \$url -- The RSS feed which you want to download. In this example I am using Twit's HD video feed ([http://feeds.twit.tv/twit_video_hd](http://feeds.twit.tv/twit_video_hd))
 -   \$cache -- The location to the .txt cache file.
--   \$path -- The location and filename which you want to apply to the
-    downloaded podcast. For example mine would be stored in "/var/www/"
-    and be called "twit-18-8-2013.mp4"
+-   \$path -- The location and filename which you want to apply to the downloaded podcast. For example mine would be stored in "/var/www/" and be called "twit-18-8-2013.mp4"
 
 ### Notes
 
-This script has been used for over 2 years without issues. Although if
-you plan on running multiple versions of this script in your cronjobs
-then I would place each one with a 2 hour interval at least.
+This script has been used for over 2 years without issues. Although if you plan on running multiple versions of this script in your cronjobs then I would place each one with a 2 hour interval at least.
 
-I have been running this script on Ubuntu 11.04 and Ubuntu 12.04 LTS.
-This should work on other Linux distributions although I cannot
-guarantee this.
+I have been running this script on Ubuntu 11.04 and Ubuntu 12.04 LTS. This should work on other Linux distributions although I cannot guarantee this.

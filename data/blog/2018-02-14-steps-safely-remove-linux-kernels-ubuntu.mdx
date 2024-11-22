@@ -5,19 +5,12 @@ authors: ['Ryan Fitton']
 date: '2018-02-14'
 tags: ['Code Snippets']
 draft: false
-summary: 'Note: Please understand,
-these instructions can make your system non-bootable. If you&#8217;re
-unsure, do not continue. If you&#8217;re trying to update the kernel and
-low/empty disk space errors are shown, it&#8217;s probably because the
-/boot/ directory is full. Use this command to see the available space of
-/boot/: sudo df -h Now check the kernel ...'
+summary: 'Note: Please understand, these instructions can make your system non-bootable. If you&#8217;re unsure, do not continue. If you&#8217;re trying to update the kernel and low/empty disk space errors are shown, it&#8217;s probably because the /boot/ directory is full. Use this command to see the available space of /boot/: sudo df -h Now check the kernel ...'
 ---
 
-**Note:** Please understand, these instructions can make your system
-non-bootable. If you're unsure, do not continue.
+**Note:** Please understand, these instructions can make your system non-bootable. If you're unsure, do not continue.
 
-If you're trying to update the kernel and low/empty disk space errors
-are shown, it's probably because the /boot/ directory is full.
+If you're trying to update the kernel and low/empty disk space errors are shown, it's probably because the /boot/ directory is full.
 
 Use this command to see the available space of /boot/:
 
@@ -25,8 +18,7 @@ Use this command to see the available space of /boot/:
 sudo df -h
 ```
 
-Now check the kernel version you're using. Make a note so you don't
-delete your current kernel files:
+Now check the kernel version you're using. Make a note so you don't delete your current kernel files:
 
 ``` language-bash
 sudo uname -r
@@ -38,9 +30,7 @@ View all of the available kernels on your system:
 dpkg --list | grep linux-image
 ```
 
-With this list, make commands to delete each kernel. Remember not to
-include the kernel you're using, run each line separately, replacing the
-version numbers with your kernel versions, e.g. x.x.x-xx to 4.4.0-31:
+With this list, make commands to delete each kernel. Remember not to include the kernel you're using, run each line separately, replacing the version numbers with your kernel versions, e.g. x.x.x-xx to 4.4.0-31:
 
 ``` language-bash
 sudo update-initramfs -d -k x.x.x-xx-generic
@@ -56,5 +46,4 @@ Now update the grub2 boot loader:
 sudo update-grub2
 ```
 
-These commands have been tested on Ubuntu 16.04. More information can be
-found here: <https://help.ubuntu.com/community/RemoveOldKernels>
+These commands have been tested on Ubuntu 16.04. More information can be found here: [https://help.ubuntu.com/community/RemoveOldKernels](https://help.ubuntu.com/community/RemoveOldKernels)

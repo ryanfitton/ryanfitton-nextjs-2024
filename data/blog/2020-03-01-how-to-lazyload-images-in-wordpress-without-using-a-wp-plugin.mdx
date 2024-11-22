@@ -5,27 +5,16 @@ authors: ['Ryan Fitton']
 date: '2020-03-01'
 tags: ['Development', 'Code Snippets']
 draft: false
-summary: 'This post explains how to use the jQuery Lazy library in a
-WordPress template. By implementing this library into a template
-manually will give you greater flexibility in terms of which images can
-be &#8216;lazy loaded&#8217;. A couple of requirements are necessary
-before using the jQuery Lazy library: Requires at least jQuery 3.4.1
-&#8211; This ...'
+summary: 'This post explains how to use the jQuery Lazy library in a WordPress template. By implementing this library into a template manually will give you greater flexibility in terms of which images can be &#8216;lazy loaded&#8217;. A couple of requirements are necessary before using the jQuery Lazy library: Requires at least jQuery 3.4.1 &#8211; This ...'
 ---
 
-This post explains how to use the [jQuery
-Lazy](https://github.com/eisbehr-/jquery.lazy/blob/master/jquery.lazy.min.js)
-library in a WordPress template.
+This post explains how to use the [jQuery Lazy](https://github.com/eisbehr-/jquery.lazy/blob/master/jquery.lazy.min.js) library in a WordPress template.
 
-By implementing this library into a template manually will give you
-greater flexibility in terms of which images can be 'lazy loaded'.
+By implementing this library into a template manually will give you greater flexibility in terms of which images can be 'lazy loaded'.
 
-A couple of requirements are necessary before using the jQuery Lazy
-library:
+A couple of requirements are necessary before using the jQuery Lazy library:
 
--   Requires at least jQuery 3.4.1 -- This means the default library
-    used by WordPress will need to be disabled, and version 3.4.1 will
-    need to be loaded.
+-   Requires at least jQuery 3.4.1 -- This means the default library used by WordPress will need to be disabled, and version 3.4.1 will need to be loaded.
 -   Image tags to be replaced and custom functions added.
 
 #### Step 1: Converting your image tags
@@ -36,8 +25,7 @@ Go through your theme and you should have image tags similar to:
 <img src="/assets/img/example-image.png" alt="Example image alt" class="example_img_class">
 ```
 
-Wrap this tag in a custom function, which will add the required Lazy
-load tags:
+Wrap this tag in a custom function, which will add the required Lazy load tags:
 
 ``` language-php
 <?php echo filter_lazyload_img('<img src="/assets/img/example-image.png" alt="Example image alt" class="example_img_class">'); ?>
@@ -59,9 +47,7 @@ Also, wrap these in a custom function:
 
 #### Step 2: Load the jQuery scripts and setup LazyLoad instance
 
-In your `functions.php`{.language-html} file, add the code shown below.
-This will load the required jQuery files, the Lazy library and setup a
-new instance of LazyLoad:
+In your `functions.php` file, add the code shown below. This will load the required jQuery files, the Lazy library and setup a new instance of LazyLoad:
 
 ``` language-php
 if (!is_admin()) {
@@ -103,9 +89,7 @@ if (!is_admin()) {
 
 #### Step 3: Add functions for Image and Background images
 
-Also, within your `functions.php`{.language-html} add these functions
-which are used to add the required tags for the Image and Background
-image tags.
+Also, within your `functions.php` add these functions which are used to add the required tags for the Image and Background image tags.
 
 For Images add:
 

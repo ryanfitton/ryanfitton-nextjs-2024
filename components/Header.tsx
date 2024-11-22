@@ -28,7 +28,6 @@ export default function Header() {
     console.log(pathname)
   }
 
-
   //Convert headings to uppercase
   const titleUpercase = basePath.toUpperCase()
   const subTitleUpperCase = subTitle.toUpperCase()
