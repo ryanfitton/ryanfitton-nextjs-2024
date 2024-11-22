@@ -16,13 +16,13 @@ I was looking to host pfSense in a virtual machine but I felt un-easy running th
 
 My first thought was to check the device offerings from [Netgate](https://www.netgate.com/) (The creators of [pfSense](https://www.pfsense.org/)), however I felt these were too expensive for my use case. Then I came across the [Qotom Q150P-S08 on AliExpress](https://www.aliexpress.com/item/Qotom-Mini-PC-with-AES-NI-Quad-Core-Celeron-J3060-J3160-Processor-Fanless-Thin-Client-Little/32863982193.html). Screenshot below, click for a larger version or [here](https://www.aliexpress.com/item/Qotom-Mini-PC-with-AES-NI-Quad-Core-Celeron-J3060-J3160-Processor-Fanless-Thin-Client-Little/32863982193.html) for the AliExpress listing.
 
-<a href="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg" alt="" width="925" height="683" srcset="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg 925w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-300x222.jpg 300w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-768x567.jpg 768w" sizes="(max-width: 925px) 100vw, 925px" /></a>
+<a href="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg" alt="" width="925" height="683" srcSet="/static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8.jpg 925w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-300x222.jpg 300w, /static/img/blog/2018/08/aliexpress-2018-08-10-qotom-q150p-so8-768x567.jpg 768w" sizes="(max-width: 925px) 100vw, 925px" /></a>
 
 The total came to around £120.00 including UPS shipping (tracked and insured), delivery took a couple of weeks but the device came intact ready for setup.
 
 I added some labels above the ports and a label for the device's IP address to make this easier to troubleshoot if required in the future.
 
-<a href="/static/img/blog/2018/08/DSC01504.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01504-1024x768.jpg" alt="" width="1024" height="768" srcset="/static/img/blog/2018/08/DSC01504-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01504-300x225.jpg 300w, /static/img/blog/2018/08/DSC01504-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
+<a href="/static/img/blog/2018/08/DSC01504.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01504-1024x768.jpg" alt="" width="1024" height="768" srcSet="/static/img/blog/2018/08/DSC01504-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01504-300x225.jpg 300w, /static/img/blog/2018/08/DSC01504-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
 
 The variant I ordered was the 'barebones' unit and I supplied my own RAM and mSATA SSD from Amazon:
 
@@ -31,9 +31,9 @@ The variant I ordered was the 'barebones' unit and I supplied my own RAM and mSA
 
 The components were extremely easy to fit, just remove the screws from the aluminium case and connect the components to the motherboard. You have the option of mounting a 2.5 inch Sata hard drive, there is mounting holes on the underside of the lid, however I went for a 16GB mSATA SSD as pfSense was only going to be installed.
 
-<a href="/static/img/blog/2018/08/DSC01505.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01505-1024x768.jpg" alt="" width="1024" height="768" srcset="/static/img/blog/2018/08/DSC01505-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01505-300x225.jpg 300w, /static/img/blog/2018/08/DSC01505-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
+<a href="/static/img/blog/2018/08/DSC01505.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01505-1024x768.jpg" alt="" width="1024" height="768" srcSet="/static/img/blog/2018/08/DSC01505-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01505-300x225.jpg 300w, /static/img/blog/2018/08/DSC01505-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
 
-<a href="/static/img/blog/2018/08/DSC01507.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01507-1024x768.jpg" alt="" width="1024" height="768" srcset="/static/img/blog/2018/08/DSC01507-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01507-300x225.jpg 300w, /static/img/blog/2018/08/DSC01507-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
+<a href="/static/img/blog/2018/08/DSC01507.jpg"><img loading="lazy"  src="/static/img/blog/2018/08/DSC01507-1024x768.jpg" alt="" width="1024" height="768" srcSet="/static/img/blog/2018/08/DSC01507-1024x768.jpg 1024w, /static/img/blog/2018/08/DSC01507-300x225.jpg 300w, /static/img/blog/2018/08/DSC01507-768x576.jpg 768w" sizes="(max-width: 1024px) 100vw, 1024px" /></a>
 
 After this was done, it was time to burn the pfSense ISO to a USB stick. I used Etcher running on Ubuntu 18.04 to do this.
 

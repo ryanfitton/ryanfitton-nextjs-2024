@@ -287,8 +287,7 @@ http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
 Still do / TODO:
-https://ryanfitton.github.io/ryanfitton-tailwind-2024/
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk
+Allow html entities in summary and blog post http://localhost:3000/blog/ http://localhost:3000/blog/installing-tp-link-omada-controller-on-ubuntu/
 Move Portfolio items out of Blog into their own section
 If blog, use title from page in header instead of url
 Link to blog external resource error
