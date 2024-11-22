@@ -1,10 +1,12 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 import Link from './Link'
 import navLinks from '@/data/navLinks'
 
 const MobileNav = () => {
+  const pathname = usePathname()
   const [navShow, setNavShow] = useState(false)
 
   const onToggleNav = () => {
@@ -49,7 +51,7 @@ const MobileNav = () => {
         <nav className="fixed mt-8 h-full w-full">
           <div className="component-navbar__links component-navbar__links--menu-mobile">
             {navLinks.map((link) => (
-              <Link key={link.title} href={link.href} onClick={onToggleNav}>
+              <Link key={link.title} href={link.href} className={pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''} onClick={onToggleNav}>
                 {link.title}
               </Link>
             ))}
