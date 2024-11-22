@@ -45,7 +45,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
     writeFileSync(`./${outputFolder}/${page}`, rss)
   }
 
-  if (publishPosts.length > 0) {
+  /*if (publishPosts.length > 0) {
     for (const tag of Object.keys(tagData)) {
       const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
@@ -54,15 +54,11 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
       writeFileSync(path.join(rssPath, page), rss)
     }
   }
+    */
 }
 
 const rss = () => {
   generateRSS(siteMetadata, allBlogs)
-  console.log('RSS feed generated...' + `in: ./${outputFolder}/`)
-
-  var fs = require('fs');
-  var files = fs.readdirSync(`./${outputFolder}/`);
-  console.log(files)
-
+  console.log('RSS feed generated...')
 }
 export default rss
