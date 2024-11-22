@@ -20,6 +20,11 @@
 
         a {
           @apply text-white #{!important};
+
+          //If this is the current page
+          &.component-navbar__link--current-page {
+            @apply bg-primary-700 dark:bg-secondary-900;
+          }
         }
 
         &--menu-mobile {
