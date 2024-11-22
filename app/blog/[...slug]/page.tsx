@@ -1,5 +1,6 @@
 import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
+import { notFound } from 'next/navigation'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allBlogs, allAuthors } from 'contentlayer/generated'
