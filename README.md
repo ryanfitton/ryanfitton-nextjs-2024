@@ -270,10 +270,6 @@ https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
 
 
-
-Using media chrome for video: https://www.media-chrome.org/docs/en/components/media-poster-image#article
-
-
 Sitemap:
 http://localhost:3000 - Requires homepage content
 Fix header homepage/standard page
@@ -289,7 +285,6 @@ http://localhost:3000/tags/personal/
 Still do / TODO:
 Move Portfolio items out of Blog into their own section
 If blog, use title from page in header instead of url
-Link to blog external resource error
 Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
