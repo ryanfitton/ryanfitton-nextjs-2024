@@ -166,7 +166,7 @@ export default function ListLayout({
                         ))}
                       </ul>
 
-                      <div className="component-posts-article__excerpt">{summary}</div>
+                      <div className="component-posts-article__excerpt" dangerouslySetInnerHTML={{ __html: summary }}></div>
                     </article>
                   </li>
                 )

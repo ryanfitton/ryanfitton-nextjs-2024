@@ -87,8 +87,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on X (Twitter)
                 </Link>
-                {` • `}
-                <Link href={editUrl(filePath)}>Link to external resource</Link>
               </p>
 
               <hr className="prose-hr component-posts-article__divider" />

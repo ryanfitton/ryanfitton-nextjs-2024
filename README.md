@@ -287,14 +287,13 @@ http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
 Still do / TODO:
-Allow html entities in summary and blog post http://localhost:3000/blog/ http://localhost:3000/blog/installing-tp-link-omada-controller-on-ubuntu/
 Move Portfolio items out of Blog into their own section
 If blog, use title from page in header instead of url
 Link to blog external resource error
 Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
-Sitemap.xml working?
+Sitemap.xml working? /feed.xml
 
 To do:
 
