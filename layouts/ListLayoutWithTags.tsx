@@ -154,7 +154,7 @@ export default function ListLayoutWithTags({
 
                       <div
                         className="component-posts-article__excerpt"
-                        dangerouslySetInnerHTML={{ __html: (summary != undefined ? summary : '') }}
+                        dangerouslySetInnerHTML={{ __html: summary != undefined ? summary : '' }}
                       ></div>
                     </article>
                   </li>

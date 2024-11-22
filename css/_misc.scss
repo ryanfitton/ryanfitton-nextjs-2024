@@ -10,7 +10,7 @@ div[class*='backdrop-blur backdrop-filter'] {
   @apply z-[3];
 }
 
-//For prose on `<code>` and `<pre>` blocks
+//For prose on `<code>` and `<pre>` blocks in prose
 code,
 pre {
   @apply font-mono;
@@ -19,4 +19,9 @@ pre {
 code {
   //color: var(--tw-prose-pre-code);
   @apply dark:bg-[var(--tw-prose-pre-bg)] dark:text-white;
+}
+
+//For `<strong>` tags in prose
+strong {
+  @apply text-inherit #{!important};
 }

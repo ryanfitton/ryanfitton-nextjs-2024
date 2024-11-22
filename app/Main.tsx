@@ -120,7 +120,7 @@ export default function Home({ posts }) {
 
                       <div
                         className="component-posts-article__excerpt"
-                        dangerouslySetInnerHTML={{ __html: (summary != undefined ? summary : '') }}
+                        dangerouslySetInnerHTML={{ __html: summary != undefined ? summary : '' }}
                       ></div>
                     </article>
                   </li>
@@ -133,7 +133,7 @@ export default function Home({ posts }) {
             <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
               <div className="component-posts-pagination component-block">
                 <nav className="component-posts-pagination__navigation">
-                  <Link href="/about" className="component-posts-pagination__paginate">
+                  <Link href="/blog/" className="component-posts-pagination__paginate">
                     Read more
                   </Link>
                 </nav>
