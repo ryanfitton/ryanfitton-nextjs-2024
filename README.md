@@ -258,9 +258,12 @@ tailwind.config.js
 
 php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
+
+
+
 giscusConfig = Comment system powered by Github Discussions: https://github.com/giscus/giscus
 
-Search for TODO
+Search for TODO in code
 
 Using cloud flare Image Tranformations - Re-enable this in the code. 
 Must have DNS proxied by cloudflare e.g.
@@ -289,6 +292,8 @@ Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
 Sitemap.xml working? /feed.xml
+
+
 
 To do:
 
@@ -328,7 +333,6 @@ DONE: tag-data.json
 DONE: theme-providers.tsx
 Layouts:
 DONE: AuthorLayout.tsx
-DONE: ListLayout.tsx
 DONE: ListLayoutWithTags.tsx
 DONE: PostLayout.tsx
 DONE: PostSimple.tsx
@@ -376,12 +380,6 @@ For Card.tsx
     </>
 ```
 
-To make images for:
-
-```
-/static/img/twitter-card.png
-/static/img/avatar.png
-```
 
 Base `siteMetadata.js`
 
