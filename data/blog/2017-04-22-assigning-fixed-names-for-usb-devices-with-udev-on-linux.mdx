@@ -24,21 +24,21 @@ ACTION=="add", SUBSYSTEMS=="usb", ATTRS{idVendor}=="04a9", ATTRS{idProduct}=="27
 
 The rule basically means: on the 'add' action (when inserted) check if the device is USB and matches the 'idVendor', 'idProduct' and 'serial' values. If all of these are true a symlink which points to this device is created as 'usb/lp0'.
 
-I stored this file within `/etc/udev/rules.d/`{.language-markup} as `99-printer.rules`{.language-markup}
+I stored this file within `/etc/udev/rules.d/` as `99-printer.rules`
 
 To find out your devices attributes you can run these commands:
 
--   idVendor: `udevadm info -a -n /dev/usb/lp0 | grep '{idVendor}'`{.language-markup}
--   idProduct: `udevadm info -a -n /dev/usb/lp0 | grep '{idProduct}'`{.language-markup}
--   serial: `udevadm info -a -n /dev/usb/lp0 | grep '{serial}'`{.language-markup}
+-   idVendor: `udevadm info -a -n /dev/usb/lp0 | grep '{idVendor}'`
+-   idProduct: `udevadm info -a -n /dev/usb/lp0 | grep '{idProduct}'`
+-   serial: `udevadm info -a -n /dev/usb/lp0 | grep '{serial}'`
 
 You can then change the udev rule to match your specific USB device, add the rule into a file with nano using this command:\
-`sudo nano /etc/udev/rules.d/99-printer.rules`{.language-markup}
+`sudo nano /etc/udev/rules.d/99-printer.rules`
 
 Then exit and save, I also reload the udev rules with this command:\
-`sudo udevadm control --reload-rules && udevadm trigger`{.language-markup}
+`sudo udevadm control --reload-rules && udevadm trigger`
 
 Restart the computer, connect your USB printer, turn it on and see if your device name and symlink is shown within the USB directory:\
-`sudo ls -l /dev/usb`{.language-markup}
+`sudo ls -l /dev/usb`
 
 I hope this post has been helpful. If you have issues, please post in the comments and I will try to help.

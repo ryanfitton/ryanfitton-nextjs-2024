@@ -22,7 +22,7 @@ If you have not already done so, create a LXC container in the same way you norm
 
 In this example my container storage is run on ZFS. You must ensure you have at least 36GB of storage space available.
 
-Following these instructions, replace `lxd-homeassistant`{.language-bash} with your own container name if you wish.
+Following these instructions, replace `lxd-homeassistant` with your own container name if you wish.
 
 **Create a new container:**
 
@@ -47,7 +47,7 @@ sudo lxc config set lxd-homeassistant limits.memory 1024MB
 You can also set Hard Drive size limits with ZFS. To limit the hard drive space of a container.
 
 Note: 'zfs' is the ZFS name and 'zpool' and 'containers' are the pool names, the path can be found\
-using: `sudo zfs list`{.language-bash}
+using: `sudo zfs list`
 
 ``` {.language-bash .code-toolbar}
 sudo zfs set quota=36G zfs/zpool/containers/lxd-homeassistant
@@ -107,7 +107,7 @@ sudo apt-get install bash jq curl avahi-daemon dbus software-properties-common a
 
 Still within the container, follow the step below:
 
-There is a known issue which can affect install Home Assistant. An upgrade and reboot should fix the issue: <https://community.home-assistant.io/t/hassio-installation-issue-preparing-hass-io-this-can-take-up-to-20-minutes/30410/35>:
+There is a known issue which can affect install Home Assistant. An upgrade and reboot should fix the issue: [https://community.home-assistant.io/t/hassio-installation-issue-preparing-hass-io-this-can-take-up-to-20-minutes/30410/35](https://community.home-assistant.io/t/hassio-installation-issue-preparing-hass-io-this-can-take-up-to-20-minutes/30410/35):
 
 ``` {.language-bash .code-toolbar}
 sudo apt update && sudo apt dist-upgrade
@@ -133,4 +133,4 @@ Alternatively, the old method may still work, or may not:
 curl -sL "https://raw.githubusercontent.com/home-assistant/hassio-installer/master/hassio_install.sh" | sudo bash -s -- -m qemux86-64
 ```
 
-Once Home Assistant is installed, you can access the setup via: http://YOUR-LXC-CONTAINER-IP:8123/ -- Replace `YOUR-LXC-CONTAINER-IP`{.language-bash} with your own LXC container's IP Address.
+Once Home Assistant is installed, you can access the setup via: http://YOUR-LXC-CONTAINER-IP:8123/ -- Replace `YOUR-LXC-CONTAINER-IP` with your own LXC container's IP Address.

@@ -14,11 +14,11 @@ I decided to build this script in PHP as it was the language in which I had the 
 
 The script stores a cached URL of the most recent podcast downloaded in a .txt file, so when the cronjob is started the script looks at the current URL in the RSS feed and checks to see if it is equal to the URL in the cached file; if it is then it won't download, if it is different then the script will start to download the new podcast.
 
-Because I was running this on my home server which was not accessible outside my LAN I wasn't bothered about file permissions. All the files in the 'www' web root folder were set to CHMOD 777. I have listed the scripts below, feel free to edit or fork them on{\' \'} [Github](https://gist.github.com/ryanfitton/6260286 "A PHP cronjob to download podcasts via a PHP script") .
+Because I was running this on my home server which was not accessible outside my LAN I wasn't bothered about file permissions. All the files in the 'www' web root folder were set to CHMOD 777. I have listed the scripts below, feel free to edit or fork them on [Github](https://gist.github.com/ryanfitton/6260286 "A PHP cronjob to download podcasts via a PHP script") .
 
 ### Configuration Options
 
--   \$url -- The RSS feed which you want to download. In this example I am using Twit's HD video feed (<http://feeds.twit.tv/twit_video_hd>)
+-   \$url -- The RSS feed which you want to download. In this example I am using Twit's HD video feed ([http://feeds.twit.tv/twit_video_hd](http://feeds.twit.tv/twit_video_hd))
 -   \$cache -- The location to the .txt cache file.
 -   \$path -- The location and filename which you want to apply to the downloaded podcast. For example mine would be stored in "/var/www/" and be called "twit-18-8-2013.mp4"
 

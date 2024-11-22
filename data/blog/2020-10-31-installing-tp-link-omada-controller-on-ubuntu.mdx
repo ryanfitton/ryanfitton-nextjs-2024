@@ -8,7 +8,9 @@ draft: false
 summary: 'I have a bunch of TP-Link EAP model WiFi access points in my home, these are enterprise grade devices allow management via a unified controller, TP-Link call their controller software Omada. This is very similar to Ubiquiti&#8217;s Unifi controller. Whilst I don&#8217;t have any other Unifi equipment, I found the TP-Link access points to be ...'
 ---
 
-[![](/static/img/blog/2020/10/omada_screenshot_1-300x146.png){loading="lazy" width="300" height="146" srcset="/static/img/blog/2020/10/omada_screenshot_1-300x146.png 300w, /static/img/blog/2020/10/omada_screenshot_1-1024x499.png 1024w, /static/img/blog/2020/10/omada_screenshot_1-768x374.png 768w, /static/img/blog/2020/10/omada_screenshot_1.png 1284w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/10/omada_screenshot_1.png)I have a bunch of [TP-Link EAP](https://www.amazon.co.uk/s/ref=as_li_ss_tl?k=tp+link+eap&ref=nb_sb_noss&linkCode=ll2&tag=ryanfittoncou-21&linkId=d7f0af7e347cffc0ba512d7e3b06e1c2&language=en_GB) model WiFi access points in my home, these are enterprise grade devices allow management via a unified controller, TP-Link call their controller software [Omada](https://www.tp-link.com/uk/omada/).
+<a href="/static/img/blog/2020/10/omada_screenshot_1.png"><img loading="lazy"  src="/static/img/blog/2020/10/omada_screenshot_1-300x146.png" alt="" width="300" height="146" srcset="/static/img/blog/2020/10/omada_screenshot_1-300x146.png 300w, /static/img/blog/2020/10/omada_screenshot_1-1024x499.png 1024w, /static/img/blog/2020/10/omada_screenshot_1-768x374.png 768w, /static/img/blog/2020/10/omada_screenshot_1.png 1284w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+
+I have a bunch of <a href="https://www.amazon.co.uk/s/ref=as_li_ss_tl?k=tp+link+eap&amp;ref=nb_sb_noss&amp;linkCode=ll2&amp;tag=ryanfittoncou-21&amp;linkId=d7f0af7e347cffc0ba512d7e3b06e1c2&amp;language=en_GB">TP-Link EAP</a> model WiFi access points in my home, these are enterprise grade devices allow management via a unified controller, TP-Link call their controller software <a href="https://www.tp-link.com/uk/omada/">Omada</a>.
 
 This is very similar to Ubiquiti's Unifi controller. Whilst I don't have any other Unifi equipment, I found the TP-Link access points to be cheaper and perform just as well.
 
@@ -16,7 +18,9 @@ The WiFi access point models I user are the [EAP225](https://www.amazon.co.uk/dp
 
 ### Getting started
 
-[![](/static/img/blog/2020/10/omada_screenshot_2-300x144.png){loading="lazy" width="300" height="144" srcset="/static/img/blog/2020/10/omada_screenshot_2-300x144.png 300w, /static/img/blog/2020/10/omada_screenshot_2-1024x491.png 1024w, /static/img/blog/2020/10/omada_screenshot_2-768x368.png 768w, /static/img/blog/2020/10/omada_screenshot_2.png 1308w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2020/10/omada_screenshot_2.png)This tutorial will install the Omada controller on Ubuntu. In my case, this was Ubuntu 18.04, and the Omada Controller version v3.2.10.
+<a href="/static/img/blog/2020/10/omada_screenshot_2.png"><img loading="lazy"  src="/static/img/blog/2020/10/omada_screenshot_2-300x144.png" alt="" width="300" height="144" srcset="/static/img/blog/2020/10/omada_screenshot_2-300x144.png 300w, /static/img/blog/2020/10/omada_screenshot_2-1024x491.png 1024w, /static/img/blog/2020/10/omada_screenshot_2-768x368.png 768w, /static/img/blog/2020/10/omada_screenshot_2.png 1308w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+
+This tutorial will install the Omada controller on Ubuntu. In my case, this was Ubuntu 18.04, and the Omada Controller version v3.2.10.
 
 I'm running this in an Ubuntu LXD container, but I imagine this would work fine on a bare-metal install.
 
@@ -54,7 +58,7 @@ I'm running this in an Ubuntu LXD container, but I imagine this would work fine 
 
     6.  Now, we have installed the prerequisites, you now need to download the Omada controller package.In this tutorial the '.deb' packages will be installed, these offer the most easiest way to install the Omada controller software.
 
-        Download the latest Omada controller software from TP-Link's website here: [https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software](https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software){target="_blank" rel="noopener noreferrer"}.
+        Download the latest Omada controller software from TP-Link's website here: [https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software](https://www.tp-link.com/uk/support/download/omada-software-controller/#Controller_Software).
 
         In this example, I am using version 3.2.10.Download the package via WGET:
 
@@ -90,6 +94,6 @@ I'm running this in an Ubuntu LXD container, but I imagine this would work fine 
 
 ### Final Notes
 
-This tutorial can be installed on any Ubuntu running computer; Container (as I do) or Bare-Metal device. If you don't have the ability to run this software on your own hardware, TP-Link have their own device to run the controller software; the [Omada Cloud Controller OC200](https://www.tp-link.com/us/business-networking/omada-sdn-controller/oc200/){target="_blank" rel="noopener noreferrer"}, which is around [£65 on Amazon UK](https://www.amazon.co.uk/TP-Link-OC200-Omada-Cloud-Controller/dp/B07GT8QSRW/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=e3976a1a005d379ba92bb56d8ada0ac1&language=en_GB){target="_blank" rel="noopener noreferrer"}.
+This tutorial can be installed on any Ubuntu running computer; Container (as I do) or Bare-Metal device. If you don't have the ability to run this software on your own hardware, TP-Link have their own device to run the controller software; the [Omada Cloud Controller OC200](https://www.tp-link.com/us/business-networking/omada-sdn-controller/oc200/), which is around [£65 on Amazon UK](https://www.amazon.co.uk/TP-Link-OC200-Omada-Cloud-Controller/dp/B07GT8QSRW/ref=as_li_ss_tl?ie=UTF8&linkCode=ll1&tag=ryanfittoncou-21&linkId=e3976a1a005d379ba92bb56d8ada0ac1&language=en_GB).
 
 If you found this tutorial helpful, or wish to buy these products, consider using my affiliate links:

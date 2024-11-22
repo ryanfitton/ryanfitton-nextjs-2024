@@ -26,20 +26,20 @@ These instructions can be found in my Github repo [here](https://github.com/ryan
 
 #### Installation
 
-1.  Switch to the `root`{.language-markup} user:
+1.  Switch to the `root` user:
 
     ``` language-markup
     sudo su
     ```
 
-2.  Install `speedtest-cli`{.language-markup}, run each line separately:
+2.  Install `speedtest-cli`, run each line separately:
 
     ``` language-markup
     sudo apt-get install python-pip
     sudo pip install speedtest-cli
     ```
 
-3.  Download the `speedtest-csv`{.language-markup} script. You will also find a [copy](https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv) of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.
+3.  Download the `speedtest-csv` script. You will also find a [copy](https://github.com/ryanfitton/speedtest-cli-as-csv-cron/blob/master/speedtest-csv) of this script within the repo which you can, or re-download from the original author and make the changes to the file mentioned in step 5.
 
     ``` language-markup
     sudo wget -O speedtest-csv https://raw.githubusercontent.com/HenrikBengtsson/speedtest-cli-extras/master/bin/speedtest-csv
@@ -57,7 +57,7 @@ These instructions can be found in my Github repo [here](https://github.com/ryan
     sudo nano speedtest-csv
     ```
 
-    Find the line `cmd="speedtest-cli $opts"`{.language-markup} and add `/usr/local/bin/`{.language-markup} before it so it reads:
+    Find the line `cmd="speedtest-cli $opts"` and add `/usr/local/bin/` before it so it reads:
 
     ``` language-markup
     cmd="/usr/local/bin/speedtest-cli $opts"
@@ -65,13 +65,13 @@ These instructions can be found in my Github repo [here](https://github.com/ryan
 
     save the file and exit.
 
-6.  Next move `speedtest-csv`{.language-markup} to `/usr/bin/`{.language-markup}:
+6.  Next move `speedtest-csv` to `/usr/bin/`:
 
     ``` language-markup
     sudo mv speedtest-csv /usr/bin/
     ```
 
-7.  Create a folder for where your .csv file will be saved, I am saving mine within `/cron/speedtest/`{.language-markup}, but change this for whatever you'd like:
+7.  Create a folder for where your .csv file will be saved, I am saving mine within `/cron/speedtest/`, but change this for whatever you'd like:
 
     ``` language-markup
     sudo mkdir -p /cron/speedtest

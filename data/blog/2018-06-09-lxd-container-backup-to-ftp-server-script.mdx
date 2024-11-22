@@ -10,14 +10,14 @@ summary: 'As mentioned in my previous post, I would post code for a script which
 
 As mentioned in my [previous post](https://ryanfitton.co.uk/blog/creating-an-lxd-container-on-ubuntu-16-04/), I would post code for a script which will backup an LXD container as a snapshot, then transfer to an FTP server. The script to do this is below, it has been tested on Ubuntu 16.04 LTS.
 
-The steps listed below can be found in my LXC Container backup script collection on GitHub here: <https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection>
+The steps listed below can be found in my LXC Container backup script collection on GitHub here: [https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection](https://github.com/ryanfitton/lxc-mysql-tar-backup-script-collection)
 
 Ensure you have these packages installed:
 
--   `netcat`{.language-markup}
--   `exim4`{.language-markup}
--   `lftp`{.language-markup}
--   `curl`{.language-markup}
+-   `netcat`
+-   `exim4`
+-   `lftp`
+-   `curl`
 
 Save this to a file on your LXD host such as **'backup-container-snapshot.sh'**, now change permissions so this file is executable:
 
@@ -27,14 +27,14 @@ sudo chmod +x backup-container-snapshot.sh
 
 Now edit the file, and ensure these variables match your specs:
 
--   `GLOBAL_BACKUP_TEMP_SAVEPATH`{.language-markup}
--   `GLOBAL_REMOTE_FTP_LOCATION`{.language-markup}
--   `GLOBAL_EMAIL_TO`{.language-markup}
--   `FTP_SERVER`{.language-markup}
--   `FTP_USERNAME`{.language-markup}
--   `FTP_PASSWORD`{.language-markup}
--   `FTP_PORT`{.language-markup}
--   You may also need to configure passive mode in `FTP_ARGUMENTS`{.language-markup} and `CURL_FTP_ARGUMENTS`{.language-markup}
+-   `GLOBAL_BACKUP_TEMP_SAVEPATH`
+-   `GLOBAL_REMOTE_FTP_LOCATION`
+-   `GLOBAL_EMAIL_TO`
+-   `FTP_SERVER`
+-   `FTP_USERNAME`
+-   `FTP_PASSWORD`
+-   `FTP_PORT`
+-   You may also need to configure passive mode in `FTP_ARGUMENTS` and `CURL_FTP_ARGUMENTS`
 
 To run this script, you must pass your LXD container name as an argument, for example:
 

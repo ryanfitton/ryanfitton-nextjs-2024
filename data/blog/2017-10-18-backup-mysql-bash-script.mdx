@@ -12,7 +12,7 @@ This is a follow-on from my previous post: '[Backup server files as tar.gz](http
 
 The script below works in a similar way as the previous, save as 'backup_mysql2ftp.sh' and fill out the 'Backup options', 'MySQL Connection details', and your email address.
 
-Run the script with `sudo sh backup_mysql2ftp.sh`{.language-markup} (make sure the file is executable first).
+Run the script with `sudo sh backup_mysql2ftp.sh` (make sure the file is executable first).
 
 The databases for the entire server will be stored in a .sql format, then transferred using FTP to the remote server. Once the file has been confirmed it exists on the FTP server, it is deleted from the local server.
 

@@ -28,12 +28,12 @@ There are a few different ways depending on what hosting service you're using.
 If you're using shared hosting, you're more than likely have access to a control panel interface such as cPanel, if not you can ask your hosting provider to upgrade your PHP version on your behalf, and if they're not able to maybe it's time to switch to another [host](#) \[affiliate link\].
 
 1.  Once you're logged into your cPanel account, you should have a 'MultiPHP Manager' option:\
-    [![](/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png){loading="lazy" width="300" height="112" srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2019/01/upgrade-php-5.6-1.png)
-2.   Select this option, and then select the domains for the version you wish to change:\
-    [![](/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png){loading="lazy" width="300" height="39" srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2019/01/upgrade-php-5.6-2.png)
-3.   Now select the new PHP version from the dropdown menu, and click 'Apply':\
-    [![](/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png){loading="lazy" width="300" height="101" srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px"}](/static/img/blog/2019/01/upgrade-php-5.6-3.png)
-4.   That's it! You can create a PHP Info file on your server to check the new version has been applied. More info on that [here](https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page).
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-1.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png" alt="" width="300" height="112"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-1-300x112.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-1.png 483w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+2.  Select this option, and then select the domains for the version you wish to change:\
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-2.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png" alt="" width="300" height="39"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-2-300x39.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-2.png 748w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+3.  Now select the new PHP version from the dropdown menu, and click 'Apply':\
+    <a href="/static/img/blog/2019/01/upgrade-php-5.6-3.png"><img loading="lazy" src="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png" alt="" width="300" height="101"  srcset="/static/img/blog/2019/01/upgrade-php-5.6-3-300x101.png 300w, /static/img/blog/2019/01/upgrade-php-5.6-3.png 737w" sizes="(max-width: 300px) 100vw, 300px" /></a>
+4.  That's it! You can create a PHP Info file on your server to check the new version has been applied. More info on that [here](https://mediatemple.net/community/products/dv/204643880/how-can-i-create-a-phpinfo.php-page).
 
 If these instructions don't match your shared hosting setup, contact your provider and they will be able to help -- not all shared hosting environments are the same, with options differing from provider to provider.
  
@@ -101,7 +101,7 @@ These instructions were test on an Ubuntu 18.04 system. To upgrade from PHP 5.6 
     sudo apt-get install mcrypt
     ```
 
-10. Now edit your PHP.ini file, I do this to adjust the '`post_max_size`{.language-markup}' and '`upload_max_filesize`{.language-markup}' values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
+10. Now edit your PHP.ini file, I do this to adjust the '`post_max_size`' and '`upload_max_filesize`' values as the defaults are too low. You PHP.ini may be kept in a different location, so be sure to change this:
 
     ``` {.language-markup .code-toolbar}
     post_max_size = 40M
@@ -128,8 +128,8 @@ These instructions were test on an Ubuntu 18.04 system. To upgrade from PHP 5.6 
     sudo nano /usr/share/phpmyadmin/libraries/plugin_interface.lib.php
     ```
 
-    And replace: `if ($options != null && count($options) > 0) {`{.language-markup}\
+    And replace: `if ($options != null && count($options) > 0) {`\
     \
-    With: `if ($options != null && count((array)$options) > 0) {`{.language-markup}\
+    With: `if ($options != null && count((array)$options) > 0) {`\
     \
     Now save and exit the file.

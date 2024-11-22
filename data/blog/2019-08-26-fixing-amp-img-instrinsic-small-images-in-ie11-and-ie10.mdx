@@ -12,7 +12,7 @@ During a recent project I found an issue with images being shown very small when
 
 **E.g. Notice the small image floated right:**
 
-![](/static/img/blog/2019/08/IE11-before-1024x489.png){loading="lazy" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-before-1024x489.png 1024w, /static/img/blog/2019/08/IE11-before-300x143.png 300w, /static/img/blog/2019/08/IE11-before-768x366.png 768w, /static/img/blog/2019/08/IE11-before.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px"}
+<img loading="lazy"  src="/static/img/blog/2019/08/IE11-before-1024x489.png" alt="" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-before-1024x489.png 1024w, /static/img/blog/2019/08/IE11-before-300x143.png 300w, /static/img/blog/2019/08/IE11-before-768x366.png 768w, /static/img/blog/2019/08/IE11-before.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px" />
 
 The project was built with WordPress, and uses the official WordPress [AMP plugin](https://en-gb.wordpress.org/plugins/amp/). At first I though this was an issue coming from the plugin, but it still happened when I used the same code examples from the AMP image component docs.
 
@@ -22,9 +22,7 @@ The solution I have found is quite 'hacky', but is the only way I have managed t
 
 **Example with the new fix:**
 
-![](/static/img/blog/2019/08/IE11-after-1024x489.png){loading="lazy" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-after-1024x489.png 1024w, /static/img/blog/2019/08/IE11-after-300x143.png 300w, /static/img/blog/2019/08/IE11-after-768x366.png 768w, /static/img/blog/2019/08/IE11-after.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px"}
-
- 
+<img loading="lazy"  src="/static/img/blog/2019/08/IE11-after-1024x489.png" alt="" width="1024" height="489" srcset="/static/img/blog/2019/08/IE11-after-1024x489.png 1024w, /static/img/blog/2019/08/IE11-after-300x143.png 300w, /static/img/blog/2019/08/IE11-after-768x366.png 768w, /static/img/blog/2019/08/IE11-after.png 1308w" sizes="(max-width: 1024px) 100vw, 1024px" />
 
 #### This is the markup used for the image: (Placeholder images have been used)
 
@@ -123,7 +121,7 @@ There are two ways this can be implemented, either with standard CSS syntax or w
 
 #### Full code
 
-If you're having trouble, you can view the full code below, or a Pen on Codepen: <https://codepen.io/ryanfitton/pen/PoYpeWp>
+If you're having trouble, you can view the full code below, or a Pen on Codepen: [https://codepen.io/ryanfitton/pen/PoYpeWp](https://codepen.io/ryanfitton/pen/PoYpeWp)
 
 ``` language-html
 <!doctype html>

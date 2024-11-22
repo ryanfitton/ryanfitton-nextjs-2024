@@ -16,8 +16,8 @@ These commands were tested with LXD version 2.0.11 running on Ubuntu 16.04.5 LTS
 
 Change these values to match your setup:
 
--   `POOL-NAME`{.language-markup}Your ZFS pool name, the default supplied by LXD is 'lxd'
--   `SIZE`{.language-markup}The size of the new pool, e.g. '50G'
+-   `POOL-NAME`Your ZFS pool name, the default supplied by LXD is 'lxd'
+-   `SIZE`The size of the new pool, e.g. '50G'
 
 Now run this code; each line separately minus the commented lines:
 
@@ -51,7 +51,7 @@ sudo rm /var/lib/lxd/zfs.tmp
 sudo zpool online -e POOL-NAME /var/lib/lxd/zfs.img /var/lib/lxd/zfs.img
 ```
 
-You can also, check if the settings have been applied by running the `sudo zfs list`{.language-markup} command, you will see a result similar to below; make note of the values in the 'AVAIL' column as this should show your new pool size.
+You can also, check if the settings have been applied by running the `sudo zfs list` command, you will see a result similar to below; make note of the values in the 'AVAIL' column as this should show your new pool size.
 
 ``` language-markup
 root@ubuntu-s-6vcpu-16gb-lon1-01:/# sudo zfs list

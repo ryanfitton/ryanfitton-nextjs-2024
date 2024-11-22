@@ -18,12 +18,12 @@ Within your DNS settings point your domain or subdomain to the server you have s
 
 For subdomains, this is done by setting up a CNAME record. For apex/naked domains, it is recommended that you use an ALIAS or ANAME record type if your DNS provider supports it. Otherwise, use an A record:
 
--   CNAME and ALIAS/ANAME records should point to `yourdomain.com`{.language-markup}
--   A records should point to `123.45.67.89`{.language-markup}
+-   CNAME and ALIAS/ANAME records should point to `yourdomain.com`
+-   A records should point to `123.45.67.89`
 
 To configure the redirection destination, add a TXT record for your domain:
 
--   TXT value: `"redirect_https://www.google.com"`{.language-markup}
+-   TXT value: `"redirect_https://www.google.com"`
 
 **Note:** Remember to replace these values with your own.
 

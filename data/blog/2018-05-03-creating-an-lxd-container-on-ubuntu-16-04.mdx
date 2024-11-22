@@ -84,7 +84,7 @@ Once setup, you can run these commands to list the installed containers and the 
 
 ##### Creating a container
 
-Now create a container named `example-webserver`{.language-markup} running `Ubuntu 16.04`{.language-markup}:
+Now create a container named `example-webserver` running `Ubuntu 16.04`:
 
 ``` language-markup
 sudo lxc launch ubuntu:16.04 example-webserver
@@ -110,7 +110,7 @@ You can set CPU and Memory limits using the following commands:
 
 -   You can also set Hard Drive size limits with ZFS. To limit the hard drive space of a container to **10GB**, run the command below:
 
-    **Note:** 'lxd' is the ZFS pool name, the path can be found using: `sudo zfs list`{.language-markup}
+    **Note:** 'lxd' is the ZFS pool name, the path can be found using: `sudo zfs list`
 
     ``` language-markup
     sudo zfs set quota=10G lxd/containers/example-webserver
@@ -154,7 +154,7 @@ To list all created containers, run:
 sudo lxc list
 ```
 
-Or to see the configured specs of a specific container (Replace `example-webserver`{.language-markup} with your container name), run:
+Or to see the configured specs of a specific container (Replace `example-webserver` with your container name), run:
 
 ``` language-markup
 sudo lxc config show example-webserver
@@ -164,7 +164,7 @@ sudo lxc config show example-webserver
 
 ##### Stop, Start and Delete containers
 
-**Note:** Replace `example-webserver`{.language-markup} with your container name.
+**Note:** Replace `example-webserver` with your container name.
 
 -   **To stop:**
 
@@ -192,7 +192,7 @@ sudo lxc config show example-webserver
 
 ##### Logging into Containers
 
-**Note:** Replace `example-webserver`{.language-markup} with your container name.
+**Note:** Replace `example-webserver` with your container name.
 
 To access the shell of a container, run:
 
