@@ -75,13 +75,19 @@ export const generateStaticParams = async () => {
   return paths
 }
 
-export default async function Page({ params }: { params: { slug: string[] } }) {
+export default async function Page(props: { params: Promise<{ slug: string[] }> }) {
+  const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
-  const sortedPosts = sortPosts(allBlogs) as Blog[]
-  const postIndex = sortedPosts.findIndex((p) => p.slug === slug)
-  const prev = coreContent(sortedPosts[postIndex + 1])
-  const next = coreContent(sortedPosts[postIndex - 1])
-  const post = sortedPosts.find((p) => p.slug === slug) as Blog
+  // Filter out drafts in production
+  const sortedCoreContents = allCoreContent(sortPosts(allBlogs))
+  const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
+  if (postIndex === -1) {
+    return notFound()
+  }
+
+  const prev = sortedCoreContents[postIndex + 1]
+  const next = sortedCoreContents[postIndex - 1]
+  const post = allBlogs.find((p) => p.slug === slug) as Blog
   const authorList = post?.authors || ['default']
   const authorDetails = authorList.map((author) => {
     const authorResults = allAuthors.find((p) => p.slug === author)
