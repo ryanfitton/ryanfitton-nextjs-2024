@@ -286,13 +286,13 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
-Still do
+Still do / TODO:
 https://ryanfitton.github.io/ryanfitton-tailwind-2024/
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk
 Move Portfolio items out of Blog into their own section
 If blog, use title from page in header instead of url
 Link to blog external resource error
-Disqus Commenting working
+Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
 Sitemap.xml working?
