@@ -51,7 +51,14 @@ const MobileNav = () => {
         <nav className="fixed mt-8 h-full w-full">
           <div className="component-navbar__links component-navbar__links--menu-mobile">
             {navLinks.map((link) => (
-              <Link key={link.title} href={link.href} className={pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''} onClick={onToggleNav}>
+              <Link
+                key={link.title}
+                href={link.href}
+                className={
+                  pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
+                }
+                onClick={onToggleNav}
+              >
                 {link.title}
               </Link>
             ))}

@@ -48,7 +48,13 @@ export default function Header() {
               {navLinks
                 .filter((link) => link.href !== '/')
                 .map((link) => (
-                  <Link key={link.title} href={link.href} className={pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''}>
+                  <Link
+                    key={link.title}
+                    href={link.href}
+                    className={
+                      pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
+                    }
+                  >
                     {link.title}
                   </Link>
                 ))}
