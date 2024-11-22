@@ -262,7 +262,7 @@ giscusConfig = Comment system powered by Github Discussions: https://github.com/
 
 Search for TODO
 
-Using cloud flare Image Tranformations
+Using cloud flare Image Tranformations - Re-enable this in the code. 
 Must have DNS proxied by cloudflare e.g.
 
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
