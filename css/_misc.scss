@@ -23,5 +23,5 @@ code {
 
 //For `<strong>` tags in prose
 strong {
-  @apply text-inherit #{!important};
+  @apply text-[inherit] #{!important};
 }
