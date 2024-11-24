@@ -15,19 +15,29 @@ export default async function Page() {
       <section className="site-container">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
-            <ul className="component-posts-tag-list component-posts-tag-list--article">
-              {tagKeys.length === 0 && 'No tags found.'}
-              {sortedTags.map((t) => {
-                return (
-                  <li key={t}>
-                    <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
-                      {`${t}`}
-                    </Link>
-                    {` (${tagCounts[t]})`}
-                  </li>
-                )
-              })}
-            </ul>
+            {tagKeys.length > 0 ? (
+              <>
+                <p>Browse blog posts by tag:</p>
+                <ul className="component-posts-tag-list">
+                  {sortedTags.map((t) => {
+                    return (
+                      <li key={t}>
+                        <span>
+                          <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
+                            {`${t}`}
+                          </Link>
+                        </span>
+                        {` (${tagCounts[t]})`}
+                      </li>
+                    )
+                  })}
+                </ul>
+              </>
+            ) : (
+              <>
+                <p>No tags found.</p>
+              </>
+            )}
           </div>
         </div>
       </section>

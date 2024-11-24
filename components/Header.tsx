@@ -18,19 +18,18 @@ export default function Header() {
 
   //Default: Get the title and sub title from the URL
   const title = basePath.replace(/-/g, ' ').replace(/(?:^|\s)\S/g, (a) => a.toUpperCase())
-  const subTitle = pathnameSplit[2]
+  let subTitle = pathnameSplit[2]
     ? pathnameSplit[2].replace(/-/g, ' ').replace(/(?:^|\s)\S/g, (a) => a.toUpperCase())
     : ''
 
-  //If this is a Blog page, use the title from the Blog content
-  if (pathname.startsWith('/blog/')) {
-    //TODO use post title here instead of from the URL
-    console.log(pathname)
+  //If this is a Blog or Portfolio page, we don't want a sub-title as this will be displayed in the body post instead
+  if (pathname.startsWith('/blog/') || pathname.startsWith('/portfolio/')) {
+    subTitle = ''
   }
 
-  //Convert headings to uppercase
-  const titleUpercase = basePath.toUpperCase()
-  const subTitleUpperCase = subTitle.toUpperCase()
+  //Convert headings to uppercase - Not currently used, kept here for the future
+  //const titleUpercase = basePath.toUpperCase()
+  //const subTitleUpperCase = subTitle.toUpperCase()
 
   return (
     <>

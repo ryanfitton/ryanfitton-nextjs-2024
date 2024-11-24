@@ -10,11 +10,9 @@ interface Props {
 const LayoutWrapper = ({ children }: Props) => {
   return (
     <SectionContainer>
-      <div className={`TODO`}>
-        <Header />
-        <main className="mb-auto">{children}</main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="mb-auto">{children}</main>
+      <Footer />
     </SectionContainer>
   )
 }

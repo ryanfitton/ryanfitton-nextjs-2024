@@ -70,8 +70,16 @@
       > li {
         @apply mr-3;
 
+        > span {
+          @apply after:content-[','];
+        }
+
         &:last-child {
           @apply mr-0;
+
+          > span {
+            @apply after:content-none;
+          }
         }
       }
     }
@@ -145,7 +153,7 @@
   }
 
   .component-posts-portfolio-details {
-    @apply max-w-none pb-4;
+    @apply max-w-none py-4;
 
     &__list {
       @apply list-none;

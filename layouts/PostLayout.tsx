@@ -53,9 +53,14 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     {sortedTags.map((t) => {
                       return (
                         <li key={t}>
-                          <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
-                            {`${t}`}
-                          </Link>
+                          <span>
+                            <Link
+                              href={`/tags/${slugger(t)}`}
+                              aria-label={`View posts tagged ${t}`}
+                            >
+                              {`${t}`}
+                            </Link>
+                          </span>
                           {` (${tagCounts[t]})`}
                         </li>
                       )
@@ -68,6 +73,8 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
           <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
             <article className="component-posts-article">
+              <h1 className="component-posts-article__title">{title}</h1>
+
               <dl className="component-posts-article__date">
                 <dt className="sr-only">Published on</dt>
                 <dd>
@@ -76,8 +83,6 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   </time>
                 </dd>
               </dl>
-
-              <h1 className="sr-only">{title}</h1>
 
               <div className="component-posts-article__body">{children}</div>
 
@@ -96,7 +101,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <li>Tagged as:</li>
                   {tags.map((tag) => (
                     <li key={tag}>
-                      <Tag key={tag} text={tag} />
+                      <span>
+                        <Tag key={tag} text={tag} />
+                      </span>
                     </li>
                   ))}
                 </ul>

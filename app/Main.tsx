@@ -76,9 +76,14 @@ export default function Home({ posts }) {
                     {sortedTags.map((t) => {
                       return (
                         <li key={t}>
-                          <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
-                            {`${t}`}
-                          </Link>
+                          <span>
+                            <Link
+                              href={`/tags/${slugger(t)}`}
+                              aria-label={`View posts tagged ${t}`}
+                            >
+                              {`${t}`}
+                            </Link>
+                          </span>
                           {` (${tagCounts[t]})`}
                         </li>
                       )
@@ -113,7 +118,9 @@ export default function Home({ posts }) {
                       <ul className="component-posts-tag-list component-posts-tag-list--article">
                         {tags.map((tag) => (
                           <li key={tag}>
-                            <Tag key={tag} text={tag} />
+                            <span>
+                              <Tag key={tag} text={tag} />
+                            </span>
                           </li>
                         ))}
                       </ul>

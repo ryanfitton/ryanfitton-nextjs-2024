@@ -19,6 +19,8 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <article className="component-posts-article">
+              <h1 className="component-posts-article__title">{title}</h1>
+
               <section className="component-posts-portfolio-details">
                 <div className="grid">
                   <div className="col-span-full md:col-span-4 xl:col-span-3">
@@ -50,8 +52,6 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
               </section>
 
               <hr className="prose-hr component-posts-article__divider" />
-
-              <h1 className="sr-only">{title}</h1>
 
               <div className="component-posts-article__body">{children}</div>
             </article>
