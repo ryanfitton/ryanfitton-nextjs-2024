@@ -41,17 +41,51 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
   const publishPosts = allBlogs.filter((post) => post.draft !== true)
   // RSS for blog post
   if (publishPosts.length > 0) {
-    const rss = generateRss(config, sortPosts(publishPosts))
-    writeFileSync(`./${outputFolder}/${page}`, rss)
-  }
+    console.log("publishPosts.length > 0  -- TRUE")
 
-  if (publishPosts.length > 0) {
+    const rss = generateRss(config, sortPosts(publishPosts))
+
+    console.log(rss)
+    
+    try {
+      console.log("Trying to write rss " + `./${outputFolder}/${page}`)
+      writeFileSync(`./${outputFolder}/${page}`, rss)
+    } catch (err) {
+      console.log("Error writing " + `./${outputFolder}/${page}`)
+      console.log(rss)
+      throw err;
+    }
+
+    
+
     for (const tag of Object.keys(tagData)) {
+      console.log("const tag of Object.keys(tagData) -- " + tag)
+
       const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
       const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
+      
+      console.log(rss)
       const rssPath = path.join(outputFolder, 'tags', tag)
-      mkdirSync(rssPath, { recursive: true })
-      writeFileSync(path.join(rssPath, page), rss)
+      console.log(rssPath)
+
+      try {
+        console.log("Trying to make directory rssPath " + `${rssPath}`)
+        mkdirSync(rssPath, { recursive: true })
+      } catch (err) {
+        console.log("Error trying to make directory rssPath " + `${rssPath}`)
+        console.log(rssPath)
+        throw err;
+      }
+
+      try {
+        console.log("Trying to write rss " + `${path.join(rssPath, page)}`)
+        writeFileSync(path.join(rssPath, page), rss)
+      } catch (err) {
+        console.log("Error writing " + `${path.join(rssPath, page)}`)
+        console.log(path.join(rssPath, page))
+        console.log(rss)
+        throw err;
+      }
     }
   }
 }
