@@ -112,14 +112,8 @@ export const Blog = defineDocumentType(() => ({
     lastmod: { type: 'date' },
     draft: { type: 'boolean' },
     summary: { type: 'string' },
-    lead: { type: 'string' },
-    images: { type: 'json' },
     authors: { type: 'list', of: { type: 'string' } },
-    portfolioClient: { type: 'string' },
-    portfolioType: { type: 'string' },
-    portfolioHref: { type: 'string' },
     layout: { type: 'string' },
-    bibliography: { type: 'json' },
     canonicalUrl: { type: 'string' },
   },
   computedFields: {
@@ -133,7 +127,45 @@ export const Blog = defineDocumentType(() => ({
         datePublished: doc.date,
         dateModified: doc.lastmod || doc.date,
         description: doc.summary,
-        image: doc.images ? doc.images[0] : siteMetadata.socialBanner,
+        image: siteMetadata.socialBanner,
+        url: `${siteMetadata.siteUrl}/${formatSlug(
+          doc._raw.flattenedPath.replace(/^.+?(\/)/, '')
+        )}`,
+      }),
+    },
+  },
+}))
+
+export const Portfolio = defineDocumentType(() => ({
+  name: 'Portfolio',
+  filePathPattern: 'portfolio/**/*.mdx',
+  contentType: 'mdx',
+  fields: {
+    title: { type: 'string', required: true },
+    date: { type: 'date', required: true },
+    lastmod: { type: 'date' },
+    draft: { type: 'boolean' },
+    summary: { type: 'string' },
+    lead: { type: 'string' },
+    authors: { type: 'list', of: { type: 'string' } },
+    portfolioClient: { type: 'string' },
+    portfolioType: { type: 'string' },
+    portfolioHref: { type: 'string' },
+    layout: { type: 'string' },
+    canonicalUrl: { type: 'string' },
+  },
+  computedFields: {
+    ...computedFields,
+    structuredData: {
+      type: 'json',
+      resolve: (doc) => ({
+        '@context': 'https://schema.org',
+        '@type': 'BlogPosting',
+        headline: doc.title,
+        datePublished: doc.date,
+        dateModified: doc.lastmod || doc.date,
+        description: doc.summary,
+        image: siteMetadata.socialBanner,
         url: `${siteMetadata.siteUrl}/${formatSlug(
           doc._raw.flattenedPath.replace(/^.+?(\/)/, '')
         )}`,
@@ -168,7 +200,7 @@ export const Authors = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: 'data',
-  documentTypes: [Blog, Authors],
+  documentTypes: [Blog, Portfolio, Authors],
   mdx: {
     cwd: process.cwd(),
     remarkPlugins: [

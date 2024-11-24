@@ -301,8 +301,13 @@ https://github.com/decaporg/decap-cms/issues/4205
 https://stackoverflow.com/questions/15543235/checking-if-writefilesync-successfully-wrote-the-file
 
 RSS is built on local, but not on Github pages, see https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/744
-Move title for blogs into the body, keep header as blog and other pages, same for portfolio items
-Uses Books - Can I use this for Portfolio? leohuynh.dev - 🇻🇳 Leo's dev blog – stories, insights, and ideas. Add /snippets, /books pages, add ProfileCard, CareerTimeline components and many more. https://github.com/hta218/leohuynh.dev
+
+
+Look at this site using 'Funds'
+
+https://github.com/search?q=repo%3AOpenSats%2Fwebsite%20funds&type=code
+https://opensats.org/funds
+
 
 Re-enable Cloud flare image loader
   Using cloud flare Image Tranformations - Re-enable this in the code. 
