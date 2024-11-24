@@ -277,7 +277,8 @@ http://localhost:3000/feed.xml
 http://localhost:3000/sitemap.xml
 http://localhost:3000/blog/
 http://localhost:3000/portfolio/
-http://localhost:3000/blog/portfolio-test-1/
+http://localhost:3000/blog/portfolio-test-1/ -- Should 404
+http://localhost:3000/portfolio/portfolio-test-1/
 http://localhost:3000/tags/
 http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
@@ -307,6 +308,10 @@ Look at this site using 'Funds'
 
 https://github.com/search?q=repo%3AOpenSats%2Fwebsite%20funds&type=code
 https://opensats.org/funds
+
+Custom post type:
+http://localhost:3000/portfolio/
+http://localhost:3000/portfolio/portfolio-test-1/
 
 
 Re-enable Cloud flare image loader
