@@ -241,41 +241,43 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
-nvm install lts/iron
-
-npm install -- Install packages
-
-npm run start -- Starts the dev server
-http://localhost:3000 -- Dev server lock address
-
-npm run format -- Prettifies code
-
-npm run build -- Create a static build
-
-npm run analyze
-
-tailwind.config.js
-
-php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
 
 
 
-giscusConfig = Comment system powered by Github Discussions: https://github.com/giscus/giscus
+------
+
+Running local:
+
+  nvm install lts/iron
+
+  npm install -- Install packages
+
+  npm run start -- Starts the dev server
+  http://localhost:3000 -- Dev server lock address
+
+  npm run format -- Prettifies code
+
+  npm run build -- Create a static build
+
+  npm run analyze
+
+  tailwind.config.js
+
+  php -S localhost:8080 -t build/ -- Access the static build in a dev server
+
+
 
 Search for TODO in code
 
-Using cloud flare Image Tranformations - Re-enable this in the code. 
-Must have DNS proxied by cloudflare e.g.
+------
 
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
-
+URLs to test:
 
 Sitemap:
 http://localhost:3000 - Requires homepage content
 Fix header homepage/standard page
+http://localhost:3000/feed.xml
 http://localhost:3000/sitemap.xml
 http://localhost:3000/blog/
 http://localhost:3000/portfolio/
@@ -285,6 +287,10 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
+
+------
+
+
 Still do / TODO:
 Move Portfolio items out of Blog into their own section
 If blog, use title from page in header instead of url
@@ -293,9 +299,26 @@ SEO working?
 Analytics working?
 Sitemap.xml working? /feed.xml
 
+https://nektosact.com/
+
+https://github.com/decaporg/decap-cms/issues/4205
+
+https://stackoverflow.com/questions/15543235/checking-if-writefilesync-successfully-wrote-the-file
+
+RSS is built on local, but not on Github pages, see https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/744
+Move title for blogs into the body, keep header as blog and other pages, same for portfolio items
+Uses Books - Can I use this for Portfolio? leohuynh.dev - 🇻🇳 Leo's dev blog – stories, insights, and ideas. Add /snippets, /books pages, add ProfileCard, CareerTimeline components and many more. https://github.com/hta218/leohuynh.dev
+
+Re-enable Cloud flare image loader
+  Using cloud flare Image Tranformations - Re-enable this in the code. 
+  Must have DNS proxied by cloudflare e.g.
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
 
 
-To do:
+------
+
 
 Components:
 DONE: social-icons > icons.tsx
@@ -338,47 +361,8 @@ DONE: PostLayout.tsx
 DONE: PostSimple.tsx
 DONE: Layout.tsx
 
-For Card.tsx
 
-```
-<>
-    {href  (
-        <Link
-            href={href}
-            className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small"
-            aria-label={`Link to ${title}`}
-          >
-      ) : (
-        <div className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small">
-      )}
-
-        <article className="component-posts-article">
-            {imgSrc ? (
-                <Image
-                    alt={title}
-                    src={imgSrc}
-                    className="component-posts-article__featured-image"
-                    width={600}
-                    height={400}
-                />
-            )}
-
-            <h2 className="component-posts-article__title">{title}</h2>
-
-            {description ? (
-                <div className="component-posts-article__excerpt">
-                    {description}
-                </div>
-            )}
-        </article>
-
-    {href ? (
-        </link>
-      ) : (
-        </div>
-      )}
-    </>
-```
+------
 
 
 Base `siteMetadata.js`
