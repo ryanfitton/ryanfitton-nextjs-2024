@@ -266,10 +266,6 @@ Running local:
 
   php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
-
-
-Search for TODO in code
-
 ------
 
 URLs to test:
@@ -293,7 +289,6 @@ http://localhost:3000/tags/personal/
 
 Still do / TODO:
 Move Portfolio items out of Blog into their own section
-If blog, use title from page in header instead of url
 Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
