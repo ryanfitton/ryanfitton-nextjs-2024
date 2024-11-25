@@ -27,7 +27,7 @@ const siteMetadata = {
       googleAnalyticsId: 'G-YLMTDYMQCC',
     },
   },
-  comment: {
+  comments: {
     provider: 'disqus', // supported providers: `giscus`, `utterances`, `disqus`
     disqus: {
       // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
