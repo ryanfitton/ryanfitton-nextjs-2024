@@ -18,10 +18,14 @@ export default function Comments({ slug }: { slug: string }) {
               __html: `
                 if (typeof window !== 'undefined' && window.matchMedia) {
                   const iframe = document.getElementById('disqus_thread').querySelector('iframe');
+
+                  console.log(iframe)
+
                   if (iframe && iframe.length() > 0) {
                     const media = window.matchMedia('(prefers-color-scheme: dark)');
                     media.addEventListener('change', event => {
                       colorScheme = event.matches ? "dark" : "light";
+                      console.log(colorScheme)
                       iframe.contentDocument.getElementByTagName('html').style["color-scheme"] = colorScheme
                     });
                   }
