@@ -26,7 +26,7 @@ export default function Footer() {
           <div className="component-navbar__links">
             <Link href="/about/">About</Link>
             <Link href="/colophon/">Colophon</Link>
-            <Link href="/policies/">Cookie and Privacy policy</Link>
+            <Link href="/policies/">Policies</Link>
             <Link href="https://status.ryanfitton.co.uk/">Status</Link>
           </div>
         </div>
