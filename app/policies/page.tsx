@@ -56,7 +56,7 @@ export default function Policies() {
               set by Google Analytics.
             </p>
 
-            <table className="border-slate-500 not-prose mt-8 w-full table-auto border-collapse border text-left">
+            <table className="border-slate-500 not-prose my-8 w-full table-auto border-collapse border text-left">
               <thead>
                 <tr>
                   <th className="border border-secondary-100 p-5 dark:border-secondary-800">
@@ -79,6 +79,47 @@ export default function Policies() {
                 </tr>
               </tbody>
             </table>
+
+            <hr className="prose-hr component-posts-article__divider" />
+
+            <h2 className="component-title component-title--main">Comments</h2>
+
+            <p>The commenting platform is provided by <a href="https://disqus.com/">Disqus</a>. You should read their <a href="https://help.disqus.com/en/articles/1717102-terms-of-service">Terms</a>, <a href="https://disqus.com/privacy-policy/">Privacy</a> and <a href="https://help.disqus.com/en/articles/1944034-cookies-and-data-recipients">Cookie</a> policies for more information. If you wish to opt-out from data sharing, you can do so <a href="https://disqus.com/data-sharing-settings/">here</a>.</p>
+
+            <p>Comments are welcomed and encouraged on this site, but there are some instances where comments will be edited or deleted as follows:</p>
+
+            <ul>
+              <li>
+                <p>
+                  Comments deemed to be spam or solely promotional in nature will be deleted. Including a link to relevant content is permitted, but comments should be relevant to the post topic.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Comments including profanity will be deleted.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Comments containing language or concepts that could be deemed offensive will be deleted. Note this may include abusive, threatening, pornographic, offensive, misleading or libelous language.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Comments that attack an individual directly will be deleted.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Comments that harass other posters will be deleted. Please be respectful toward other contributors.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Anonymous comments will be deleted. We only accept comments from posters who identify themselves. You can post as a 'Guest' without requiring a Disqus account, but please use your real name and a valid email address.
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

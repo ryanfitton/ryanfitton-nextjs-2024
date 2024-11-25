@@ -29,7 +29,7 @@ const siteMetadata = {
   },
   comments: {
     provider: 'disqus', // supported providers: `giscus`, `utterances`, `disqus`
-    disqus: {
+    disqusConfig: {
       // https://help.disqus.com/en/articles/1717111-what-s-a-shortname
       shortname: 'ryanfitton-co-uk',
     },
