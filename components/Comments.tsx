@@ -12,6 +12,7 @@ export default function Comments({ slug }: { slug: string }) {
           <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
 
           <Script
+            //Fix a big where Diqus is not loading with the correct colour scheme
             dangerouslySetInnerHTML={{
               __html: `
                 if (typeof window !== 'undefined' && window.matchMedia) {
