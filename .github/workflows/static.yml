@@ -53,10 +53,17 @@ jobs:
       - name: Run Build
         run: npm run build
 
-
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+
+      - name: List files in the repository public
+        run: |
+          ls ${{ github.workspace }}/public
+
+      - name: List files in the repository public/static
+        run: |
+          ls ${{ github.workspace }}/public/static
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
