@@ -13,7 +13,7 @@ export default function Comments({ slug }: { slug: string }) {
 
           <Script
             id="diqusColourScheme"
-            strategy='afterInteractive'
+            strategy="afterInteractive"
             //Fix a big where Diqus is not loading with the correct colour scheme
             dangerouslySetInnerHTML={{
               __html: `
