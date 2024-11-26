@@ -47,7 +47,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
   // Writing to the file 5 times
   // with the append file mode
   for (let i = 0; i < 5; i++) {
-    writeFileSync(path.resolve(`${cwd}`, `./${outputFolder}/movies.txt`), 'Movie ' + i + '\n', {
+    writeFileSync(path.resolve(`${cwd}`, `./${outputFolder}/static/movies.txt`), 'Movie ' + i + '\n', {
       encoding: 'utf8',
       flag: 'a+',
       mode: 0o666,
@@ -56,7 +56,7 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
 
   console.log('File written successfully 5 times\n')
   console.log('The written file has the following contents:')
-  console.log(readFileSync(path.resolve(`${cwd}`, `./${outputFolder}/movies.txt`), 'utf8'))
+  console.log(readFileSync(path.resolve(`${cwd}`, `./${outputFolder}/static/movies.txt`), 'utf8'))
 
 
 
