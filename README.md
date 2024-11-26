@@ -283,7 +283,6 @@ http://localhost:3000/tags/personal/
 
 Still do / TODO:
 Disqus colour scheme. Disqus HTML block: color-scheme:dark
-https://www.davegray.codes/posts/nextjs-how-to-build-an-rss-feed
 Website work on portfolio feature branch
 Why are blog posts not showing older comments?
 Move Portfolio items out of Blog into their own section
