@@ -291,17 +291,8 @@ Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
 
-https://nektosact.com/
 
-https://github.com/decaporg/decap-cms/issues/4205
-
-https://stackoverflow.com/questions/15543235/checking-if-writefilesync-successfully-wrote-the-file
-
-RSS is built on local, but not on Github pages, see https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/744
-Move title for blogs into the body, keep header as blog and other pages, same for portfolio items
-Uses Books - Can I use this for Portfolio? leohuynh.dev - 🇻🇳 Leo's dev blog – stories, insights, and ideas. Add /snippets, /books pages, add ProfileCard, CareerTimeline components and many more. https://github.com/hta218/leohuynh.dev
-
-Re-enable Cloud flare image loader
+Re-enable Cloudflare image loader
 Using cloud flare Image Tranformations - Re-enable this in the code.
 Must have DNS proxied by cloudflare e.g.
 https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
