@@ -241,32 +241,28 @@ Using the template? Support this effort by giving a star on GitHub, sharing your
 
 [MIT](https://github.com/timlrx/tailwind-nextjs-starter-blog/blob/main/LICENSE) © [Timothy Lin](https://www.timlrx.com)
 
-
-
-
-
-------
+---
 
 Running local:
 
-  nvm install lts/iron
+nvm install lts/iron
 
-  npm install -- Install packages
+npm install -- Install packages
 
-  npm run start -- Starts the dev server
-  http://localhost:3000 -- Dev server lock address
+npm run start -- Starts the dev server
+http://localhost:3000 -- Dev server lock address
 
-  npm run format -- Prettifies code
+npm run format -- Prettifies code
 
-  npm run build -- Create a static build
+npm run build -- Create a static build
 
-  npm run analyze
+npm run analyze
 
-  tailwind.config.js
+tailwind.config.js
 
-  php -S localhost:8080 -t build/ -- Access the static build in a dev server
+php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
-------
+---
 
 URLs to test:
 
@@ -283,16 +279,17 @@ http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
 http://localhost:3000/tags/personal/
 
-
-------
-
+---
 
 Still do / TODO:
+Disqus colour scheme. Disqus HTML block: color-scheme:dark
+https://www.davegray.codes/posts/nextjs-how-to-build-an-rss-feed
+Website work on portfolio feature branch
+Why are blog posts not showing older comments?
 Move Portfolio items out of Blog into their own section
 Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
-Sitemap.xml working? /feed.xml
 
 https://nektosact.com/
 
@@ -305,15 +302,13 @@ Move title for blogs into the body, keep header as blog and other pages, same fo
 Uses Books - Can I use this for Portfolio? leohuynh.dev - 🇻🇳 Leo's dev blog – stories, insights, and ideas. Add /snippets, /books pages, add ProfileCard, CareerTimeline components and many more. https://github.com/hta218/leohuynh.dev
 
 Re-enable Cloud flare image loader
-  Using cloud flare Image Tranformations - Re-enable this in the code. 
-  Must have DNS proxied by cloudflare e.g.
-  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
-  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
-  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
+Using cloud flare Image Tranformations - Re-enable this in the code.
+Must have DNS proxied by cloudflare e.g.
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
+https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
 
-
-------
-
+---
 
 Components:
 DONE: social-icons > icons.tsx
@@ -356,9 +351,7 @@ DONE: PostLayout.tsx
 DONE: PostSimple.tsx
 DONE: Layout.tsx
 
-
-------
-
+---
 
 Base `siteMetadata.js`
 
