@@ -18,6 +18,7 @@ export default function cloudflareLoader({ src, width, quality }) {
   }
   */
 
+  //Set default params (Quality: 75 and Format: WebP conversion)
   const params = [`width=${width}`, `quality=${quality || 75}`, 'format=auto']
   return `https://ryanfitton.co.uk/cdn-cgi/image/${params.join(',')}${src}`
 }
