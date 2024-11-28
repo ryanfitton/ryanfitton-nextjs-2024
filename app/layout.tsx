@@ -113,8 +113,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           sizes="57x57"
           href={`${siteMetadata.siteUrl}/static/favicons/apple-touch-icon-57x57.png`}
         />
-        <link rel="apple-touch-icon" href={`${siteMetadata.siteUrl}/static/favicons/apple-touch-icon.png`} />
-        <link rel="icon" type="image/ico" href={`${siteMetadata.siteUrl}/static/favicons/favicon.ico`} />
+        <link
+          rel="apple-touch-icon"
+          href={`${siteMetadata.siteUrl}/static/favicons/apple-touch-icon.png`}
+        />
+        <link
+          rel="icon"
+          type="image/ico"
+          href={`${siteMetadata.siteUrl}/static/favicons/favicon.ico`}
+        />
         <link
           rel="icon"
           type="image/png"
@@ -131,7 +138,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="manifest" href={`${siteMetadata.siteUrl}/static/favicons/site.webmanifest`} />
-        <link rel="alternate" type="application/rss+xml" href={`${siteMetadata.siteUrl}/feed.xml`} />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href={`${siteMetadata.siteUrl}/feed.xml`}
+        />
 
         <meta name="fediverse:creator" content="@ryanfitton@mastodon.social" />
         {/* Mastodon author attribution verification */}
