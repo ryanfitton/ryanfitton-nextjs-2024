@@ -90,7 +90,7 @@ export default function Header() {
               ></video>
               <MediaPosterImage
                 slot="poster"
-                src="/static/img/home-header-bg@1.8x.jpg"
+                src="/cdn-cgi/image/quality=75,format=webp/static/img/home-header-bg@1.8x.jpg"
                 placeholdersrc="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
                 className="hero__video-poster"
               ></MediaPosterImage>
