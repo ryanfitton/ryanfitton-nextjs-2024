@@ -262,6 +262,15 @@ tailwind.config.js
 
 php -S localhost:8080 -t build/ -- Access the static build in a dev server
 
+
+---
+
+Using caching on Cloudflare, may need to disable this when debugging issues:
+
+`Caching > Configuration`
+`Caching > Cache Rules`
+`Rules > Compression Rules`
+
 ---
 
 URLs to test:
