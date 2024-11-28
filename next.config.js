@@ -53,10 +53,10 @@ const headers = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
-  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+  // https://simonhearne.com/2022/caching-header-best-practices/
   {
     key: 'Cache-Control',
-    value: 'public, max-age=86400, s-maxage=86400',
+    value: 'max-age=31536000, immutable',
   },
 ]
 
