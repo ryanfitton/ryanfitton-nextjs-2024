@@ -1,0 +1,25 @@
+# Included because it will prevent errors on some Apache servers
+#Options +FollowSymLinks
+# Fix for Virtualmin servers
+Options +SymLinksIfOwnerMatch -Indexes
+RewriteEngine On
+
+
+# Disable the Server Signature
+ServerSignature Off
+
+
+# Make the address not start with www.
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,NC,L]
+
+
+# Remove file extension
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule !.*\.php$ %{REQUEST_FILENAME}.html [QSA,L]
+
+
+# Block any IP Addresses.
+# E.g = deny from 87.115.81.34
+order allow,deny
+allow from all
