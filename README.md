@@ -290,7 +290,6 @@ Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
 
-
 Re-enable Cloudflare image loader
 Using cloud flare Image Tranformations - Re-enable this in the code.
 Must have DNS proxied by cloudflare e.g.
