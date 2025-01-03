@@ -1,12 +1,12 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import type { Blog } from 'contentlayer/generated'
+import type { Portfolio } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import SectionContainer from '@/components/SectionContainer'
 import React from 'react'
 
 interface LayoutProps {
-  content: CoreContent<Blog>
+  content: CoreContent<Portfolio>
   children: ReactNode
 }
 

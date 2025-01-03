@@ -27,6 +27,7 @@ import convertInlineFootnotes from './scripts/convert-inline-footnotes.js'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 
+
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -88,14 +89,20 @@ function createTagCount(allBlogs) {
   writeFileSync('./app/tag-data.json', JSON.stringify(tagCount))
 }
 
-function createSearchIndex(allBlogs) {
+function createSearchIndexes(allBlogs, allPortfolios) {
   if (
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
+
+    var blogs = allCoreContent(sortPosts(allBlogs));
+    var portfolios = allCoreContent(sortPosts(allPortfolios));
+    blogs = blogs.concat(portfolios);
+
     writeFileSync(
       `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
-      JSON.stringify(allCoreContent(sortPosts(allBlogs)))
+      JSON.stringify(blogs)
+
     )
     console.log('Local search index generated...')
   }
@@ -106,15 +113,14 @@ export const Blog = defineDocumentType(() => ({
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    tags: { type: 'list', of: { type: 'string' }, default: [] },
-    lastmod: { type: 'date' },
-    draft: { type: 'boolean' },
-    summary: { type: 'string' },
-    authors: { type: 'list', of: { type: 'string' } },
-    layout: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    title: { type: 'string', required: true },                          //Post title
+    date: { type: 'date', required: true },                             //Post date `YYYY-MM-DD`
+    lastmod: { type: 'date' },                                          //Post last modified date `YYYY-MM-DD`
+    tags: { type: 'list', of: { type: 'string' }, default: [] },        //Array of tags e.g. `['Development', 'Code Snippets']`
+    draft: { type: 'boolean' },                                         //true / false - If true, the post will not be shown
+    summary: { type: 'string', required: true },                        //Short summary description shown in the card on the Portfolio index page
+    authors: { type: 'list', of: { type: 'string', required: true } },  //Array of authors e.g. `['Ryan Fitton']`
+    canonicalUrl: { type: 'string' },                                   //Canonical URL
   },
   computedFields: {
     ...computedFields,
@@ -141,18 +147,17 @@ export const Portfolio = defineDocumentType(() => ({
   filePathPattern: 'portfolio/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },
-    date: { type: 'date', required: true },
-    lastmod: { type: 'date' },
-    draft: { type: 'boolean' },
-    summary: { type: 'string' },
-    lead: { type: 'string' },
-    authors: { type: 'list', of: { type: 'string' } },
-    portfolioClient: { type: 'string' },
-    portfolioType: { type: 'string' },
-    portfolioHref: { type: 'string' },
-    layout: { type: 'string' },
-    canonicalUrl: { type: 'string' },
+    title: { type: 'string', required: true },      //Post title
+    date: { type: 'date', required: true },         //Post date `YYYY-MM-DD`
+    lastmod: { type: 'date' },                      //Post last modified date `YYYY-MM-DD`
+    draft: { type: 'boolean' },                     //true / false - If true, the post will not be shown
+    summary: { type: 'string', required: true },    //Short summary description shown in the card on the Portfolio index page
+    cardImgSrc: { type: 'string', required: true }, //Image to be shown in the card on the Portfolio index page
+    lead: { type: 'string', required: true },       //Lead introductory paragraph shown on the Portfolio item's page
+    portfolioClient: { type: 'string' },            //Name of the Client
+    portfolioType: { type: 'string' },              //Type of work e.g. `Print, Design, Web`
+    portfolioHref: { type: 'string' },              //URL to an external resource e.g. the live website
+    canonicalUrl: { type: 'string' },               //Canonical URL
   },
   computedFields: {
     ...computedFields,
@@ -230,8 +235,8 @@ export default makeSource({
     ],
   },
   onSuccess: async (importData) => {
-    const { allBlogs } = await importData()
+    const { allBlogs, allPortfolios } = await importData()
     createTagCount(allBlogs)
-    createSearchIndex(allBlogs)
+    createSearchIndexes(allBlogs, allPortfolios)
   },
 })

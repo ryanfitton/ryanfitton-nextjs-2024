@@ -1,18 +1,15 @@
-import ListLayout from '@/layouts/ListLayoutWithTags'
+import PortfolioListLayout from '@/layouts/PortfolioListLayout'
+import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allPortfolios } from 'contentlayer/generated'
+import { genPageMetadata } from 'app/seo'
 
 const POSTS_PER_PAGE = 5
 
-export const generateStaticParams = async () => {
-  const totalPages = Math.ceil(allPortfolios.length / POSTS_PER_PAGE)
-  const paths = Array.from({ length: totalPages }, (_, i) => ({ page: (i + 1).toString() }))
+export const metadata = genPageMetadata({ title: 'Portfolio' })
 
-  return paths
-}
-
-export default function Page({ params }: { params: { page: string } }) {
-  const posts = allPortfolios
-  const pageNumber = parseInt(params.page as string)
+export default function PortfolioPage() {
+  const posts = allCoreContent(sortPosts(allPortfolios))
+  const pageNumber = 1
   const initialDisplayPosts = posts.slice(
     POSTS_PER_PAGE * (pageNumber - 1),
     POSTS_PER_PAGE * pageNumber
@@ -23,11 +20,10 @@ export default function Page({ params }: { params: { page: string } }) {
   }
 
   return (
-    <ListLayout
+    <PortfolioListLayout
       posts={posts}
       initialDisplayPosts={initialDisplayPosts}
       pagination={pagination}
-      title="All Posts"
     />
   )
 }

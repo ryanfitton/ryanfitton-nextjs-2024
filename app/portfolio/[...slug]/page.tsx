@@ -2,17 +2,13 @@ import PageTitle from '@/components/PageTitle'
 import { components } from '@/components/MDXComponents'
 import { notFound } from 'next/navigation'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
+import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allPortfolios } from 'contentlayer/generated'
-import type { Portfolio } from 'contentlayer/generated'
 import PortfolioPostLayout from '@/layouts/PortfolioPostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 
 const isProduction = process.env.NODE_ENV === 'production'
-const defaultLayout = 'PortfolioPostLayout'
-const layouts = {
-  PortfolioPostLayout
-}
 
 export async function generateMetadata({
   params,
@@ -28,14 +24,6 @@ export async function generateMetadata({
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   let imageList = [siteMetadata.socialBanner]
-  if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
-  }
-  const ogImages = imageList.map((img) => {
-    return {
-      url: img.includes('http') ? img : siteMetadata.siteUrl + img,
-    }
-  })
 
   return {
     title: post.title,
@@ -49,7 +37,7 @@ export async function generateMetadata({
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
       url: './',
-      images: ogImages,
+      images: imageList,
     },
     twitter: {
       card: 'summary_large_image',
@@ -62,7 +50,6 @@ export async function generateMetadata({
 
 export const generateStaticParams = async () => {
   const paths = allPortfolios.map((p) => ({ slug: p.slug.split('/') }))
-
   return paths
 }
 
@@ -70,19 +57,15 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
   const params = await props.params
   const slug = decodeURI(params.slug.join('/'))
   // Filter out drafts in production
-  const sortedCoreContents = allPortfolios
+  const sortedCoreContents = allCoreContent(sortPosts(allPortfolios))
   const postIndex = sortedCoreContents.findIndex((p) => p.slug === slug)
   if (postIndex === -1) {
     return notFound()
   }
 
-  const prev = sortedCoreContents[postIndex + 1]
-  const next = sortedCoreContents[postIndex - 1]
-  const post = allPortfolios.find((p) => p.slug === slug) as Blog
-  const mainContent = post
+  const post = allPortfolios.find((p) => p.slug === slug) as Portfolio
+  const mainContent = coreContent(post)
   const jsonLd = post.structuredData
-
-  const Layout = layouts[post.layout || defaultLayout]
 
   return (
     <>
@@ -96,9 +79,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <Layout content={mainContent} next={next} prev={prev}>
+          <PortfolioPostLayout content={mainContent}>
             <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
-          </Layout>
+          </PortfolioPostLayout>
         </>
       )}
     </>
