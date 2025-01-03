@@ -586,3 +586,22 @@ module.exports = withPlugins(
   nextConfig
 )
 ```
+
+
+Todo
+
+When running `npm run build`
+
+Error: 
+```
+./app/portfolio/[...slug]/page.tsx:66:62
+Type error: Cannot find name 'Portfolio'.
+
+  64 |   }
+  65 |
+> 66 |   const post = allPortfolios.find((p) => p.slug === slug) as Portfolio
+     |                                                              ^
+  67 |   const mainContent = coreContent(post)
+  68 |   const jsonLd = post.structuredData
+  69 |
+```
