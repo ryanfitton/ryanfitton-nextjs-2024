@@ -1,9 +1,12 @@
 import { MetadataRoute } from 'next'
-import { allBlogs } from 'contentlayer/generated'
+import { allBlogs, allPortfolios } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  //The site URL
   const siteUrl = siteMetadata.siteUrl
+
+  //All Blog post routes
   const blogRoutes = allBlogs
     .filter((post) => !post.draft)
     .map((post) => ({
@@ -11,6 +14,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: post.lastmod || post.date,
     }))
 
+  //All Portfolio post routes
+  const portfolioRoutes = allPortfolios
+    .filter((post) => !post.draft)
+    .map((post) => ({
+      url: `${siteUrl}/${post.path}`,
+      lastModified: post.lastmod || post.date,
+    }))
+
+  //Routes to static pages
   const routes = ['', 'about', 'blog', 'portfolio', 'tags', 'colophon', 'policies'].map(
     (route) => ({
       url: `${siteUrl}/${route}`,
@@ -18,5 +30,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
 
-  return [...routes, ...blogRoutes]
+  return [...routes, ...blogRoutes, ...portfolioRoutes]
 }
