@@ -18,6 +18,7 @@ export default function Colophon() {
                   <Link href={`https://github.com/timlrx/tailwind-nextjs-starter-blog`}>
                     tailwind-nextjs-starter-blog
                   </Link>
+                  , with custom 'Portfolio' posts section.
                 </p>
               </li>
               <li>
@@ -96,7 +97,8 @@ export default function Colophon() {
             <p>
               This transition process is currently on-going. As of January 2025 I'm working in my
               spare time to add the final touches, and will then migrate my old{' '}
-              <Link href={`/portfolio-old`}>Portfolio</Link> items over to this new <Link href={`/portfolio`}>platform</Link>.
+              <Link href={`/portfolio-old`}>Portfolio</Link> items over to this new{' '}
+              <Link href={`/portfolio`}>platform</Link>.
             </p>
           </div>
         </div>
