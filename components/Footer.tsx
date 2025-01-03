@@ -28,6 +28,7 @@ export default function Footer() {
             <Link href="/colophon/">Colophon</Link>
             <Link href="/policies/">Policies</Link>
             <Link href="https://links.ryanfitton.co.uk/">Links</Link>
+            <Link href="/feed.xml">RSS Feed</Link>
             <Link href="https://status.ryanfitton.co.uk/">Status</Link>
           </div>
         </div>

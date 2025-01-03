@@ -94,9 +94,9 @@ export default function Colophon() {
             </ul>
 
             <p>
-              This transition process is currently on-going. As of November 2024 I'm working in my
-              spare time to work on the final touches, and will then migrate my{' '}
-              <Link href={`/portfolio`}>Portfolio</Link> items over to this new platform.
+              This transition process is currently on-going. As of January 2025 I'm working in my
+              spare time to add the final touches, and will then migrate my old{' '}
+              <Link href={`/portfolio-old`}>Portfolio</Link> items over to this new <Link href={`/portfolio`}>platform</Link>.
             </p>
           </div>
         </div>
