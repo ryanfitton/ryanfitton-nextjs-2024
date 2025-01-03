@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer'
 import { allPortfolios } from 'contentlayer/generated'
+import type { Portfolio } from 'contentlayer/generated'
 import PortfolioPostLayout from '@/layouts/PortfolioPostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
@@ -23,7 +24,7 @@ export async function generateMetadata({
 
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
-  let imageList = [siteMetadata.socialBanner]
+  const imageList = [siteMetadata.socialBanner]
 
   return {
     title: post.title,

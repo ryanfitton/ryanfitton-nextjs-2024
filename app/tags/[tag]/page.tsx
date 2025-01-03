@@ -39,5 +39,5 @@ export default function TagPage({ params }: { params: { tag: string } }) {
       allBlogs.filter((post) => post.tags && post.tags.map((t) => slugger(t)).includes(tag))
     )
   )
-  return <ListLayout posts={filteredPosts} title={title} />
+  return <ListLayout posts={filteredPosts} />
 }

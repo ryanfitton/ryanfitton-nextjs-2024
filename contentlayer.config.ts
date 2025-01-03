@@ -95,6 +95,7 @@ function createSearchIndexes(allBlogs, allPortfolios) {
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
 
+    //Include Blogs and Portfolio items. Concat together.
     var blogs = allCoreContent(sortPosts(allBlogs));
     var portfolios = allCoreContent(sortPosts(allPortfolios));
     blogs = blogs.concat(portfolios);
