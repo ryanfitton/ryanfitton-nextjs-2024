@@ -83,6 +83,6 @@ const rss = () => {
   var portfolios = allPortfolios;
   blogs = blogs.concat(portfolios);
 
-  generateRSS(siteMetadata, allBlogs)
+  generateRSS(siteMetadata, blogs)
 }
 export default rss
