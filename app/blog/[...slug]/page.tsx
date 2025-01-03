@@ -6,16 +6,10 @@ import { sortPosts, coreContent, allCoreContent } from 'pliny/utils/contentlayer
 import { allBlogs, allAuthors } from 'contentlayer/generated'
 import type { Authors, Blog } from 'contentlayer/generated'
 import PostLayout from '@/layouts/PostLayout'
-import PortfolioPostLayout from '@/layouts/PortfolioPostLayout'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 
 const isProduction = process.env.NODE_ENV === 'production'
-const defaultLayout = 'PostLayout'
-const layouts = {
-  PostLayout,
-  PortfolioPostLayout,
-}
 
 export async function generateMetadata({
   params,
@@ -36,15 +30,7 @@ export async function generateMetadata({
   const publishedAt = new Date(post.date).toISOString()
   const modifiedAt = new Date(post.lastmod || post.date).toISOString()
   const authors = authorDetails.map((author) => author.name)
-  let imageList = [siteMetadata.socialBanner]
-  if (post.images) {
-    imageList = typeof post.images === 'string' ? [post.images] : post.images
-  }
-  const ogImages = imageList.map((img) => {
-    return {
-      url: img.includes('http') ? img : siteMetadata.siteUrl + img,
-    }
-  })
+  const imageList = [siteMetadata.socialBanner]
 
   return {
     title: post.title,
@@ -58,7 +44,7 @@ export async function generateMetadata({
       publishedTime: publishedAt,
       modifiedTime: modifiedAt,
       url: './',
-      images: ogImages,
+      images: siteMetadata.socialBanner,
       authors: authors.length > 0 ? authors : [siteMetadata.author],
     },
     twitter: {
@@ -72,7 +58,6 @@ export async function generateMetadata({
 
 export const generateStaticParams = async () => {
   const paths = allBlogs.map((p) => ({ slug: p.slug.split('/') }))
-
   return paths
 }
 
@@ -103,8 +88,6 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
     }
   })
 
-  const Layout = layouts[post.layout || defaultLayout]
-
   return (
     <>
       {isProduction && post && 'draft' in post && post.draft === true ? (
@@ -117,9 +100,9 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-          <Layout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
+          <PostLayout content={mainContent} authorDetails={authorDetails} next={next} prev={prev}>
             <MDXLayoutRenderer code={post.body.code} components={components} toc={post.toc} />
-          </Layout>
+          </PostLayout>
         </>
       )}
     </>

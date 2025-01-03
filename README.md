@@ -281,7 +281,8 @@ http://localhost:3000/feed.xml
 http://localhost:3000/sitemap.xml
 http://localhost:3000/blog/
 http://localhost:3000/portfolio/
-http://localhost:3000/blog/portfolio-test-1/
+http://localhost:3000/blog/portfolio-test-1/ -- Should 404
+http://localhost:3000/portfolio/portfolio-test-1/
 http://localhost:3000/tags/
 http://localhost:3000/about/
 http://localhost:3000/blog/blog-test-1/
@@ -298,12 +299,38 @@ Disqus Commenting working - Are comments being shown on blog posts migrated
 SEO working?
 Analytics working?
 
-Re-enable Cloudflare image loader
-Using cloud flare Image Tranformations - Re-enable this in the code.
-Must have DNS proxied by cloudflare e.g.
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
-https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
+https://nektosact.com/
+
+https://github.com/decaporg/decap-cms/issues/4205
+
+https://stackoverflow.com/questions/15543235/checking-if-writefilesync-successfully-wrote-the-file
+
+RSS is built on local, but not on Github pages, see https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/744
+
+
+Look at this site using 'Funds'
+
+https://github.com/search?q=repo%3AOpenSats%2Fwebsite%20funds&type=code
+https://opensats.org/funds
+
+Custom post type:
+http://localhost:3000/portfolio/
+http://localhost:3000/portfolio/portfolio-test-1/
+
+
+Old portfolio items
+http://localhost:3000/portfolio-old/
+
+
+Re-enable Cloud flare image loader
+  Using cloud flare Image Tranformations - Re-enable this in the code. 
+  Must have DNS proxied by cloudflare e.g.
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=15,format=auto/static/img/bio/ryan-fitton@1x.jpg
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=256,quality=75,format=auto/static/img/bio/ryan-fitton@1x.jpg
+  https://ryanfitton-nextjs-2024.ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=auto/static/img/bio/ryan-fitton@2x.jpg
+
+
+------
 
 ---
 

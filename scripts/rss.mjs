@@ -1,19 +1,19 @@
 import { writeFileSync, mkdirSync, readFileSync } from 'fs'
 import path from 'path'
-import { slug } from 'github-slugger'
+import { slug as slugger } from 'github-slugger'
 import { escape } from 'pliny/utils/htmlEscaper.js'
 import siteMetadata from '../data/siteMetadata.js'
 import tagData from '../app/tag-data.json' assert { type: 'json' }
-import { allBlogs } from '../.contentlayer/generated/index.mjs'
+import { allBlogs, allPortfolios } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 
 const outputFolder = process.env.EXPORT ? 'build' : 'public'
 
 const generateRssItem = (config, post) => `
   <item>
-    <guid>${config.siteUrl}/blog/${post.slug}</guid>
+    <guid>${config.siteUrl}/${post.type.toLowerCase()}/${post.slug}</guid>
     <title>${escape(post.title)}</title>
-    <link>${config.siteUrl}/blog/${post.slug}</link>
+    <link>${config.siteUrl}/${post.type.toLowerCase()}/${post.slug}</link>
     ${post.summary && `<description>${escape(post.summary)}</description>`}
     <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     <author>${config.email} (${config.author})</author>
@@ -37,8 +37,8 @@ const generateRss = (config, posts, page = 'feed.xml') => `
   </rss>
 `
 
-async function generateRSS(config, allBlogs, page = 'feed.xml') {
-  const publishPosts = allBlogs.filter((post) => post.draft !== true)
+async function generateRSS(config, posts, page = 'feed.xml') {
+  const publishPosts = posts.filter((post) => post.draft !== true)
   // RSS for blog post
   if (publishPosts.length > 0) {
     const rss = generateRss(config, sortPosts(publishPosts))
@@ -50,29 +50,39 @@ async function generateRSS(config, allBlogs, page = 'feed.xml') {
       throw err
     }
 
+    //Tags
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = allBlogs.filter((post) => post.tags.map((t) => slug(t)).includes(tag))
-      const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
-      const rssPath = path.join(outputFolder, 'tags', tag)
+      const filteredPosts = posts.filter((post) => post.tags && post.tags.map((t) => slugger(t)).includes(tag)) //If the looped post contains tags and the tag matches
 
-      try {
-        mkdirSync(rssPath, { recursive: true })
-      } catch (err) {
-        console.log('Error trying to make directory rssPath ' + `${rssPath}`)
-        throw err
-      }
+      //If there are filtered posts which have tags
+      if (filteredPosts.length) {
+        const rss = generateRss(config, filteredPosts, `tags/${tag}/${page}`)
+        const rssPath = path.join(outputFolder, 'tags', tag)
 
-      try {
-        writeFileSync(path.join(rssPath, page), rss)
-      } catch (err) {
-        console.log('Error writing ' + `${path.join(rssPath, page)}`)
-        throw err
+        try {
+          mkdirSync(rssPath, { recursive: true })
+        } catch (err) {
+          console.log('Error trying to make directory rssPath ' + `${rssPath}`)
+          throw err
+        }
+
+        try {
+          writeFileSync(path.join(rssPath, page), rss)
+        } catch (err) {
+          console.log('Error writing ' + `${path.join(rssPath, page)}`)
+          throw err
+        }
       }
     }
   }
 }
 
 const rss = () => {
-  generateRSS(siteMetadata, allBlogs)
+  //Include Blogs and Portfolio items. Concat together.
+  var blogs = allBlogs;
+  var portfolios = allPortfolios;
+  blogs = blogs.concat(portfolios);
+
+  generateRSS(siteMetadata, blogs)
 }
 export default rss
