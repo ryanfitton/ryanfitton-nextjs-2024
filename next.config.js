@@ -17,7 +17,7 @@ const ContentSecurityPolicy = `
   font-src 'self' fonts.gstatic.com cdn.jsdelivr.net
 `
 
-const securityHeaders = [
+const headers = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
     key: 'Content-Security-Policy',
@@ -53,6 +53,11 @@ const securityHeaders = [
     key: 'Permissions-Policy',
     value: 'camera=(), microphone=(), geolocation=()',
   },
+  // https://simonhearne.com/2022/caching-header-best-practices/
+  {
+    key: 'Cache-Control',
+    value: 'max-age=31536000, immutable',
+  },
 ]
 
 /**
@@ -82,7 +87,7 @@ module.exports = () => {
       return [
         {
           source: '/(.*)',
-          headers: securityHeaders,
+          headers: headers,
         },
       ]
     },

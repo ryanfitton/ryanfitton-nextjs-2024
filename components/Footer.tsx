@@ -27,6 +27,7 @@ export default function Footer() {
             <Link href="/about/">About</Link>
             <Link href="/colophon/">Colophon</Link>
             <Link href="/policies/">Policies</Link>
+            <Link href="https://links.ryanfitton.co.uk/">Links</Link>
             <Link href="https://status.ryanfitton.co.uk/">Status</Link>
           </div>
         </div>
