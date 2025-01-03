@@ -87,7 +87,7 @@ export default async function Page(props: { params: Promise<{ slug: string[] }> 
       name: author.name,
     }
   })
-  
+
   return (
     <>
       {isProduction && post && 'draft' in post && post.draft === true ? (

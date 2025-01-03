@@ -23,7 +23,6 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
 
-
   return (
     <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
       <div className="component-posts-pagination component-block">
@@ -92,22 +91,21 @@ export default function PortfolioListLayout({
       <section className="site-container">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
-
             <ul className="component-posts-portfolio-list grid">
               {displayPosts.map((post) => {
                 const { path, cardImgSrc, title, summary } = post
                 return (
-                    <li className="col-span-full lg:col-span-6" key={path}>
-                      <Card
-                        key={path}
-                        title={title}
-                        description={summary != undefined ? summary : ''}
-                        imgSrc={cardImgSrc}
-                        href={`/${path}`}
-                      />
-                    </li>
-                  )
-                })}
+                  <li className="col-span-full lg:col-span-6" key={path}>
+                    <Card
+                      key={path}
+                      title={title}
+                      description={summary != undefined ? summary : ''}
+                      imgSrc={cardImgSrc}
+                      href={`/${path}`}
+                    />
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
