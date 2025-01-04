@@ -318,8 +318,6 @@ http://localhost:3000/portfolio/
 http://localhost:3000/portfolio/portfolio-test-1/
 
 
-Old portfolio items
-http://localhost:3000/portfolio-old/
 
 
 Re-enable Cloud flare image loader

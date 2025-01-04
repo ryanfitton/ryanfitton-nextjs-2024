@@ -96,9 +96,7 @@ export default function Colophon() {
 
             <p>
               This transition process is currently on-going. As of January 2025 I'm working in my
-              spare time to add the final touches, and will then migrate my old{' '}
-              <Link href={`/portfolio-old`}>Portfolio</Link> items over to this new{' '}
-              <Link href={`/portfolio`}>platform</Link>.
+              spare time to add the final touches and fixing bugs.
             </p>
           </div>
         </div>
