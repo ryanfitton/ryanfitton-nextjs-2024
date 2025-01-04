@@ -1,7 +1,7 @@
 const navLinks = [
   { href: '/blog', title: 'Blog' },
   { href: '/tags', title: 'Tags' },
-  { href: '/portfolio', title: 'Portfolio' },
+  { href: '/portfolio-old', title: 'Portfolio' },
   { href: '/about', title: 'About' },
 ]
 
