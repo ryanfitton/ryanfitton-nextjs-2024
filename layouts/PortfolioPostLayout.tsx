@@ -26,10 +26,12 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                   <div className="col-span-full md:col-span-4 xl:col-span-3">
                     <ul className="component-posts-portfolio-details__list">
                       <li>
-                        <span className="font-medium">Client:</span> {portfolioClient}
+                        <span className="font-medium">Client:</span>{' '}
+                        <span dangerouslySetInnerHTML={{ __html: `${portfolioClient}` }}></span>
                       </li>
                       <li>
-                        <span className="font-medium">Type:</span> {portfolioType}
+                        <span className="font-medium">Type:</span>{' '}
+                        <span dangerouslySetInnerHTML={{ __html: `${portfolioType}` }}></span>
                       </li>
                       <li className="mt-4">
                         {portfolioHref ? (
@@ -46,7 +48,10 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                   </div>
 
                   <div className="col-span-full md:col-span-8 xl:col-span-9">
-                    <p className="component-posts-portfolio-details__intro lead">{lead}</p>
+                    <p
+                      className="component-posts-portfolio-details__intro lead"
+                      dangerouslySetInnerHTML={{ __html: lead }}
+                    ></p>
                   </div>
                 </div>
               </section>
