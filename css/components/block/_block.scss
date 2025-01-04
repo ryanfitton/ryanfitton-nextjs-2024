@@ -1,6 +1,6 @@
 @layer components {
   .component-block {
-    @apply my-12;
+    @apply my-12 h-full;
 
     &:first-child {
       @apply mt-0;
