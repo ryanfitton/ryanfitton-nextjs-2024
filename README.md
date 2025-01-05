@@ -270,6 +270,18 @@ Using caching on Cloudflare, may need to disable this when debugging issues:
 `Caching > Cache Rules`
 `Rules > Compression Rules`
 
+
+---
+
+Posts
+
+Use `1970-01-01-EXAMPLE.mdx` as an example for post content, supporting HTML or Markdown.
+
+Found in:
+
+* `data/blog/1970-01-01-EXAMPLE.mdx`
+* `data/portfolio/1970-01-01-EXAMPLE.mdx`
+
 ---
 
 URLs to test:
