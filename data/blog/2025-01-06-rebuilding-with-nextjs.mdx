@@ -1,0 +1,78 @@
+
+---
+title: "Taking the plunge into JS frameworks with Next.JS"
+authors: ['Ryan Fitton']
+date: '2025-01-06'
+tags: ['Development']
+draft: false
+summary: 'Blog post describing why I have rebuilt my personal website with Next.JS and Tailwind.'
+---
+
+# Why?
+
+I've always wanted to become more involved with JS frameworks. I have had exposure to Vue JS in the past but haven't ever used it in depth and didn't fully understand how it worked.
+
+Since August 2024, I have been rebuilding my WordPress-powered website into one running on Next.js with the theme handled by Tailwind. I've wanted to do this for a long time. My old WordPress theme was built in 2014 (a long time ago in the web development world), and a lot has changed over this time. I had a few reasons for wanting to rebuild the site, mainly:
+
+1. WordPress is slow and cumbersome. My journey with WordPress started in 2011, long before the introduction of the Gutenberg editor and the inclusion of more JS bloat within the dashboard.
+2. While the WordPress theme was custom-built with Sass, I haven't been maintaining the theme over time. Neither have I been updating the WordPress core during this period (it's been at least three years since applying the last update), and I'm afraid something might break.
+3. WordPress requires multiple services to be hosted (PHP, Apache/Nginx, Database). While I can maintain these services, it's not something I want to do every month. I have always been intrigued by sites running a flat file system, hosted on services such as GitHub Pages, which will save me money on hosting fees. Being hosted on a platform that can handle large volumes of traffic, and being static files without relying on plugins or a database, is inherently more secure.
+4. There has been a recent [on-going saga between Automattic and WP Engine](https://css-tricks.com/catching-up-on-the-wordpress-wp-engine-sitch/) that is pushing me away from the 'happy' community atmosphere that used to be prevalent in the WordPress community. I understand Matt's reasoning behind his recent speech at [WordCamp US 2024](https://www.reddit.com/r/Wordpress/comments/1flqqm5/matt_just_threw_wp_engine_under_the_bus_hard/), but I don't feel this was the correct approach for multiple reasons. This is not something I would like to be part of.
+5. Finally, the main motivation is that this will give me the opportunity to learn a JS framework platform, leading to further career opportunities.
+
+# The Rebuild
+
+Before starting the rebuild, I already downloaded and set up a local copy of Next.js and had a 'play' around with it. I understand the inner workings much better now but still lacked the ability to create a Next.js powered website from scratch.
+
+Enter [Timothy](https://github.com/timlrx)'s Next.js and Tailwind starter blog (https://github.com/timlrx/tailwind-nextjs-starter-blog). I noticed the Readme listed forks/examples made by others, which encouraged me to do the same.
+
+## Custom Changes
+
+This is a fantastic starter template but still required me to make some changes to make the template work for my use case. These were:
+
+1. A separate 'portfolio' post section was required. By default, the template used the 'blog' section but with a different layout template. However, this meant portfolio posts still had their URL scheme as 'https://example.com/blog/portfolio-item'.
+2. Update the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates.
+3. Including the use of a Cloudflare image loader so their Image Transformations API can be used. As I'm using Cloudflare as my DNS provider already, I can enable this API to convert image formats, sizes, and quality directly via the URL. For example:
+   - Original URL: https://ryanfitton.co.uk/static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg
+   - Image Transform API, setting the image to WebP, 200px width with 75% quality: https://ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=webp/static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg
+4. Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
+5. Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
+6. Due to adding a separate 'portfolio' section, I also had to update the [Sitemap](https://ryanfitton.co.uk/sitemap.xml) and [RSS feed](https://ryanfitton.co.uk/feed.xml) generation script to include posts from this new section.
+
+## Timeline
+
+I have been working on development changes since August 2024 and finally finished major development work in January 2025.
+
+There are still some small bugs I need to fix, such as:
+
+1. Clean up the repo's [Readme file](https://github.com/ryanfitton/ryanfitton-nextjs-2024/blob/main/README.md).
+2. Disqus comment styles not appearing correctly in Dark Mode.
+3. Add the publish date to portfolio posts.
+4. Fix image sizing on the Portfolio index. 
+5. Add image support to the Blogs index. 
+6. Some PageSpeed optimization required, mainly the video header on the homepage.
+
+However, these are relatively straightforward. Probably the most tedious part of this process was migrating the WordPress posts into Markdown format. The only good way to do this was a manual copy-paste and fixing up the post content with a find and replace.
+
+Images were straightforward to copy over; I essentially copied all non-empty folders from 'wp-content'.
+
+# Final Conclusion
+
+I am really happy with the progress I have made getting to grips with Next.js and the custom changes made to the template.
+
+Going forward, I will be contributing some of the changes I have made back to [Timothy](https://github.com/timlrx)'s project and will regularly implement any new bug fixes published by the project.
+
+The latest [PageSpeed report](https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/dem3unz4on?form_factor=mobile) is great, with scores:
+
+- Mobile:
+  - Performance: 74/100
+  - Accessibility: 91/100
+  - Best Practices: 96/100
+  - SEO: 92/100
+- Desktop:
+  - Performance: 99/100
+  - Accessibility: 90/100
+  - Best Practices: 96/100
+  - SEO: 92/100
+
+I have documented all the changes and commits I have made in this new site's GitHub Repo here: https://github.com/ryanfitton/ryanfitton-nextjs-2024
