@@ -90,10 +90,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           as="image"
           href={`${siteMetadata.siteUrl}/cdn-cgi/image/width=640,quality=75,format=webp/static/img/logo.png`}
         />
+        {/* Old image href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/img/home-header-bg@1.8x.jpg`} */}
         <link
           rel="preload"
           as="image"
-          href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/img/home-header-bg@1.8x.jpg`}
+          href={`${siteMetadata.siteUrl}/cdn-cgi/image/fit=cover,width=800,height=1000,quality=75,format=webp/static/img/home-header-bg@1.8x.jpg`}
         />
 
         {/* Favicons */}
