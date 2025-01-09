@@ -9,6 +9,7 @@ import type { Blog } from 'contentlayer/generated'
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
+import Image from 'next/image'
 import tagData from 'app/tag-data.json'
 
 interface PaginationProps {
@@ -130,10 +131,25 @@ export default function ListLayout({
           <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
             <ul className="component-posts-article-list">
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, featuredImgSrc, title, summary, tags } = post
                 return (
                   <li key={path}>
                     <article className="component-posts-article">
+                      {featuredImgSrc && (
+                        <Link href={`/${path}`}>
+                          <Image
+                            src={featuredImgSrc}
+                            alt={title}
+                            width="900"
+                            height="265"
+                            className="component-posts-article__featured-image"
+                            style={{
+                              objectFit: 'cover',
+                            }}
+                          />
+                        </Link>
+                      )}
+
                       <dl className="component-posts-article__date">
                         <dt className="sr-only">Published on</dt>
                         <dd>

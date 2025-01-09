@@ -12,7 +12,7 @@ const Card = ({ title, description, imgSrc, href }) => {
         <Image
           src={imgSrc}
           alt={title}
-          width="400"
+          width="520"
           height="265"
           className="component-posts-article__featured-image"
           style={{

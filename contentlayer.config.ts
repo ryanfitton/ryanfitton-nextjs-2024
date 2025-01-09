@@ -119,7 +119,8 @@ export const Blog = defineDocumentType(() => ({
     lastmod: { type: 'date' },                                          //Post last modified date `YYYY-MM-DD`
     tags: { type: 'list', of: { type: 'string' }, default: [] },        //Array of tags e.g. `['Development', 'Code Snippets']`
     draft: { type: 'boolean' },                                         //true / false - If true, the post will not be shown
-    summary: { type: 'string', required: true },                        //Short summary description shown in the card on the Portfolio index page
+    summary: { type: 'string', required: true },                        //Short summary description shown in the card on the Blog index page
+    featuredImgSrc: { type: 'string' },                                 //Image to be shown in the card on the Blog index page
     authors: { type: 'list', of: { type: 'string', required: true } },  //Array of authors e.g. `['Ryan Fitton']`
     canonicalUrl: { type: 'string' },                                   //Canonical URL
   },
