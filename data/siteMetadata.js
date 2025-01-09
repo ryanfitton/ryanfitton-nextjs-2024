@@ -6,7 +6,8 @@ const siteMetadata = {
   headerTitle: 'Ryan Fitton',
   headerDescription: 'I build things for the web',
   language: 'en-gb',
-  siteUrl: 'https://ryanfitton.co.uk',
+  //siteUrl: 'http://localhost:3000',       //Local
+  siteUrl: 'https://ryanfitton.co.uk',      //Production
   siteRepo: 'https://github.com/ryanfitton/ryanfitton.co.uk',
   image: '/static/favicons/favicon-192x192.png',
   socialBanner: '/static/img/twitter-card.png',

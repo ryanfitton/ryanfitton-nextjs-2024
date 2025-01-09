@@ -31,10 +31,10 @@
         */
     &--page {
       @apply min-h-[280px] before:bg-primary-600/50 dark:before:bg-secondary-950/35;
-      background-image: url('/static/img/page-header-bg@1x.jpg');
+      background-image: url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1x.jpg');
       background-image: image-set(
-        url('/static/img/page-header-bg@1x.jpg') 1x,
-        url('/static/img/page-header-bg@1.8x.jpg') 1.8x
+        url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1x.jpg') 1x,
+        url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1.8x.jpg') 1.8x
       );
     }
 
