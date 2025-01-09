@@ -93,14 +93,14 @@ export default function PortfolioListLayout({
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <ul className="component-posts-portfolio-list grid">
               {displayPosts.map((post) => {
-                const { path, cardImgSrc, title, summary } = post
+                const { path, featuredImgSrc, title, summary } = post
                 return (
                   <li className="col-span-full lg:col-span-6" key={path}>
                     <Card
                       key={path}
                       title={title}
                       description={summary != undefined ? summary : ''}
-                      imgSrc={cardImgSrc}
+                      imgSrc={featuredImgSrc}
                       href={`/${path}`}
                     />
                   </li>

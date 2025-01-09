@@ -153,7 +153,7 @@ export const Portfolio = defineDocumentType(() => ({
     lastmod: { type: 'date' },                      //Post last modified date `YYYY-MM-DD`
     draft: { type: 'boolean' },                     //true / false - If true, the post will not be shown
     summary: { type: 'string', required: true },    //Short summary description shown in the card on the Portfolio index page
-    cardImgSrc: { type: 'string', required: true }, //Image to be shown in the card on the Portfolio index page
+    featuredImgSrc: { type: 'string', required: true }, //Image to be shown in the card on the Portfolio index page
     lead: { type: 'string', required: true },       //Lead introductory paragraph shown on the Portfolio item's page
     portfolioClient: { type: 'string' },            //Name of the Client
     portfolioType: { type: 'string' },              //Type of work e.g. `Print, Design, Web`
