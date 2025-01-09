@@ -1,7 +1,7 @@
 // Load images via Cloudflare
 // Ensure the domain is proxied through Cloudflare. Cloudflare will look for `cdn-cgi` and use this to process the image via their service worker.
 // Docs: https://developers.cloudflare.com/images/transform-images
-export default function cloudflareLoader({ src, width, quality }) {
+export default function cloudflareLoader({ src, width, quality, format }) {
   /*
   //If running locally return the local address
   if (window.location.hostname == 'localhost') {
@@ -19,6 +19,7 @@ export default function cloudflareLoader({ src, width, quality }) {
   */
 
   //Set default params (Quality: 75 and Format: WebP conversion)
-  const params = [`width=${width}`, `quality=${quality || 75}`, 'format=webp']
-  return `https://ryanfitton.co.uk/cdn-cgi/image/${params.join(',')}${src}`
+  const params = [`width=${width}`, `quality=${quality || 75}`, `format=${format || 'webp'}`]
+  //return `${src}`                                                             //Local
+  return `https://ryanfitton.co.uk/cdn-cgi/image/${params.join(',')}${src}`     //Production
 }

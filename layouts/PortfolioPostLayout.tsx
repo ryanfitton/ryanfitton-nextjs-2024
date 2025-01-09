@@ -1,9 +1,17 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Portfolio } from 'contentlayer/generated'
+import siteMetadata from '@/data/siteMetadata'
 import Link from '@/components/Link'
 import SectionContainer from '@/components/SectionContainer'
 import React from 'react'
+
+const postDateTemplate: Intl.DateTimeFormatOptions = {
+  //weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  //day: 'numeric',
+}
 
 interface LayoutProps {
   content: CoreContent<Portfolio>
@@ -11,7 +19,7 @@ interface LayoutProps {
 }
 
 export default function PortfolioPostLayout({ content, children }: LayoutProps) {
-  const { title, portfolioClient, portfolioType, portfolioHref, lead } = content
+  const { title, date, portfolioClient, portfolioType, portfolioHref, lead } = content
 
   return (
     <SectionContainer>
@@ -32,6 +40,12 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                       <li>
                         <span className="font-medium">Type:</span>{' '}
                         <span dangerouslySetInnerHTML={{ __html: `${portfolioType}` }}></span>
+                      </li>
+                      <li>
+                        <span className="font-medium">Date:</span>{' '}
+                        <time dateTime={date}>
+                          {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
+                        </time>
                       </li>
                       <li className="mt-4">
                         {portfolioHref ? (

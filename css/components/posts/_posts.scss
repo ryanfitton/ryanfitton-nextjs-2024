@@ -108,7 +108,7 @@
     }
 
     &__featured-image {
-      @apply mb-6 rounded;
+      @apply mb-6 rounded h-[265px]; //Using `objectFit: 'cover',` in `components/Card.tsx`
     }
 
     &__title {

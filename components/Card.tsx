@@ -15,6 +15,9 @@ const Card = ({ title, description, imgSrc, href }) => {
           width="400"
           height="265"
           className="component-posts-article__featured-image"
+          style={{
+            objectFit: 'cover',
+          }}
         />
 
         <h2 className="component-posts-article__title">{title}</h2>
