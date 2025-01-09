@@ -33,10 +33,10 @@ This is a fantastic starter template but still required me to make some changes 
 2. Update the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates.
 3. Including the use of a Cloudflare image loader so their Image Transformations API can be used. As I'm using Cloudflare as my DNS provider already, I can enable this API to convert image formats, sizes, and quality directly via the URL. For example:
    - Original URL: https://ryanfitton.co.uk/static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg
-   - Image Transform API, setting the image to WebP, 200px width with 75% quality: https://ryanfitton.co.uk/cdn-cgi/image/width=200,quality=75,format=webp/static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg
+   - Image Transform API, setting the image to WebP, 200px width with 75% quality: /blog/cdn-cgi/image/width=200,quality=75,format=webp/static/img/blog/2023/03/IMG_20230311_113236-768x1024.jpg
 4. Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
 5. Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
-6. Due to adding a separate 'portfolio' section, I also had to update the [Sitemap](https://ryanfitton.co.uk/sitemap.xml) and [RSS feed](https://ryanfitton.co.uk/feed.xml) generation script to include posts from this new section.
+6. Due to adding a separate 'portfolio' section, I also had to update the [Sitemap](/blog/sitemap.xml) and [RSS feed](/blog/feed.xml) generation script to include posts from this new section.
 
 ### Timeline
 
