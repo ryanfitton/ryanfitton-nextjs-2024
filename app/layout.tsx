@@ -70,9 +70,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+        {/* Allow preconnect to Google APIs */}
         <link rel="preconnect" href="//fonts.googleapis.com" />
         <link rel="preconnect" href="//fonts.gstatic.com" crossOrigin="anonymous" />
 
+        {/* Preload images (Logo and Video header poster) */}
+        <link
+          rel="preload"
+          as="image"
+          href={`${siteMetadata.siteUrl}/cdn-cgi/image/width=256,quality=75,format=webp/static/img/logo.png`}
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={`${siteMetadata.siteUrl}/cdn-cgi/image/width=640,quality=75,format=webp/static/img/logo.png`}
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={`${siteMetadata.siteUrl}/cdn-cgi/image/width=640,quality=75,format=webp/static/img/logo.png`}
+        />
+        <link
+          rel="preload"
+          as="image"
+          href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/img/home-header-bg@1.8x.jpg`}
+        />
+
+        {/* Favicons */}
         <link
           rel="apple-touch-icon"
           sizes="152x152"
@@ -133,19 +157,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           content={`${siteMetadata.siteUrl}/static/favicons/modern-ui-tile-icon-144x144.png`}
         />
 
+        {/* General site Meta data */}
         <meta name="msapplication-TileColor" content="#af4c41" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="manifest" href={`${siteMetadata.siteUrl}/static/favicons/site.webmanifest`} />
+
+        {/* Site RSS feed link */}
         <link
           rel="alternate"
           type="application/rss+xml"
           href={`${siteMetadata.siteUrl}/feed.xml`}
         />
 
-        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social" />
         {/* Mastodon author attribution verification */}
+        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social" />
       </head>
 
       <body>
