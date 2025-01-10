@@ -7,7 +7,7 @@ draft: false
 summary: 'This is a follow-on from my previous post: &#8216;Backup server files as tar.gz&#8216;. The script below works in a similar way as the previous, save as &#8216;backup_mysql2ftp.sh&#8217; and fill out the &#8216;Backup options&#8217;, &#8216;MySQL Connection details&#8217;, and your email address. Run the script with sudo sh backup_mysql2ftp.sh (make sure the file is executable first). The ...'
 ---
 
-This is a follow-on from my previous post: '[Backup server files as tar.gz](/blog/blog/backup-server-files-as-tar-gz-bash-script/)'.
+This is a follow-on from my previous post: '[Backup server files as tar.gz](/blog/backup-server-files-as-tar-gz-bash-script/)'.
 
 The script below works in a similar way as the previous, save as 'backup_mysql2ftp.sh' and fill out the 'Backup options', 'MySQL Connection details', and your email address.
 
@@ -250,4 +250,4 @@ fi
 
 **Note:** Using the standard FTP protocol is unsafe, your details will be passed in plaintext. However because Online.net's FTP backup service runs within their own network there is not much risk to myself. I do highly recommend using SFTP or FTPS, both will likely need modification of the script in-order to work properly.
 
-Also see my previous file backup script [here](/blog/blog/backup-server-files-as-tar-gz-bash-script/).
+Also see my previous file backup script [here](/blog/backup-server-files-as-tar-gz-bash-script/).
