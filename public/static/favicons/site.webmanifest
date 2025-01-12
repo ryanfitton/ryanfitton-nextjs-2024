@@ -33,11 +33,6 @@
             "type": "image/png"
         },
         {
-            "src": "/cdn-cgi/image/quality=75,format=webp/static/favicons/apple-touch-icon-60x60.png",
-            "sizes": "60x60",
-            "type": "image/png"
-        },
-        {
             "src": "/cdn-cgi/image/quality=75,format=webp/static/favicons/apple-touch-icon-57x57.png",
             "sizes": "57x57",
             "type": "image/png"

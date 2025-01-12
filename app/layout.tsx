@@ -130,11 +130,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <link
           rel="apple-touch-icon"
-          sizes="60x60"
-          href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/favicons/apple-touch-icon-60x60.png`}
-        />
-        <link
-          rel="apple-touch-icon"
           sizes="57x57"
           href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/favicons/apple-touch-icon-57x57.png`}
         />
