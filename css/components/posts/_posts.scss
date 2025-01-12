@@ -112,7 +112,13 @@
     }
 
     &__title {
-      @apply my-2 text-pretty;
+      $title: &;
+      @apply flex items-center my-2 text-pretty;
+      
+      //Rehype auto link headings style (Link anhor on headings)
+      #{$title}-icon {
+        @apply block mr-2;
+      }
     }
 
     &__excerpt {
