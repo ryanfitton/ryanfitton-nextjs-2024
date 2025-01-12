@@ -20,7 +20,7 @@ const Card = ({ title, description, imgSrc, href }) => {
           }}
         />
 
-        <h2 className="component-posts-article__title">{title}</h2>
+        <h2 className="component-posts-article__title" dangerouslySetInnerHTML={{ __html: title }}></h2>
 
         {description ? (
           <>

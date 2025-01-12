@@ -160,7 +160,7 @@ export default function ListLayout({
                       </dl>
 
                       <h2 className="component-posts-article__title">
-                        <Link href={`/${path}`}>{title}</Link>
+                        <Link href={`/${path}`} dangerouslySetInnerHTML={{ __html: title }}></Link>
                       </h2>
 
                       <ul className="component-posts-tag-list component-posts-tag-list--article">
