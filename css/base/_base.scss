@@ -7,15 +7,15 @@
   }
 
   /* 
-        Anchor 
-    */
+    Anchor 
+  */
   a {
     @apply text-typography-link underline underline-offset-4 visited:text-typography-link-visited hover:text-typography-link-hover hover:no-underline focus:text-typography-link-focus dark:text-typography-link-dark dark:visited:text-typography-link-visited-dark dark:hover:text-typography-link-hover-dark dark:focus:text-typography-link-focus-dark;
   }
 
   /* 
-        Paragraphs 
-    */
+    Paragraphs 
+  */
   p {
     @apply my-4 text-base;
 
@@ -33,8 +33,15 @@
   }
 
   /* 
-        Headings 
-    */
+    Lists 
+  */
+  ol, ul {
+    @apply text-base;
+  }
+
+  /* 
+    Headings 
+  */
   h1,
   h2,
   h3,
@@ -81,8 +88,8 @@
   }
 
   /* 
-        Horizontal rule 
-    */
+    Horizontal rule 
+  */
   hr,
   .prose-hr {
     @apply border-2 border-l-0 border-r-0 border-t-0;
@@ -91,8 +98,8 @@
   }
 
   /* 
-        Grid
-    */
+    Grid
+  */
   .grid {
     @apply grid-cols-12 gap-6;
     /* Default gap and columns in grids */
