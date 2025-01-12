@@ -140,7 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link
           rel="icon"
           type="image/ico"
-          href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/favicons/favicon.ico`}
+          href={`${siteMetadata.siteUrl}/static/favicons/favicon.ico`}
         />
         <link
           rel="icon"
