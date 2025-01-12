@@ -158,7 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-        <link rel="manifest" href={`${siteMetadata.siteUrl}/cdn-cgi/image/quality=75,format=webp/static/favicons/site.webmanifest`} />
+        <link rel="manifest" href={`${siteMetadata.siteUrl}/static/favicons/site.webmanifest`} />
 
         {/* Site RSS feed link */}
         <link
