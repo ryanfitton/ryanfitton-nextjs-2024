@@ -41,6 +41,10 @@
     &--homepage {
       @apply mb-0;
     }
+
+    &--sticky {
+        @apply sticky top-0 z-50;
+    }
   }
 
   &-main {

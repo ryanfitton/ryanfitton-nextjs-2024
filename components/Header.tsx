@@ -31,9 +31,15 @@ export default function Header() {
   //const titleUpercase = basePath.toUpperCase()
   //const subTitleUpperCase = subTitle.toUpperCase()
 
+  //Define default head class, and if sticky is enabled, then apply sticky variant
+  let headerClass = `site-header ` + (pathname === '/' ? 'site-header--homepage' : '')
+  if (siteMetadata.stickyNav) {
+    headerClass += ' site-header--sticky'
+  }
+
   return (
     <>
-      <header className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')}>
+      <header className={headerClass}>
         <div className="xl:site-container flex justify-between">
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
