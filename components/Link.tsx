@@ -9,13 +9,15 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
 
   //If internal link E.g. `/about/`
   if (isInternalLink) {
-    return <Link href={href} {...rest} />
+    return <Link className="break-words" href={href} {...rest} />
     //If an anchor link E.g. `#about`
   } else if (isAnchorLink) {
-    return <a href={href} {...rest} />
+    return <a className="break-words" href={href} {...rest} />
     //Anything else consider as an external link, so open in new window/tab
   } else {
-    return <a target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+    return (
+      <a className="break-words" target="_blank" rel="noopener noreferrer" href={href} {...rest} />
+    )
   }
 }
 
