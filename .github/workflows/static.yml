@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy `./build` static content to Github Pages
+name: Deploy `./out` static content to Github Pages
 
 on:
   # Runs on pushes targeting the default branch
