@@ -21,23 +21,23 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 
 2. Install required dependencies for package management: `npm install --global yarn`
 
-3. `npm install`. This will install the required packages.
+3. `yarn`. This will install the required packages.
 
-4. `npm run start`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
+4. `yarn dev`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
 
 ## Running a production build:
 
 Ensuring the requirements are met from the 'Running local:' section above;
 
-1. `npm run build`. A static build will be produced in `/build`
+1. `yarn run build`. A static build will be produced in `/build`
 
 2. If you have PHP installed on your system you can load the production buld in a local web server: `php -S localhost:8080 -t build/`
 
 ## Other:
 
-- `npm run format`. This will Prettify the code.
+- `yarn run format`. This will Prettify the code.
 
-- `npm run analyze`. This will analyse the bundle and open the results in a new browser window.
+- `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
 # Github pages
 
