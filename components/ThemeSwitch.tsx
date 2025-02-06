@@ -59,35 +59,41 @@ const ThemeSwitch = () => {
           <RadioGroup value={theme} onChange={setTheme}>
             <RadioGroup.Option value="light">
               <Menu.Item>
-                <button
-                  className="component-navbar__theme-btn--list-option"
-                  aria-label="Theme switcher"
-                >
-                  <Sun />
-                  Light
-                </button>
+                {({ active }) => (
+                  <button
+                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Theme switcher"
+                  >
+                    <Sun />
+                    Light
+                  </button>
+                )}
               </Menu.Item>
             </RadioGroup.Option>
             <RadioGroup.Option value="dark">
               <Menu.Item>
-                <button
-                  className="component-navbar__theme-btn--list-option"
-                  aria-label="Theme switcher"
-                >
-                  <Moon />
-                  Dark
-                </button>
+                {({ active }) => (
+                  <button
+                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Theme switcher"
+                  >
+                    <Moon />
+                    Dark
+                  </button>
+                )}
               </Menu.Item>
             </RadioGroup.Option>
             <RadioGroup.Option value="system">
               <Menu.Item>
-                <button
-                  className="component-navbar__theme-btn--list-option"
-                  aria-label="Theme switcher"
-                >
-                  <Monitor />
-                  System
-                </button>
+                {({ active }) => (
+                  <button
+                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Theme switcher"
+                  >
+                    <Monitor />
+                    System
+                  </button>
+                )}
               </Menu.Item>
             </RadioGroup.Option>
           </RadioGroup>
