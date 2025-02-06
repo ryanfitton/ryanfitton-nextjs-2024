@@ -32,15 +32,15 @@ export default function Header() {
   //const subTitleUpperCase = subTitle.toUpperCase()
 
   //Define default head class, and if sticky is enabled, then apply sticky variant
-  let headerClass = `site-header ` + (pathname === '/' ? 'site-header--homepage' : '')
+  let headerNavContainerClass = 'xl:site-container flex justify-between'
   if (siteMetadata.stickyNav) {
-    headerClass += ' site-header--sticky'
+    headerNavContainerClass += ' site-container--sticky site-header--sticky'
   }
 
   return (
     <>
-      <header className={headerClass}>
-        <div className="xl:site-container flex justify-between">
+      <header className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')}>
+        <div className={headerNavContainerClass}>
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
             {/* Image dimensions should be 3x the size of the width/height */}
@@ -85,7 +85,6 @@ export default function Header() {
 
             <MediaController className="hero__video-wrapper">
               <video
-                suppressHydrationWarning
                 slot="media"
                 src="/static/vid/home-header-video-15fps.webm"
                 preload="auto"
