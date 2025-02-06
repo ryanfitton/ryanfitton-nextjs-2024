@@ -27,13 +27,11 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 
 ## Running a production build:
 
-Instructions below will need updated. A Github pages script in `.github/workflows/static.yml` will handle a production build when deployed to Github pages.
+Ensuring the requirements are met from the 'Running local:' section above;
 
-~~Ensuring the requirements are met from the 'Running local:' section above;~~
+1. `EXPORT=1 UNOPTIMIZED=1 yarn build`. A static build will be produced in `/out`
 
-~~1. `yarn run build`. A static build will be produced in `/build`~~
-
-~~2. If you have PHP installed on your system you can load the production buld in a local web server: `php -S localhost:8080 -t build/`~~
+2. If you have PHP installed on your system you can load the production buld in a local web server: `php -S localhost:8080 -t out/`
 
 ## Other:
 

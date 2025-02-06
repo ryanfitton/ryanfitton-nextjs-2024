@@ -62,7 +62,7 @@ const headers = [
 
 const output = process.env.EXPORT ? 'export' : undefined
 const basePath = process.env.BASE_PATH || undefined
-const unoptimized = process.env.UNOPTIMIZED ? true : undefined
+const unoptimized = process.env.UNOPTIMIZED ? true : false
 
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
@@ -70,8 +70,8 @@ const unoptimized = process.env.UNOPTIMIZED ? true : undefined
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
-    output,
-    basePath,
+    output: output,
+    basePath: basePath,
     trailingSlash: true,
     skipTrailingSlashRedirect: false,
     reactStrictMode: true,
@@ -85,7 +85,7 @@ module.exports = () => {
       deviceSizes: [640, 750, 828, 1080, 1200],
       imageSizes: [32, 64, 96, 128, 256],
       domains: ['localhost', 'ryanfitton.co.uk'],
-      unoptimized,
+      unoptimized: unoptimized,
     },
     async headers() {
       return [
