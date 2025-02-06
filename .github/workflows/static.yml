@@ -29,8 +29,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
-          cache: 'npm'
-          cache-dependency-path: ./package-lock.json
+          cache: 'yarn'
 
       - name: Dump version
         run: |
@@ -56,8 +55,6 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
 
       - run: yarn
-        env:
-          YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - run: yarn build
         env:
