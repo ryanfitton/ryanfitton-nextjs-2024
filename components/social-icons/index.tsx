@@ -1,29 +1,33 @@
 import {
-  Mail,
-  Github,
-  Keybase,
   Facebook,
-  Youtube,
+  Github,
   Linkedin,
+  Mail,
   Twitter,
-  Instagram,
-  Threads,
+  X,
+  Youtube,
   Mastodon,
+  Threads,
+  Instagram,
+  Medium,
   Bluesky,
+  Keybase,
 } from './icons'
 
 const components = {
-  mail: Mail,
-  github: Github,
-  keybase: Keybase,
   facebook: Facebook,
-  youtube: Youtube,
+  github: Github,
   linkedin: Linkedin,
+  mail: Mail,
   twitter: Twitter,
-  instagram: Instagram,
-  threads: Threads,
+  x: X,
+  youtube: Youtube,
   mastodon: Mastodon,
+  threads: Threads,
+  instagram: Instagram,
+  medium: Medium,
   bluesky: Bluesky,
+  keybase: Keybase,
 }
 
 type SocialIconProps = {
@@ -33,7 +37,10 @@ type SocialIconProps = {
 }
 
 const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
-  if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
+  if (
+    !href ||
+    (kind === 'mail' && !/^mailto:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(href))
+  )
     return null
 
   const SocialSvg = components[kind]
