@@ -17,9 +17,11 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 
 1. `nvm install lts/iron`. Requires at least Node.JS `v20.18.1` and NPM `v10.8.2`. See [nodejs.org/en/about/previous-releases](https://nodejs.org/en/about/previous-releases).
 
-2. `npm install`. This will install the required packages.
+2. Install required dependencies for package management: `npm install --global yarn`
 
-3. `npm run start`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
+3. `npm install`. This will install the required packages.
+
+4. `npm run start`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
 
 
 ## Running a production build:
