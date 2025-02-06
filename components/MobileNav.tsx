@@ -45,14 +45,13 @@ const MobileNav = () => {
           </svg>
         </button>
 
-        <Transition
-          appear
-          show={navShow}
-          as={Fragment}
-          unmount={false}
-          className="component-navbar component-navbar--header"
-        >
-          <Dialog as="div" onClose={onToggleNav} unmount={false}>
+        <Transition appear show={navShow} as={Fragment} unmount={false}>
+          <Dialog
+            as="div"
+            onClose={onToggleNav}
+            unmount={false}
+            className="component-navbar component-navbar--header"
+          >
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
