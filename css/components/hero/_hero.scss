@@ -1,9 +1,9 @@
 @layer components {
   .hero {
-    @apply relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat before:absolute before:z-[1] before:h-full before:w-full;
+    @apply relative flex items-center justify-center overflow-hidden bg-cover bg-center bg-no-repeat before:absolute before:z-1 before:h-full before:w-full;
 
     &__container {
-      @apply relative z-[2] flex justify-center md:justify-start;
+      @apply relative z-2 flex justify-center md:justify-start;
     }
 
     &__content,

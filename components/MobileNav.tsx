@@ -44,26 +44,15 @@ const MobileNav = () => {
             ></path>
           </svg>
         </button>
-        <Transition appear show={navShow} as={Fragment} unmount={false}>
-          <Dialog
-            className="component-navbar__menu-mobile"
-            as="div"
-            onClose={onToggleNav}
-            unmount={false}
-          >
-            <Transition.Child
-              as={Fragment}
-              enter="ease-out duration-300"
-              enterFrom="opacity-0"
-              enterTo="opacity-100"
-              leave="ease-in duration-200"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-              unmount={false}
-            >
-              <div className="z-60 fixed inset-0 bg-black/25" />
-            </Transition.Child>
 
+        <Transition
+          appear
+          show={navShow}
+          as={Fragment}
+          unmount={false}
+          className="component-navbar component-navbar--header"
+        >
+          <Dialog as="div" onClose={onToggleNav} unmount={false}>
             <Transition.Child
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
@@ -74,39 +63,40 @@ const MobileNav = () => {
               leaveTo="translate-x-full opacity-0"
               unmount={false}
             >
-              <Dialog.Panel className="z-70 fixed left-0 top-0 h-full w-full bg-white opacity-95 duration-300 dark:bg-gray-950 dark:opacity-[0.98]">
-                <nav ref={navRef} className="fixed mt-8 h-full w-full">
-                  <div className="component-navbar__links component-navbar__links--menu-mobile">
-                    {navLinks.map((link) => (
-                      <Link
-                        key={link.title}
-                        href={link.href}
-                        className={
-                          pathname.startsWith(link.href)
-                            ? 'component-navbar__link--current-page'
-                            : ''
-                        }
-                        onClick={onToggleNav}
-                      >
-                        {link.title}
-                      </Link>
-                    ))}
-                  </div>
-                </nav>
+              <Dialog.Panel className="component-navbar__menu-mobile">
+                <div className="flex justify-end">
+                  <button
+                    className="mr-8 mt-11 h-8 w-8"
+                    aria-label="Toggle Menu"
+                    onClick={onToggleNav}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        fillRule="evenodd"
+                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+                </div>
 
-                <button
-                  className="z-80 fixed right-4 top-7 h-16 w-16 p-4 text-gray-900 hover:text-primary-500 dark:text-gray-100 dark:hover:text-primary-400"
-                  aria-label="Toggle Menu"
-                  onClick={onToggleNav}
+                <nav
+                  ref={navRef}
+                  className="component-navbar__links component-navbar__links--menu-mobile"
                 >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                    <path
-                      fillRule="evenodd"
-                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </button>
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.title}
+                      href={link.href}
+                      className={
+                        pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
+                      }
+                      onClick={onToggleNav}
+                    >
+                      {link.title}
+                    </Link>
+                  ))}
+                </nav>
               </Dialog.Panel>
             </Transition.Child>
           </Dialog>

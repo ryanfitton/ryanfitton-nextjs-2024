@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
-import { formatDate } from 'pliny/utils/formatDate'
+//import { formatDate } from 'pliny/utils/formatDate'
 import type { Portfolio } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 import Link from '@/components/Link'
@@ -48,7 +48,8 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                       <li>
                         <span className="font-medium">Date:</span>{' '}
                         <time dateTime={date} suppressHydrationWarning>
-                          {formatDate(date, siteMetadata.locale)}
+                          {/*{formatDate(date, siteMetadata.locale)}*/}
+                          {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                         </time>
                       </li>
                       <li className="mt-4">

@@ -12,6 +12,9 @@ export default function cloudflareLoader({ src, width, quality, format }) {
   } else {
     //Set default params (Quality: 75 and Format: WebP conversion)
     const params = [`width=${width}`, `quality=${quality || 75}`, `format=${format || 'webp'}`]
-    return `${siteMetadata.siteUrl}/cdn-cgi/image/${params.join(',')}${src}`
+    //return `${siteMetadata.siteUrl}/cdn-cgi/image/${params.join(',')}${src}`
+
+
+    return `${siteMetadata.siteUrl}${params.join(',')}${src}`
   }
 }

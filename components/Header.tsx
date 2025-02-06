@@ -85,6 +85,7 @@ export default function Header() {
 
             <MediaController className="hero__video-wrapper">
               <video
+                suppressHydrationWarning
                 slot="media"
                 src="/static/vid/home-header-video-15fps.webm"
                 preload="auto"
