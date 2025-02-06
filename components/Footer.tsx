@@ -12,13 +12,14 @@ export default function Footer() {
             <SocialIcon kind="github" href={siteMetadata.github} />
             <SocialIcon kind="keybase" href={siteMetadata.keybase} />
             <SocialIcon kind="linkedin" href={siteMetadata.linkedin} />
-            <SocialIcon kind="twitter" href={siteMetadata.twitter} />
+            <SocialIcon kind="x" href={siteMetadata.x} />
             <SocialIcon kind="facebook" href={siteMetadata.facebook} />
             <SocialIcon kind="youtube" href={siteMetadata.youtube} />
             <SocialIcon kind="mastodon" href={siteMetadata.mastodon} />
             <SocialIcon kind="bluesky" href={siteMetadata.bluesky} />
             <SocialIcon kind="threads" href={siteMetadata.threads} />
             <SocialIcon kind="instagram" href={siteMetadata.instagram} />
+            <SocialIcon kind="medium" href={siteMetadata.medium} />
           </div>
         </div>
 
