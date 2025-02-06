@@ -153,7 +153,11 @@ export default function ListLayout({
                       <dl className="component-posts-article__date">
                         <dt className="sr-only">Published on</dt>
                         <dd>
-                          <time className="component-posts-article__date--time" dateTime={date}>
+                          <time
+                            className="component-posts-article__date--time"
+                            dateTime={date}
+                            suppressHydrationWarning
+                          >
                             {formatDate(date, siteMetadata.locale)}
                           </time>
                         </dd>

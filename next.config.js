@@ -60,13 +60,18 @@ const headers = [
   },
 ]
 
+const output = process.env.EXPORT ? 'export' : undefined
+const basePath = process.env.BASE_PATH || undefined
+const unoptimized = process.env.UNOPTIMIZED ? true : undefined
+
 /**
  * @type {import('next/dist/next-server/server/config').NextConfig}
  **/
 module.exports = () => {
   const plugins = [withContentlayer, withBundleAnalyzer]
   return plugins.reduce((acc, next) => next(acc), {
-    output: 'export',
+    output,
+    basePath,
     trailingSlash: true,
     skipTrailingSlashRedirect: false,
     distDir: 'build',
@@ -76,12 +81,12 @@ module.exports = () => {
       dirs: ['app', 'components', 'layouts', 'scripts'],
     },
     images: {
-      unoptimized: false,//True: Disabled / False: Enabled
       loader: 'custom',
       loaderFile: './cloudflare-image-loader.ts',
       deviceSizes: [640, 750, 828, 1080, 1200],
       imageSizes: [32, 64, 96, 128, 256],
       domains: ['localhost', 'ryanfitton.co.uk'],
+      unoptimized,
     },
     async headers() {
       return [

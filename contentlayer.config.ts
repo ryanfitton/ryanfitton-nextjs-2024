@@ -19,6 +19,8 @@ import {
 // Rehype packages
 import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
+import rehypeKatex from 'rehype-katex'
+import rehypeKatexNoTranslate from 'rehype-katex-notranslate'
 import rehypeCitation from 'rehype-citation'
 import rehypePrismPlus from 'rehype-prism-plus'
 import rehypePresetMinify from 'rehype-preset-minify'
@@ -66,7 +68,7 @@ const computedFields: ComputedFields = {
     type: 'string',
     resolve: (doc) => doc._raw.sourceFilePath,
   },
-  toc: { type: 'string', resolve: (doc) => extractTocHeadings(doc.body.raw) },
+  toc: { type: 'json', resolve: (doc) => extractTocHeadings(doc.body.raw) },
 }
 
 /**
@@ -101,7 +103,7 @@ function createSearchIndexes(allBlogs, allPortfolios) {
     blogs = blogs.concat(portfolios);
 
     writeFileSync(
-      `public/${siteMetadata.search.kbarConfig.searchDocumentsPath}`,
+      `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
       JSON.stringify(blogs)
 
     )
@@ -193,6 +195,7 @@ export const Authors = defineDocumentType(() => ({
     facebook: { type: 'string' },
     youtube: { type: 'string' },
     twitter: { type: 'string' },
+    x: { type: 'string' },
     instagram: { type: 'string' },
     threads: { type: 'string' },
     mastodon: { type: 'string' },
@@ -201,6 +204,7 @@ export const Authors = defineDocumentType(() => ({
     github: { type: 'string' },
     linkedin: { type: 'string' },
     layout: { type: 'string' },
+    medium: { type: 'string' },
   },
   computedFields,
 }))
@@ -231,6 +235,8 @@ export default makeSource({
           content: rehypeAutolinkHeadingsIcon,
         },
       ],
+      rehypeKatex,
+      rehypeKatexNoTranslate,
       [rehypeCitation, { path: path.join(root, 'data'), linkCitations: true }],
       [rehypePrismPlus, { defaultLanguage: 'js', ignoreMissing: true }],
       rehypePresetMinify,

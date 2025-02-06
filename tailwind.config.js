@@ -21,6 +21,12 @@ module.exports = {
       xl: '1440px',
     },
 
+    zIndex: {
+      60: '60',
+      70: '70',
+      80: '80',
+    },
+
     colors: {
       transparent: 'transparent',
       current: 'currentColor',

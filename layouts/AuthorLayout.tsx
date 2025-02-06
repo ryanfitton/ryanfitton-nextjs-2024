@@ -19,12 +19,14 @@ export default function AuthorLayout({ children, content }: Props) {
     keybase,
     linkedin,
     twitter,
+    x,
     facebook,
     youtube,
     mastodon,
     bluesky,
     threads,
     instagram,
+    medium,
   } = content
 
   return (
@@ -57,12 +59,14 @@ export default function AuthorLayout({ children, content }: Props) {
                   <SocialIcon kind="keybase" href={keybase} />
                   <SocialIcon kind="linkedin" href={linkedin} />
                   <SocialIcon kind="twitter" href={twitter} />
+                  <SocialIcon kind="x" href={x} />
                   <SocialIcon kind="facebook" href={facebook} />
                   <SocialIcon kind="youtube" href={youtube} />
                   <SocialIcon kind="mastodon" href={mastodon} />
                   <SocialIcon kind="bluesky" href={bluesky} />
                   <SocialIcon kind="threads" href={threads} />
                   <SocialIcon kind="instagram" href={instagram} />
+                  <SocialIcon kind="medium" href={medium} />
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ import tagData from '../app/tag-data.json' assert { type: 'json' }
 import { allBlogs, allPortfolios } from '../.contentlayer/generated/index.mjs'
 import { sortPosts } from 'pliny/utils/contentlayer.js'
 
-const outputFolder = process.env.EXPORT ? 'build' : 'public'
+const outputFolder = process.env.EXPORT ? 'out' : 'public'
 
 const generateRssItem = (config, post) => `
   <item>
@@ -52,7 +52,9 @@ async function generateRSS(config, posts, page = 'feed.xml') {
 
     //Tags
     for (const tag of Object.keys(tagData)) {
-      const filteredPosts = posts.filter((post) => post.tags && post.tags.map((t) => slugger(t)).includes(tag)) //If the looped post contains tags and the tag matches
+      const filteredPosts = posts.filter(
+        (post) => post.tags && post.tags.map((t) => slugger(t)).includes(tag)
+      ) //If the looped post contains tags and the tag matches
 
       //If there are filtered posts which have tags
       if (filteredPosts.length) {
@@ -79,9 +81,9 @@ async function generateRSS(config, posts, page = 'feed.xml') {
 
 const rss = () => {
   //Include Blogs and Portfolio items. Concat together.
-  var blogs = allBlogs;
-  var portfolios = allPortfolios;
-  blogs = blogs.concat(portfolios);
+  var blogs = allBlogs
+  var portfolios = allPortfolios
+  blogs = blogs.concat(portfolios)
 
   generateRSS(siteMetadata, blogs)
 }
