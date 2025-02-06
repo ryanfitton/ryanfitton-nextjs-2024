@@ -8,12 +8,11 @@ export default function cloudflareLoader({ src, width, quality, format }) {
   if (siteMetadata.siteUrl.includes('localhost')) {
     return src
 
-  //Else, run against the domain
+    //Else, run against the domain
   } else {
     //Set default params (Quality: 75 and Format: WebP conversion)
     const params = [`width=${width}`, `quality=${quality || 75}`, `format=${format || 'webp'}`]
     //return `${siteMetadata.siteUrl}/cdn-cgi/image/${params.join(',')}${src}`
-
 
     return `${siteMetadata.siteUrl}${params.join(',')}${src}`
   }

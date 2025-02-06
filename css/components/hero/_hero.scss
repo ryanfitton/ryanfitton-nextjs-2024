@@ -34,7 +34,8 @@
       background-image: url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1x.jpg');
       background-image: image-set(
         url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1x.jpg') 1x,
-        url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1.8x.jpg') 1.8x
+        url('/cdn-cgi/image/width=2000,quality=75,format=webp/static/img/page-header-bg@1.8x.jpg')
+          1.8x
       );
     }
 
@@ -62,7 +63,7 @@
         }
 
         &-poster {
-          @apply h-full w-full object-cover max-h-[800px]; //Specify a max height on the poster image to help with Pagespeed 'Largest contentful paint element' issue
+          @apply h-full max-h-[800px] w-full object-cover; //Specify a max height on the poster image to help with Pagespeed 'Largest contentful paint element' issue
 
           //Amend the `shadow-root part: poster img` to target the image styling of the Media Chrome element https://stackoverflow.com/questions/75571798/overriding-css-of-div-inside-a-shadow-root
           &::part(poster img) {

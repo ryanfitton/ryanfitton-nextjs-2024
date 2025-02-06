@@ -29,7 +29,6 @@ import convertInlineFootnotes from './scripts/convert-inline-footnotes.js'
 import siteMetadata from './data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer.js'
 
-
 const root = process.cwd()
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -96,16 +95,14 @@ function createSearchIndexes(allBlogs, allPortfolios) {
     siteMetadata?.search?.provider === 'kbar' &&
     siteMetadata.search.kbarConfig.searchDocumentsPath
   ) {
-
     //Include Blogs and Portfolio items. Concat together.
-    var blogs = allCoreContent(sortPosts(allBlogs));
-    var portfolios = allCoreContent(sortPosts(allPortfolios));
-    blogs = blogs.concat(portfolios);
+    var blogs = allCoreContent(sortPosts(allBlogs))
+    var portfolios = allCoreContent(sortPosts(allPortfolios))
+    blogs = blogs.concat(portfolios)
 
     writeFileSync(
       `public/${path.basename(siteMetadata.search.kbarConfig.searchDocumentsPath)}`,
       JSON.stringify(blogs)
-
     )
     console.log('Local search index generated...')
   }
@@ -116,15 +113,15 @@ export const Blog = defineDocumentType(() => ({
   filePathPattern: 'blog/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },                          //Post title
-    date: { type: 'date', required: true },                             //Post date `YYYY-MM-DD`
-    lastmod: { type: 'date' },                                          //Post last modified date `YYYY-MM-DD`
-    tags: { type: 'list', of: { type: 'string' }, default: [] },        //Array of tags e.g. `['Development', 'Code Snippets']`
-    draft: { type: 'boolean' },                                         //true / false - If true, the post will not be shown
-    summary: { type: 'string', required: true },                        //Short summary description shown in the card on the Blog index page
-    featuredImgSrc: { type: 'string' },                                 //Image to be shown in the card on the Blog index page
-    authors: { type: 'list', of: { type: 'string', required: true } },  //Array of authors e.g. `['Ryan Fitton']`
-    canonicalUrl: { type: 'string' },                                   //Canonical URL
+    title: { type: 'string', required: true }, //Post title
+    date: { type: 'date', required: true }, //Post date `YYYY-MM-DD`
+    lastmod: { type: 'date' }, //Post last modified date `YYYY-MM-DD`
+    tags: { type: 'list', of: { type: 'string' }, default: [] }, //Array of tags e.g. `['Development', 'Code Snippets']`
+    draft: { type: 'boolean' }, //true / false - If true, the post will not be shown
+    summary: { type: 'string', required: true }, //Short summary description shown in the card on the Blog index page
+    featuredImgSrc: { type: 'string' }, //Image to be shown in the card on the Blog index page
+    authors: { type: 'list', of: { type: 'string', required: true } }, //Array of authors e.g. `['Ryan Fitton']`
+    canonicalUrl: { type: 'string' }, //Canonical URL
   },
   computedFields: {
     ...computedFields,
@@ -151,17 +148,17 @@ export const Portfolio = defineDocumentType(() => ({
   filePathPattern: 'portfolio/**/*.mdx',
   contentType: 'mdx',
   fields: {
-    title: { type: 'string', required: true },      //Post title
-    date: { type: 'date', required: true },         //Post date `YYYY-MM-DD`
-    lastmod: { type: 'date' },                      //Post last modified date `YYYY-MM-DD`
-    draft: { type: 'boolean' },                     //true / false - If true, the post will not be shown
-    summary: { type: 'string', required: true },    //Short summary description shown in the card on the Portfolio index page
+    title: { type: 'string', required: true }, //Post title
+    date: { type: 'date', required: true }, //Post date `YYYY-MM-DD`
+    lastmod: { type: 'date' }, //Post last modified date `YYYY-MM-DD`
+    draft: { type: 'boolean' }, //true / false - If true, the post will not be shown
+    summary: { type: 'string', required: true }, //Short summary description shown in the card on the Portfolio index page
     featuredImgSrc: { type: 'string', required: true }, //Image to be shown in the card on the Portfolio index page
-    lead: { type: 'string', required: true },       //Lead introductory paragraph shown on the Portfolio item's page
-    portfolioClient: { type: 'string' },            //Name of the Client
-    portfolioType: { type: 'string' },              //Type of work e.g. `Print, Design, Web`
-    portfolioHref: { type: 'string' },              //URL to an external resource e.g. the live website
-    canonicalUrl: { type: 'string' },               //Canonical URL
+    lead: { type: 'string', required: true }, //Lead introductory paragraph shown on the Portfolio item's page
+    portfolioClient: { type: 'string' }, //Name of the Client
+    portfolioType: { type: 'string' }, //Type of work e.g. `Print, Design, Web`
+    portfolioHref: { type: 'string' }, //URL to an external resource e.g. the live website
+    canonicalUrl: { type: 'string' }, //Canonical URL
   },
   computedFields: {
     ...computedFields,

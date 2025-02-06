@@ -1,15 +1,15 @@
 # ryanfitton.co.uk
 
-Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcss.com/), hosted on Github pages. 
+Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcss.com/), hosted on Github pages.
 
 Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/) with the following custom changes:
 
-* A separate 'Portfolio' post section.
-* Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
-* Including the use of a Cloudflare image loader so Image Transformations API can be used.
-* Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
-* Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
-* Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
+- A separate 'Portfolio' post section.
+- Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
+- Including the use of a Cloudflare image loader so Image Transformations API can be used.
+- Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
+- Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
+- Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
 
 # Getting started
 
@@ -23,7 +23,6 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 
 4. `npm run start`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
 
-
 ## Running a production build:
 
 Ensuring the requirements are met from the 'Running local:' section above;
@@ -34,9 +33,9 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 ## Other:
 
-* `npm run format`. This will Prettify the code.
+- `npm run format`. This will Prettify the code.
 
-* `npm run analyze`. This will analyse the bundle and open the results in a new browser window.
+- `npm run analyze`. This will analyse the bundle and open the results in a new browser window.
 
 # Github pages
 
@@ -52,19 +51,20 @@ Use `1970-01-01-EXAMPLE.mdx` as an example for post content, supporting HTML or 
 
 Exaples found in:
 
-* `data/blog/1970-01-01-EXAMPLE.mdx`
-* `data/portfolio/1970-01-01-EXAMPLE.mdx`
+- `data/blog/1970-01-01-EXAMPLE.mdx`
+- `data/portfolio/1970-01-01-EXAMPLE.mdx`
 
 # URLs
+
 ---
 
 URLs to test:
 
-* [http://localhost:3000/sitemap.xml](http://localhost:3000/sitemap.xml)
-* [http://localhost:3000](http://localhost:3000)
-* [http://localhost:3000/feed.xml](http://localhost:3000/feed.xml)
-* [http://localhost:3000/blog/](http://localhost:3000/blog/)
-* [http://localhost:3000/portfolio/](http://localhost:3000/portfolio/)
-* [http://localhost:3000/tags/](http://localhost:3000/tags/)
-* [http://localhost:3000/about/](http://localhost:3000/about/)
-* [http://localhost:3000/tags/personal](http://localhost:3000/tags/personal/)
+- [http://localhost:3000/sitemap.xml](http://localhost:3000/sitemap.xml)
+- [http://localhost:3000](http://localhost:3000)
+- [http://localhost:3000/feed.xml](http://localhost:3000/feed.xml)
+- [http://localhost:3000/blog/](http://localhost:3000/blog/)
+- [http://localhost:3000/portfolio/](http://localhost:3000/portfolio/)
+- [http://localhost:3000/tags/](http://localhost:3000/tags/)
+- [http://localhost:3000/about/](http://localhost:3000/about/)
+- [http://localhost:3000/tags/personal](http://localhost:3000/tags/personal/)
