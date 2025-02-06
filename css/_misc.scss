@@ -7,7 +7,7 @@ Misc fixes
 //Limited CSS support so need to target the div somehow to fix the z-index
 div[class*='backdrop-blur backdrop-filter'] {
   //Above the Homepage Video header
-  @apply z-[3];
+  @apply z-3;
 }
 
 //For prose on `<code>` and `<pre>` blocks in prose

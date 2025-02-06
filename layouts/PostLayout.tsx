@@ -73,7 +73,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
           <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
             <article className="component-posts-article">
-              <h1 className="component-posts-article__title" dangerouslySetInnerHTML={{ __html: title }}></h1>
+              <h1
+                className="component-posts-article__title"
+                dangerouslySetInnerHTML={{ __html: title }}
+              ></h1>
 
               <dl className="component-posts-article__date">
                 <dt className="sr-only">Published on</dt>

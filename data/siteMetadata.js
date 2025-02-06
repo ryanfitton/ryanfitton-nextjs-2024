@@ -15,14 +15,18 @@ const siteMetadata = {
   facebook: 'https://www.facebook.com/rfitton',
   youtube: 'http://www.youtube.com/@Ryan.Fitton',
   github: 'https://github.com/ryanfitton/',
-  twitter: 'https://x.com/ryanfitton',
+  x: 'https://twitter.com/ryanfitton',
+  // twitter: 'https://twitter.com/ryanfitton',
   instagram: 'https://www.instagram.com/ryanfittonuk/',
   threads: 'https://www.threads.net/@ryanfittonuk',
   mastodon: 'https://mastodon.social/@ryanfitton',
   bluesky: 'https://bsky.app/profile/ryanfitton.bsky.social',
   linkedin: 'https://uk.linkedin.com/in/rfitton',
   keybase: 'https://keybase.io/ryanfitton',
+  medium: 'https://www.medium.com',
   locale: 'en-GB',
+  // set to true if you want a navbar fixed to the top
+  stickyNav: false,
   analytics: {
     googleAnalytics: {
       googleAnalyticsId: 'G-YLMTDYMQCC',
@@ -38,7 +42,7 @@ const siteMetadata = {
   search: {
     provider: 'kbar', // `kbar` or `algolia`
     kbarConfig: {
-      searchDocumentsPath: 'search.json', // path to load documents to search
+      searchDocumentsPath: `${process.env.BASE_PATH || ''}/search.json`, // path to load documents to search
     },
   },
 }

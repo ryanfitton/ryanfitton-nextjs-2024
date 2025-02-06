@@ -108,16 +108,16 @@
     }
 
     &__featured-image {
-      @apply mb-6 rounded h-[265px]; //Using `objectFit: 'cover',` in `components/Card.tsx`
+      @apply mb-6 h-[265px] rounded; //Using `objectFit: 'cover',` in `components/Card.tsx`
     }
 
     &__title {
       $title: &;
-      @apply flex items-center my-2 text-pretty;
-      
+      @apply my-2 flex items-center text-pretty;
+
       //Rehype auto link headings style (Link anhor on headings)
       #{$title}-icon {
-        @apply block mr-2;
+        @apply mr-2 block;
       }
     }
 

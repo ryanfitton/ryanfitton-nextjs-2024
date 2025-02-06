@@ -41,6 +41,10 @@
     &--homepage {
       @apply mb-0;
     }
+
+    &--sticky {
+      @apply bg-primary-600 text-white dark:bg-secondary-950;
+    }
   }
 
   &-main {

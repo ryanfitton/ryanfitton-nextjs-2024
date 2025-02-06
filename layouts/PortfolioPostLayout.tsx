@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
+//import { formatDate } from 'pliny/utils/formatDate'
 import type { Portfolio } from 'contentlayer/generated'
 import siteMetadata from '@/data/siteMetadata'
 import Link from '@/components/Link'
@@ -27,7 +28,10 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <article className="component-posts-article">
-              <h1 className="component-posts-article__title" dangerouslySetInnerHTML={{ __html: title }}></h1>
+              <h1
+                className="component-posts-article__title"
+                dangerouslySetInnerHTML={{ __html: title }}
+              ></h1>
 
               <section className="component-posts-portfolio-details">
                 <div className="grid">
@@ -43,7 +47,8 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
                       </li>
                       <li>
                         <span className="font-medium">Date:</span>{' '}
-                        <time dateTime={date}>
+                        <time dateTime={date} suppressHydrationWarning>
+                          {/*{formatDate(date, siteMetadata.locale)}*/}
                           {new Date(date).toLocaleDateString(siteMetadata.locale, postDateTemplate)}
                         </time>
                       </li>
