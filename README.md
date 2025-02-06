@@ -2,14 +2,16 @@
 
 Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcss.com/), hosted on Github pages.
 
-Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/) with the following custom changes:
+Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/):
 
-- A separate 'Portfolio' post section.
-- Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
-- Including the use of a Cloudflare image loader so Image Transformations API can be used.
-- Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
-- Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
-- Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
+- Running version `2.3.0`;
+- with the following custom changes:
+  - A separate 'Portfolio' post section.
+  - Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
+  - Including the use of a Cloudflare image loader so Image Transformations API can be used.
+  - Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
+  - Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
+  - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
 
 # Getting started
 

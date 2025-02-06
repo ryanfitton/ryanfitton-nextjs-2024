@@ -55,6 +55,8 @@ jobs:
             ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
 
       - run: yarn
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false # Required for deployment issue
 
       - run: yarn build
         env:
