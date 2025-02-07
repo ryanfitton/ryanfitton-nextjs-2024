@@ -38,9 +38,6 @@ jobs:
           yarn --version
           git --version
 
-      - name: Run Lint
-        run: yarn run lint
-
       - id: configurepages
         uses: actions/configure-pages@v5
 
@@ -55,6 +52,9 @@ jobs:
       - run: yarn
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false # Required for deployment issue
+
+      - name: Run Lint
+        run: yarn run lint
 
       - run: yarn build
         env:
