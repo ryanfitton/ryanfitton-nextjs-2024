@@ -4,7 +4,9 @@ Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcs
 
 Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/):
 
-- Running version `2.3.0`;
+- Running version `2.3.0` of [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/);
+- Running version Next.JS version `15.1.6`;
+- Running version TailwindCSS version `3.4.17`;
 - with the following custom changes:
   - A separate 'Portfolio' post section.
   - Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
