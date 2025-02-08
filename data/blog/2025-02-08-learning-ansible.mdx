@@ -1,0 +1,61 @@
+---
+title: "Learning Ansible"
+authors: ['Ryan Fitton']
+date: '2025-02-08'
+tags: ['Development']
+draft: false
+summary: 'I have started using Ansible to manage my home servers.'
+---
+
+## Why Ansible?
+
+Ansible has been on my radar for a few years, but I have never gotten around to setting it up and learning how to use it.
+
+Over my 2024 Christmas break, I had a few weeks to start learning Ansible and creating playbooks for each of my home server VMs running on Proxmox, including a playbook for my Raspberry Pi print server, which will exist as a standalone device.
+
+To start, I watched a few videos on YouTube, with the [best being a series by Jeff Geerling](https://www.youtube.com/watch?v=goclfp6a2IQ). I even purchased a copy of [his book](https://www.ansiblefordevops.com/).
+
+In the past, I ran my home server applications on Ubuntu in LXC containers. You can see some of these old [posts here](https://www.google.com/search?q=site%3Aryanfitton.co.uk%2Fblog%2F+lxc). All the configuration was done manually and documented in a Word document, which is now around 150 pages long.
+
+A lot of the configuration was being duplicated for each container, which is why I wanted to give Ansible a try. It helps minimize duplication of work and provides a way to apply changes easily across each container—or in this case, each virtual machine.
+
+## Creating the Playbooks
+
+I made a rough list of all the tasks required and started building the playbooks. These were:
+
+- **General Commissioning:** This playbook installs the users, copies over the SSH keys, configures SSH options, and applies other miscellaneous changes such as the hostname and timezone.
+- **Playbooks for each VM:**
+  - **File Server:** Samba file shares. This expects a data volume to be mounted at a specific location from the Proxmox hypervisor and will be used to store shared files.
+  - **Media Server:** Emby media server. This also expects a data volume to be mounted at a specific location from the Proxmox hypervisor and will be used for media files.
+  - **Network Controller Server:** Unifi network controller.
+  - **NVR Server:** Frigate. This expects a data volume to be mounted at a specific location from the Proxmox hypervisor and will be used to store camera footage.
+  - **Web Server:** Nginx with a PHP web server.
+- **Playbooks for standalone servers:**
+  - **Print Server:** CUPS print server, designed to run on a Raspberry Pi with a printer connected via USB.
+
+I configured each of these playbooks with a similar file setup: an 'Install' and 'Configuration' file where possible. The 'Install' file includes tasks to install the software, while the 'Configuration' file contains tasks to configure the installed software. Depending on the playbook's tasks, there may be additional files.
+
+## Running the Playbooks
+
+I initially tested these playbooks against a virtual machine. I encountered issues with some software requiring an x86 processor architecture, whereas my personal machine (Apple MacBook Air M3 2024) uses ARM architecture. I overcame these issues by running the tasks on a Digital Ocean VM, which allowed me to quickly and cheaply test the playbooks.
+
+As I have protected my private SSH keys, sensitive variables, and some configuration files with Ansible Vault, entering the vault secret is required to unlock them. For each, this should be added to the `vault/vault.pass` file so it can be referenced by multiple scripts.
+
+*Note:* All of the servers mentioned in this repo are hosted within my home network and are not accessible from the outside. I no longer have any publicly hosted servers ([since I now host my site with GitHub Pages](https://ryanfitton.co.uk/blog/rebuilding-with-nextjs/)), so I don't require an external server. The SSH keys stored in this [GitHub Repo](https://github.com/ryanfitton/ansible-playbooks-home-servers) are only used on my internal servers. While I know this is not the norm and private keys should be protected more securely, I’m not overly concerned about this in a home setup. This may change in the future, and if it does, SSH private keys will be removed from this repo, and existing keys will be re-generated.
+
+Each playbook can be run from the command line like this:
+
+```
+ansible-playbook playbooks/commissioning/all.yaml -i inventory.yaml --vault-password-file vault/vault.pass
+```
+
+
+## Next Steps
+
+I’ve only been using Ansible for a few weeks but am really pleased with how easy it has been to create the playbooks.
+
+I will likely add additional tasks in the future and update the 'misc' playbooks with more small tasks to make my life easier.
+
+For now, I still need to clean up the repo's Readme file as it's quite messy. Then I will start migrating all of my services with these playbooks. For now, the Print Server is the only playbook that is live.
+
+You can access this project repo here: [https://github.com/ryanfitton/ansible-playbooks-home-servers](https://github.com/ryanfitton/ansible-playbooks-home-servers)
