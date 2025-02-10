@@ -72,3 +72,13 @@ URLs to test:
 - [http://localhost:3000/tags/](http://localhost:3000/tags/)
 - [http://localhost:3000/about/](http://localhost:3000/about/)
 - [http://localhost:3000/tags/personal](http://localhost:3000/tags/personal/)
+
+
+
+
+Test with `text-typography-ryan`
+
+* `_base.scss` - `--color-typography-ryan` not working in dark mode
+* Ability to stop using `tailwind.config.js`?
+* Test all of site
+* Issue using `#{!important}` =  `;// #{!important}` > `#{!important};`

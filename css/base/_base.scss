@@ -251,16 +251,16 @@
   h6 {
     &,
     a {
-      @apply text-typography-heading #{!important};
-      @apply dark:text-typography-heading-dark #{!important};
+      @apply text-typography-heading;// #{!important};
+      @apply dark:text-typography-heading-dark;// #{!important};
     }
 
     a {
       @apply no-underline;
-      @apply hover:text-typography-link-hover #{!important};
-      @apply dark:hover:text-typography-link-hover-dark #{!important};
-      @apply focus:text-typography-link-focus #{!important};
-      @apply dark:focus:text-typography-link-focus-dark #{!important};
+      @apply hover:text-typography-link-hover;// #{!important};
+      @apply dark:hover:text-typography-link-hover-dark;// #{!important};
+      @apply focus:text-typography-link-focus;// #{!important};
+      @apply dark:focus:text-typography-link-focus-dark;// #{!important};
     }
   }
 
@@ -294,8 +294,8 @@
   hr,
   .prose-hr {
     @apply border-2 border-l-0 border-r-0 border-t-0;
-    @apply border-gray-200 #{!important};
-    @apply dark:border-gray-900 #{!important};
+    @apply border-gray-200;// #{!important};
+    @apply dark:border-gray-900;// #{!important};
   }
 
   /* 

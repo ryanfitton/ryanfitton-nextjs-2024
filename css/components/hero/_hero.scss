@@ -8,16 +8,16 @@
 
     &__content,
     &__title {
-      @apply text-white #{!important};
+      @apply text-white;// #{!important};
     }
 
     &__content {
-      @apply dark:text-typography-default-dark #{!important};
+      @apply dark:text-typography-default-dark;// #{!important};
       @apply content-center py-5 text-center md:text-left;
     }
 
     &__title {
-      @apply dark:text-typography-heading-dark #{!important};
+      @apply dark:text-typography-heading-dark;// #{!important};
       @apply mt-0;
       @apply mb-5;
 

@@ -57,14 +57,14 @@
     @apply mt-24 bg-secondary-900 text-center text-sm dark:bg-secondary-950;
 
     a {
-      @apply no-underline #{!important};
-      @apply hover:underline #{!important};
+      @apply no-underline;// #{!important};
+      @apply hover:underline;// #{!important};
     }
 
     &,
     a {
-      @apply text-[#8e8e8e] #{!important};
-      @apply dark:text-[#8e8e8e] #{!important};
+      @apply text-[#8e8e8e];// #{!important};
+      @apply dark:text-[#8e8e8e];// #{!important};
     }
   }
 }
