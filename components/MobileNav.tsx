@@ -1,7 +1,7 @@
 'use client'
 
 import { usePathname } from 'next/navigation'
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
 import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
 import { Fragment, useState, useEffect, useRef } from 'react'
 import Link from './Link'
@@ -52,7 +52,7 @@ const MobileNav = () => {
             unmount={false}
             className="component-navbar component-navbar--header"
           >
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="transition ease-in-out duration-300 transform"
               enterFrom="translate-x-full opacity-0"
@@ -62,7 +62,7 @@ const MobileNav = () => {
               leaveTo="translate-x-full opacity-0"
               unmount={false}
             >
-              <Dialog.Panel className="component-navbar__menu-mobile">
+              <DialogPanel className="component-navbar__menu-mobile">
                 <div className="flex justify-end">
                   <button
                     className="mr-8 mt-11 h-8 w-8"
@@ -96,8 +96,8 @@ const MobileNav = () => {
                     </Link>
                   ))}
                 </nav>
-              </Dialog.Panel>
-            </Transition.Child>
+              </DialogPanel>
+            </TransitionChild>
           </Dialog>
         </Transition>
       </div>

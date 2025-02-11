@@ -10,8 +10,8 @@
 
       a {
         @apply block content-center px-5;
-        @apply m-0 #{!important};
-        @apply no-underline #{!important};
+        @apply m-0!;
+        @apply no-underline!;
       }
 
       //Links specifically for the mobile menu
@@ -30,8 +30,9 @@
         @apply hidden items-stretch md:flex;
 
         a {
-          @apply text-white #{!important};
-
+          @apply text-white!;
+          @apply dark:text-white!;
+          
           //If this is the current page
           &.component-navbar__link--current-page {
             @apply bg-primary-700 dark:bg-secondary-900;
@@ -42,7 +43,7 @@
           @apply mx-0 flex flex-col;
 
           a {
-            @apply px-6 #{!important};
+            @apply px-6!;
           }
         }
       }
@@ -57,6 +58,12 @@
       .component-navbar__theme-btn,
       .component-navbar__menu-btn {
         @apply h-full content-center px-3 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-5;
+      
+        //If an acive Headless UI button 
+        //Docs: https://headlessui.com/react/button
+        &[data-active]{
+            @apply bg-primary-600 brightness-[80%] dark:brightness-[85%];
+        }
       }
 
       .component-navbar__theme-btn {
@@ -82,7 +89,7 @@
 
       .component-navbar__menu-mobile {
         @apply fixed left-0 top-0 z-10 ml-6 h-full w-full transform bg-primary-600 duration-300 ease-in-out dark:bg-secondary-950 dark:opacity-[0.98];
-        @apply text-white #{!important};
+        @apply text-white!;
       }
 
       .component-navbar__menu-theme {
@@ -99,7 +106,7 @@
 
         a {
           @apply block content-center p-2;
-          @apply m-0 #{!important};
+          @apply m-0!;
         }
       }
     }
@@ -113,7 +120,7 @@
 
         a {
           @apply block flex basis-1/4 content-center justify-center p-2 sm:basis-1/6 md:basis-0;
-          @apply m-0 #{!important};
+          @apply m-0!;
         }
 
         svg {

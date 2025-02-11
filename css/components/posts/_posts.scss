@@ -9,19 +9,19 @@
       &,
       a {
         @apply uppercase;
-        @apply text-stone-500 #{!important};
-        @apply dark:text-typography-heading-dark #{!important};
+        @apply text-stone-500!;
+        @apply dark:text-typography-heading!;
       }
     }
 
     &__content {
       @apply h-full max-h-screen flex-wrap overflow-auto text-pretty;
-      @apply mt-0 #{!important};
+      @apply mt-0!;
     }
   }
 
   .component-posts-pagination {
-    @apply space-y-2 pb-8 pt-6 text-sm text-stone-500 dark:text-typography-default-dark/50 md:space-y-5;
+    @apply space-y-2 pb-8 pt-6 text-sm text-stone-500 dark:text-typography-default/50 md:space-y-5;
 
     &__navigation {
       @apply flex items-center justify-between;
@@ -29,11 +29,11 @@
 
     &__paginate {
       @apply break-words p-3 uppercase;
-      @apply no-underline #{!important};
-      @apply disabled:hover:no-underline #{!important};
-      @apply disabled:text-stone-500 #{!important};
-      @apply dark:disabled:text-typography-default-dark/50 #{!important};
-      @apply hover:underline #{!important};
+      @apply no-underline!;
+      @apply disabled:hover:no-underline!;
+      @apply disabled:text-stone-500!;
+      @apply dark:disabled:text-typography-default/50!;
+      @apply hover:underline!;
 
       &:first-child {
         @apply pl-0;
@@ -46,7 +46,7 @@
   }
 
   .component-posts-tag-list {
-    @apply m-0 list-none p-0 uppercase text-stone-500/70 dark:text-typography-default-dark/50;
+    @apply m-0 list-none p-0 uppercase text-stone-500/70 dark:text-typography-default/50;
 
     > li {
       @apply mb-1;
@@ -103,12 +103,12 @@
   .component-posts-article {
     &__date {
       &--time {
-        @apply text-xs uppercase leading-6 text-stone-500 dark:text-typography-default-dark/50;
+        @apply text-xs uppercase leading-6 text-stone-500 dark:text-typography-default/50;
       }
     }
 
     &__featured-image {
-      @apply mb-6 h-[265px] rounded; //Using `objectFit: 'cover',` in `components/Card.tsx`
+      @apply mb-6 h-[265px] rounded-sm; //Using `objectFit: 'cover',` in `components/Card.tsx`
     }
 
     &__title {
@@ -122,11 +122,11 @@
     }
 
     &__excerpt {
-      @apply prose max-w-none text-pretty;
+      @apply prose dark:prose-invert max-w-none text-pretty;
     }
 
     &__body {
-      @apply prose max-w-none text-pretty py-4;
+      @apply prose dark:prose-invert max-w-none text-pretty py-4;
     }
 
     &__comments {
@@ -146,13 +146,13 @@
     > li {
       > a {
         @apply block cursor-pointer hover:bg-gray-200/35 dark:hover:bg-gray-900/35;
-        @apply no-underline #{!important};
-        @apply text-typography-heading #{!important};
-        @apply dark:text-typography-heading-dark #{!important};
+        @apply no-underline!;
+        @apply text-typography-heading!;
+        @apply dark:text-typography-heading!;
 
         .component-posts-article__excerpt {
-          @apply text-typography-default #{!important};
-          @apply dark:text-typography-default-dark/50 #{!important};
+          @apply text-typography-default!;
+          @apply dark:text-typography-default/50!;
         }
       }
     }
@@ -178,7 +178,7 @@
     }
 
     &__intro {
-      @apply prose text-pretty;
+      @apply prose dark:prose-invert text-pretty;
     }
   }
 }

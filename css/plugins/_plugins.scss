@@ -7,5 +7,5 @@
 @import 'prism/_prism.scss';
 
 //Tailwind plugins
-@tailwindcss/typography;
-@tailwindcss/forms;
+@plugin '@tailwindcss/typography';
+@plugin '@tailwindcss/forms';

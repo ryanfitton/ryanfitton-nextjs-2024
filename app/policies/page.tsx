@@ -8,7 +8,7 @@ export default function Policies() {
     <>
       <section className="site-container">
         <div className="grid">
-          <div className="prose col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
+          <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             <h2 className="component-title component-title--main">Privacy</h2>
 
             <p>
@@ -26,12 +26,12 @@ export default function Policies() {
               If you have any questions regarding the security, privacy or cookie policy on this
               website please contact{' '}
               <strong>
-                <span className="!text-typography-default !no-underline dark:!text-typography-default-dark">
+                <span className="!text-typography-default !no-underline">
                   ryan＠
                 </span>
                 <a
                   href="https://ryanfitton.co.uk"
-                  className="!text-typography-default !no-underline dark:!text-typography-default-dark"
+                  className="!text-typography-default !no-underline"
                 >
                   ryanfitton.co.uk
                 </a>
