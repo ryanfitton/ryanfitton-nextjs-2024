@@ -1,26 +1,38 @@
-@import 'tailwindcss';
-@config '../tailwind.config.js';
-@source '../node_modules/pliny';
-@custom-variant dark (&:where(.dark, .dark *));
-
-
-
-
-
-
-
 /* Core theme configuration */
 @theme {
-    --font-sans: var(--font-redHatText), "sans-serif";
-    --font-serif: var(--font-brygada1918), "serif";
+    /* 
+        Fonts 
+    */
+    /*
+    .red-hat-text-<uniquifier> {
+        font-family: "Red Hat Text", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+    }
+
+    .brygada-1918-<uniquifier> {
+        font-family: "Brygada 1918", serif;
+        font-optical-sizing: auto;
+        font-weight: <weight>;
+        font-style: normal;
+    }
+    */
+    --font-sans: var(--font-redHatText), "sans-serif"; //`--font-redHatText` is a custom font from Google fonts and the var is set in `app/layout.tsx`
+    --font-serif: var(--font-brygada1918), "serif"; //`--font-brygada1918` is a custom font from Google fonts and the var is set in `app/layout.tsx`
     --font-mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;';
 
+    /* 
+        Breakpoints 
+    */
     --breakpoint-sm: 480px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 976px;
     --breakpoint-xl: 1440px;
 
-    /* Colors */
+    /* 
+        Colours 
+    */
     --color-transparent: transparent;
     --color-current: currentColor;
     --color-white: #ffffff;
@@ -104,7 +116,6 @@
     --color-secondary-900: #2f3339;
     --color-secondary-950: #21252b;
 
-
     //Custom brand `typography` colours
     --color-typography-heading: #141c3a;
     --color-typography-default: #313a59;
@@ -113,22 +124,28 @@
     --color-typography-link-focus: #a03f33;
     --color-typography-link-visited: #7b281e;
 
-
-
-    /* Line heights */  //TODO
+    /* 
+        Line heights 
+    */
+    /*
     --line-height-11: 2.75rem;
     --line-height-12: 3rem;
     --line-height-13: 3.25rem;
     --line-height-14: 3.5rem;
+    */
 
-    /* Z-index values */
+    /* 
+        Z-Index values 
+    */
     --z-1: 1;
     --z-2: 2;
     --z-3: 3;
     --z-10: 10;
     --z-50: 50;
 
-
+    /* 
+        Font weights 
+    */
     //--font-weight-thin: 100;
     //--font-weight-hairline: 100;
     //--font-weight-extralight: 200;
@@ -141,7 +158,9 @@
     //--font-weight-'extra-bold': 800;
     //--font-weight-black: 900;
 
-
+    /* 
+        Font sizes 
+    */
     --text-xs: 0.9rem;
     --text-xs--line-height: 1.35rem;
     --text-sm: 1rem;
@@ -169,140 +188,20 @@
     --text-9xl: 8rem;
     --text-9xl--line-height: 1;
 
-
+    /* 
+        Spacing 
+    */
     --spacing-128: 32rem;
     --spacing-144: 36rem;
 }
 
 @layer theme {
-  [class~="dark"] {
-    --color-typography-heading: #e3e8ed;
-    --color-typography-default: #f0f8ff;
-    --color-typography-link: #cb574a;
-    --color-typography-link-hover: #db6a5e;
-    --color-typography-link-focus: #ce6054;
-    --color-typography-link-visited: #cb574a;
-  }
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-
-  body {
-    @apply bg-white dark:bg-stone-950;
-    @apply text-base text-typography-default dark:text-typography-default;
-  }
-
-  /* 
-    Anchor 
-  */
-  a {
-    @apply text-typography-link underline underline-offset-4 visited:text-typography-link-visited hover:text-typography-link-hover hover:no-underline focus:text-typography-link-focus dark:text-typography-link dark:visited:text-typography-link-visited dark:hover:text-typography-link-hover dark:focus:text-typography-link-focus;
-  }
-
-  /* 
-    Paragraphs 
-  */
-  p {
-    @apply my-4 text-base;
-
-    &:first-child {
-      @apply mt-0;
+    [class~="dark"] {
+        --color-typography-heading: #e3e8ed;
+        --color-typography-default: #f0f8ff;
+        --color-typography-link: #cb574a;
+        --color-typography-link-hover: #db6a5e;
+        --color-typography-link-focus: #ce6054;
+        --color-typography-link-visited: #cb574a;
     }
-
-    &:last-child {
-      @apply mb-0;
-    }
-
-    &.lead {
-      @apply text-lg;
-    }
-  }
-
-  /* 
-    Lists 
-  */
-  ol,
-  ul {
-    @apply text-base;
-  }
-
-  /* 
-    Headings 
-  */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    &,
-    a {
-      @apply text-typography-heading;// #{!important};
-      @apply dark:text-typography-heading;// #{!important};
-    }
-
-    a {
-      @apply no-underline;
-      @apply hover:text-typography-link-hover;// #{!important};
-      @apply dark:hover:text-typography-link-hover;// #{!important};
-      @apply focus:text-typography-link-focus;// #{!important};
-      @apply dark:focus:text-typography-link-focus;// #{!important};
-    }
-  }
-
-  h1 {
-    @apply my-6 text-4xl;
-  }
-
-  h2 {
-    @apply my-5 text-3xl;
-  }
-
-  h3 {
-    @apply my-4 text-2xl;
-  }
-
-  h4 {
-    @apply my-3 text-xl;
-  }
-
-  h5 {
-    @apply my-2 text-lg;
-  }
-
-  h6 {
-    @apply my-1 text-base;
-  }
-
-  /* 
-    Horizontal rule 
-  */
-  hr,
-  .prose-hr {
-    @apply border-2 border-l-0 border-r-0 border-t-0;
-    @apply border-gray-200;// #{!important};
-    @apply dark:border-gray-900;// #{!important};
-  }
-
-  /* 
-    Grid
-  */
-  .grid {
-    @apply grid-cols-12 gap-6;
-    /* Default gap and columns in grids */
-  }
 }
