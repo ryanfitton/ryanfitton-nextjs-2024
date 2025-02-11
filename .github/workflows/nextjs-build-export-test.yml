@@ -1,0 +1,52 @@
+# Workflow for testing Next JS application build and export
+name: Builds Next.JS application and exports to static content to check for errors
+
+on:
+  # Runs on pushes targeting any branch
+  push:
+    branches: ["*"]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: 'yarn'
+
+      - name: Dump version
+        run: |
+          node -v
+          npm --version
+          yarn --version
+          git --version
+
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/yarn.lock') }}-
+
+      - run: yarn
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false # Required for deployment issue
+
+      - name: Run Lint
+        run: yarn run lint
+
+      - run: yarn build
+        env:
+          EXPORT: 1
+          #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
+          BASE_PATH: '/'
+     
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
