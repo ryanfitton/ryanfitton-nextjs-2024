@@ -10,8 +10,8 @@
 
       a {
         @apply block content-center px-5;
-        @apply m-0;// #{!important};
-        @apply no-underline;// #{!important};
+        @apply m-0 #{!important};
+        @apply no-underline #{!important};
       }
 
       //Links specifically for the mobile menu
@@ -30,7 +30,7 @@
         @apply hidden items-stretch md:flex;
 
         a {
-          @apply text-white;// #{!important};
+          @apply text-white #{!important};
 
           //If this is the current page
           &.component-navbar__link--current-page {
@@ -42,7 +42,7 @@
           @apply mx-0 flex flex-col;
 
           a {
-            @apply px-6;// #{!important};
+            @apply px-6 #{!important};
           }
         }
       }
@@ -82,7 +82,7 @@
 
       .component-navbar__menu-mobile {
         @apply fixed left-0 top-0 z-10 ml-6 h-full w-full transform bg-primary-600 duration-300 ease-in-out dark:bg-secondary-950 dark:opacity-[0.98];
-        @apply text-white;// #{!important};
+        @apply text-white #{!important};
       }
 
       .component-navbar__menu-theme {
@@ -99,7 +99,7 @@
 
         a {
           @apply block content-center p-2;
-          @apply m-0;// #{!important};
+          @apply m-0 #{!important};
         }
       }
     }
@@ -113,7 +113,7 @@
 
         a {
           @apply block flex basis-1/4 content-center justify-center p-2 sm:basis-1/6 md:basis-0;
-          @apply m-0;// #{!important};
+          @apply m-0 #{!important};
         }
 
         svg {

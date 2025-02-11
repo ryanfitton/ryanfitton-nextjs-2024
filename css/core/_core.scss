@@ -31,13 +31,13 @@
     */
     a {
         @apply underline hover:no-underline underline-offset-4;
-        @apply text-typography-link dark:text-typography-link; //Default and Dark default
-        @apply visited:text-typography-link-visited; // #{!important};                //Visited
-        @apply hover:text-typography-link-hover; // #{!important};                     //Hover
-        @apply focus:text-typography-link-focus; // #{!important};                    //Focus
-        @apply dark:visited:text-typography-link-visited; // #{!important};            //Dark: Visited
-        @apply dark:hover:text-typography-link-hover; // #{!important};                //Dark: Hover
-        @apply dark:focus:text-typography-link-focus; // #{!important};                //Dark: Focus
+        @apply text-typography-link dark:text-typography-link;              //Default and Dark default
+        @apply visited:text-typography-link-visited #{!important};          //Visited
+        @apply hover:text-typography-link-hover #{!important};              //Hover
+        @apply focus:text-typography-link-focus #{!important};              //Focus
+        @apply dark:visited:text-typography-link-visited #{!important};     //Dark: Visited
+        @apply dark:hover:text-typography-link-hover #{!important};         //Dark: Hover
+        @apply dark:focus:text-typography-link-focus #{!important};         //Dark: Focus
     }
 
     /* 
@@ -79,18 +79,18 @@
         //Default and Default link colours
         &,
         a {
-            @apply text-typography-heading;// #{!important};              //Default
-            @apply dark:text-typography-heading;// #{!important};         //Dark
+            @apply text-typography-heading #{!important};              //Default
+            @apply dark:text-typography-heading #{!important};         //Dark
         }
 
         a {
             @apply no-underline;
-            @apply visited:text-typography-link-visited; // #{!important};                //Visited
-            @apply hover:text-typography-link-hover;// #{!important};                     //Hover
-            @apply focus:text-typography-link-focus; // #{!important};                    //Focus
-            @apply dark:visited:text-typography-link-visited;// #{!important};            //Dark: Visited
-            @apply dark:hover:text-typography-link-hover;// #{!important};                //Dark: Hover
-            @apply dark:focus:text-typography-link-focus;// #{!important};                //Dark: Focus
+            @apply visited:text-typography-link-visited #{!important};          //Visited
+            @apply hover:text-typography-link-hover #{!important};              //Hover
+            @apply focus:text-typography-link-focus #{!important};              //Focus
+            @apply dark:visited:text-typography-link-visited #{!important};     //Dark: Visited
+            @apply dark:hover:text-typography-link-hover #{!important};         //Dark: Hover
+            @apply dark:focus:text-typography-link-focus #{!important};         //Dark: Focus
         }
     }
 
@@ -124,8 +124,8 @@
     hr,
     .prose-hr {
         @apply border-2 border-l-0 border-r-0 border-t-0;
-        @apply border-gray-200;// #{!important};
-        @apply dark:border-gray-900;// #{!important};
+        @apply border-gray-200 #{!important};
+        @apply dark:border-gray-900 #{!important};
     }
 
     /* 
@@ -168,14 +168,14 @@
             @apply mt-24 bg-secondary-900 text-center text-sm dark:bg-secondary-950;
 
             a {
-                @apply no-underline; // #{!important};
-                @apply hover:underline; // #{!important};
+                @apply no-underline #{!important};
+                @apply hover:underline #{!important};
             }
 
             &,
             a {
-                @apply text-[#8e8e8e]; // #{!important};
-                @apply dark:text-[#8e8e8e]; // #{!important};
+                @apply text-[#8e8e8e] #{!important};
+                @apply dark:text-[#8e8e8e] #{!important};
             }
         }
     }

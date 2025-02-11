@@ -14,7 +14,7 @@ div[class*='backdrop-blur backdrop-filter'] {
 code,
 pre {
   @apply font-mono;
-  @apply font-normal;// #{!important};
+  @apply font-normal #{!important};
 }
 code {
   //color: var(--tw-prose-pre-code);
@@ -23,7 +23,7 @@ code {
 
 //For `<strong>` tags in prose
 strong {
-  @apply text-[inherit];// #{!important};
+  @apply text-[inherit] #{!important};
 }
 
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode
