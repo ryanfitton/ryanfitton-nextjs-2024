@@ -26,12 +26,12 @@ export default function Policies() {
               If you have any questions regarding the security, privacy or cookie policy on this
               website please contact{' '}
               <strong>
-                <span className="!text-typography-default !no-underline dark:!text-typography-default-dark">
+                <span className="!text-typography-default !no-underline">
                   ryan＠
                 </span>
                 <a
                   href="https://ryanfitton.co.uk"
-                  className="!text-typography-default !no-underline dark:!text-typography-default-dark"
+                  className="!text-typography-default !no-underline"
                 >
                   ryanfitton.co.uk
                 </a>

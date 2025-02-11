@@ -12,12 +12,12 @@
     }
 
     &__content {
-      @apply dark:text-typography-default-dark;// #{!important};
+      @apply dark:text-typography-default; // #{!important};
       @apply content-center py-5 text-center md:text-left;
     }
 
     &__title {
-      @apply dark:text-typography-heading-dark;// #{!important};
+      @apply dark:text-typography-heading; // #{!im
       @apply mt-0;
       @apply mb-5;
 

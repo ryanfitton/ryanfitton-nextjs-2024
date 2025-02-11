@@ -10,7 +10,7 @@
       a {
         @apply uppercase;
         @apply text-stone-500;// #{!important};
-        @apply dark:text-typography-heading-dark;// #{!important};
+        @apply dark:text-typography-heading;// #{!important};
       }
     }
 
@@ -21,7 +21,7 @@
   }
 
   .component-posts-pagination {
-    @apply space-y-2 pb-8 pt-6 text-sm text-stone-500 dark:text-typography-default-dark/50 md:space-y-5;
+    @apply space-y-2 pb-8 pt-6 text-sm text-stone-500 dark:text-typography-default/50 md:space-y-5;
 
     &__navigation {
       @apply flex items-center justify-between;
@@ -32,7 +32,7 @@
       @apply no-underline;// #{!important};
       @apply disabled:hover:no-underline;// #{!important};
       @apply disabled:text-stone-500;// #{!important};
-      @apply dark:disabled:text-typography-default-dark/50;// #{!important};
+      @apply dark:disabled:text-typography-default/50;// #{!important};
       @apply hover:underline;// #{!important};
 
       &:first-child {
@@ -46,7 +46,7 @@
   }
 
   .component-posts-tag-list {
-    @apply m-0 list-none p-0 uppercase text-stone-500/70 dark:text-typography-default-dark/50;
+    @apply m-0 list-none p-0 uppercase text-stone-500/70 dark:text-typography-default/50;
 
     > li {
       @apply mb-1;
@@ -103,7 +103,7 @@
   .component-posts-article {
     &__date {
       &--time {
-        @apply text-xs uppercase leading-6 text-stone-500 dark:text-typography-default-dark/50;
+        @apply text-xs uppercase leading-6 text-stone-500 dark:text-typography-default/50;
       }
     }
 
@@ -148,11 +148,11 @@
         @apply block cursor-pointer hover:bg-gray-200/35 dark:hover:bg-gray-900/35;
         @apply no-underline;// #{!important};
         @apply text-typography-heading;// #{!important};
-        @apply dark:text-typography-heading-dark;// #{!important};
+        @apply dark:text-typography-heading; // #{!important};
 
         .component-posts-article__excerpt {
           @apply text-typography-default;// #{!important};
-          @apply dark:text-typography-default-dark/50;// #{!important};
+          @apply dark:text-typography-default/50;// #{!important};
         }
       }
     }

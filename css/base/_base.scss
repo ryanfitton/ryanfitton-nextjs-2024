@@ -5,9 +5,7 @@
 
 
 
-@variant dark {
-    --color-typography-blue: red;
-}
+
 
 
 
@@ -108,21 +106,12 @@
 
 
     //Custom brand `typography` colours
-    --color-typography-ryan: red;
-
     --color-typography-heading: #141c3a;
     --color-typography-default: #313a59;
     --color-typography-link: #7b281e;
     --color-typography-link-hover: #cb574a;
     --color-typography-link-focus: #a03f33;
     --color-typography-link-visited: #7b281e;
-
-    --color-typography-heading-dark: #e3e8ed;
-    --color-typography-default-dark: #f0f8ff;
-    --color-typography-link-dark: #cb574a;
-    --color-typography-link-hover-dark: #db6a5e;
-    --color-typography-link-focus-dark: #ce6054;
-    --color-typography-link-visited-dark: #cb574a;
 
 
 
@@ -185,6 +174,17 @@
     --spacing-144: 36rem;
 }
 
+@layer theme {
+  [class~="dark"] {
+    --color-typography-heading: #e3e8ed;
+    --color-typography-default: #f0f8ff;
+    --color-typography-link: #cb574a;
+    --color-typography-link-hover: #db6a5e;
+    --color-typography-link-focus: #ce6054;
+    --color-typography-link-visited: #cb574a;
+  }
+}
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still
@@ -203,14 +203,14 @@
 
   body {
     @apply bg-white dark:bg-stone-950;
-    @apply text-base text-typography-default dark:text-typography-default-dark;
+    @apply text-base text-typography-default dark:text-typography-default;
   }
 
   /* 
     Anchor 
   */
   a {
-    @apply text-typography-link underline underline-offset-4 visited:text-typography-link-visited hover:text-typography-link-hover hover:no-underline focus:text-typography-link-focus dark:text-typography-link-dark dark:visited:text-typography-link-visited-dark dark:hover:text-typography-link-hover-dark dark:focus:text-typography-link-focus-dark;
+    @apply text-typography-link underline underline-offset-4 visited:text-typography-link-visited hover:text-typography-link-hover hover:no-underline focus:text-typography-link-focus dark:text-typography-link dark:visited:text-typography-link-visited dark:hover:text-typography-link-hover dark:focus:text-typography-link-focus;
   }
 
   /* 
@@ -252,15 +252,15 @@
     &,
     a {
       @apply text-typography-heading;// #{!important};
-      @apply dark:text-typography-heading-dark;// #{!important};
+      @apply dark:text-typography-heading;// #{!important};
     }
 
     a {
       @apply no-underline;
       @apply hover:text-typography-link-hover;// #{!important};
-      @apply dark:hover:text-typography-link-hover-dark;// #{!important};
+      @apply dark:hover:text-typography-link-hover;// #{!important};
       @apply focus:text-typography-link-focus;// #{!important};
-      @apply dark:focus:text-typography-link-focus-dark;// #{!important};
+      @apply dark:focus:text-typography-link-focus;// #{!important};
     }
   }
 

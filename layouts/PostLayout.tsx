@@ -91,7 +91,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prose-hr component-posts-article__divider" />
 
-              <p className="text-sm text-stone-500 dark:text-typography-default-dark/50">
+              <p className="text-sm text-stone-500 dark:text-typography-default/50">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on X (Twitter)
                 </Link>
