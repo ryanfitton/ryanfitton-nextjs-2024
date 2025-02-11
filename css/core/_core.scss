@@ -119,6 +119,19 @@
     }
 
     /* 
+        Code blocks
+    */
+    code,
+    pre {
+        @apply font-mono;
+        @apply font-normal!;
+        @apply text-lg!;
+    }
+    pre code{
+        @apply text-sm!;
+    }
+
+    /* 
         Horizontal rule 
     */
     hr,

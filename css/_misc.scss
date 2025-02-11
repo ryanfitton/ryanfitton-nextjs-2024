@@ -19,25 +19,33 @@ div[class*='backdrop-blur backdrop-filter'] {
     --tw-prose-lead: var(--color-typography-default);
     --tw-prose-links: var(--color-typography-link);
     --tw-prose-bold: var(--color-typography-default);
+    --tw-prose-pre-bg: var(--color-stone-900);
 
     //Dark mode colours
     --tw-prose-invert-headings: var(--color-typography-heading);
     --tw-prose-invert-lead: var(--color-typography-default);
     --tw-prose-invert-links: var(--color-typography-link);
     --tw-prose-invert-bold: var(--color-typography-default);
+    --tw-prose-invert-pre-bg: var(--color-stone-800);
     --tw-prose-invert-code: var(--color-typography-white);
     --tw-prose-invert-pre-code: var(--color-typography-white);
-}
 
-//For prose on `<code>` and `<pre>` blocks in prose
-code,
-pre {
-    @apply font-mono;
-    @apply font-normal!;
-    @apply text-lg!;
-}
-pre code{
-    @apply text-sm!;
+    :where(:not(.not-prose, .not-prose *)) {
+        //Anchors - Add different colours for other states
+        &:where(a) {
+            color: var(--tw-prose-links);
+
+            &:hover {
+                color: var(--color-typography-link-hover);
+            }
+            &:focus {
+                color: var(--color-typography-link-focus);
+            }
+            &:visited {
+                color: var(--color-typography-link-visited);
+            }
+        }
+    }
 }
 
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode
