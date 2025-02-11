@@ -45,7 +45,7 @@ jobs:
         env:
           EXPORT: 1
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
-          BASE_PATH: '/'
+          BASE_PATH: ''
      
       - uses: actions/upload-pages-artifact@v3
         with:
