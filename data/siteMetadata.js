@@ -23,7 +23,7 @@ const siteMetadata = {
   bluesky: 'https://bsky.app/profile/ryanfitton.bsky.social',
   linkedin: 'https://uk.linkedin.com/in/rfitton',
   keybase: 'https://keybase.io/ryanfitton',
-  //medium: 'https://www.medium.com/ryanfitton',
+  //medium: 'https://www.medium.com/@ryanfitton',
   locale: 'en-GB',
   // set to true if you want a navbar fixed to the top
   stickyNav: false,
