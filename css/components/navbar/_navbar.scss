@@ -32,7 +32,7 @@
         a {
           @apply text-white!;
           @apply dark:text-white!;
-          
+
           //If this is the current page
           &.component-navbar__link--current-page {
             @apply bg-primary-700 dark:bg-secondary-900;
@@ -57,12 +57,12 @@
       .component-navbar__search-btn,
       .component-navbar__theme-btn,
       .component-navbar__menu-btn {
-        @apply h-full content-center px-3 py-7 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-5;
-      
-        //If an acive Headless UI button 
+        @apply hover:bg-primary-600 dark:hover:bg-primary-500 h-full content-center px-3 py-7 hover:brightness-[110%] active:brightness-[80%] lg:px-5 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+
+        //If an acive Headless UI button
         //Docs: https://headlessui.com/react/button
-        &[data-active]{
-            @apply bg-primary-600 brightness-[80%] dark:brightness-[85%];
+        &[data-active] {
+          @apply bg-primary-600 brightness-[80%] dark:brightness-[85%];
         }
       }
 
@@ -71,7 +71,7 @@
 
         &--list-option {
           @extend .component-navbar__theme-btn;
-          @apply m-0 w-full py-3 text-sm hover:bg-primary-700 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-700 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:px-3;
+          @apply hover:bg-primary-700 dark:hover:bg-primary-700 m-0 w-full py-3 text-sm hover:brightness-[110%] active:brightness-[80%] lg:px-3 dark:hover:brightness-[80%] dark:active:brightness-[85%];
 
           svg {
             @apply mr-3 size-5;
@@ -88,12 +88,12 @@
       }
 
       .component-navbar__menu-mobile {
-        @apply fixed left-0 top-0 z-10 ml-6 h-full w-full transform bg-primary-600 duration-300 ease-in-out dark:bg-secondary-950 dark:opacity-[0.98];
+        @apply bg-primary-600 dark:bg-secondary-950 fixed top-0 left-0 z-10 ml-6 h-full w-full transform duration-300 ease-in-out dark:opacity-[0.98];
         @apply text-white!;
       }
 
       .component-navbar__menu-theme {
-        @apply absolute right-0 top-full z-50 bg-primary-800 dark:bg-secondary-800;
+        @apply bg-primary-800 dark:bg-secondary-800 absolute top-full right-0 z-50;
       }
     }
 

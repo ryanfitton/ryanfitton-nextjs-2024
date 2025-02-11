@@ -23,7 +23,7 @@
     }
 
     &--outline-secondary {
-      @apply border-2 border-secondary-100 dark:border-secondary-800;
+      @apply border-secondary-100 dark:border-secondary-800 border-2;
     }
 
     &--rounded {

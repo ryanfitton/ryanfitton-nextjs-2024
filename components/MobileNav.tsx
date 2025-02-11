@@ -65,7 +65,7 @@ const MobileNav = () => {
               <DialogPanel className="component-navbar__menu-mobile">
                 <div className="flex justify-end">
                   <button
-                    className="mr-8 mt-11 h-8 w-8"
+                    className="mt-11 mr-8 h-8 w-8"
                     aria-label="Toggle Menu"
                     onClick={onToggleNav}
                   >

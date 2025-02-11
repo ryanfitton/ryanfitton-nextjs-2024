@@ -1,7 +1,7 @@
-@import 'tailwindcss';                              //Import Tailwind
-@source '../node_modules/pliny';                    //Import Pliny
-@custom-variant dark (&:where(.dark, .dark *));     //Custom dark mode variant
-@import '_vars.scss';                               //Import custom theme variables
+@import 'tailwindcss'; //Import Tailwind
+@source '../node_modules/pliny'; //Import Pliny
+@custom-variant dark (&:where(.dark, .dark *)); //Custom dark mode variant
+@import '_vars.scss'; //Import custom theme variables
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
@@ -11,185 +11,187 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentColor);
-    }
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
 
-    /* 
+  /* 
         Body 
     */
-    body {
-        @apply bg-white dark:bg-stone-950 text-base text-typography-default dark:text-typography-default;
-    }
+  body {
+    @apply text-typography-default dark:text-typography-default bg-white text-base dark:bg-stone-950;
+  }
 
-    /* 
+  /* 
         Anchor 
     */
-    a {
-        @apply underline hover:no-underline underline-offset-4;
-        @apply text-typography-link dark:text-typography-link;      //Default and Dark default
-        @apply visited:text-typography-link-visited;                //Visited
-        @apply hover:text-typography-link-hover;                    //Hover
-        @apply focus:text-typography-link-focus;                    //Focus
-        @apply dark:visited:text-typography-link-visited;           //Dark: Visited
-        @apply dark:hover:text-typography-link-hover;               //Dark: Hover
-        @apply dark:focus:text-typography-link-focus;               //Dark: Focus
-    }
+  a {
+    @apply underline underline-offset-4 hover:no-underline;
+    @apply text-typography-link dark:text-typography-link; //Default and Dark default
+    @apply visited:text-typography-link-visited; //Visited
+    @apply hover:text-typography-link-hover; //Hover
+    @apply focus:text-typography-link-focus; //Focus
+    @apply dark:visited:text-typography-link-visited; //Dark: Visited
+    @apply dark:hover:text-typography-link-hover; //Dark: Hover
+    @apply dark:focus:text-typography-link-focus; //Dark: Focus
+  }
 
-    /* 
+  /* 
         Paragraphs 
     */
-    p {
-        @apply my-4 text-base;
+  p {
+    @apply my-4 text-base;
 
-        &:first-child {
-            @apply mt-0;
-        }
-
-        &:last-child {
-            @apply mb-0;
-        }
-
-        &.lead {
-            @apply text-lg;
-        }
+    &:first-child {
+      @apply mt-0;
     }
 
-    /* 
+    &:last-child {
+      @apply mb-0;
+    }
+
+    &.lead {
+      @apply text-lg;
+    }
+  }
+
+  /* 
         Lists 
     */
-    ol,
-    ul {
-        @apply text-base;
-    }
+  ol,
+  ul {
+    @apply text-base;
+  }
 
-    /* 
+  /* 
         Headings 
     */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        //Default and Default link colours
-        &,
-        a {
-            @apply text-typography-heading;                     //Default
-            @apply dark:text-typography-heading;                //Dark
-        }
-
-        a {
-            @apply no-underline;
-            @apply visited:text-typography-link-visited;        //Visited
-            @apply hover:text-typography-link-hover;            //Hover
-            @apply focus:text-typography-link-focus;            //Focus
-            @apply dark:visited:text-typography-link-visited;   //Dark: Visited
-            @apply dark:hover:text-typography-link-hover;       //Dark: Hover
-            @apply dark:focus:text-typography-link-focus;       //Dark: Focus
-        }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    //Default and Default link colours
+    &,
+    a {
+      @apply text-typography-heading; //Default
+      @apply dark:text-typography-heading; //Dark
     }
 
-    h1 {
-        @apply my-6 text-4xl;
+    a {
+      @apply no-underline;
+      @apply visited:text-typography-link-visited; //Visited
+      @apply hover:text-typography-link-hover; //Hover
+      @apply focus:text-typography-link-focus; //Focus
+      @apply dark:visited:text-typography-link-visited; //Dark: Visited
+      @apply dark:hover:text-typography-link-hover; //Dark: Hover
+      @apply dark:focus:text-typography-link-focus; //Dark: Focus
     }
+  }
 
-    h2 {
-        @apply my-5 text-3xl;
-    }
+  h1 {
+    @apply my-6 text-4xl;
+  }
 
-    h3 {
-        @apply my-4 text-2xl;
-    }
+  h2 {
+    @apply my-5 text-3xl;
+  }
 
-    h4 {
-        @apply my-3 text-xl;
-    }
+  h3 {
+    @apply my-4 text-2xl;
+  }
 
-    h5 {
-        @apply my-2 text-lg;
-    }
+  h4 {
+    @apply my-3 text-xl;
+  }
 
-    h6 {
-        @apply my-1 text-base;
-    }
+  h5 {
+    @apply my-2 text-lg;
+  }
 
-    /* 
+  h6 {
+    @apply my-1 text-base;
+  }
+
+  /* 
         Code blocks
     */
-    code,
-    pre {
-        @apply font-mono;
-        @apply font-normal!;
-        @apply text-lg!;
-    }
-    pre code{
-        @apply text-sm!;
-    }
+  code,
+  pre {
+    @apply font-mono;
+    @apply font-normal!;
+    @apply text-lg!;
+  }
+  pre code {
+    @apply text-sm!;
+  }
 
-    /* 
+  /* 
         Horizontal rule 
     */
-    hr,
-    .prose-hr {
-        @apply border-2 border-l-0 border-r-0 border-t-0;
-        @apply border-gray-200!;
-        @apply dark:border-gray-900!;
-    }
+  hr,
+  .prose-hr {
+    @apply border-2 border-t-0 border-r-0 border-l-0;
+    @apply border-gray-200!;
+    @apply dark:border-gray-900!;
+  }
 
-    /* 
+  /* 
         Grid
     */
-    .grid {
-        @apply grid-cols-12 gap-6;
-        /* Default gap and columns in grids */
-    }
+  .grid {
+    @apply grid-cols-12 gap-6;
+    /* Default gap and columns in grids */
+  }
 
-    /*
+  /*
         Core site layouts    
     */
-    .site {
-        &-header {
-            @apply mb-4 bg-primary-600 text-white dark:bg-secondary-950 dark:text-white md:mb-24;
+  .site {
+    &-header {
+      @apply bg-primary-600 dark:bg-secondary-950 mb-4 text-white md:mb-24 dark:text-white;
 
-            >div {
-                @apply flex items-stretch py-0;
-            }
+      > div {
+        @apply flex items-stretch py-0;
+      }
 
-            &__logo {
-                @apply block content-center p-3 hover:bg-primary-600 hover:brightness-[110%] active:brightness-[80%] dark:hover:bg-primary-500 dark:hover:brightness-[80%] dark:active:brightness-[85%] lg:p-5;
-            }
+      &__logo {
+        @apply hover:bg-primary-600 dark:hover:bg-primary-500 block content-center p-3 hover:brightness-[110%] active:brightness-[80%] lg:p-5 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+      }
 
-            &--homepage {
-                @apply mb-0;
-            }
+      &--homepage {
+        @apply mb-0;
+      }
 
-            &--sticky {
-                @apply bg-primary-600 text-white dark:bg-secondary-950;
-            }
-        }
-
-        &-main {}
-
-        &-aside {}
-
-        &-footer {
-            @apply mt-24 bg-secondary-900 text-center text-sm dark:bg-secondary-950;
-
-            a {
-                @apply no-underline!;
-                @apply hover:underline!;
-            }
-
-            &,
-            a {
-                @apply text-[#8e8e8e]!;
-                @apply dark:text-[#8e8e8e]!;
-            }
-        }
+      &--sticky {
+        @apply bg-primary-600 dark:bg-secondary-950 text-white;
+      }
     }
+
+    &-main {
+    }
+
+    &-aside {
+    }
+
+    &-footer {
+      @apply bg-secondary-900 dark:bg-secondary-950 mt-24 text-center text-sm;
+
+      a {
+        @apply no-underline!;
+        @apply hover:underline!;
+      }
+
+      &,
+      a {
+        @apply text-[#8e8e8e]!;
+        @apply dark:text-[#8e8e8e]!;
+      }
+    }
+  }
 }

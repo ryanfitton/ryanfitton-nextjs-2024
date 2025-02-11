@@ -26,9 +26,7 @@ export default function Policies() {
               If you have any questions regarding the security, privacy or cookie policy on this
               website please contact{' '}
               <strong>
-                <span className="!text-typography-default !no-underline">
-                  ryan＠
-                </span>
+                <span className="!text-typography-default !no-underline">ryan＠</span>
                 <a
                   href="https://ryanfitton.co.uk"
                   className="!text-typography-default !no-underline"
@@ -56,23 +54,23 @@ export default function Policies() {
               set by Google Analytics.
             </p>
 
-            <table className="border-slate-500 not-prose my-8 w-full table-auto border-collapse border text-left">
+            <table className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left">
               <thead>
                 <tr>
-                  <th className="border border-secondary-100 p-5 dark:border-secondary-800">
+                  <th className="border-secondary-100 dark:border-secondary-800 border p-5">
                     Cookies
                   </th>
-                  <th className="border border-secondary-100 p-5 dark:border-secondary-800">
+                  <th className="border-secondary-100 dark:border-secondary-800 border p-5">
                     Function
                   </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="border border-secondary-100 p-5 dark:border-secondary-800">
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
                     _ga, _ga_YLMTDYMQCC
                   </td>
-                  <td className="border border-secondary-100 p-5 dark:border-secondary-800">
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
                     These are Google Analytics cookies. They are used to determine how you arrived
                     to this site, your visit length and how often you visit this website.
                   </td>

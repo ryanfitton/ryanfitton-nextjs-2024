@@ -21,14 +21,14 @@
   }
 
   .component-posts-pagination {
-    @apply space-y-2 pb-8 pt-6 text-sm text-stone-500 dark:text-typography-default/50 md:space-y-5;
+    @apply dark:text-typography-default/50 space-y-2 pt-6 pb-8 text-sm text-stone-500 md:space-y-5;
 
     &__navigation {
       @apply flex items-center justify-between;
     }
 
     &__paginate {
-      @apply break-words p-3 uppercase;
+      @apply p-3 break-words uppercase;
       @apply no-underline!;
       @apply disabled:hover:no-underline!;
       @apply disabled:text-stone-500!;
@@ -46,7 +46,7 @@
   }
 
   .component-posts-tag-list {
-    @apply m-0 list-none p-0 uppercase text-stone-500/70 dark:text-typography-default/50;
+    @apply dark:text-typography-default/50 m-0 list-none p-0 text-stone-500/70 uppercase;
 
     > li {
       @apply mb-1;
@@ -103,7 +103,7 @@
   .component-posts-article {
     &__date {
       &--time {
-        @apply text-xs uppercase leading-6 text-stone-500 dark:text-typography-default/50;
+        @apply dark:text-typography-default/50 text-xs leading-6 text-stone-500 uppercase;
       }
     }
 
@@ -126,7 +126,7 @@
     }
 
     &__body {
-      @apply prose dark:prose-invert max-w-none text-pretty py-4;
+      @apply prose dark:prose-invert max-w-none py-4 text-pretty;
     }
 
     &__comments {

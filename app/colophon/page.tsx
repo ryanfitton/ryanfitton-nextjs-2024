@@ -12,7 +12,9 @@ export default function Colophon() {
             <h2 className="component-title component-title--main">About this website</h2>
 
             <p>
-              Built and maintained since August 2024. Previously built with WordPress (2014-2024). Repository for this website [here](https://github.com/ryanfitton/ryanfitton-nextjs-2024).
+              Built and maintained since August 2024. Previously built with WordPress (2014-2024).
+              Repository for this website
+              [here](https://github.com/ryanfitton/ryanfitton-nextjs-2024).
             </p>
 
             <ul>
@@ -22,7 +24,8 @@ export default function Colophon() {
                   <Link href={`https://github.com/timlrx/tailwind-nextjs-starter-blog`}>
                     tailwind-nextjs-starter-blog
                   </Link>
-                  , with custom 'Portfolio' posts section. Running version: `2.3.0` with TailWind version: `4.0.5` and Next.JS version: `15.1.6`.
+                  , with custom 'Portfolio' posts section. Running version: `2.3.0` with TailWind
+                  version: `4.0.5` and Next.JS version: `15.1.6`.
                 </p>
               </li>
               <li>
