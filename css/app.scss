@@ -1,5 +1,5 @@
-@import 'core/_core.scss';
-@import 'utilities/_utilities.scss';
-@import 'components/_components.scss';
-@import 'plugins/_plugins.scss';
-@import '_misc.scss';
+@use 'core/_core.scss';
+@use 'utilities/_utilities.scss';
+@use 'components/_components.scss';
+@use 'plugins/_plugins.scss';
+@use '_misc.scss';

@@ -1,10 +1,10 @@
 //Node modules
-@import '~pliny/search/algolia';
-@import '~katex/dist/katex';
-//@import "~remark-github-blockquote-alert/alert";
+@use '~pliny/search/algolia';
+@use '~katex/dist/katex';
+//@use "~remark-github-blockquote-alert/alert";
 
 //Plugin
-@import 'prism/_prism.scss';
+@use 'prism/_prism.scss';
 
 //Tailwind plugins
 @plugin '@tailwindcss/typography';

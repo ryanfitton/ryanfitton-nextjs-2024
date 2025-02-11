@@ -1,7 +1,7 @@
-@import 'tailwindcss'; //Import Tailwind
+@use 'tailwindcss'; //Import Tailwind
+@use '_vars.scss'; //Import custom theme variables
 @source '../node_modules/pliny'; //Import Pliny
 @custom-variant dark (&:where(.dark, .dark *)); //Custom dark mode variant
-@import '_vars.scss'; //Import custom theme variables
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
