@@ -8,7 +8,7 @@ export default function Policies() {
     <>
       <section className="site-container">
         <div className="grid">
-          <div className="prose col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
+          <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             <h2 className="component-title component-title--main">Privacy</h2>
 
             <p>

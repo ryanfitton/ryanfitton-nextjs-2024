@@ -10,20 +10,34 @@ div[class*='backdrop-blur backdrop-filter'] {
   @apply z-3;
 }
 
+//Prose style fixes using `prose dark:prose-invert` in HTML and Sas
+//Docs: https://github.com/tailwindlabs/tailwindcss-typography
+//https://github.com/tailwindlabs/tailwindcss/discussions/16232
+//https://github.com/tailwindlabs/tailwindcss/discussions/15670
+@utility prose {
+    --tw-prose-headings: var(--color-typography-heading);
+    --tw-prose-lead: var(--color-typography-default);
+    --tw-prose-links: var(--color-typography-link);
+    --tw-prose-bold: var(--color-typography-default);
+
+    //Dark mode colours
+    --tw-prose-invert-headings: var(--color-typography-heading);
+    --tw-prose-invert-lead: var(--color-typography-default);
+    --tw-prose-invert-links: var(--color-typography-link);
+    --tw-prose-invert-bold: var(--color-typography-default);
+    --tw-prose-invert-code: var(--color-typography-white);
+    --tw-prose-invert-pre-code: var(--color-typography-white);
+}
+
 //For prose on `<code>` and `<pre>` blocks in prose
 code,
 pre {
-  @apply font-mono;
-  @apply font-normal #{!important};
+    @apply font-mono;
+    @apply font-normal!;
+    @apply text-lg!;
 }
-code {
-  //color: var(--tw-prose-pre-code);
-  @apply dark:bg-[var(--tw-prose-pre-bg)] dark:text-white;
-}
-
-//For `<strong>` tags in prose
-strong {
-  @apply text-[inherit] #{!important};
+pre code{
+    @apply text-sm!;
 }
 
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode

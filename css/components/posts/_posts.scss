@@ -9,14 +9,14 @@
       &,
       a {
         @apply uppercase;
-        @apply text-stone-500 #{!important};
-        @apply dark:text-typography-heading #{!important};
+        @apply text-stone-500!;
+        @apply dark:text-typography-heading!;
       }
     }
 
     &__content {
       @apply h-full max-h-screen flex-wrap overflow-auto text-pretty;
-      @apply mt-0 #{!important};
+      @apply mt-0!;
     }
   }
 
@@ -29,11 +29,11 @@
 
     &__paginate {
       @apply break-words p-3 uppercase;
-      @apply no-underline #{!important};
-      @apply disabled:hover:no-underline #{!important};
-      @apply disabled:text-stone-500 #{!important};
-      @apply dark:disabled:text-typography-default/50 #{!important};
-      @apply hover:underline #{!important};
+      @apply no-underline!;
+      @apply disabled:hover:no-underline!;
+      @apply disabled:text-stone-500!;
+      @apply dark:disabled:text-typography-default/50!;
+      @apply hover:underline!;
 
       &:first-child {
         @apply pl-0;
@@ -122,11 +122,11 @@
     }
 
     &__excerpt {
-      @apply prose max-w-none text-pretty;
+      @apply prose dark:prose-invert max-w-none text-pretty;
     }
 
     &__body {
-      @apply prose max-w-none text-pretty py-4;
+      @apply prose dark:prose-invert max-w-none text-pretty py-4;
     }
 
     &__comments {
@@ -146,13 +146,13 @@
     > li {
       > a {
         @apply block cursor-pointer hover:bg-gray-200/35 dark:hover:bg-gray-900/35;
-        @apply no-underline #{!important};
-        @apply text-typography-heading #{!important};
-        @apply dark:text-typography-heading #{!important};
+        @apply no-underline!;
+        @apply text-typography-heading!;
+        @apply dark:text-typography-heading!;
 
         .component-posts-article__excerpt {
-          @apply text-typography-default #{!important};
-          @apply dark:text-typography-default/50 #{!important};
+          @apply text-typography-default!;
+          @apply dark:text-typography-default/50!;
         }
       }
     }
@@ -178,7 +178,7 @@
     }
 
     &__intro {
-      @apply prose text-pretty;
+      @apply prose dark:prose-invert text-pretty;
     }
   }
 }

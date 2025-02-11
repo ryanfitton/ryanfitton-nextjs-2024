@@ -8,11 +8,11 @@
 
     &__content,
     &__title {
-      @apply text-white #{!important};
+      @apply text-white!;
     }
 
     &__content {
-      @apply dark:text-typography-default #{!important};
+      @apply dark:text-typography-default!;
       @apply content-center py-5 text-center md:text-left;
     }
 

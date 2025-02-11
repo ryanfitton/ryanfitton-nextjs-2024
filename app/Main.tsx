@@ -32,7 +32,7 @@ export default function Home({ posts }) {
               />
             </div>
 
-            <div className="prose col-span-full md:col-span-8 xl:col-span-6">
+            <div className="prose dark:prose-invert col-span-full md:col-span-8 xl:col-span-6">
               <h2 className="component-title component-title--main !text-typography-ryan">About</h2>
               <p>
                 I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally
