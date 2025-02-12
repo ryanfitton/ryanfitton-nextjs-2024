@@ -60,10 +60,10 @@ div[class*='backdrop-blur backdrop-filter'] {
     --color-typography-link: #7b281e;
 }
 #disqus_thread {
-    @apply scheme-light !;
+    @apply scheme-light!;
 
     > iframe {
         @extend .component-posts-article__comments;
-        @apply p-0 ! rounded-none !;
+        @apply p-0! rounded-none!;
     }
 }
