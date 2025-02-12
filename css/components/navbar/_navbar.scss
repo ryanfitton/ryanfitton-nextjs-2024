@@ -57,7 +57,7 @@
       .component-navbar__search-btn,
       .component-navbar__theme-btn,
       .component-navbar__menu-btn {
-        @apply hover:bg-primary-600 dark:hover:bg-primary-500 h-full content-center px-3 py-7 hover:brightness-[110%] active:brightness-[80%] lg:px-5 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+        @apply cursor-pointer hover:bg-primary-600 dark:hover:bg-primary-500 h-full content-center px-3 py-7 hover:brightness-[110%] active:brightness-[80%] lg:px-5 dark:hover:brightness-[80%] dark:active:brightness-[85%];
 
         //If an acive Headless UI button
         //Docs: https://headlessui.com/react/button

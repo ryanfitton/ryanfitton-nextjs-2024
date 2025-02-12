@@ -85,10 +85,10 @@
 
     a {
       @apply no-underline;
-      @apply visited:text-typography-link-visited; //Visited
+      @apply visited:text-typography-heading; //Visited / text-typography-link-visited
       @apply hover:text-typography-link-hover; //Hover
       @apply focus:text-typography-link-focus; //Focus
-      @apply dark:visited:text-typography-link-visited; //Dark: Visited
+      @apply dark:visited:text-typography-heading; //Dark: Visited / text-typography-link-visited
       @apply dark:hover:text-typography-link-hover; //Dark: Hover
       @apply dark:focus:text-typography-link-focus; //Dark: Focus
     }
