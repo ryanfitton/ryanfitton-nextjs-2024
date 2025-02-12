@@ -24,6 +24,9 @@
     */
   body {
     @apply text-typography-default dark:text-typography-default bg-white text-base dark:bg-stone-950;
+
+    //Fix for Disqus. The embed JavaScript does not like colours using the `oklch()` colour format, so add Hex values:
+    @apply bg-[#fff] dark:bg-[#000]
   }
 
   /* 
