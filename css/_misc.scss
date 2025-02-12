@@ -51,58 +51,20 @@ div[class*='backdrop-blur backdrop-filter'] {
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode
 //Discussion: https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/754#issuecomment-2317476300
 
-body{
-    background-color: white;
-    color: black
-}
 
-body:where(.dark, .dark *) {
-    background-color: black;
-    color: white
-}
-
-
-
-
-a {
-    color: black;
-}
-a:where(.dark, .dark *) {
-    color: white
-}
-
-
-
-a:visited {
-    color: var(--color-typography-link-visited)
-}
-a:where(.dark, .dark *):visited {
-    color: var(--color-typography-link-visited)
-}
-
-
-
-
-@media (hover:hover) {
-    a:hover {
-        color: var(--color-typography-link-hover)
-    }
-    a:where(.dark, .dark *):hover {
-        color: var(--color-typography-link-hover)
-    }
-}
-
-
-
-a:focus {
-    color: var(--color-typography-link-focus)
-}
-a:where(.dark, .dark *):focus {
-    color: var(--color-typography-link-focus)
-}
 
 
 
 #disqus_thread {
   color-scheme: none;
+
+
+--color-white: #fff;
+--color-stone-950: ##0c0a09;
+
+--color-typography-link: #7b281e;
+
+  [class~='dark'] {
+    --color-typography-link: #cb574a;
+  }
 }
