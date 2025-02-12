@@ -50,26 +50,24 @@ div[class*='backdrop-blur backdrop-filter'] {
 
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode
 //Discussion: https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/754#issuecomment-2317476300
+//https://x.com/LeaVerou/status/1818632543706489073?mx=2
+//https://github.com/disqus/disqus-react/issues/153
+//https://jamesauble.com/blog/oklch-colors-workaround-for-disqus-embed-js/
 
 
+@media (color-gamut: p3) {
+    :root {
+        --color-white: #fff;
+        --color-stone-950: #0c0a09;
 
-
-
-:root {
-    --color-white: #fff;
-    --color-stone-950: ##0c0a09;
-
-    --color-typography-link: #7b281e;
-
-    [class~='dark'] {
-        --color-typography-link: #cb574a;
+        --color-typography-link: #7b281e;
     }
 }
 
-.component-posts-article__comments,
 #disqus_thread {
-  color-scheme: none;
+    color-scheme: none;
 
-
-
+    > iframe {
+        @apply bg-white dark:bg-white;
+    }
 }
