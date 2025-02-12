@@ -47,9 +47,8 @@ jobs:
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ''
 
-  test-gh-pages-upload-pages-artifact:
-    runs-on: ubuntu-latest
-    steps:
+      # Test the build output being packaged ready for GH Pages deployment to ensure there will be no isses.
+      # In the `actions` tab you can export this artifact
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
