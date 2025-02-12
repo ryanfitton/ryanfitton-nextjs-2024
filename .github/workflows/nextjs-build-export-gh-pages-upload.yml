@@ -2,7 +2,7 @@
 name: Deploy `./out` static content to Github Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Runs on pushes targeting the 'main' branch
   push:
     branches: ["main"]
 
