@@ -50,6 +50,18 @@ div[class*='backdrop-blur backdrop-filter'] {
 
 //Fix to prevent Disqus colour scheme breaking the layout in dark mode
 //Discussion: https://github.com/timlrx/tailwind-nextjs-starter-blog/issues/754#issuecomment-2317476300
+body {
+    @at-root {
+        //Fix for Disqus. The embed JavaScript does not like colours using the `oklch()` colour format, so add Hex values:
+        @apply bg-[#fff] dark:bg-[#000]
+    }
+}
+a {
+    @at-root {
+        //Fix for Disqus. The embed JavaScript does not like colours using the `oklch()` colour format, so add Hex values:
+        @apply text-[#fff] dark:text-[#000]
+    }
+}
 #disqus_thread {
   color-scheme: none;
 }
