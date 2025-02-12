@@ -20,6 +20,7 @@ export default function Comments({ slug }: { slug: string }) {
                 if (typeof window !== 'undefined' && window.matchMedia) {
                   const iframe = document.getElementById('disqus_thread').querySelector('iframe');
 
+                  console.log("Disqus iframe:")
                   console.log(iframe)
 
                   if (iframe && iframe.length() > 0) {
