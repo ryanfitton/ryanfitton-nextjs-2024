@@ -55,13 +55,10 @@ div[class*='backdrop-blur backdrop-filter'] {
 //https://jamesauble.com/blog/oklch-colors-workaround-for-disqus-embed-js/
 
 
-@media (color-gamut: p3) {
-    :root {
-        --color-white: #fff;
-        --color-stone-950: #0c0a09;
-
-        --color-typography-link: #7b281e;
-    }
+:root {
+    --color-white: #fff;
+    --color-stone-950: #0c0a09;
+    --color-typography-link: #7b281e;
 }
 .component-posts-article {
     &__comments {
