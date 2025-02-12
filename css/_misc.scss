@@ -63,11 +63,18 @@ div[class*='backdrop-blur backdrop-filter'] {
         --color-typography-link: #7b281e;
     }
 }
+.component-posts-article {
+    &__comments {
+        @apply p-6 rounded-sm;
+    }
 
-#disqus_thread {
-    color-scheme: none;
-
-    > iframe {
+    &__comments,
+    #disqus_thread > iframe {
         @apply bg-white dark:bg-white;
+
+    }
+
+    #disqus_thread {
+        color-scheme: none;
     }
 }
