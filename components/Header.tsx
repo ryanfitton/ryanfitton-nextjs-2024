@@ -32,7 +32,7 @@ export default function Header() {
   //const subTitleUpperCase = subTitle.toUpperCase()
 
   //Define default head class, and if sticky is enabled, then apply sticky variant
-  let headerNavContainerClass = 'xl:site-container flex justify-between'
+  let headerNavContainerClass = 'site-container site-container--header flex justify-between'
   if (siteMetadata.stickyNav) {
     headerNavContainerClass += ' site-container--sticky site-header--sticky'
   }

@@ -29,7 +29,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const nextPage = currentPage + 1 <= totalPages
 
   return (
-    <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
+    <div className="col-span-full md:col-span-8 md:col-start-5 lg:col-span-8 lg:col-start-5">
       <div className="component-posts-pagination component-block">
         <nav className="component-posts-pagination__navigation">
           {!prevPage && (

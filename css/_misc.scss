@@ -63,7 +63,6 @@ div[class*='backdrop-blur backdrop-filter'] {
     @apply scheme-light!;
 
     > iframe {
-        @extend .component-posts-article__comments;
-        @apply p-0! rounded-none!;
+        @apply bg-white dark:bg-white;
     }
 }

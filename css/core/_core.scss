@@ -168,6 +168,7 @@
         @apply mb-0;
       }
 
+      //Used in-conjunction with `site-container--sticky` in `components/Header.tsx`
       &--sticky {
         @apply bg-primary-600 dark:bg-secondary-950 text-white;
       }

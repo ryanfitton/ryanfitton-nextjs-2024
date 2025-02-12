@@ -26,6 +26,11 @@
     &--header {
       @apply flex items-stretch;
 
+      //Overwrite TailWind default: For any items which is not the last child - Remove margin as there is a hidden div
+      :where(& > :not(:last-child)) {
+        @apply m-0!;
+      }
+
       .component-navbar__links {
         @apply hidden items-stretch md:flex;
 
@@ -57,7 +62,7 @@
       .component-navbar__search-btn,
       .component-navbar__theme-btn,
       .component-navbar__menu-btn {
-        @apply cursor-pointer hover:bg-primary-600 dark:hover:bg-primary-500 h-full content-center px-3 py-7 hover:brightness-[110%] active:brightness-[80%] lg:px-5 dark:hover:brightness-[80%] dark:active:brightness-[85%];
+        @apply cursor-pointer hover:bg-primary-600 dark:hover:bg-primary-500 h-full content-center px-5 py-7 hover:brightness-[110%] active:brightness-[80%] dark:hover:brightness-[80%] dark:active:brightness-[85%];
 
         //If an acive Headless UI button
         //Docs: https://headlessui.com/react/button
@@ -67,7 +72,7 @@
       }
 
       .component-navbar__theme-btn {
-        @apply mr-5 flex items-center;
+        @apply mr-5 flex items-center md:mr-0;
 
         &--list-option {
           @extend .component-navbar__theme-btn;
