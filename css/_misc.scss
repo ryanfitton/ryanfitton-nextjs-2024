@@ -55,14 +55,14 @@ div[class*='backdrop-blur backdrop-filter'] {
 // https://github.com/disqus/disqus-react/issues/153
 // https://jamesauble.com/blog/oklch-colors-workaround-for-disqus-embed-js/
 :root {
-    --color-white: #fff;                //These will be applied site-wide but unable to use another workaround
-    --color-stone-950: #0c0a09;
-    --color-typography-link: #7b281e;
+  --color-white: #fff; //These will be applied site-wide but unable to use another workaround
+  --color-stone-950: #0c0a09;
+  --color-typography-link: #7b281e;
 }
 #disqus_thread {
-    @apply scheme-light!;
+  @apply scheme-light!;
 
-    > iframe {
-        @apply bg-white dark:bg-white;
-    }
+  > iframe {
+    @apply bg-white dark:bg-white;
+  }
 }
