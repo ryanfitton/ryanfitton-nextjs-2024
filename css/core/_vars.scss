@@ -37,8 +37,8 @@
     */
   --color-transparent: transparent;
   --color-current: currentColor;
-  --color-white: #ffffff;
-  --color-black: #000000;
+  --color-white: oklch(1 0 0);
+  --color-black: oklch(0 0 0);
 
   //Default TailWind `Green` colours - https://tailwindcss.com/docs/customizing-colors
   --color-green-50: oklch(0.982 0.018 155.826);
@@ -93,38 +93,39 @@
   --color-stone-950: oklch(0.147 0.004 49.25);
 
   //Custom brand `primary` colours
-  --color-primary-50: #fcf5f4;
-  --color-primary-100: #f9e9e7;
-  --color-primary-200: #f4d6d3;
-  --color-primary-300: #ecbbb5;
-  --color-primary-400: #df938a;
-  --color-primary-500: #d06e63;
-  --color-primary-600: #af4c41;
-  --color-primary-700: #9c4339;
-  --color-primary-800: #823a32;
-  --color-primary-900: #6d352f;
-  --color-primary-950: #3a1915;
+  --color-primary-50: oklch(0.9753 0.0076 27.23);
+  --color-primary-100: oklch(0.9462 0.0177 26.09);
+  --color-primary-200: oklch(0.9002 0.0338 24.6);
+  --color-primary-300: oklch(0.8341 0.0575 26.43);
+  --color-primary-400: oklch(0.7373 0.0937 26.96);
+  --color-primary-500: oklch(0.6481 0.1256 27.7);
+  --color-primary-600: oklch(0.5425 0.1319 28.56);
+  --color-primary-700: oklch(0.4985 0.1212 28.62);
+  --color-primary-800: oklch(0.4425 0.1012 28.28);
+  --color-primary-900: oklch(0.4008 0.0808 27.56);
+  --color-primary-950: oklch(0.2606 0.0532 28.38);
 
   //Custom brand `secondary` colours
-  --color-secondary-50: #f4f6f7;
-  --color-secondary-100: #e3e7ea;
-  --color-secondary-200: #cad2d7;
-  --color-secondary-300: #a5b1bb;
-  --color-secondary-400: #798997;
-  --color-secondary-500: #5d6e7d;
-  --color-secondary-600: #505c6a;
-  --color-secondary-700: #454e59;
-  --color-secondary-800: #3e444c;
-  --color-secondary-900: #2f3339;
-  --color-secondary-950: #21252b;
+  --color-secondary-50: oklch(0.9719 0.0025 228.78);
+  --color-secondary-100: oklch(0.9258 0.0059 239.82);
+  --color-secondary-200: oklch(0.8591 0.0112 234.84);
+  --color-secondary-300: oklch(0.7541 0.0197 243.05);
+  --color-secondary-400: oklch(0.622 0.0282 244.66);
+  --color-secondary-500: oklch(0.5297 0.0313 245.06);
+  --color-secondary-600: oklch(0.4697 0.0272 252.39);
+  --color-secondary-700: oklch(0.4201 0.0217 253.52);
+  --color-secondary-800: oklch(0.3842 0.0158 255.61);
+  --color-secondary-900: oklch(0.3196 0.0121 258.37);
+  --color-secondary-950: oklch(0.263 0.0127 258.37);
 
   //Custom brand `typography` colours
-  --color-typography-heading: #141c3a;
-  --color-typography-default: #313a59;
-  --color-typography-link: #7b281e;
-  --color-typography-link-hover: #cb574a;
-  --color-typography-link-focus: #a03f33;
-  --color-typography-link-visited: #7b281e;
+  --color-typography-heading: oklch(0.2369 0.0586 270.2);
+  --color-typography-default: oklch(0.355 0.0554 271.01);
+  --color-typography-link: oklch(0.4012 0.1175 29.93);
+  --color-typography-link-hover: oklch(0.6022 0.1504 28.73);
+  --color-typography-link-focus: oklch(0.4981 0.1317 29.58);
+  --color-typography-link-visited: oklch(0.4012 0.1175 29.93);
+
 
   /* 
         Line heights 
@@ -193,11 +194,11 @@
 
 @layer theme {
   [class~='dark'] {
-    --color-typography-heading: #e3e8ed;
-    --color-typography-default: #f0f8ff;
-    --color-typography-link: #cb574a;
-    --color-typography-link-hover: #db6a5e;
-    --color-typography-link-focus: #ce6054;
-    --color-typography-link-visited: #cb574a;
+    --color-typography-heading: oklch(0.9286 0.0087 247.92);
+    --color-typography-default: oklch(0.9751 0.0127 244.25);
+    --color-typography-link: oklch(0.6022 0.1504 28.73);
+    --color-typography-link-hover: oklch(0.6562 0.144 27.84);
+    --color-typography-link-focus: oklch(0.6211 0.142 28.17);
+    --color-typography-link-visited: oklch(0.6022 0.1504 28.73);
   }
 }
