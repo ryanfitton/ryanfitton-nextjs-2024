@@ -55,16 +55,21 @@ div[class*='backdrop-blur backdrop-filter'] {
 
 
 
+:root {
+    --color-white: #fff;
+    --color-stone-950: ##0c0a09;
+
+    --color-typography-link: #7b281e;
+
+    [class~='dark'] {
+        --color-typography-link: #cb574a;
+    }
+}
+
+.component-posts-article__comments,
 #disqus_thread {
   color-scheme: none;
 
 
---color-white: #fff;
---color-stone-950: ##0c0a09;
 
---color-typography-link: #7b281e;
-
-  [class~='dark'] {
-    --color-typography-link: #cb574a;
-  }
 }
