@@ -121,10 +121,10 @@
   //Custom brand `typography` colours
   --color-typography-heading: oklch(0.2369 0.0586 270.2);
   --color-typography-default: oklch(0.355 0.0554 271.01);
-  --color-typography-link: oklch(0.4012 0.1175 29.93);
+  --color-typography-link: oklch(0.5062 0.1454 31.05);
   --color-typography-link-hover: oklch(0.6022 0.1504 28.73);
-  --color-typography-link-focus: oklch(0.4981 0.1317 29.58);
-  --color-typography-link-visited: oklch(0.4012 0.1175 29.93);
+  --color-typography-link-focus: oklch(0.5405 0.1504 28.73);
+  --color-typography-link-visited: oklch(0.5062 0.1454 31.05);
 
   /* 
         Line heights 
@@ -195,9 +195,9 @@
   [class~='dark'] {
     --color-typography-heading: oklch(0.9286 0.0087 247.92);
     --color-typography-default: oklch(0.9751 0.0127 244.25);
-    --color-typography-link: oklch(0.6022 0.1504 28.73);
-    --color-typography-link-hover: oklch(0.6562 0.144 27.84);
-    --color-typography-link-focus: oklch(0.6211 0.142 28.17);
-    --color-typography-link-visited: oklch(0.6022 0.1504 28.73);
+    --color-typography-link: oklch(0.5062 0.1454 31.05);
+    --color-typography-link-hover: oklch(0.6022 0.1504 28.73);
+    --color-typography-link-focus: oklch(0.5405 0.1504 28.73);
+    --color-typography-link-visited: oklch(0.5062 0.1454 31.05);
   }
 }
