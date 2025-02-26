@@ -1,0 +1,72 @@
+---
+title: "Upgrading My pfSense Router to a Lenovo M720Q Mini PC"
+authors: ['Ryan Fitton']
+date: '2025-05-06'
+tags: ['Development']
+draft: true
+summary: 'Upgrading My pfSense Router to a Lenovo M720Q Mini PC.'
+---
+
+## Upgrading My pfSense Router to a Lenovo M720Q Mini PC
+
+I've been using **pfSense** for a few years and have been relatively happy with it. My setup ran on an aging **Qotom Q150P-S08 Mini PC** with an Intel J3060 Atom processor, **2GB DDR 1600 RAM**, and a **16GB SSD**. While this setup met my needs, it had limitations, particularly with network connectivity. You can read a blog post I made back in 2019 when I first purchased this router [here](/blog/replacing-my-router-with-pfsense-with-a-qotom-q150p-s08-from-aliexpress/).
+
+### Why Upgrade?
+
+The **Qotom Mini PC** only had **two Ethernet ports**, which wouldn't be an issue for most users. However, I had a **secondary backup connection**, and one of these ports was reserved for the **LAN**. To work around this, I configured **VLANs** on the single **WAN port** and my network switch to handle multiple WAN connections. 
+
+Over time, managing these VLANs became complex, and I realized it would be much more efficient to have a **dedicated network card** with additional ports directly on the router.
+
+### Choosing the Lenovo M720Q
+
+After some research, I noticed that many people recommended the **Lenovo M720Q Mini PC**. The key reason for selecting this specific model is that it allows for a **PCI Express adapter**, enabling the addition of a **multi-port network card**. I opted for an **Intel I350-T4** network card. (a Dell-branded version, but functionally identical).
+
+#### Hardware Purchase List
+
+I managed to source the following components from eBay:
+
+- **Lenovo M720Q** - 8GB RAM, 256GB NVMe SSD, Intel Core i3-8100T CPU @ 3.10GHz
+- **Dell Intel I350-T4** network card
+- [**PCI adapter cable**](https://www.ebay.com/itm/166436670125)
+- [**Case bracket** for the network card](https://www.ebay.com/itm/404639558272)
+- **90W Lenovo PSU** (as my unit didn’t come with one)
+
+**Total Cost:** £125.00, this was the same cost as the Qotom Mini PC I purchased in 2019.
+
+### Setting Up the New Router
+
+Once all the components arrived, I began by backing up the configuration of my existing **pfSense** router. Then, I transferred this backup to the **new router** while connecting my computer directly to the router via LAN. At this stage, the new router was **not yet connected to a WAN**.
+
+#### Benefits of Direct Connection
+
+- Prevents **multiple DHCP servers** on the same network.
+- Once the backup is restored, the new device will retain the **same assigned IP address** as the previous pfSense router.
+
+After restoring the settings, I reviewed the configuration. Most settings transferred correctly, but I had to adjust the **network interfaces** to account for the **four-port network card** instead of the previous internal ports.
+
+### Testing and Deployment
+
+After verifying the settings, I temporarily connected my **main WAN** Internet connection to ensure the new router could establish a connection. Everything worked perfectly!
+
+I scheduled the final **router swap** for an evening when my family didn't require Internet access. The transition was seamless, and the upgraded router is now fully operational.
+
+### Performance Improvements
+
+Even though the **Lenovo M720Q** is not brand-new hardware, it performs significantly better than my old setup. The improved specs allow me to:
+
+- **Retain more logs** with additional storage space.
+- **Install more advanced packages** for enhanced network functionality.
+
+### What’s Next for the Old Router?
+
+I'm not entirely sure what I'll do with my old **Qotom Mini PC**. Some possibilities include:
+
+- **Repurposing it as a backup router.**
+- **Using it as a test machine** in my homelab.
+- **Reconditioning it for another lightweight use case.**
+
+However, given its limited specs, I’m unsure if it’s worth the effort.
+
+### Final Thoughts
+
+Overall, I’m very pleased with this upgrade. The **Lenovo M720Q** provides better performance, additional network ports, and I now have a larger hard-drive which I can use to install more advanced packages.

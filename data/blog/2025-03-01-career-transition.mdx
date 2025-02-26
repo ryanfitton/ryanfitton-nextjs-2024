@@ -1,0 +1,81 @@
+---
+title: "Career transition: Web Development to Dev-Ops"
+authors: ['Ryan Fitton']
+date: '2025-03-01'
+tags: ['Personal']
+draft: true
+summary: 'My thoughts and reasonings for why I want to transition my career from Web Development to Dev-Ops.'
+---
+
+## From Web Dev to DevOps: My Natural Evolution
+
+### The Seeds Were Already Planted
+
+For as long as I can remember being a web developer, I've had one foot in the operations world. While my day job involved creating code and building responsive interfaces, my downtime was tinkering with servers and exploring the Linux, including self-hosted software communities.
+
+This journey began over a decade ago when I first spun up a Digital Ocean droplet during the platform's early days, circa 2015. There was something satisfying about having complete control over the environment hosting my personal website at the time. What started as curiosity quickly evolved into a passion.
+
+### My Home Lab Evolution
+
+My operations journey has followed a natural progression. From those initial experimentation with Digital Ocean, I eventually brought everything home, building a custom 1U server running Ubuntu Server 18.04. The server was forwarded via a HaProxy container to the public Internet. I already have Vlans setup on my home network, so this machine was entirely isolated from the rest of the devices on the network. As I didn't have a static IP address from my ISP, I used Dynamic DNS services, originally Hurricane Electric and more recently; Cloudflare.
+
+For years, I managed everything via command line, becoming increasingly comfortable in Bash and learning the intricacies of server configuration. Each problem solved and each optimization made brought both immediate satisfaction and deepened my knowledge.
+
+#### From Manual to Automated
+
+As my infrastructure grew more complex, so did the maintenance overhead. I began to experience firsthand the pain points that had driven the DevOps revolution in the first place:
+
+- Manual configuration led to inconsistencies between environments
+- One-off changes were difficult to track and replicate
+- Repetitive tasks consumed hours that could be better spent elsewhere
+
+This led me to explore Linux Containers for isolation and resource efficiency. While this improved my setup significantly, I was still handling too much manually. The next logical step was automation.
+
+The first step into this automation was using a self-hosted version of Ubuntu Landscape, which I could use to apply software and OS updates accross my services. However, that quickly become slow and cumbersome, servers would often fall offline. Over a few years I decided I need to convert over to a proper Hypervisor and more robust server task management system.
+
+### Embracing Modern DevOps Tools
+
+I decided to use Ansible and Proxmox. Over the past 6 months from mid 2024 to early 2025, I've been diving into new tools which are transforming how I manage my infrastructure:
+
+**Ansible** has revolutionized how I approach server configuration. Writing playbooks to automate previously tedious tasks has been incredibly satisfying. What once took hours of manual work now happens consistently with a single command. For example, see this blog post [here](/blog/learning-ansible/).
+
+**Proxmox** has taken my home lab to the next level, providing a robust platform for managing virtual machines and containers. The ability to snapshot, clone, and migrate workloads has made experimentation and disaster recovery significantly easier. I have an automated backup job scheduled to create and export backups of my services to a Synology NAS, which has hard-drives mirrored for redundancy.
+
+### Why DevOps Is My Natural Next Step
+
+After reflecting on my journey, I've realized that transitioning from web development to DevOps isn't so much a career change as it is acknowledging where my interests and skills have already taken me.
+
+#### The Perfect Blend of Development and Operations
+
+What excites me most about DevOps is how it bridges two worlds I already inhabit:
+
+1. **My developer mindset** values clean code, automation, and elegant solutions to complex problems.
+2. **My operations experience** has taught me about system architecture, performance optimization, and the importance of reliability.
+
+DevOps sits at this intersection, applying software development principles to infrastructure challenges while maintaining a holistic view of the entire system.
+
+#### The Skills Transfer Is Real
+
+Many of the skills I've developed as a web developer transfer beautifully to DevOps:
+
+- **Version control:** Managing code with Git is directly applicable to Infrastructure as Code
+- **Testing frameworks:** The same principles apply when testing infrastructure changes
+- **CI/CD concepts:** The deployment pipelines I built for web applications work similarly for infrastructure
+- **Problem-solving approach:** Debugging a server issue uses the same methodical process as finding a bug in code
+
+### What's Next in My Journey
+
+As I make this transition more official, I'm focusing on several areas:
+
+- Deepening my knowledge of cloud platforms beyond my Digital Ocean beginnings. I'm willing to learn Azure, AWS and Google Cloud systems
+- Building more sophisticated CI/CD pipelines for both applications and infrastructure
+- Exploring Kubernetes to orchestrate more complex container deployments
+- Contributing to open-source DevOps tools and communities
+
+### Conclusion
+
+Looking back, this transition feels less like a radical change and more like following a path I've been on for years. My journey in web development and server management have been converging naturally toward DevOps.
+
+For other web developers considering a similar transition, I'd encourage you to reflect on whether you're already doing DevOps work in your spare time. If you find yourself excited about automation, infrastructure, and bridging the gap between development and operations, this might be your natural transition too.
+
+The web development skills you've built aren't being abandoned—they're being augmented and applied in a broader context. In many ways, it's not about leaving web development behind, but about expanding your impact across the entire software lifecycle.

@@ -1,0 +1,112 @@
+---
+title: "Transforming My Home Network and Upskilling in Tech 2024–2025 (So far!)"
+authors: ['Ryan Fitton']
+date: '2025-04-04'
+tags: ['Development']
+draft: true
+summary: 'In 2024, I set out to upskill myself in various tech areas while ...'
+---
+
+## Introduction
+
+In 2024, I set out to upskill myself in various tech areas while optimizing my home network. My goals were to cut costs, explore new technologies, simplify my network stack, and transition from Linux Containers to Virtual Machines (VMs) managed with Proxmox and Ansible.
+
+Over the past 7–8 years, my home setup had grown complex, making it hard to manage, upgrade, or back up. It was time for a major overhaul.
+
+---
+
+### Moving to Next.JS and Decommissioning WordPress
+
+The first step was learning **Next.JS** to replace WordPress, which powered my blog. With Next.JS, I could host my site statically on GitHub Pages, allowing me to retire my 1U web server.
+
+By the end of 2024, I had completed this transition, achieving a faster, more streamlined blog hosted with minimal overhead.
+
+---
+
+### Mastering Ansible for System Management
+
+Next, I focused on learning **Ansible** to simplify managing services across my home network. After a month of refining playbooks, I had a functional system that allowed for seamless automation. Resources like Jeff Geerling’s book and online documentation were invaluable in this process.
+
+#### Ansible Playbook Organization
+
+Here’s how I structured my Ansible playbooks:
+
+| Folder (Playbooks)           | Description                                                              |
+| ---------------------------- | ------------------------------------------------------------------------ |
+| `/commissioning`             | Configures all hosts/VMs (e.g., SSH keys, time zones, and custom users). |
+| `/file-server`               | Installs Samba and sets up network shares.                               |
+| `/media-server`              | Installs Emby and configures media libraries via Samba shares.           |
+| `/misc`                      | Miscellaneous tasks (e.g., ping, upgrades, inventory info).              |
+| `/network-controller-server` | Sets up the Unifi Network Controller.                                    |
+| `/print-server`              | Installs CUPS for network printing.                                      |
+| `/web-server`                | Configures an Nginx web server for hosting internal static sites.        |
+
+The playbooks were tested on **Ubuntu 24.x** and **Debian 12.x**, ensuring compatibility across systems. Read more [here](/blog/learning-ansible/), or visit the example [Github repo](https://github.com/ryanfitton/ansible-playbooks-example).
+
+---
+
+### Building a New Home Server
+
+After years of reliable service, my existing server had become outdated. Performance issues and aging hardware made an upgrade essential.
+
+#### Choosing New Hardware
+
+I opted for a cost-effective yet capable configuration:
+
+| Component              | Description                                             |
+| ---------------------- | ------------------------------------------------------- |
+| **CPU**                | AMD Ryzen 5 4600G (6-core, 12-thread, 3.7 GHz)          |
+| **Motherboard**        | Gigabyte A520M K V2 (AM4, Micro ATX)                    |
+| **Memory**             | 32GB Crucial DDR4 (Non-ECC, 3200 MHz)                   |
+| **Storage (New)**      | Samsung HP 512GB NVMe SSD, 2x 8TB Seagate IronWolf HDDs |
+| **Storage (Existing)** | 2x 3TB WD Red HDDs                                      |
+| **Network Card**       | Dell Intel I350-T4 PCI-E (4-port)                       |
+| **PSU**                | Corsair 430W CX (Bronze Certified)                      |
+| **Hot-Swap Rack**      | StarTech 4-Bay Aluminum Trayless Backplane              |
+
+The total cost, including a **JetKVM** for remote management, was £637.
+
+#### Setting Up Proxmox
+
+With the hardware assembled, I installed **Proxmox**, setting DHCP reservations on my pfSense router. Using ZFS, I organized storage into two pools:
+
+##### ZFS Pools
+
+| Pool     | Purpose               | Drives                 |
+| -------- | --------------------- | ---------------------- |
+| `stores` | VM and NAS storage    | Mirrored on 8TB drives |
+| `vault`  | Backups and snapshots | Mirrored on 3TB drives |
+
+Key datasets included:
+
+| Dataset           | Pool     | Description                            |
+| ----------------- | -------- | -------------------------------------- |
+| `stores/nasdata`  | `stores` | Holds NAS data (movies, music, files). |
+| `stores/vmstore`  | `stores` | Stores VM operating systems.           |
+| `vault/backups`   | `vault`  | Stores VM backups.                     |
+| `vault/snapshots` | `vault`  | Stores VM snapshots.                   |
+
+Proxmox’s graphical interface has been a significant improvement, simplifying the management of VMs compared to command-line Linux Containers.
+
+---
+
+### Achievements and Learnings (2024–2025)
+
+From August 2024 to March 2025, here’s what I accomplished:
+
+- **Learning Next.JS** and the **Tailwind CSS** framework.
+- **Rebuilding my personal blog** using the [Tailwind Starter Blog](https://github.com/timlrx/tailwind-nextjs-starter-blog) template, with custom portfolio post types.
+- **Hosting my blog on GitHub Pages**, using a GitHub worker for automatic uploads.
+- **Configuring Cloudflare Image Transformer** for optimized image handling.
+- **Learning Ansible** and developing structured playbooks for managing services.
+- **Decommissioning the 1U web server** to reduce costs and complexity.
+- **Building a new home server** and setting up Proxmox.
+- **Upgrading my pfSense router** from a Qotom Mini PC to a Lenovo ThinkCentre M720Q (blog post coming soon!).
+
+---
+
+### Final Thoughts
+
+This journey has been as rewarding as it has been educational. From learning new technologies like Next.JS and Ansible to streamlining my network setup, I’ve gained hands-on experience that will undoubtedly be useful for future projects.
+
+I’m excited to continue exploring and improving my home lab in 2025.
