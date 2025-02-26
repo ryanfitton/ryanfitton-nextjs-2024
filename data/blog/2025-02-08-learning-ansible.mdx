@@ -41,8 +41,6 @@ I initially tested these playbooks against a virtual machine. I encountered issu
 
 As I have protected my private SSH keys, sensitive variables, and some configuration files with Ansible Vault, entering the vault secret is required to unlock them. For each, this should be added to the `vault/vault.pass` file so it can be referenced by multiple scripts.
 
-*Note:* All of the servers mentioned in this repo are hosted within my home network and are not accessible from the outside. I no longer have any publicly hosted servers ([since I now host my site with GitHub Pages](https://ryanfitton.co.uk/blog/rebuilding-with-nextjs/)), so I don't require an external server. The SSH keys stored in this [GitHub Repo](https://github.com/ryanfitton/ansible-playbooks-home-servers) are only used on my internal servers. While I know this is not the norm and private keys should be protected more securely, I’m not overly concerned about this in a home setup. This may change in the future, and if it does, SSH private keys will be removed from this repo, and existing keys will be re-generated.
-
 Each playbook can be run from the command line like this:
 
 ```
@@ -58,4 +56,4 @@ I will likely add additional tasks in the future and update the 'misc' playbooks
 
 For now, I still need to clean up the repo's Readme file as it's quite messy. Then I will start migrating all of my services with these playbooks. For now, the Print Server is the only playbook that is live.
 
-You can access this project repo here: [https://github.com/ryanfitton/ansible-playbooks-home-servers](https://github.com/ryanfitton/ansible-playbooks-home-servers)
+You can access an example version of these Ansible Playbooks here: [https://github.com/ryanfitton/ansible-playbooks-example](https://github.com/ryanfitton/ansible-playbooks-example)
