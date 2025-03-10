@@ -9,8 +9,22 @@ summary: 'Two example Ansible playbook scripts I have created to enable support 
 
 ## Introduction
 
-Lorem Ipsum
+I have recently setup Frigate (running under Docker) on an Ubuntu 24.04 server, this server is a virtual machine running under Proxmox. 
 
+These Ansible tasks will allow a Coral PCIe Edge TPU to be passed from the host (Proxmox) to the virtual machine where Frigate is installed.
+
+I had some issues originally, and with the help of these online forum posts I have been able to have Frigate up-and-running with the Coral device:
+
+* [https://coral.ai/docs/m2/get-started/#2a-on-linux](https://coral.ai/docs/m2/get-started/#2a-on-linux)
+* [https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/](https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/)
+* [https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/](https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/)
+* [https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/](https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/)
+* [https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/](https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/)
+* [https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html](https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html)
+* [https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/](https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/)
+* [https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/](https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/)
+
+<a href="/cdn-cgi/image/quality=75,format=webp/static/img/blog/2025/03/frigate-coral-tpu-metrics.png" target="_blank"><img loading="lazy" src="/cdn-cgi/image/width=1400,quality=75,format=webp/static/img/blog/2025/03/frigate-coral-tpu-metrics.png" alt="Frigate Metrics" width="1400" height="633" /></a>
 
 ## Proxmox playbook tasks
 
@@ -36,15 +50,6 @@ These tasks will:
 ```
 ---
 # This will pass through the Coral PCIe Accelerator to the specific Proxmox virtual machine
-# From:
-#   https://coral.ai/docs/m2/get-started/#2a-on-linux
-#   https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/
-#   https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/
-#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
-#   https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/
-#   https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html
-#   https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/
-#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
 - name: Set Coral device facts
   set_fact:
     device_id: "1ac1:089a"                    # Coral PCIe device ID
@@ -263,15 +268,6 @@ These tasks will:
 ```
 ---
 # Coral PCIe Passthrough - This will configure the Coral PCIe device in Frigate
-# From:
-#   https://coral.ai/docs/m2/get-started/#2a-on-linux
-#   https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/
-#   https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/
-#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
-#   https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/
-#   https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html
-#   https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/
-#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
 #   
 # After running this play, setup the device in Frigate's config: https://docs.frigate.video/configuration/object_detectors/
 # detectors:
@@ -427,4 +423,11 @@ detectors:
   coral:
     type: edgetpu
     device: pci
+```
+
+And if Frigate is running on this VM in a Docker container, you will need to ensure the Apex device is passed through to the docker container. You should be able to add this to your `docker-compose` file. As per the [Frigate docs](https://docs.frigate.video/frigate/installation/):
+
+```
+devices:
+    - /dev/apex_0:/dev/apex_0 # Passes a PCIe Coral, follow driver instructions here https://coral.ai/docs/m2/get-started/#2a-on-linux
 ```
