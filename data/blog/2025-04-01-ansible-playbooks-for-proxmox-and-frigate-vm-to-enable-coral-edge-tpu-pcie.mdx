@@ -1,0 +1,426 @@
+---
+title: "Ansible Playbooks for Proxmox and Frigate VM to enable Coral Edge TPU PCIe"
+authors: ['Ryan Fitton']
+date: '2025-04-04'
+tags: ['Development']
+draft: true
+summary: 'Two example Ansible playbook scripts I have created to enable support for Coral Edge TPU PCIe adapters on a VM host, which will assign the Coral to a Virtual Machine ready for the Frigate NVR system.'
+---
+
+## Introduction
+
+Lorem Ipsum
+
+
+## Proxmox playbook tasks
+
+Use these tasks to integrate into your Ansible playbooks. Please note:
+
+* Set your Coral device ID here: `device_id`. I'm using `1ac1:089a` which appears to be the default for the PCIe adapter.
+* Then set your `proxmox_virtual_machine_passthrough` to your virtual machine ID for the Frigate NVR e.g. `101` 
+
+These tasks will:
+
+1. Look for the Coral device on your system using `lspci`.
+2. If found, it will continue to configure the device:
+3. Retrieve the PCI Bus Number
+4. Check if the device is in it's own 'iommu' group ID. This is required as passthrough will not work if the device is not assigned it's own group.
+5. I have added a work around to update the Grub Bootloader with the `pcie_acs_override=downstream,multifunction"` option. This task will ask you to confirm first before running. It's important you have a backup of your system before continuing. I had good success with this Grub argument to force the device into it's own group. However there may be security issues enabling this, I'm not running this on a production envrionment so not too bothered about these issues.
+6. After a reboot, the device will be checked again to ensure it is in it's own 'iommu' group ID.
+7. If yes, a black list file for the device will be created at `/etc/modprobe.d/blacklist-apex.conf`.
+8. Then Apex and Gasket modules will be checked to ensure they're installed on the system.
+9. Finally the Coral device will be assigned to the hardware list for your virtual machine ID specificed in `proxmox_virtual_machine_passthrough`.
+
+### Playbook tasks:
+
+```
+---
+# This will pass through the Coral PCIe Accelerator to the specific Proxmox virtual machine
+# From:
+#   https://coral.ai/docs/m2/get-started/#2a-on-linux
+#   https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/
+#   https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/
+#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
+#   https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/
+#   https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html
+#   https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/
+#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
+- name: Set Coral device facts
+  set_fact:
+    device_id: "1ac1:089a"                    # Coral PCIe device ID
+    proxmox_virtual_machine_passthrough: 101  # The ID of your Virtual Machine in Proxmox
+
+- name: Check the Coral PCI device is found on the system
+  become: true
+  shell:
+    cmd: lspci -nnk | grep {{ device_id}}
+  register: coral_found
+  ignore_errors: true
+
+# If device ID not found
+- when: device_id not in coral_found.stdout
+  block:
+    - name: Fail, cannot continue
+      ansible.builtin.fail:
+        msg: "Coral Device ID `{{ device_id }}` not found in `lspci -nnk`. Now failing."
+
+# If device ID has been found
+- name: Coral Device ID `{{ device_id }}` has been found. Continuing to pass the device through to container {{ proxmox_virtual_machine_passthrough }}
+  when: device_id in coral_found.stdout
+  block:
+    - name: Result from the `lspci -nnk`
+      debug: msg="{{ coral_found.stdout }}"
+
+    - name: Updating Coral facts
+      set_fact:
+        # Split by ` System peripheral` and store the first value which is the PCI device bus number
+        device_bus_number: "{{ coral_found.stdout.split(' System peripheral')[0] }}"
+
+    # Device bus iommu group check
+    - name: Device bus iommu group check
+      when: device_bus_number is defined
+      block:
+        - name: Make the device bus is in an iommu group
+          become: true
+          shell:
+            cmd: find /sys/kernel/iommu_groups/ -type l | grep {{ device_bus_number }}
+          register: bus_iommu_groups_find
+
+        - name: Result from `find /sys/kernel/iommu_groups/ -type l`
+          debug: msg="{{ bus_iommu_groups_find.stdout }}"
+
+        - name: Updating Coral facts
+          set_fact:
+            # Remove the `/sys/kernel/iommu_groups/` text and split by `/` and store the first value which is the iommu group ID number
+            bus_iommu_group_id: "{{ (bus_iommu_groups_find.stdout|replace('/sys/kernel/iommu_groups/','')).split('/')[0] }}"
+
+        - name: Storing group ID number to facts
+          debug: msg="{{ bus_iommu_group_id }}"
+
+        - name: Now check to make sure no other devices are using iommu group ID `{{ bus_iommu_group_id }}`. Passthrough won't work if more than one device in the same group.
+          become: true
+          shell:
+            cmd: find /sys/kernel/iommu_groups/ -type l | grep /{{ bus_iommu_group_id }}/
+          register: bus_iommu_groups_folder_find
+
+        - name: Result from `find /sys/kernel/iommu_groups/ -type l | grep /{{ bus_iommu_group_id }}/`
+          debug: msg="{{ bus_iommu_groups_folder_find.stdout }}"
+
+
+        # Update Grub to force break-up of iommu devices if the device is sharing a group with other devices
+        - name: If more than one device in the iommu group ID {{ bus_iommu_group_id }}
+          when: bus_iommu_groups_folder_find.stdout_lines | length > 1
+          block:
+            - name: Note
+              debug: msg="It appears more than one device in the iommu group ID {{ bus_iommu_group_id }}. This will require a GRUB amendment..."
+
+            - name: Question
+              ansible.builtin.pause:
+                prompt: "Do you wish to update GRUB? (yes/no)"
+              register: update_grub
+
+            - name: Updating GRUB
+              when: update_grub.user_input | lower == 'yes'
+              block:
+                - name: Set GRUB options for Intel systems to force break-up of iommu devices
+                  become: true
+                  ansible.builtin.lineinfile:
+                    path: /etc/default/grub
+                    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+                    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on pcie_acs_override=downstream,multifunction"'
+                    backrefs: yes
+                  when: ansible_processor[1] == 'GenuineIntel'
+
+                - name: Set GRUB options for AMD systems to force break-up of iommu devices
+                  become: true
+                  ansible.builtin.lineinfile:
+                    path: /etc/default/grub
+                    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT='
+                    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on pcie_acs_override=downstream,multifunction"'
+                    backrefs: yes
+                  when: ansible_processor[1] == 'AuthenticAMD'
+
+                - name: Run `update-grub`
+                  become: true
+                  ansible.builtin.command:
+                    cmd: update-grub
+
+                - name: Rebooting machine
+                  become: true
+                  ansible.builtin.reboot:
+                    reboot_timeout: 300
+                    msg: "Rebooting machine in 5 seconds"
+                    # reboot_timeout: 3600
+
+                - name: Re-check to make the device bus is in an iommu group
+                  become: true
+                  shell:
+                    cmd: find /sys/kernel/iommu_groups/ -type l | grep {{ device_bus_number }}
+                  register: bus_iommu_groups_find
+
+                - name: Result from `find /sys/kernel/iommu_groups/ -type l`
+                  debug: msg="{{ bus_iommu_groups_find.stdout }}"
+
+                - name: Updating Coral facts
+                  set_fact:
+                    # Remove the `/sys/kernel/iommu_groups/` text and split by `/` and store the first value which is the iommu group ID number
+                    bus_iommu_group_id: "{{ (bus_iommu_groups_find.stdout|replace('/sys/kernel/iommu_groups/','')).split('/')[0] }}"
+
+                - name: Storing group ID number to facts
+                  debug: msg="{{ bus_iommu_group_id }}"
+
+                - name: Now re-checking again to make sure no other devices are using iommu group ID `{{ bus_iommu_group_id }}`.
+                  become: true
+                  shell:
+                    cmd: find /sys/kernel/iommu_groups/ -type l | grep /{{ bus_iommu_group_id }}/
+                  register: recheck_bus_iommu_groups_folder_find
+
+                - name: Result from `find /sys/kernel/iommu_groups/ -type l | grep /{{ bus_iommu_group_id }}/`
+                  debug: msg="{{ recheck_bus_iommu_groups_folder_find.stdout }}"
+
+                # If still more than one line
+                - when: recheck_bus_iommu_groups_folder_find.stdout_lines | length > 1
+                  block:
+                    - name: Fail, cannot continue
+                      ansible.builtin.fail:
+                        msg: "Updating group to force break-up of iommu devices has not been successful. Devices are still grouped."
+
+
+    # Blacklist the device on the Promox host only if the Device ID is found, and the Device Bus Number and iommu Group ID is defined from the previous block
+    - name: Check if the blacklist file exists
+      become: true
+      stat:
+        path: /etc/modprobe.d/blacklist-apex.conf
+      register: blacklist_apex_file
+    
+    - name: Blacklist the device on the Promox host
+      when: device_id and device_bus_number and bus_iommu_group_id is defined and blacklist_apex_file.stat.exists == False
+      block:
+        - name: Create a new blacklist file
+          become: true
+          ansible.builtin.copy:
+            content: |
+                    blacklist gasket
+                    blacklist apex
+                    options vfio-pci ids={{ device_id }}
+            dest: /etc/modprobe.d/blacklist-apex.conf
+
+        - name: Update initramfs
+          become: true
+          ansible.builtin.command:
+            cmd: >
+              update-initramfs -u -k all
+
+        - name: Rebooting machine
+          become: true
+          ansible.builtin.reboot:
+            reboot_timeout: 300
+            msg: "Rebooting machine in 5 seconds"
+            # reboot_timeout: 3600
+
+    # Verify that the apex and gasket modules did not load (they should be blacklisted, therefore should not appear)
+    - name: Verify that the apex and gasket modules did not load
+      become: true
+      shell:
+        cmd: lsmod | grep apex
+      register: apex_found
+      ignore_errors: true
+
+    # If this does appear, it has not been blacklisted correctly
+    - when: apex_found.stdout | length > 0
+      block:
+        - name: Fail, cannot continue
+          ansible.builtin.fail:
+            msg: "Apex and gasket modules has been found when running `lsmod | grep apex`. The device may not have been blacklisted correctly. Now failing."
+        
+
+    # Add the device to the VM if the device is blacklists, and the VM ID and Device Bus Number is defined
+    - name: Add the device to the VM  ID `{{ proxmox_virtual_machine_passthrough }}`
+      when: apex_found.stdout | length == 0 and proxmox_virtual_machine_passthrough is defined and device_bus_number is defined
+      become: true
+      shell:
+        cmd: qm set {{ proxmox_virtual_machine_passthrough }} -hostpci0 {{ device_bus_number }}
+```
+
+## Frigate NVR VM playbook tasks
+
+Once you have run the tasks above on the Proxmox host, you will now need to run these tasks in the virtual machine used by Frigate.
+
+Use these tasks to integrate into your Ansible playbooks. Please note:
+
+1. Look for the Coral device on your system using `lspci`.
+2. You will be prompted to confirm you wish to setup the device passthrough.
+3. Apex and Gasket drivers will be checked, and if not found they will be downloaded and built from source from here: [https://github.com/google/gasket-driver](https://github.com/google/gasket-driver).
+4. The Apex group and User will be created
+5. Then the virtual machine will be rebooted and the Apex device will be checked again.
+
+### Playbook tasks:
+
+```
+---
+# Coral PCIe Passthrough - This will configure the Coral PCIe device in Frigate
+# From:
+#   https://coral.ai/docs/m2/get-started/#2a-on-linux
+#   https://forum.proxmox.com/threads/pci-specific-device-passthrough.91226/
+#   https://www.reddit.com/r/Proxmox/comments/n34f8q/proxmox_vm_ubuntu_2004_frigate_2x_google_coral_tpu/
+#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
+#   https://forum.proxmox.com/threads/issue-unable-to-separate-gpu-devices-into-different-iommu-groups.151820/
+#   https://www.derekseaman.com/2023/06/home-assistant-frigate-vm-on-proxmox-with-pcie-coral-tpu.html
+#   https://forum.proxmox.com/threads/proxmox-host-unresponsive-after-starting-vm-with-pci-coral-tpu-passed-through.151346/
+#   https://forum.proxmox.com/threads/struggling-with-pcie-passthru-on-new-pve-build.108385/
+#   
+# After running this play, setup the device in Frigate's config: https://docs.frigate.video/configuration/object_detectors/
+# detectors:
+#   coral:
+#     type: edgetpu
+#     device: pci
+#   
+
+- name: Coral PCIe passthrough Question
+  ansible.builtin.pause:
+    prompt: "Do you wish to setup Coral Passthrough from the host? (yes/no)"
+  register: setup_coral_passthrough
+
+- name: Setting up Coral PCIe passthrough (Yes)
+  when: setup_coral_passthrough.user_input | lower == 'yes'
+  block:
+    - name: Set Coral device facts
+      set_fact:
+        device_id: "1ac1:089a"                    # Coral PCIe device ID
+
+    - name: Check the Coral PCI device is found on the system
+      become: true
+      shell:
+        cmd: lspci -nnk | grep {{ device_id}}
+      register: coral_found
+      ignore_errors: true
+
+    # If device ID not found
+    - when: device_id not in coral_found.stdout
+      block:
+        - name: "Note"
+          debug: msg="Coral Device ID `{{ device_id }}` not found in `lspci -nnk`."
+
+    # If device ID is found then continue
+    - when: device_id in coral_found.stdout
+      block:
+        - name: "Note"
+          debug: msg="Coral Device ID `{{ device_id }}` found in `lspci -nnk`."
+
+        - name: "Result from lspci -nnk | grep {{ device_id}}"
+          debug: msg="{{ coral_found.stdout }}"
+
+        - name: Check for Apex drivers installed on the system
+          become: true
+          shell:
+            cmd: lsmod | grep apex
+          register: apex_drivers
+          ignore_errors: true
+
+        - name: "Result from lsmod | grep apex"
+          debug: msg="{{ apex_drivers.stdout }}"
+
+        # If not drivers found, continue to install PCIe drivers
+        - when: apex_drivers.stdout | length == 0
+          block:
+            - name: Add repo
+              become: true
+              shell: echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+            
+            - stat: path=/usr/share/keyrings/cloud.google.com.apt-key.gpg
+              register: repo_key
+
+            - name: Install repo key
+              when: not repo_key.stat.exists
+              become: true
+              shell: curl -fsSL https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg -o /usr/share/keyrings/cloud.google.com.apt-key.gpg --dearmor
+              
+            - name: Update the cache. Only if the last one is more than 3600 seconds ago (apt-get update)
+              ansible.builtin.apt:
+                update_cache: yes
+                cache_valid_time: 3600
+
+            - name: Install required packages for Build, PCIe driver and Edge TPU runtime
+              become: true
+              apt:
+                name:
+                  - devscripts
+                  - debhelper
+                  - dh-dkms
+                  - git
+                state: present
+
+            - name: Clone Git repo for Gasket driver
+              become: true
+              ansible.builtin.git:
+                repo: "https://github.com/google/gasket-driver.git"
+                dest: "gasket-driver"
+                force: yes
+
+            - name: "Build and install Gasket driver"
+              become: true
+              ansible.builtin.shell: |
+                cd gasket-driver/ \
+                  && debuild -us -uc -tc -b \
+                  && cd ../ \
+                  && dpkg -i gasket-dkms_1.0-18_all.deb
+
+            - name: Install additional required packages
+              become: true
+              apt:
+                name:
+                  - libedgetpu1-std
+                state: present
+
+            - name: "Add the `apex` group"
+              become: true
+              ansible.builtin.shell: |
+                sh -c "echo 'SUBSYSTEM==\"apex\", MODE=\"0660\", GROUP=\"apex\"' >> /etc/udev/rules.d/65-apex.rules" \
+                  && groupadd apex \
+                  && adduser $USER apex
+              ignore_errors: true
+
+            - debug:
+                msg: "NOTE: Now rebooting the machine as PCIe drivers have been installed"
+
+            - name: Rebooting machine
+              become: true
+              changed_when: true
+              ansible.builtin.reboot:
+                reboot_timeout: 300
+                msg: "Rebooting machine in 5 seconds"
+                # reboot_timeout: 3600
+
+            - name: Re-check for Apex drivers installed on the system
+              become: true
+              shell:
+                cmd: lsmod | grep apex
+              register: recheck_apex_drivers
+              ignore_errors: true
+
+            - name: "Result from lsmod | grep apex"
+              debug: msg="{{ recheck_apex_drivers.stdout }}"
+
+
+        # If drivers are found from the original check, or the re-check
+        - when: apex_drivers.stdout | length > 0 or recheck_apex_drivers.stdout | length > 0
+          block:
+            - name: Check for Apex devices
+              become: true
+              shell:
+                cmd: ls -al /dev/apex_0
+              register: apex_devices
+
+            - name: "Result from ls -al /dev/apex_0"
+              debug: msg="{{ apex_devices.stdout }}"
+
+```
+
+If all is successful, you can now enable Frigate to use the Edge TPU. Based on the Frigate docs (as of 10/03/2025) the following config is:
+
+```
+detectors:
+  coral:
+    type: edgetpu
+    device: pci
+```
