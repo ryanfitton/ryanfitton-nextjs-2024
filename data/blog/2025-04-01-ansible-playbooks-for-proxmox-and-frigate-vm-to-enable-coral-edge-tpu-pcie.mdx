@@ -1,7 +1,7 @@
 ---
 title: "Ansible Playbooks for Proxmox and Frigate VM to enable Coral Edge TPU PCIe"
 authors: ['Ryan Fitton']
-date: '2025-04-04'
+date: '2025-04-01'
 tags: ['Development']
 draft: true
 summary: 'Two example Ansible playbook scripts I have created to enable support for Coral Edge TPU PCIe adapters on a VM host, which will assign the Coral to a Virtual Machine ready for the Frigate NVR system.'
@@ -247,6 +247,10 @@ These tasks will:
 Once you have run the tasks above on the Proxmox host, you will now need to run these tasks in the virtual machine used by Frigate.
 
 Use these tasks to integrate into your Ansible playbooks. Please note:
+
+* Set your Coral device ID here: `device_id`. I'm using `1ac1:089a` which appears to be the default for the PCIe adapter.
+
+These tasks will:
 
 1. Look for the Coral device on your system using `lspci`.
 2. You will be prompted to confirm you wish to setup the device passthrough.
