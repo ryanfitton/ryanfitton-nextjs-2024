@@ -115,7 +115,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prose-hr component-posts-article__divider" />
 
-              <Ad adSlot="XXXX" />
+              <Ad adSlot="XXXX-1" />
 
               <hr className="prose-hr component-posts-article__divider" />
 
@@ -124,6 +124,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   <Comments slug={slug} />
                 </div>
               )}
+
+              <hr className="prose-hr component-posts-article__divider" />
+
+              <Ad adSlot="XXXX-2" />
             </article>
           </div>
         </div>

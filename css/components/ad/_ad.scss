@@ -1,0 +1,8 @@
+@layer components {
+    /* 
+        Posts Generic items
+    */
+  .component-ad {
+    @apply border-primary-100 dark:border-primary-800 border-2;
+  }
+}

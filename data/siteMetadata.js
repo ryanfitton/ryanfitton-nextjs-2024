@@ -32,6 +32,11 @@ const siteMetadata = {
       googleAnalyticsId: 'G-YLMTDYMQCC',
     },
   },
+  ads: {
+    googleAdsense: {
+      googleAdsenseId: 'ca-pub-3978227379460513',
+    },
+  },
   comments: {
     provider: 'disqus', // supported providers: `giscus`, `utterances`, `disqus`
     disqusConfig: {
