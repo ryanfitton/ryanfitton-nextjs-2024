@@ -5,6 +5,7 @@ import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
+import Ad from "@/components/Ad";
 import Tag from '@/components/Tag'
 import tagData from 'app/tag-data.json'
 import siteMetadata from '@/data/siteMetadata'
@@ -111,6 +112,10 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                   ))}
                 </ul>
               )}
+
+              <hr className="prose-hr component-posts-article__divider" />
+
+              <Ad adSlot="XXXX" />
 
               <hr className="prose-hr component-posts-article__divider" />
 

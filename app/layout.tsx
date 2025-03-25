@@ -167,6 +167,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Google AdSense verification */}
         <meta name="google-adsense-account" content="ca-pub-3978227379460513" />
+        <script
+            async
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3978227379460513"
+            crossOrigin="anonymous"
+          ></script>
       </head>
 
       <body>
