@@ -164,6 +164,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Mastodon author attribution verification */}
         <meta name="fediverse:creator" content="@ryanfitton@mastodon.social" />
+
+        {/* Google AdSense verification */}
+        <meta name="google-adsense-account" content="ca-pub-3978227379460513" />
       </head>
 
       <body>
