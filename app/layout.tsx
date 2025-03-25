@@ -164,21 +164,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {/* Mastodon author attribution verification */}
         {siteMetadata.mastodon ? (
-            <>
-                <meta name="fediverse:creator" content={siteMetadata.mastodon.match(/@[\w]+/)[0]} />
-            </>
+          <>
+            <meta name="fediverse:creator" content={siteMetadata.mastodon.match(/@[\w]+/)[0]} />
+          </>
         ) : null}
 
         {/* Google AdSense */}
         {siteMetadata.ads?.googleAdsense?.googleAdsenseId ? (
-            <>
-                <meta name="google-adsense-account" content={ siteMetadata.ads.googleAdsense.googleAdsenseId } />
-                <script
-                    async
-                    src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteMetadata.ads.googleAdsense.googleAdsenseId}`}
-                    crossOrigin="anonymous"
-                ></script>
-            </>
+          <>
+            <meta
+              name="google-adsense-account"
+              content={siteMetadata.ads.googleAdsense.googleAdsenseId}
+            />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteMetadata.ads.googleAdsense.googleAdsenseId}`}
+              crossOrigin="anonymous"
+            ></script>
+          </>
         ) : null}
       </head>
 

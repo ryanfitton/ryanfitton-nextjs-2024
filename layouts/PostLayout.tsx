@@ -5,7 +5,7 @@ import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
-import Ad from "@/components/Ad";
+import Ad from '@/components/Ad'
 import Tag from '@/components/Tag'
 import tagData from 'app/tag-data.json'
 import siteMetadata from '@/data/siteMetadata'
