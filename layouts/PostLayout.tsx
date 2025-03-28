@@ -5,6 +5,7 @@ import Comments from '@/components/Comments'
 import Link from '@/components/Link'
 import SectionContainer from '@/components/SectionContainer'
 import Image from '@/components/Image'
+import Ad from '@/components/Ad'
 import Tag from '@/components/Tag'
 import tagData from 'app/tag-data.json'
 import siteMetadata from '@/data/siteMetadata'
@@ -114,11 +115,19 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prose-hr component-posts-article__divider" />
 
+              <Ad adSlot="2783608258" adFormat="fluid" adLayout="in-article" />
+
+              <hr className="prose-hr component-posts-article__divider" />
+
               {siteMetadata.comments && (
                 <div className="component-posts-article__comments">
                   <Comments slug={slug} />
                 </div>
               )}
+
+              <hr className="prose-hr component-posts-article__divider" />
+
+              <Ad adSlot="9767850827" adFormat="fluid" adLayout="in-article" />
             </article>
           </div>
         </div>

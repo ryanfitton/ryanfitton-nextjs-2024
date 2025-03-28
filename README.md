@@ -14,6 +14,7 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
   - Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
   - Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
+  - Google AdSense ads and component (`Ad.tsx`).
 
 # Getting started
 
@@ -57,6 +58,22 @@ Exaples found in:
 
 - `data/blog/1970-01-01-EXAMPLE.mdx`
 - `data/portfolio/1970-01-01-EXAMPLE.mdx`
+
+# Misc
+
+## Disqus:
+
+This site uses Disqus for the commenting system on blog pages. Details to configure are in `data/siteMetadata.js`.
+
+## Google Analytics:
+
+This site uses Google Analytics for the analytics. Details to configure are in `data/siteMetadata.js`.
+
+## Google AdSense:
+
+This site uses Google AdSense to deliver ads on the Blog pages. Details to configure are in `data/siteMetadata.js`.
+
+Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
 
 # URLs
 

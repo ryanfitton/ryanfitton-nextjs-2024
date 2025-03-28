@@ -163,10 +163,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
 
         {/* Mastodon author attribution verification */}
-        <meta name="fediverse:creator" content="@ryanfitton@mastodon.social" />
+        {siteMetadata.mastodon ? (
+          <>
+            <meta name="fediverse:creator" content={siteMetadata.mastodon.match(/@[\w]+/)[0]} />
+          </>
+        ) : null}
 
-        {/* Google AdSense verification */}
-        <meta name="google-adsense-account" content="ca-pub-3978227379460513" />
+        {/* Google AdSense */}
+        {siteMetadata.ads?.googleAdsense?.googleAdsenseId ? (
+          <>
+            <meta
+              name="google-adsense-account"
+              content={siteMetadata.ads.googleAdsense.googleAdsenseId}
+            />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteMetadata.ads.googleAdsense.googleAdsenseId}`}
+              crossOrigin="anonymous"
+            ></script>
+          </>
+        ) : null}
       </head>
 
       <body>

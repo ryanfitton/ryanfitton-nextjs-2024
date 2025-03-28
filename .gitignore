@@ -1,5 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# VS Code
+/.devcontainer
+
 # dependencies
 /node_modules
 /.pnp
@@ -52,4 +55,4 @@ yarn-error.log*
 /r-code
 
 # Contentlayer
-.contentlayer
+/.contentlayer
