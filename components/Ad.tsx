@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function Ad({
-  adClient = siteMetadata.ads?.googleAdsense?.googleAdsenseId ? siteMetadata.ads.googleAdsense : '',
+  adClient = siteMetadata.ads?.googleAdsense?.googleAdsenseId ? siteMetadata.ads.googleAdsense.googleAdsenseId : '',
   adSlot,
   adFormat = 'auto',
   adLayout = '',
