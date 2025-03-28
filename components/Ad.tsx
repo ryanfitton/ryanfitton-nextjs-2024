@@ -27,15 +27,15 @@ export default function Ad({
 
   if (adClient && adSlot) {
     return (
-      <ins
-        className="component-block component-ad"
-        data-ad-client={adClient}
-        data-ad-slot={adSlot}
-        data-ad-format={adFormat}
-        data-ad-layout={adLayout}
-      >
-        TEST
-      </ins>
+      <div className="component-block component-block--outline-secondary component-block--rounded component-ad">
+        <ins
+          className="adsbygoogle"
+          data-ad-client={adClient}
+          data-ad-slot={adSlot}
+          data-ad-format={adFormat}
+          data-ad-layout={adLayout}
+        ></ins>
+      </div>
     )
   }
 }
