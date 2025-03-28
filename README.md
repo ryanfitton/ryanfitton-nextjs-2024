@@ -63,15 +63,17 @@ Exaples found in:
 
 ## Disqus:
 
-Lorem Ipsum
+This site uses Disqus for the commenting system on blog pages. Details to configure are in `data/siteMetadata.js`.
 
 ## Google Analytics:
 
-Lorem Ipsum
+This site uses Google Analytics for the analytics. Details to configure are in `data/siteMetadata.js`.
 
 ## Google AdSense:
 
-Lorem Ipsum
+This site uses Google AdSense to deliver ads on the Blog pages. Details to configure are in `data/siteMetadata.js`.
+
+Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
 
 # URLs
 
