@@ -4,7 +4,7 @@ import siteMetadata from '@/data/siteMetadata'
 import { useEffect } from 'react'
 
 interface Props {
-  adClient: string
+  adClient?: string
   adSlot: string
   adFormat?: string
   adLayout?: string
