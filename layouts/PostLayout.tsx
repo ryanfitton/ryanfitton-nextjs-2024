@@ -115,7 +115,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prose-hr component-posts-article__divider" />
 
-              <Ad adSlot="XXXX-1" />
+              <Ad adSlot="2783608258" adFormat="fluid" adLayout="in-article" />
 
               <hr className="prose-hr component-posts-article__divider" />
 
@@ -127,7 +127,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
               <hr className="prose-hr component-posts-article__divider" />
 
-              <Ad adSlot="XXXX-2" />
+              <Ad adSlot="9767850827" adFormat="fluid" adLayout="in-article" />
             </article>
           </div>
         </div>
