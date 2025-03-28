@@ -3,9 +3,9 @@
         Posts Generic items
     */
   .component-ad {
-    @apply relative flex items-center justify-center w-full p-6;
-    @apply before:absolute before:-top-3 before:left-3 before:absolute before:content-['Advertisement'] before:text-sm before:uppercase before:text-secondary-100 dark:before:text-secondary-800 before:bg-white dark:before:bg-stone-950 before:px-2;
-    
+    @apply relative flex w-full items-center justify-center p-6;
+    @apply before:text-secondary-100 dark:before:text-secondary-800 before:absolute before:-top-3 before:left-3 before:bg-white before:px-2 before:text-sm before:uppercase before:content-['Advertisement'] dark:before:bg-stone-950;
+
     .adsbygoogle {
       @apply w-full;
     }

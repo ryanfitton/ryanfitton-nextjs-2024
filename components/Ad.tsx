@@ -18,8 +18,11 @@ export default function Ad({
 }: Props) {
   useEffect(() => {
     try {
-      ;(window as any).adsbygoogle = (window as any).adsbygoogle || []
-      ;(window as any).adsbygoogle.push({})
+      if (typeof window !== 'undefined') {
+        const w = window as unknown as { adsbygoogle?: unknown[] }
+        w.adsbygoogle = w.adsbygoogle || []
+        w.adsbygoogle.push({})
+      }
     } catch (e) {
       console.error('Error loading ads:', e)
     }

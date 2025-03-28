@@ -16,7 +16,6 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
   - Google AdSense ads and component (`Ad.tsx`).
 
-
 # Getting started
 
 ## Running local:
@@ -43,7 +42,6 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
-
 # Github pages
 
 1. Enable Github pages in your repository, follow these instructions [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
@@ -51,7 +49,6 @@ Ensuring the requirements are met from the 'Running local:' section above;
 2. Enable a custom domain for your Github Pages site. [More info](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site).
 
 3. If required, adjust the Github Pages work flow in this repository at: `.github/workflows/static.yml`
-
 
 # Post data
 
@@ -61,7 +58,6 @@ Exaples found in:
 
 - `data/blog/1970-01-01-EXAMPLE.mdx`
 - `data/portfolio/1970-01-01-EXAMPLE.mdx`
-
 
 # Misc
 
@@ -76,7 +72,6 @@ Lorem Ipsum
 ## Google AdSense:
 
 Lorem Ipsum
-
 
 # URLs
 
