@@ -17,9 +17,9 @@ export default function Policies() {
             </p>
 
             <p>
-              When you send an email; either to a direct email address or through the contact form,
-              your email address is stored securely, although it may not always be stored on this
-              website's server.
+              When you send an email; either to a direct email address or through a contact form on
+              this website, your email address is stored securely, although it may not always be
+              stored on this website's server.
             </p>
 
             <p>
@@ -40,18 +40,9 @@ export default function Policies() {
 
             <h2 className="component-title component-title--main">Cookies</h2>
 
-            <p>This websites uses cookies to give you a better browsing experience.</p>
-
-            <p>By browsing this website, it is assumed you accept these cookies.</p>
-
             <p>
-              Cookies are optional, you can manage cookies yourself by{' '}
-              <Link href={`http://www.aboutcookies.org/default.aspx`}>
-                changing your web browser’s privacy options
-              </Link>{' '}
-              or by installing a{' '}
-              <Link href={`http://tools.google.com/dlpage/gaoptout`}>plugin</Link> to manage cookies
-              set by Google Analytics.
+              This websites uses cookies to give you a better browsing experience, and to assist in
+              analytical and advertising purposes.
             </p>
 
             <table className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left">
@@ -71,12 +62,96 @@ export default function Policies() {
                     _ga, _ga_YLMTDYMQCC
                   </td>
                   <td className="border-secondary-100 dark:border-secondary-800 border p-5">
-                    These are Google Analytics cookies. They are used to determine how you arrived
-                    to this site, your visit length and how often you visit this website.
+                    Analytics: Google Analytics. 2 years.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    FCCDCF
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Functionality: Funding Choices. 13 months.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    FCNEC
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Analytics: Funding Choices. 365 days.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    __eoi
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Security: AdSense, AdSense for Search, Display & Video 360, Google Ad Manager,
+                    Google Ads. 6 months.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    __gads
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Advertising: AdSense, Display & Video 360, Google Ad Manager, Google Ads. 13
+                    months.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    __gpi
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Advertising: AdSense, Google Ad Manager. 13 months.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">NID</td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Security, Analytics, Functionality, Advertising: AdSense for Search, Google Ads.
+                    6 months
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    test_cookie
+                  </td>
+                  <td className="border-secondary-100 dark:border-secondary-800 border p-5">
+                    Functionality: AdSense, Campaign Manager, Google Ad Manager, Google Analytics,
+                    Display & Video 360, Search Ads 360. 15 minutes.
                   </td>
                 </tr>
               </tbody>
             </table>
+
+            <h3 className="component-title">How do I Control or Delete Cookies?</h3>
+
+            <ul>
+              <li>
+                <a
+                  title="About Cookies website"
+                  href="http://www.aboutcookies.org/default.aspx?page=2"
+                >
+                  Deleting cookies
+                </a>
+              </li>
+              <li>
+                <a
+                  title="About Cookies website"
+                  href="http://www.aboutcookies.org/default.aspx?page=1"
+                >
+                  Controlling cookies
+                </a>
+              </li>
+            </ul>
+
+            <p>
+              is available at&nbsp;<a href="http://www.aboutcookies.org/">www.aboutCookies.org</a>.
+              To reiterate though, by deleting our cookies or disabling future cookies you may not
+              be able to access certain areas or features of this website.
+            </p>
 
             <hr className="prose-hr component-posts-article__divider" />
 
