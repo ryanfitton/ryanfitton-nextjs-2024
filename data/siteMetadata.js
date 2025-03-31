@@ -10,7 +10,7 @@ const siteMetadata = {
   siteUrl: 'https://ryanfitton.co.uk',      //Production
   siteRepo: 'https://github.com/ryanfitton/ryanfitton.co.uk',
   image: '/cdn-cgi/image/quality=75,format=webp/static/favicons/favicon-192x192.png',
-  socialBanner: '/static/img/twitter-card.png',
+  socialBanner: '/cdn-cgi/image/quality=75,format=webp/static/img/twitter-card.png',
   email: 'ryan@ryanfitton.co.uk',
   facebook: 'https://www.facebook.com/rfitton',
   youtube: 'http://www.youtube.com/@Ryan.Fitton',

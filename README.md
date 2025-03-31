@@ -4,7 +4,7 @@ Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcs
 
 Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/):
 
-- Running version `2.3.0` of [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/);
+- Running version `2.4.0` of [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/);
 - Running version Next.JS version `15.1.6`;
 - Running version TailwindCSS version `4.0.5`;
 - with the following custom changes:

@@ -128,9 +128,7 @@ export default function Policies() {
 
             <h3 className="component-title">How do I Control or Delete Cookies?</h3>
 
-            <p>
-              Information on;
-            </p>
+            <p>Information on;</p>
 
             <ul>
               <li>

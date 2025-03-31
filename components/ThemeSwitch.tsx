@@ -2,7 +2,15 @@
 
 import { Fragment, useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { Menu, RadioGroup, Transition } from '@headlessui/react'
+import {
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  Radio,
+  RadioGroup,
+  Transition,
+} from '@headlessui/react'
 
 const Sun = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -43,9 +51,9 @@ const ThemeSwitch = () => {
 
   return (
     <Menu as="div" className="relative">
-      <Menu.Button className="component-navbar__theme-btn">
+      <MenuButton className="component-navbar__theme-btn">
         {resolvedTheme === 'dark' ? <Moon /> : <Sun />}
-      </Menu.Button>
+      </MenuButton>
       <Transition
         as={Fragment}
         enter="transition ease-out duration-100"
@@ -55,49 +63,49 @@ const ThemeSwitch = () => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="component-navbar__menu-theme">
+        <MenuItems className="component-navbar__menu-theme">
           <RadioGroup value={theme} onChange={setTheme}>
-            <RadioGroup.Option value="light">
-              <Menu.Item>
-                {({ active }) => (
+            <Radio value="light">
+              <MenuItem>
+                {({ focus }) => (
                   <button
-                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
                     aria-label="Theme switcher"
                   >
                     <Sun />
                     Light
                   </button>
                 )}
-              </Menu.Item>
-            </RadioGroup.Option>
-            <RadioGroup.Option value="dark">
-              <Menu.Item>
-                {({ active }) => (
+              </MenuItem>
+            </Radio>
+            <Radio value="dark">
+              <MenuItem>
+                {({ focus }) => (
                   <button
-                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
                     aria-label="Theme switcher"
                   >
                     <Moon />
                     Dark
                   </button>
                 )}
-              </Menu.Item>
-            </RadioGroup.Option>
-            <RadioGroup.Option value="system">
-              <Menu.Item>
-                {({ active }) => (
+              </MenuItem>
+            </Radio>
+            <Radio value="system">
+              <MenuItem>
+                {({ focus }) => (
                   <button
-                    className={`${active ? 'Test' : ''} component-navbar__theme-btn--list-option`}
+                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
                     aria-label="Theme switcher"
                   >
                     <Monitor />
                     System
                   </button>
                 )}
-              </Menu.Item>
-            </RadioGroup.Option>
+              </MenuItem>
+            </Radio>
           </RadioGroup>
-        </Menu.Items>
+        </MenuItems>
       </Transition>
     </Menu>
   )

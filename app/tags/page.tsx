@@ -23,9 +23,7 @@ export default async function Page() {
                     return (
                       <li key={t}>
                         <span>
-                          <Link href={`/tags/${slugger(t)}`} aria-label={`View posts tagged ${t}`}>
-                            {`${t}`}
-                          </Link>
+                          <Tag text={t} />
                         </span>
                         {` (${tagCounts[t]})`}
                       </li>
