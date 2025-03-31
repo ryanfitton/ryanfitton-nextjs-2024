@@ -98,7 +98,7 @@ export default function Header() {
               <MediaPosterImage
                 slot="poster"
                 src="/cdn-cgi/image/fit=cover,width=800,height=1000,quality=75,format=webp/static/img/home-header-bg@1.8x.jpg"
-                placeholdersrc="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
+                placeholderSrc="data:image/webp;base64,LLKI3a$*s:oL|toLWVayELWVayoL"
                 className="hero__video-poster"
               ></MediaPosterImage>
             </MediaController>
