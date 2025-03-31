@@ -1,5 +1,6 @@
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allBlogs } from 'contentlayer/generated'
+import { notFound } from 'next/navigation'
 import ListLayout from '@/layouts/ListLayout'
 
 const POSTS_PER_PAGE = 5
