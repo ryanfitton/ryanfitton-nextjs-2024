@@ -18,10 +18,6 @@ export default async function BlogPage(props: { searchParams: Promise<{ page: st
   }
 
   return (
-    <ListLayout
-      posts={posts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
-    />
+    <ListLayout posts={posts} initialDisplayPosts={initialDisplayPosts} pagination={pagination} />
   )
 }

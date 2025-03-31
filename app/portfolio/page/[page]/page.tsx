@@ -12,7 +12,10 @@ export const generateStaticParams = async () => {
   return paths
 }
 
-export default async function Page(props: { params: Promise<{ page: string }>, searchParams: Promise<{ page: string }> }) {
+export default async function Page(props: {
+  params: Promise<{ page: string }>
+  searchParams: Promise<{ page: string }>
+}) {
   const params = await props.params
   const posts = allCoreContent(sortPosts(allPortfolios))
   const pageNumber = parseInt(params.page as string)

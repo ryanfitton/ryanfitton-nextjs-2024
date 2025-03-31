@@ -31,7 +31,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
     .replace(/\/page\/\d+\/?$/, '') // Remove any trailing /page and optional trailing slash
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
-  
+
   return (
     <div className="col-span-full md:col-span-8 md:col-start-5 lg:col-span-8 lg:col-start-5">
       <div className="component-posts-pagination component-block">
@@ -47,7 +47,9 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           {prevPage && (
             <Link
               className="component-posts-pagination__paginate"
-              href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
+              href={
+                currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`
+              }
               rel="prev"
             >
               Previous

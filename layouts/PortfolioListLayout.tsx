@@ -42,7 +42,9 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
           {prevPage && (
             <Link
               className="component-posts-pagination__paginate"
-              href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
+              href={
+                currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`
+              }
               rel="prev"
             >
               Previous
