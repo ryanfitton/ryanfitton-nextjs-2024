@@ -180,7 +180,7 @@
     }
 
     &__intro {
-      @apply prose dark:prose-invert text-pretty;
+      @apply text-pretty;
     }
   }
 }
