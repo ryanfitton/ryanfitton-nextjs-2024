@@ -61,7 +61,7 @@ export default function Colophon() {
               <li>
                 <p>
                     Mozilla Observatory score:{' '}
-                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report A+ (105 / 100)</Link>.
+                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report B (75/ 100)</Link>.
                 </p>
               </li>
             </ul>
