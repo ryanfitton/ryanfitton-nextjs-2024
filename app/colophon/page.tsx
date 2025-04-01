@@ -1,13 +1,9 @@
-import siteMetadata from '@/data/siteMetadata'
 import Link from '@/components/Link'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({ title: 'Colophon' })
 
 export default function Colophon() {
-  const siteDomain = siteMetadata.siteUrl.match(/^https?:\/\/([^/]+)/)[1];
-  const siteDomainHyphen = siteDomain.replace(/\./g, "-").replace(/:/g, "-");
-
   return (
     <>
       <section className="site-container">
@@ -57,15 +53,15 @@ export default function Colophon() {
               <li>
                 <p>
                     Google PageSpeed scores:{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/${siteDomain}/tdo0bb78bj?form_factor=desktop`}>Desktop (xx/100)</Link>{' '}
+                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/tdo0bb78bj?form_factor=desktop`}>Desktop (xx/100)</Link>{' '}
                   and{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/${siteDomain}/tdo0bb78bj?form_factor=mobile`}>Mobile (xx/100)</Link>
+                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/tdo0bb78bj?form_factor=mobile`}>Mobile (xx/100)</Link>
                 </p>
               </li>
               <li>
                 <p>
                     Mozilla Observatory score:{' '}
-                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=${siteDomainHyphen}`}>Report (xx/100)</Link>.
+                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report (xx/100)</Link>.
                 </p>
               </li>
             </ul>
