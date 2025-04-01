@@ -53,15 +53,15 @@ export default function Colophon() {
               <li>
                 <p>
                     Google PageSpeed scores:{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/tdo0bb78bj?form_factor=desktop`}>Desktop (xx/100)</Link>{' '}
+                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=desktop`}>Desktop (98/100)</Link>{' '}
                   and{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/tdo0bb78bj?form_factor=mobile`}>Mobile (xx/100)</Link>
+                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=mobile`}>Mobile (60/100)</Link>
                 </p>
               </li>
               <li>
                 <p>
                     Mozilla Observatory score:{' '}
-                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report (xx/100)</Link>.
+                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report A+ (105 / 100)</Link>.
                 </p>
               </li>
             </ul>
