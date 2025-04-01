@@ -13,8 +13,11 @@ export default function Colophon() {
 
             <p>
               Built and maintained since August 2024. Previously built with WordPress (2014-2024).
-              Repository for this website
-              [here](https://github.com/ryanfitton/ryanfitton-nextjs-2024).
+              Repository for this website {' '}
+              <Link href={`https://github.com/ryanfitton/ryanfitton-nextjs-2024`}>
+                here
+              </Link>
+              .
             </p>
 
             <ul>
@@ -45,6 +48,14 @@ export default function Colophon() {
                   <Link href={`https://fonts.google.com/specimen/Red+Hat+Text`}>Red Hat Text</Link>{' '}
                   any Serifs use{' '}
                   <Link href={`https://fonts.google.com/specimen/Brygada+1918`}>Brygada 1918</Link>
+                </p>
+              </li>
+              <li>
+                <p>
+                    Google PageSpeed scores:{' '}
+                  <Link href={`https://google.com`}>Desktop (xx/100)</Link>{' '}
+                  and{' '}
+                  <Link href={`https://google.com`}>Mobile (xx/100)</Link>
                 </p>
               </li>
             </ul>
