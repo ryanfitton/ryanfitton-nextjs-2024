@@ -180,7 +180,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <script
               async
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteMetadata.ads.googleAdsense.googleAdsenseId}`}
-              integrity="sha384-x/LnrsvmtAgXnw2sWtpngiGaZy6US2pkMJpsydHx19qW5hDkNyWW4iRNXhEF4KgF"
               crossOrigin="anonymous"
             ></script>
           </>

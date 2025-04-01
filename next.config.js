@@ -7,15 +7,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // You might need to insert additional domains in script-src if you are using external services
 const ContentSecurityPolicy = `
   default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' *.disqus.com *.googletagmanager.com *.google-analytics.com *.googlesyndication.com *.adtrafficquality.google;
-  style-src 'self' 'unsafe-inline' *.googleapis.com cdn.jsdelivr.net;
-  frame-src youtube.com www.youtube.com disqus.com *.disqus.com *.googlesyndication.com *.adtrafficquality.google;
-  frame-ancestors 'self' *.disqus.com;
-  img-src * blob: data:;
-  media-src 'self' *.s3.amazonaws.com;
-  connect-src *;
-  font-src 'self' fonts.gstatic.com cdn.jsdelivr.net
-`
+  script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://*.disqus.com https://*.googlesyndication.com 'nonce-randomNonceValue';
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net;
+  frame-src https://www.youtube.com https://*.disqus.com https://*.googlesyndication.com;
+  frame-ancestors 'self' https://*.disqus.com;
+  img-src 'self' https://trusted-image-cdn.com blob: data:;
+  media-src 'self' https://*.s3.amazonaws.com;
+  connect-src 'self' https://www.google-analytics.com https://*.disqus.com;
+  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+  upgrade-insecure-requests;
+`;
 
 const headers = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
