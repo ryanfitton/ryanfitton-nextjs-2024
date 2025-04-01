@@ -27,8 +27,8 @@ export default function Colophon() {
                   <Link href={`https://github.com/timlrx/tailwind-nextjs-starter-blog`}>
                     tailwind-nextjs-starter-blog
                   </Link>
-                  , with custom 'Portfolio' posts section. Running version: `2.4.0` with TailWind
-                  version: `4.0.5` and Next.JS version: `15.1.6`.
+                  , with custom 'Portfolio' posts section, and many other custom changes. Running version: `2.4.0` with TailWind
+                  version: `4.0.5` and Next.JS version: `15.2.4`.
                 </p>
               </li>
               <li>
