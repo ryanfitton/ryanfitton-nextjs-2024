@@ -51,7 +51,7 @@ const headers = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
   {
     key: 'Permissions-Policy',
-    value: 'camera=(), microphone=(), geolocation=()',
+    value: 'geolocation=()',
   },
   // https://simonhearne.com/2022/caching-header-best-practices/
   {

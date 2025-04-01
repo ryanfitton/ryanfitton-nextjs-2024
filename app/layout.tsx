@@ -158,6 +158,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
+        <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
         {/* Site RSS feed link */}
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />
@@ -179,6 +180,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <script
               async
               src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${siteMetadata.ads.googleAdsense.googleAdsenseId}`}
+              integrity="sha384-TrlplYQBEIoHtcQVJPbgduPtstuP26M3kbchnv9ANEv651s3NLy4V0TxaV8M4stJ"
               crossOrigin="anonymous"
             ></script>
           </>
