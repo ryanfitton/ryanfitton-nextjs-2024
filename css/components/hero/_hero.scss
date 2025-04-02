@@ -60,14 +60,14 @@
 
         &-object {
           @apply h-full w-full object-cover;
+          //display: none!important; //Temp Hide the video object in the shadow DOM, used for debugging to show the poster image
         }
 
         &-poster {
-          @apply h-full max-h-[800px] w-full object-cover; //Specify a max height on the poster image to help with Pagespeed 'Largest contentful paint element' issue
-
           //Amend the `shadow-root part: poster img` to target the image styling of the Media Chrome element https://stackoverflow.com/questions/75571798/overriding-css-of-div-inside-a-shadow-root
           &::part(poster img) {
-            max-width: unset;
+            --media-object-fit: cover;
+            --media-object-position: center;
           }
         }
       }

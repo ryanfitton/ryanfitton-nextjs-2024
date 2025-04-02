@@ -13,11 +13,8 @@ export default function Colophon() {
 
             <p>
               Built and maintained since August 2024. Previously built with WordPress (2014-2024).
-              Repository for this website {' '}
-              <Link href={`https://github.com/ryanfitton/ryanfitton-nextjs-2024`}>
-                here
-              </Link>
-              .
+              Repository for this website{' '}
+              <Link href={`https://github.com/ryanfitton/ryanfitton-nextjs-2024`}>here</Link>.
             </p>
 
             <ul>
@@ -27,8 +24,8 @@ export default function Colophon() {
                   <Link href={`https://github.com/timlrx/tailwind-nextjs-starter-blog`}>
                     tailwind-nextjs-starter-blog
                   </Link>
-                  , with custom 'Portfolio' posts section, and many other custom changes. Running version: `2.4.0` with TailWind
-                  version: `4.0.5` and Next.JS version: `15.2.4`.
+                  , with custom 'Portfolio' posts section, and many other custom changes. Running
+                  version: `2.4.0` with TailWind version: `4.0.5` and Next.JS version: `15.2.4`.
                 </p>
               </li>
               <li>
@@ -52,16 +49,29 @@ export default function Colophon() {
               </li>
               <li>
                 <p>
-                    Google PageSpeed scores:{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=desktop`}>Desktop (98/100)</Link>{' '}
+                  Google PageSpeed scores:{' '}
+                  <Link
+                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=desktop`}
+                  >
+                    Desktop (98/100)
+                  </Link>{' '}
                   and{' '}
-                  <Link href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=mobile`}>Mobile (60/100)</Link>
+                  <Link
+                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=mobile`}
+                  >
+                    Mobile (60/100)
+                  </Link>
                 </p>
               </li>
               <li>
                 <p>
-                    Mozilla Observatory score:{' '}
-                  <Link href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}>Report B (75/100)</Link>.
+                  Mozilla Observatory score:{' '}
+                  <Link
+                    href={`https://developer.mozilla.org/en-US/observatory/analyze?host=ryanfitton.co.uk`}
+                  >
+                    Report B (75/100)
+                  </Link>
+                  .
                 </p>
               </li>
             </ul>
