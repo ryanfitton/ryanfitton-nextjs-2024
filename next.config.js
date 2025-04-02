@@ -5,16 +5,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 })
 
 // You might need to insert additional domains in script-src if you are using external services
+// Google top level domains: https://www.google.com/supported_domains
 const ContentSecurityPolicy = `
-  default-src 'self';
-  script-src 'self' 'unsafe-eval' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://*.disqus.com https://disqus.com https://*.googlesyndication.com https://*.adtrafficquality.google https://*.gstatic.com https://fundingchoicesmessages.google.com;
-  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://*.adtrafficquality.google https://*.gstatic.com;
-  frame-src https://*.google.com https://www.google.com https://www.youtube.com https://*.disqus.com https://disqus.com https://*.googlesyndication.com https://*.doubleclick.net https://*.adtrafficquality.google https://*.gstatic.com;
-  frame-ancestors 'self' https://*.disqus.com https://disqus.com;
-  img-src 'self' https://*.disqus.com https://disqus.com https://*.disquscdn.com https://www.google.co.uk https://www.google.com https://www.googletagmanager.com https://trusted-image-cdn.com https://*.adtrafficquality.google blob: data:;
-  media-src 'self' https://*.s3.amazonaws.com;
-  connect-src 'self' https://*.analytics.google.com https://*.adtrafficquality.google https://*.gstatic.com https://www.google-analytics.com https://*.disqus.com https://disqus.com https://fundingchoicesmessages.google.com;
-  font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net;
+  default-src *;
+  script-src * 'unsafe-eval' 'unsafe-inline';
+  style-src * 'unsafe-inline';
+  img-src * data:;
+  font-src *;
+  frame-src *;
+  frame-ancestors *;
+  media-src *;
+  connect-src *;
   upgrade-insecure-requests;
 `;
 
