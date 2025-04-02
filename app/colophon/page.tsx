@@ -51,15 +51,15 @@ export default function Colophon() {
                 <p>
                   Google PageSpeed scores:{' '}
                   <Link
-                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=desktop`}
+                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/wgsnxlb79n?form_factor=desktop`}
                   >
-                    Desktop (98/100)
+                    Desktop (97/100)
                   </Link>{' '}
                   and{' '}
                   <Link
-                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/gssy8xdmg9?form_factor=mobile`}
+                    href={`https://pagespeed.web.dev/analysis/https-ryanfitton-co-uk/wgsnxlb79n?form_factor=mobile`}
                   >
-                    Mobile (60/100)
+                    Mobile (59/100)
                   </Link>
                 </p>
               </li>
