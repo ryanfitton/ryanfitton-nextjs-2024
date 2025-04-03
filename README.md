@@ -42,7 +42,7 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
-- `yarn run test`. This will perform unit tests. Tests are stored in `/__tests__`. Use `yarn run test:watch` to run on only changed Test files.
+- `yarn run test`. This will perform unit tests. Tests are stored in `/__tests__`. Use `yarn run test:watch` to run on only changed Test files, or if in a CI environment run `yarn run test:ci`.
 
 # Github pages
 
