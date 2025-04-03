@@ -42,6 +42,8 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
+- `yarn run test`. This will perform unit tests. Tests are stored in `/__tests__`.
+
 # Github pages
 
 1. Enable Github pages in your repository, follow these instructions [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
