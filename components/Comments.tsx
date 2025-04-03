@@ -2,7 +2,6 @@
 
 import { Comments as CommentsComponent } from 'pliny/comments'
 import siteMetadata from '@/data/siteMetadata'
-import Script from 'next/script'
 
 export default function Comments({ slug }: { slug: string }) {
   return (

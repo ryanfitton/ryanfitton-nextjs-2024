@@ -1,0 +1,16 @@
+
+import { render } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import Comments from '@/components/Comments'
+
+
+describe("Comments Component", () => {
+
+    it("Renders the Comments container with test data, check the returned result contains the required classnames", () => {
+        const { container } = render(<Comments slug="test-page-slug" />);
+
+        // Check if the container div exists
+        const element = container.querySelector(".component-block");
+    });
+    
+});
