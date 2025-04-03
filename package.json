@@ -10,7 +10,8 @@
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,css,scss}\"",
-    "test": "jest --watch"
+    "test": "jest --no-watchAll"
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
