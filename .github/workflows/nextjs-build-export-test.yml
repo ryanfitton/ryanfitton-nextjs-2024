@@ -43,6 +43,9 @@ jobs:
       - name: Run Lint
         run: yarn run lint
 
+      - name: Run Tests
+        run: yarn run test
+
       - run: yarn build
         env:
           EXPORT: 1
