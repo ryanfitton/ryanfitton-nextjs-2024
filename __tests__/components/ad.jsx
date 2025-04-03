@@ -4,7 +4,7 @@ import Ad from '@/components/Ad'
 
 describe("Ad Component", () => {
 
-    it("Renders the ad container when adClient and adSlot are provided", () => {
+    it("Renders the Ad container when adClient and adSlot are provided", () => {
         const { container } = render(<Ad adClient="test-client" adSlot="test-slot" />);
 
         // Check if the container div exists
