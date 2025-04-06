@@ -1,8 +1,11 @@
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Card from '@/components/Card'
 
 describe("Card Component", () => {
+
+    // Debug the output
+    //screen.debug();
 
     it("Renders the Card container with test data, check the returned result contains the required classnames", () => {
         const { container } = render(<Card

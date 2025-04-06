@@ -8,12 +8,15 @@ describe("Footer Component", () => {
     it("Renders the Footer container with test data, check the returned result contains the required classnames", () => {
         const { container } = render(<Footer />);
 
+        // Debug the output
+        //screen.debug();
+
         // Check if the container div exists
         const element = container.querySelector("footer");
         expect(element).toBeInTheDocument();
 
         // Check if the element exists with correct attributes
-        container.getElementsByClassName(".site-footer");
+        expect(element).toHaveAttribute("class", "site-footer");
         container.getElementsByClassName(".site-container");
 
         //Check SVG icons are present

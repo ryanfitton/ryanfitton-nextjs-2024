@@ -7,13 +7,15 @@ describe("Header Component", () => {
     it("Renders the Header container with test data, check the returned result contains the required classnames", () => {
         const { container } = render(<Header />);
 
+        // Debug the output
+        //screen.debug();
+
         // Check if the container div exists
         const element = container.querySelector("header");
         expect(element).toBeInTheDocument();
 
         // Check if the element exists with correct attributes
-        container.getElementsByClassName(".site-header");
-        container.getElementsByClassName(".site-container.site-container--header.flex.justify-between");
+        expect(element).toHaveAttribute("class", "site-header");
     });
     
 });

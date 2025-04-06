@@ -3,13 +3,17 @@ import '@testing-library/jest-dom'
 import { Facebook, Github, Linkedin, Mail, Twitter, X, Youtube, Mastodon, Threads, Instagram, Medium, Bluesky, Keybase } from "@/components/social-icons/icons";
 import SocialIcon from '@/components/social-icons'
 
+
 describe("Facebook Icon Component", () => {
 
     it("Renders without crashing", () => {
         render(<Facebook />);
         expect(screen.getByTitle("Facebook")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Facebook />);
         const svgElement = container.querySelector("svg");
@@ -44,7 +48,10 @@ describe("Github Icon Component", () => {
         render(<Github />);
         expect(screen.getByTitle("Github")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Github />);
         const svgElement = container.querySelector("svg");
@@ -79,7 +86,10 @@ describe("Linkedin Icon Component", () => {
         render(<Linkedin />);
         expect(screen.getByTitle("Linkedin")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Linkedin />);
         const svgElement = container.querySelector("svg");
@@ -114,7 +124,10 @@ describe("Mail Icon Component", () => {
         render(<Mail />);
         expect(screen.getByTitle("Mail")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Mail />);
         const svgElement = container.querySelector("svg");
@@ -148,7 +161,10 @@ describe("Twitter Icon Component", () => {
         render(<Twitter />);
         expect(screen.getByTitle("Twitter")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Twitter />);
         const svgElement = container.querySelector("svg");
@@ -183,7 +199,10 @@ describe("X Icon Component", () => {
         render(<X />);
         expect(screen.getByTitle("X")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<X />);
         const svgElement = container.querySelector("svg");
@@ -218,7 +237,10 @@ describe("Youtube Icon Component", () => {
         render(<Youtube />);
         expect(screen.getByTitle("Youtube")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Youtube />);
         const svgElement = container.querySelector("svg");
@@ -253,7 +275,10 @@ describe("Mastodon Icon Component", () => {
         render(<Mastodon />);
         expect(screen.getByTitle("Mastodon")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Mastodon />);
         const svgElement = container.querySelector("svg");
@@ -288,7 +313,10 @@ describe("Threads Icon Component", () => {
         render(<Threads />);
         expect(screen.getByTitle("Threads")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Threads />);
         const svgElement = container.querySelector("svg");
@@ -323,7 +351,10 @@ describe("Instagram Icon Component", () => {
         render(<Instagram />);
         expect(screen.getByTitle("Instagram")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Instagram />);
         const svgElement = container.querySelector("svg");
@@ -358,7 +389,10 @@ describe("Medium Icon Component", () => {
         render(<Medium />);
         expect(screen.getByTitle("Medium")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Medium />);
         const svgElement = container.querySelector("svg");
@@ -393,7 +427,10 @@ describe("Bluesky Icon Component", () => {
         render(<Bluesky />);
         expect(screen.getByTitle("Bluesky")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Bluesky />);
         const svgElement = container.querySelector("svg");
@@ -428,7 +465,10 @@ describe("Keybase Icon Component", () => {
         render(<Keybase />);
         expect(screen.getByTitle("Keybase")).toBeInTheDocument();
     });
-
+    
+    // Debug the output
+    //screen.debug();
+    
     it("Has the correct SVG properties", () => {
         const { container } = render(<Keybase />);
         const svgElement = container.querySelector("svg");
