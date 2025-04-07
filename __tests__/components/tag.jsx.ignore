@@ -1,19 +1,30 @@
-import { getByText, render, screen } from '@testing-library/react'
-import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
 import Tag from '@/components/Tag'
 
-describe("Tag Component", () => {
+// Mocking next/link
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ href, children }) => <a href={href}>{children}</a>,
+}))
 
-    it("Renders the Tag container with test data, check the returned result contains the required classnames", () => {
-        
-        const { container } = render(<Tag key="test-tag-key" text="Test tag text" />);
+describe('Tag Component', () => {
+  it('Renders correctly with slugified text in href and hyphenated text in content', () => {
+    const text = 'Hello World Example'
 
-        // Debug the output
-        //screen.debug();
+    render(<Tag text={text} />)
 
-        // Check if the container div exists
-        const queryElement = container.querySelector("a");
-        expect(queryElement).toBeInTheDocument();
-    });
-    
-});
+    // Debug the output
+    screen.debug();
+
+    // Check that the link is rendered
+    const linkElement = screen.getByText('Hello-World-Example')
+
+    // Check if the href is correct (slugified version of the text)
+    const href = `/tags/${slugger(text)}`
+    expect(linkElement.closest('a')).toHaveAttribute('href', href)
+
+    // Check if the link text is correctly hyphenated
+    expect(linkElement).toBeInTheDocument()
+    expect(linkElement).toHaveTextContent('Hello-World-Example')
+  })
+})
