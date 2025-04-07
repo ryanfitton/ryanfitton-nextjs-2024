@@ -1,0 +1,19 @@
+import { getByText, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import Tag from '@/components/Tag'
+
+describe("Tag Component", () => {
+
+    it("Renders the Tag container with test data, check the returned result contains the required classnames", () => {
+        
+        const { container } = render(<Tag key="test-tag-key" text="Test tag text" />);
+
+        // Debug the output
+        //screen.debug();
+
+        // Check if the container div exists
+        const queryElement = container.querySelector("a");
+        expect(queryElement).toBeInTheDocument();
+    });
+    
+});

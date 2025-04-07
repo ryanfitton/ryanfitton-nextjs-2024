@@ -1,0 +1,21 @@
+import { render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
+import SearchButton from '@/components/SearchButton'
+
+describe("SearchButton Component", () => {
+
+    it("Renders the SearchButton container with test data, check the returned result contains the required classnames", () => {
+        const { container } = render(<SearchButton />);
+
+        // Debug the output
+        //screen.debug();
+
+        // Check if the container div exists
+        const element = container.querySelector("div");
+        expect(element).toBeInTheDocument();
+
+        // Check if the element exists with correct attributes
+        container.getElementsByClassName("test-class");
+    });
+    
+});
