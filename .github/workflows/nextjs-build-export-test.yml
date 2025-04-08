@@ -58,7 +58,7 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          start: yarn dlx http-server ./out -p 3000
+          start: yarn dlx http-server ./out -p 3000   # Run the static HTML build in a http-server
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
 
