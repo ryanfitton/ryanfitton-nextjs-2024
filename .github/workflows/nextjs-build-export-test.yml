@@ -52,8 +52,15 @@ jobs:
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ''
 
+      - name: Install static server for Cypress tests
+        run: npm install -g http-server
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
+        with:
+          start: http-server ./out -p 3000
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
 
       # Test the build output being packaged ready for GH Pages deployment to ensure there will be no isses.
       # In the `actions` tab you can export this artifact
