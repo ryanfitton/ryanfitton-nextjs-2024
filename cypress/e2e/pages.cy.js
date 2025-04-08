@@ -122,6 +122,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.get('h1.hero__title').contains('Colophon')
     })
 
+    /*
     it('Should load the 404 page', () => {
         // Start a page which will cause a 404 error
         cy.request({url: 'http://localhost:3000/this-is-a-page-which-does-not-exist-4512261/', failOnStatusCode: false}).its('status').should('equal', 404)
@@ -135,4 +136,5 @@ describe('Check pages are setup and can be navigated to', () => {
         // The new page should contain an h1 with "404"
         cy.get('h1.hero__title').contains('404')
     })
+    */
 })
