@@ -1,0 +1,96 @@
+import { render, screen } from '@testing-library/react'
+import ListLayout from '@/layouts/ListLayout' // Adjust the import path as necessary
+//import { CoreContent } from 'pliny/utils/contentlayer'
+//import { Blog } from 'contentlayer/generated'
+import { usePathname } from 'next/navigation'
+//import tagData from 'app/tag-data.json'
+
+// Mocking usePathname hook from next/navigation
+jest.mock('next/navigation', () => ({
+  usePathname: jest.fn(),
+}))
+
+// Mocking data for the test
+const mockPosts = [
+  {
+    path: 'post-1',
+    date: '2025-04-07',
+    featuredImgSrc: '/images/featured-1.jpg',
+    title: 'Post 1',
+    summary: 'This is the summary of post 1',
+    tags: ['tag1', 'tag2'],
+    draft: false,
+  },
+  {
+    path: 'post-2',
+    date: '2025-04-06',
+    featuredImgSrc: '/images/featured-2.jpg',
+    title: 'Post 2',
+    summary: 'This is the summary of post 2',
+    tags: ['tag3'],
+    draft: false,
+  },
+]
+
+const mockPagination = {
+  totalPages: 2,
+  currentPage: 1,
+}
+
+const mockTagData = {
+  tag1: 5,
+  tag2: 3,
+  tag3: 7,
+}
+
+// Mocking the usePathname hook
+usePathname.mockReturnValue('/blog')
+
+describe('ListLayout', () => {
+  beforeEach(() => {
+    // You can add any setup here, if necessary.
+  })
+
+  it('Renders posts correctly', () => {
+    render(<ListLayout posts={mockPosts} pagination={mockPagination} />)
+
+    // Check if the posts are rendered
+    expect(screen.getByText('Post 1')).toBeInTheDocument()
+    expect(screen.getByText('Post 2')).toBeInTheDocument()
+
+    // Check if the post summaries are rendered
+    expect(screen.getByText('This is the summary of post 1')).toBeInTheDocument()
+    expect(screen.getByText('This is the summary of post 2')).toBeInTheDocument()
+  })
+
+  it('Renders the correct pagination', () => {
+    render(<ListLayout posts={mockPosts} pagination={mockPagination} />)
+
+    // Check if pagination is displayed
+    expect(screen.getByText('1 of 2')).toBeInTheDocument()
+
+    // Check for the previous and next buttons
+    expect(screen.getByText('Previous')).toBeInTheDocument()
+    expect(screen.getByText('Next')).toBeInTheDocument()
+  })
+
+  it('Displays tags in the sidebar and sorts them', () => {
+    render(<ListLayout posts={mockPosts} pagination={mockPagination} />)
+
+    // Check if tags are displayed and sorted by count
+    expect(screen.getByText('tag3 (7)')).toBeInTheDocument()
+    expect(screen.getByText('tag1 (5)')).toBeInTheDocument()
+    expect(screen.getByText('tag2 (3)')).toBeInTheDocument()
+  })
+
+  it('Correctly handles link navigation', () => {
+    render(<ListLayout posts={mockPosts} pagination={mockPagination} />)
+
+    // Check if the post title links are working
+    const postLink1 = screen.getByText('Post 1').closest('a')
+    expect(postLink1).toHaveAttribute('href', '/post-1')
+
+    const postLink2 = screen.getByText('Post 2').closest('a')
+    expect(postLink2).toHaveAttribute('href', '/post-2')
+  })
+}) // <-- Make sure this closing brace is here.

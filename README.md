@@ -34,13 +34,36 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 1. `EXPORT=1 UNOPTIMIZED=1 yarn build`. A static build will be produced in `/out`
 
-2. If you have PHP installed on your system you can load the production buld in a local web server: `php -S localhost:8080 -t out/`
+2. If you have PHP installed on your system you can load the production build in a local web server: `php -S localhost:8080 -t out/`
+
+## Tests:
+
+### Jest
+
+This will perform unit tests. Tests are stored in `/__tests__`.
+
+Commands:
+
+- `yarn run test` - This will also run Cypress
+- `yarn run test:jest-watch` - To run on only changed Test files
+- `yarn run test:jest-ci` - If in a CI environment
+
+### Cypress
+
+This will perform unit tests. Tests are stored in `/cypress/e2e`.
+
+Commands:
+
+- `yarn run test:cypress-open` - Opens Cypress
+- `yarn run test:cypress-run` - Will run any Cypress tests
+- `yarn run test:cypress-info` - Outputs info about Cypress 
+- `yarn run test:cypress-verify` - Verify that Cypress is installed correctly and is executable 
 
 ## Other:
 
 - `yarn run format`. This will Prettify the code.
-
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
+
 
 # Github pages
 

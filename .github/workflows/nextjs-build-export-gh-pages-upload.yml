@@ -56,11 +56,24 @@ jobs:
       - name: Run Lint
         run: yarn run lint
 
+      - name: Run Jest Tests
+        run: yarn run test:jest-ci
+
       - run: yarn build
         env:
           EXPORT: 1
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ${{ steps.configurepages.outputs.base_path }}
+
+      # Runs against the minified build output which will strip out helpful debug errors which may be needed if encountering a React console error.
+      # However this will be the live output code so good to test against this, instead of running a dev server.
+      # https://react.dev/errors/418
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
+        with:
+          start: yarn dlx http-server ./out -p 3000   # Run the static HTML build in a http-server
+          wait-on: 'http://localhost:3000'
+          wait-on-timeout: 60
      
       #Upload to GitHub Pages
       - uses: actions/upload-pages-artifact@v3
