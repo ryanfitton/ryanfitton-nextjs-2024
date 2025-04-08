@@ -10,9 +10,13 @@
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,css,scss}\"",
-    "test": "jest --no-watchAll",
-    "test:watch": "jest --watch",
-    "test:ci": "jest --no-watchAll --ci"
+    "test": "jest --no-watchAll && cypress open",
+    "test:jest-watch": "jest --watch",
+    "test:jest-ci": "jest --no-watchAll --ci",
+    "test:cypress-open": "cypress open",
+    "test:cypress-run": "cypress run",
+    "test:cypress-info": "cypress info",
+    "test:cypress-verify": "cypress verify"
   },
   "dependencies": {
     "@headlessui/react": "2.2.0",
@@ -55,6 +59,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
+    "@testing-library/cypress": "^10.0.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -64,6 +69,7 @@
     "@typescript-eslint/eslint-plugin": "^8.12.0",
     "@typescript-eslint/parser": "^8.12.0",
     "cross-env": "^7.0.3",
+    "cypress": "^14.2.1",
     "eslint": "^9.14.0",
     "eslint-config-next": "15.2.4",
     "eslint-config-prettier": "^9.1.0",
