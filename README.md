@@ -50,7 +50,7 @@ Commands:
 
 ### Cypress
 
-This will perform unit tests. Tests are stored in `/__tests__`.
+This will perform unit tests. Tests are stored in `/cypress/e2e`.
 
 Commands:
 

@@ -52,13 +52,10 @@ jobs:
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ''
 
-      - name: Install static server for Cypress tests
-        run: yarn global add http-server
-
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
-          start: http-server ./out -p 3000
+          start: yarn dlx http-server ./out -p 3000
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 60
 
