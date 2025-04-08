@@ -34,7 +34,7 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 1. `EXPORT=1 UNOPTIMIZED=1 yarn build`. A static build will be produced in `/out`
 
-2. If you have PHP installed on your system you can load the production buld in a local web server: `php -S localhost:8080 -t out/`
+2. If you have PHP installed on your system you can load the production build in a local web server: `php -S localhost:8080 -t out/`
 
 ## Tests:
 

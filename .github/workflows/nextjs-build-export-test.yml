@@ -43,7 +43,7 @@ jobs:
       - name: Run Lint
         run: yarn run lint
 
-      - name: Run Tests
+      - name: Run Jest Tests
         run: yarn run test:jest-ci
 
       - run: yarn build
@@ -51,6 +51,9 @@ jobs:
           EXPORT: 1
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ''
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v6
 
       # Test the build output being packaged ready for GH Pages deployment to ensure there will be no isses.
       # In the `actions` tab you can export this artifact
