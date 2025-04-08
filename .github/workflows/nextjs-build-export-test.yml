@@ -52,6 +52,9 @@ jobs:
           #UNOPTIMIZED: 1   # Disabling this to keep the `cloudflare-image-loader.ts` image loader present
           BASE_PATH: ''
 
+      # Runs against the minified build output which will strip out helpful debug errors which may be needed if encountering a React console error.
+      # However this will be the live output code so good to test against this, instead of running a dev server.
+      # https://react.dev/errors/418
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
