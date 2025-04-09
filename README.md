@@ -64,14 +64,13 @@ Commands:
 
 - `yarn run test:cypress-open` - Opens Cypress for interactive testing. Ensure `yarn dev` has been run first
 - `yarn run test:cypress-run` - Will run any Cypress tests. Good for use in a CI environment
-- `yarn run test:cypress-info` - Outputs info about Cypress 
-- `yarn run test:cypress-verify` - Verify that Cypress is installed correctly and is executable 
+- `yarn run test:cypress-info` - Outputs info about Cypress
+- `yarn run test:cypress-verify` - Verify that Cypress is installed correctly and is executable
 
 ## Other:
 
 - `yarn run format`. This will Prettify the code.
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
-
 
 # Github pages
 
