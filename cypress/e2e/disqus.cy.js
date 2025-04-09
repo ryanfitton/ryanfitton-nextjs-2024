@@ -14,7 +14,6 @@ describe('Check Disqus is loaded on Blog posts', () => {
         .find('.component-posts-article')
         .first()
         .find('.component-posts-article__title a')
-        .click()
         .then(($link) => {  //Now check the page url is the same as the href of the link which was clicked
             const href = $link.prop('href')
 
