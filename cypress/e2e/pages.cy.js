@@ -4,13 +4,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "blog" and click it
-        cy.get('.site-header a[href*="blog"]').click()
+        cy.get('.site-header a[href*="blog"]').should('exist').click()
 
         // The new url should include "/blog/"
         cy.url().should('include', '/blog/')
 
         // The new page should contain an h1 with "Blog"
-        cy.get('h1.hero__title').contains('Blog')
+        cy.get('h1.hero__title').contains('Blog').should('exist')
     })
 
     it('Should load the Blog article page', () => {
@@ -21,10 +21,12 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.url().should('include', '/blog/new-home-network-and-tech-skills/')
 
         // The page should contain an h1 with "Blog"
-        cy.get('h1.hero__title').contains('Blog')
+        cy.get('h1.hero__title').contains('Blog').should('exist')
 
-        // The page should contain an h1 with "Transforming My Home Network and Upskilling in Tech 2024–2025 (So far!)"
-        cy.get('h1.component-posts-article__title').contains('Transforming My Home Network and Upskilling in Tech 2024–2025 (So far!)')
+        // The page should contain an h1 with the article title
+        cy.get('h1.component-posts-article__title')
+            .contains('Transforming My Home Network and Upskilling in Tech 2024–2025 (So far!)')
+            .should('exist')
     })
 
     it('Should navigate to the Tags page', () => {
@@ -32,13 +34,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "tags" and click it
-        cy.get('.site-header a[href*="tags"]').click()
+        cy.get('.site-header a[href*="tags"]').should('exist').click()
 
         // The new url should include "/tags/"
         cy.url().should('include', '/tags/')
 
         // The new page should contain an h1 with "Tags"
-        cy.get('h1.hero__title').contains('Tags')
+        cy.get('h1.hero__title').contains('Tags').should('exist')
     })
 
     it('Should load the Development tag page', () => {
@@ -49,7 +51,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.url().should('include', '/tags/development/')
 
         // The page should contain an h1 with "Development"
-        cy.get('h1.hero__title').contains('Development')
+        cy.get('h1.hero__title').contains('Development').should('exist')
     })
 
     it('Should navigate to the Portfolio page', () => {
@@ -57,13 +59,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "portfolio" and click it
-        cy.get('.site-header a[href*="portfolio"]').click()
+        cy.get('.site-header a[href*="portfolio"]').should('exist').click()
 
         // The new url should include "/portfolio/"
         cy.url().should('include', '/portfolio/')
 
         // The new page should contain an h1 with "Portfolio"
-        cy.get('h1.hero__title').contains('Portfolio')
+        cy.get('h1.hero__title').contains('Portfolio').should('exist')
     })
 
     it('Should load a Portfolio single page', () => {
@@ -74,10 +76,10 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.url().should('include', '/portfolio/redirecturl-info/')
 
         // The page should contain an h1 with "Portfolio"
-        cy.get('h1.hero__title').contains('Portfolio')
+        cy.get('h1.hero__title').contains('Portfolio').should('exist')
 
         // The page should contain an h1 with "RedirectURL.info"
-        cy.get('h1.component-posts-article__title').contains('RedirectURL.info')
+        cy.get('h1.component-posts-article__title').contains('RedirectURL.info').should('exist')
     })
 
     it('Should navigate to the About page', () => {
@@ -85,13 +87,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "about" and click it
-        cy.get('.site-header a[href*="about"]').click()
+        cy.get('.site-header a[href*="about"]').should('exist').click()
 
         // The new url should include "/about/"
         cy.url().should('include', '/about/')
 
         // The new page should contain an h1 with "About"
-        cy.get('h1.hero__title').contains('About')
+        cy.get('h1.hero__title').contains('About').should('exist')
     })
 
     it('Should navigate to the Policies page', () => {
@@ -99,13 +101,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "policies" and click it
-        cy.get('.site-footer a[href*="policies"]').click()
+        cy.get('.site-footer a[href*="policies"]').should('exist').click()
 
         // The new url should include "/policies/"
         cy.url().should('include', '/policies/')
 
         // The new page should contain an h1 with "Policies"
-        cy.get('h1.hero__title').contains('Policies')
+        cy.get('h1.hero__title').contains('Policies').should('exist')
     })
 
     it('Should navigate to the Colophon page', () => {
@@ -113,13 +115,13 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "colophon" and click it
-        cy.get('.site-footer a[href*="colophon"]').click()
+        cy.get('.site-footer a[href*="colophon"]').should('exist').click()
 
         // The new url should include "/colophon/"
         cy.url().should('include', '/colophon/')
 
         // The new page should contain an h1 with "Colophon"
-        cy.get('h1.hero__title').contains('Colophon')
+        cy.get('h1.hero__title').contains('Colophon').should('exist')
     })
 
     /*
@@ -134,7 +136,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.url().should('include', '/404/')
 
         // The new page should contain an h1 with "404"
-        cy.get('h1.hero__title').contains('404')
+        cy.get('h1.hero__title').contains('404').should('exist')
     })
     */
 })
