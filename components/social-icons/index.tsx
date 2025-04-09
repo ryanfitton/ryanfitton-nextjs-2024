@@ -11,6 +11,7 @@ import {
   Instagram,
   Medium,
   Bluesky,
+  BuyMeACoffee,
   Keybase,
 } from './icons'
 
@@ -27,6 +28,7 @@ const components = {
   instagram: Instagram,
   medium: Medium,
   bluesky: Bluesky,
+  buymeacoffee: BuyMeACoffee,
   keybase: Keybase,
 }
 
