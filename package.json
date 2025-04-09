@@ -11,9 +11,10 @@
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,css,scss}\"",
     "test": "jest --no-watchAll && cypress open",
+    "test:ci": "yarn run test:jest-ci && yarn run test:cypress-run",
     "test:jest-watch": "jest --watch",
     "test:jest-ci": "jest --no-watchAll --ci",
-    "test:cypress-open": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "test:cypress-open": "cypress open --e2e",
     "test:cypress-run": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
     "test:cypress-info": "cypress info",
     "test:cypress-verify": "cypress verify"

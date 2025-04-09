@@ -9,6 +9,7 @@ export default function Footer() {
         <div className="component-navbar component-navbar--icons">
           <div className="component-navbar__links">
             <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} />
+            <SocialIcon kind="buymeacoffee" href={siteMetadata.buymeacoffee} />
             <SocialIcon kind="github" href={siteMetadata.github} />
             <SocialIcon kind="keybase" href={siteMetadata.keybase} />
             <SocialIcon kind="linkedin" href={siteMetadata.linkedin} />

@@ -22,6 +22,7 @@ const siteMetadata = {
   mastodon: 'https://mastodon.social/@ryanfitton',
   bluesky: 'https://bsky.app/profile/ryanfitton.bsky.social',
   linkedin: 'https://uk.linkedin.com/in/rfitton',
+  buymeacoffee: 'https://buymeacoffee.com/ryanfitton',
   keybase: 'https://keybase.io/ryanfitton',
   //medium: 'https://www.medium.com/@ryanfitton',
   locale: 'en-GB',

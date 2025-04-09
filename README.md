@@ -13,7 +13,7 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
   - Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
   - Including the use of a Cloudflare image loader so Image Transformations API can be used.
   - Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
-  - Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
+  - Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, Buy Me A Coffee, and others.
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
   - Google AdSense ads and component (`Ad.tsx`).
   - Jest and Cypress testing scripts.
@@ -40,13 +40,19 @@ Ensuring the requirements are met from the 'Running local:' section above;
 
 ## Tests:
 
+Combined Testing:
+
+- `yarn run test` - Run tests for Jest and Cypress. Designed for local testing. Ensure `yarn dev` has been run first
+- `yarn run test:ci` - Runs a local dev server and tests for Jest and Cypress for CI environments. - Probably the best to use in any case.
+
+If you want to run either Jest or Cypress separately, see below.
+
 ### Jest
 
 This will perform unit tests. Tests are stored in `/__tests__`.
 
 Commands:
 
-- `yarn run test` - This will also run Cypress
 - `yarn run test:jest-watch` - To run on only changed Test files
 - `yarn run test:jest-ci` - If in a CI environment
 
@@ -56,16 +62,15 @@ This will perform unit tests. Tests are stored in `/cypress/e2e`.
 
 Commands:
 
-- `yarn run test:cypress-open` - Opens Cypress
-- `yarn run test:cypress-run` - Will run any Cypress tests
-- `yarn run test:cypress-info` - Outputs info about Cypress 
-- `yarn run test:cypress-verify` - Verify that Cypress is installed correctly and is executable 
+- `yarn run test:cypress-open` - Opens Cypress for interactive testing. Ensure `yarn dev` has been run first
+- `yarn run test:cypress-run` - Will run any Cypress tests. Good for use in a CI environment
+- `yarn run test:cypress-info` - Outputs info about Cypress
+- `yarn run test:cypress-verify` - Verify that Cypress is installed correctly and is executable
 
 ## Other:
 
 - `yarn run format`. This will Prettify the code.
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
-
 
 # Github pages
 

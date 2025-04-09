@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Facebook, Github, Linkedin, Mail, Twitter, X, Youtube, Mastodon, Threads, Instagram, Medium, Bluesky, Keybase } from "@/components/social-icons/icons";
+import { Facebook, Github, Linkedin, Mail, Twitter, X, Youtube, Mastodon, Threads, Instagram, Medium, Bluesky, Keybase, BuyMeACoffee } from "@/components/social-icons/icons";
 import SocialIcon from '@/components/social-icons'
 
 
@@ -449,6 +449,44 @@ describe("Bluesky Icon Component", () => {
 
         // Ensure the sr-only span exists
         expect(screen.getByText("bluesky")).toBeInTheDocument();
+
+        // Ensure the SVG exists 
+        const svgElement = container.querySelector("svg");
+        expect(svgElement).toBeInTheDocument();
+        expect(svgElement).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg");
+        expect(svgElement).toHaveAttribute("viewBox", "0 0 24 24");
+    });
+
+});
+
+describe("BuyMeACoffee Icon Component", () => {
+
+    it("Renders without crashing", () => {
+        render(<BuyMeACoffee />);
+        expect(screen.getByTitle("BuyMeACoffee")).toBeInTheDocument();
+    });
+    
+    // Debug the output
+    //screen.debug();
+    
+    it("Has the correct SVG properties", () => {
+        const { container } = render(<BuyMeACoffee />);
+        const svgElement = container.querySelector("svg");
+
+        expect(svgElement).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg");
+        expect(svgElement).toHaveAttribute("viewBox", "0 0 24 24");
+    });
+
+    it("Renders BuyMeACoffee icon with props", () => {
+        const { container } = render(<SocialIcon kind="buymeacoffee" href={`https://test.com`} />);
+
+        // Ensure the anchor tag is rendered with the correct href
+        const linkElement = screen.getByRole("link");
+        expect(linkElement).toHaveAttribute("href", "https://test.com");
+        expect(linkElement).toHaveAttribute("rel", "me");
+
+        // Ensure the sr-only span exists
+        expect(screen.getByText("buymeacoffee")).toBeInTheDocument();
 
         // Ensure the SVG exists 
         const svgElement = container.querySelector("svg");
