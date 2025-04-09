@@ -95,6 +95,9 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
               <p className="dark:text-typography-default/50 text-sm text-stone-500">
                 <Link href={discussUrl(path)} rel="nofollow">
                   Discuss on X (Twitter)
+                </Link>{' &bull; '}
+                <Link href="https://buymeacoffee.com/ryanfitton" rel="nofollow">
+                  Buy me a coffee
                 </Link>
               </p>
 
