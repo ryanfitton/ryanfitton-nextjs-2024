@@ -9,12 +9,14 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 - Running version TailwindCSS version `4.0.5`;
 - with the following custom changes:
   - A separate 'Portfolio' post section.
+  - Additional social icons.
   - Updating the Tailwind template, including color schemes, fonts, margin/padding/font sizes, along with edits to the HTML templates and components.
   - Including the use of a Cloudflare image loader so Image Transformations API can be used.
   - Set up a GitHub Actions workflow to host the website and automatically upload any changes pushed to the 'main' branch.
   - Setting up new 'social media' icons, as the starter template didn't include all the social icons I required, such as KeyBase, Bluesky, and others.
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
   - Google AdSense ads and component (`Ad.tsx`).
+  - Jest and Cypress testing scripts.
 
 # Getting started
 
