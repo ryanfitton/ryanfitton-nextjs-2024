@@ -13,7 +13,7 @@
 
     &__content {
       @apply dark:text-typography-default!;
-      @apply content-center py-5 text-center md:text-left;
+      @apply content-center py-5 text-center text-shadow-md md:text-left;
     }
 
     &__title {
