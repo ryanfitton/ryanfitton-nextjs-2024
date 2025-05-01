@@ -1,5 +1,10 @@
 # ryanfitton.co.uk
 
+* Live: [![Deploy `./out` static content to Github Pages](https://github.com/ryanfitton/ryanfitton-nextjs-2024/actions/workflows/nextjs-build-export-gh-pages-upload.yml/badge.svg?branch=main)](https://github.com/ryanfitton/ryanfitton-nextjs-2024/actions/workflows/nextjs-build-export-gh-pages-upload.yml)
+* Dev: [![Builds Next.JS application and exports to static content to check for errors](https://github.com/ryanfitton/ryanfitton-nextjs-2024/actions/workflows/nextjs-build-export-test.yml/badge.svg)](https://github.com/ryanfitton/ryanfitton-nextjs-2024/actions/workflows/nextjs-build-export-test.yml)
+
+<hr>
+
 Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcss.com/), hosted on Github pages.
 
 Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/):
