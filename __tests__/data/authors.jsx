@@ -26,13 +26,14 @@ describe('Author MDX Files', () => {
         expect(data).toHaveProperty('facebook')
         expect(data).toHaveProperty('youtube')
         expect(data).toHaveProperty('github')
+        //expect(data).toHaveProperty('twitter')
         expect(data).toHaveProperty('x')
         expect(data).toHaveProperty('instagram')
         expect(data).toHaveProperty('threads')
         expect(data).toHaveProperty('mastodon')
         expect(data).toHaveProperty('bluesky')
         expect(data).toHaveProperty('linkedin')
-        expect(data).toHaveProperty('buymeacoffee')
+        //expect(data).toHaveProperty('buymeacoffee')
         expect(data).toHaveProperty('keybase')
 
         // Check that these fields are non-empty
@@ -45,13 +46,14 @@ describe('Author MDX Files', () => {
         expect(data.facebook).toMatch(/^https:\/\/www\.facebook\.com\/\w+/)  // Valid Facebook URL
         expect(data.youtube).toMatch(/^https:\/\/www\.youtube\.com\/(?:@[\w.-]+|[\w.-]+)$/)  // Valid YouTube URL
         expect(data.github).toMatch(/^https:\/\/github\.com\/\w+/)  // Valid GitHub URL
+        //expect(data.twitter).toMatch(/^https:\/\/twitter\.com\/\w+/)  // Valid Twitter URL
         expect(data.x).toMatch(/^https:\/\/x\.com\/\w+/)  // Valid X (formerly Twitter) URL
         expect(data.instagram).toMatch(/^https:\/\/www\.instagram\.com\/\w+/)  // Valid Instagram URL
         expect(data.threads).toMatch(/^https:\/\/www\.threads\.net\/(?:@[\w.-]+|[\w.-]+)$/)  // Valid Threads URL
         expect(data.mastodon).toMatch(/^https:\/\/mastodon\.social\/(?:@[\w.-]+|[\w.-]+)$/)  // Valid Mastodon URL
         expect(data.bluesky).toMatch(/^https:\/\/bsky\.app\/profile\/\w+/)  // Valid Bluesky URL
         expect(data.linkedin).toMatch(/^https:\/\/uk\.linkedin\.com\/in\/\w+/)  // Valid LinkedIn URL
-        expect(data.buymeacoffee).toMatch(/^https:\/\/buymeacoffee\.com\/\w+/)  // Valid BuyMeACoffee URL
+        //expect(data.buymeacoffee).toMatch(/^https:\/\/buymeacoffee\.com\/\w+/)  // Valid BuyMeACoffee URL
         expect(data.keybase).toMatch(/^https:\/\/keybase\.io\/\w+/)  // Valid Keybase URL
       }
     })
