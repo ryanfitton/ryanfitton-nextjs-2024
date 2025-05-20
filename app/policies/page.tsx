@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Cookie and Privacy Policy' })
+export const metadata = genPageMetadata({ title: 'Policies' })
 
 export default function Policies() {
   return (
