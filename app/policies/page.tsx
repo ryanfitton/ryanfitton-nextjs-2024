@@ -13,8 +13,14 @@ export default function Policies() {
             <h2 className="component-title component-title--main">License</h2>
 
             <p>
-              {`© ${new Date().getFullYear()}`} {siteMetadata.author}. All rights reserved.<br />
-              The content on this website (text, images, design, etc.) may not be copied, redistributed, or used without express permission.<br />
+              {`© ${new Date().getFullYear()}`} {siteMetadata.author}. All rights reserved.
+            </p>
+            
+            <p>
+              The content on this website (text, images, design, etc.) may not be copied, redistributed, or used without express permission.
+            </p>
+            
+            <p>
               You are free to use the underlying code relating to this website freely and openly, as long as no content as mentioned above is copied, redistributed, or used without express permission.
             </p>
             
