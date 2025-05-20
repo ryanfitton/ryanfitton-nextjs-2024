@@ -4,7 +4,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "blog" and click it
-        cy.get('.site-header a[href*="blog"]').should('exist').click()
+        cy.get('.site-header .component-navbar--header a[href*="blog"]').should('exist').click()
 
         // The new url should include "/blog/"
         cy.url().should('include', '/blog/')
@@ -34,7 +34,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "tags" and click it
-        cy.get('.site-header a[href*="tags"]').should('exist').click()
+        cy.get('.site-header .component-navbar--header a[href*="tags"]').should('exist').click()
 
         // The new url should include "/tags/"
         cy.url().should('include', '/tags/')
@@ -59,7 +59,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "portfolio" and click it
-        cy.get('.site-header a[href*="portfolio"]').should('exist').click()
+        cy.get('.site-header .component-navbar--header a[href*="portfolio"]').should('exist').click()
 
         // The new url should include "/portfolio/"
         cy.url().should('include', '/portfolio/')
@@ -87,7 +87,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "about" and click it
-        cy.get('.site-header a[href*="about"]').should('exist').click()
+        cy.get('.site-header .component-navbar--header a[href*="about"]').should('exist').click()
 
         // The new url should include "/about/"
         cy.url().should('include', '/about/')
@@ -101,7 +101,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "policies" and click it
-        cy.get('.site-footer a[href*="policies"]').should('exist').click()
+        cy.get('.site-footer .component-navbar--footer a[href*="policies"]').should('exist').click()
 
         // The new url should include "/policies/"
         cy.url().should('include', '/policies/')
@@ -115,7 +115,7 @@ describe('Check pages are setup and can be navigated to', () => {
         cy.visit('http://localhost:3000/')
 
         // Find a link with an href attribute containing "colophon" and click it
-        cy.get('.site-footer a[href*="colophon"]').should('exist').click()
+        cy.get('.site-footer .component-navbar--footer a[href*="colophon"]').should('exist').click()
 
         // The new url should include "/colophon/"
         cy.url().should('include', '/colophon/')
