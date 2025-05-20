@@ -32,6 +32,6 @@ describe('Check copyright year is the current year in the footer', () => {
 
         // Check there is copyright text in the footer.
         const currentYear = new Date().getFullYear()
-        cy.get('.site-footer').contains('© ' + currentYear + ' Ryan Fitton').should('exist')
+        cy.get('.site-footer').contains('© ' + currentYear + ' Ryan Fitton. All rights reserved.').should('exist')
     })
 })
