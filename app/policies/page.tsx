@@ -1,4 +1,5 @@
 import Link from '@/components/Link'
+import siteMetadata from '@/data/siteMetadata'
 import { genPageMetadata } from 'app/seo'
 
 export const metadata = genPageMetadata({ title: 'Cookie and Privacy Policy' })
@@ -9,6 +10,16 @@ export default function Policies() {
       <section className="site-container">
         <div className="grid">
           <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
+            <h2 className="component-title component-title--main">License</h2>
+
+            <p>
+              {`© ${new Date().getFullYear()}`} {siteMetadata.author}. All rights reserved.<br>
+              The content on this website (text, images, design, etc.) may not be copied, redistributed, or used without express permission.<br>
+              You are free to use the underlying code relating to this website freely and openly, as long as no content as mentioned above is copied, redistributed, or used without express permission.
+            </p>
+            
+            <hr className="prose-hr component-posts-article__divider" />
+
             <h2 className="component-title component-title--main">Privacy</h2>
 
             <p>
