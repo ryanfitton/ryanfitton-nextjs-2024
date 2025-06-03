@@ -25,7 +25,7 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
   - Google AdSense ads and component (`Ad.tsx`).
   - Jest and Cypress testing scripts.
-  - Sentry.IO monitoring
+  - Datadog Real-User-Monitoring (RUM)
 
 # Getting started
 
@@ -118,11 +118,11 @@ This site uses Google AdSense to deliver ads on the Blog pages. Details to confi
 
 Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
 
-## Sentry.IO:
+## Datadog Real-User-Monitoring (RUM):
 
-This site uses Sentry.IO to monitor this application. Details to configure are in `data/siteMetadata.js`.
+This site uses Sentry.IO to monitor this application. Details to configure are in `components/Datadog.js`.
 
-Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
+The loaded into the site in: `app/layout.tsx`.
 
 # URLs
 

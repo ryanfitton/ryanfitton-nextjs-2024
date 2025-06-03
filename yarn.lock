@@ -1807,6 +1807,59 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@datadog/browser-core@npm:6.8.0":
+  version: 6.8.0
+  resolution: "@datadog/browser-core@npm:6.8.0"
+  checksum: 10/fba3347e4c668f346b838487e950321e1cb4418d7923fc395aee7c5f9318a579b9cb352b7a3f638f48878679e2855b6b0eb6bbcaf2e5c5f8bcbee2791f187017
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-rum-core@npm:6.8.0":
+  version: 6.8.0
+  resolution: "@datadog/browser-rum-core@npm:6.8.0"
+  dependencies:
+    "@datadog/browser-core": "npm:6.8.0"
+  checksum: 10/b072ceac2db3e1c5382ef5787ab78658ae81d78c4db1b9fefc47a78365c6533dc3fdb22c0957cfcaddc6d09bb93705fd0448ab02038c389b6b791b38bc843d4b
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-rum-react@npm:^6.8.0":
+  version: 6.8.0
+  resolution: "@datadog/browser-rum-react@npm:6.8.0"
+  dependencies:
+    "@datadog/browser-core": "npm:6.8.0"
+    "@datadog/browser-rum-core": "npm:6.8.0"
+  peerDependencies:
+    react: 18 || 19
+    react-router-dom: 6 || 7
+  peerDependenciesMeta:
+    "@datadog/browser-rum":
+      optional: true
+    "@datadog/browser-rum-slim":
+      optional: true
+    react:
+      optional: true
+    react-router-dom:
+      optional: true
+  checksum: 10/76d69af0b5bd4755ed9d61542c9469a1862e9b1ad433c02d21bffb75021852fb90ad946a3e104a8b581281e3948f5bb7f33e12f1f4a51e633d0b51fc2d03fff4
+  languageName: node
+  linkType: hard
+
+"@datadog/browser-rum@npm:^6.8.0":
+  version: 6.8.0
+  resolution: "@datadog/browser-rum@npm:6.8.0"
+  dependencies:
+    "@datadog/browser-core": "npm:6.8.0"
+    "@datadog/browser-rum-core": "npm:6.8.0"
+  peerDependencies:
+    "@datadog/browser-logs": 6.8.0
+  peerDependenciesMeta:
+    "@datadog/browser-logs":
+      optional: true
+  checksum: 10/b48e37d422783332eb33d75dfea66863c66104dea18179914e7191e06eb1924145989b11e574bfaee1881f6c556338ae5ea074414ba6769df8ebd1330bac26c8
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:0.5.7":
   version: 0.5.7
   resolution: "@discoveryjs/json-ext@npm:0.5.7"
@@ -12878,14 +12931,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.0.0":
-  version: 19.0.0
-  resolution: "react-dom@npm:19.0.0"
+"react-dom@npm:19.1.0":
+  version: 19.1.0
+  resolution: "react-dom@npm:19.1.0"
   dependencies:
-    scheduler: "npm:^0.25.0"
+    scheduler: "npm:^0.26.0"
   peerDependencies:
-    react: ^19.0.0
-  checksum: 10/aa64a2f1991042f516260e8b0eca0ae777b6c8f1aa2b5ae096e80bbb6ac9b005aef2bca697969841d34f7e1819556263476bdfea36c35092e8d9aefde3de2d9a
+    react: ^19.1.0
+  checksum: 10/c5b58605862c7b0bb044416b01c73647bb8e89717fb5d7a2c279b11815fb7b49b619fe685c404e59f55eb52c66831236cc565c25ee1c2d042739f4a2cc538aa2
   languageName: node
   linkType: hard
 
@@ -12921,10 +12974,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.0.0":
-  version: 19.0.0
-  resolution: "react@npm:19.0.0"
-  checksum: 10/2490969c503f644703c88990d20e4011fa6119ddeca451e9de48f6d7ab058d670d2852a5fcd3aa3cd90a923ab2815d532637bd4a814add402ae5c0d4f129ee71
+"react@npm:19.1.0":
+  version: 19.1.0
+  resolution: "react@npm:19.1.0"
+  checksum: 10/d0180689826fd9de87e839c365f6f361c561daea397d61d724687cae88f432a307d1c0f53a0ee95ddbe3352c10dac41d7ff1ad85530fb24951b27a39e5398db4
   languageName: node
   linkType: hard
 
@@ -13873,6 +13926,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "ryanfitton-next-js-2024@workspace:."
   dependencies:
+    "@datadog/browser-rum": "npm:^6.8.0"
+    "@datadog/browser-rum-react": "npm:^6.8.0"
     "@headlessui/react": "npm:2.2.0"
     "@next/bundle-analyzer": "npm:15.3.3"
     "@svgr/webpack": "npm:^8.0.1"
@@ -13915,8 +13970,8 @@ __metadata:
     postcss-cli: "npm:^11.0.0"
     prettier: "npm:^3.0.0"
     prettier-plugin-tailwindcss: "npm:^0.6.11"
-    react: "npm:19.0.0"
-    react-dom: "npm:19.0.0"
+    react: "npm:19.1.0"
+    react-dom: "npm:19.1.0"
     reading-time: "npm:1.5.0"
     rehype-autolink-headings: "npm:^7.1.0"
     rehype-citation: "npm:^2.3.0"
@@ -14025,10 +14080,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.25.0":
-  version: 0.25.0
-  resolution: "scheduler@npm:0.25.0"
-  checksum: 10/e661e38503ab29a153429a99203fefa764f28b35c079719eb5efdd2c1c1086522f6653d8ffce388209682c23891a6d1d32fa6badf53c35fb5b9cd0c55ace42de
+"scheduler@npm:^0.26.0":
+  version: 0.26.0
+  resolution: "scheduler@npm:0.26.0"
+  checksum: 10/1ecf2e5d7de1a7a132796834afe14a2d589ba7e437615bd8c06f3e0786a3ac3434655e67aac8755d9b14e05754c177e49c064261de2673aaa3c926bc98caa002
   languageName: node
   linkType: hard
 
