@@ -25,7 +25,14 @@ export default function Colophon() {
                     tailwind-nextjs-starter-blog
                   </Link>
                   , with custom 'Portfolio' posts section, and many other custom changes. Running
-                  version: `2.4.0` with TailWind version: `4.1.3` and Next.JS version: `15.2.4`.
+                  version: `2.4.0` with{' '}
+                  <Link href={`https://github.com/tailwindlabs/tailwindcss/releases`}>
+                    TailWind
+                  </Link>{' '}
+                  version: `4.1.8`,{' '}
+                  <Link href={`https://github.com/vercel/next.js/releases`}>Next.JS</Link> version:
+                  `15.3.3` and <Link href={`https://github.com/yarnpkg/berry/releases`}>Yarn</Link>{' '}
+                  version: `4.9.1`.
                 </p>
               </li>
               <li>

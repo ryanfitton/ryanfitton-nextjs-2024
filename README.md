@@ -12,8 +12,9 @@ Powered by [Next.js](https://nextjs.org/) with [Tailwind CSS](https://tailwindcs
 Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/):
 
 - Running version `2.4.0` of [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gitHub.com/timlrx/tailwind-nextjs-starter-blog/);
-- Running version Next.JS version `15.1.6`;
-- Running version TailwindCSS version `4.1.3`;
+- Running Next.JS version `15.3.3`;
+- Running TailwindCSS version `4.1.8`;
+- Running Yarn version `4.9.1`;
 - with the following custom changes:
   - A separate 'Portfolio' post section.
   - Additional social icons.
@@ -24,6 +25,7 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
   - Update the Sitemap and RSS feed generators to include posts from the new 'Portfolio' section.
   - Google AdSense ads and component (`Ad.tsx`).
   - Jest and Cypress testing scripts.
+  - Sentry.IO monitoring
 
 # Getting started
 
@@ -33,7 +35,7 @@ Using template from [gitHub.com/timlrx/tailwind-nextjs-starter-blog/](https://gi
 
 2. Install required dependencies for package management: `npm install --global yarn`
 
-3. `yarn`. This will install the required packages.
+3. `yarn`. Requires `4.9.1`. This will install the required packages. [See docs](https://yarnpkg.com/getting-started/install).
 
 4. `yarn dev`. This starts the local server, which is accessible on [http://localhost:3000](http://localhost:3000).
 
@@ -113,6 +115,12 @@ This site uses Google Analytics for the analytics. Details to configure are in `
 ## Google AdSense:
 
 This site uses Google AdSense to deliver ads on the Blog pages. Details to configure are in `data/siteMetadata.js`.
+
+Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
+
+## Sentry.IO:
+
+This site uses Sentry.IO to monitor this application. Details to configure are in `data/siteMetadata.js`.
 
 Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
 
