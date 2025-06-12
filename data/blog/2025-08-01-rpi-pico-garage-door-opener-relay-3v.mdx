@@ -21,6 +21,9 @@ Once the hat arrived, I tested the relays using the demo code provided by SB Com
 
 I'm using a 1st Gen Pico W for this project, but the 2nd Gen version also works. Just make sure your Pico has Wi-Fi capability.
 
+<a href="/cdn-cgi/image/quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-1.jpg" target="_blank"><img loading="lazy" src="/cdn-cgi/image/width=1400,quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-1.jpg" alt="Pico (1)" width="1400" height="1054" /></a>
+
+<a href="/cdn-cgi/image/quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-2.jpg" target="_blank"><img loading="lazy" src="/cdn-cgi/image/width=1400,quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-2.jpg" alt="Pico (2)" width="1400" height="1054" /></a>
 
 ## Web Server
 
@@ -36,6 +39,8 @@ This project uses **MicroPython**, which I'm familiar with from previous work, s
 For styling, I used [**Tailwind CSS v4.1**](https://tailwindcss.com/blog/tailwindcss-v4-1), along with additional JS functionality using [**Add to Homescreen v3.3**](https://github.com/philfung/add-to-homescreen). Images are hosted externally or encoded in Base64—for example, I used Base64 for favicons.
 
 To open the garage door, an Ajax request is sent to the `/api/relay` endpoint with a relay name and a PIN for added security. Although the server is only accessible within my home network, this helps prevent accidental button presses or unauthorized usage.
+
+<a href="/cdn-cgi/image/quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-3.png" target="_blank"><img loading="lazy" src="/cdn-cgi/image/width=600,quality=75,format=webp/static/img/blog/2025/08/rpi-pico-door-opener-3.png" alt="Pico Web UI Screenshot" width="600" height="1347" /></a>
 
 
 ## Configuration
