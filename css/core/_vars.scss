@@ -18,11 +18,9 @@
         font-style: normal;
     }
     */
-  --font-sans:
-    var(--font-redHatText), 'sans-serif'; //`--font-redHatText` is a custom font from Google fonts and the var is set in `app/layout.tsx`
-  --font-serif:
-    var(--font-brygada1918), 'serif'; //`--font-brygada1918` is a custom font from Google fonts and the var is set in `app/layout.tsx`
-  --font-mono: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;';
+  --font-sans: var(--font-redHatText), 'sans-serif'; //`--font-redHatText` is a custom font from Google fonts and the var is set in `app/layout.tsx`
+  --font-serif: var(--font-brygada1918), 'serif'; //`--font-brygada1918` is a custom font from Google fonts and the var is set in `app/layout.tsx`
+  --font-mono: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
 
   /* 
         Breakpoints 
