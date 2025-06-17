@@ -131,7 +131,7 @@
   
   //For single-line code blocks
   code {
-    @apply rounded-xs bg-gray-100 px-5 py-3 text-gray-200 dark:bg-gray-800;
+    @apply rounded-md bg-gray-100 px-1 py-1 text-gray-200 dark:bg-[var(--tw-prose-invert-pre-bg)];
   }
   
   //For multi-line code blocks. The main bulk of styles should be handled by the Prism plugin
