@@ -123,12 +123,12 @@
     */
   code,
   pre {
-    @apply font-mono;
+    @apply font-mono!;
     @apply font-normal!;
-    @apply text-lg!;
+    @apply text-xs!;
   }
   pre code {
-    @apply text-sm!;
+    @apply text-xs!;
   }
 
   /* 
