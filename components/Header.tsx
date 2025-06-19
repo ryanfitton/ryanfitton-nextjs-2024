@@ -44,7 +44,7 @@ export default function Header() {
         role="banner"
         aria-label="Header"
       >
-        <div className={headerNavContainerClass} role="landmark" aria-label="Header Navigation">
+        <div className={headerNavContainerClass} role="generic" aria-label="Header Navigation">
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
             {/* Image dimensions should be 3x the size of the width/height */}
