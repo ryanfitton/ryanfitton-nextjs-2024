@@ -8,9 +8,9 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   const isAnchorLink = href && href.startsWith('#')
 
   const commonProps = {
-    className: "break-words",
-    role: "link",
-    "aria-label": "Anchor Link",
+    className: 'break-words',
+    role: 'link',
+    'aria-label': 'Anchor Link',
     href: href,
     ...rest,
   }
@@ -19,7 +19,7 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   if (isInternalLink || isAnchorLink) {
     return <Link {...commonProps} />
 
-  //Anything else consider as an external link, so open in new window/tab
+    //Anything else consider as an external link, so open in new window/tab
   } else {
     return <a {...commonProps} target="_blank" rel="noopener noreferrer" />
   }

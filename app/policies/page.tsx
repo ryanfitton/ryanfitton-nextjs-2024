@@ -7,7 +7,7 @@ export const metadata = genPageMetadata({ title: 'Policies' })
 export default function Policies() {
   return (
     <>
-      <section className="site-container" role="section" aria-label="Page Content Section">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             <h2
@@ -83,7 +83,11 @@ export default function Policies() {
               analytical and advertising purposes.
             </p>
 
-            <table className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left" role="table" aria-label="Table">
+            <table
+              className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left"
+              role="table"
+              aria-label="Table"
+            >
               <thead>
                 <tr>
                   <th className="border-secondary-100 dark:border-secondary-800 border p-5">

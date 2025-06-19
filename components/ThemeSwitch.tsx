@@ -51,7 +51,11 @@ const ThemeSwitch = () => {
 
   return (
     <Menu as="div" className="relative">
-      <MenuButton className="component-navbar__theme-btn" role="button" aria-label={resolvedTheme === 'dark' ? 'Switch theme to Light' : 'Switch theme to Dark'}>
+      <MenuButton
+        className="component-navbar__theme-btn"
+        role="button"
+        aria-label={resolvedTheme === 'dark' ? 'Switch theme to Light' : 'Switch theme to Dark'}
+      >
         {resolvedTheme === 'dark' ? <Moon /> : <Sun />}
       </MenuButton>
       <Transition

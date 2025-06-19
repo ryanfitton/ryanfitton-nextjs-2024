@@ -24,7 +24,7 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
 
   return (
     <SectionContainer>
-      <section className="site-container" role="section" aria-label="Page Content Section">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <article
@@ -41,7 +41,7 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
 
               <section
                 className="component-posts-portfolio-details"
-                role="section"
+                role="generic"
                 aria-label="Portfolio Details Section"
               >
                 <div className="grid">

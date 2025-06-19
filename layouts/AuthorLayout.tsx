@@ -33,7 +33,7 @@ export default function AuthorLayout({ children, content }: Props) {
   return (
     <>
       <SectionContainer>
-        <section className="site-container" role="section" aria-label="Page Content Section">
+        <section className="site-container" role="generic" aria-label="Page Content Section">
           <div className="grid">
             <div className="col-span-full justify-self-center md:col-span-4">
               {avatar && (

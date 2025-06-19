@@ -40,7 +40,7 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
 
   return (
     <SectionContainer>
-      <section className="site-container" role="section" aria-label="Page Content Section">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar">

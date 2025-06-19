@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 'use client'
 
 import { usePathname } from 'next/navigation'
@@ -105,7 +104,7 @@ export default function PortfolioListLayout({
 
   return (
     <>
-      <section className="site-container" role="section" aria-label="Page Content Section">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <ul className="component-posts-portfolio-list grid">

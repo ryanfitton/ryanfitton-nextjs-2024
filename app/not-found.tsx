@@ -2,7 +2,7 @@ import Link from '@/components/Link'
 
 export default function NotFound() {
   return (
-    <section className="site-container" role="section" aria-label="404 Not Found Section">
+    <section className="site-container" role="generic" aria-label="404 Not Found Section">
       <div className="grid">
         <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
           <h2

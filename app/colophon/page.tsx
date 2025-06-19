@@ -6,7 +6,7 @@ export const metadata = genPageMetadata({ title: 'Colophon' })
 export default function Colophon() {
   return (
     <>
-      <section className="site-container" role="section" aria-label="Page Content Section">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             <h2
