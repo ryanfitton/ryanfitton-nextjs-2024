@@ -10,23 +10,38 @@ export default function Policies() {
       <section className="site-container" role="section" aria-label="Page Content Section">
         <div className="grid">
           <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
-            <h2 className="component-title component-title--main" role="heading" aria-label="License Heading">License</h2>
+            <h2
+              className="component-title component-title--main"
+              role="heading"
+              aria-label="License Heading"
+            >
+              License
+            </h2>
 
             <p>
               {`© ${new Date().getFullYear()}`} {siteMetadata.author}. All rights reserved.
             </p>
-            
+
             <p>
-              The content on this website (text, images, design, etc.) may not be copied, redistributed, or used without express permission.
+              The content on this website (text, images, design, etc.) may not be copied,
+              redistributed, or used without express permission.
             </p>
-            
+
             <p>
-              You are free to use the underlying code relating to this website freely and openly, as long as no content as mentioned above is copied, redistributed, or used without express permission.
+              You are free to use the underlying code relating to this website freely and openly, as
+              long as no content as mentioned above is copied, redistributed, or used without
+              express permission.
             </p>
-            
+
             <hr className="prose-hr component-posts-article__divider" />
 
-            <h2 className="component-title component-title--main" role="heading" aria-label="Privacy Heading">Privacy</h2>
+            <h2
+              className="component-title component-title--main"
+              role="heading"
+              aria-label="Privacy Heading"
+            >
+              Privacy
+            </h2>
 
             <p>
               Whenever you view a web page on this website your IP address, time, page referrer and
@@ -55,7 +70,13 @@ export default function Policies() {
 
             <hr className="prose-hr component-posts-article__divider" />
 
-            <h2 className="component-title component-title--main" role="heading" aria-label="Cookies Heading">Cookies</h2>
+            <h2
+              className="component-title component-title--main"
+              role="heading"
+              aria-label="Cookies Heading"
+            >
+              Cookies
+            </h2>
 
             <p>
               This websites uses cookies to give you a better browsing experience, and to assist in
@@ -143,7 +164,9 @@ export default function Policies() {
               </tbody>
             </table>
 
-            <h3 className="component-title" role="heading" aria-label="Cookie Deletion Heading">How do I Control or Delete Cookies?</h3>
+            <h3 className="component-title" role="heading" aria-label="Cookie Deletion Heading">
+              How do I Control or Delete Cookies?
+            </h3>
 
             <p>Information on;</p>
 
@@ -167,22 +190,34 @@ export default function Policies() {
             </ul>
 
             <p>
-              is available at&nbsp;<Link href={`http://www.aboutcookies.org/`}>www.aboutCookies.org</Link>.
-              To reiterate though, by deleting our cookies or disabling future cookies you may not
-              be able to access certain areas or features of this website.
+              is available at&nbsp;
+              <Link href={`http://www.aboutcookies.org/`}>www.aboutCookies.org</Link>. To reiterate
+              though, by deleting our cookies or disabling future cookies you may not be able to
+              access certain areas or features of this website.
             </p>
 
             <hr className="prose-hr component-posts-article__divider" />
 
-            <h2 className="component-title component-title--main" role="heading" aria-label="Comments Heading">Comments</h2>
+            <h2
+              className="component-title component-title--main"
+              role="heading"
+              aria-label="Comments Heading"
+            >
+              Comments
+            </h2>
 
             <p>
-              The commenting platform is provided by <Link href={`https://disqus.com/`}>Disqus</Link>. You
-              should read their{' '}
-              <Link href={`https://help.disqus.com/en/articles/1717102-terms-of-service`}>Terms</Link>,{' '}
-              <Link href={`https://disqus.com/privacy-policy/`}>Privacy</Link> and{' '}
-              <Link href={`https://help.disqus.com/en/articles/1944034-cookies-and-data-recipients`}>Cookie</Link>
-              {' '}
+              The commenting platform is provided by{' '}
+              <Link href={`https://disqus.com/`}>Disqus</Link>. You should read their{' '}
+              <Link href={`https://help.disqus.com/en/articles/1717102-terms-of-service`}>
+                Terms
+              </Link>
+              , <Link href={`https://disqus.com/privacy-policy/`}>Privacy</Link> and{' '}
+              <Link
+                href={`https://help.disqus.com/en/articles/1944034-cookies-and-data-recipients`}
+              >
+                Cookie
+              </Link>{' '}
               policies for more information. If you wish to opt-out from data sharing, you can do so{' '}
               <Link href={`https://disqus.com/data-sharing-settings/`}>here</Link>.
             </p>

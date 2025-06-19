@@ -31,7 +31,11 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   return (
     <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
       <div className="component-posts-pagination component-block">
-        <nav className="component-posts-pagination__navigation" role="navigation" aria-label="Pagination Navigation">
+        <nav
+          className="component-posts-pagination__navigation"
+          role="navigation"
+          aria-label="Pagination Navigation"
+        >
           {!prevPage && (
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"

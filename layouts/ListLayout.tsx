@@ -36,7 +36,11 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   return (
     <div className="col-span-full md:col-span-8 md:col-start-5 lg:col-span-8 lg:col-start-5">
       <div className="component-posts-pagination component-block">
-        <nav className="component-posts-pagination__navigation" role="navigation" aria-label="Pagination Navigation">
+        <nav
+          className="component-posts-pagination__navigation"
+          role="navigation"
+          aria-label="Pagination Navigation"
+        >
           {!prevPage && (
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
@@ -70,7 +74,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
               disabled={!nextPage}
               role="button"
-               aria-label="Next Page Button"
+              aria-label="Next Page Button"
             >
               Next
             </button>
@@ -81,7 +85,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
               href={`/${basePath}/page/${currentPage + 1}`}
               rel="next"
               role="menuitem"
-               aria-label="Next Page Link"
+              aria-label="Next Page Link"
             >
               Next
             </Link>
@@ -114,7 +118,11 @@ export default function ListLayout({
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar">
               <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
-                <h5 className="component-posts-sidebar__title component-title" role="heading" aria-label="All Posts Heading">
+                <h5
+                  className="component-posts-sidebar__title component-title"
+                  role="heading"
+                  aria-label="All Posts Heading"
+                >
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>
 
@@ -147,7 +155,11 @@ export default function ListLayout({
                 const { path, date, featuredImgSrc, title, summary, tags } = post
                 return (
                   <li key={path}>
-                    <article className="component-posts-article" role="article" aria-label="Article Content">
+                    <article
+                      className="component-posts-article"
+                      role="article"
+                      aria-label="Article Content"
+                    >
                       {featuredImgSrc && (
                         <Link href={`/${path}`}>
                           <Image
@@ -176,7 +188,11 @@ export default function ListLayout({
                         </dd>
                       </dl>
 
-                      <h2 className="component-posts-article__title" role="heading" aria-label="Article Heading">
+                      <h2
+                        className="component-posts-article__title"
+                        role="heading"
+                        aria-label="Article Heading"
+                      >
                         <Link href={`/${path}`} dangerouslySetInnerHTML={{ __html: title }}></Link>
                       </h2>
 

@@ -39,7 +39,11 @@ export default function Header() {
 
   return (
     <>
-      <header className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')} role="banner" aria-label="Header">
+      <header
+        className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')}
+        role="banner"
+        aria-label="Header"
+      >
         <div className={headerNavContainerClass} role="landmark" aria-label="Header Navigation">
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
@@ -48,8 +52,16 @@ export default function Header() {
           </Link>
 
           {/* Nav */}
-          <div className="component-navbar component-navbar--header" role="menubar" aria-label="Header Navigation Menu">
-            <nav className="component-navbar__links" role="navigation" aria-label="Header Navigation Menu Links">
+          <div
+            className="component-navbar component-navbar--header"
+            role="menubar"
+            aria-label="Header Navigation Menu"
+          >
+            <nav
+              className="component-navbar__links"
+              role="navigation"
+              aria-label="Header Navigation Menu Links"
+            >
               {navLinks
                 .filter((link) => link.href !== '/')
                 .map((link) => (

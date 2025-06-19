@@ -51,7 +51,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
 
   return (
     <Link href={href} rel="me">
-        <span className="sr-only">{kind}</span>
+      <span className="sr-only">{kind}</span>
       <SocialSvg />
     </Link>
   )

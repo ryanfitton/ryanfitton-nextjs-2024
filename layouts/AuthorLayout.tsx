@@ -48,7 +48,13 @@ export default function AuthorLayout({ children, content }: Props) {
             </div>
 
             <div className="col-span-full md:col-span-8">
-              <h2 className="component-title component-title--main" role="heading" aria-label={`${name} Heading`}>{name}</h2>
+              <h2
+                className="component-title component-title--main"
+                role="heading"
+                aria-label={`${name} Heading`}
+              >
+                {name}
+              </h2>
               <p className="lead">{occupation}</p>
 
               {children}

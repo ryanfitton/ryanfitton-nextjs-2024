@@ -45,7 +45,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           <div className="col-span-full md:col-span-4 xl:col-span-3">
             <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar">
               <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
-                <h5 className="component-posts-sidebar__title component-title" role="heading" aria-label="All Posts Heading">
+                <h5
+                  className="component-posts-sidebar__title component-title"
+                  role="heading"
+                  aria-label="All Posts Heading"
+                >
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>
 
@@ -73,7 +77,11 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
           </div>
 
           <div className="col-span-full md:col-span-8 xl:col-span-8 xl:col-start-5">
-            <article className="component-posts-article" role="article" aria-label="Blog Post Article">
+            <article
+              className="component-posts-article"
+              role="article"
+              aria-label="Blog Post Article"
+            >
               <h1
                 className="component-posts-article__title"
                 dangerouslySetInnerHTML={{ __html: title }}

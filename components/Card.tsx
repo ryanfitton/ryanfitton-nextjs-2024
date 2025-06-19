@@ -23,7 +23,7 @@ const Card = ({ title, description, imgSrc, href }) => {
         <h2
           className="component-posts-article__title"
           dangerouslySetInnerHTML={{ __html: title }}
-          role="heading" 
+          role="heading"
           aria-label="Article Heading"
         ></h2>
 

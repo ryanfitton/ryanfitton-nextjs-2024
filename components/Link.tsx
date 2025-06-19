@@ -16,7 +16,15 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
     //Anything else consider as an external link, so open in new window/tab
   } else {
     return (
-      <a className="break-words" target="_blank" rel="noopener noreferrer" role="link" aria-label="Anchor Link" href={href} {...rest} />
+      <a
+        className="break-words"
+        target="_blank"
+        rel="noopener noreferrer"
+        role="link"
+        aria-label="Anchor Link"
+        href={href}
+        {...rest}
+      />
     )
   }
 }
