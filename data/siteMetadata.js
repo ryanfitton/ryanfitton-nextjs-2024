@@ -15,7 +15,7 @@ const siteMetadata = {
   facebook: 'https://www.facebook.com/rfitton',
   youtube: 'http://www.youtube.com/@Ryan.Fitton',
   github: 'https://github.com/ryanfitton/',
-  x: 'https://x.com/ryanfitton',
+  // x: 'https://x.com/ryanfitton',
   // twitter: 'https://www.twitter.com/ryanfitton',
   instagram: 'https://www.instagram.com/ryanfittonuk/',
   // threads: 'https://www.threads.net/@ryanfittonuk',
