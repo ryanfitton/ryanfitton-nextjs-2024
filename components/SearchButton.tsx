@@ -14,7 +14,7 @@ const SearchButton = () => {
       <SearchButtonWrapper
         className="component-navbar__search-btn"
         role="button"
-        aria-label="Search"
+        aria-label="Search Button"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
