@@ -94,7 +94,7 @@ describe('AuthorLayout', () => {
     // Check `.site-container`
     const siteContainer = container.querySelector(".site-container");
     expect(siteContainer).toBeInTheDocument();
-    expect(siteContainer).toHaveAttribute("role", "section");
+    expect(siteContainer).toHaveAttribute("role", "generic");
     expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
 
     // Check `.site-container`

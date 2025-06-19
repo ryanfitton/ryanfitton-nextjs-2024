@@ -62,7 +62,7 @@ describe('Header component', () => {
 
         //Check Aria attributes exist and are correct on `.site-header > div`
         const NavigationWrapper = header.firstChild;
-        expect(NavigationWrapper).toHaveAttribute("role", "landmark");
+        expect(NavigationWrapper).toHaveAttribute("role", "generic");
         expect(NavigationWrapper).toHaveAttribute("aria-label", "Header Navigation");
 
         //Check Aria attributes exist and are correct on `.component-navbar--header`

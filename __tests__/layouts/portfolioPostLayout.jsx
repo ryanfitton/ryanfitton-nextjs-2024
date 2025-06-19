@@ -64,7 +64,7 @@ describe('PortfolioPostLayout', () => {
     // Check `.site-container`
     const siteContainer = container.querySelector(".site-container");
     expect(siteContainer).toBeInTheDocument();
-    expect(siteContainer).toHaveAttribute("role", "section");
+    expect(siteContainer).toHaveAttribute("role", "generic");
     expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
 
     // Check `.component-posts-article`
@@ -82,7 +82,7 @@ describe('PortfolioPostLayout', () => {
     // Check `.component-posts-portfolio-details`
     const portfolioDetails = container.querySelector(".component-posts-portfolio-details");
     expect(portfolioDetails).toBeInTheDocument();
-    expect(portfolioDetails).toHaveAttribute("role", "section");
+    expect(portfolioDetails).toHaveAttribute("role", "generic");
     expect(portfolioDetails).toHaveAttribute("aria-label", "Portfolio Details Section");
   })
 })
