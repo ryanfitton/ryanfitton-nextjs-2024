@@ -185,10 +185,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
 
-          <SectionContainer>
+        <SectionContainer>
             <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
               <Header />
-              <main className="site-main">{children}</main>
+              <main className="site-main" role="main" aria-label="Main Content">{children}</main>
             </SearchProvider>
 
             <Footer />

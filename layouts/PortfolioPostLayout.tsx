@@ -24,16 +24,18 @@ export default function PortfolioPostLayout({ content, children }: LayoutProps) 
 
   return (
     <SectionContainer>
-      <section className="site-container">
+      <section className="site-container" role="section" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
-            <article className="component-posts-article">
+            <article className="component-posts-article" role="article" aria-label="Portfolio Post Article">
               <h1
                 className="component-posts-article__title"
                 dangerouslySetInnerHTML={{ __html: title }}
+                role="heading"
+                aria-label="Portfolio Post Title"
               ></h1>
 
-              <section className="component-posts-portfolio-details">
+              <section className="component-posts-portfolio-details" role="section" aria-label="Portfolio Details Section">
                 <div className="grid">
                   <div className="col-span-full md:col-span-4 xl:col-span-3">
                     <ul className="component-posts-portfolio-details__list">

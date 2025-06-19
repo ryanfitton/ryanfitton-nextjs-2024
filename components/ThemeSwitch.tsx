@@ -69,8 +69,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to Light"
+                    role="button"
                   >
                     <Sun />
                     Light
@@ -82,8 +83,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to Dark"
+                    role="button"
                   >
                     <Moon />
                     Dark
@@ -95,8 +97,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to System"
+                    role="button"
                   >
                     <Monitor />
                     System

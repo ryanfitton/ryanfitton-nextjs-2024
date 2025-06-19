@@ -12,7 +12,11 @@ export default function PageTitle({ className, headingSize, heading }: Props) {
   const CustomTag = `${headingSize ? headingSize : 'h1'}` as keyof HTMLElementTagNameMap
 
   return (
-    <CustomTag className={`hero__title component-title ` + (className ? className : '')}>
+    <CustomTag
+      className={`hero__title component-title ${className ? className : ''}`}
+      role="heading"
+      aria-label={`Page Title for ${heading ?? ''}`}
+    >
       {heading}
     </CustomTag>
   )

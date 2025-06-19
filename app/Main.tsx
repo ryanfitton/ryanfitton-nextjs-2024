@@ -14,7 +14,7 @@ export default function Home({ posts }) {
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   return (
     <>
-      <section className="component-block component-block--padding component-block--bg-secondary">
+      <section className="component-block component-block--padding component-block--bg-secondary" role="section" aria-label="Bio Section">
         <div className="site-container">
           <div className="grid">
             <div className="col-span-full justify-self-center md:col-span-4 xl:col-span-3 xl:col-start-2">
@@ -33,7 +33,7 @@ export default function Home({ posts }) {
             </div>
 
             <div className="prose dark:prose-invert col-span-full md:col-span-8 xl:col-span-6">
-              <h2 className="component-title component-title--main">About</h2>
+              <h2 className="component-title component-title--main" role="heading" aria-label="About Heading">About</h2>
               <p>
                 I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally
                 creating websites for around 10 years (along with design and print work within this
@@ -60,12 +60,12 @@ export default function Home({ posts }) {
         </div>
       </section>
 
-      <section className="site-container">
+      <section className="site-container" role="section" aria-label="Posts Section">
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
-            <aside className="site-aside">
+            <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar>
               <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
-                <h5 className="component-posts-sidebar__title component-title">
+                <h5 className="component-posts-sidebar__title component-title" role="heading" aria-label="All Posts Heading">
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>
 
@@ -99,7 +99,7 @@ export default function Home({ posts }) {
                 const { path, date, title, summary, tags } = post
                 return (
                   <li key={path}>
-                    <article className="component-posts-article">
+                    <article className="component-posts-article" role="article" aria-label="Article Content">
                       <dl className="component-posts-article__date">
                         <dt className="sr-only">Published on</dt>
                         <dd>
@@ -113,7 +113,7 @@ export default function Home({ posts }) {
                         </dd>
                       </dl>
 
-                      <h2 className="component-posts-article__title">
+                      <h2 className="component-posts-article__title" role="heading" aria-label="Article Heading">
                         <Link href={`/${path}`} dangerouslySetInnerHTML={{ __html: title }}></Link>
                       </h2>
 
@@ -141,8 +141,8 @@ export default function Home({ posts }) {
           {posts.length > MAX_DISPLAY && (
             <div className="col-span-full md:col-span-4 md:col-start-3 lg:col-span-8 lg:col-start-5">
               <div className="component-posts-pagination component-block">
-                <nav className="component-posts-pagination__navigation">
-                  <Link href="/blog/" className="component-posts-pagination__paginate">
+                <nav className="component-posts-pagination__navigation" role="navigation" aria-label="Read More Navigation">
+                  <Link href="/blog/" className="component-posts-pagination__paginate" role="menuitem" aria-label="Read More Link">
                     Read more
                   </Link>
                 </nav>

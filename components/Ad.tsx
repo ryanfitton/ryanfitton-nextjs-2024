@@ -32,7 +32,7 @@ export default function Ad({
 
   if (adClient && adSlot) {
     return (
-      <div className="component-block component-block--outline-secondary component-block--rounded component-ad">
+      <div className="component-block component-block--outline-secondary component-block--rounded component-ad" role="complementary" aria-label="Advertisement Section">
         <ins
           className="adsbygoogle"
           data-ad-client={adClient}

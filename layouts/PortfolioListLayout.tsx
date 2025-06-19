@@ -31,11 +31,13 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   return (
     <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
       <div className="component-posts-pagination component-block">
-        <nav className="component-posts-pagination__navigation">
+        <nav className="component-posts-pagination__navigation" role="navigation" aria-label="Pagination Navigation">
           {!prevPage && (
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
               disabled={!prevPage}
+              role="button"
+              aria-label="Previous Page Button"
             >
               Previous
             </button>
@@ -47,6 +49,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
                 currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`
               }
               rel="prev"
+              role="menuitem"
+              aria-label="Previous Page Link"
             >
               Previous
             </Link>
@@ -60,6 +64,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
               disabled={!nextPage}
+              role="button"
+              aria-label="Next Page Button"
             >
               Next
             </button>
@@ -69,6 +75,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
               className="component-posts-pagination__paginate"
               href={`/${basePath}/page/${currentPage + 1}`}
               rel="next"
+              role="menuitem"
+              aria-label="Next Page Link"
             >
               Next
             </Link>
@@ -93,7 +101,7 @@ export default function PortfolioListLayout({
 
   return (
     <>
-      <section className="site-container">
+      <section className="site-container" role="section" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3">
             <ul className="component-posts-portfolio-list grid">

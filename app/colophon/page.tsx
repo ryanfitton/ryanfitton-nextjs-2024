@@ -6,10 +6,10 @@ export const metadata = genPageMetadata({ title: 'Colophon' })
 export default function Colophon() {
   return (
     <>
-      <section className="site-container">
+      <section className="site-container" role="section" aria-label="Page Content Section">
         <div className="grid">
           <div className="prose dark:prose-invert col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
-            <h2 className="component-title component-title--main">About this website</h2>
+            <h2 className="component-title component-title--main" role="heading" aria-label="About this website Heading">About this website</h2>
 
             <p>
               Built and maintained since August 2024. Previously built with WordPress (2014-2024).

@@ -1,3 +1,5 @@
+import Link from './Link'
+
 import {
   Facebook,
   Github,
@@ -48,10 +50,10 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   const SocialSvg = components[kind]
 
   return (
-    <a rel="me" href={href}>
-      <span className="sr-only">{kind}</span>
+    <Link href={href} rel="me">
+        <span className="sr-only">{kind}</span>
       <SocialSvg />
-    </a>
+    </Link>
   )
 }
 
