@@ -83,7 +83,7 @@ export default function Policies() {
               analytical and advertising purposes.
             </p>
 
-            <table className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left">
+            <table className="not-prose my-8 w-full table-auto border-collapse border border-slate-500 text-left" role="table" aria-label="Table">
               <thead>
                 <tr>
                   <th className="border-secondary-100 dark:border-secondary-800 border p-5">

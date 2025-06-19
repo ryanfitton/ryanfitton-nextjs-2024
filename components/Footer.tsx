@@ -4,7 +4,7 @@ import SocialIcon from '@/components/social-icons'
 
 export default function Footer() {
   return (
-    <footer className="site-footer" role="contentinfo" aria-label="Page Content Section">
+    <footer className="site-footer" role="contentinfo" aria-label="Footer">
       <div className="site-container">
         <div
           className="component-navbar component-navbar--icons"
@@ -136,7 +136,7 @@ export default function Footer() {
           </nav>
         </div>
 
-        <div className="mt-2">
+        <div className="site-footer__footnote">
           <span>{`© ${new Date().getFullYear()}`}</span>{' '}
           <span>
             <Link href="/">{siteMetadata.author}</Link>.

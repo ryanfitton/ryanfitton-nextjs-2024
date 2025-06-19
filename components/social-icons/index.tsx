@@ -50,7 +50,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
   const SocialSvg = components[kind]
 
   return (
-    <Link href={href} rel="me">
+    <Link href={href} rel="me" role="menuitem" aria-label={`${kind} Social Media Link`}>
       <span className="sr-only">{kind}</span>
       <SocialSvg />
     </Link>

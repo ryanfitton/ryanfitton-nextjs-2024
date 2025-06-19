@@ -97,7 +97,7 @@ const MobileNav = () => {
                         pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
                       }
                       role="menuitem"
-                      aria-label={'Movile Navigation Link to ' + link.title}
+                      aria-label={'Mobile Navigation Link to ' + link.title}
                       onClick={onToggleNav}
                     >
                       {link.title}

@@ -28,6 +28,9 @@ describe('MobileNav', () => {
     // Check if the mobile menu button is rendered
     const menuButtonElement = container.querySelector(".component-navbar__menu-btn");
     expect(menuButtonElement).toBeInTheDocument();
+
+    //Check Aria attributes exist and are correct on `.component-navbar__menu-btn`
+    expect(menuButtonElement).toHaveAttribute("role", "button");
     expect(menuButtonElement).toHaveAttribute("aria-label", "Toggle Menu");
 
     // Wrap the state change and assertions in `act`
@@ -36,12 +39,38 @@ describe('MobileNav', () => {
       fireEvent.click(menuButtonElement)
     })
 
-    // Check if the nav links appear
-    const homeLink = screen.getByText('Home')
-    const aboutLink = screen.getByText('About')
+    // Wait for the nav links and elements to appear after clicking
+    await waitFor(() => {
+      // Check if the nav links appear
+      const homeLink = screen.getByText('Home')
+      const aboutLink = screen.getByText('About')
 
-    expect(homeLink).toBeInTheDocument()
-    expect(aboutLink).toBeInTheDocument()
+      expect(homeLink).toBeInTheDocument()
+      expect(aboutLink).toBeInTheDocument()
+
+      //Check Aria attributes exist and are correct on `.component-navbar.component-navbar--header`
+      const mobileMenuNavbar = document.body.querySelector(".component-navbar.component-navbar--header");
+      expect(mobileMenuNavbar).toHaveAttribute("role", "dialog");
+      expect(mobileMenuNavbar).toHaveAttribute("aria-label", "Mobile Navigation Dialog");
+
+      //Check Aria attributes exist and are correct on `.navbar__menu-mobile button`
+      const mobileMenuNavbarButton = document.body.querySelector(".component-navbar__menu-mobile button");
+      expect(mobileMenuNavbarButton).toHaveAttribute("role", "button");
+      expect(mobileMenuNavbarButton).toHaveAttribute("aria-label", "Toggle Menu");
+
+      //Check Aria attributes exist and are correct on `.component-navbar__links.component-navbar__links--menu-mobile`
+      const mobileMenuNavbarLinks = document.body.querySelector(".component-navbar__links.component-navbar__links--menu-mobile");
+      expect(mobileMenuNavbarLinks).toHaveAttribute("role", "navigation");
+      expect(mobileMenuNavbarLinks).toHaveAttribute("aria-label", "Mobile Navigation Links Menu");
+
+      //Check Aria attributes exist and are correct on `.component-navbar__links.component-navbar__links--menu-mobile a`
+      const navbarIconLink = document.body.querySelectorAll('.component-navbar__links.component-navbar__links--menu-mobile a');
+      expect(navbarIconLink.length).toBeGreaterThan(0);
+      navbarIconLink.forEach(iconLink => {
+        expect(iconLink).toHaveAttribute("role", "menuitem");
+        expect(iconLink.getAttribute("aria-label")).toContain("Mobile Navigation Link to");
+      });
+    });
   })
 
   it('Check click of menu button', async () => {

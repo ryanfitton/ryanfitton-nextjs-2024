@@ -108,4 +108,47 @@ describe('PostLayout', () => {
     expect(screen.getByText('Tag1')).toBeInTheDocument()
     expect(screen.getByText('Tag2')).toBeInTheDocument()
   })
+
+  it('Checks elements have the correct ARIA attributes', () => {
+    const { container } = render(
+      <PostLayout
+        content={mockContent}
+        authorDetails={mockAuthorDetails}
+        next={{ path: '/blog/next-post', title: 'Next Post' }}
+        prev={{ path: '/blog/prev-post', title: 'Previous Post' }}
+      >
+        <div>Child content</div>
+      </PostLayout>
+    )
+
+    // Check `.site-container`
+    const siteContainer = container.querySelector(".site-container");
+    expect(siteContainer).toBeInTheDocument();
+    expect(siteContainer).toHaveAttribute("role", "section");
+    expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
+
+    // Check `.site-aside`
+    const article = container.querySelector(".site-aside");
+    expect(article).toBeInTheDocument();
+    expect(article).toHaveAttribute("role", "complementary");
+    expect(article).toHaveAttribute("aria-label", "Post Tags Sidebar");
+
+    // Check `.component-posts-sidebar__title.component-title`
+    const article = container.querySelector(".component-posts-sidebar__title.component-title");
+    expect(article).toBeInTheDocument();
+    expect(article).toHaveAttribute("role", "heading");
+    expect(article).toHaveAttribute("aria-label", "All Posts Heading");
+
+    // Check `.component-posts-article`
+    const article = container.querySelector(".component-posts-article");
+    expect(article).toBeInTheDocument();
+    expect(article).toHaveAttribute("role", "article");
+    expect(article).toHaveAttribute("aria-label", "Blog Post Article");
+
+    // Check `.component-posts-article__title`
+    const articleTitle = container.querySelector(".component-posts-article__title");
+    expect(articleTitle).toBeInTheDocument();
+    expect(articleTitle).toHaveAttribute("role", "heading");
+    expect(articleTitle).toHaveAttribute("aria-label", "Blog Post Title");
+  })
 })

@@ -191,6 +191,10 @@
     &-footer {
       @apply bg-secondary-900 dark:bg-secondary-950 mt-24 text-center text-sm;
 
+      &__footnote {
+        @apply mt-2;
+      }
+
       a {
         @apply no-underline!;
         @apply hover:underline!;

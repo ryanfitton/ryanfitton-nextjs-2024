@@ -25,10 +25,15 @@ describe('SearchButton', () => {
     // Debug the output
     //screen.debug();
 
-    // Check if the correct button is rendered
+    // Check if the Navbar Button is rendered 
     const searchButton = screen.getByRole('button')
     expect(searchButton).toBeInTheDocument()
 
+    /*const searchButton = container.querySelector(".component-navbar__search-btn");
+    expect(searchButton).toBeInTheDocument()
+    expect(searchButton).toHaveAttribute("role", "button");
+    expect(searchButton).toHaveAttribute("aria-label", "Search Button");*/
+    
     // Check if the button contains the SVG icon (the search icon)
     const svgIcon = container.querySelector("button > svg");
     expect(svgIcon).toBeInTheDocument();
@@ -44,9 +49,14 @@ describe('SearchButton', () => {
     // Debug the output
     //screen.debug();
 
-    // Check if the correct button is rendered
+    // Check if the Navbar Button is rendered 
     const searchButton = screen.getByRole('button')
     expect(searchButton).toBeInTheDocument()
+
+    /*const searchButton = container.querySelector(".component-navbar__search-btn");
+    expect(searchButton).toBeInTheDocument()
+    expect(searchButton).toHaveAttribute("role", "button");
+    expect(searchButton).toHaveAttribute("aria-label", "Search Button");*/
 
     // Check if the button contains the SVG icon (the search icon)
     const svgIcon = container.querySelector("button > svg");

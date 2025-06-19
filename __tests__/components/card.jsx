@@ -29,6 +29,16 @@ describe("Card Component", () => {
         container.getElementsByClassName("component-posts-article__featured-image");
         container.getElementsByClassName("component-posts-article__title");
         container.getElementsByClassName("component-posts-article__excerpt");
+
+        //Check Aria attributes exist and are correct on `.component-posts-article`
+        const article = container.querySelector(".component-posts-article")
+        expect(article).toHaveAttribute("role", "article")
+        expect(article).toHaveAttribute("aria-label", "Page Content Article")
+
+        //Check Aria attributes exist and are correct on `.component-posts-article__title`
+        const heading = container.querySelector(".component-posts-article__title")
+        expect(heading).toHaveAttribute("role", "heading")
+        expect(heading).toHaveAttribute("aria-label", "Article Heading")
     });
     
 });
