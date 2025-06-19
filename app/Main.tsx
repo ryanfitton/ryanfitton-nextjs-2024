@@ -63,7 +63,7 @@ export default function Home({ posts }) {
       <section className="site-container" role="section" aria-label="Posts Section">
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
-            <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar>
+            <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar">
               <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
                 <h5 className="component-posts-sidebar__title component-title" role="heading" aria-label="All Posts Heading">
                   <Link href={`/blog`}>All Posts</Link>
