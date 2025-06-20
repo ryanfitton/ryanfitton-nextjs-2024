@@ -8,7 +8,9 @@ export default function Comments({ slug }: { slug: string }) {
     <>
       {siteMetadata.comments && (
         <>
-          <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+          <div role="complementary" aria-label="Comments Section">
+            <CommentsComponent commentsConfig={siteMetadata.comments} slug={slug} />
+          </div>
         </>
       )}
     </>

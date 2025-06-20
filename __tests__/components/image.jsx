@@ -23,6 +23,10 @@ describe("Image Component", () => {
         const element = container.querySelector("img");
         expect(element).toBeInTheDocument();
 
+        //Check if the element has the correct ARIA attributes
+        expect(element).toHaveAttribute("role", "img")
+        expect(element).toHaveAttribute("aria-label", "Content Image")
+
         // Check if the element exists with correct attributes
         container.getElementsByClassName("test-image-class");
         expect(element).toHaveAttribute("alt", "Test title");

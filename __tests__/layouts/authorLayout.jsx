@@ -87,4 +87,20 @@ describe('AuthorLayout', () => {
     expect(screen.getByTestId('social-icon-github')).toHaveAttribute('href', 'https://github.com/johndoe')
     expect(screen.queryByTestId('social-icon-twitter')).toHaveAttribute('href', '') // Twitter is missing
   })
+
+  it('Checks elements have the correct ARIA attributes', () => {
+    const { container } = render(<AuthorLayout content={mockAuthorContent}>Content for ARIA attribute check</AuthorLayout>)
+
+    // Check `.site-container`
+    const siteContainer = container.querySelector(".site-container");
+    expect(siteContainer).toBeInTheDocument();
+    expect(siteContainer).toHaveAttribute("role", "generic");
+    expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
+
+    // Check `.site-container`
+    const componentTitleMain = container.querySelector(".component-title.component-title--main");
+    expect(componentTitleMain).toBeInTheDocument();
+    expect(componentTitleMain).toHaveAttribute("role", "heading");
+    expect(componentTitleMain).toHaveAttribute("aria-label", mockAuthorContent.name + " Heading");
+  })
 })

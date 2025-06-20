@@ -24,6 +24,10 @@ describe("TableWrapper Component", () => {
         const table = cell.closest('table');
         expect(table).toBeInTheDocument();
 
+        // Checks the table has the correct ARIA attributes
+        expect(table).toHaveAttribute("role", "table");
+        expect(table).toHaveAttribute("aria-label", "Table");
+
         // Checks the wrapper div has the correct class
         const wrapperDiv = table.closest('div');
         expect(wrapperDiv).toHaveClass('w-full', 'overflow-x-auto');

@@ -10,11 +10,15 @@ describe("Ad Component", () => {
         // Debug the output
         //screen.debug();
 
+        //Check Aria attributes exist and are correct
+        expect(container.firstChild).toHaveAttribute("role", "complementary");
+        expect(container.firstChild).toHaveAttribute("aria-label", "Advertisement Section");
+
         // Check if the container div exists
         const insElement = container.querySelector("ins");
         expect(insElement).toBeInTheDocument();
 
-        // Check if <ins> tag exists with correct attributes
+        // Check if `<ins>` tag exists with correct attributes
         expect(insElement).toHaveAttribute("class", "adsbygoogle");
         expect(insElement).toHaveAttribute("data-ad-client", "test-client");
         expect(insElement).toHaveAttribute("data-ad-slot", "test-slot");

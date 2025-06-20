@@ -16,7 +16,11 @@ jest.mock('pliny/comments', () => ({
 describe("Comments Component", () => {
 
   it('Renders CommentsComponent when comments are enabled', () => {
-    render(<Comments slug="test-post" />)
+    const { container } = render(<Comments slug="test-post" />)
+
+    //Check Aria attributes exist and are correct
+    expect(container.firstChild).toHaveAttribute("role", "complementary");
+    expect(container.firstChild).toHaveAttribute("aria-label", "Comments Section");
 
     // Debug the output
     //screen.debug();

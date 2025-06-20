@@ -14,7 +14,7 @@ describe('Tag Component', () => {
     render(<Tag text={text} />)
 
     // Debug the output
-    screen.debug();
+    //screen.debug();
 
     // Check that the link is rendered
     const linkElement = screen.getByText('Hello-World-Example')
@@ -26,5 +26,9 @@ describe('Tag Component', () => {
     // Check if the link text is correctly hyphenated
     expect(linkElement).toBeInTheDocument()
     expect(linkElement).toHaveTextContent('Hello-World-Example')
+
+    //Check if the element has the correct ARIA attributes
+    expect(linkElement).toHaveAttribute("role", "link")
+    expect(linkElement).toHaveAttribute("aria-label", "Anchor Link")
   })
 })

@@ -39,8 +39,12 @@ export default function Header() {
 
   return (
     <>
-      <header className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')}>
-        <div className={headerNavContainerClass}>
+      <header
+        className={`site-header ` + (pathname === '/' ? 'site-header--homepage' : '')}
+        role="banner"
+        aria-label="Header"
+      >
+        <div className={headerNavContainerClass} role="generic" aria-label="Header Navigation">
           {/* Logo */}
           <Link href="/" className="site-header__logo" aria-label={siteMetadata.author}>
             {/* Image dimensions should be 3x the size of the width/height */}
@@ -48,8 +52,16 @@ export default function Header() {
           </Link>
 
           {/* Nav */}
-          <div className="component-navbar component-navbar--header">
-            <div className="component-navbar__links">
+          <div
+            className="component-navbar component-navbar--header"
+            role="menubar"
+            aria-label="Header Navigation Menu"
+          >
+            <nav
+              className="component-navbar__links"
+              role="navigation"
+              aria-label="Header Navigation Menu Links"
+            >
               {navLinks
                 .filter((link) => link.href !== '/')
                 .map((link) => (
@@ -59,11 +71,14 @@ export default function Header() {
                     className={
                       pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
                     }
+                    role="menuitem"
+                    aria-label={`Header Navigation Link to ${link.title}`}
+                    {...(pathname.startsWith(link.href) ? { 'aria-current': 'page' } : {})}
                   >
                     {link.title}
                   </Link>
                 ))}
-            </div>
+            </nav>
 
             <SearchButton />
 

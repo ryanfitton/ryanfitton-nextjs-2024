@@ -50,7 +50,6 @@ export default [
     rules: {
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
-
       'jsx-a11y/anchor-is-valid': [
         'error',
         {
@@ -59,6 +58,7 @@ export default [
           aspects: ['invalidHref', 'preferButton'],
         },
       ],
+      'jsx-a11y/no-redundant-roles': 'warn',
       'react/prop-types': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       'react/no-unescaped-entities': 'off',

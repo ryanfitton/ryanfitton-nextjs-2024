@@ -77,6 +77,7 @@ Commands:
 
 ## Other:
 
+- `yarn run lint`. This will Lint the code.
 - `yarn run format`. This will Prettify the code.
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
