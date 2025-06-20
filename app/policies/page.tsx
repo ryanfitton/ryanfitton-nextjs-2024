@@ -56,16 +56,15 @@ export default function Policies() {
 
             <p>
               If you have any questions regarding the security, privacy or cookie policy on this
-              website please contact{' '}
-              <strong>
-                <span className="!text-typography-default !no-underline">ryan＠</span>
-                <a
-                  href="https://ryanfitton.co.uk"
-                  className="!text-typography-default !no-underline"
-                >
-                  ryanfitton.co.uk
-                </a>
-              </strong>{' '}
+              website please contact by{' '}
+              <Link
+                href={`mailto:${siteMetadata.email}`}
+                role="menuitem"
+                aria-label="Email link from Policies page"
+              >
+                email
+              </Link>
+              .
             </p>
 
             <hr className="prose-hr component-posts-article__divider" />
