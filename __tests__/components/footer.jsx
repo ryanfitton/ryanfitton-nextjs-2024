@@ -9,7 +9,7 @@ describe("Footer Component", () => {
         const { container } = render(<Footer />);
 
         // Debug the output
-        screen.debug();
+        //screen.debug();
 
         // Check if the container div exists
         const element = container.querySelector("footer");

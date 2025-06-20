@@ -32,7 +32,7 @@ export default function Footer() {
               kind="github"
               href={siteMetadata.github}
               role="menuitem"
-              aria-label="Github ocial Media Link"
+              aria-label="Github Social Media Link"
             />
             <SocialIcon
               kind="keybase"

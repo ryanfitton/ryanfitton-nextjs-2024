@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { AnchorHTMLAttributes } from 'react'
 
 import {
   Facebook,
@@ -45,24 +46,23 @@ const SocialIcon = ({
   href,
   size = 8,
   ...rest
-}: SocialIconProps & React.HTMLProps<HTMLAnchorElement>) => {
+}: SocialIconProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   if (
     !href ||
     (kind === 'mail' && !/^mailto:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(href))
   )
     return null
 
-  // Allow overriding role/aria-label via ...rest, but provide defaults
-  const {
-    role = 'menuitem',
-    ['aria-label']: ariaLabel = `${kind} Social Media Link`,
-    ...otherProps
-  } = rest
+  //Set Defaults
+  const defaultProps = {
+    role: 'menuitem',
+    'aria-label': `${kind} Social Media Link`,
+  }
 
   const SocialSvg = components[kind]
 
   return (
-    <Link href={href} rel="me" role={role} aria-label={ariaLabel} {...otherProps}>
+    <Link href={href} rel="me" {...defaultProps} {...rest}>
       <span className="sr-only">{kind}</span>
       <SocialSvg />
     </Link>
