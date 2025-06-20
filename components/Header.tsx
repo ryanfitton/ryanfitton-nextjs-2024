@@ -73,7 +73,7 @@ export default function Header() {
                     }
                     role="menuitem"
                     aria-label={`Header Navigation Link to ${link.title}`}
-                    aria-current={pathname.startsWith(link.href) ? 'page' : ''}
+                    {...(pathname.startsWith(link.href) ? { 'aria-current': 'page' } : {})}
                   >
                     {link.title}
                   </Link>

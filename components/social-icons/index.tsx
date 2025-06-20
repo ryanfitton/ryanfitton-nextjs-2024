@@ -40,17 +40,29 @@ type SocialIconProps = {
   size?: number
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+const SocialIcon = ({
+  kind,
+  href,
+  size = 8,
+  ...rest
+}: SocialIconProps & React.HTMLProps<HTMLAnchorElement>) => {
   if (
     !href ||
     (kind === 'mail' && !/^mailto:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(href))
   )
     return null
 
+  // Allow overriding role/aria-label via ...rest, but provide defaults
+  const {
+    role = 'menuitem',
+    ['aria-label']: ariaLabel = `${kind} Social Media Link`,
+    ...otherProps
+  } = rest
+
   const SocialSvg = components[kind]
 
   return (
-    <Link href={href} rel="me" role="menuitem" aria-label={`${kind} Social Media Link`}>
+    <Link href={href} rel="me" role={role} aria-label={ariaLabel} {...otherProps}>
       <span className="sr-only">{kind}</span>
       <SocialSvg />
     </Link>
