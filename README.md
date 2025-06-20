@@ -99,6 +99,32 @@ Exaples found in:
 
 # Misc
 
+## Tests:
+
+## Codeblock styles:
+
+Using Prism for code block styles. In MDX documents you can use these:
+
+For single-line code block:
+
+```
+  `Your single-line line code block`
+```
+
+For multi-level code block:
+
+```
+  ```
+  Your multi-level line code block
+  ```
+```
+
+To illustrate keyboard keys use:
+
+```
+  <kbd>Alt + Shft</kbd>
+```
+
 ## Cloudflare:
 
 The Cloudflare Cache is purged upon deployment in Githb Action: `.github/workflows/nextjs-build-export-gh-pages-upload.yml`. Secrets are stored in [Github](https://github.com/ryanfitton/ryanfitton-nextjs-2024/settings/secrets/actions), and correspond with the Cloudflare API key and Site ID. [More info](https://github.com/marketplace/actions/cloudflare-cache-purge-action).

@@ -37,8 +37,12 @@ export default function Footer() {
 
         <div className="mt-2">
           <span>{`© ${new Date().getFullYear()}`}</span>{' '}
-          <span><Link href="/">{siteMetadata.author}</Link>.</span>{' '}
-          <span>All rights reserved. <Link href="/policies/">License</Link>.</span>
+          <span>
+            <Link href="/">{siteMetadata.author}</Link>.
+          </span>{' '}
+          <span>
+            All rights reserved. <Link href="/policies/">License</Link>.
+          </span>
         </div>
       </div>
     </footer>
