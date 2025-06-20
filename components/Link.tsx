@@ -31,7 +31,7 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   const isMailto = href && href.startsWith('mailto:')
 
   //If this is a `mailto:` link, encode the email address to help prevent spam
-  let anchorTextIsEmail: bool | undefined = false,
+  let anchorTextIsEmail: boolean | undefined = false,
     emailEncoded: string | undefined = undefined
   if (isMailto && typeof href === 'string') {
     const email = href.replace(/^mailto:/, '') //Strip the `mailto:` text
