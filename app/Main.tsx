@@ -51,16 +51,23 @@ export default function Home({ posts }) {
               </p>
 
               <p>
-                You can email me at{' '}
-                <strong>
-                  <span className="!text-typography-default !no-underline">ryan＠</span>
-                  <a
-                    href="https://ryanfitton.co.uk"
-                    className="!text-typography-default !no-underline"
-                  >
-                    ryanfitton.co.uk
-                  </a>
-                </strong>{' '}
+                <Link
+                  href={`mailto:${siteMetadata.email}`}
+                  role="menuitem"
+                  aria-label="Email link from Bio"
+                  className="!text-typography-default"
+                >
+                  Email
+                </Link>
+                <span className="mx-2 text-xs">&#9679;</span>
+                <Link
+                  href="https://links.ryanfitton.co.uk/"
+                  role="menuitem"
+                  aria-label="Link to Social Profiles from Bio"
+                  className="!text-typography-default"
+                >
+                  Social Links
+                </Link>
               </p>
               <p>
                 <Link href="/about">Read more</Link>

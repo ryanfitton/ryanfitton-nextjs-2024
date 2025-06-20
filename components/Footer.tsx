@@ -121,7 +121,7 @@ export default function Footer() {
               role="menuitem"
               aria-label="Links Profile Secondary Navigation Link"
             >
-              Links
+              Social Links
             </Link>
             <Link href="/feed.xml" role="menuitem" aria-label="RSS Feed Secondary Navigation Link">
               RSS Feed
