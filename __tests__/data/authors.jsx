@@ -23,7 +23,7 @@ describe('Author MDX Files', () => {
         expect(data).toHaveProperty('avatar')
         expect(data).toHaveProperty('occupation')
         expect(data).toHaveProperty('email')
-        expect(data).toHaveProperty('facebook')
+        //expect(data).toHaveProperty('facebook')
         expect(data).toHaveProperty('youtube')
         expect(data).toHaveProperty('github')
         //expect(data).toHaveProperty('twitter')
@@ -43,7 +43,7 @@ describe('Author MDX Files', () => {
         expect(data.email).toMatch(/\S+/)  // Ensures email is a non-empty string
 
         // Check for valid URLs
-        expect(data.facebook).toMatch(/^https:\/\/www\.facebook\.com\/\w+/)  // Valid Facebook URL
+        //expect(data.facebook).toMatch(/^https:\/\/www\.facebook\.com\/\w+/)  // Valid Facebook URL
         expect(data.youtube).toMatch(/^https:\/\/www\.youtube\.com\/(?:@[\w.-]+|[\w.-]+)$/)  // Valid YouTube URL
         expect(data.github).toMatch(/^https:\/\/github\.com\/\w+/)  // Valid GitHub URL
         //expect(data.twitter).toMatch(/^https:\/\/twitter\.com\/\w+/)  // Valid Twitter URL
