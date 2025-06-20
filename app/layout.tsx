@@ -153,7 +153,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="manifest" href={`${basePath}/static/favicons/site.webmanifest`} />
-        <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+        <meta httpEquiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
 
         {/* Site RSS feed link */}
         <link rel="alternate" type="application/rss+xml" href={`${basePath}/feed.xml`} />

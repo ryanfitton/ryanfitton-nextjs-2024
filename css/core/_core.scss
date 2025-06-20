@@ -131,12 +131,18 @@
 
   //For single-line code blocks
   code {
-    @apply rounded-md bg-gray-100 px-1 py-1 text-gray-200 dark:bg-[var(--tw-prose-invert-pre-bg)];
+    @apply rounded-md bg-gray-100 px-1 py-1 text-[var(--tw-prose-body)]! dark:bg-[var(--tw-prose-invert-pre-bg)] dark:text-[var(--tw-prose-code)]!;
   }
 
   //For multi-line code blocks. The main bulk of styles should be handled by the Prism plugin
   pre code {
-    @apply rounded-none bg-transparent px-0 py-0 text-current dark:bg-transparent; //Reset colours set by single line code block styles above
+    @apply rounded-none bg-transparent px-0 py-0 text-current! dark:bg-transparent; //Reset colours set by single line code block styles above
+  }
+
+  //For keyboard. `<kbd>` tags
+  kbd {
+    @extend code;
+    @apply mx-1 bg-transparent! shadow-sm! ring-2! shadow-gray-700! ring-gray-200! dark:bg-transparent! dark:shadow-gray-200! dark:ring-gray-600!;
   }
 
   /* 
