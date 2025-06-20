@@ -3,12 +3,26 @@ import Link from 'next/link'
 import type { LinkProps } from 'next/link'
 import { AnchorHTMLAttributes } from 'react'
 
-function encodeEmail(email: string) {
-  // Replace each character with its HTML entity
-  return email
-    .split('')
-    .map((char) => `&#${char.charCodeAt(0)};`)
-    .join('')
+//Converted from this WordPress function: https://developer.wordpress.org/reference/functions/antispambot/
+function encodeEmail(email: string, hexEncoding = 0): string {
+  let emailNoSpamAddress = ''
+
+  for (let i = 0, len = email.length; i < len; i++) {
+    // Randomly choose encoding method
+    const j = Math.floor(Math.random() * (1 + hexEncoding + 1)) // 0, 1, or 2 if hexEncoding is 1
+
+    if (j === 0) {
+      emailNoSpamAddress += `&#${email.charCodeAt(i)};`
+    } else if (j === 1) {
+      emailNoSpamAddress += email[i]
+    } else if (j === 2) {
+      // Hex encoding, always two digits
+      emailNoSpamAddress += '%' + email.charCodeAt(i).toString(16).padStart(2, '0')
+    }
+  }
+
+  // Replace all '@' with its HTML entity
+  return emailNoSpamAddress.replace(/@/g, '&#64;')
 }
 
 const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
