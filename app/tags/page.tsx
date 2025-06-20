@@ -12,7 +12,7 @@ export default async function Page() {
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
   return (
     <>
-      <section className="site-container">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3 xl:col-start-4">
             {tagKeys.length > 0 ? (

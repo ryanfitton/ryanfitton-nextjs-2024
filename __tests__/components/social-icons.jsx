@@ -26,7 +26,7 @@ describe("Facebook Icon Component", () => {
         const { container } = render(<SocialIcon kind="facebook" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -64,7 +64,7 @@ describe("Github Icon Component", () => {
         const { container } = render(<SocialIcon kind="github" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -102,7 +102,7 @@ describe("Linkedin Icon Component", () => {
         const { container } = render(<SocialIcon kind="linkedin" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -139,7 +139,7 @@ describe("Mail Icon Component", () => {
         const { container } = render(<SocialIcon kind="mail" href={`mailto:test@test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "mailto:test@test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -177,7 +177,7 @@ describe("Twitter Icon Component", () => {
         const { container } = render(<SocialIcon kind="twitter" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -215,7 +215,7 @@ describe("X Icon Component", () => {
         const { container } = render(<SocialIcon kind="x" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -253,7 +253,7 @@ describe("Youtube Icon Component", () => {
         const { container } = render(<SocialIcon kind="youtube" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -291,7 +291,7 @@ describe("Mastodon Icon Component", () => {
         const { container } = render(<SocialIcon kind="mastodon" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -329,7 +329,7 @@ describe("Threads Icon Component", () => {
         const { container } = render(<SocialIcon kind="threads" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -367,7 +367,7 @@ describe("Instagram Icon Component", () => {
         const { container } = render(<SocialIcon kind="instagram" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -405,7 +405,7 @@ describe("Medium Icon Component", () => {
         const { container } = render(<SocialIcon kind="medium" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -443,7 +443,7 @@ describe("Bluesky Icon Component", () => {
         const { container } = render(<SocialIcon kind="bluesky" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -481,7 +481,7 @@ describe("BuyMeACoffee Icon Component", () => {
         const { container } = render(<SocialIcon kind="buymeacoffee" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 
@@ -519,7 +519,7 @@ describe("Keybase Icon Component", () => {
         const { container } = render(<SocialIcon kind="keybase" href={`https://test.com`} />);
 
         // Ensure the anchor tag is rendered with the correct href
-        const linkElement = screen.getByRole("link");
+        const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "me");
 

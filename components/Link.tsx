@@ -7,17 +7,21 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
 
-  //If internal link E.g. `/about/`
-  if (isInternalLink) {
-    return <Link className="break-words" href={href} {...rest} />
-    //If an anchor link E.g. `#about`
-  } else if (isAnchorLink) {
-    return <a className="break-words" href={href} {...rest} />
+  const commonProps = {
+    className: 'break-words',
+    role: 'link',
+    'aria-label': 'Anchor Link',
+    href: href,
+    ...rest,
+  }
+
+  //If internal link E.g. `/about/` or hastag link E.g. `#about`
+  if (isInternalLink || isAnchorLink) {
+    return <Link {...commonProps} />
+
     //Anything else consider as an external link, so open in new window/tab
   } else {
-    return (
-      <a className="break-words" target="_blank" rel="noopener noreferrer" href={href} {...rest} />
-    )
+    return <a {...commonProps} target="_blank" rel="noopener noreferrer" />
   }
 }
 

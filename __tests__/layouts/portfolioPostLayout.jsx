@@ -57,4 +57,32 @@ describe('PortfolioPostLayout', () => {
     // Check that "Visit website" link is not rendered
     expect(screen.queryByText('Visit website')).not.toBeInTheDocument()
   })
+
+  it('Checks elements have the correct ARIA attributes', () => {
+    const { container } = render(<PortfolioPostLayout content={mockContent}><div>Child Content</div></PortfolioPostLayout>)
+
+    // Check `.site-container`
+    const siteContainer = container.querySelector(".site-container");
+    expect(siteContainer).toBeInTheDocument();
+    expect(siteContainer).toHaveAttribute("role", "generic");
+    expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
+
+    // Check `.component-posts-article`
+    const article = container.querySelector(".component-posts-article");
+    expect(article).toBeInTheDocument();
+    expect(article).toHaveAttribute("role", "article");
+    expect(article).toHaveAttribute("aria-label", "Portfolio Post Article");
+
+    // Check `.component-posts-article__title`
+    const articleTitle = container.querySelector(".component-posts-article__title");
+    expect(articleTitle).toBeInTheDocument();
+    expect(articleTitle).toHaveAttribute("role", "heading");
+    expect(articleTitle).toHaveAttribute("aria-label", "Portfolio Post Title");
+
+    // Check `.component-posts-portfolio-details`
+    const portfolioDetails = container.querySelector(".component-posts-portfolio-details");
+    expect(portfolioDetails).toBeInTheDocument();
+    expect(portfolioDetails).toHaveAttribute("role", "generic");
+    expect(portfolioDetails).toHaveAttribute("aria-label", "Portfolio Details Section");
+  })
 })

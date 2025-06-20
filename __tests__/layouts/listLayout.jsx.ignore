@@ -93,4 +93,32 @@ describe('ListLayout', () => {
     const postLink2 = screen.getByText('Post 2').closest('a')
     expect(postLink2).toHaveAttribute('href', '/post-2')
   })
+
+  it('Checks elements have the correct ARIA attributes', () => {
+    const { container } = render(<ListLayout posts={mockPosts} pagination={mockPagination} />)
+
+    // Check `.site-container`
+    const siteContainer = container.querySelector(".site-container");
+    expect(siteContainer).toBeInTheDocument();
+    expect(siteContainer).toHaveAttribute("role", "generic");
+    expect(siteContainer).toHaveAttribute("aria-label", "Page Content Section");
+
+    // Check `.component-posts-pagination__navigation`
+    const postsPaginationNavigation = container.querySelector(".component-posts-pagination__navigation");
+    expect(postsPaginationNavigation).toBeInTheDocument();
+    expect(postsPaginationNavigation).toHaveAttribute("role", "navigation");
+    expect(postsPaginationNavigation).toHaveAttribute("aria-label", "Pagination Navigation");
+
+    // Check `button.component-posts-pagination__paginate`
+    const postsPaginationButton = container.querySelector("button.component-posts-pagination__paginate");
+    expect(postsPaginationButton).toBeInTheDocument();
+    expect(postsPaginationButton).toHaveAttribute("role", "button");
+    expect(postsPaginationButton.getAttribute("aria-label")).toContain("Page Button");
+
+    // Check `a.component-posts-pagination__paginate`
+    const postsPaginationAnchor = container.querySelector("a.component-posts-pagination__paginate");
+    expect(postsPaginationAnchor).toBeInTheDocument();
+    expect(postsPaginationAnchor).toHaveAttribute("role", "menuitem");
+    expect(postsPaginationAnchor.getAttribute("aria-label")).toContain("Page Link");
+  })
 }) // <-- Make sure this closing brace is here.

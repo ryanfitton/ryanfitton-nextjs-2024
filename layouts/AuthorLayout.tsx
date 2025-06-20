@@ -33,7 +33,7 @@ export default function AuthorLayout({ children, content }: Props) {
   return (
     <>
       <SectionContainer>
-        <section className="site-container">
+        <section className="site-container" role="generic" aria-label="Page Content Section">
           <div className="grid">
             <div className="col-span-full justify-self-center md:col-span-4">
               {avatar && (
@@ -48,7 +48,13 @@ export default function AuthorLayout({ children, content }: Props) {
             </div>
 
             <div className="col-span-full md:col-span-8">
-              <h2 className="component-title component-title--main">{name}</h2>
+              <h2
+                className="component-title component-title--main"
+                role="heading"
+                aria-label={`${name} Heading`}
+              >
+                {name}
+              </h2>
               <p className="lead">{occupation}</p>
 
               {children}

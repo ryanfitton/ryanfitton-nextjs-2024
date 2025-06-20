@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import { AnchorHTMLAttributes } from 'react'
+
 import {
   Facebook,
   Github,
@@ -38,20 +41,31 @@ type SocialIconProps = {
   size?: number
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+const SocialIcon = ({
+  kind,
+  href,
+  size = 8,
+  ...rest
+}: SocialIconProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
   if (
     !href ||
     (kind === 'mail' && !/^mailto:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(href))
   )
     return null
 
+  //Set Defaults
+  const defaultProps = {
+    role: 'menuitem',
+    'aria-label': `${kind} Social Media Link`,
+  }
+
   const SocialSvg = components[kind]
 
   return (
-    <a rel="me" href={href}>
+    <Link href={href} rel="me" {...defaultProps} {...rest}>
       <span className="sr-only">{kind}</span>
       <SocialSvg />
-    </a>
+    </Link>
   )
 }
 

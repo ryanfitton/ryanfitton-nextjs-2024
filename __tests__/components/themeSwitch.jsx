@@ -31,9 +31,17 @@ describe("ThemeSwitch Component", () => {
 
     it('Renders the theme switch button with Sun icon when theme is light', () => {
         render(<ThemeSwitch />);
-        const button = screen.getByRole('button');
+
+        // Debug the output
+        //screen.debug();
+
+        const button = screen.getByRole('button');  //Button is the main button element
         expect(button).toBeInTheDocument();
         expect(button.innerHTML).toMatch(/svg/); // basic check for icon
+
+        //Check if the element has the correct ARIA attributes
+        expect(button).toHaveAttribute("role", "button")
+        expect(button.getAttribute("aria-label")).toContain("Switch theme to Dark");
     });
 
     it('Shows theme options on click and triggers setTheme', async () => {

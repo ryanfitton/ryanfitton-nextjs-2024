@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 'use client'
 
 import { usePathname } from 'next/navigation'
@@ -36,11 +35,17 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   return (
     <div className="col-span-full md:col-span-8 md:col-start-5 lg:col-span-8 lg:col-start-5">
       <div className="component-posts-pagination component-block">
-        <nav className="component-posts-pagination__navigation">
+        <nav
+          className="component-posts-pagination__navigation"
+          role="navigation"
+          aria-label="Pagination Navigation"
+        >
           {!prevPage && (
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
               disabled={!prevPage}
+              role="button"
+              aria-label="Previous Page Button"
             >
               Previous
             </button>
@@ -52,6 +57,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
                 currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`
               }
               rel="prev"
+              role="menuitem"
+              aria-label="Previous Page Link"
             >
               Previous
             </Link>
@@ -65,6 +72,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             <button
               className="component-posts-pagination__paginate !cursor-auto !opacity-50"
               disabled={!nextPage}
+              role="button"
+              aria-label="Next Page Button"
             >
               Next
             </button>
@@ -74,6 +83,8 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
               className="component-posts-pagination__paginate"
               href={`/${basePath}/page/${currentPage + 1}`}
               rel="next"
+              role="menuitem"
+              aria-label="Next Page Link"
             >
               Next
             </Link>
@@ -101,12 +112,16 @@ export default function ListLayout({
 
   return (
     <>
-      <section className="site-container">
+      <section className="site-container" role="generic" aria-label="Page Content Section">
         <div className="grid">
           <div className="col-span-full md:col-span-4 xl:col-span-3">
-            <aside className="site-aside">
+            <aside className="site-aside" role="complementary" aria-label="Post Tags Sidebar">
               <div className="component-posts-sidebar component-block component-block--outline-secondary component-block--rounded component-block--padding">
-                <h5 className="component-posts-sidebar__title component-title">
+                <h5
+                  className="component-posts-sidebar__title component-title"
+                  role="heading"
+                  aria-label="All Posts Heading"
+                >
                   <Link href={`/blog`}>All Posts</Link>
                 </h5>
 
@@ -139,7 +154,11 @@ export default function ListLayout({
                 const { path, date, featuredImgSrc, title, summary, tags } = post
                 return (
                   <li key={path}>
-                    <article className="component-posts-article">
+                    <article
+                      className="component-posts-article"
+                      role="article"
+                      aria-label="Article Content"
+                    >
                       {featuredImgSrc && (
                         <Link href={`/${path}`}>
                           <Image
@@ -168,7 +187,11 @@ export default function ListLayout({
                         </dd>
                       </dl>
 
-                      <h2 className="component-posts-article__title">
+                      <h2
+                        className="component-posts-article__title"
+                        role="heading"
+                        aria-label="Article Heading"
+                      >
                         <Link href={`/${path}`} dangerouslySetInnerHTML={{ __html: title }}></Link>
                       </h2>
 

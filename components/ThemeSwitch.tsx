@@ -51,7 +51,11 @@ const ThemeSwitch = () => {
 
   return (
     <Menu as="div" className="relative">
-      <MenuButton className="component-navbar__theme-btn">
+      <MenuButton
+        className="component-navbar__theme-btn"
+        role="button"
+        aria-label={resolvedTheme === 'dark' ? 'Switch theme to Light' : 'Switch theme to Dark'}
+      >
         {resolvedTheme === 'dark' ? <Moon /> : <Sun />}
       </MenuButton>
       <Transition
@@ -69,8 +73,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to Light"
+                    role="button"
                   >
                     <Sun />
                     Light
@@ -82,8 +87,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to Dark"
+                    role="button"
                   >
                     <Moon />
                     Dark
@@ -95,8 +101,9 @@ const ThemeSwitch = () => {
               <MenuItem>
                 {({ focus }) => (
                   <button
-                    className={`${focus ? 'Test' : ''} component-navbar__theme-btn--list-option`}
-                    aria-label="Theme switcher"
+                    className={`${focus ? 'focused' : ''} component-navbar__theme-btn--list-option`}
+                    aria-label="Switch theme to System"
+                    role="button"
                   >
                     <Monitor />
                     System

@@ -22,6 +22,10 @@ describe("Link Component", () => {
         // Check if the element exists with correct attributes
         expect(linkElement).toHaveAttribute("class", "break-words");
         expect(linkElement).toHaveAttribute("href", "/test-internal-link-path");
+
+        //Check if the element has the correct ARIA attributes
+        expect(linkElement).toHaveAttribute("role", "link")
+        expect(linkElement).toHaveAttribute("aria-label", "Anchor Link")
     });
 
     it("Test with Anchor Links", () => {
@@ -42,6 +46,10 @@ describe("Link Component", () => {
         // Check if the element exists with correct attributes
         expect(linkElement).toHaveAttribute("class", "break-words");
         expect(linkElement).toHaveAttribute("href", "#test-internal-link-path");
+
+        //Check if the element has the correct ARIA attributes
+        expect(linkElement).toHaveAttribute("role", "link")
+        expect(linkElement).toHaveAttribute("aria-label", "Anchor Link")
     });
 
     it("Test with Anchor Links", () => {
@@ -64,6 +72,10 @@ describe("Link Component", () => {
         expect(linkElement).toHaveAttribute("href", "https://test.com");
         expect(linkElement).toHaveAttribute("rel", "noopener noreferrer");
         expect(linkElement).toHaveAttribute("target", "_blank");
+
+        //Check if the element has the correct ARIA attributes
+        expect(linkElement).toHaveAttribute("role", "link")
+        expect(linkElement).toHaveAttribute("aria-label", "Anchor Link")
     });
     
 });

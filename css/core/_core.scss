@@ -128,15 +128,15 @@
     @apply font-normal!;
     @apply text-xs!;
   }
-  
+
   //For single-line code blocks
   code {
     @apply rounded-md bg-gray-100 px-1 py-1 text-gray-200 dark:bg-[var(--tw-prose-invert-pre-bg)];
   }
-  
+
   //For multi-line code blocks. The main bulk of styles should be handled by the Prism plugin
   pre code {
-    @apply rounded-none bg-transparent px-0 py-0 text-current dark:bg-transparent;  //Reset colours set by single line code block styles above
+    @apply rounded-none bg-transparent px-0 py-0 text-current dark:bg-transparent; //Reset colours set by single line code block styles above
   }
 
   /* 
@@ -190,6 +190,10 @@
 
     &-footer {
       @apply bg-secondary-900 dark:bg-secondary-950 mt-24 text-center text-sm;
+
+      &__footnote {
+        @apply mt-2;
+      }
 
       a {
         @apply no-underline!;

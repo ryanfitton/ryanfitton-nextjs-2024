@@ -8,7 +8,7 @@ const Card = ({ title, description, imgSrc, href }) => {
       aria-label={`Link to ${title}`}
       className="component-block component-block--outline-secondary component-block--rounded component-block--padding-small"
     >
-      <article className="component-posts-article">
+      <article className="component-posts-article" role="article" aria-label="Page Content Article">
         <Image
           src={imgSrc}
           alt={title}
@@ -23,6 +23,8 @@ const Card = ({ title, description, imgSrc, href }) => {
         <h2
           className="component-posts-article__title"
           dangerouslySetInnerHTML={{ __html: title }}
+          role="heading"
+          aria-label="Article Heading"
         ></h2>
 
         {description ? (

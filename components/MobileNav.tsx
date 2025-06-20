@@ -35,6 +35,7 @@ const MobileNav = () => {
           aria-label="Toggle Menu"
           onClick={onToggleNav}
           className="component-navbar__menu-btn"
+          role="button"
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path
@@ -51,6 +52,8 @@ const MobileNav = () => {
             onClose={onToggleNav}
             unmount={false}
             className="component-navbar component-navbar--header"
+            role="dialog"
+            aria-label="Mobile Navigation Dialog"
           >
             <TransitionChild
               as={Fragment}
@@ -68,6 +71,7 @@ const MobileNav = () => {
                     className="mt-11 mr-8 h-8 w-8"
                     aria-label="Toggle Menu"
                     onClick={onToggleNav}
+                    role="button"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                       <path
@@ -82,6 +86,8 @@ const MobileNav = () => {
                 <nav
                   ref={navRef}
                   className="component-navbar__links component-navbar__links--menu-mobile"
+                  role="navigation"
+                  aria-label="Mobile Navigation Links Menu"
                 >
                   {navLinks.map((link) => (
                     <Link
@@ -90,6 +96,8 @@ const MobileNav = () => {
                       className={
                         pathname.startsWith(link.href) ? 'component-navbar__link--current-page' : ''
                       }
+                      role="menuitem"
+                      aria-label={'Mobile Navigation Link to ' + link.title}
                       onClick={onToggleNav}
                     >
                       {link.title}

@@ -55,6 +55,34 @@ describe('Header component', () => {
         // Debug the output
         //screen.debug();
 
+        //Check Aria attributes exist and are correct on `.site-header`
+        const header = container.querySelector(".site-header");
+        expect(header).toHaveAttribute("role", "banner");
+        expect(header).toHaveAttribute("aria-label", "Header");
+
+        //Check Aria attributes exist and are correct on `.site-header > div`
+        const NavigationWrapper = header.firstChild;
+        expect(NavigationWrapper).toHaveAttribute("role", "generic");
+        expect(NavigationWrapper).toHaveAttribute("aria-label", "Header Navigation");
+
+        //Check Aria attributes exist and are correct on `.component-navbar--header`
+        const navbarHeader = container.querySelector(".component-navbar.component-navbar--header");
+        expect(navbarHeader).toHaveAttribute("role", "menubar");
+        expect(navbarHeader).toHaveAttribute("aria-label", "Header Navigation Menu");
+
+        //Check Aria attributes exist and are correct on `.component-navbar--header .component-navbar__links`
+        const navbarHeaderLinks = container.querySelector(".component-navbar.component-navbar--header .component-navbar__links");
+        expect(navbarHeaderLinks).toHaveAttribute("role", "navigation");
+        expect(navbarHeaderLinks).toHaveAttribute("aria-label", "Header Navigation Menu Links");
+
+        //Check Aria attributes exist and are correct on `.component-navbar--header .component-navbar__links a`
+        const navbarIconLink = container.querySelectorAll('.component-navbar.component-navbar--header .component-navbar__links a');
+        expect(navbarIconLink.length).toBeGreaterThan(0);
+        navbarIconLink.forEach(iconLink => {
+            expect(iconLink).toHaveAttribute("role", "menuitem");
+            expect(iconLink.getAttribute("aria-label")).toContain("Header Navigation Link to");
+        });
+
         // Check header content
         expect(screen.getByRole('img', { name: 'Test Author' })).toBeInTheDocument()
         expect(screen.getByText('Welcome to the Site')).toBeInTheDocument()
