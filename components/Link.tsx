@@ -31,17 +31,19 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   const isMailto = href && href.startsWith('mailto:')
 
   //If this is a `mailto:` link, encode the email address to help prevent spam
+  let anchorTextIsEmail: bool | undefined = false
   if (isMailto && typeof href === 'string') {
-    const emailAddress = href.replace(/^mailto:/, '') //Strip the `mailto:` text
-    const encodedEmail = encodeEmail(emailAddress) //Encode the email
+    const email = href.replace(/^mailto:/, '') //Strip the `mailto:` text
+    const emailEncoded = encodeEmail(email) //Encode the email
 
     //Update the Href value with the encoded email address
-    href = 'mailto:' + encodedEmail
+    href = 'mailto:' + emailEncoded
 
     //Check if the email address from this `mailto:` value is the same as the Anchor Text
-    //If true set the `rest.children` to use the encoded email address as the Anchor Text
-    if (emailAddress == rest.children) {
-      rest.children = encodedEmail
+    //If true set `anchorTextIsEmail` as true and set `rest.children` to use the encoded email address as the Anchor Text
+    if (email == rest.children) {
+      anchorTextIsEmail = true
+      rest.children = emailEncoded
     }
   }
 
@@ -62,7 +64,11 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
   } else {
     return (
       <a {...commonProps} target="_blank" rel="noopener noreferrer">
-        <span dangerouslySetInnerHTML={{ __html: rest.children }} />
+        {anchorTextIsEmail ? (
+          <span dangerouslySetInnerHTML={{ __html: rest.children }} />
+        ) : (
+          rest.children
+        )}
       </a>
     )
   }
