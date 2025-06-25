@@ -17,6 +17,7 @@ export default function AuthorLayout({ children, content }: Props) {
     email,
     github,
     buymeacoffee,
+    paypal,
     keybase,
     linkedin,
     twitter,
@@ -63,6 +64,9 @@ export default function AuthorLayout({ children, content }: Props) {
                 <div className="component-navbar__links">
                   <SocialIcon kind="mail" href={`mailto:${email}`} />
                   <SocialIcon kind="buymeacoffee" href={buymeacoffee} />
+                  {/*
+                  <SocialIcon kind="paypal" href={paypal} />
+                  */}
                   <SocialIcon kind="github" href={github} />
                   <SocialIcon kind="keybase" href={keybase} />
                   <SocialIcon kind="linkedin" href={linkedin} />

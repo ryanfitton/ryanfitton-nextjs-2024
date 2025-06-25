@@ -114,6 +114,14 @@ export default function PostLayout({ content, authorDetails, next, prev, childre
                     </Link>
                   </>
                 )}
+                {siteMetadata.paypal && (
+                  <>
+                    <span className="mx-2">&bull;</span>
+                    <Link href={siteMetadata.paypal} rel="nofollow">
+                      If you like this, please donate via PayPal
+                    </Link>
+                  </>
+                )}
               </p>
 
               <hr className="prose-hr component-posts-article__divider" />

@@ -34,6 +34,7 @@ describe('Author MDX Files', () => {
         //expect(data).toHaveProperty('bluesky')
         expect(data).toHaveProperty('linkedin')
         //expect(data).toHaveProperty('buymeacoffee')
+        expect(data).toHaveProperty('paypal')
         expect(data).toHaveProperty('keybase')
 
         // Check that these fields are non-empty
@@ -54,6 +55,7 @@ describe('Author MDX Files', () => {
         //expect(data.bluesky).toMatch(/^https:\/\/bsky\.app\/profile\/\w+/)  // Valid Bluesky URL
         expect(data.linkedin).toMatch(/^https:\/\/uk\.linkedin\.com\/in\/\w+/)  // Valid LinkedIn URL
         //expect(data.buymeacoffee).toMatch(/^https:\/\/buymeacoffee\.com\/\w+/)  // Valid BuyMeACoffee URL
+        expect(data.paypal).toMatch(/^https:\/\/www\.paypal\.com\/.+/)  // Valid PayPal URL - Allow anything after the `.com`
         expect(data.keybase).toMatch(/^https:\/\/keybase\.io\/\w+/)  // Valid Keybase URL
       }
     })

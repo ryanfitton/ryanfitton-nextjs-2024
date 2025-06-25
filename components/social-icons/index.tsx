@@ -15,6 +15,7 @@ import {
   Medium,
   Bluesky,
   BuyMeACoffee,
+  PayPal,
   Keybase,
 } from './icons'
 
@@ -32,6 +33,7 @@ const components = {
   medium: Medium,
   bluesky: Bluesky,
   buymeacoffee: BuyMeACoffee,
+  paypal: PayPal,
   keybase: Keybase,
 }
 

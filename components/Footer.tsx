@@ -26,8 +26,16 @@ export default function Footer() {
               kind="buymeacoffee"
               href={siteMetadata.buymeacoffee}
               role="menuitem"
-              aria-label="Buy Me A Coffee Social Media Link"
+              aria-label="Buy Me A Coffee Donate Social Media Link"
             />
+            {/*
+            <SocialIcon
+              kind="paypal"
+              href={siteMetadata.paypal}
+              role="menuitem"
+              aria-label="PayPal Donate Social Media Link"
+            />
+            */}
             <SocialIcon
               kind="github"
               href={siteMetadata.github}

@@ -24,6 +24,7 @@ const mockAuthorContent = {
   email: 'john.doe@example.com',
   github: 'https://github.com/johndoe',
   buymeacoffee: 'https://buymeacoffee.com/johndoe',
+  //paypal: 'https://www.paypal.com/donate/?business=TEST&no_recurring=0&currency_code=GBP',
   keybase: 'https://keybase.io/johndoe',
   linkedin: 'https://linkedin.com/in/johndoe',
   twitter: 'https://twitter.com/johndoe',
@@ -54,6 +55,7 @@ describe('AuthorLayout', () => {
     // Check if the social icons are rendered
     expect(screen.getByTestId('social-icon-mail')).toHaveAttribute('href', 'mailto:john.doe@example.com')
     expect(screen.getByTestId('social-icon-buymeacoffee')).toHaveAttribute('href', 'https://buymeacoffee.com/johndoe')
+    //expect(screen.getByTestId('social-icon-paypal')).toHaveAttribute('href', 'https://www.paypal.com/donate/?business=TEST&no_recurring=0&currency_code=GBP')
     expect(screen.getByTestId('social-icon-github')).toHaveAttribute('href', 'https://github.com/johndoe')
     expect(screen.getByTestId('social-icon-linkedin')).toHaveAttribute('href', 'https://linkedin.com/in/johndoe')
     expect(screen.getByTestId('social-icon-twitter')).toHaveAttribute('href', 'https://twitter.com/johndoe')

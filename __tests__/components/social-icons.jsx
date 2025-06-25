@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Facebook, Github, Linkedin, Mail, Twitter, X, Youtube, Mastodon, Threads, Instagram, Medium, Bluesky, Keybase, BuyMeACoffee } from "@/components/social-icons/icons";
+import { Facebook, Github, Linkedin, Mail, Twitter, X, Youtube, Mastodon, Threads, Instagram, Medium, Bluesky, Keybase, BuyMeACoffee, PayPal } from "@/components/social-icons/icons";
 import SocialIcon from '@/components/social-icons'
 
 
@@ -487,6 +487,44 @@ describe("BuyMeACoffee Icon Component", () => {
 
         // Ensure the sr-only span exists
         expect(screen.getByText("buymeacoffee")).toBeInTheDocument();
+
+        // Ensure the SVG exists 
+        const svgElement = container.querySelector("svg");
+        expect(svgElement).toBeInTheDocument();
+        expect(svgElement).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg");
+        expect(svgElement).toHaveAttribute("viewBox", "0 0 24 24");
+    });
+
+});
+
+describe("PayPal Icon Component", () => {
+
+    it("Renders without crashing", () => {
+        render(<PayPal />);
+        expect(screen.getByTitle("PayPal")).toBeInTheDocument();
+    });
+    
+    // Debug the output
+    //screen.debug();
+    
+    it("Has the correct SVG properties", () => {
+        const { container } = render(<PayPal />);
+        const svgElement = container.querySelector("svg");
+
+        expect(svgElement).toHaveAttribute("xmlns", "http://www.w3.org/2000/svg");
+        expect(svgElement).toHaveAttribute("viewBox", "0 0 24 24");
+    });
+
+    it("Renders PayPal icon with props", () => {
+        const { container } = render(<SocialIcon kind="paypal" href={`https://test.com`} />);
+
+        // Ensure the anchor tag is rendered with the correct href
+        const linkElement = screen.getByRole("menuitem");
+        expect(linkElement).toHaveAttribute("href", "https://test.com");
+        expect(linkElement).toHaveAttribute("rel", "me");
+
+        // Ensure the sr-only span exists
+        expect(screen.getByText("paypal")).toBeInTheDocument();
 
         // Ensure the SVG exists 
         const svgElement = container.querySelector("svg");

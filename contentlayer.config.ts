@@ -200,6 +200,7 @@ export const Authors = defineDocumentType(() => ({
     mastodon: { type: 'string' },
     bluesky: { type: 'string' },
     buymeacoffee: { type: 'string' },
+    paypal: { type: 'string' },
     keybase: { type: 'string' },
     github: { type: 'string' },
     linkedin: { type: 'string' },
