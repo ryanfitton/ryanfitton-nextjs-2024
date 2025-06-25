@@ -28,7 +28,7 @@ describe("Facebook Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("facebook")).toBeInTheDocument();
@@ -66,7 +66,7 @@ describe("Github Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("github")).toBeInTheDocument();
@@ -104,7 +104,7 @@ describe("Linkedin Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("linkedin")).toBeInTheDocument();
@@ -140,8 +140,10 @@ describe("Mail Icon Component", () => {
 
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
-        expect(linkElement).toHaveAttribute("href", "mailto:test@test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+
+        expect(linkElement.getAttribute("href")).toMatch(/^mailto:&[#a-zA-Z0-9]+;/) //This is the encoded email version. Starts with `mailto:` followed by `&` and includes other standard charecters
+        //expect(linkElement).toHaveAttribute("href", "mailto:test@test.com");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("mail")).toBeInTheDocument();
@@ -179,7 +181,7 @@ describe("Twitter Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("twitter")).toBeInTheDocument();
@@ -217,7 +219,7 @@ describe("X Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("x")).toBeInTheDocument();
@@ -255,7 +257,7 @@ describe("Youtube Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("youtube")).toBeInTheDocument();
@@ -293,7 +295,7 @@ describe("Mastodon Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("mastodon")).toBeInTheDocument();
@@ -331,7 +333,7 @@ describe("Threads Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("threads")).toBeInTheDocument();
@@ -369,7 +371,7 @@ describe("Instagram Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("instagram")).toBeInTheDocument();
@@ -407,7 +409,7 @@ describe("Medium Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("medium")).toBeInTheDocument();
@@ -445,7 +447,7 @@ describe("Bluesky Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("bluesky")).toBeInTheDocument();
@@ -483,7 +485,7 @@ describe("BuyMeACoffee Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("buymeacoffee")).toBeInTheDocument();
@@ -521,7 +523,7 @@ describe("PayPal Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("paypal")).toBeInTheDocument();
@@ -559,7 +561,7 @@ describe("Keybase Icon Component", () => {
         // Ensure the anchor tag is rendered with the correct href
         const linkElement = screen.getByRole("menuitem");
         expect(linkElement).toHaveAttribute("href", "https://test.com");
-        expect(linkElement).toHaveAttribute("rel", "me");
+        expect(linkElement).toHaveAttribute("rel", "me noopener noreferrer");
 
         // Ensure the sr-only span exists
         expect(screen.getByText("keybase")).toBeInTheDocument();

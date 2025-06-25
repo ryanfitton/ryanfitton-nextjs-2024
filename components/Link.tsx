@@ -60,7 +60,11 @@ const CustomLink = ({ href, ...rest }: LinkProps & AnchorHTMLAttributes<HTMLAnch
     //Anything else consider as an external link incl. `mailto`, so open in new window/tab. Return via a standard Anchor tag.
   } else {
     return (
-      <a {...commonProps} target="_blank" rel="noopener noreferrer">
+      <a
+        {...commonProps}
+        target="_blank"
+        rel={`${rest.rel ? rest.rel + ' ' : ''}noopener noreferrer`}
+      >
         {anchorTextIsEmail && emailEncoded ? (
           <span dangerouslySetInnerHTML={{ __html: emailEncoded }} />
         ) : (

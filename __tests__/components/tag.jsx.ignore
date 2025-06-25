@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import Tag from '@/components/Tag'
 
 // Mocking next/link
-jest.mock('next/link', () => ({
+jest.mock('@/components/Link', () => ({
   __esModule: true,
   default: ({ href, children }) => <a href={href}>{children}</a>,
 }))

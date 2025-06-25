@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from '@/components/Link'
 import { AnchorHTMLAttributes } from 'react'
 
 import {
@@ -49,11 +49,8 @@ const SocialIcon = ({
   size = 8,
   ...rest
 }: SocialIconProps & AnchorHTMLAttributes<HTMLAnchorElement>) => {
-  if (
-    !href ||
-    (kind === 'mail' && !/^mailto:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(href))
-  )
-    return null
+  //If no Href value, return null
+  if (!href) return null
 
   //Set Defaults
   const defaultProps = {
@@ -61,8 +58,8 @@ const SocialIcon = ({
     'aria-label': `${kind} Social Media Link`,
   }
 
+  //Determine the correct SVG to display
   const SocialSvg = components[kind]
-
   return (
     <Link href={href} rel="me" {...defaultProps} {...rest}>
       <span className="sr-only">{kind}</span>
