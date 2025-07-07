@@ -115,9 +115,6 @@ export default function Footer() {
             role="navigation"
             aria-label="Secondary Links Navigation Menu"
           >
-            <Link href="/about/" role="menuitem" aria-label="About Secondary Navigation Link">
-              About
-            </Link>
             <Link href="/colophon/" role="menuitem" aria-label="Colophon Secondary Navigation Link">
               Colophon
             </Link>
@@ -140,6 +137,9 @@ export default function Footer() {
               aria-label="Status Page Secondary Navigation Link"
             >
               Status
+            </Link>
+            <Link href="https://keybase.io/ryanfitton/pgp_keys.asc" role="menuitem" aria-label="Ryan Fitton's PGP keys">
+              PGP Key
             </Link>
           </nav>
         </div>
