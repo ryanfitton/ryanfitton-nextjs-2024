@@ -1,46 +1,50 @@
 ---
-title: "Generating GPG keys for PGP mail and GIT"
+title: "Generating GPG Keys for PGP Mail and Git"
 authors: ['Ryan Fitton']
 date: '2025-10-01'
 tags: ['Development']
 draft: true
-summary: 'A guide on how to create GPG keys and setup for PHP mail and GIT.'
+summary: 'A guide on how to create GPG keys and set up for PGP mail and Git.'
 ---
 
-I've recently set a GPG key used for PGP Mail encryption and for signing commits in GIT.
+I've recently set up a GPG key for PGP mail encryption and for signing commits in Git.
 
-It's quite a minefield with various guides available on the web. I thought i'd give my take, this is my guide for how I have created a GPG key, and setup the required configs to be able to sign commits in GIT.
+It's quite a minefield with various guides available on the web. I thought I'd give my take—this is my guide for how I created a GPG key and set up the required configs to be able to sign commits in Git.
 
-## Preqrequisites
+## 🛠️ Prerequisites
 
-I have used [GnuPG](https://gnupg.org/download/) running on MacOS 15.5. However this process should be very similar on Linux and Windows's WSL.
+I used [GnuPG](https://gnupg.org/download/) running on macOS 15.5. However, this process should be very similar on Linux and Windows (WSL).
 
-Ensure you have GnuPG setup already. On MacOS I installed this with Brew: `brew install gnupg`.
+Make sure you have GnuPG set up already. On macOS, I installed this with Homebrew:  
+`brew install gnupg`
 
-## Install/Setup
+## 🚀 Install & Setup
 
-### 1. List all keys stored in GPG
-This is how you list keys already setup on your system, which if this is a fresh install there should be no existing keys.
+### 1️⃣ List All Keys Stored in GPG
 
-* Public: `gpg --list-keys`
-* Private: `gpg --list-secret-keys`
+This is how you list keys already set up on your system. If this is a fresh install, there should be no existing keys.
 
-### 2. Create a GPG Public-Private key pair
+- Public: `gpg --list-keys`
+- Private: `gpg --list-secret-keys`
+
+### 2️⃣ Create a GPG Public-Private Key Pair
+
 Run: `gpg --full-generate-key`
 
 Select:
 
-1. 'RSA and RSA' - You could select 'ECC (sign and encrypt)' however RSA is more widely supported and has been around for much longer.
-2. Key size: '4096'
-3. Key expiry: '0' - It's probably best to set an expiry for the key, but I don't want to keep updating my key often so I prefer no expiry.
-4. Then enter your name and email address
+1. **'RSA and RSA'** – You could select 'ECC (sign and encrypt)', but RSA is more widely supported and has been around much longer.
+2. **Key size:** '4096'
+3. **Key expiry:** '0' – It's probably best to set an expiry for the key, but I don't want to keep updating my key often, so I prefer no expiry.
+4. Then enter your name and email address.
 
-### 3. Find your key identifier
-Now your key has been generted, we need to find the key identifier as this will be used to perform actions on the key such as exporting and backup.
+### 3️⃣ Find Your Key Identifier
+
+Now your key has been generated, we need to find the key identifier as this will be used to perform actions on the key such as exporting and backup.
 
 Run this command to list all of your keys: `gpg --list-secret-keys --keyid-format=long`
 
-It will return somthing like, example:
+It will return something like this:
 ```
 sec   rsa4096/171UN2R685ITSJFW 2025-10-01 [SC]
       J8YO9LZFUXXVH2AO6I6K5W1O171UN2R685ITSJFW
@@ -48,77 +52,84 @@ uid                 [ultimate] Your Name <yourname@gmail.com>
 ssb   rsa4096/RVKVAHYFAWPYOT2J 2025-10-01 [E]
 ```
 
-**Notice in this example where you see `171UN2R685ITSJFW` this will be your key identifier.**
+**Notice in this example where you see `171UN2R685ITSJFW`—this will be your key identifier.**
 
-> 🚨 **Note:** Throughout the next steps this key identifier will be used in the examples. If you're running these commands for yourself; replace `171UN2R685ITSJFW` with your key.
+> 🚨 **Note:** Throughout the next steps, this key identifier will be used in the examples. If you're running these commands for yourself, replace `171UN2R685ITSJFW` with your key.
 
-### 4. Export keys
+### 4️⃣ Export Keys
 
 That's it! You can now export your public and private keys.
 
-> 🚨 **Remember**, Ensure you are the one who only has access to the private key. For someone to send you an encrypted message, provide them with your public key. This public key is used to encrypt the message for you to decrypt with your private key, the same for if your sending a message to a recipitant; you must have the other recipitant's public key to encrypt the message for them.
+> 🚨 **Remember:** Ensure you are the only one who has access to the private key. For someone to send you an encrypted message, provide them with your public key. This public key is used to encrypt the message for you to decrypt with your private key. The same applies if you're sending a message to a recipient; you must have the recipient's public key to encrypt the message for them.
 
-* Export a public key: `gpg --armor --export 171UN2R685ITSJFW`
-* Export a private key: `gpg --armor --export-secret-key 171UN2R685ITSJFW`
+- Export a public key: `gpg --armor --export 171UN2R685ITSJFW`
+- Export a private key: `gpg --armor --export-secret-key 171UN2R685ITSJFW`
 
-For public key's I usually save these with a `.asc` file exntention, example `your-name.asc`. For the private key; save this as a `.key` file extention.
+For public keys, I usually save these with a `.asc` file extension, e.g., `your-name.asc`. For the private key, save this as a `.key` file extension.
 
-### 5. Further steps
+### 5️⃣ Further Steps
 
-#### Pushing key to a public key server
+#### 🌍 Pushing Key to a Public Key Server
 
-It's reccomended you push your public key to a trusted public key server for it to be verified by others.
+It's recommended you push your public key to a trusted public key server so it can be verified by others.
 
-For example, this will push the key to the 'OpenPGP Key' server: `gpg --keyserver hkps://keys.openpgp.org --send-keys 171UN2R685ITSJFW`
+For example, this will push the key to the 'OpenPGP Key' server:  
+`gpg --keyserver hkps://keys.openpgp.org --send-keys 171UN2R685ITSJFW`
 
-#### Configure Git to sign commits with key
+#### 🔏 Configure Git to Sign Commits with Key
 
-1. Upload your public key to Github. This will be in your setting pages [github.com/settings/keys](https://github.com/settings/keys).
-2. If you have previously configured Git to use a different key format when signing with --gpg-sign, unset this configuration so the default format of OpenPGP will be used: `git config --global --unset gpg.format`
-3. Run to tell Git to use your key identifier: `git config --global user.signingkey 171UN2R685ITSJFW`
-4. Optionally, to configure Git to sign all commits and tags by default, enter the following command:
-```
-git config --global commit.gpgsign true
-git config --global tag.gpgSign true
-```
+1. Upload your public key to GitHub. This will be in your settings page: [github.com/settings/keys](https://github.com/settings/keys).
+2. If you have previously configured Git to use a different key format when signing with `--gpg-sign`, unset this configuration so the default format of OpenPGP will be used:  
+   `git config --global --unset gpg.format`
+3. Tell Git to use your key identifier:  
+   `git config --global user.signingkey 171UN2R685ITSJFW`
+4. Optionally, to configure Git to sign all commits and tags by default, enter the following commands:
+  ```
+  git config --global commit.gpgsign true
+  git config --global tag.gpgSign true
+  ```
 
-## Further reading
 
-### Backup/Restore keys
+## 📚 Further Reading
 
-Usually just storing your public and private keys will be good enough, however GnuPG allows you to easily backup/restore your keys,
+### 💾 Backup/Restore Keys
+
+Usually, just storing your public and private keys will be good enough. However, GnuPG allows you to easily backup/restore your keys.
 
 Running the below will backup/restore keys from the `backupkeys.pgp` file. This file is generated in the same folder where you're running this command in your terminal.
 
-* Backup keys: `gpg --output backupkeys.pgp --armor --export-secret-keys 171UN2R685ITSJFW`
-* Restore keys: `gpg --import-options restore --import backupkeys.pgp`
+- Backup keys: `gpg --output backupkeys.pgp --armor --export-secret-keys 171UN2R685ITSJFW`
+- Restore keys: `gpg --import-options restore --import backupkeys.pgp`
 
-### Deleting keys from GnuPG
+### 🗑️ Deleting Keys from GnuPG
+
 If you need to delete keys, you can do so with the commands below:
 
-* Delete a private key: `gpg --delete-secret-keys 171UN2R685ITSJFW`
-* Delete a public key: `gpg --delete-keys 171UN2R685ITSJFW`
+- Delete a private key: `gpg --delete-secret-keys 171UN2R685ITSJFW`
+- Delete a public key: `gpg --delete-keys 171UN2R685ITSJFW`
 
-### MacOS troubleshooting
+### 🍏 macOS Troubleshooting
 
-I encountered some issues specifically when entering my key's passphrase in MS Visual Studio code.
+I encountered some issues specifically when entering my key's passphrase in Visual Studio Code.
 
-To fix these issues I had to install 'Pinentry' and make some amends to my ZShell config. See the notes below:
+To fix these issues, I had to install 'Pinentry' and make some changes to my ZShell config. See the notes below:
 
-#### Configure ZShell GPG_TTY variable
+#### ⚙️ Configure ZShell GPG_TTY Variable
 
-You need to export the GPG_TTY variable into the ZShell. Found when looking on [here](https://stackoverflow.com/questions/57591432/gpg-signing-failed-inappropriate-ioctl-for-device-on-macos-with-maven) for the Bash shell.
+You need to export the GPG_TTY variable into the ZShell. I found this when looking [here](https://stackoverflow.com/questions/57591432/gpg-signing-failed-inappropriate-ioctl-for-device-on-macos-with-maven) for the Bash shell.
 
-View this website for more debugging on errors: [https://www.betterbugs.io/blog/fix-error-gpg-failed-to-sign-the-data-git](https://www.betterbugs.io/blog/fix-error-gpg-failed-to-sign-the-data-git).
+For more debugging on errors, see: [https://www.betterbugs.io/blog/fix-error-gpg-failed-to-sign-the-data-git](https://www.betterbugs.io/blog/fix-error-gpg-failed-to-sign-the-data-git).
 
-1. Open the ZSHell config: `sudo nano ~/.zshrc`
+1. Open the ZShell config: `sudo nano ~/.zshrc`
 2. Add this line to the bottom of the file, then save: `export GPG_TTY=$(tty)`
-3. Source the config to pickup the changes: `source ~/.zshrc`
-4. Run this command to view any errors, it should display your public key if successful `echo "hello" | gpg -bsau 171UN2R685ITSJFW`
+3. Source the config to pick up the changes: `source ~/.zshrc`
+4. Run this command to view any errors. It should display your public key if successful: `echo "hello" | gpg -bsau 171UN2R685ITSJFW`
 
-#### Configure pinentry-mac for interactive passphrase
+#### 🔑 Configure pinentry-mac for Interactive Passphrase
 
-To allow the passphrase to appear in apps such as Visual Studio, install [pinentry](https://formulae.brew.sh/formula/pinentry-mac): `brew install pinentry-mac`. These are based on the notes from: [https://stackoverflow.com/questions/63440623/no-gpg-passphrase-prompt-in-visual-studio-code-on-windows-10-for-signed-git-comm](https://stackoverflow.com/questions/63440623/no-gpg-passphrase-prompt-in-visual-studio-code-on-windows-10-for-signed-git-comm)
+To allow the passphrase prompt to appear in apps such as Visual Studio Code, install [pinentry](https://formulae.brew.sh/formula/pinentry-mac): `brew install pinentry-mac`
+
+These are based on the notes from: [https://stackoverflow.com/questions/63440623/no-gpg-passphrase-prompt-in-visual-studio-code-on-windows-10-for-signed-git-comm](https://stackoverflow.com/questions/63440623/no-gpg-passphrase-prompt-in-visual-studio-code-on-windows-10-for-signed-git-comm)
 
 1. Edit `sudo nano ~/.gnupg/gpg.conf` to have this content:
   ```
@@ -131,10 +142,19 @@ To allow the passphrase to appear in apps such as Visual Studio, install [pinent
   max-cache-ttl 34560000
   pinentry-program /opt/homebrew/bin/pinentry-mac
   ```
-3. Edit the SHell Config to ensure these lines exist `sudo nano ~/.zshrc`;
+3. Edit the shell config to ensure these lines exist:  
+`sudo nano ~/.zshrc`
   ```
   export GPG_TTY=$(tty)
   export GPG_AGENT_INFO=${HOME}/.gnupg/S.gpg-agent:0:1
   ```
-4. Source the config to pickup the changes: `source ~/.zshrc`
-5. Reload gpg-agent: To apply the changes, run `sudo pkill -TERM gpg-agent followed by gpg-connect-agent reloadagent /bye`
+4. Source the config to pick up the changes: `source ~/.zshrc`
+5. Reload gpg-agent: To apply the changes, run: `sudo pkill -TERM gpg-agent` followed by `gpg-connect-agent reloadagent /bye`
+
+---
+
+✨ Good luck you're now able to send/receive encrypted messages and sign your Git commits!
+
+You can find my Public key [here](https://keybase.io/ryanfitton/pgp_keys.asc) - I use [Keybase](https://keybase.io/ryanfitton) to host my key, it also allows you to prove your identity via various methods.
+
+Also, once you upload your public to GitHub, you can access a hosted copy at: `https://github.com/your-username.gpg`, example mine is hosted at [https://github.com/ryanfitton.gpg](https://github.com/ryanfitton.gpg).
