@@ -49,7 +49,8 @@ export default function Colophon() {
               </li>
               <li>
                 <p>
-                  Hosted on <Link href={`https://pages.github.com/`}>Github Pages</Link>
+                  Hosted on <Link href={`https://pages.github.com/`}>Github Pages</Link> and
+                  protected by <Link href={`https://www.cloudflare.com/`}>Cloudflare</Link>.
                 </p>
               </li>
               <li>
@@ -89,10 +90,25 @@ export default function Colophon() {
               </li>
             </ul>
 
-            <p>
-              Visit the Status Page here:{' '}
-              <Link href={`https://status.ryanfitton.co.uk/`}>status.ryanfitton.co.uk</Link>
-            </p>
+            <hr className="prose-hr component-posts-article__divider" />
+
+            <ul>
+              <li>
+                <p>
+                  Social Links:{' '}
+                  <Link href={`https://links.ryanfitton.co.uk/`}>links.ryanfitton.co.uk</Link>. This
+                  is a fork from{' '}
+                  <Link href={`https://github.com/sethcottle/littlelink/`}>LittleLink</Link>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Status Page:{' '}
+                  <Link href={`https://status.ryanfitton.co.uk/`}>status.ryanfitton.co.uk</Link>.
+                  This is a fork from <Link href={`https://upptime.js.org/`}>Upptime</Link>.
+                </p>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

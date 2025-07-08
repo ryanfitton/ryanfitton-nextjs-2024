@@ -138,7 +138,11 @@ export default function Footer() {
             >
               Status
             </Link>
-            <Link href="https://keybase.io/ryanfitton/pgp_keys.asc" role="menuitem" aria-label="Ryan Fitton's PGP keys Secondary Navigation Link">
+            <Link
+              href="https://keybase.io/ryanfitton/pgp_keys.asc"
+              role="menuitem"
+              aria-label="Ryan Fitton's PGP keys Secondary Navigation Link"
+            >
               PGP Key
             </Link>
           </nav>
