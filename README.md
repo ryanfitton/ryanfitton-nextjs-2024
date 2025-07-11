@@ -148,6 +148,12 @@ This site uses Google AdSense to deliver ads on the Blog pages. Details to confi
 
 Ads are displayed in the site with the use of the Ad component: `components/Ad.tsx`.
 
+## Scheduled blog post:
+
+I use the [PR Scheduler](https://www.prscheduler.com/) app ([Github Marketplace](https://github.com/apps/pr-scheduler)). The free plan allows for up to 4 schedules per month which I find suitable for my needs.
+
+I create a new branch which contains the new blog post, then make a PR request for the branch. In the PR, I make the comment `@prscheduler 01/09/2025T11:05` which will trigger the PR Scheduler app to merge the PR on the datetime specified.
+
 # URLs
 
 ---
