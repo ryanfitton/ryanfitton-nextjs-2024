@@ -134,6 +134,10 @@ To illustrate keyboard keys use:
 
 The Cloudflare Cache is purged upon deployment in Githb Action: `.github/workflows/nextjs-build-export-gh-pages-upload.yml`. Secrets are stored in [Github](https://github.com/ryanfitton/ryanfitton-nextjs-2024/settings/secrets/actions), and correspond with the Cloudflare API key and Site ID. [More info](https://github.com/marketplace/actions/cloudflare-cache-purge-action).
 
+## Google Lighthouse:
+
+Google Lighthouse checks are performed upon deployment in Github Action: `.github/workflows/nextjs-build-export-gh-pages-upload.yml`.
+
 ## Disqus:
 
 This site uses Disqus for the commenting system on blog pages. Details to configure are in `data/siteMetadata.js`.
