@@ -1,0 +1,100 @@
+---
+title: "My Journey with Kubernetes: A Practical Experience from 2025"
+authors: ['Ryan Fitton']
+date: '2025-12-10'
+tags: ['Development', 'Personal']
+draft: false
+summary: 'This blog post documents my personal journey into the world of Kubernetes—from early setup to overcoming common pitfalls.'
+---
+
+Kubernetes (K8s) has emerged as a cornerstone of modern cloud-native architecture, and in 2025, it's more relevant than ever. This blog post documents my personal journey into the world of Kubernetes—from early setup to overcoming common pitfalls. Whether you're a developer, DevOps engineer, or curious tinkerer, I hope this reflection helps you avoid roadblocks and get up to speed faster.
+
+## Why Kubernetes? 🤔
+
+Initially, Kubernetes struck me as just another overhyped buzzword. But I quickly realized its relevance. For scalable, resilient, and hands-off deployments, Kubernetes is unmatched. With features like auto-scaling, self-healing, and service discovery, it eliminates much of the manual overhead traditionally involved in managing applications.
+
+My motivation stemmed from managing side projects that kept crashing. I wanted a solution that *just works*. Kubernetes fit the bill—and with increasing demand for cloud-native apps and AI workloads, mastering it seemed essential.
+
+🛠️ **Prerequisites**: Familiarity with Docker, basic Linux commands, and YAML is highly recommended.
+
+## Getting Started with Minikube 🧪
+
+I began with Minikube to run Kubernetes locally:
+
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+minikube start
+```
+
+After installing `kubectl`, I verified everything with:
+
+```bash
+kubectl version
+```
+
+✅ At this point, I was ready to experiment with clusters, pods, and deployments on my local machine.
+
+## Learning Through the Official Tutorials 📘
+
+The [Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial on the official site was a fantastic starting point:
+
+- **Clusters & Pods**: Understood how pods are the smallest deployable units.
+- **Hello World Deployment**:
+  ```bash
+  kubectl create deployment hello-node --image=registry.k8s.io/e2e-test-images/agnhost:2.39 -- /agnhost netexec --http-port=8080
+  ```
+- **Check Pod Status**:
+  ```bash
+  kubectl get pods
+  kubectl logs <pod-name>
+  ```
+- **Expose to Public**:
+  ```bash
+  kubectl expose deployment hello-node --type=LoadBalancer --port=8080
+  ```
+- **Scale Up**:
+  ```bash
+  kubectl scale deployment hello-node --replicas=4
+  ```
+- **Rolling Updates**: Seamless updates with zero downtime.
+
+🎯 These tutorials were practical, direct, and extremely effective for foundational learning.
+
+## Supplementary Learning Resources 📚
+
+To deepen my understanding, I explored:
+
+- 📺 **YouTube** – *The Kubernetes Course 2025*  
+- 📘 **Nigel Poulton’s Kubernetes Book**  
+- 🧪 **KodeKloud Labs** – Interactive and hands-on  
+- 🎓 **Coursera/Linux Foundation CKA Prep**  
+- 📈 **Roadmap.sh** – Great visual reference  
+- 🛠️ **Stephen Grider’s Udemy Course**
+
+Some assumed prior knowledge, so I often looped back to the basics before progressing.
+
+## Common Challenges & How I Overcame Them ⚠️
+
+- **YAML Woes**: Indentation errors were a constant source of frustration.
+- **Networking Issues**: Debugging cluster networking required trial and error.
+- **Overwhelming Tooling**: Helm, RBAC, sidecars—so many tools, so little context.
+
+🔧 What helped:
+- Start with **Minikube** or **Kind**—no cloud setup needed.
+- Break things on purpose, then fix them—learn by doing.
+- Use `kubectl debug` and `kubectl describe` liberally.
+- Join communities: Reddit's r/kubernetes and K8s Slack were lifesavers.
+- Monitor early: Use Prometheus/Grafana for insights.
+- Secure from day one: RBAC and Network Policies aren’t optional.
+
+## Was It Worth It? 💡
+
+Absolutely. Within weeks, I had a multi-container application scaling on demand with zero downtime. Kubernetes has fundamentally changed how I deploy and manage software.
+
+💬 **Final Thoughts**: If you're just starting out, be patient and persistent. Use official resources and hands-on labs. The learning curve is real—but so is the payoff.
+
+---
+
+## Share Your Experience 🗣️
+
+Have you worked with Kubernetes? Faced hurdles? Solved problems in clever ways? Drop a comment, I'd love to hear your story.
