@@ -1,0 +1,222 @@
+---
+title: "Youtube Livestream scheduler wrapper using Go2RTC"
+authors: ['Ryan Fitton']
+date: '2025-11-01'
+tags: ['Development']
+draft: false
+summary: 'Custom-created script to automatically schedule and stream livestreams on YouTube with Go2RTC, which allows capturing from devices such as RTSP feeds.'
+---
+
+> **Note:** This post is about my project on Github: [livestream-youtube-scheduler](https://github.com/ryanfitton/livestream-youtube-scheduler) 🚀
+
+## Introduction 🐦🎥
+
+I've been looking for solutions to livestream the bird feeders in my garden to YouTube using a spare IP camera that outputs an RTSP stream.
+
+After some searching, I discovered [Go2RTC](https://github.com/AlexxIT/go2rtc), which is perfect for handling the livestream itself. However, I couldn't find any ready-made solution that would automatically set up a stream, start streaming, and then end the stream using the YouTube API.
+
+So, I decided to create my own project: [livestream-youtube-scheduler](https://github.com/ryanfitton/livestream-youtube-scheduler)! With this tool, you can easily configure and manage multiple streams at once. The project will automatically schedule your livestream, start streaming (by triggering an endpoint in the [Go2RTC API](https://github.com/AlexxIT/go2rtc?tab=readme-ov-file#module-api)), and end the stream when the time is up—all with minimal effort. ✨
+
+If you've been searching for a simple way to automate your YouTube livestreams, I hope this project helps you out!
+
+I'm always open to suggestions or improvements—if you have any, please feel free to open a PR.  
+The project is licensed under the [Apache License 2.0](https://github.com/ryanfitton/livestream-youtube-scheduler/blob/master/LICENSE).
+
+---
+
+## Getting Started 🛠️
+
+For the latest installation steps, check out the [project's README](https://github.com/ryanfitton/livestream-youtube-scheduler/blob/master/README.md).  
+Below, I'll walk you through the process in more detail:
+
+### Pre-Requisites 📋
+
+I've tested the script on Ubuntu 24.04, but newer and older versions should work too. The main requirements are those set by [Go2RTC](https://github.com/AlexxIT/go2rtc), since most of the wrapper scripts are written in Bash.
+
+As of July 2025, you'll need:
+
+* Linux OS (I use Ubuntu 24.04)
+* Bash (tested with version 3.2, but newer versions should be fine)
+* Docker (to run the Go2RTC container; tested on Docker 27.5.1, build a187fa5)
+* jq (for parsing JSON output from curl)
+* curl (for sending HTTP requests to the YouTube API)
+* crontab (for scheduling stream starts via cron)
+* date (GNU date with --iso-8601 support)
+* A YouTube account (to configure API details)
+* A stream source (e.g., RTSP feed)
+
+---
+
+### Setup ⚙️
+
+#### Copying Files
+
+First, either clone the repo or download the latest release as a .zip from:  
+[https://github.com/ryanfitton/livestream-youtube-scheduler/releases](https://github.com/ryanfitton/livestream-youtube-scheduler/releases)  
+We'll use these files in the next steps.
+
+> **Note:** The files assume your user directory is `/home/user`. If yours is different, do a Find and Replace in all files to update the path.
+
+1. **Pull the latest Go2RTC Docker image:**
+   ```
+   sudo docker pull alexxit/go2rtc
+   ```
+
+2. **Create a config folder in your home directory:**
+   ```
+   mkdir /home/user/config
+   ```
+
+3. **Create a `config.sh` file in this folder:**
+   ```
+   nano /home/user/config/config.sh
+   ```
+   Upload the contents of `config.sh` from the .zip you downloaded. This file will hold your YouTube API keys and livestream schedules.
+
+4. **Create a config folder for Go2RTC stream details:**
+   ```
+   mkdir /home/user/config/go2rtc
+   ```
+   And a `go2rtc.yaml` file:
+   ```
+   nano /home/user/config/go2rtc/go2rtc.yaml
+   ```
+   Upload the contents of `go2rtc.yaml` from the .zip.
+
+5. **Create the main scheduler script:**
+   ```
+   nano /home/user/livestream-youtube-scheduler.sh
+   ```
+   Upload the script from the .zip and make it executable:
+   ```
+   chmod +x livestream-youtube-scheduler.sh
+   ```
+
+6. **Create the scheduler wrapper script:**
+   ```
+   nano /home/user/scheduler-wrapper.sh
+   ```
+   Upload the script from the .zip and make it executable:
+   ```
+   chmod +x scheduler-wrapper.sh
+   ```
+
+7. **Create folders for images and audio files (for YouTube thumbnails and stream audio overlays):**
+   ```
+   mkdir /home/user/config/audio
+   mkdir /home/user/config/images
+   ```
+   Upload the contents of `images` and `audio` from the .zip.
+
+8. **Schedule your cronjobs as sudo:**
+   ```
+   sudo crontab -e 
+   ```
+   Example entry:
+   ```
+   0 1 * * * /bin/bash /home/user/scheduler-wrapper.sh
+   ```
+   This will run the scheduler at 1:00am each day and schedule livestreams as specified in `config.sh`.
+
+---
+
+#### Generating Your YouTube Keys 🔑
+
+1. **Create a Google Cloud Project**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/).
+   - Click the project dropdown and select **"New Project"**.
+   - Name your project (e.g., "YouTube livestream") and click **Create**.
+
+2. **Enable the YouTube Data API v3**
+   - In the Cloud Console, select your project.
+   - Go to **APIs & Services > Library**.
+   - Search for **YouTube Data API v3** and enable it.
+
+3. **Create OAuth 2.0 Credentials**
+   - Go to **APIs & Services > Credentials**.
+   - Click **Create Credentials > OAuth Client ID**.
+   - Choose **Desktop App** (or **Web Application** if needed).
+   - Click **Create** and copy your **Client ID** and **Client Secret**.
+
+4. **Get a Refresh Token via OAuth 2.0 Playground**
+   - Open [OAuth 2.0 Playground](https://developers.google.com/oauthplayground/)
+   - Click the gear icon (⚙️) and check **"Use your own OAuth credentials"**.
+   - Paste your **Client ID** and **Client Secret**.
+   - In Step 1, scroll to **YouTube Data API v3** and select:
+     - `https://www.googleapis.com/auth/youtube`
+     - `https://www.googleapis.com/auth/youtube.force-ssl`
+   - Click **Authorize APIs** and sign in.
+   - In Step 2, click **Exchange authorization code for tokens** and copy the **Refresh Token** (shown only once!).
+
+5. **Save your credentials**—you'll need them for the final setup.
+
+---
+
+#### Configuring Livestreams 🎬
+
+1. **Set up your livestream sources in `/home/user/config/go2rtc/go2rtc.yaml`:**
+
+   Example:
+   ```
+   streams:
+     ipcam: "rtsp://username:password@ipAddress:554/s0"
+     # birdcam uses a custom overlay and audio track
+     birdcam: ffmpeg:rtsp://username:password@ipAddress:554/s0#hardware#video=h264#raw=-i /images/birdcam-overlay-2560x1440.png -f lavfi -i anullsrc=cl=mono:r=48000 -filter_complex "[0:v][1:v]overlay=x=0:y=main_h-overlay_h,drawtext=text='Bird Camera Live Feed':x=450:y=main_h-text_h-225:fontsize=120:fontcolor=white:box=1:boxcolor=black@0.0,scale=1920:1080[v];amovie='/audio/birds.mp3':loop=0,volume=1[bgm];[2:a][bgm]amix=inputs=2:duration=first[audio]" -map "[v]" -map "[audio]" -preset veryfast -crf 28 -shortest
+
+   api:
+     listen: ":1984"
+     username: ""
+     password: ""
+     origin: "*"
+     tls_listen: ""
+     unix_listen: "/tmp/go2rtc.sock"  # default "", unix socket listener for API
+   ```
+
+   Here, `ipcam` is a simple RTSP feed, while `birdcam` adds overlays, dynamic text, and replaces the audio with an MP3 file. We'll use the `birdcam` stream in the next step.
+
+2. **Set up your schedules in `/home/user/config/config.sh`:**
+
+   Example:
+   ```
+   stream1=(
+     "STREAM=birdcam"
+     "TIMEZONE=Europe/London"
+     "VISIBILITY=private"
+     "TODAY=$(date +"%Y-%m-%d")"
+     "TITLE='Bird camera live feed for $(date +"%A %d %B")'"
+     "DESC='Bird camera live feed for $(date +"%A %d %B"). Streamed 11:00 to 15:30'"
+     "THUMBNAIL='/home/user/config/youtube_thumbnail_1280x720.png'"
+     "START=$(date +%Y-%m-%d)T11:00:00"
+     "END=$(date +%Y-%m-%d)T15:30:00"
+   )
+   ```
+
+   - `"STREAM=birdcam"`: The stream name from your Go2RTC config.
+   - `"TIMEZONE=Europe/London"`: Timezone for start/end times.
+   - `"VISIBILITY=private"`: Stream visibility (`unlisted`, `public`, or `private`).
+   - `"TITLE=..."`: The YouTube stream title.
+   - `"DESC=..."`: The YouTube stream description.
+   - `"THUMBNAIL=..."`: Path to the stream thumbnail (ideally 1280×720px).
+   - `"START=..."`: Start date/time in ISO format.
+   - `"END=..."`: End date/time in ISO format.
+
+   You can have multiple streams—just set up each array and include it in the `stream_configs` variable, e.g., `stream_configs=("stream1" "stream2")`.
+
+3. **Add your YouTube API details to `/home/user/config/config.sh`:**
+
+   ```
+   # YouTube API credentials (keep these secret!)
+   CLIENT_ID="YOUR CLIENT ID HERE"
+   CLIENT_SECRET="YOUR CLIENT SECRET HERE"
+   REFRESH_TOKEN="YOUR REFRESH TOKEN HERE"
+   ```
+
+---
+
+#### Final Steps 🎉
+
+It's a good idea to restart your computer. Once it's back up, run:
+```
+sudo /bin/bash /home/user/scheduler-wrapper.sh
+```
+If your streams are scheduled to start after the current date and time, you should see success messages as your streams are scheduled in your YouTube account. Happy streaming! 📺✨
