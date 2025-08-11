@@ -81,6 +81,33 @@ Commands:
 - `yarn run format`. This will Prettify the code.
 - `yarn run analyze`. This will analyse the bundle and open the results in a new browser window.
 
+# SEO
+
+## Managing Titles and META Descriptions:
+
+You can adjust these details in these locations depending on page type;
+
+- Homepage: Within `data/siteMetadata.js` with the `title` and `description` values.
+- Standard pages: Such as about, policies and colophon. Edit these in the page itself, with this function for example;
+  ```
+  export const generateMetadata = () =>
+    genPageMetadata({
+      title: 'Page SEO Title here',
+      description: `Page META Description here.`,
+    })
+  ```
+- Blog and Portfolio posts: These are defined in the Markdown file itself, with these keys for example;
+  ```
+  ---
+  title: "Title of post and used as SEO Title"
+  authors: ['Ryan Fitton']
+  date: '1970-01-01'
+  tags: ['Development']
+  draft: false
+  summary: 'Summary of post and used as the META Description'
+  ---
+  ```
+
 # Github pages
 
 1. Enable Github pages in your repository, follow these instructions [here](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
