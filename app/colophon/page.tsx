@@ -1,7 +1,12 @@
+import siteMetadata from '@/data/siteMetadata'
 import Link from '@/components/Link'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Colophon', description: 'Colophon info' });
+export const generateMetadata = () =>
+  genPageMetadata({
+    title: 'Colophon',
+    description: `Explore the colophon of ${siteMetadata.author ? `${siteMetadata.author}'s` : 'this'} website, detailing the tools, technologies, and design choices behind ${siteMetadata.author ?? 'this website'}`,
+  })
 
 export default function Colophon() {
   return (

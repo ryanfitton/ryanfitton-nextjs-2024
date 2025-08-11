@@ -8,7 +8,7 @@ import { formatDate } from 'pliny/utils/formatDate'
 
 const MAX_DISPLAY = 5
 
-{/* SEO Title and Meta description for this homepage is set in `data/siteMetadata.js` */}
+{/* SEO Title and Meta description for this homepage is set in `data/siteMetadata.js` with the `title` and `description` values */}
 
 export default function Home({ posts }) {
   const tagCounts = tagData as Record<string, number>
@@ -47,9 +47,7 @@ export default function Home({ posts }) {
                 About
               </h2>
               <p>
-                I'm Ryan, a front-end developer based in Leeds, UK. I've been professionally
-                creating websites for around 10 years (along with design and print work within this
-                time).
+                I'm Ryan, a front-end developer based in the United Kingdom. I have over 10 years experience building things for the web! My interests also include design and print work, servers and home-networking.
               </p>
 
               <p>

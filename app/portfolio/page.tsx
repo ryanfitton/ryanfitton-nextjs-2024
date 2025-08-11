@@ -1,3 +1,4 @@
+import siteMetadata from '@/data/siteMetadata'
 import { allCoreContent, sortPosts } from 'pliny/utils/contentlayer'
 import { allPortfolios } from 'contentlayer/generated'
 import { genPageMetadata } from 'app/seo'
@@ -5,7 +6,11 @@ import PortfolioListLayout from '@/layouts/PortfolioListLayout'
 
 const POSTS_PER_PAGE = 6
 
-export const metadata = genPageMetadata({ title: 'Portfolio', description: 'Portfolio info' });
+export const generateMetadata = () =>
+  genPageMetadata({
+    title: 'Portfolio',
+    description: `Professional portfolio of ${siteMetadata.author ?? ''}, view digital web work, print work and more.`,
+  })
 
 export default async function PortfolioPage(props: { searchParams: Promise<{ page: string }> }) {
   const posts = allCoreContent(sortPosts(allPortfolios))
