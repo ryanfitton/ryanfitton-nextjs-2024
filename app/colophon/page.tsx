@@ -5,7 +5,7 @@ import { genPageMetadata } from 'app/seo'
 export const generateMetadata = () =>
   genPageMetadata({
     title: 'Colophon',
-    description: `Explore the colophon of ${siteMetadata.author ? `${siteMetadata.author}'s` : 'this'} website, detailing the tools, technologies, and design choices behind ${siteMetadata.author ?? 'this website'}`,
+    description: `Explore the colophon of ${siteMetadata.author ? `${siteMetadata.author}'s` : 'this'} website, detailing the tools, technologies, and design choices behind ${siteMetadata.siteUrl ?? 'this website'}`,
   })
 
 export default function Colophon() {

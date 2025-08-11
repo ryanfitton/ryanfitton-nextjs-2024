@@ -5,7 +5,7 @@ import { genPageMetadata } from 'app/seo'
 export const generateMetadata = () =>
   genPageMetadata({
     title: 'Policies',
-    description: `Review the policies of ${siteMetadata.author ?? 'this website'}, including privacy, terms, and usage guidelines.`,
+    description: `Review the policies of ${siteMetadata.siteUrl ?? 'this website'}, including privacy, terms, and usage guidelines.`,
   })
 
 export default function Policies() {

@@ -1,8 +1,8 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Ryan Fitton',
+  title: 'Ryan Fitton',                           //SEO Title
   author: 'Ryan Fitton',
-  description: 'Ryan Fitton personal website',
+  description: 'Discover expert insights from Ryan Fitton, a front-end web developer specialising in innovative web ideas, practical tips, and homelabbing. Explore guides on servers, home networking, and cutting-edge development techniques to enhance your skills.',    //SEO Meta Description
   headerTitle: 'Ryan Fitton',
   headerDescription: 'I build things for the web',
   language: 'en-gb',
