@@ -5,7 +5,7 @@ import PortfolioListLayout from '@/layouts/PortfolioListLayout'
 
 const POSTS_PER_PAGE = 6
 
-export const metadata = genPageMetadata({ title: 'Portfolio' })
+export const metadata = genPageMetadata({ title: 'Portfolio', description: 'Portfolio info' });
 
 export default async function PortfolioPage(props: { searchParams: Promise<{ page: string }> }) {
   const posts = allCoreContent(sortPosts(allPortfolios))

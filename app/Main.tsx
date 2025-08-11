@@ -8,6 +8,8 @@ import { formatDate } from 'pliny/utils/formatDate'
 
 const MAX_DISPLAY = 5
 
+{/* SEO Title and Meta description for this homepage is set in `data/siteMetadata.js` */}
+
 export default function Home({ posts }) {
   const tagCounts = tagData as Record<string, number>
   const tagKeys = Object.keys(tagCounts)
