@@ -1,8 +1,12 @@
-import Link from '@/components/Link'
 import siteMetadata from '@/data/siteMetadata'
+import Link from '@/components/Link'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'Policies' })
+export const generateMetadata = () =>
+  genPageMetadata({
+    title: 'Policies',
+    description: `Review the policies of ${siteMetadata.siteUrl ?? 'this website'}, including privacy, terms, and usage guidelines.`,
+  })
 
 export default function Policies() {
   return (

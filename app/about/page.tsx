@@ -1,10 +1,15 @@
+import siteMetadata from '@/data/siteMetadata'
 import { Authors, allAuthors } from 'contentlayer/generated'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent } from 'pliny/utils/contentlayer'
 import { genPageMetadata } from 'app/seo'
 
-export const metadata = genPageMetadata({ title: 'About' })
+export const generateMetadata = () =>
+  genPageMetadata({
+    title: 'About',
+    description: `About ${siteMetadata.author ?? ''}, front-end developer based in the United Kingdom. Specialising in building things for the web.`,
+  })
 
 export default function Page() {
   const author = allAuthors.find((p) => p.slug === 'default') as Authors

@@ -1,4 +1,11 @@
 import Link from '@/components/Link'
+import { genPageMetadata } from 'app/seo'
+
+export const generateMetadata = () =>
+  genPageMetadata({
+    title: '404 error - Page Not Found',
+    description: '404 error - Page Not Found',
+  })
 
 export default function NotFound() {
   return (
