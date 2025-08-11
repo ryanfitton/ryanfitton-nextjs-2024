@@ -1,0 +1,115 @@
+---
+title: "Five CSS Tricks I Picked Up in 2025 That'll Level Up Your Web Game"
+authors: ['Ryan Fitton']
+date: '2026-01-04'
+tags: ['Development']
+draft: false
+summary: 'CSS introduced several groundbreaking features that significantly enhance modern front-end development. These additions make web design more modular, maintainable, and performant—reducing reliance on JavaScript while offering greater control directly within stylesheets.'
+---
+
+In 2025, CSS introduced several groundbreaking features that significantly enhance modern front-end development. These additions make web design more modular, maintainable, and performant—reducing reliance on JavaScript while offering greater control directly within stylesheets.
+
+Over the past year, I’ve incorporated these new tools into production projects and personal work, and the results have been impressive. Below are five CSS techniques that I believe every developer should be exploring today.
+
+
+## 1. `:has()` Selector — Style Based on Child Elements 🔍
+
+The `:has()` pseudo-class finally brings true parent-based conditional styling to CSS. It allows you to style a parent element based on the presence or state of its children—something previously only possible with JavaScript.
+
+```css
+article:has(img) {
+  border: 2px solid #007bff;
+  padding: 1rem;
+}
+```
+
+**Use Case:** Visually distinguish article cards that contain images without modifying the markup or writing custom JavaScript.
+
+✅ Browser support in 2025 is robust across all major engines, making this a reliable feature for production use.
+
+
+## 2. Container Queries — Responsive Components Without Global Media Queries 📦➡️📱
+
+Container queries enable styling elements based on the size of their containing element, not the viewport. This is essential for designing modular, reusable components that behave predictably in any layout.
+
+```css
+.card-container {
+  container-type: inline-size;
+}
+@container (min-width: 300px) {
+  .card {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+```
+
+**Use Case:** Create flexible layouts that adapt based on the parent container’s width—ideal for grids, cards, and responsive UI elements.
+
+
+## 3. Subgrid — Precise Layout Inheritance for Nested Elements 🧩
+
+The `subgrid` value allows nested grid containers to inherit column or row definitions from their parent grid. This ensures consistent alignment without duplicating layout definitions.
+
+```css
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+.grid-item {
+  display: grid;
+  grid-template-columns: subgrid;
+}
+```
+
+**Use Case:** Align nested components precisely with the overarching grid—particularly useful in dashboards and complex layouts.
+
+
+## 4. Anchor Positioning — Native Popovers and Tooltips 📌
+
+Anchor positioning enables developers to position elements relative to a declarative anchor without JavaScript or external libraries.
+
+```css
+.tooltip {
+  position: absolute;
+  anchor-name: --tooltip;
+}
+.trigger {
+  position-anchor: --tooltip;
+  top: anchor(bottom);
+  left: anchor(center);
+}
+```
+
+**Use Case:** Display tooltips or popovers accurately relative to trigger elements. This makes for cleaner, more maintainable UI patterns.
+
+📌 Note: As of mid-2025, support is improving quickly, but be sure to check compatibility on [Can I Use](https://caniuse.com).
+
+
+## 5. `content-visibility` — Optimize Performance on Scroll-Heavy Pages 🚀
+
+The `content-visibility` property boosts performance by allowing the browser to skip rendering off-screen content until needed.
+
+```css
+.archive-section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+```
+
+**Use Case:** Improve load times and interactivity for long-scroll pages such as blogs, archives, or landing pages.
+
+✅ Combine with `contain-intrinsic-size` to prevent layout shifts during reveal.
+
+
+## Summary — Key Takeaways for 2025 CSS Development 🧪
+
+- `:has()` → Parent-based styling without JS  
+- Container Queries → Component-based responsiveness  
+- Subgrid → Clean alignment in nested layouts  
+- Anchor Positioning → Modern tooltips/popovers with no JS  
+- `content-visibility` → Faster, leaner pages on initial load  
+
+---
+
+These techniques have transformed my CSS workflow and helped me build more scalable, high-performance web experiences.
